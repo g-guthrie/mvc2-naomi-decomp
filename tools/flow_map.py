@@ -592,6 +592,27 @@ def proposals_from_functions(image, functions, existing):
     seen = set()
     out = []
     claimed = list(existing)
+    # A byte a walk resolved as a PC-relative literal is data, whoever else's
+    # walk ran over it, so every data run is claimed before any code run.
+    for fn in functions:
+        for start, size in fn["data"]:
+            for s, z in uncovered_slices(start, size, claimed, "data"):
+                key = (s, z, "data")
+                if key in seen:
+                    continue
+                seen.add(key)
+                claimed.append((s, s + z, "data"))
+                sl = image.blob[s - image.base:s - image.base + z]
+                out.append({
+                    "address": f"0x{s:08x}",
+                    "size": z,
+                    "kind": "data",
+                    "sha256": sha(sl),
+                    "evidence": (
+                        f"PC-relative consumer or indexed pointer table in CFG of 0x{fn['entry']:08x}; "
+                        f"unreferenced adjacent bytes omitted."
+                    ),
+                })
     for fn in functions:
         for start, size in fn["code"]:
             for s, z in uncovered_slices(start, size, claimed, "code"):
