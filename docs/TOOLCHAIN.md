@@ -28,6 +28,25 @@ For each game unit, the verifier checks ELF type/CPU/endianness, load ranges, co
 
 The full build overlays only verified C-produced bytes onto the reference main image, checks its SHA-256, reinserts it into the program ROM, and requires a full program-ROM match. Untranslated bytes stay original. All other archive members are hash-verified, not claimed as source reconstruction.
 
+## Extending the map
+
+`tools/flow_map.py` walks the CFG from the entry point plus every reviewed code
+range. Once that reaches a fixed point it proposes nothing further, because the
+remaining functions are reached indirectly rather than by a direct branch from
+anything already reviewed.
+
+`--roots FILE` takes a JSON array of extra candidate entry addresses to try.
+`tools/survey.py` supplies them: it records the destination of every BSR opcode
+in the image, including destinations inside unreviewed bytes. A raw opcode hit
+is a hint, not a boundary, so the walker still decides. It rejects a candidate
+whose walk reports issues, whose ranges conflict with a reviewed range, or whose
+kind disagrees with an existing one; survivors carry delay slots and split their
+PC-relative pools as data. Destinations with several independent incoming calls
+are the strongest candidates.
+
+Proposals are reviewed before they enter `config/mapping.json`. Nothing about a
+successful walk makes a range correct.
+
 ## Evidence
 
 - `build/proof.json`: input fingerprint, tool versions, ROM/image hashes, and per-unit comparisons.

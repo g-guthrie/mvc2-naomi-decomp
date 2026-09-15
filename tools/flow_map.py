@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import pathlib
 from collections import defaultdict
 
 from core import ROOT, load, number, sha, verify_rom
@@ -626,6 +627,7 @@ def proposals_from_functions(image, functions, existing):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--json", action="store_true")
+    parser.add_argument("--roots", help="JSON file of extra candidate entry addresses to try")
     args = parser.parse_args()
     image, target = load_image()
     existing = existing_ranges(image)
@@ -633,6 +635,11 @@ def main():
     for lo, _hi, kind in existing:
         if kind == "code":
             roots.append(lo)
+    if args.roots:
+        for extra in json.loads(pathlib.Path(args.roots).read_text()):
+            address = number(extra)
+            if image.contains(address) and address % 2 == 0:
+                roots.append(address)
     functions = map_from_roots(image, roots, existing)
     new_fn = [fn for fn in functions if fn.get("code") or fn.get("tables") or fn.get("data")]
     props = proposals_from_functions(image, functions, existing)
