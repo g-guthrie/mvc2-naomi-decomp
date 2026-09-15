@@ -22,8 +22,8 @@ separate analysis. Do not declare the whole game complete from main-only work.
 
 ## Verified starting work
 
-`src/callback_leaves.c` contains 210 address-taken, four-byte functions:
-165 no-ops (`rts; nop`), 43 returns of zero (`rts` delay-slot `mov #0,r0`),
+`src/callback_leaves.c` contains 216 address-taken, four-byte functions:
+171 no-ops (`rts; nop`), 43 returns of zero (`rts` delay-slot `mov #0,r0`),
 and two returns of one. Each entry is independently address-taken in the
 main image. Fingerprints and ROM pointer offsets are in `config/units.json`.
 No broad gameplay role is inferred from these shapes. They are small but real
