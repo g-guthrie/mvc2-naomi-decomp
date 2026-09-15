@@ -25,3 +25,22 @@ class SixbyteP4Tests(unittest.TestCase):
         self.assertTrue(proof['exact'], proof['problems'])
         self.assertEqual(sum(part['equal_bytes'] for part in proof['sections']), 42)
         shutil.rmtree(work)
+
+    def test_sixbyte_stores_match_retail(self):
+        flags = load(ROOT / 'config/compiler.json')['flags']
+        target = load(ROOT / 'config/target.json')
+        main = verify_rom(target)[number(target['main']['rom_offset']):]
+        base = number(target['main']['address'])
+        units = {u['id']: u for u in load(ROOT / 'config/units.json')}
+        for uid, total in (('sixbyte_stores', 48), ('sixbyte_stores_01', 42)):
+            work = ROOT / 'build' / f'work-{uid}'
+            if work.exists():
+                shutil.rmtree(work)
+            shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work)
+            unit = units[uid]
+            self.assertEqual(unit['mode'], 'verified')
+            elf, link = compile_unit(unit, work, flags)
+            proof, _ = compare(unit, elf, link, main, base)
+            self.assertTrue(proof['exact'], (uid, proof['problems']))
+            self.assertEqual(sum(part['equal_bytes'] for part in proof['sections']), total)
+            shutil.rmtree(work)
