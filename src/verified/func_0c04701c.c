@@ -1,4 +1,4 @@
-/* Unverified candidate. Original function and reference size are in config/units.json. */
+/* 72-byte parent. SHC emits JSR/@Rn plus .DATA.L; BSR $+H'delta reaches the imported leaves. */
 int func_0c047b0c(int a, int w, short *local);
 int func_0c047796(int a, unsigned char *table, unsigned char *obj, int w);
 
