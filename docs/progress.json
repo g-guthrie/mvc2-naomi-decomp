@@ -27,10 +27,10 @@
   "code": {
     "identified_bytes": 1340068,
     "total_bytes": 1340068,
-    "matched_bytes": 1086,
-    "linked_bytes": 1086,
-    "linked_units": 269,
-    "linked_percent": 0.0810406636081154
+    "matched_bytes": 1098,
+    "linked_bytes": 1098,
+    "linked_units": 271,
+    "linked_percent": 0.08193614055406144
   },
   "data": {
     "identified_bytes": 1084764,
@@ -42,13 +42,13 @@
   },
   "main_image_bytes": 2424832,
   "unclassified_bytes": 0,
-  "reconstructed_bytes": 1358,
-  "main_image_percent": 0.05600387985641892,
+  "reconstructed_bytes": 1370,
+  "main_image_percent": 0.056498759501689186,
   "layout_complete": true,
   "evidence": {
     "schema_version": 1,
-    "source_fingerprint": "e98fc9b9045809a1bd5e73e04c5ab03b10f85c1ccffbb2957b3010e298142876",
-    "source_commit": "c03a29e9df527be8d598b9e94bc033361d78252b",
+    "source_fingerprint": "eebec1e80527ac1d64698235620163200f1ba53e95ff47569cd794421c3ca4a8",
+    "source_commit": "local",
     "roms_verified": 18,
     "verified_units": [
       {
@@ -1676,6 +1676,14 @@
         "linked": true
       },
       {
+        "name": "func_0c1a2c1c",
+        "kind": "code",
+        "address": 203041820,
+        "size": 6,
+        "sha256": "078bf819c7a4073893bf93fcaf1477eb34cd21d76789b3fc08d3845735a623a1",
+        "linked": true
+      },
+      {
         "name": "func_0c1a8542",
         "kind": "code",
         "address": 203064642,
@@ -1849,6 +1857,14 @@
         "address": 203161314,
         "size": 4,
         "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+        "linked": true
+      },
+      {
+        "name": "func_0c1c0014",
+        "kind": "code",
+        "address": 203161620,
+        "size": 6,
+        "sha256": "c41198c2b3947c5196613360bf51ac8bcd04ed2e2c58a4440faa0ca7bf13954d",
         "linked": true
       },
       {
@@ -81775,12 +81791,41 @@
     {
       "name": "code_0c1a295c",
       "address": 203041116,
-      "size": 1586,
+      "size": 704,
       "kind": "code",
       "status": "assembly",
       "representation": "placeholder",
       "source": "",
-      "sha256": "834f44a274d6298a2b3a3b988154a22243652dc39f5961f734353e9c047d44be",
+      "sha256": "d629f1bfc0cb3ffccb947b027676636de1b14e1b9d242612765f4833a382fedc",
+      "notes": "Reviewed code range: BSR or address-taken prologue plus CFG walk to rts. Not reconstructed C."
+    },
+    {
+      "name": "func_0c1a2c1c",
+      "address": 203041820,
+      "size": 6,
+      "kind": "code",
+      "status": "matching",
+      "representation": "reconstructed",
+      "source": "src/accessors.c",
+      "section": ".text.func_0c1a2c1c",
+      "sha256": "078bf819c7a4073893bf93fcaf1477eb34cd21d76789b3fc08d3845735a623a1",
+      "references": [
+        {
+          "rom_offset": 2330436,
+          "kind": "aligned_address_reference"
+        }
+      ],
+      "notes": "Stores 2 to p[4]. Independent leaf after prior rts; nop. GCC 13 -O2."
+    },
+    {
+      "name": "code_0c1a2c22",
+      "address": 203041826,
+      "size": 876,
+      "kind": "code",
+      "status": "assembly",
+      "representation": "placeholder",
+      "source": "",
+      "sha256": "f365aee343ad6f5e4c7eaf1925abefd00ded4b9e65a73335bbbcca50456328c1",
       "notes": "Reviewed code range: BSR or address-taken prologue plus CFG walk to rts. Not reconstructed C."
     },
     {
@@ -89352,13 +89397,31 @@
     {
       "name": "code_0c1bffd6",
       "address": 203161558,
-      "size": 68,
+      "size": 62,
       "kind": "code",
       "status": "assembly",
       "representation": "placeholder",
       "source": "",
-      "sha256": "93273df114c353f252b3b45d5659229f8890f5011baeae6626755256c8aa63de",
+      "sha256": "10dd7d71b63caa60d2441766e23c8cf8375a78dbb2653d3f02c9880f82da3319",
       "notes": "Reviewed code range: BSR or address-taken prologue plus CFG walk to rts. Not reconstructed C."
+    },
+    {
+      "name": "func_0c1c0014",
+      "address": 203161620,
+      "size": 6,
+      "kind": "code",
+      "status": "matching",
+      "representation": "reconstructed",
+      "source": "src/accessors.c",
+      "section": ".text.func_0c1c0014",
+      "sha256": "c41198c2b3947c5196613360bf51ac8bcd04ed2e2c58a4440faa0ca7bf13954d",
+      "references": [
+        {
+          "rom_offset": 2342968,
+          "kind": "aligned_address_reference"
+        }
+      ],
+      "notes": "Stores 3 to p[4]. Independent leaf after prior rts; nop. GCC 13 -O2."
     },
     {
       "name": "data_0c1c001a",

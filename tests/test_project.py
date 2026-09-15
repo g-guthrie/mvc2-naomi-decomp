@@ -63,8 +63,10 @@ class VerificationTests(unittest.TestCase):
         src = (ROOT / "src" / "accessors.c").read_text()
         for name, needle in (
             ("func_0c02e316", "p[4] = 10"),
+            ("func_0c1a2c1c", "p[4] = 2"),
             ("func_0c1b29fc", "p[4] = 2"),
             ("func_0c1bfdda", "p[4] = 3"),
+            ("func_0c1c0014", "p[4] = 3"),
         ):
             self.assertEqual(units[name]["status"], "matching")
             self.assertEqual(units[name]["size"], 6)
