@@ -15,4 +15,4 @@
 - Preserve concurrent work. Independent agents use separate worktrees; builds recreate `build/work/`. Keep changes small and avoid new setup dependencies.
 - Commit source and configuration changes after a successful full check. Build evidence and dashboards stay in `build/` and in the exact-commit CI artifact; do not commit generated status files. Push and verify CI. Keep this repository and its artifacts private.
 
-`config/target.json` defines the reference. The current verifier reports main-image scope; do not call a partial scope or an image retaining original bytes a fully reconstructed game. Historical notes are evidence, never current instructions.
+`config/target.json` defines the reference. The current verifier reports main-image scope; do not call a partial scope or an image retaining original bytes a fully reconstructed game.
