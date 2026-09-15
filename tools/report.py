@@ -2,6 +2,7 @@
 import html
 import json
 import math
+import re
 from core import ROOT, load, number
 
 
@@ -21,6 +22,11 @@ def metrics(proof):
                    'possible_total_bytes': total - known['data' if kind == 'code' else 'code'],
                    'lower_bound_percent': 100 * matched[kind] / max(1, total - known['data' if kind == 'code' else 'code'])}
             for kind in known}
+
+
+def progress_bar(current, total, width=32):
+    filled = min(width, math.floor(width * current / total)) if total else 0
+    return '█' * filled + '░' * (width - filled)
 
 
 def tiles(proof):
@@ -136,3 +142,22 @@ def publish(proof):
 <p>Only complete configured source ranges that pass the current Hitachi compile, link-address, section-size and byte comparison checks receive credit. Candidate bytes receive no credit. Matching fragments do not establish original translation-unit boundaries. The full image comparison retains original bytes for untranslated regions. Progress covers the 2,424,832-byte main executable; the test program and graphics/audio ROMs remain outside this source metric.</p></main>
 <script>const buttons=[document.getElementById('mainButton'),document.getElementById('activeButton')],maps=[document.getElementById('mainMap'),document.getElementById('activeMap')];buttons.forEach((b,i)=>b.onclick=()=>{maps.forEach((m,j)=>m.hidden=i!==j);buttons.forEach((b,j)=>b.setAttribute('aria-pressed',i===j));});document.querySelectorAll('.tile').forEach(t=>['mouseenter','focus','click'].forEach(e=>t.addEventListener(e,()=>document.getElementById('detail').textContent=t.dataset.detail)));</script></html>'''
     (output/'index.html').write_text(page.replace('MAIN_SVG',main_svg).replace('ACTIVE_SVG',active_svg))
+    mapped = proof['main_size'] - proof['mapping']['unknown_bytes']
+    matched = sum(
+        number(part['size'])
+        for unit in proof['units'] if unit['credited']
+        for part in unit['sections'] if part['kind'] != 'bss')
+    total = proof['main_size']
+    block = (
+        '<!-- progress:start -->\n'
+        '| Track | Progress | Bytes |\n'
+        '| --- | --- | ---: |\n'
+        f'| [Map](config/mapping.json) | `{progress_bar(mapped, total)}` **{100 * mapped / total:.3f}%** | {mapped:,} / {total:,} |\n'
+        f'| [Decomp](config/units.json) | `{progress_bar(matched, total)}` **{100 * matched / total:.3f}%** | {matched:,} / {total:,} |\n'
+        '<!-- progress:end -->')
+    readme = ROOT / 'README.md'
+    readme.write_text(re.sub(
+        r'<!-- progress:start -->.*?<!-- progress:end -->',
+        block,
+        readme.read_text(),
+        flags=re.S))
