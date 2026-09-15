@@ -1,62 +1,27 @@
-# Working instructions
+# Agent instructions
 
-## Objective and authority
+## Objective
 
-Recover maintainable C for **NAOMI MVC2 Export/Korea Rev A (`mvsc2`)**, matching
-the verified original. Read README.md, docs/CONTINUE.md, docs/PROGRESS.md, and
-config/target.json and docs/TOOLCHAIN.md first. The ROM fingerprints and current NAOMI executable
-are the target authority. PS2 and Dreamcast work is reference material, not
-matching evidence for this binary.
+Reconstruct the NAOMI `mvsc2` main executable as maintainable C that builds byte-for-byte with the bundled Hitachi compiler and linker. Read README.md and docs/CONTINUE.md first. Keep the repository private.
 
-## Build and acceptance
+## Build
 
-- The required original ROM is already in `orig/mvsc2.zip`. Run `make prepare`
-  to verify and extract it; do not search the internet for another target.
-- Use the Dockerfile or the Ubuntu cross-toolchain described in README.md.
-- Hitachi SHC 5.0 Release 31 is already bundled under
-  `toolchain/hitachi-shc-5.0r31/`. Use `make shc-check` and
-  `make shc SOURCE=path/to/candidate.c`; do not block on locating an installer.
-  The tested runner is wibo 1.2.0 (macOS/Rosetta or Linux x86_64), not Wine/QEMU.
-- Run `make all` after each coherent change. This runs tests, a source build,
-  original-address linking, direct byte comparisons, full-image comparison,
-  and report generation. Inspect failures before deciding what to change.
-- Treat tests as code. Repair obsolete tests, but never weaken a real match,
-  address, overlap, provenance, or denominator check to obtain green status.
-- Do not report a change as verified from an old `build/evidence.json`.
-- Preserve concurrent user work. Prefer small coherent changes, explicit
-  state, existing utilities, and deletion/reuse over new abstractions.
+Run `python3 tools/build.py check` before starting and after changing source, configuration, or tools. Python 3.10+ is required. Use native Linux x86_64, macOS with Rosetta on Apple Silicon, or Windows. The native Linux GitHub Actions job is the fallback for unsupported agent hosts. Use the bundled tools; do not create a second compiler pipeline or add a container dependency.
 
-## What earns progress
+For a single candidate: `python3 tools/build.py unit mask_helper`. Outputs are in `build/work/`: compiler assembly (`.src`), object, linked ELF, linker map, linker commands, and logs. Single-unit checks do not refresh repository progress.
 
-- Real source must compile and match at its original address. Do not substitute
-  byte arrays, inline assembly, generated disassembly wrappers, binary includes,
-  target-byte copies, patched comparisons, or compiler-output substitutions.
-- Unknown regions stay unknown. Record reviewed code/data ranges in
-  `config/units.json`; ranges must remain disjoint and inside the main image.
-- Data needs an identified representation and references before it can be
-  called reconstructed. Raw pointer numbers and zero/fill arrays are
-  placeholders, even if their bytes match.
-- Keep not-yet-matching source in separate candidate files. Only source files
-  nominated by `status=matching` are included in the strict linked build.
-- New symbols imported from original code go in `config/symbols.ld` with
-  evidence. Such imports do not earn source credit.
-- Do not invent gameplay names or ABI signatures from a four-byte return stub.
-  Address-based names are intentional until callers establish their role.
-- GCC 13 remains the accepted compiler for existing matched units. Use the
-  bundled Hitachi compiler for nontrivial candidates before repeating broad
-  GCC-only searches. Neither a working SHC invocation nor ELF conversion
-  establishes a byte match or proves the original revision; verify the unit.
+## Work and proof
 
-## Cloud continuity and publishing
+- Make small changes, preserve concurrent work, and keep verified units passing.
+- Register each C unit in config/units.json. Record the original section address, complete reference size, code/data/BSS kind, exported symbols, and external symbol addresses. Reference sizes come from the original image, never from candidate output.
+- Use candidate mode while iterating. Promote to verified only when the full unit matches. A partial byte count, assembly resemblance, matching prefix, relocatable object, or raw instruction dump is not a match.
+- Code credit requires compiled C. Do not replace functions with raw bytes, inline assembly, or an original-byte include to raise progress. Data must be represented as meaningful typed C, with pointers resolved by the linker.
+- Validate complete linked sections, exact original addresses, all declared exports, and bytes. Padding, literal pools, and relocations matter. BSS is checked but does not add ROM-byte credit.
+- Unknown regions stay unclassified. config/regions.json defines display subdivisions only; it is not a code/data or function map.
+- Do not change original ROMs or tool binaries to obtain a match. Verify package hashes. Do not redistribute this private repository or its ROM/tool artifacts publicly.
+- Favor deletion, reuse, simple explicit state, and meaningful checks. Fix obsolete tests, but never weaken a valid byte/address/size check to pass.
+- Subagents are useful only for independent functions without conflicting ownership. Do not run parallel builds inside the same working tree because build/work is recreated.
 
-- This repository is private and contains the owner's provided commercial ROM.
-  Keep its visibility private; do not publish the ROM or ROM-containing artifacts
-  to public repositories, public Pages, or other public endpoints.
-- No extra credential is required by CI: the checkout contains its own target.
-- Push ordinary commits to the authorized branch; CI automatically compiles
-  and verifies them. Successful main builds update the infographic and reports.
-- Do not edit generated progress numbers by hand. Update source/catalogs,
-  run the build, then regenerate.
-- End a work session with exact source/build evidence, remaining limitations,
-  and the next concrete task in docs/CONTINUE.md. Do not imply that byte-identical
-  fallback assembly is decompiled or that a partial ELF is a native port.
+## Delivery
+
+Run the full check and commit the generated README progress block, assets/*.svg, docs/progress.json, and docs/index.html with the source. CI rebuilds from a fresh checkout and refreshes progress on main. Report matched units/bytes and remaining uncertainty. An exact image that retains original untranslated bytes is not 100% source reconstruction.

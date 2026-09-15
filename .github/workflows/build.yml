@@ -1,98 +1,43 @@
-name: Compile and verify
-
+name: Hitachi build
 on:
   push:
-    branches: [main]
   pull_request:
   workflow_dispatch:
-
 permissions:
   contents: write
-
 concurrency:
-  group: build-${{ github.ref }}
+  group: hitachi-${{ github.ref }}
   cancel-in-progress: true
-
 jobs:
-  shc:
-    name: Hitachi SHC via wibo
+  check:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - name: Download wibo 1.2.0
-        run: |
-          curl --fail --location --retry 3 -o wibo https://github.com/decompals/wibo/releases/download/1.2.0/wibo-x86_64
-          echo "13f86a2d618f0dbe67179d349625345eabf9b46450295cb4c904e49f6aff85af  wibo" | sha256sum --check
-          chmod +x wibo
-          ./wibo -V
-      - name: Verify bundled owner-provided compiler
-        run: python3 tools/hitachi.py verify-package
-      - name: Compile SHC smoke fixture
-        env:
-          WIBO: ${{ github.workspace }}/wibo
-          SHC_BIN: ${{ github.workspace }}/toolchain/hitachi-shc-5.0r31
-        run: |
-          python3 tools/shc_smoke.py
-          python3 tools/shc_b0c_prefix.py
-          python3 tools/shc_p1_store.py
-
-  build:
-    needs: shc
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v4
-      - uses: docker/setup-buildx-action@v3
-      - name: Prepare SH-4 toolchain
-        uses: docker/build-push-action@v6
+      - uses: actions/setup-python@v5
         with:
-          context: .
-          load: true
-          tags: mvc2-naomi-build:ci
-          platforms: linux/amd64
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-      - name: Check bundled Hitachi compiler on native x86 Linux
-        run: |
-          docker run --rm --platform linux/amd64 \
-            -v "$GITHUB_WORKSPACE:/project" \
-            mvc2-naomi-build:ci make shc-check
-          docker run --rm --platform linux/amd64 \
-            -v "$GITHUB_WORKSPACE:/project" \
-            mvc2-naomi-build:ci make shc SOURCE=tools/probes/func_0c047b0c.c
-      - name: Test, compile, link, compare with retail, and render progress
-        run: |
-          docker run --rm --platform linux/amd64 \
-            -e SOURCE_COMMIT="$GITHUB_SHA" \
-            -v "$GITHUB_WORKSPACE:/project" \
-            mvc2-naomi-build:ci make all
-      - name: Upload verified build and dashboard
-        uses: actions/upload-artifact@v4
+          python-version: '3.12'
+      - name: Verify ROMs and build with bundled Hitachi
+        run: python3 tools/build.py check
+      - uses: actions/upload-artifact@v4
         with:
-          name: verified-naomi-build
-          retention-days: 14
-          if-no-files-found: error
+          name: hitachi-evidence
           path: |
-            build/evidence.json
-            build/hitachi-check.json
-            build/shc/tools/probes/hitachi_smoke/
-            build/shc/tools/probes/func_0c047b0c/
-            build/matching.elf
-            build/link.map
-            build/epr-23085a.ic11
-            docs/index.html
+            build/proof.json
+            build/work/*.elf
+            build/work/*.map
+            build/work/*.src
+            build/work/*.log
+            build/work/*.lnk
             docs/progress.json
-            assets/progress.svg
-      - name: Update the repository infographic after a successful main build
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+            docs/index.html
+            assets/*.svg
+      - name: Refresh repository progress
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
-          latest=$(git ls-remote origin refs/heads/main | cut -f1)
-          if [ "$latest" != "$GITHUB_SHA" ]; then
-            echo 'A newer source commit exists; its build will publish progress.'
-            exit 0
-          fi
-          git add assets/progress.svg docs/progress.json docs/index.html
-          if git diff --cached --quiet; then exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Update verified decompilation progress [skip ci]'
-          git push origin HEAD:main
+          git add README.md assets/progress.svg assets/active.svg docs/progress.json docs/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update verified Hitachi progress [skip ci]'
+            git push origin HEAD:main
+          fi
