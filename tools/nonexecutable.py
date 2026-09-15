@@ -12,7 +12,12 @@ import json
 from core import ROOT, load, number, sha, verify_rom
 from vendor.sh4dis import sh4
 
-MINIMUM = 8
+# One undecodable word already proves the address is not executed, but a lone
+# word is usually two-byte alignment padding, which this project deliberately
+# leaves unknown rather than folding into a neighbouring pool. Two consecutive
+# undecodable words are past that and still far short of the decoder's 9.6%
+# rejection rate mattering.
+MINIMUM = 4
 
 
 def undecodable_table():
