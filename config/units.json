@@ -1,14 +1,25 @@
 [
   {
-    "name": "data_0c021000",
+    "name": "code_0c021000",
     "address": 201461760,
-    "size": 204,
+    "size": 156,
+    "kind": "code",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "45fbce110990d37edf4e50643cc175769ec389af6f691389dae711d6869d5101",
+    "notes": "Reviewed CRT0 at the main entry: P2 jump, BSS clear, register/FPU wipe, jsr to start. Not reconstructed C."
+  },
+  {
+    "name": "data_0c02109c",
+    "address": 201461916,
+    "size": 48,
     "kind": "data",
     "status": "assembly",
     "representation": "placeholder",
     "source": "",
-    "sha256": "f110290145b1fcddb7a71c1cc2db57bfd4c29f1bde35d361ba99d03e8b24252b",
-    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+    "sha256": "694dba306cc2e2c37297cdd44ebabc543a13836c5e07a43b8dd64979b9d29b21",
+    "notes": "Literal pool for CRT0 (BSS range, stack, start address, P2/cache masks)."
   },
   {
     "name": "code_0c0210cc",

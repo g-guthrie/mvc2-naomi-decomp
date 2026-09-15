@@ -8,7 +8,7 @@ import zlib
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 from project import ROOT, checked_replacements, digest, load_json, read_verified_roms, validate_units
-from report import build_report
+from report import build_report, generate_svg
 
 
 def fixture():
@@ -45,6 +45,38 @@ class VerificationTests(unittest.TestCase):
         placeholders = [u for u in units if u["representation"] == "placeholder"]
         self.assertTrue(placeholders)
         self.assertTrue(all(u["status"] != "matching" for u in placeholders))
+
+    def test_main_entry_is_catalogued_as_code(self):
+        target = load_json(ROOT / "config/target.json")
+        units = load_json(ROOT / "config/units.json")
+        entry = target["main"]["entrypoint"]
+        covering = [u for u in units if u["address"] <= entry < u["address"] + u["size"]]
+        self.assertEqual(len(covering), 1)
+        self.assertEqual(covering[0]["kind"], "code")
+
+    def test_dashboard_template_has_code_and_data_percent_bars(self):
+        html = (ROOT / "tools/dashboard.html").read_text()
+        self.assertIn('id="code-bar"', html)
+        self.assertIn('id="data-bar"', html)
+        self.assertIn("linked_percent", html)
+        self.assertIn("toFixed(6)", html)
+
+    def test_complete_layout_infographic_shows_code_and_data_percent_bars(self):
+        target, row, _, _, evidence = fixture()
+        target["main"]["size"] = 4
+        report = build_report(target, [row], evidence, "current")
+        svg = generate_svg(report)
+        self.assertIn(">CODE<", svg)
+        self.assertIn(">DATA<", svg)
+        self.assertIn("100.000000%", svg)
+        self.assertIn('fill="#2dbd86"', svg)
+        self.assertIn("percentages use those code and data totals", svg)
+
+    def test_incomplete_layout_infographic_does_not_claim_established_percents(self):
+        target, row, _, _, evidence = fixture()
+        svg = generate_svg(build_report(target, [row], evidence, "current"))
+        self.assertIn("pending", svg)
+        self.assertIn("not yet established", svg)
 
     def test_wrong_bytes_at_right_address_are_rejected(self):
         _, row, elf, original, _ = fixture()
