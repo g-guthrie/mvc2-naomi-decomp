@@ -15,6 +15,8 @@ def metrics(proof):
                 known[part['kind']] += part['size']
                 if unit['credited']:
                     matched[part['kind']] += part['size']
+    if 'mapping' in proof:
+        known = {kind:proof['mapping']['reviewed_'+kind+'_bytes'] for kind in known}
     total = proof['main_size']
     return {kind: {'matched_bytes': matched[kind], 'known_bytes': known[kind],
                    'possible_total_bytes': total - known['data' if kind == 'code' else 'code'],
@@ -43,7 +45,7 @@ def tiles(proof):
         for part in active:
             lo, hi = part['address'], part['address'] + part['size']
             pieces = [(a, b) for x, y in pieces for a, b in [(x, min(y, lo)), (max(x, hi), y)] if a < b]
-        unknown.extend({'name': f'Unmapped 0x{a:08x}', 'address': a, 'size': b-a, 'state': 'unknown',
+        unknown.extend({'name': f'No C source 0x{a:08x}', 'address': a, 'size': b-a, 'state': 'unknown',
                         'kind': 'unclassified'} for a, b in pieces)
         cursor = end
     if cursor != proof['main_address'] + proof['main_size']:
@@ -114,7 +116,7 @@ def svg(items, proof, active=False):
             out += [f'<text x="{36+x:.3f}" y="{190+y:.3f}" font-size="17">{esc(p["name"])}</text>',
                     f'<text x="{36+x:.3f}" y="{214+y:.3f}" font-size="13">{p["size"]} bytes · {p["state"]}</text>']
         out.append('</g>')
-    out += ['<text x="24" y="749" font-size="13"><tspan fill="#00d823">■ Exact, verified C</tspan><tspan dx="24" fill="#00a6df">■ Candidate C</tspan><tspan dx="24" fill="#a8b4c1">■ Unmapped</tspan></text>',
+    out += ['<text x="24" y="749" font-size="13"><tspan fill="#00d823">■ Exact, verified C</tspan><tspan dx="24" fill="#00a6df">■ Candidate C</tspan><tspan dx="24" fill="#a8b4c1">■ No C source</tspan></text>',
             f'<text x="24" y="776" font-size="12" fill="#a8b4c1">{"This zoom excludes unmapped bytes. " if active else "Gray tiles are display regions, not inferred functions. "}Build input: {proof["input_sha256"][:16]}</text>', '</g></svg>']
     return ''.join(out)
 
@@ -138,5 +140,9 @@ def publish(proof):
     readme = ROOT/'README.md'
     if readme.exists():
         count = sum(p['size'] for u in proof['units'] if u['credited'] for p in u['sections'] if p['kind']!='bss')
-        block = f'<!-- progress:start -->\n**{count:,} / {proof["main_size"]:,} main-image bytes verified from Hitachi C** ({100*count/proof["main_size"]:.6f}%).\n\n![Byte-weighted progress treemap](assets/progress.svg)\n\n[Active source-unit zoom](assets/active.svg) · [Build evidence](docs/progress.json) · [Interactive treemap](docs/index.html)\n<!-- progress:end -->'
+        from handoff import render
+        mapping = load(ROOT / "build/mapping.json")
+        _, candidates = render(proof, mapping, (ROOT / "build/main.bin").read_bytes())
+        next_line = f"Next candidate: `{candidates[0]['id']}`. Run the check and read `build/NEXT.md` for current instructions." if candidates else "Run the check and read `build/NEXT.md` for the next uncovered work."
+        block = f'<!-- progress:start -->\n**{count:,} / {proof["main_size"]:,} main-image bytes verified from Hitachi C** ({100*count/proof["main_size"]:.6f}%).\n\n![Byte-weighted progress treemap](assets/progress.svg)\n\n[Active source-unit zoom](assets/active.svg) · [Build evidence](docs/progress.json) · [Interactive treemap](docs/index.html)\n\n{next_line}\n<!-- progress:end -->'
         readme.write_text(re.sub(r'<!-- progress:start -->.*?<!-- progress:end -->',block,readme.read_text(),flags=re.S))

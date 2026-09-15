@@ -1,27 +1,18 @@
-# Agent instructions
+# Agent entry point
 
-## Objective
+**Objective: 100% byte-identical C reconstruction of MVC2 NAOMI. Keep working toward it.**
 
-Reconstruct the NAOMI `mvsc2` main executable as maintainable C that builds byte-for-byte with the bundled Hitachi compiler and linker. Read README.md and docs/CONTINUE.md first. Keep the repository private.
+1. Run `python3 tools/build.py check` from the repository root. It selects the bundled runtime and checks the host, ROMs, compiler, current source, and linked output.
+2. Read `build/NEXT.md`. It is generated from the current checkout and supplies current progress, candidate commands, external literal dependencies, and mapping gaps. Do not use a remembered starting state or a historical task list.
+3. Take one current unit or mapping gap, make the smallest coherent improvement, and rerun the full check. Repeat using the newly generated handoff.
 
-## Build
+## Rules
 
-Run `python3 tools/build.py check` before starting and after changing source, configuration, or tools. Python 3.10+ is required. Use native Linux x86_64, macOS with Rosetta on Apple Silicon, or Windows. The native Linux GitHub Actions job is the fallback for unsupported agent hosts. Use the bundled tools; do not create a second compiler pipeline or add a container dependency.
+- Use the included Hitachi toolchain. If preflight rejects the host, use **GitHub → Actions → Hitachi build → Run workflow** on your pushed branch; `NEXT.md` and build evidence are in its artifact.
+- Inspect original bytes with `tools/inspect_rom.py`. Raw survey hits are hints. Review control flow, delay slots, and literal pools before declaring boundaries. Unreviewed bytes remain unknown in `config/mapping.json`.
+- Register C units in `config/units.json`. Original addresses and complete sizes come from reference evidence. Keep candidates uncredited until every linked section, export address, size, and byte matches. A matching prefix is insufficient.
+- Code credit requires compiled C, not raw-byte substitutes or inline assembly. Represent data meaningfully in C. Do not change ROMs, tool binaries, or valid checks to force a match.
+- Preserve concurrent work. Independent agents use separate worktrees; builds recreate `build/work/`. Keep changes small and avoid new setup dependencies.
+- Commit source/config changes and generated progress together after a successful full check. Push and verify CI. Keep this repository and its artifacts private.
 
-For a single candidate: `python3 tools/build.py unit mask_helper`. Outputs are in `build/work/`: compiler assembly (`.src`), object, linked ELF, linker map, linker commands, and logs. Single-unit checks do not refresh repository progress.
-
-## Work and proof
-
-- Make small changes, preserve concurrent work, and keep verified units passing.
-- Register each C unit in config/units.json. Record the original section address, complete reference size, code/data/BSS kind, exported symbols, and external symbol addresses. Reference sizes come from the original image, never from candidate output.
-- Use candidate mode while iterating. Promote to verified only when the full unit matches. A partial byte count, assembly resemblance, matching prefix, relocatable object, or raw instruction dump is not a match.
-- Code credit requires compiled C. Do not replace functions with raw bytes, inline assembly, or an original-byte include to raise progress. Data must be represented as meaningful typed C, with pointers resolved by the linker.
-- Validate complete linked sections, exact original addresses, all declared exports, and bytes. Padding, literal pools, and relocations matter. BSS is checked but does not add ROM-byte credit.
-- Unknown regions stay unclassified. config/regions.json defines display subdivisions only; it is not a code/data or function map.
-- Do not change original ROMs or tool binaries to obtain a match. Verify package hashes. Do not redistribute this private repository or its ROM/tool artifacts publicly.
-- Favor deletion, reuse, simple explicit state, and meaningful checks. Fix obsolete tests, but never weaken a valid byte/address/size check to pass.
-- Subagents are useful only for independent functions without conflicting ownership. Do not run parallel builds inside the same working tree because build/work is recreated.
-
-## Delivery
-
-Run the full check and commit the generated README progress block, assets/*.svg, docs/progress.json, and docs/index.html with the source. CI rebuilds from a fresh checkout and refreshes progress on main. Report matched units/bytes and remaining uncertainty. An exact image that retains original untranslated bytes is not 100% source reconstruction.
+`config/target.json` defines the reference. The current verifier reports main-image scope; do not call a partial scope or an image retaining original bytes a fully reconstructed game. Historical notes are evidence, never current instructions.

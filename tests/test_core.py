@@ -79,5 +79,52 @@ class ProofTests(unittest.TestCase):
         self.assertAlmostEqual(sum(w*h for _,x,y,w,h in boxes),800*400)
 
 
+class InspectionTests(unittest.TestCase):
+    def test_literal_address_includes_pc_alignment(self):
+        from inspect_rom import literal
+        self.assertEqual(literal(0x901d,0x0c047b0c),(0x0c047b4a,2))
+        self.assertEqual(literal(0xd12e,0x0c021002),(0x0c0210bc,4))
+
+    def test_decoder_distinguishes_return_from_literal(self):
+        from vendor.sh4dis.sh4 import disasm
+        self.assertEqual(disasm(0x000b,0),'rts')
+        self.assertEqual(disasm(0x0029,0),'movt r0')
+
+    def test_mapping_preserves_unknown_and_rejects_overlap(self):
+        from mapping import review
+        from core import sha
+        data=b'\x0b\0\x09\0'+bytes(6)
+        part=dict(address=0x1000,size=4,kind='code',sha256=sha(data[:4]),evidence='RTS/NOP')
+        result=review(data,0x1000,[part])
+        self.assertEqual(result['unknown_bytes'],6)
+        self.assertEqual(result['status'],'incomplete')
+        with self.assertRaises(ValueError):
+            review(data,0x1000,[part,part])
+
+    def test_unsupported_host_has_actionable_fallback(self):
+        from unittest.mock import patch
+        from core import runner
+        with patch('core.platform.system',return_value='Linux'), patch('core.platform.machine',return_value='aarch64'):
+            with self.assertRaisesRegex(ValueError,'Run workflow'):
+                runner()
+
+
+class HandoffTests(unittest.TestCase):
+    def test_completed_candidate_disappears_from_next_work(self):
+        from handoff import next_work
+        proof={'main_address':0x1000,'units':[dict(id='current',source='src/current.c',credited=False,exact=False,sections=[dict(kind='code',address=0x1000,size=4)])]}
+        mapping={'ranges':[]}
+        self.assertEqual(next_work(proof,mapping,bytes(4))[0][0]['id'],'current')
+        proof['units'][0]['credited']=True
+        self.assertEqual(next_work(proof,mapping,bytes(4))[0],[])
+
+    def test_new_verified_source_is_added_to_mapping(self):
+        from mapping import review
+        unit=dict(id='new',credited=True,sections=[dict(section='P',kind='code',address=0x1000,size=4)])
+        result=review(bytes(8),0x1000,entries=[],verified=[unit])
+        self.assertEqual(result['reviewed_code_bytes'],4)
+        self.assertEqual(result['unknown_bytes'],4)
+
+
 if __name__=='__main__':
     unittest.main()

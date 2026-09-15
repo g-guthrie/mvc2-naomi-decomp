@@ -1,0 +1,75 @@
+{
+  "scope": "reviewed main-image ranges; omissions remain unknown",
+  "ranges": [
+    {
+      "address": "0x0c021000",
+      "size": 14,
+      "kind": "code",
+      "sha256": "b4a5a42d0e1a03ad6c7f8daf709483373f80a5b43a767ade8c68820118ff4872",
+      "evidence": "ROM entry descriptor; MOVA produces 0c021010, mask/OR selects uncached alias ac021010; JMP plus delay slot."
+    },
+    {
+      "address": "0x0c021010",
+      "size": 56,
+      "kind": "code",
+      "sha256": "0ce4031f890961e85b46b646510ba8252d7ce4b71ab62e565b63f3a39121e242",
+      "evidence": "Uncached startup alias; cache-control write then clear loops. BT at0c021040 skips the inline literal, BRA at0c021044 loops with a delay slot."
+    },
+    {
+      "address": "0x0c021048",
+      "size": 4,
+      "kind": "data",
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "evidence": "MOV.L at0c02103c loads this zero literal; neither successor of startup control flow executes it."
+    },
+    {
+      "address": "0x0c02104c",
+      "size": 74,
+      "kind": "code",
+      "sha256": "f628e1220df4a9b55f06cc2d7801be7eb11e2b24f3e707a2b28f8ae70cf67fcb",
+      "evidence": "BT target from0c021040; initializes stack/registers, JSR at0c02108e and final self-BRA at0c021092 with delay slot."
+    },
+    {
+      "address": "0x0c02109c",
+      "size": 24,
+      "kind": "data",
+      "sha256": "bd7a73cd602531cb55451f52e872701a152d51a45cc1e4ee98de6cb47cc85aca",
+      "evidence": "MOVA at0c021026 reads first two words as clear-region address/size; MOVA at0c02104c reads stack and call target; MOV.L at0c021038/3a read BSS bounds."
+    },
+    {
+      "address": "0x0c0210bc",
+      "size": 16,
+      "kind": "data",
+      "sha256": "04bcbed7001a1f60985254aba723bf4c83838a39072a16d00bf6858c794a8f95",
+      "evidence": "PC-relative MOV.L at0c021002/006/010/012 reads the four 32-bit mask, alias and cache-control constants."
+    },
+    {
+      "address": "0x0c0275dc",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Verified compiled noop unit: RTS followed by NOP delay slot."
+    },
+    {
+      "address": "0x0c04701c",
+      "size": 72,
+      "kind": "code",
+      "sha256": "0076268b6e2c4a8555ac4610d87e8df423369ff338660e41f4b1ab10821c91a4",
+      "evidence": "Reviewed stack/prologue, calls at0c04703e/04e, branch0c047046, two RTS epilogues with final delay slot at0c047062."
+    },
+    {
+      "address": "0x0c047b0c",
+      "size": 34,
+      "kind": "code",
+      "sha256": "e72aa4447c07fbec19da3ebed5cd0be8809e97700761cde0a0bd9676b6c5e5e6",
+      "evidence": "Direct BSR target at0c04703e; leaf straight-line code ending RTS at0c047b2a and NOP delay slot; first instruction reads external literal0c047b4a."
+    },
+    {
+      "address": "0x0c047b4a",
+      "size": 2,
+      "kind": "data",
+      "sha256": "4491461c9aaa3786193f0e80b1018a44dc5f67bda4637bd26184a2950f1cf852",
+      "evidence": "MOV.W at0c047b0c reads constant0x0342 here; this is outside the helper instruction range."
+    }
+  ]
+}
