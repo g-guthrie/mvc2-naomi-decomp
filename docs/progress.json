@@ -27,10 +27,10 @@
   "code": {
     "identified_bytes": 1340068,
     "total_bytes": 1340068,
-    "matched_bytes": 1068,
-    "linked_bytes": 1068,
-    "linked_units": 266,
-    "linked_percent": 0.07969744818919637
+    "matched_bytes": 1086,
+    "linked_bytes": 1086,
+    "linked_units": 269,
+    "linked_percent": 0.0810406636081154
   },
   "data": {
     "identified_bytes": 1084764,
@@ -42,13 +42,13 @@
   },
   "main_image_bytes": 2424832,
   "unclassified_bytes": 0,
-  "reconstructed_bytes": 1340,
-  "main_image_percent": 0.055261560388513514,
+  "reconstructed_bytes": 1358,
+  "main_image_percent": 0.05600387985641892,
   "layout_complete": true,
   "evidence": {
     "schema_version": 1,
-    "source_fingerprint": "a80191d35ae906e9756317159db0faabda019c6b9237ff0bba49f724e479898a",
-    "source_commit": "7a8a53f438abbe6f0d15982d52307c1fdd100863",
+    "source_fingerprint": "ed8ef8672f0e4c366803db600e88b4194dcf53c3b2050be85e53cbc85104ce84",
+    "source_commit": "local",
     "roms_verified": 18,
     "verified_units": [
       {
@@ -97,6 +97,14 @@
         "address": 201501636,
         "size": 4,
         "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+        "linked": true
+      },
+      {
+        "name": "func_0c02e316",
+        "kind": "code",
+        "address": 201515798,
+        "size": 6,
+        "sha256": "59235a0491870e3259b65744ec70f6a5a038a6d4834abba1e68150d5a062edf3",
         "linked": true
       },
       {
@@ -1700,6 +1708,14 @@
         "linked": true
       },
       {
+        "name": "func_0c1b29fc",
+        "kind": "code",
+        "address": 203106812,
+        "size": 6,
+        "sha256": "078bf819c7a4073893bf93fcaf1477eb34cd21d76789b3fc08d3845735a623a1",
+        "linked": true
+      },
+      {
         "name": "func_0c1b4500",
         "kind": "code",
         "address": 203113728,
@@ -1817,6 +1833,14 @@
         "address": 203161046,
         "size": 4,
         "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+        "linked": true
+      },
+      {
+        "name": "func_0c1bfdda",
+        "kind": "code",
+        "address": 203161050,
+        "size": 6,
+        "sha256": "c41198c2b3947c5196613360bf51ac8bcd04ed2e2c58a4440faa0ca7bf13954d",
         "linked": true
       },
       {
@@ -4535,15 +4559,22 @@
       "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
     },
     {
-      "name": "code_0c02e316",
+      "name": "func_0c02e316",
       "address": 201515798,
       "size": 6,
       "kind": "code",
-      "status": "assembly",
-      "representation": "placeholder",
-      "source": "",
+      "status": "matching",
+      "representation": "reconstructed",
+      "source": "src/accessors.c",
+      "section": ".text.func_0c02e316",
       "sha256": "59235a0491870e3259b65744ec70f6a5a038a6d4834abba1e68150d5a062edf3",
-      "notes": "Reviewed code range: BSR or address-taken prologue plus CFG walk to rts. Not reconstructed C."
+      "references": [
+        {
+          "rom_offset": 2207956,
+          "kind": "aligned_address_reference"
+        }
+      ],
+      "notes": "Stores 10 to p[4]. GCC 13 -O2 void byte store. Gameplay role not established."
     },
     {
       "name": "data_0c02e31c",
@@ -85486,15 +85517,22 @@
       "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
     },
     {
-      "name": "code_0c1b29fc",
+      "name": "func_0c1b29fc",
       "address": 203106812,
       "size": 6,
       "kind": "code",
-      "status": "assembly",
-      "representation": "placeholder",
-      "source": "",
+      "status": "matching",
+      "representation": "reconstructed",
+      "source": "src/accessors.c",
+      "section": ".text.func_0c1b29fc",
       "sha256": "078bf819c7a4073893bf93fcaf1477eb34cd21d76789b3fc08d3845735a623a1",
-      "notes": "Reviewed code range: BSR or address-taken prologue plus CFG walk to rts. Not reconstructed C."
+      "references": [
+        {
+          "rom_offset": 2338464,
+          "kind": "aligned_address_reference"
+        }
+      ],
+      "notes": "Stores 2 to p[4]. GCC 13 -O2 void byte store. Gameplay role not established."
     },
     {
       "name": "data_0c1b2a02",
@@ -89232,15 +89270,22 @@
       "notes": "Returns without changing registers. Entry is independently address-taken; gameplay role and full caller signature are not established."
     },
     {
-      "name": "code_0c1bfdda",
+      "name": "func_0c1bfdda",
       "address": 203161050,
       "size": 6,
       "kind": "code",
-      "status": "assembly",
-      "representation": "placeholder",
-      "source": "",
+      "status": "matching",
+      "representation": "reconstructed",
+      "source": "src/accessors.c",
+      "section": ".text.func_0c1bfdda",
       "sha256": "c41198c2b3947c5196613360bf51ac8bcd04ed2e2c58a4440faa0ca7bf13954d",
-      "notes": "Reviewed code range: BSR or address-taken prologue plus CFG walk to rts. Not reconstructed C."
+      "references": [
+        {
+          "rom_offset": 2342932,
+          "kind": "aligned_address_reference"
+        }
+      ],
+      "notes": "Stores 3 to p[4]. GCC 13 -O2 void byte store. Gameplay role not established."
     },
     {
       "name": "data_0c1bfde0",

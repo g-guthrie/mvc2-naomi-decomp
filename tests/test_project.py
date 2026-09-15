@@ -46,6 +46,19 @@ class VerificationTests(unittest.TestCase):
         self.assertTrue(placeholders)
         self.assertTrue(all(u["status"] != "matching" for u in placeholders))
 
+    def test_gcc_constant_byte_stores_are_matching_source(self):
+        units = {u["name"]: u for u in load_json(ROOT / "config/units.json")}
+        src = (ROOT / "src" / "accessors.c").read_text()
+        for name, needle in (
+            ("func_0c02e316", "p[4] = 10"),
+            ("func_0c1b29fc", "p[4] = 2"),
+            ("func_0c1bfdda", "p[4] = 3"),
+        ):
+            self.assertEqual(units[name]["status"], "matching")
+            self.assertEqual(units[name]["size"], 6)
+            self.assertIn(name, src)
+            self.assertIn(needle, src)
+
     def test_bsr_callee_of_candidate_is_catalogued_as_code(self):
         units = load_json(ROOT / "config/units.json")
         addr = 0x0C047B0C
