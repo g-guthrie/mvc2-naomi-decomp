@@ -46,6 +46,18 @@ class VerificationTests(unittest.TestCase):
         self.assertTrue(placeholders)
         self.assertTrue(all(u["status"] != "matching" for u in placeholders))
 
+    def test_shc_p1_store_fixture_matches_catalogued_addresses(self):
+        src = (ROOT / "tests" / "shc_p1_store.c").read_text()
+        script = (ROOT / "tools" / "shc_p1_store.py").read_text()
+        self.assertIn("p[1] = 1", src)
+        self.assertIn("0x0C207412", script)
+        self.assertIn("0x0C217060", script)
+        units = {u["name"]: u for u in load_json(ROOT / "config/units.json")}
+        self.assertEqual(units["code_0c207412"]["size"], 6)
+        self.assertNotEqual(units["code_0c207412"]["status"], "matching")
+        self.assertEqual(units["code_0c217060"]["size"], 6)
+        self.assertNotEqual(units["code_0c217060"]["status"], "matching")
+
     def test_gcc_constant_byte_stores_are_matching_source(self):
         units = {u["name"]: u for u in load_json(ROOT / "config/units.json")}
         src = (ROOT / "src" / "accessors.c").read_text()
@@ -97,6 +109,7 @@ class VerificationTests(unittest.TestCase):
         workflow = (ROOT / ".github" / "workflows" / "build.yml").read_text()
         self.assertIn("tools/shc_smoke.py", workflow)
         self.assertIn("tools/shc_b0c_prefix.py", workflow)
+        self.assertIn("tools/shc_p1_store.py", workflow)
         self.assertIn("wibo-x86_64", workflow)
 
     def test_shc_wibo_smoke_when_configured(self):
