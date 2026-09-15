@@ -22,7 +22,13 @@ separate analysis. Do not declare the whole game complete from main-only work.
 
 ## Verified starting work
 
-`src/callback_leaves.c` nominates 262 matching functions / 1052 bytes:
+Matching source is **266 C functions / 1068 code bytes** plus **272 reconstructed
+data bytes** (function-pointer tables). GCC 13 `-O2` void/int field accessors
+live in `src/accessors.c`. Symbolic pointer tables of those matching leaves
+are in `src/accessors.c` and `src/ptr_tables.c`.
+
+`src/callback_leaves.c` still holds the original four-byte leaves:
+
 address-taken and direct-BSR four-byte leaves (`rts; nop`, `rts` delay-slot
 `mov #imm,r0` for 0, 1, 42, and 120), four identity `return x` BSR targets,
 one six-byte `return a - b` at `0x0c1eae70`, and `func_0c206570`
@@ -36,8 +42,9 @@ GCC 13 was tried on `func_0c04701c` at `-O0/-O1/-O2/-O3/-Os`, with and without
 frame pointer, `-mhitachi`, `-mrenesas`, and delayed-branch scheduling off.
 Every setting emitted a different size and prologue than retail (`e62f` /
 `mov.l r14,@-r15` plus `sts.l pr` and `bsr`, 72 bytes). GCC is ruled out for
-this representative non-leaf. Hitachi SHC remains the compiler to obtain and
-test; it is not in this repository.
+this representative non-leaf. Hitachi SHC (1998 PE32 `shc.exe` from the
+owner's `Hitachi.zip`) is the next compiler to run under Wine; it is not
+checked into this repository.
 
 ## First session on a new machine
 

@@ -839,15 +839,66 @@
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
-    "name": "code_0c025fc2",
+    "name": "func_0c025fc2",
     "address": 201482178,
     "size": 4,
     "kind": "code",
-    "status": "assembly",
-    "representation": "placeholder",
-    "source": "",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/accessors.c",
+    "section": ".text.func_0c025fc2",
     "sha256": "16cd7323b42839785275f62b7fa529c64e037a53762ce032a0ec11cef5df73eb",
-    "notes": "Reviewed code range: BSR or address-taken prologue plus CFG walk to rts. Not reconstructed C."
+    "references": [
+      {
+        "rom_offset": 1733756,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 1782512,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 1790328,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 1791624,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 1792620,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 1792772,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 1795516,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 1798080,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 1798408,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 1801516,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 1801816,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 1802316,
+        "kind": "aligned_address_reference"
+      }
+    ],
+    "notes": "Stores arg1 to p[10]. GCC 13 -O2 void setter. Gameplay role not established."
   },
   {
     "name": "data_0c025fc6",
@@ -105522,15 +105573,34 @@
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
-    "name": "code_0c216c40",
+    "name": "func_0c216c40",
     "address": 203516992,
     "size": 4,
     "kind": "code",
-    "status": "assembly",
-    "representation": "placeholder",
-    "source": "",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/accessors.c",
+    "section": ".text.func_0c216c40",
     "sha256": "9384a490cb5bfbd909f08a35e94fb224495abd906c651003e55190b184d346a8",
-    "notes": "Reviewed code range: BSR or address-taken prologue plus CFG walk to rts. Not reconstructed C."
+    "references": [
+      {
+        "rom_offset": 1949080,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 2045960,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 2070520,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 2071252,
+        "kind": "aligned_address_reference"
+      }
+    ],
+    "notes": "Stores arg1 to p[6]. GCC 13 -O2 void setter. Gameplay role not established."
   },
   {
     "name": "data_0c216c44",
@@ -106063,12 +106133,35 @@
   {
     "name": "data_0c2197c2",
     "address": 203528130,
-    "size": 382,
+    "size": 54,
     "kind": "data",
     "status": "assembly",
     "representation": "placeholder",
     "source": "",
-    "sha256": "cdc7590b412099a8cd5a1c76014af3955356d85f8b16c361487efba387c46bc1",
+    "sha256": "9541639fc8831013fd8a9e369fca7fe7bc4b3380b00b2659818c53e48bf37473",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c2197f8",
+    "address": 203528184,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/accessors.c",
+    "section": ".rodata.table_0c2197f8",
+    "sha256": "ca5e6e39c0bf2cc357a7085d9904ec445c0895dbb35971abc86e06ea7a6e85bf",
+    "notes": "Symbolic function-pointer pair; GCC 13 -O2 .rodata. Callers/ABI not established."
+  },
+  {
+    "name": "data_0c219800",
+    "address": 203528192,
+    "size": 320,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "94619434c355d45c997d5ef0282569f59a06ae99eacc477e9bc5cbee98bac932",
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
@@ -106085,12 +106178,35 @@
   {
     "name": "data_0c219aac",
     "address": 203528876,
-    "size": 180,
+    "size": 40,
     "kind": "data",
     "status": "assembly",
     "representation": "placeholder",
     "source": "",
-    "sha256": "1432fd14f174b72488ed53b5f6d9398113689aaadbf45e9633a96a3e23e28573",
+    "sha256": "9b6261bbe88434a4299c9e1802c1245e200b6b3371994e65049639526f137d80",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c219ad4",
+    "address": 203528916,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/accessors.c",
+    "section": ".rodata.table_0c219ad4",
+    "sha256": "ca5e6e39c0bf2cc357a7085d9904ec445c0895dbb35971abc86e06ea7a6e85bf",
+    "notes": "Symbolic function-pointer pair; GCC 13 -O2 .rodata. Callers/ABI not established."
+  },
+  {
+    "name": "data_0c219adc",
+    "address": 203528924,
+    "size": 132,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "c505c24d1c27251d52c72612e7f54ddf73affd39716a372dbb9c6dea7e6a96b9",
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
@@ -107894,15 +108010,44 @@
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
-    "name": "code_0c225040",
+    "name": "func_0c225040",
     "address": 203575360,
-    "size": 8,
+    "size": 4,
     "kind": "code",
-    "status": "assembly",
-    "representation": "placeholder",
-    "source": "",
-    "sha256": "bb3315942da8bba04eb8fdd8244da13ca4152805b0f9f4d60fc90ff9d422cc55",
-    "notes": "Reviewed code range: BSR or address-taken prologue plus CFG walk to rts. Not reconstructed C."
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/accessors.c",
+    "section": ".text.func_0c225040",
+    "sha256": "2f3f0479275a1f9429709e2b3b42770b920fe34819a619a96dc13165ce41d933",
+    "references": [
+      {
+        "rom_offset": 2070524,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 2071256,
+        "kind": "aligned_address_reference"
+      }
+    ],
+    "notes": "Stores arg1 to p[11]. Split from an 8-byte walk that glued a setter and getter. GCC 13 -O2."
+  },
+  {
+    "name": "func_0c225044",
+    "address": 203575364,
+    "size": 4,
+    "kind": "code",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/accessors.c",
+    "section": ".text.func_0c225044",
+    "sha256": "dd4d9d6528713b2cd5610c1be34bff545bf635fa9a2513935f66e0ace4dc381e",
+    "references": [
+      {
+        "rom_offset": 2068188,
+        "kind": "aligned_address_reference"
+      }
+    ],
+    "notes": "Returns p[11]. GCC 13 -O2 getter. Gameplay role not established."
   },
   {
     "name": "data_0c225048",
@@ -108545,12 +108690,58 @@
   {
     "name": "data_0c233a02",
     "address": 203635202,
-    "size": 34046,
+    "size": 32442,
     "kind": "data",
     "status": "assembly",
     "representation": "placeholder",
     "source": "",
-    "sha256": "441638e44281d495226ceaaa4243ede1c2cb043f073b92570de02db0a03ec8f5",
+    "sha256": "d78234efe542bdb27de210fba2292a289656b512761160171ba216b0aca814a9",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c23b8bc",
+    "address": 203667644,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c23b8bc",
+    "sha256": "40446cd4d9b1ce72f0a89b7c780bcf25a9bd1511b1678e77fe5f639d4e142e2f",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c23b8c4",
+    "address": 203667652,
+    "size": 1468,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "14d5c9155cc7b8ce6d7a15119a2c8357aa14674ba3bb78c55610374e6f6a0470",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c23be80",
+    "address": 203669120,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c23be80",
+    "sha256": "46fb6cb96f3848c03739eede745a99421cb942a199e032a5def79706b822fa60",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c23be88",
+    "address": 203669128,
+    "size": 120,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "ae60d32eedca6e1057732f1c5ea6e0d7ea6a8dbd35911ebe71a40c548c64b5ea",
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
@@ -108677,12 +108868,35 @@
   {
     "name": "data_0c23ff78",
     "address": 203685752,
-    "size": 992,
+    "size": 644,
     "kind": "data",
     "status": "assembly",
     "representation": "placeholder",
     "source": "",
-    "sha256": "55c01c8760e2027add59bd2ec27b099e31112cea7be1f61e057b85c174d37e7e",
+    "sha256": "720689957542b05f2dddd971ca2dd678a1412df65265b2994673969f069eb23e",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c2401fc",
+    "address": 203686396,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c2401fc",
+    "sha256": "81327682da647d9e733336a7ca3e3a4c7ed77642e6b99a9a010fe9384cff765f",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c240204",
+    "address": 203686404,
+    "size": 340,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "0e36e94c668c28291cdadcbebd77fa5241da7e121489371fc1616e463af74bd4",
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
@@ -108699,12 +108913,127 @@
   {
     "name": "data_0c24035c",
     "address": 203686748,
-    "size": 17576,
+    "size": 7812,
     "kind": "data",
     "status": "assembly",
     "representation": "placeholder",
     "source": "",
-    "sha256": "bebf394e0805212f9b9fc426f4a308a631bb854765a59167615b50b6b7127db6",
+    "sha256": "3bf044c98b894e50b47370a434f4055dfb3b96e0a390a25cc3422beb15119308",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c2421e0",
+    "address": 203694560,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c2421e0",
+    "sha256": "8e5d893962cb103059234decbc52fc73bbc416594d7d22807d6dc250a0851ad4",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c2421e8",
+    "address": 203694568,
+    "size": 912,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "0ece6f4fb3f97a494fb15b39949ca35d02d9c104bdb861d60c10ff73f6770260",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c242578",
+    "address": 203695480,
+    "size": 12,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c242578",
+    "sha256": "feb76ae58f74d845cb46f09ed049928ea1c3c8f82e5a1bac942c61e030e0814e",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c242584",
+    "address": 203695492,
+    "size": 1716,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "4f6ccb240f81df47ae7c2a9043ccbcd36af2a1fad3abb0f83ef12f6632c11201",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c242c38",
+    "address": 203697208,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c242c38",
+    "sha256": "b44587ea9a410d2af0d8f6cb1dab5536d3cbd011e4583e930387b3fbefca0435",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c242c40",
+    "address": 203697216,
+    "size": 2656,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "55ea041d146f151a483f2d1e452e6660dc44a2c7e822004c7828e064e29d2e00",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c2436a0",
+    "address": 203699872,
+    "size": 12,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c2436a0",
+    "sha256": "a4c967af6bd74d520b1fe303c378bbdcb81d81eb011fe71f51e635d81b369153",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c2436ac",
+    "address": 203699884,
+    "size": 3556,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "54edce0eb59f7b06b6f59daf745a3581a1421a3a3fda9e52c0f3b7a035e72de4",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c244490",
+    "address": 203703440,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c244490",
+    "sha256": "f877adb4367bca435d8c37678d5618afbd129e3ec7522687d3223d1a027d5acc",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c244498",
+    "address": 203703448,
+    "size": 876,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "dc5e044d533fabbeb3c9a132686654865be1e11ba27069bbaa458a4401cb55f4",
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
@@ -108721,12 +109050,35 @@
   {
     "name": "data_0c24547c",
     "address": 203707516,
-    "size": 2060,
+    "size": 44,
     "kind": "data",
     "status": "assembly",
     "representation": "placeholder",
     "source": "",
-    "sha256": "ae7f21d4bb583514b05c7378c3b225afdd9d9a0b02cf57eb9b49e7acb1c00177",
+    "sha256": "9d7a5f0070000af631f0bc4284be042b5af821500dfd00607dbe06568a856cbb",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c2454a8",
+    "address": 203707560,
+    "size": 12,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c2454a8",
+    "sha256": "12a91562f840011d0b09b7a94e61971cb0b7261dce3d83f8b17cd707167dc1c7",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c2454b4",
+    "address": 203707572,
+    "size": 2004,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "2b4311ec13ab3ad2c8761ef7231de06b8968a9d2037a8d7318e938a837abad95",
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
@@ -108743,12 +109095,35 @@
   {
     "name": "data_0c2469d6",
     "address": 203712982,
-    "size": 9478,
+    "size": 6650,
     "kind": "data",
     "status": "assembly",
     "representation": "placeholder",
     "source": "",
-    "sha256": "d38e62b30d28ed91b0c1806bec452dbca0a9c233fe6243253c3f66860f2f8ce0",
+    "sha256": "6145489cb313bd9885d63e71e4078e11c5be09ba2479e74b6e0e875741c26b78",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c2483d0",
+    "address": 203719632,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c2483d0",
+    "sha256": "a0a4f3fbc0ea2c79591df4a124adf8b26f7cef538e896403d39919b762de8441",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c2483d8",
+    "address": 203719640,
+    "size": 2820,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "15eefde3c19bbaf0e683a53e77f05e02157b70c60f3666771c68bbd646c3b64f",
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
@@ -108765,12 +109140,35 @@
   {
     "name": "data_0c249028",
     "address": 203722792,
-    "size": 7440,
+    "size": 6888,
     "kind": "data",
     "status": "assembly",
     "representation": "placeholder",
     "source": "",
-    "sha256": "659102bc6e465815ea2481f3d4fc532c7d148af44b17479acf1754e827c058fb",
+    "sha256": "9e7013e7c783727a5f7b6e73e55096cbf6e43a0bf1d390c3a9c6f39804272782",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c24ab10",
+    "address": 203729680,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c24ab10",
+    "sha256": "db383c6e5a22c2f1377a7af35b21f4e5a7202d742120aaf295f1a198cb3e81b4",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c24ab18",
+    "address": 203729688,
+    "size": 544,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "2c721fef88d6168065edfc8072b718fedbf3adf795ceba227477197f8f59d4c0",
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
@@ -108787,12 +109185,58 @@
   {
     "name": "data_0c24b15a",
     "address": 203731290,
-    "size": 11582,
+    "size": 486,
     "kind": "data",
     "status": "assembly",
     "representation": "placeholder",
     "source": "",
-    "sha256": "c088feebf56dd98be453403aa8970c698bd981f8bea90f6cc4f8c58380e0a3d5",
+    "sha256": "5ec25a888b39e03cef2ab10d22773ca5338995cbf2536181034eadec0359119c",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c24b340",
+    "address": 203731776,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c24b340",
+    "sha256": "c268ac90d375804933286d0427da03cfe3e0b36457ad78bd5c70bca6f65ea76f",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c24b348",
+    "address": 203731784,
+    "size": 12,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "6c1110a4558ccc5a988a8a01437d509eef5e7cd2f6ede2b26d42cea8edbcfafa",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c24b354",
+    "address": 203731796,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c24b354",
+    "sha256": "dd9d2db7faca55dc8a0241f288e9045ccd05af987749bd04a4ae4ba0f82ac074",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c24b35c",
+    "address": 203731804,
+    "size": 11068,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "1e7a037f49de3a67d215ec0794672eef550a1facd96b2df7566164414aad61e1",
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
@@ -109117,12 +109561,35 @@
   {
     "name": "data_0c2573ee",
     "address": 203781102,
-    "size": 5698,
+    "size": 498,
     "kind": "data",
     "status": "assembly",
     "representation": "placeholder",
     "source": "",
-    "sha256": "9781f5b4d815016bee8e01ba6a61a647d803002efc2c8a912997195dd7921189",
+    "sha256": "38d60a23dc8f54cb7260301e245454919aa4bb00bf3c4f1bf86704e9a875348c",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c2575e0",
+    "address": 203781600,
+    "size": 12,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c2575e0",
+    "sha256": "8b5eaccabedf36fcedac5d10d2703419f67b3f80911ffde90a20221207305409",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c2575ec",
+    "address": 203781612,
+    "size": 5188,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "7b55941609bc61f9dd29f6568f787e24ebb91a03a60bea200a698fe6d63e7434",
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
@@ -109183,12 +109650,81 @@
   {
     "name": "data_0c25a038",
     "address": 203792440,
-    "size": 7932,
+    "size": 2936,
     "kind": "data",
     "status": "assembly",
     "representation": "placeholder",
     "source": "",
-    "sha256": "0b345d031e47617f7c2af91a5d80aebb6012fcf3587331bc86b9bfdba896e5b5",
+    "sha256": "57bbc187dde1e413a01b530bc3cac35bcecbe31959c3b99bf92a06562cc3a408",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c25abb0",
+    "address": 203795376,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c25abb0",
+    "sha256": "eb6bf119cdc14ebcb9566b0a62664942b48505371d3ac5c33927803ed1affb40",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c25abb8",
+    "address": 203795384,
+    "size": 16,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "c7a0fc37e2768c9736c26f41e7c3c9eae866461034171746b34cfb72d113e836",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c25abc8",
+    "address": 203795400,
+    "size": 32,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c25abc8",
+    "sha256": "c2908328df7c198938c01b5d5911b8aca9cff46332f3144eb02573b8c16ddbba",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c25abe8",
+    "address": 203795432,
+    "size": 4,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "74a061f05684f7c4fcefe637f8ad87e8d0fd2c0e4dc84e8e682a33bb534803bd",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c25abec",
+    "address": 203795436,
+    "size": 28,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c25abec",
+    "sha256": "1de17b6b96ce7e6537c8412c6f407ef34ca2f78afeeb062d294a65218c8359fb",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c25ac08",
+    "address": 203795464,
+    "size": 4908,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "83cfdc35de23b1c336bc85f6dcfe96af98dc93d89d5474e9161b6bbd99aaa189",
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
@@ -109227,12 +109763,104 @@
   {
     "name": "data_0c25e308",
     "address": 203809544,
-    "size": 10148,
+    "size": 1856,
     "kind": "data",
     "status": "assembly",
     "representation": "placeholder",
     "source": "",
-    "sha256": "d41eba237c7caf6f238bf72a97ebe87a8f0135884524bc5ed4f8329e4697c082",
+    "sha256": "f931fe010354a61b80f2622d7ce8bb0cfcf16fb6c5c65e15634c152f8fefd818",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c25ea48",
+    "address": 203811400,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c25ea48",
+    "sha256": "5baa7208f59445c652fedd92a6d502e1140a512e8c822f93112417dd6f94b0f8",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c25ea50",
+    "address": 203811408,
+    "size": 16,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "30e4d29e24164248116a64219988662ba6884778c0a12e03c83b0b4cc794b4d7",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c25ea60",
+    "address": 203811424,
+    "size": 8,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c25ea60",
+    "sha256": "5baa7208f59445c652fedd92a6d502e1140a512e8c822f93112417dd6f94b0f8",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c25ea68",
+    "address": 203811432,
+    "size": 392,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "3694e18199f47af4ea75ac1aa07657eaeaab2bc8d9a438040fce9b1ac9e67f8d",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c25ebf0",
+    "address": 203811824,
+    "size": 12,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c25ebf0",
+    "sha256": "553ce1ec7814c31c919f75452d82ba1de527c740764118f6dcc44cfcadf7e50b",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c25ebfc",
+    "address": 203811836,
+    "size": 488,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "c020601b375d0c92ae0847759e516ed2ce1fc6a206467a4e3543338a27917cc8",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c25ede4",
+    "address": 203812324,
+    "size": 20,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c25ede4",
+    "sha256": "2f137e83bfe93e965608c9be113387607a459430d215f210d980736e3db997fc",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c25edf8",
+    "address": 203812344,
+    "size": 7348,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "95052c2f0297609be24af77485a2b2e007e17e5ca5a970ca5aa9732c0d62496d",
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
@@ -109249,12 +109877,35 @@
   {
     "name": "data_0c260c04",
     "address": 203820036,
-    "size": 27786,
+    "size": 25024,
     "kind": "data",
     "status": "assembly",
     "representation": "placeholder",
     "source": "",
-    "sha256": "4b48a835f46f1ac863b766da0406ec7b9d5b0c8a2dd75b75712d1855eeadb123",
+    "sha256": "0a84f375c05928f669ad1ee1fb923084c66b6c958580dd38726f74b65f894ae1",
+    "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+  },
+  {
+    "name": "table_0c266dc4",
+    "address": 203845060,
+    "size": 12,
+    "kind": "data",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/ptr_tables.c",
+    "section": ".rodata.table_0c266dc4",
+    "sha256": "83389a52ccffcd8b56e33c611b74c6e71d6f56959987932f6f0a585901797636",
+    "notes": "Symbolic function-pointer table of matching C leaves. ABI not established."
+  },
+  {
+    "name": "data_0c266dd0",
+    "address": 203845072,
+    "size": 2750,
+    "kind": "data",
+    "status": "assembly",
+    "representation": "placeholder",
+    "source": "",
+    "sha256": "f31634155dc18cbedddefc819ed60e674a6caef155bb6c45789d8b04325f7760",
     "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
   },
   {
