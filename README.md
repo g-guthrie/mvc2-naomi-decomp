@@ -17,7 +17,7 @@ The command checks the host and selects the runtime. Python 3.10+ is required. N
 ## Live progress
 
 <!-- progress:start -->
-**584 / 2,424,832 main-image bytes verified from Hitachi C** (0.024084%).
+**2,166 / 2,424,832 main-image bytes verified from Hitachi C** (0.089326%).
 
 ![Byte-weighted progress treemap](assets/progress.svg)
 

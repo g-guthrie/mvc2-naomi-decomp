@@ -29,9 +29,22 @@ def compile_unit(unit, work, flags):
             raise ValueError(f'{stem}: {exe} failed; see build/work/{stem}.log\n{output}')
 
     options = unit.get('flags', flags)
-    run('shc.exe', [stem + '.c', *options, '-object=' + stem + '.obj'])
-    lines = [f'INPUT {stem}.obj', f'OUTPUT {stem}.elf', 'ELF',
-             'START ' + ','.join(f"{p['section']}({number(p['address']):08X})" for p in unit['sections'])]
+    run('shc.exe', [stem + '.c', *options, '-code=asmcode', '-object=' + stem + '.src'])
+    assembly = (work / (stem + '.src')).read_text(errors='replace')
+    placed = (assembly.replace('ALIGN=16', 'ALIGN=2').replace('ALIGN=8', 'ALIGN=2')
+              .replace('ALIGN=4', 'ALIGN=2'))
+    (work / (stem + '.src')).write_text(placed)
+    run('asmsh.exe', [stem + '.src', '-cpu=sh4', '-endian=little', '-object=' + stem + '.obj'])
+    start, chunk = [], []
+    for part in unit['sections']:
+        item = f"{part['section']}({number(part['address']):08X})"
+        if chunk and sum(len(x) + 1 for x in chunk) + len(item) > 180:
+            start.append('START ' + ','.join(chunk))
+            chunk = []
+        chunk.append(item)
+    if chunk:
+        start.append('START ' + ','.join(chunk))
+    lines = [f'INPUT {stem}.obj', f'OUTPUT {stem}.elf', 'ELF', *start]
     lines += [f'DEFINE {symbol}({number(address):08X})' for symbol, address in unit.get('imports', {}).items()]
     lines += [f'PRINT {stem}.map', 'EXIT']
     (work / (stem + '.lnk')).write_text('\n'.join(lines) + '\n')
