@@ -22,6 +22,11 @@ extern void (*const table_0c25abb0)(void);
 extern void (*const table_0c25ea60)(void);
 extern void (*const table_0c266dc4)(void);
 
+extern void (*const ptr_0c23e97c)(void);
+extern void (*const ptr_0c2488ac)(void);
+extern void (*const ptr_0c24ac70)(void);
+extern void (*const table_0c25ea48)(void);
+
 #pragma section n051ce0
 void (*const *const ptr_0c051ce0)(void) = &ptr_0c23f27c;
 
@@ -103,3 +108,15 @@ void (*const *const ptr_0c1d7e58)(void) = &func_0c025fc2;
 #pragma section n1f072c
 void (*const *const ptr_0c1f072c)(void) = &table_0c266dc4;
 
+
+#pragma section n050fdc
+void (*const *const ptr_0c050fdc)(void) = &ptr_0c23e97c;
+
+#pragma section n0d6e54
+void (*const *const ptr_0c0d6e54)(void) = &ptr_0c2488ac;
+
+#pragma section n0fcae8
+void (*const *const ptr_0c0fcae8)(void) = &ptr_0c24ac70;
+
+#pragma section n1c8048
+void (*const *const ptr_0c1c8048)(void) = &table_0c25ea48;
