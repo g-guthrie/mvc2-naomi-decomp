@@ -22,9 +22,10 @@ separate analysis. Do not declare the whole game complete from main-only work.
 
 ## Verified starting work
 
-`src/callback_leaves.c` contains eight address-taken, four-byte functions:
-one no-op, five returns of zero, and two returns of one. Their entry-point
-references and exact target fingerprints are in `config/units.json`.
+`src/callback_leaves.c` contains 210 address-taken, four-byte functions:
+165 no-ops (`rts; nop`), 43 returns of zero (`rts` delay-slot `mov #0,r0`),
+and two returns of one. Each entry is independently address-taken in the
+main image. Fingerprints and ROM pointer offsets are in `config/units.json`.
 No broad gameplay role is inferred from these shapes. They are small but real
 compiled-source replacements, not assembly aliases.
 
@@ -51,11 +52,12 @@ compatible emulator and NAOMI BIOS, which are not included in this repository.
    unclassified. Use control flow, address references, literal pools, and data
    consumers to establish boundaries. Do not classify every decodable SH-4 word
    as an instruction: tables and constants also decode as instructions.
-2. **Expand a nearby function with real behavior.** For example, inspect the
-   address-taken function at `0x0c04701c` next to the verified return stub at
-   `0x0c047064`. Determine parameters and boundaries from its callers and
-   branches before writing C. Keep it a candidate until the actual compiler
-   output and linked placement match.
+2. **Expand a nearby function with real behavior.** The address-taken function
+   at `0x0c04701c` (72 bytes, ending at the verified stub `0x0c047064`) saves
+   `r14`/`pr`, allocates 12 stack bytes, copies arguments, does two `bsr`
+   calls (`0x0c047b0c`, `0x0c047796`), and returns. Determine parameters and
+   the callee ABI from callers before writing C. Keep it a candidate until
+   GCC 13 output and linked placement match.
 3. **Recover data objects from their users.** The eight known pointer cells
    are only four-byte observations, not recovered table boundaries. Establish
    the surrounding table's extent and callback ABI before replacing it with
