@@ -4,10 +4,13 @@
  * Constant-return shapes do not establish the game's original compiler.
  */
 
+void func_0c023958(void) {}
 void func_0c0239e2(void) {}
 void func_0c0275dc(void) {}
 void func_0c02776c(void) {}
 void func_0c02fe52(void) {}
+void func_0c031c64(void) {}
+void func_0c03263c(void) {}
 void func_0c03ed4a(void) {}
 void func_0c03ed4e(void) {}
 void func_0c03f7e4(void) {}
@@ -16,6 +19,7 @@ void func_0c045b86(void) {}
 void func_0c045b8a(void) {}
 void func_0c045da6(void) {}
 void func_0c049f78(void) {}
+void func_0c04b9bc(void) {}
 void func_0c0520a6(void) {}
 void func_0c05c08e(void) {}
 void func_0c063bf8(void) {}
@@ -105,6 +109,7 @@ void func_0c173d0e(void) {}
 void func_0c174238(void) {}
 void func_0c1744f4(void) {}
 void func_0c181116(void) {}
+void func_0c18445c(void) {}
 void func_0c1894cc(void) {}
 void func_0c18f280(void) {}
 void func_0c18fc14(void) {}
@@ -163,6 +168,7 @@ void func_0c1eaff0(void) {}
 void func_0c1ed94c(void) {}
 void func_0c1ed990(void) {}
 void func_0c1ed9e4(void) {}
+void func_0c1f0032(void) {}
 void func_0c1f05b0(void) {}
 void func_0c1f6210(void) {}
 void func_0c1fbf20(void) {}
