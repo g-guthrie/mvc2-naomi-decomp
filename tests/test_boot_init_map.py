@@ -39,6 +39,13 @@ class BootInitMappingTests(unittest.TestCase):
         word = int.from_bytes(self.img[0x0c0215aa - self.base:0x0c0215ac - self.base], 'little')
         self.assertEqual(word, 0x0009)
 
+    def test_copy_loop_word_literal_is_not_merged_with_unreferenced_gap(self):
+        self.assertEqual(self.reviewed[0x0c02239c]['size'], 2)
+        self.assertNotIn(0x0c02239e, self.reviewed)
+        self.assertIn(0x0c0223c0, self.reviewed)
+        code = self.reviewed[0x0c022354]
+        self.assertEqual(number(code['address']) + code['size'], 0x0c02239a)
+
     def test_wait_loop_pool_does_not_absorb_unreferenced_words(self):
         self.assertIn(0x0c0272e8, self.reviewed)
         self.assertNotIn(0x0c0272ec, self.reviewed)
