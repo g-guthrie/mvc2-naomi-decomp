@@ -151,16 +151,24 @@ def publish(proof):
 <script>const buttons=[document.getElementById('mainButton'),document.getElementById('activeButton')],maps=[document.getElementById('mainMap'),document.getElementById('activeMap')];buttons.forEach((b,i)=>b.onclick=()=>{maps.forEach((m,j)=>m.hidden=i!==j);buttons.forEach((b,j)=>b.setAttribute('aria-pressed',i===j));});document.querySelectorAll('.tile').forEach(t=>['mouseenter','focus','click'].forEach(e=>t.addEventListener(e,()=>document.getElementById('detail').textContent=t.dataset.detail)));</script></html>'''
     (output/'index.html').write_text(page.replace('MAIN_SVG',main_svg).replace('ACTIVE_SVG',active_svg))
     mapped = proof['main_size'] - proof['mapping']['unknown_bytes']
-    matched = sum(
-        number(part['size'])
-        for unit in proof['units'] if unit['credited']
-        for part in unit['sections'] if part['kind'] != 'bss')
+    matched_kinds = {'code': 0, 'data': 0}
+    for unit in proof['units']:
+        if not unit.get('credited'):
+            continue
+        for part in unit['sections']:
+            if part['kind'] in matched_kinds:
+                matched_kinds[part['kind']] += number(part['size'])
+    matched = matched_kinds['code'] + matched_kinds['data']
     total = proof['main_size']
+    code_known = proof['mapping']['reviewed_code_bytes']
+    data_known = proof['mapping']['reviewed_data_bytes']
     block = (
         '<!-- progress:start -->\n'
         '| Track | Progress | Bytes |\n'
         '| --- | --- | ---: |\n'
         f'| Map | `{progress_bar(mapped, total)}` **{100 * mapped / total:.3f}%** | {mapped:,} / {total:,} |\n'
+        f'| Code | `{progress_bar(matched_kinds["code"], code_known)}` **{100 * matched_kinds["code"] / max(1, code_known):.3f}%** | {matched_kinds["code"]:,} / {code_known:,} |\n'
+        f'| Data | `{progress_bar(matched_kinds["data"], data_known)}` **{100 * matched_kinds["data"] / max(1, data_known):.3f}%** | {matched_kinds["data"]:,} / {data_known:,} |\n'
         f'| [Decomp](config/units.json) | `{progress_bar(matched, total)}` **{100 * matched / total:.3f}%** | {matched:,} / {total:,} |\n'
         '<!-- progress:end -->')
     readme = ROOT / 'README.md'

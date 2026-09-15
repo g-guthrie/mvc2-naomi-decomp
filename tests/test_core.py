@@ -123,8 +123,9 @@ class RepositoryStateTests(unittest.TestCase):
         readme = (ROOT / 'README.md').read_text()
         self.assertNotIn('build/NEXT.md', readme)
         self.assertNotIn('Next candidate', readme)
-        self.assertIn('<!-- progress:start -->', readme)
-        self.assertIn('<!-- progress:end -->', readme)
+        self.assertIn('| Code |', readme)
+        self.assertIn('| Data |', readme)
+        self.assertIn('| Map |', readme)
 
     def test_ci_only_writes_generated_readme_progress(self):
         workflow = (ROOT / '.github/workflows/build.yml').read_text()
