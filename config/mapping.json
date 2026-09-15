@@ -198,6 +198,20 @@
       "evidence": "MOV.L at0c02c4ac/4aa/4be/4d4/4de load these five words."
     },
     {
+      "address": "0x0c034288",
+      "size": 26,
+      "kind": "code",
+      "sha256": "fd1e9cca8d95075880216bf70cf72575fd83f4d2763732007290cda1ccccd2f0",
+      "evidence": "Indirect JSR from boot init at0c0283fa; wait loop BT 0c034294, then tail BRA 0c033f28 with delay-slot restore. Next prologue at0c0342a2."
+    },
+    {
+      "address": "0x0c034378",
+      "size": 8,
+      "kind": "data",
+      "sha256": "715a1e5391b4f8064bfda58025306a81aa3b379461e28fe752348e8b7d14fcd7",
+      "evidence": "MOV.L at0c03428c/292 load 0c1faf80 and 0c1f7570. Following word is consumed by the next function."
+    },
+    {
       "address": "0x0c04701c",
       "size": 72,
       "kind": "code",
