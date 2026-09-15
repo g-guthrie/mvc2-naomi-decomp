@@ -91,6 +91,7 @@ def build(selected=None):
             raise ValueError('Unknown unit: ' + selected)
     rows, rebuilt = [], bytearray(main)
     failed = []
+    matched_units = matched_sections = matched_bytes = 0
     for unit in units:
         elf, link = compile_unit(unit, work, flags)
         proof, segments = compare(unit, elf, link, main, base)
@@ -100,17 +101,22 @@ def build(selected=None):
         if unit['mode'] == 'verified' and not proof['exact']:
             failed.append(unit['id'])
         if credited:
+            matched_units += 1
+            matched_sections += len(unit['sections'])
+            matched_bytes += sum(number(part['size']) for part in unit['sections'] if part['kind'] != 'bss')
             for part in unit['sections']:
                 if part['kind'] != 'bss':
                     start, count = number(part['address']), number(part['size'])
                     rebuilt[start-base:start-base+count] = memory_bytes(segments, start, count)
         details = ', '.join(f"{p['section']}: {p['equal_bytes']}/{p['size']} equal bytes, linked size {p['linked_size']}" for p in proof['sections'])
-        print(f"{'MATCH' if credited else 'CANDIDATE' if unit['mode'] == 'candidate' else 'FAIL'} {unit['id']} — {details}", flush=True)
+        if selected or not credited:
+            print(f"{'MATCH' if credited else 'CANDIDATE' if unit['mode'] == 'candidate' else 'FAIL'} {unit['id']} — {details}", flush=True)
     if selected:
         (output / 'unit-proof.json').write_text(json.dumps(rows[0], indent=2) + '\n')
         if failed:
             raise ValueError('Verified unit mismatch: ' + ', '.join(failed))
         return
+    print(f'MATCH {matched_units} verified config units, {matched_sections} source ranges, {matched_bytes:,} bytes', flush=True)
     merged = bytearray(program)
     merged[offset:offset+size] = rebuilt
     if rebuilt != main or merged != program:
@@ -129,11 +135,7 @@ def build(selected=None):
     (output / 'mapping.json').write_text(json.dumps(mapping, indent=2) + '\n')
     (output / 'proof.json').write_text(json.dumps(proof, indent=2) + '\n')
     from report import publish
-    from handoff import render
-    handoff, _ = render(proof, mapping, main)
-    (output / "NEXT.md").write_text(handoff)
     publish(proof)
-    print("NEXT: read build/NEXT.md for current work and exact commands.", flush=True)
     print(f'PASS full main ({size:,} bytes) and program ROM ({len(program):,} bytes) match; original remainder is not decompilation credit.')
 
 
@@ -145,9 +147,8 @@ def main():
     if args.command == 'unit' and not args.unit:
         parser.error('unit requires an id from config/units.json')
     if args.command == 'check':
-        # A failed new check must not leave a previous successful handoff.
-        for name in ('proof.json', 'NEXT.md'):
-            (ROOT / 'build' / name).unlink(missing_ok=True)
+        # A failed new check must not leave previous successful proof.
+        (ROOT / 'build' / 'proof.json').unlink(missing_ok=True)
     preflight()
     if args.command == 'check':
         subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-v'], cwd=ROOT, check=True)

@@ -2,7 +2,6 @@
 import html
 import json
 import math
-import re
 from core import ROOT, load, number
 
 
@@ -124,21 +123,16 @@ def svg(items, proof, active=False):
 def publish(proof):
     all_tiles, active = tiles(proof)
     main_svg, active_svg = svg(all_tiles, proof), svg(active, proof, True)
-    (ROOT/'assets').mkdir(exist_ok=True)
-    (ROOT/'docs').mkdir(exist_ok=True)
-    (ROOT/'assets/progress.svg').write_text(main_svg+'\n')
-    (ROOT/'assets/active.svg').write_text(active_svg+'\n')
+    output = ROOT / 'build'
+    output.mkdir(exist_ok=True)
+    (output/'progress.svg').write_text(main_svg+'\n')
+    (output/'active.svg').write_text(active_svg+'\n')
     data = {**proof, 'metrics': metrics(proof)}
-    (ROOT/'docs/progress.json').write_text(json.dumps(data, indent=2)+'\n')
+    (output/'progress.json').write_text(json.dumps(data, indent=2)+'\n')
     page = '''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MVC2 · Hitachi progress</title>
 <style>body{margin:0;background:#171c24;color:#e9f1f5;font:15px system-ui}main{max-width:1400px;margin:auto;padding:20px}nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}button,a{color:inherit}button{background:#303b48;border:1px solid #657180;padding:10px 18px;border-radius:5px;cursor:pointer}button[aria-pressed=true]{background:#096d95}svg{width:100%;display:block}.tile:hover rect,.tile:focus rect{stroke:#fff;stroke-width:2}#detail{min-height:40px;color:#bccbd9}a{margin-left:auto}p{color:#acb9c6;line-height:1.6}</style>
 <main><nav><button id="mainButton" aria-pressed="true">Main image</button><button id="activeButton" aria-pressed="false">Active source units</button><a href="https://github.com/g-guthrie/mvc2-naomi-decomp">Repository ↗</a></nav>
 <div id="mainMap">MAIN_SVG</div><div id="activeMap" hidden>ACTIVE_SVG</div><div id="detail" aria-live="polite">Hover, focus, or tap a tile to inspect its address and size.</div>
-<p>Only complete C units that pass the current Hitachi compile, link-address, section-size and byte comparison checks receive credit. Candidate bytes receive no credit. The full image comparison retains original bytes for untranslated regions. Progress covers the 2,424,832-byte main executable; the test program and graphics/audio ROMs remain outside this source metric.</p></main>
+<p>Only complete configured source ranges that pass the current Hitachi compile, link-address, section-size and byte comparison checks receive credit. Candidate bytes receive no credit. Matching fragments do not establish original translation-unit boundaries. The full image comparison retains original bytes for untranslated regions. Progress covers the 2,424,832-byte main executable; the test program and graphics/audio ROMs remain outside this source metric.</p></main>
 <script>const buttons=[document.getElementById('mainButton'),document.getElementById('activeButton')],maps=[document.getElementById('mainMap'),document.getElementById('activeMap')];buttons.forEach((b,i)=>b.onclick=()=>{maps.forEach((m,j)=>m.hidden=i!==j);buttons.forEach((b,j)=>b.setAttribute('aria-pressed',i===j));});document.querySelectorAll('.tile').forEach(t=>['mouseenter','focus','click'].forEach(e=>t.addEventListener(e,()=>document.getElementById('detail').textContent=t.dataset.detail)));</script></html>'''
-    (ROOT/'docs/index.html').write_text(page.replace('MAIN_SVG',main_svg).replace('ACTIVE_SVG',active_svg))
-    readme = ROOT/'README.md'
-    if readme.exists():
-        count = sum(p['size'] for u in proof['units'] if u['credited'] for p in u['sections'] if p['kind']!='bss')
-        block = f'<!-- progress:start -->\n**{count:,} / {proof["main_size"]:,} main-image bytes verified from Hitachi C** ({100*count/proof["main_size"]:.6f}%).\n\n![Byte-weighted progress treemap](assets/progress.svg)\n\n[Active source-unit zoom](assets/active.svg) · [Build evidence](docs/progress.json) · [Interactive treemap](docs/index.html)\n<!-- progress:end -->'
-        readme.write_text(re.sub(r'<!-- progress:start -->.*?<!-- progress:end -->',block,readme.read_text(),flags=re.S))
+    (output/'index.html').write_text(page.replace('MAIN_SVG',main_svg).replace('ACTIVE_SVG',active_svg))
