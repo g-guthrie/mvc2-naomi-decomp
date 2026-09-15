@@ -140,9 +140,5 @@ def publish(proof):
     readme = ROOT/'README.md'
     if readme.exists():
         count = sum(p['size'] for u in proof['units'] if u['credited'] for p in u['sections'] if p['kind']!='bss')
-        from handoff import render
-        mapping = load(ROOT / "build/mapping.json")
-        _, candidates = render(proof, mapping, (ROOT / "build/main.bin").read_bytes())
-        next_line = f"Next candidate: `{candidates[0]['id']}`. Run the check and read `build/NEXT.md` for current instructions." if candidates else "Run the check and read `build/NEXT.md` for the next uncovered work."
-        block = f'<!-- progress:start -->\n**{count:,} / {proof["main_size"]:,} main-image bytes verified from Hitachi C** ({100*count/proof["main_size"]:.6f}%).\n\n![Byte-weighted progress treemap](assets/progress.svg)\n\n[Active source-unit zoom](assets/active.svg) · [Build evidence](docs/progress.json) · [Interactive treemap](docs/index.html)\n\n{next_line}\n<!-- progress:end -->'
+        block = f'<!-- progress:start -->\n**{count:,} / {proof["main_size"]:,} main-image bytes verified from Hitachi C** ({100*count/proof["main_size"]:.6f}%).\n\n![Byte-weighted progress treemap](assets/progress.svg)\n\n[Active source-unit zoom](assets/active.svg) · [Build evidence](docs/progress.json) · [Interactive treemap](docs/index.html)\n<!-- progress:end -->'
         readme.write_text(re.sub(r'<!-- progress:start -->.*?<!-- progress:end -->',block,readme.read_text(),flags=re.S))

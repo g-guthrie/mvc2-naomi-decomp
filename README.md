@@ -22,8 +22,6 @@ The command checks the host and selects the runtime. Python 3.10+ is required. N
 ![Byte-weighted progress treemap](assets/progress.svg)
 
 [Active source-unit zoom](assets/active.svg) · [Build evidence](docs/progress.json) · [Interactive treemap](docs/index.html)
-
-Next candidate: `dispatch_parent`. Run the check and read `build/NEXT.md` for current instructions.
 <!-- progress:end -->
 
 This section is regenerated from successful builds. Main-image progress counts complete verified C only; copied ROM bytes earn no credit. Code/data bars remain lower bounds while mapping is incomplete. Gray means no reconstructed C, blue means candidate C, green means verified C. Tile area represents bytes; gray subdivisions are display regions, not discovered functions.
