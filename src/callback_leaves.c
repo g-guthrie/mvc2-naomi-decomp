@@ -259,6 +259,11 @@ int func_0c04d210(void) { return 1; }
 int func_0c1e9e90(void) { return 1; }
 int func_0c2154f8(void) { return 1; }
 
+int func_0c1f7c60(void) { return 42; }
+int func_0c207100(void) { return 120; }
+int func_0c207108(void) { return 120; }
+int func_0c20a53a(void) { return 120; }
+
 int func_0c1433d2(int x) { return x; }
 int func_0c16310c(int x) { return x; }
 int func_0c1769fc(int x) { return x; }
