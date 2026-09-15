@@ -31,7 +31,9 @@ jobs:
         env:
           WIBO: ${{ github.workspace }}/wibo
           SHC_BIN: ${{ github.workspace }}/toolchain/hitachi-shc-5.0r31
-        run: python3 tools/shc_smoke.py
+        run: |
+          python3 tools/shc_smoke.py
+          python3 tools/shc_b0c_prefix.py
 
   build:
     needs: shc
