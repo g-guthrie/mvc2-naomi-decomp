@@ -52,12 +52,12 @@ compatible emulator and NAOMI BIOS, which are not included in this repository.
    unclassified. Use control flow, address references, literal pools, and data
    consumers to establish boundaries. Do not classify every decodable SH-4 word
    as an instruction: tables and constants also decode as instructions.
-2. **Expand a nearby function with real behavior.** The address-taken function
-   at `0x0c04701c` (72 bytes, ending at the verified stub `0x0c047064`) saves
-   `r14`/`pr`, allocates 12 stack bytes, copies arguments, does two `bsr`
-   calls (`0x0c047b0c`, `0x0c047796`), and returns. Determine parameters and
-   the callee ABI from callers before writing C. Keep it a candidate until
-   GCC 13 output and linked placement match.
+2. **Expand a nearby function with real behavior.** `0x0c04701c` (72 bytes,
+   through `0x0c047064`) is catalogued as a candidate in
+   `src/candidate_0c04701c.c`. GCC 13 `-O2` does not match (jsr via constant
+   pool, different callee-saved set). Next: recover callees `0x0c047b0c` and
+   `0x0c047796`, or try a documented Hitachi SHC experiment separately.
+   Nearby matching leaf: `func_0c206570` (`return b - a`, 6 bytes).
 3. **Recover data objects from their users.** Observed pointer-run extents
    (in-image words only; ABI still unknown; not credited as reconstructed
    data): `0x0c050fd0..0x0c050fe4` (5), `0x0c2155e4..0x0c2155f0` (3),

@@ -265,3 +265,4 @@ int func_0c1769fc(int x) { return x; }
 int func_0c190ea0(int x) { return x; }
 
 int func_0c1eae70(int a, int b) { return a - b; }
+int func_0c206570(int a, int b) { return b - a; }
