@@ -636,3 +636,45 @@ void (*const ptr_0c266dd4)(void)
     __attribute__((section(".rodata.ptr_0c266dd4"), used)) = func_0c1f05b0;
 void (*const ptr_0c269890)(void)
     __attribute__((section(".rodata.ptr_0c269890"), used)) = func_0c20a53a;
+
+/* Pointers to matching pointer cells / tables. */
+void (*const *const ptr_0c051ce0)(void)
+    __attribute__((section(".rodata.ptr_0c051ce0"), used)) = &ptr_0c23f27c;
+void (*const *const ptr_0c05bc9c)(void)
+    __attribute__((section(".rodata.ptr_0c05bc9c"), used)) = &ptr_0c23fb78;
+void (*const *const ptr_0c064518)(void)
+    __attribute__((section(".rodata.ptr_0c064518"), used)) = &ptr_0c240334;
+void (*const *const ptr_0c067be4)(void)
+    __attribute__((section(".rodata.ptr_0c067be4"), used)) = &ptr_0c24060c;
+void (*const *const ptr_0c095484)(void)
+    __attribute__((section(".rodata.ptr_0c095484"), used)) = &ptr_0c243024;
+void (*const *const ptr_0c0a2dec)(void)
+    __attribute__((section(".rodata.ptr_0c0a2dec"), used)) = &ptr_0c244028;
+void (*const *const ptr_0c0bc54c)(void)
+    __attribute__((section(".rodata.ptr_0c0bc54c"), used)) = &ptr_0c245ae8;
+void (*const *const ptr_0c0ca010)(void)
+    __attribute__((section(".rodata.ptr_0c0ca010"), used)) = &ptr_0c247e78;
+void (*const *const ptr_0c0ce58c)(void)
+    __attribute__((section(".rodata.ptr_0c0ce58c"), used)) = &ptr_0c2481dc;
+void (*const *const ptr_0c0d27ec)(void)
+    __attribute__((section(".rodata.ptr_0c0d27ec"), used)) = &ptr_0c2484a4;
+void (*const *const ptr_0c0def3c)(void)
+    __attribute__((section(".rodata.ptr_0c0def3c"), used)) = &ptr_0c249068;
+void (*const *const ptr_0c0e2fe0)(void)
+    __attribute__((section(".rodata.ptr_0c0e2fe0"), used)) = &ptr_0c24941c;
+void (*const *const ptr_0c0f0ec0)(void)
+    __attribute__((section(".rodata.ptr_0c0f0ec0"), used)) = &ptr_0c24a0d4;
+void (*const *const ptr_0c0f4a2c)(void)
+    __attribute__((section(".rodata.ptr_0c0f4a2c"), used)) = &ptr_0c24a3f0;
+void (*const *const ptr_0c0f6858)(void)
+    __attribute__((section(".rodata.ptr_0c0f6858"), used)) = &ptr_0c24a554;
+void (*const *const ptr_0c10c3a4)(void)
+    __attribute__((section(".rodata.ptr_0c10c3a4"), used)) = &ptr_0c24bb1c;
+void (*const *const ptr_0c10fea4)(void)
+    __attribute__((section(".rodata.ptr_0c10fea4"), used)) = &ptr_0c24bf4c;
+void (*const *const ptr_0c1b104c)(void)
+    __attribute__((section(".rodata.ptr_0c1b104c"), used)) = table_0c25abb0;
+void (*const *const ptr_0c1c8140)(void)
+    __attribute__((section(".rodata.ptr_0c1c8140"), used)) = table_0c25ea60;
+void (*const *const ptr_0c1f072c)(void)
+    __attribute__((section(".rodata.ptr_0c1f072c"), used)) = table_0c266dc4;
