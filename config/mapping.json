@@ -44,11 +44,74 @@
       "evidence": "PC-relative MOV.L at0c021002/006/010/012 reads the four 32-bit mask, alias and cache-control constants."
     },
     {
+      "address": "0x0c0210cc",
+      "size": 158,
+      "kind": "code",
+      "sha256": "72fd99ebe693e731726729dcde73fca74ee1034feee902fe973cd947beebd00f",
+      "evidence": "Function entry with BSR callers at 0x0c021378, 0x0c0213aa, 0x0c02148a, and 0x0c0214fa. Direct branches remain in the function and the BRA at 0x0c021166 skips the following literal pool."
+    },
+    {
+      "address": "0x0c02116a",
+      "size": 22,
+      "kind": "data",
+      "sha256": "08c726ee7d0b0184942f2ff5d550ae32eda04e23906fdefcad231f6e429530a9",
+      "evidence": "MOV.W at 0x0c021144 and PC-relative MOV.L instructions at 0x0c0210d2, 0x0c0210e6, 0x0c0210f2, 0x0c0210fe, 0x0c021108, and 0x0c02112e consume this pool; branches enter code at 0x0c021180 or skip to 0x0c02120a."
+    },
+    {
+      "address": "0x0c021180",
+      "size": 250,
+      "kind": "code",
+      "sha256": "a3d0b7aab741f6eeaae89480e755a5bb7aa826ff4feacf653224191e66649939",
+      "evidence": "Conditional target from 0x0c021162 resumes this function after its inline pool. All direct branches stay inside and converge on the epilogue ending with RTS at 0x0c021276 and its delay slot at 0x0c021278."
+    },
+    {
+      "address": "0x0c02127a",
+      "size": 46,
+      "kind": "data",
+      "sha256": "fcffe69abbec3c4049d0824794e2d9ffd01df6578712385d8dddb4eeba122cd3",
+      "evidence": "PC-relative MOV.W, MOV.L, and MOVA instructions in 0x0c021180..0x0c021278 consume the constants and pointers through 0x0c0212a4; code ends before this pool and the next function starts at 0x0c0212a8."
+    },
+    {
+      "address": "0x0c0212a8",
+      "size": 286,
+      "kind": "code",
+      "sha256": "b05549424177222dd7de2ed7217425b601a44d23d2abefe3008d209e34e31cc5",
+      "evidence": "Callee-save prologue starts at 0x0c0212a8. Direct paths either branch to later code at 0x0c0213ec/0x0c021440 or to the shared epilogue at 0x0c021552; BRA at 0x0c0213c2 skips the inline pool."
+    },
+    {
+      "address": "0x0c0213c6",
+      "size": 38,
+      "kind": "data",
+      "sha256": "de9ece06177848d1e9de269cb2a82b5d09dcbe3330e50b8e30a920c0ccffc8a0",
+      "evidence": "PC-relative loads at 0x0c0212ba..0x0c021310 reference every constant/pointer in this pool; the BRA at 0x0c0213c2 and BF at 0x0c02133c transfer around it to code at 0x0c021552 or 0x0c0213ec."
+    },
+    {
+      "address": "0x0c0213ec",
+      "size": 380,
+      "kind": "code",
+      "sha256": "40027c7373eedc872efe0116353ade6d2ec4cadac4d671c5d12e56ac82b1acf4",
+      "evidence": "BF at 0x0c02133c targets this continuation of the 0x0c0212a8 function. Its direct paths converge on the shared epilogue, ending with RTS at 0x0c021564 and its delay slot at 0x0c021566."
+    },
+    {
+      "address": "0x0c021568",
+      "size": 4,
+      "kind": "data",
+      "sha256": "66ad544daa1e2c34ca107511d2f95a47a7647547921e35eec197bb4fdbeeed05",
+      "evidence": "Two PC-relative MOV.W instructions at 0x0c021440 and 0x0c021442 consume the two constants; the preceding function returns before them and the next entry is 0x0c02156c."
+    },
+    {
       "address": "0x0c02156c",
       "size": 64,
       "kind": "code",
       "sha256": "487c2822b5ed083a700379121c35c118635d4a08ceb652e88bc31913a56b93c0",
       "evidence": "Indirect JSR from boot init at0c0283da/3de via pointer 0c02156c; all local BF/BRA targets stay inside the body; RTS at0c0215a8 plus NOP delay slot; no PC-relative pool."
+    },
+    {
+      "address": "0x0c0215ac",
+      "size": 74,
+      "kind": "code",
+      "sha256": "7fe4adcc189f1fe66ca530d60c741d0ac30348c56232c70a741ff64872f230ca",
+      "evidence": "Function begins immediately after the 0x0c02156c return, contains two indirect JSRs and a BSR to 0x0c0212a8, and ends with RTS at 0x0c0215f2 plus its delay slot at 0x0c0215f4."
     },
     {
       "address": "0x0c0215f6",
@@ -182,6 +245,20 @@
       "kind": "code",
       "sha256": "942dc1096a49e41245d5c8c9962192c8872a2209ffc885098818a7844a706236",
       "evidence": "CFG walk from 0x0c021b68; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c021c2c",
+      "size": 18,
+      "kind": "code",
+      "sha256": "ef288d2d3f3328cb72d53d0676d331bbcdd706730a01234767cf488a6c657d7d",
+      "evidence": "Short helper ending at RTS 0x0c021c3a; the store in its delay slot at 0x0c021c3c is included before the next entry."
+    },
+    {
+      "address": "0x0c021c3e",
+      "size": 22,
+      "kind": "code",
+      "sha256": "18528ca45ffca49e44cbe38b188af3c92520e62e6d1602f24cf1b771c5bec6c0",
+      "evidence": "Short helper ending at RTS 0x0c021c50 with the store in its delay slot at 0x0c021c52 included."
     },
     {
       "address": "0x0c021c54",
@@ -1234,6 +1311,118 @@
       "evidence": "Reviewed stack/prologue, BSR at0c04703e to 0c047b0c and BSR at0c04704e to 0c047796, branch0c047046, two RTS epilogues with final delay slot at0c047062."
     },
     {
+      "address": "0x0c047064",
+      "size": 4,
+      "kind": "code",
+      "sha256": "dace64cad776caad3db6eb281ed450fbeebf9edfeb5016560b4508f815ab9f05",
+      "evidence": "RTS and its MOV #0,R0 delay slot form a four-byte leaf referenced by pointer-table entries at 0x0c23bf00, 0x0c23bf38, and 0x0c23bf50."
+    },
+    {
+      "address": "0x0c047068",
+      "size": 66,
+      "kind": "code",
+      "sha256": "b744682876c47d780486ca043e983cb97ca897c2ce441d3ccc53e58c4bba5466",
+      "evidence": "Sixteen in-image pointers target 0x0c047068. Direct branches stay within the range except the intentional tail BRA at 0x0c04708c to 0x0c0477dc; return and indirect-jump paths include their delay slots through 0x0c0470a8."
+    },
+    {
+      "address": "0x0c0470aa",
+      "size": 42,
+      "kind": "code",
+      "sha256": "1da7943c27d84876ce5cae5847086a74c26dcfe987263b36083f161a9ff160ca",
+      "evidence": "Handler-table entry at 0x0c23bf04 points to 0x0c0470aa. Both conditional paths end in RTS instructions whose delay slots are included through 0x0c0470d2."
+    },
+    {
+      "address": "0x0c0470d4",
+      "size": 42,
+      "kind": "code",
+      "sha256": "0c704cb12d043c7451b3c3d4132ea63359d92b9a614b9edc462533e3a36c8349",
+      "evidence": "Handler-table entry at 0x0c23bf08 points to 0x0c0470d4. Its conditional and BRA paths converge on the RTS at 0x0c0470fa; the MOV #0,R0 delay slot at 0x0c0470fc is included."
+    },
+    {
+      "address": "0x0c0470fe",
+      "size": 14,
+      "kind": "data",
+      "sha256": "0914f16f6ff9e40ce8860b7b3d6ce23ee499033cb31caf883dcedf619bab8c9c",
+      "evidence": "Five MOV.W instructions in the preceding handlers reference constants at 0x0c0470fe..0x0c047106, and MOV.L at 0x0c04709a references the handler-table pointer at 0x0c047108."
+    },
+    {
+      "address": "0x0c04710c",
+      "size": 262,
+      "kind": "code",
+      "sha256": "ea82f248acf933e72f6e53721bb1c1f66bb3e4305eab6f1a9ebfb8450edceba2",
+      "evidence": "Handler-table entry at 0x0c23bf0c targets 0x0c04710c. All direct conditional paths remain inside or tail-branch to reviewed 0x0c0477dc; BRA at 0x0c04720e skips the following literal pool."
+    },
+    {
+      "address": "0x0c047212",
+      "size": 16,
+      "kind": "data",
+      "sha256": "2f4352955370550b67118ce38b4b0c9def919dc28b9e63c3e445227b3b76044b",
+      "evidence": "PC-relative MOV.W and MOV.L instructions in the 0x0c04710c handler consume this pool; control flow branches around it to 0x0c047222."
+    },
+    {
+      "address": "0x0c047222",
+      "size": 26,
+      "kind": "code",
+      "sha256": "d6c0161909df397b41fbd0b5aba25a1e40a4a992dfe349fc79518bf01c2e3980",
+      "evidence": "Continuation after the 0x0c047212 pool. It dispatches indirectly through table base 0x0c23bf18 and includes the JMP/RTS delay slots through 0x0c04723a."
+    },
+    {
+      "address": "0x0c04723c",
+      "size": 74,
+      "kind": "code",
+      "sha256": "f016ed533c712dfbf4ec766b71cab00d035665a2dd970d52727d5ab6de090c0d",
+      "evidence": "Handler-table entry at 0x0c23bf18 targets this function. Its paths return with a delay slot or tail-branch to the table-backed entry at 0x0c0472e2."
+    },
+    {
+      "address": "0x0c047286",
+      "size": 92,
+      "kind": "code",
+      "sha256": "3b0e6034d076cbd0688e51b7b5906ad76f22771af10916b5e096966852439599",
+      "evidence": "Handler-table entry at 0x0c23bf1c targets 0x0c047286. Conditional paths converge through 0x0c0472dc and either return with the delay slot included or tail-branch to 0x0c0472e2."
+    },
+    {
+      "address": "0x0c0472e2",
+      "size": 42,
+      "kind": "code",
+      "sha256": "84086be80af91cb0d6e2af3cabfdb1fba3079e809799af0a77d21487af5d4aba",
+      "evidence": "Handler-table entry at 0x0c23bf20 and tail branches from preceding handlers target this function. Both paths reach RTS at 0x0c047308 with its delay slot at 0x0c04730a."
+    },
+    {
+      "address": "0x0c04730c",
+      "size": 66,
+      "kind": "code",
+      "sha256": "615e90eb565abb65a3d839311768a50231345edb97a2e472009a91b2646f5ba8",
+      "evidence": "Continuation reached by direct handler flow. It tail-dispatches through reviewed code or an indirect table and includes all branch, JMP, and RTS delay slots before the following pool."
+    },
+    {
+      "address": "0x0c04734e",
+      "size": 18,
+      "kind": "data",
+      "sha256": "3ffa80f650c6c1cb46221f7ae9ec306c2a901a215e8814eb76aae0f98b6d413a",
+      "evidence": "PC-relative loads in 0x0c04723c..0x0c04734c consume the constants and handler-table pointers in this pool; code resumes at table entry 0x0c047360."
+    },
+    {
+      "address": "0x0c047360",
+      "size": 250,
+      "kind": "code",
+      "sha256": "ea493361a1bbd672329bc960afef6eeec2bac70627e5e360896ca901fe0c9684",
+      "evidence": "Handler-table entry at 0x0c23bf24 targets this function. Internal paths converge, BSR at 0x0c0473cc targets 0x0c047a8c, and return/delay slots end before the pool at 0x0c04745a."
+    },
+    {
+      "address": "0x0c04745a",
+      "size": 18,
+      "kind": "data",
+      "sha256": "3f08ddad86a979e684e9e4c05a73c5deac3cbf08414f6baf67adf6420300953a",
+      "evidence": "PC-relative loads in the 0x0c047360 handler reference this complete pool, including the pointer at 0x0c047468 to table 0x0c23bf3c."
+    },
+    {
+      "address": "0x0c04746c",
+      "size": 206,
+      "kind": "code",
+      "sha256": "2cfdbfb0c31a7674d48948f801ece39bd449a1cd016aa643a2a65045f124f150",
+      "evidence": "Handler-table entry at 0x0c23bf2c targets this function. It has an evidenced tail branch to 0x0c046f9a, BSR to 0x0c047a8c, and indirect dispatch through table 0x0c23bf40; all local delay slots are included through 0x0c047538."
+    },
+    {
       "address": "0x0c047796",
       "size": 58,
       "kind": "code",
@@ -1246,6 +1435,20 @@
       "kind": "data",
       "sha256": "7865bdd6fa9d75f4e963b2830cae467a8d1c12120524b5ab43d4c7337478256a",
       "evidence": "MOV.W at0c047796/7b4 load 0x0120 and 0x02d0; MOV.L at0c0477a8/7b0 load 0x00008600 and 0x0000fedf. 0c0477dc is a different function."
+    },
+    {
+      "address": "0x0c0477dc",
+      "size": 156,
+      "kind": "code",
+      "sha256": "abb2e902e2f8930fcd450d08686f6507a1fa3d247896b34ae3ba310d14c3ee15",
+      "evidence": "Tail BRA from rooted function 0x0c047796 targets this prologue. All direct branches remain inside; the shared epilogue ends with RTS at 0x0c047874 and its delay slot at 0x0c047876."
+    },
+    {
+      "address": "0x0c047878",
+      "size": 14,
+      "kind": "data",
+      "sha256": "171f6bee1e43d2ed068e37f3473cfffff11e04296775dea510570d775b6bfcb5",
+      "evidence": "Seven PC-relative MOV.W instructions in 0x0c0477dc reference the seven constants at 0x0c047878..0x0c047884; control flow ends before the pool."
     },
     {
       "address": "0x0c047886",
