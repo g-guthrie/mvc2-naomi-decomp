@@ -46,13 +46,27 @@ class BootInitMappingTests(unittest.TestCase):
         code = self.reviewed[0x0c022354]
         self.assertEqual(number(code['address']) + code['size'], 0x0c02239a)
 
+    def test_ab50_jmp_delay_slot_is_code_and_pool_starts_after_existing_word(self):
+        code = self.reviewed[0x0c02ab50]
+        self.assertEqual(code['kind'], 'code')
+        self.assertEqual(number(code['address']) + code['size'], 0x0c02aba8)
+        slot = 0x0c02aba6
+        self.assertGreaterEqual(slot, number(code['address']))
+        self.assertLess(slot, number(code['address']) + code['size'])
+        self.assertEqual(self.reviewed[0x0c02ac7c]['kind'], 'data')
+        self.assertEqual(self.reviewed[0x0c02ac74]['size'], 8)
+
     def test_wait_loop_pool_does_not_absorb_unreferenced_words(self):
         self.assertIn(0x0c0272e8, self.reviewed)
         self.assertNotIn(0x0c0272ec, self.reviewed)
         self.assertEqual(self.reviewed[0x0c0272e8]['size'], 4)
         self.assertEqual(self.reviewed[0x0c0272f8]['size'], 16)
         result = review(self.img, self.base)
-        self.assertGreater(result['unknown_bytes'], 0)
+        gap = 0x0c0272ec
+        covered = any(number(p['address']) <= gap < number(p['address']) + p['size']
+                      for p in load(ROOT / 'config/mapping.json')['ranges'])
+        self.assertFalse(covered)
+        self.assertEqual(result['main_sha256'], sha(self.img))
 
 
 if __name__ == '__main__':
