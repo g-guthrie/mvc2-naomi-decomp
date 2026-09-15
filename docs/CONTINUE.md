@@ -22,12 +22,12 @@ separate analysis. Do not declare the whole game complete from main-only work.
 
 ## Verified starting work
 
-`src/callback_leaves.c` contains 216 address-taken, four-byte functions:
-171 no-ops (`rts; nop`), 43 returns of zero (`rts` delay-slot `mov #0,r0`),
-and two returns of one. Each entry is independently address-taken in the
-main image. Fingerprints and ROM pointer offsets are in `config/units.json`.
-No broad gameplay role is inferred from these shapes. They are small but real
-compiled-source replacements, not assembly aliases.
+`src/callback_leaves.c` nominates 257 matching functions / 1030 bytes:
+address-taken and direct-BSR four-byte leaves (`rts; nop`, `rts` delay-slot
+`mov #0,r0` / `mov #1,r0`), four identity `return x` BSR targets, and one
+six-byte `return a - b` at `0x0c1eae70`. GCC 13.3 `-O2 -m4 -ml` matches
+retail at original addresses. Fingerprints are in `config/units.json`.
+No gameplay role is inferred from these shapes.
 
 The initial toolchain is open GNU GCC 13.3 / binutils 2.42 targeting SH-4,
 little-endian. Flags are recorded by `tools/project.py` in every build proof.
@@ -58,10 +58,17 @@ compatible emulator and NAOMI BIOS, which are not included in this repository.
    calls (`0x0c047b0c`, `0x0c047796`), and returns. Determine parameters and
    the callee ABI from callers before writing C. Keep it a candidate until
    GCC 13 output and linked placement match.
-3. **Recover data objects from their users.** The eight known pointer cells
-   are only four-byte observations, not recovered table boundaries. Establish
-   the surrounding table's extent and callback ABI before replacing it with
-   symbolic source and crediting data.
+3. **Recover data objects from their users.** Observed pointer-run extents
+   (in-image words only; ABI still unknown; not credited as reconstructed
+   data): `0x0c050fd0..0x0c050fe4` (5), `0x0c2155e4..0x0c2155f0` (3),
+   `0x0c23bef0..0x0c23bf3c` (19 handlers around `0x0c047064`),
+   `0x0c23e698..0x0c23e70c` (29 around `0x0c04d210`),
+   `0x0c23f3e8..0x0c23f464` (31 around `0x0c0548a2`),
+   `0x0c23fd04..0x0c23fd8c` (34 around `0x0c05eac4`),
+   `0x0c240334..0x0c240384` (20 around `0x0c067792` / `0x0c064b72`).
+   `0x0c02be98` is an isolated cell (next word is outside the main image).
+   Do not promote raw pointer arrays to reconstructed data until C has
+   symbolic function references and a caller-established ABI.
 4. **Investigate the original toolchain on representative code.** Tiny
    return functions cannot distinguish GCC from Hitachi output. Keep any
    compiler experiments reproducible and separate from accepted source.
