@@ -466,6 +466,38 @@ def walk_function(image, entry, max_insns=2048):
     }
 
 
+def looks_like_pointer_table(image, start, size):
+    """True when a run reads as a table of in-image pointers rather than code.
+
+    Table entries share the image page in their high halfword. Ordinary
+    bsr/bra pairs do too, because the common `stc sr,r12` delay slot encodes
+    as 0x0c02, so a run only counts as a table when its low halfwords are not
+    branches or when the same pointer repeats.
+    """
+    if size < 16 or start % 4:
+        return False
+    words = []
+    for pos in range(start, start + size - 3, 4):
+        value = image.word(pos)
+        high = image.word(pos + 2)
+        if value is None or high is None:
+            return False
+        words.append((high << 16) | value)
+    if len(words) < 4:
+        return False
+    pages = {}
+    for value in words:
+        pages[value >> 16] = pages.get(value >> 16, 0) + 1
+    page, count = max(pages.items(), key=lambda kv: kv[1])
+    lo = image.base >> 16
+    hi = (image.base + len(image.blob)) >> 16
+    if count < 4 or count < 0.8 * len(words) or not lo <= page <= hi:
+        return False
+    branches = sum(1 for value in words if (value & 0xF000) in (0xA000, 0xB000))
+    repeated = max(words.count(value) for value in set(words))
+    return branches < 0.8 * len(words) or repeated >= 4
+
+
 def covered_kind(ranges, addr):
     for lo, hi, kind in ranges:
         if lo <= addr < hi:
@@ -504,6 +536,8 @@ def map_from_roots(image, roots, existing=()):
                 if not merge_into(reviewed, start, size, "code"):
                     conflict = True
                 if covered_kind(reviewed, start) == "data":
+                    conflict = True
+                if looks_like_pointer_table(image, start, size):
                     conflict = True
             for start, size in fn["data"]:
                 if not merge_into(reviewed, start, size, "data"):

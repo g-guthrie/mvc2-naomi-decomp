@@ -39,3 +39,22 @@ class WalkRejectionTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class PointerTableTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.image, _ = flow_map.load_image()
+
+    def test_in_image_pointer_runs_are_not_code(self):
+        # 0x0c2413ac holds twelve 0x0c07-page pointers; its low halfwords
+        # decode as mov.b/swap.b rather than branches.
+        self.assertTrue(flow_map.looks_like_pointer_table(self.image, 0x0c2413ac, 48))
+        # 0x0c23b7fc repeats one pointer, so branch-shaped lows do not save it.
+        self.assertTrue(flow_map.looks_like_pointer_table(self.image, 0x0c23b7fc, 30))
+
+    def test_branch_pairs_with_stc_delay_slots_stay_code(self):
+        # `stc sr,r12` encodes as 0x0c02, which is also an image page, so a
+        # bsr/bra run looks page-constant without being a table.
+        self.assertFalse(flow_map.looks_like_pointer_table(self.image, 0x0c026e50, 552))
+        self.assertFalse(flow_map.looks_like_pointer_table(self.image, 0x0c159070, 296))
