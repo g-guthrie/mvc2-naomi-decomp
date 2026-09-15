@@ -58,6 +58,31 @@ class VerificationTests(unittest.TestCase):
         self.assertEqual(units["code_0c217060"]["size"], 6)
         self.assertNotEqual(units["code_0c217060"]["status"], "matching")
 
+    def test_matching_four_byte_data_is_symbolic_in_source(self):
+        units = [u for u in load_json(ROOT / "config/units.json")
+                 if u["kind"] == "data" and u["status"] == "matching" and u["size"] == 4]
+        src = (ROOT / "src" / "ptr_tables.c").read_text()
+        self.assertTrue(units)
+        for u in units:
+            self.assertEqual(u["representation"], "reconstructed")
+            self.assertEqual(u["source"], "src/ptr_tables.c")
+            self.assertIn(u["name"], src)
+            self.assertIn(f".rodata.{u['name']}", src)
+
+    def test_isolated_function_pointer_cells_are_matching_data(self):
+        units = {u["name"]: u for u in load_json(ROOT / "config/units.json")}
+        src = (ROOT / "src" / "ptr_tables.c").read_text()
+        for name in (
+            "ptr_0c02be98", "ptr_0c050fe0", "ptr_0c2155ec", "ptr_0c23bf00",
+            "ptr_0c23e6a4", "ptr_0c23f428", "ptr_0c23fd44", "ptr_0c240358",
+        ):
+            self.assertEqual(units[name]["kind"], "data")
+            self.assertEqual(units[name]["status"], "matching")
+            self.assertEqual(units[name]["representation"], "reconstructed")
+            self.assertEqual(units[name]["size"], 4)
+            self.assertIn(name, src)
+            self.assertIn(f".rodata.{name}", src)
+
     def test_gcc_constant_byte_stores_are_matching_source(self):
         units = {u["name"]: u for u in load_json(ROOT / "config/units.json")}
         src = (ROOT / "src" / "accessors.c").read_text()
