@@ -1,7 +1,6 @@
 """Regression checks for false matching credit and misleading image coverage."""
 import copy
 from pathlib import Path
-import re
 import struct
 import sys
 import unittest
@@ -120,18 +119,26 @@ class CurrentMappingTests(unittest.TestCase):
 
 
 class RepositoryStateTests(unittest.TestCase):
-    def test_readme_has_no_transient_progress_or_task_queue(self):
+    def test_readme_has_generated_progress_without_task_queue(self):
         readme = (ROOT / 'README.md').read_text()
         self.assertNotIn('build/NEXT.md', readme)
         self.assertNotIn('Next candidate', readme)
-        self.assertNotIn('progress:start', readme)
-        self.assertIsNone(re.search(r'\b[\d,]+\s*/\s*[\d,]+\s+main-image bytes', readme))
+        self.assertIn('<!-- progress:start -->', readme)
+        self.assertIn('<!-- progress:end -->', readme)
 
-    def test_ci_does_not_write_generated_status_to_main(self):
+    def test_ci_only_writes_generated_readme_progress(self):
         workflow = (ROOT / '.github/workflows/build.yml').read_text()
-        self.assertIn('contents: read', workflow)
-        self.assertNotIn('git push', workflow)
+        self.assertIn('contents: write', workflow)
+        self.assertIn('git add README.md', workflow)
+        self.assertIn('git push origin HEAD:main', workflow)
+        self.assertNotIn('git add README.md assets/', workflow)
         self.assertNotIn('build/NEXT.md', workflow)
+
+    def test_progress_bar_is_deterministic(self):
+        from report import progress_bar
+        self.assertEqual(progress_bar(0, 100, 4), '░░░░')
+        self.assertEqual(progress_bar(50, 100, 4), '██░░')
+        self.assertEqual(progress_bar(100, 100, 4), '████')
 
 
 if __name__=='__main__':

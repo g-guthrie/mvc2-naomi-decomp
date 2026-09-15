@@ -4,7 +4,7 @@ on:
   pull_request:
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: hitachi-${{ github.ref }}
   cancel-in-progress: true
@@ -33,3 +33,18 @@ jobs:
             build/progress.svg
             build/active.svg
             build/index.html
+      - name: Publish canonical README bars
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          git fetch origin main
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+            echo 'A newer main commit exists; its workflow will publish the bars.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update canonical progress bars [skip ci]'
+            git push origin HEAD:main
+          fi
