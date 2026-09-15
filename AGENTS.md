@@ -4,7 +4,7 @@
 
 Recover maintainable C for **NAOMI MVC2 Export/Korea Rev A (`mvsc2`)**, matching
 the verified original. Read README.md, docs/CONTINUE.md, docs/PROGRESS.md, and
-config/target.json first. The ROM fingerprints and current NAOMI executable
+config/target.json and docs/TOOLCHAIN.md first. The ROM fingerprints and current NAOMI executable
 are the target authority. PS2 and Dreamcast work is reference material, not
 matching evidence for this binary.
 
@@ -13,6 +13,10 @@ matching evidence for this binary.
 - The required original ROM is already in `orig/mvsc2.zip`. Run `make prepare`
   to verify and extract it; do not search the internet for another target.
 - Use the Dockerfile or the Ubuntu cross-toolchain described in README.md.
+- Hitachi SHC 5.0 Release 31 is already bundled under
+  `toolchain/hitachi-shc-5.0r31/`. Use `make shc-check` and
+  `make shc SOURCE=path/to/candidate.c`; do not block on locating an installer.
+  The tested runner is wibo 1.2.0 (macOS/Rosetta or Linux x86_64), not Wine/QEMU.
 - Run `make all` after each coherent change. This runs tests, a source build,
   original-address linking, direct byte comparisons, full-image comparison,
   and report generation. Inspect failures before deciding what to change.
@@ -38,8 +42,10 @@ matching evidence for this binary.
   evidence. Such imports do not earn source credit.
 - Do not invent gameplay names or ABI signatures from a four-byte return stub.
   Address-based names are intentional until callers establish their role.
-- GCC 13 matches the initial tiny functions. That does not identify the
-  original compiler. Investigate larger functions before changing toolchains.
+- GCC 13 remains the accepted compiler for existing matched units. Use the
+  bundled Hitachi compiler for nontrivial candidates before repeating broad
+  GCC-only searches. Neither a working SHC invocation nor ELF conversion
+  establishes a byte match or proves the original revision; verify the unit.
 
 ## Cloud continuity and publishing
 

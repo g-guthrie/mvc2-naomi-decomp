@@ -1,53 +1,135 @@
-# Toolchain notes
+# Hitachi compiler: present and working
 
-Matching leaves currently compile with GCC 13.3 `-m4 -ml -O2` as in
-`tools/project.py`. Those shapes (`rts` delay-slot `mov #imm,r0`, identity,
-`a-b`/`b-a`, void field setters) are **also** produced by Hitachi SHC
-5.0 Release 31 (`-cpu=sh4 -endian=little -optimize=1`).
+The required package is already in this private repository:
 
-## Hitachi SHC 5.0r31 via wibo (tested)
+- Directory: `toolchain/hitachi-shc-5.0r31/`
+- Compiler banner: **SH SERIES C/C++ Compiler Ver. 5.0(Release31)**
+- Package: all **28 files** supplied by the owner, including the compiler's
+  subprocesses, assembler, linker, conversion tools, and message files.
+- File-by-file sizes and SHA-256 values: `toolchain/hitachi-shc-5.0r31.json`.
+- `shc.exe` SHA-256:
+  `7113feff1bd1f34915a52553848d9df545d1792d1972977d56a2a8536a2d94ab`.
 
-Do **not** use Wine or QEMU for this compiler. On this project SHC was run
-successfully with [wibo 1.2.0](https://github.com/decompals/wibo):
+Do not stop to look for a compiler installer or claim that this project has no
+SHC package. Clone the repository and use the commands below. Keep the package
+and repository private.
 
-| Host | Binary |
-| --- | --- |
-| macOS | `wibo-macos` (x86_64; runs under Rosetta on Apple silicon) |
-| Linux CI | `wibo-x86_64` |
+## Tested route: wibo, not Wine
 
-The owner’s `Hitachi.zip` (PE32 `shc.exe`, 1998, **SH SERIES C/C++ Compiler
-Ver. 5.0(Release31)**) is not committed. GitHub Actions pulls the same
-release from the decomp.me compiler image
-`ghcr.io/decompme/compilers/dreamcast/shc-v5.0r31` and runs
-`python3 tools/shc_smoke.py`.
+Do **not** use Wine/QEMU for the macOS recipe below; use host-side wibo/Rosetta.
 
-```
-SHC_LIB=. SHC_TMP=. wibo shc.exe file.c \
-  -comment=nonest -cpu=sh4 -division=cpu -endian=little \
-  -macsave=0 -sjis -string=const -optimize=1 -object=file.obj
-python3 tools/rof2elf.py file.obj file.elf --isa=sh4
-```
+The wrapper uses **wibo 1.2.0**, pinned by SHA-256 in `toolchain/wibo.json`.
+It downloads the appropriate small runtime from the official wibo release on
+first use and verifies its checksum before execution. The Hitachi compiler
+itself needs no download. Native Windows can run it without wibo.
 
-Assembler/compiler completion with zero errors is not a retail match.
-Keep unmatched functions as candidates until `make all` links identical bytes.
+On this Apple Silicon Mac, the macOS x86_64 wibo executable runs through
+Rosetta. Actual C compilation, Hitachi assembly with zero errors, and
+conversion to a valid SH-4 ELF object have succeeded on the host. No Wine
+installation or Colima configuration change is required for that route.
+Wine/QEMU failures reported in a different setup do not establish that the
+compiler cannot run on this machine.
 
-## `func_0c04701c` (72 bytes) and `func_0c047b0c`
+### macOS host — preferred for compiler experiments
 
-SHC `-optimize=1` matches the first **34 bytes** of `func_0c04701c` (r14/pr
-frame and table math). Remaining mismatches are `bsr` displacements to
-`0x0c047b0c` / `0x0c047796` and an extra FPSCR save.
-
-`func_0c047b0c` is catalogued as a 34-byte **candidate** (it is a BSR
-target of `func_0c04701c`, not data). Closest SHC 5.0r31 `-optimize=1`
-shape:
-
-```
-*out = ((*(a+0x344)^z) | (*(a+0x340)^z)) & w;  /* z = *(a+0x342) */
-return *out == w;
+```sh
+make shc-check
+make shc SOURCE=tools/probes/func_0c047b0c.c
+make shc SOURCE=src/candidate_0c04701c.c
 ```
 
-That reproduces `mov.w @(r0,r4),r7` / `r3` / `r2`, the xor/or, and
-`and r5,r3`. It still misses a byte match: PC-relative displacement to
-the `0x0342` pool (pool sits 62 bytes after the entry in retail, 32
-bytes after in a standalone object), `extu` order, and `rts; movt`
-instead of `movt; rts; nop`. Not promoted.
+Apple Silicon needs Rosetta to run the x86_64 macOS wibo executable. If it is
+absent, the operating system must provide it before this route can run.
+
+### Linux x86_64 / GitHub Actions
+
+```sh
+docker build --platform linux/amd64 -t mvc2-naomi-build .
+docker run --rm --platform linux/amd64 -v "$PWD:/project" mvc2-naomi-build make all
+```
+
+The workflow uses an x86_64 GitHub runner and runs the same compiler check.
+An ARM Linux container is not the supported native host for this Win32 tool;
+use a native x86_64 Linux host or the macOS host wrapper. The emulated Linux
+container on this Mac also failed with wibo; do not substitute that route for
+the working macOS host command. No Docker/Colima settings were changed.
+
+## Outputs and isolation
+
+`make shc SOURCE=path/to/file.c` produces:
+
+```text
+build/shc/path/to/file/output.src   compiler-generated assembly
+build/shc/path/to/file/output.obj   Hitachi SYSROF object
+build/shc/path/to/file/output.elf   converted ELF32-SH relocatable object
+build/shc/path/to/file/compile.log
+build/shc/path/to/file/evidence.json
+```
+
+The wrapper copies the tools and source into a temporary working directory,
+sets `SHC_LIB` and `SHC_TMP`, runs the actual compiler/assembler/converter, and
+preserves the outputs. It never edits the bundled executables or substitutes
+handwritten instructions for compiler output. Every invocation checks all
+package fingerprints. A `WIBO` environment override is supported only when
+its contents match the pinned runtime for the current platform.
+
+The starting SH-4 flag profile is in `tools/hitachi.py:FLAGS` and is recorded
+in each evidence file. It is an investigation profile, not proof of the
+original game's complete compiler command line.
+
+## Relationship to the matching build
+
+GitHub CI requires a successful Hitachi compile, assemble, and ELF-conversion
+check, and also compiles the recovered callee probe. The results are in
+`build/hitachi-check.json` and the GitHub build artifacts. `make verify` and
+`make all` verify the bundled package's hashes without requiring a Windows
+runtime for the existing GCC units. Compiler files contribute to the source
+fingerprint, so changing them invalidates old evidence.
+
+The existing accepted C units still use their proven GCC 13 build. Do not
+silently switch those units or claim they were matched with SHC. Use Hitachi
+for new compiler investigations, then integrate a unit only when its actual
+bytes, symbol boundaries, relocations, literal pools, and original linked
+placement are verified. Converted Hitachi ELF symbols may have leading
+underscores and no function sizes; conversion alone is not matching evidence.
+
+## Recovered `func_0c047b0c` finding
+
+The probe is preserved at `tools/probes/func_0c047b0c.c`. The original is a
+34-byte leaf that reads the words at byte offsets `0x342`, `0x344`, and `0x340`,
+combines XOR/OR results, masks and stores the low word, and returns whether
+that result equals the mask's low word. It is a callee of `0x0c04701c`.
+
+The supplied SHC runs this probe successfully. With the current profile and
+straightforward local-variable formulation, it emits a 38-byte instruction
+body with a four-byte stack frame, followed by alignment and literals. That
+differs from the original 34-byte frame-free body. This is a real code-generation
+mismatch, not a missing-tool or runtime blocker. The probe remains uncredited;
+do not repeat the claim that no local compiler exists.
+
+## Conversion and matching cautions
+
+The bundled `elfcnv.exe` recipe converts the **relocatable `.obj`**. A tested
+conversion of the linked SYSROF `.abs` was rejected and left an empty file.
+A relocatable ELF with `.text` at zero does not prove final placement. Keep
+linking, relocation/literal-pool verification, and exact byte comparison as
+separate acceptance steps. The existing `tools/rof2elf.py` remains available
+as a separate converter for compiler investigations.
+
+The older `make shc-smoke` check also remains available when `WIBO` and
+`SHC_BIN` are configured. CI points it at the bundled package, not a compiler
+image download. `make shc-check` is the self-configuring command for users.
+
+## Current tracked candidate
+
+`src/candidate_0c047b0c.c` is now catalogued as a 34-byte candidate by the
+ongoing matching work. It explores a closer register-allocation shape than
+the initial local-variable probe in `tools/probes/`. Preserve that work.
+The original literal pool is 62 bytes after the entry; standalone objects
+place their own pools differently. Register choices, `extu` ordering, and
+return-delay-slot scheduling still require exact verification. The candidate
+is not matching-source credit. Run it directly with:
+
+```sh
+make shc SOURCE=src/candidate_0c047b0c.c
+```

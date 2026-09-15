@@ -59,6 +59,29 @@ Keep it a candidate until `make all` proves a linked SHC object.
 No Flycast or BIOS is required for these steps. Runtime work later needs a
 compatible emulator and NAOMI BIOS, which are not included in this repository.
 
+## Hitachi compiler is available
+
+The owner supplied **Hitachi SHC 5.0 Release 31**. All 28 files are now in
+`toolchain/hitachi-shc-5.0r31/`, with per-file SHA-256 verification. Read
+[TOOLCHAIN.md](TOOLCHAIN.md) and run:
+
+```sh
+make shc-check
+make shc SOURCE=tools/probes/func_0c047b0c.c
+make shc SOURCE=src/candidate_0c04701c.c
+```
+
+Use native macOS wibo/Rosetta on this Mac, or the native x86 Linux CI runner.
+The Wine/QEMU failure is not a missing-compiler blocker for those routes.
+Do not change shared Docker/Colima settings to run compiler experiments.
+
+The `0x0c047b0c` finding is preserved in the probe: three signed-word reads at
+byte offsets `0x342`, `0x344`, `0x340`; XOR/OR/AND; a word store; a low-word
+comparison and boolean return. The original body is 34 bytes. The initial SHC
+probe compiles and assembles but still emits a different 38-byte instruction
+body plus alignment/literals. It remains uncredited. Further work concerns
+code generation and verified placement, not obtaining an SDK installer.
+
 ## Next useful work
 
 1. **Main-program inventory is catalogued.** Every main-image byte is a
@@ -84,9 +107,10 @@ compatible emulator and NAOMI BIOS, which are not included in this repository.
    `0x0c02be98` is an isolated cell (next word is outside the main image).
    Do not promote raw pointer arrays to reconstructed data until C has
    symbolic function references and a caller-established ABI.
-4. **Obtain Hitachi SHC (or another compiler that emits `bsr` + r14 frames)
-   and match `0x0c04701c` before changing the matching toolchain.** GCC 13
-   flag search on that function is exhausted for the options listed above.
+4. **Use the bundled Hitachi SHC to investigate `0x0c04701c` and its callee.**
+   The compiler is present and working with wibo. Match and verify actual
+   bytes before changing the accepted matching toolchain. GCC 13 flag search
+   on that function is exhausted for the options listed above.
 5. **Add service/test and additional code targets separately.** Each needs
    its own original addresses, fingerprints, layout, and source credit.
 6. **Prepare ports after platform dependencies are understood.** Preserve
