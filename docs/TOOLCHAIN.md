@@ -32,7 +32,9 @@ The full build overlays only verified C-produced bytes onto the reference main i
 
 - `build/proof.json`: input fingerprint, tool versions, ROM/image hashes, and per-unit comparisons.
 - `build/work/`: C copies, generated assembly, objects, linked ELFs/maps, linker commands, logs.
-- `docs/progress.json`: generated evidence plus conservative code/data metrics.
-- `assets/progress.svg`, `assets/active.svg`, `docs/index.html`: static and interactive maps generated from that same successful build.
+- `build/progress.json`: generated evidence plus conservative code/data metrics.
+- `build/progress.svg`, `build/active.svg`, `build/index.html`: static and interactive maps generated from that same successful build.
+
+All generated evidence stays in `build/` and is attached to the exact CI run. It is not committed as repository state.
 
 The fingerprint covers source, config, tools, tests, and bundled toolchain files. CI artifacts contain reports and per-unit evidence; the workflow does not publish ROM images. The selected baseline options (`-cpu=sh4 -endian=little -optimize=1`) and compiler revision are not yet proven to match the original build throughout the game.

@@ -1,11 +1,12 @@
 """Regression checks for false matching credit and misleading image coverage."""
 import copy
 from pathlib import Path
+import re
 import struct
 import sys
 import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
-from core import compare, elf_segments, validate_units
+from core import ROOT, compare, elf_segments, validate_units
 from report import layout, metrics
 
 
@@ -109,21 +110,28 @@ class InspectionTests(unittest.TestCase):
                 runner()
 
 
-class HandoffTests(unittest.TestCase):
-    def test_completed_candidate_disappears_from_next_work(self):
-        from handoff import next_work
-        proof={'main_address':0x1000,'units':[dict(id='current',source='src/current.c',credited=False,exact=False,sections=[dict(kind='code',address=0x1000,size=4)])]}
-        mapping={'ranges':[]}
-        self.assertEqual(next_work(proof,mapping,bytes(4))[0][0]['id'],'current')
-        proof['units'][0]['credited']=True
-        self.assertEqual(next_work(proof,mapping,bytes(4))[0],[])
-
+class CurrentMappingTests(unittest.TestCase):
     def test_new_verified_source_is_added_to_mapping(self):
         from mapping import review
         unit=dict(id='new',credited=True,sections=[dict(section='P',kind='code',address=0x1000,size=4)])
         result=review(bytes(8),0x1000,entries=[],verified=[unit])
         self.assertEqual(result['reviewed_code_bytes'],4)
         self.assertEqual(result['unknown_bytes'],4)
+
+
+class RepositoryStateTests(unittest.TestCase):
+    def test_readme_has_no_transient_progress_or_task_queue(self):
+        readme = (ROOT / 'README.md').read_text()
+        self.assertNotIn('build/NEXT.md', readme)
+        self.assertNotIn('Next candidate', readme)
+        self.assertNotIn('progress:start', readme)
+        self.assertIsNone(re.search(r'\b[\d,]+\s*/\s*[\d,]+\s+main-image bytes', readme))
+
+    def test_ci_does_not_write_generated_status_to_main(self):
+        workflow = (ROOT / '.github/workflows/build.yml').read_text()
+        self.assertIn('contents: read', workflow)
+        self.assertNotIn('git push', workflow)
+        self.assertNotIn('build/NEXT.md', workflow)
 
 
 if __name__=='__main__':

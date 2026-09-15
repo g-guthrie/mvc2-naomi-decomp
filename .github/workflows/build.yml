@@ -4,7 +4,7 @@ on:
   pull_request:
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 concurrency:
   group: hitachi-${{ github.ref }}
   cancel-in-progress: true
@@ -22,7 +22,6 @@ jobs:
         with:
           name: hitachi-evidence
           path: |
-            build/NEXT.md
             build/proof.json
             build/mapping.json
             build/work/*.elf
@@ -30,16 +29,7 @@ jobs:
             build/work/*.src
             build/work/*.log
             build/work/*.lnk
-            docs/progress.json
-            docs/index.html
-            assets/*.svg
-      - name: Refresh repository progress
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md assets/progress.svg assets/active.svg docs/progress.json docs/index.html
-          if ! git diff --cached --quiet; then
-            git commit -m 'Update verified Hitachi progress [skip ci]'
-            git push origin HEAD:main
-          fi
+            build/progress.json
+            build/progress.svg
+            build/active.svg
+            build/index.html
