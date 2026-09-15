@@ -1,0 +1,26 @@
+/* Hitachi SHC 5.0R31 four-byte leaves at 2-aligned addresses. */
+
+#pragma section n0a3cca
+void func_0c0a3cca(void) {}
+
+#pragma section n0a6fb6
+void func_0c0a6fb6(void) {}
+
+#pragma section n0a8cae
+void func_0c0a8cae(void) {}
+
+#pragma section n0a8cb2
+void func_0c0a8cb2(void) {}
+
+#pragma section n0acfc6
+void func_0c0acfc6(void) {}
+
+#pragma section n0afe26
+void func_0c0afe26(void) {}
+
+#pragma section n0b5fae
+int func_0c0b5fae(void) { return 0; }
+
+#pragma section n0b6122
+void func_0c0b6122(void) {}
+
