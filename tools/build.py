@@ -4,12 +4,56 @@ import argparse
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
 
 from core import (ROOT, compare, input_fingerprint, load, memory_bytes, number,
                   preflight, runner, sha, validate_units, verify_rom, verify_tools)
+
+
+def retarget_pc_word(assembly, func_addr, mapping):
+    """Point SHC PC-relative word loads at a verified external pool.
+
+    Hitachi `MOV.W @(H'disp,PC),Rn` takes a byte displacement; (target-pc-4)
+    for 0x0c047b4a from 0x0c047b0c is 0x3A and encodes retail 0x1d90.
+    """
+    for imm, target in mapping.items():
+        value, dest = number(imm), number(target)
+        disp = dest - (func_addr + 4)
+        tag = f"{value:04X}"
+        assembly = re.sub(
+            rf"MOV\.W\s+L\d+(?:\+\d+)?,\s*R0\s*;\s*H'{tag}",
+            f"MOV.W       @(H'{disp:X},PC),R0",
+            assembly)
+        assembly = re.sub(rf"^.*\.DATA\.W\s+H'{tag}\s*$", "", assembly, flags=re.M)
+    return assembly
+
+
+def extract_named_section(assembly, section, exports=None):
+    """Assemble one Hitachi .SECTION; sibling functions stay in the C TU."""
+    keep = set(exports or ())
+    chunks = re.split(r'(?=^[ \t]*\.SECTION)', assembly, flags=re.M)
+    header, body = [], []
+    for chunk in chunks:
+        if '.SECTION' not in chunk:
+            for line in chunk.splitlines():
+                if '.EXPORT' in line:
+                    if any(name in line for name in keep):
+                        header.append(line)
+                    continue
+                header.append(line)
+            continue
+        name = re.search(r'\.SECTION\s+(\w+)', chunk)
+        if name and name.group(1) == section:
+            body.append(chunk.rstrip())
+    if not body:
+        raise ValueError('emit_section not present in compiler assembly: ' + section)
+    text = '\n'.join(header).rstrip() + '\n' + '\n'.join(body) + '\n'
+    if '.END' not in text:
+        text += '          .END\n'
+    return text
 
 
 def compile_unit(unit, work, flags):
@@ -33,6 +77,12 @@ def compile_unit(unit, work, flags):
     assembly = (work / (stem + '.src')).read_text(errors='replace')
     placed = (assembly.replace('ALIGN=16', 'ALIGN=2').replace('ALIGN=8', 'ALIGN=2')
               .replace('ALIGN=4', 'ALIGN=2'))
+    pool = unit.get('pc_rel_imm') or unit.get('pc_word_pool')
+    if pool:
+        placed = retarget_pc_word(placed, number(unit['sections'][0]['address']), pool)
+        placed = re.sub(r'\nL\d+:\s*\n(?=\s*\.END)', '\n', placed)
+    if unit.get('emit_section'):
+        placed = extract_named_section(placed, unit['emit_section'], unit.get('exports', {}))
     (work / (stem + '.src')).write_text(placed)
     run('asmsh.exe', [stem + '.src', '-cpu=sh4', '-endian=little', '-object=' + stem + '.obj'])
     start, chunk = [], []
