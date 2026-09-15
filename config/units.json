@@ -335,6 +335,32 @@
     "notes": "Returns without changing registers. Entry is independently address-taken; gameplay role and full caller signature are not established."
   },
   {
+    "name": "func_0c04701c",
+    "address": 201617436,
+    "size": 72,
+    "kind": "code",
+    "status": "candidate",
+    "representation": "reconstructed",
+    "source": "src/candidate_0c04701c.c",
+    "section": ".text.func_0c04701c",
+    "sha256": "0076268b6e2c4a8555ac4610d87e8df423369ff338660e41f4b1ab10821c91a4",
+    "references": [
+      {
+        "rom_offset": 2211580,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 2211636,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 2211660,
+        "kind": "aligned_address_reference"
+      }
+    ],
+    "notes": "72-byte address-taken body immediately before func_0c047064. GCC 13 -O2 emits jsr/GOT-style calls and a different frame, so this stays a candidate. Callees 0x0c047b0c and 0x0c047796 are not reconstructed."
+  },
+  {
     "name": "func_0c047064",
     "address": 201617508,
     "size": 4,
@@ -4550,6 +4576,32 @@
       }
     ],
     "notes": "Returns without changing registers. Entry is independently address-taken; gameplay role and full caller signature are not established."
+  },
+  {
+    "name": "func_0c206570",
+    "address": 203449712,
+    "size": 6,
+    "kind": "code",
+    "status": "matching",
+    "representation": "reconstructed",
+    "source": "src/callback_leaves.c",
+    "section": ".text.func_0c206570",
+    "sha256": "55057b02a88354519d7b4364b86907634600a3c8cccbc1da178cb77ac9e0294a",
+    "references": [
+      {
+        "rom_offset": 29436,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 2084044,
+        "kind": "aligned_address_reference"
+      },
+      {
+        "rom_offset": 2084168,
+        "kind": "aligned_address_reference"
+      }
+    ],
+    "notes": "Returns b-a. Entry is independently address-taken; gameplay role and full caller signature are not established."
   },
   {
     "name": "func_0c20740e",

@@ -25,11 +25,11 @@
   },
   "scope": "Main SH-4 program only; service/test code and other ROM contents are separate work.",
   "code": {
-    "identified_bytes": 1030,
+    "identified_bytes": 1108,
     "total_bytes": null,
-    "matched_bytes": 1030,
-    "linked_bytes": 1030,
-    "linked_units": 257,
+    "matched_bytes": 1036,
+    "linked_bytes": 1036,
+    "linked_units": 258,
     "linked_percent": null
   },
   "data": {
@@ -41,14 +41,14 @@
     "linked_percent": null
   },
   "main_image_bytes": 2424832,
-  "unclassified_bytes": 2423770,
-  "reconstructed_bytes": 1030,
-  "main_image_percent": 0.042477169552364864,
+  "unclassified_bytes": 2423692,
+  "reconstructed_bytes": 1036,
+  "main_image_percent": 0.042724609375,
   "layout_complete": false,
   "evidence": {
     "schema_version": 1,
-    "source_fingerprint": "9bfe217ce8d054e5b811d85f14b619599b2706677e58a40b6535c22ee6f2c3c9",
-    "source_commit": "07e59bd249fb6270472d5b293075c8e75f45b44b",
+    "source_fingerprint": "d97a71affcb815b870f3a4e66c2be13a929741cd1b1817c6920673f242a3a3d9",
+    "source_commit": "local",
     "roms_verified": 18,
     "verified_units": [
       {
@@ -2068,6 +2068,14 @@
         "linked": true
       },
       {
+        "name": "func_0c206570",
+        "kind": "code",
+        "address": 203449712,
+        "size": 6,
+        "sha256": "55057b02a88354519d7b4364b86907634600a3c8cccbc1da178cb77ac9e0294a",
+        "linked": true
+      },
+      {
         "name": "func_0c20740e",
         "kind": "code",
         "address": 203453454,
@@ -2472,6 +2480,32 @@
         }
       ],
       "notes": "Returns without changing registers. Entry is independently address-taken; gameplay role and full caller signature are not established."
+    },
+    {
+      "name": "func_0c04701c",
+      "address": 201617436,
+      "size": 72,
+      "kind": "code",
+      "status": "candidate",
+      "representation": "reconstructed",
+      "source": "src/candidate_0c04701c.c",
+      "section": ".text.func_0c04701c",
+      "sha256": "0076268b6e2c4a8555ac4610d87e8df423369ff338660e41f4b1ab10821c91a4",
+      "references": [
+        {
+          "rom_offset": 2211580,
+          "kind": "aligned_address_reference"
+        },
+        {
+          "rom_offset": 2211636,
+          "kind": "aligned_address_reference"
+        },
+        {
+          "rom_offset": 2211660,
+          "kind": "aligned_address_reference"
+        }
+      ],
+      "notes": "72-byte address-taken body immediately before func_0c047064. GCC 13 -O2 emits jsr/GOT-style calls and a different frame, so this stays a candidate. Callees 0x0c047b0c and 0x0c047796 are not reconstructed."
     },
     {
       "name": "func_0c047064",
@@ -6689,6 +6723,32 @@
         }
       ],
       "notes": "Returns without changing registers. Entry is independently address-taken; gameplay role and full caller signature are not established."
+    },
+    {
+      "name": "func_0c206570",
+      "address": 203449712,
+      "size": 6,
+      "kind": "code",
+      "status": "matching",
+      "representation": "reconstructed",
+      "source": "src/callback_leaves.c",
+      "section": ".text.func_0c206570",
+      "sha256": "55057b02a88354519d7b4364b86907634600a3c8cccbc1da178cb77ac9e0294a",
+      "references": [
+        {
+          "rom_offset": 29436,
+          "kind": "aligned_address_reference"
+        },
+        {
+          "rom_offset": 2084044,
+          "kind": "aligned_address_reference"
+        },
+        {
+          "rom_offset": 2084168,
+          "kind": "aligned_address_reference"
+        }
+      ],
+      "notes": "Returns b-a. Entry is independently address-taken; gameplay role and full caller signature are not established."
     },
     {
       "name": "func_0c20740e",
