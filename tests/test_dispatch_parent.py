@@ -1,4 +1,4 @@
-"""dispatch_parent must compile to the 72 retail bytes at 0x0c04701c."""
+"""dispatch_parent stays a candidate until SHC emits in-range BSR itself."""
 import shutil
 import sys
 import unittest
@@ -10,21 +10,18 @@ from core import ROOT, compare, load, number, verify_rom
 
 
 class DispatchParentTests(unittest.TestCase):
-    def test_dispatch_parent_matches_retail(self):
+    def test_dispatch_parent_is_uncredited_candidate(self):
         flags = load(ROOT / 'config/compiler.json')['flags']
         work = ROOT / 'build' / 'work-dispatch-parent'
         if work.exists():
             shutil.rmtree(work)
         shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work)
-        units = {u['id']: u for u in load(ROOT / 'config/units.json')}
-        unit = units['dispatch_parent']
-        self.assertEqual(unit['mode'], 'verified')
-        self.assertEqual(unit['source'], 'src/verified/func_0c04701c.c')
+        unit = {u['id']: u for u in load(ROOT / 'config/units.json')}['dispatch_parent']
+        self.assertEqual(unit['mode'], 'candidate')
+        self.assertNotIn('bsr_imports', unit)
         target = load(ROOT / 'config/target.json')
         main = verify_rom(target)[number(target['main']['rom_offset']):]
         elf, link = compile_unit(unit, work, flags)
         proof, _ = compare(unit, elf, link, main, number(target['main']['address']))
-        self.assertTrue(proof['exact'], proof['problems'])
-        self.assertEqual(proof['sections'][0]['equal_bytes'], 72)
-        self.assertEqual(proof['sections'][0]['linked_size'], 72)
+        self.assertFalse(proof['exact'], 'do not credit a rewrite-shaped match')
         shutil.rmtree(work)

@@ -4,101 +4,12 @@ import argparse
 import json
 import os
 from pathlib import Path
-import re
 import shutil
 import subprocess
 import sys
 
 from core import (ROOT, compare, input_fingerprint, load, memory_bytes, number,
                   preflight, runner, sha, validate_units, verify_rom, verify_tools)
-
-
-def retarget_pc_word(assembly, func_addr, mapping):
-    """Point SHC PC-relative word loads at a verified external pool.
-
-    Hitachi `MOV.W @(H'disp,PC),Rn` takes a byte displacement; (target-pc-4)
-    for 0x0c047b4a from 0x0c047b0c is 0x3A and encodes retail 0x1d90.
-    """
-    for imm, target in mapping.items():
-        value, dest = number(imm), number(target)
-        disp = dest - (func_addr + 4)
-        tag = f"{value:04X}"
-        assembly = re.sub(
-            rf"MOV\.W\s+L\d+(?:\+\d+)?,\s*R0\s*;\s*H'{tag}",
-            f"MOV.W       @(H'{disp:X},PC),R0",
-            assembly)
-        assembly = re.sub(rf"^.*\.DATA\.W\s+H'{tag}\s*$", "", assembly, flags=re.M)
-    return assembly
-
-
-def rewrite_bsr_imports(assembly, imports, func_addr):
-    """Replace SHC far JSR/@Rn plus .DATA.L pools with in-range BSR.
-
-    Isolated TUs emit MOV.L label,Rn / JSR @Rn because the callee is .IMPORT.
-    Hitachi `BSR $+H'delta` encodes the 12-bit word displacement immediately.
-    """
-    names = {name: number(dest) for name, dest in imports.items()}
-    regs = {}
-
-    def drop_load(match):
-        reg, symbol = match.group(1), match.group(2)
-        if symbol not in names:
-            return match.group(0)
-        regs[reg] = symbol
-        return ''
-
-    assembly = re.sub(
-        r'^[ \t]*MOV\.L[ \t]+L\d+(?:\+\d+)?,[ \t]*R(\d+)[ \t]*;[ \t]*(_\w+)[ \t]*\n',
-        drop_load,
-        assembly,
-        flags=re.M)
-    for symbol in names:
-        assembly = re.sub(rf'^[ \t]*\.DATA\.L[ \t]+{re.escape(symbol)}[ \t]*\n', '', assembly, flags=re.M)
-    assembly = re.sub(r'\nL\d+:\s*\n(?=\s*\.END)', '\n', assembly)
-
-    lines, pc, out = assembly.splitlines(True), func_addr, []
-    insn = re.compile(r'^[ \t]+([A-Z][A-Z0-9.]*|JSR|BSR|BT|BRA)\b')
-    jsr = re.compile(r'^[ \t]*JSR[ \t]+@R(\d+)[ \t]*\n')
-    for line in lines:
-        match = jsr.match(line)
-        if match and match.group(1) in regs:
-            target = names[regs[match.group(1)]]
-            out.append(f"          BSR         $+H'{target - pc:X}\n")
-            pc += 2
-            continue
-        out.append(line)
-        if insn.match(line):
-            pc += 2
-        elif re.match(r'^[ \t]*\.(DATA|RES)\.L', line):
-            pc += 4
-        elif re.match(r'^[ \t]*\.(DATA|RES)\.', line):
-            pc += 2
-    return ''.join(out)
-
-
-def extract_named_section(assembly, section, exports=None):
-    """Assemble one Hitachi .SECTION; sibling functions stay in the C TU."""
-    keep = set(exports or ())
-    chunks = re.split(r'(?=^[ \t]*\.SECTION)', assembly, flags=re.M)
-    header, body = [], []
-    for chunk in chunks:
-        if '.SECTION' not in chunk:
-            for line in chunk.splitlines():
-                if '.EXPORT' in line:
-                    if any(name in line for name in keep):
-                        header.append(line)
-                    continue
-                header.append(line)
-            continue
-        name = re.search(r'\.SECTION\s+(\w+)', chunk)
-        if name and name.group(1) == section:
-            body.append(chunk.rstrip())
-    if not body:
-        raise ValueError('emit_section not present in compiler assembly: ' + section)
-    text = '\n'.join(header).rstrip() + '\n' + '\n'.join(body) + '\n'
-    if '.END' not in text:
-        text += '          .END\n'
-    return text
 
 
 def compile_unit(unit, work, flags):
@@ -122,15 +33,6 @@ def compile_unit(unit, work, flags):
     assembly = (work / (stem + '.src')).read_text(errors='replace')
     placed = (assembly.replace('ALIGN=16', 'ALIGN=2').replace('ALIGN=8', 'ALIGN=2')
               .replace('ALIGN=4', 'ALIGN=2'))
-    pool = unit.get('pc_rel_imm') or unit.get('pc_word_pool')
-    if pool:
-        placed = retarget_pc_word(placed, number(unit['sections'][0]['address']), pool)
-        placed = re.sub(r'\nL\d+:\s*\n(?=\s*\.END)', '\n', placed)
-    if unit.get('bsr_imports') and unit.get('imports'):
-        placed = rewrite_bsr_imports(
-            placed, unit['imports'], number(unit['sections'][0]['address']))
-    if unit.get('emit_section'):
-        placed = extract_named_section(placed, unit['emit_section'], unit.get('exports', {}))
     (work / (stem + '.src')).write_text(placed)
     run('asmsh.exe', [stem + '.src', '-cpu=sh4', '-endian=little', '-object=' + stem + '.obj'])
     start, chunk = [], []
