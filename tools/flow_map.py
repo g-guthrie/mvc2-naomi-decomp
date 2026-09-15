@@ -117,6 +117,24 @@ class Image:
         return self.base <= addr and addr + size <= self.end
 
 
+def literal_reg_target(image, pc, reg, lookback=12):
+    """Last PC-relative MOV.L into reg in the preceding lookback halfwords."""
+    addr = pc - 2
+    steps = 0
+    while steps < lookback and image.contains(addr):
+        word = image.word(addr)
+        if word is None:
+            break
+        info = decode(addr, word)
+        if info.get("lit_reg") == reg and info["lit"] and info["lit"][1] == 4:
+            return image.u32(info["lit"][0])
+        if info["kind"] in {"rts", "rte", "jmp", "bra", "bsr", "jsr", "bt", "bf", "bts", "bfs"}:
+            break
+        addr -= 2
+        steps += 1
+    return None
+
+
 def walk_function(image, entry, max_insns=2048):
     if not image.contains(entry) or entry % 2:
         return None
@@ -171,23 +189,13 @@ def walk_function(image, entry, max_insns=2048):
         elif info["kind"] == "bsr" and info["call"] is not None:
             calls.append(("bsr", pc, info["call"]))
         elif info["kind"] == "jsr":
-            prev = image.word(pc - 2) if image.contains(pc - 2) else None
-            target = None
-            if prev is not None and (prev >> 12) == 0xD and ((prev >> 8) & 0xF) == info["jsr_reg"]:
-                lit = decode(pc - 2, prev)["lit"]
-                if lit:
-                    target = image.u32(lit[0])
+            target = literal_reg_target(image, pc, info["jsr_reg"])
             if target is not None:
                 calls.append(("jsr", pc, target))
             else:
                 indirect.append(("jsr", pc, info["jsr_reg"]))
         elif info["kind"] == "jmp":
-            prev = image.word(pc - 2) if image.contains(pc - 2) else None
-            target = None
-            if prev is not None and (prev >> 12) == 0xD and ((prev >> 8) & 0xF) == info["jmp_reg"]:
-                lit = decode(pc - 2, prev)["lit"]
-                if lit:
-                    target = image.u32(lit[0])
+            target = literal_reg_target(image, pc, info["jmp_reg"])
             if target is not None:
                 calls.append(("jmp", pc, target))
             else:
