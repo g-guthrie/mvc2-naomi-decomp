@@ -34,7 +34,7 @@ def load_json(path):
 def source_fingerprint(root=ROOT):
     """Bind evidence to build inputs, independently of generated report commits."""
     paths = [root / "Makefile", root / "Dockerfile"]
-    for folder in ("src", "config", "tools", "tests"):
+    for folder in ("src", "config", "tools", "tests", "toolchain"):
         paths.extend(p for p in (root / folder).rglob("*")
                      if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc")
     h = hashlib.sha256()
@@ -174,6 +174,11 @@ def run(args):
 def verify():
     evidence = ROOT / "build/evidence.json"
     evidence.unlink(missing_ok=True)  # Failed builds cannot leave reusable success evidence.
+    from hitachi import MANIFEST as hitachi_manifest, verify_package as verify_hitachi_package
+    package = verify_hitachi_package()
+    hitachi = {"compiler_id": package["compiler_id"], "version": package["version"],
+               "package_files_verified": len(package["files"]),
+               "package_manifest_sha256": digest(hitachi_manifest.read_bytes())}
     target, program = prepare()
     units = load_json(ROOT / "config/units.json")
     validate_units(units, target)
@@ -231,6 +236,7 @@ def verify():
         "roms_verified": len(target["roms"]), "verified_units": verified,
         "compiler": subprocess.check_output([cc, "--version"], text=True).splitlines()[0],
         "cflags": CFLAGS,
+        "hitachi_toolchain": hitachi,
         "main_sha256": digest(rebuilt), "program_rom_sha256": digest(epr),
         "full_main_matches": True, "full_program_rom_matches": True,
     }

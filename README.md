@@ -21,9 +21,11 @@ The infographic updates automatically after every successful build on `main`.
 ## Start here — humans and cloud agents
 
 This **private repository includes the owner's supplied, verified ROM** at
-[`orig/mvsc2.zip`](orig/mvsc2.zip). An agent needs authenticated access to this
-repository; there is no additional ROM download, external secret, SDK upload,
-or emulator required for the current build.
+[`orig/mvsc2.zip`](orig/mvsc2.zip) and **Hitachi SHC 5.0 Release 31** in
+[`toolchain/hitachi-shc-5.0r31/`](toolchain/hitachi-shc-5.0r31/).
+An agent needs authenticated access to this repository. No additional ROM or
+compiler installer is needed. The wrapper fetches and verifies a pinned wibo
+runtime automatically; no emulator is needed for compiling source.
 
 ```sh
 git clone https://github.com/g-guthrie/mvc2-naomi-decomp.git
@@ -32,17 +34,27 @@ docker build -t mvc2-naomi-build .
 docker run --rm -v "$PWD:/project" mvc2-naomi-build make all
 ```
 
-Docker supports the same setup on Linux and macOS. On Ubuntu 24.04 without
-Docker, install `gcc-13-sh4-linux-gnu`, `binutils-sh4-linux-gnu`, `python3`, and
-`make`, then run `make all` directly. The current build uses GCC 13 for the
-first compiler-independent leaf shapes; the original compiler is not yet
-established.
+On Ubuntu 24.04 x86_64 without Docker, install `gcc-13-sh4-linux-gnu`,
+`binutils-sh4-linux-gnu`, `python3`, `ca-certificates`, and `make`, then run
+`make all` directly. Existing matching units retain their verified GCC 13
+build; Hitachi is required tooling for further matching investigations.
+
+For Hitachi experiments on macOS, use the tested host-side wibo/Rosetta route:
+
+```sh
+make shc-check
+make shc SOURCE=tools/probes/func_0c047b0c.c
+```
+
+See [Hitachi setup and outputs](docs/TOOLCHAIN.md). Wine/QEMU is not required.
 
 Read [AGENTS.md](AGENTS.md) and [docs/CONTINUE.md](docs/CONTINUE.md) before editing.
 
 ## What the automatic build actually checks
 
-1. Verify **all 18 original ROM files** against their catalogued size, CRC32,
+1. CI runs a Hitachi C compile, assembly, and SH-4 ELF conversion on a native
+   x86 Linux runner. The matching build verifies the **28-file Hitachi package**
+   and **all 18 original ROM files** against their catalogued size, CRC32,
    and SHA-1, and verify the main/test boot descriptors.
 2. Compile every nominated matching C source to SH-4.
 3. Link its code/data sections at the original addresses, with exact size
