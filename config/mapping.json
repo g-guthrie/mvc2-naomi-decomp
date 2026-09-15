@@ -6,42 +6,42 @@
       "size": 14,
       "kind": "code",
       "sha256": "b4a5a42d0e1a03ad6c7f8daf709483373f80a5b43a767ade8c68820118ff4872",
-      "evidence": "ROM entry descriptor; MOVA produces 0c021010, mask/OR selects uncached alias ac021010; JMP plus delay slot."
+      "evidence": "ROM entry descriptor; MOVA produces 0x0c021010, mask/OR selects uncached alias 0xac021010; JMP plus delay slot."
     },
     {
       "address": "0x0c021010",
       "size": 56,
       "kind": "code",
       "sha256": "0ce4031f890961e85b46b646510ba8252d7ce4b71ab62e565b63f3a39121e242",
-      "evidence": "Uncached startup alias; cache-control write then clear loops. BT at0c021040 skips the inline literal, BRA at0c021044 loops with a delay slot."
+      "evidence": "Uncached startup alias; cache-control write then clear loops. BT at 0x0c021040 skips the inline literal, BRA at 0x0c021044 loops with a delay slot."
     },
     {
       "address": "0x0c021048",
       "size": 4,
       "kind": "data",
       "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
-      "evidence": "MOV.L at0c02103c loads this zero literal; neither successor of startup control flow executes it."
+      "evidence": "MOV.L at 0x0c02103c loads this zero literal; neither successor of startup control flow executes it."
     },
     {
       "address": "0x0c02104c",
       "size": 74,
       "kind": "code",
       "sha256": "f628e1220df4a9b55f06cc2d7801be7eb11e2b24f3e707a2b28f8ae70cf67fcb",
-      "evidence": "BT target from0c021040; initializes stack/registers, JSR at0c02108e and final self-BRA at0c021092 with delay slot."
+      "evidence": "BT target from 0x0c021040; initializes stack/registers, JSR at 0x0c02108e and final self-BRA at 0x0c021092 with delay slot."
     },
     {
       "address": "0x0c02109c",
       "size": 24,
       "kind": "data",
       "sha256": "bd7a73cd602531cb55451f52e872701a152d51a45cc1e4ee98de6cb47cc85aca",
-      "evidence": "MOVA at0c021026 reads first two words as clear-region address/size; MOVA at0c02104c reads stack and call target; MOV.L at0c021038/3a read BSS bounds."
+      "evidence": "MOVA at 0x0c021026 reads first two words as clear-region address/size; MOVA at 0x0c02104c reads stack and call target; MOV.L at 0x0c021038/3a read BSS bounds."
     },
     {
       "address": "0x0c0210bc",
       "size": 16,
       "kind": "data",
       "sha256": "04bcbed7001a1f60985254aba723bf4c83838a39072a16d00bf6858c794a8f95",
-      "evidence": "PC-relative MOV.L at0c021002/006/010/012 reads the four 32-bit mask, alias and cache-control constants."
+      "evidence": "PC-relative MOV.L at 0x0c021002/006/010/012 reads the four 32-bit mask, alias and cache-control constants."
     },
     {
       "address": "0x0c0210cc",
@@ -104,7 +104,7 @@
       "size": 64,
       "kind": "code",
       "sha256": "487c2822b5ed083a700379121c35c118635d4a08ceb652e88bc31913a56b93c0",
-      "evidence": "Indirect JSR from boot init at0c0283da/3de via pointer 0c02156c; all local BF/BRA targets stay inside the body; RTS at0c0215a8 plus NOP delay slot; no PC-relative pool."
+      "evidence": "Indirect JSR from boot init at 0x0c0283da/3de via pointer 0x0c02156c; all local BF/BRA targets stay inside the body; RTS at 0x0c0215a8 plus NOP delay slot; no PC-relative pool."
     },
     {
       "address": "0x0c0215ac",
@@ -391,7 +391,7 @@
       "size": 70,
       "kind": "code",
       "sha256": "e5bc17ccdd8af5ba369a0ca676e687924d5cc2cbf59652e80da107d404a77aaf",
-      "evidence": "Indirect JSR from boot init at0c0283b4; copy loop with BF.S 0c02236c and RTS at0c022396 plus delay-slot restore. 0c02239a is not executed."
+      "evidence": "Indirect JSR from boot init at 0x0c0283b4; copy loop with BF.S 0x0c02236c and RTS at 0x0c022396 plus delay-slot restore. 0x0c02239a is not executed."
     },
     {
       "address": "0x0c02239a",
@@ -405,7 +405,7 @@
       "size": 2,
       "kind": "data",
       "sha256": "94190f0fcbf8b25e62422658c7e3e915ac8cb9fc11cc4e4e2d01def02f0d98a1",
-      "evidence": "MOV.W at0c02235c loads 0x0e10; following alignment and unreferenced words stay unknown until 0c0223c0."
+      "evidence": "MOV.W at 0x0c02235c loads 0x0e10; following alignment and unreferenced words stay unknown until 0x0c0223c0."
     },
     {
       "address": "0x0c0223a0",
@@ -419,21 +419,21 @@
       "size": 20,
       "kind": "data",
       "sha256": "ea66845a68f8c70d06e5125313601db6f239f414c5269f232ef1c7008153a3c3",
-      "evidence": "MOV.L at0c022358/368/362/364/366 load these five pointers. Next word at0c0223d4 is a different function."
+      "evidence": "MOV.L at 0x0c022358/368/362/364/366 load these five pointers. Next word at 0x0c0223d4 is a different function."
     },
     {
       "address": "0x0c0223d4",
       "size": 216,
       "kind": "code",
       "sha256": "c63551367ce4b85666fc3528910fff4c9bba4c88f040517e2f643e9e67354110",
-      "evidence": "Indirect JSR from boot init at0c0283f4; BT/BF.S to shared epilogue 0c022498, inner loop 0c02240c, BRA 0c02244a; RTS at0c0224a8 plus delay slot. Next prologue at0c0224ac."
+      "evidence": "Indirect JSR from boot init at 0x0c0283f4; BT/BF.S to shared epilogue 0x0c022498, inner loop 0x0c02240c, BRA 0x0c02244a; RTS at 0x0c0224a8 plus delay slot. Next prologue at 0x0c0224ac."
     },
     {
       "address": "0x0c0224ca",
       "size": 62,
       "kind": "data",
       "sha256": "07f064b90cc16eb932d751ac9b44998f55ae54a195029a42556f8fb3ccc9f606",
-      "evidence": "MOV.W at0c0223fe plus MOV.L at0c0223e6/3fa/402/406/40e/420/42a/440/456/45e/460/46c/478/47e/484 consume every halfword from 0c0224ca through 0c022507."
+      "evidence": "MOV.W at 0x0c0223fe plus MOV.L at 0x0c0223e6/3fa/402/406/40e/420/42a/440/456/45e/460/46c/478/47e/484 consume every halfword from 0x0c0224ca through 0x0c022507."
     },
     {
       "address": "0x0c022526",
@@ -698,14 +698,14 @@
       "address": "0x0c0268d8",
       "size": 16,
       "kind": "code",
-      "evidence": "Tail-BRA target from 0c0268f8; three FP stores then RTS plus delay slot.",
+      "evidence": "Tail-BRA target from 0x0c0268f8; three FP stores then RTS plus delay slot.",
       "sha256": "4e8b277532e43b60084a9d8fed566dba32f9492c6178c4135bfb08fb16c0f8f4"
     },
     {
       "address": "0x0c0268e8",
       "size": 20,
       "kind": "code",
-      "evidence": "Direct JSR from 0c02ab64; BF to MOVA float load, tail BRA 0c0268d8 with delay slot.",
+      "evidence": "Direct JSR from 0x0c02ab64; BF to MOVA float load, tail BRA 0x0c0268d8 with delay slot.",
       "sha256": "1f038c8dfc32ed96c2f62c8ed4d3697cd02534e944374d180be0f994f0f6a0b5"
     },
     {
@@ -719,7 +719,7 @@
       "address": "0x0c026904",
       "size": 12,
       "kind": "data",
-      "evidence": "MOV.L at0c0268d8/8e8 and MOVA at0c0268f4 consume these three words.",
+      "evidence": "MOV.L at 0x0c0268d8/8e8 and MOVA at 0x0c0268f4 consume these three words.",
       "sha256": "7488c07d17597cd7d5606d343945660c05390d8427ec5156474d968edb770f62"
     },
     {
@@ -741,7 +741,7 @@
       "size": 74,
       "kind": "code",
       "sha256": "d835c03614e7d87dbbf4bd5192b5ab3e4e28e14f1766c12f9d85267204860c41",
-      "evidence": "Indirect JSR from boot init at0c028420; BRA at0c0271fa into the wait loop, BT at0c027210 to epilogue, BT at0c027216 back to 0c0271fe; RTS at0c027224 plus delay-slot restore; next prologue at0c027228 is a different function."
+      "evidence": "Indirect JSR from boot init at 0x0c028420; BRA at 0x0c0271fa into the wait loop, BT at 0x0c027210 to epilogue, BT at 0x0c027216 back to 0x0c0271fe; RTS at 0x0c027224 plus delay-slot restore; next prologue at 0x0c027228 is a different function."
     },
     {
       "address": "0x0c027228",
@@ -755,14 +755,14 @@
       "size": 4,
       "kind": "data",
       "sha256": "fbe3df336ab2a2f4f16d7ad7969e518e70f8a75e2833882cf6cf03835f87f782",
-      "evidence": "MOV.L at0c0271f8 loads pointer 0c28401c; adjacent words are not referenced by this function."
+      "evidence": "MOV.L at 0x0c0271f8 loads pointer 0x0c28401c; adjacent words are not referenced by this function."
     },
     {
       "address": "0x0c0272f8",
       "size": 16,
       "kind": "data",
       "sha256": "3ccc657c87869df6b87d22c8d689afa9388ffb9aef445b289c8079a93eb83a5c",
-      "evidence": "MOV.L at0c0271ec/1f2/1f4/1f6 load these four words; 0c0272ec-0c0272f7 are unreferenced and left unknown."
+      "evidence": "MOV.L at 0x0c0271ec/1f2/1f4/1f6 load these four words; 0x0c0272ec-0x0c0272f7 are unreferenced and left unknown."
     },
     {
       "address": "0x0c027308",
@@ -776,35 +776,35 @@
       "size": 240,
       "kind": "code",
       "sha256": "46877487a29770d47aff1c87acf4d7c2d899c94d432641b7182db41506ba609c",
-      "evidence": "Tail JMP from reviewed 0c02aba4; early BRA 0c02758e; loop BF.S 0c027386; BRA 0c02743a skips the inline pool after delay slot 0c02740e."
+      "evidence": "Tail JMP from reviewed 0x0c02aba4; early BRA 0x0c02758e; loop BF.S 0x0c027386; BRA 0x0c02743a skips the inline pool after delay slot 0x0c02740e."
     },
     {
       "address": "0x0c027410",
       "size": 36,
       "kind": "data",
       "sha256": "28e7470c3cb2e4bf2dc823db7b2aebd1b71bb31eff6212de66cd36b8c9bab70a",
-      "evidence": "MOV.W at0c027398/3b2/3f4 and MOV.L at0c027332/33e/342/346/34a/35a/37c/386 consume 0c027410-0c027433."
+      "evidence": "MOV.W at 0x0c027398/3b2/3f4 and MOV.L at 0x0c027332/33e/342/346/34a/35a/37c/386 consume 0x0c027410-0x0c027433."
     },
     {
       "address": "0x0c027434",
       "size": 290,
       "kind": "code",
       "sha256": "94fdb9d6272a1a2564783c135c0a9b50da0b8d1363eb74074a6183bb3ccb66f8",
-      "evidence": "BT/S target 0c027434 and BRA 0c02743a resume after the first pool; BF.S 0c02744c back to 0c02735a; BRA 0c027552 into the second pool skip."
+      "evidence": "BT/S target 0x0c027434 and BRA 0x0c02743a resume after the first pool; BF.S 0x0c02744c back to 0x0c02735a; BRA 0x0c027552 into the second pool skip."
     },
     {
       "address": "0x0c027556",
       "size": 42,
       "kind": "data",
       "sha256": "e4a233e4f38dcdaa4b8d32db46a9bb82bcda85cf48af5568778a4afd00c8cadf",
-      "evidence": "MOV.W at0c027486 and MOV.L at0c027450/468/472/488/49e/4a2/4b6/4d8/4f2/538/542 consume 0c027556-0c02757f."
+      "evidence": "MOV.W at 0x0c027486 and MOV.L at 0x0c027450/468/472/488/49e/4a2/4b6/4d8/4f2/538/542 consume 0x0c027556-0x0c02757f."
     },
     {
       "address": "0x0c027580",
       "size": 34,
       "kind": "code",
       "sha256": "dfddd7f22e8ed8fd2f5f8e2caa070a19f2d85ba91a0b471e61ac6cb73e182388",
-      "evidence": "BF.S 0c027580/538 loop then BT 0c027588 to shared epilogue; RTS at0c02759e plus delay-slot restore. Next word 0c0275a2 is padding/unknown."
+      "evidence": "BF.S 0x0c027580/538 loop then BT 0x0c027588 to shared epilogue; RTS at 0x0c02759e plus delay-slot restore. Next word 0x0c0275a2 is padding/unknown."
     },
     {
       "address": "0x0c0275dc",
@@ -867,14 +867,14 @@
       "size": 152,
       "kind": "code",
       "sha256": "cf6831ec08097c403a16f06a6b44e13695f485d3b1089f28bf14a36832cc7978",
-      "evidence": "Boot JSR target loaded from 0c0210a8; FPSCR setup, chained JSRs, then BRA 0c0283d2 with delay slot forming the main loop. Pool words after 0c02842a are not executed."
+      "evidence": "Boot JSR target loaded from 0x0c0210a8; FPSCR setup, chained JSRs, then BRA 0x0c0283d2 with delay slot forming the main loop. Pool words after 0x0c02842a are not executed."
     },
     {
       "address": "0x0c02842c",
       "size": 96,
       "kind": "data",
       "sha256": "101a4c6721ca6f0ecfae5cab9179256b4e6dcf42b3ccfd0f04be83f89e6aa556",
-      "evidence": "Every 32-bit word is a PC-relative MOV.L target from 0c028394-0c02841e (call/data pointers). Next instruction-shaped word at0c02848c is a different function and is not referenced."
+      "evidence": "Every 32-bit word is a PC-relative MOV.L target from 0x0c028394-0x0c02841e (call/data pointers). Next instruction-shaped word at 0x0c02848c is a different function and is not referenced."
     },
     {
       "address": "0x0c02849a",
@@ -985,14 +985,14 @@
       "address": "0x0c02a7fa",
       "size": 120,
       "kind": "code",
-      "evidence": "Direct JSR from 0c02ab7e; local BT/BF/BRA/JMP/RTS including delay slots; next instruction at0c02a872 is a different leaf.",
+      "evidence": "Direct JSR from 0x0c02ab7e; local BT/BF/BRA/JMP/RTS including delay slots; next instruction at 0x0c02a872 is a different leaf.",
       "sha256": "c6767b15f30649ef349330e688b3d379c8d72cc8491413ac88e1b138cc01b592"
     },
     {
       "address": "0x0c02a878",
       "size": 4,
       "kind": "data",
-      "evidence": "MOV.L at0c02a7fa loads 0c2d9618; 0c02a87c is unreferenced.",
+      "evidence": "MOV.L at 0x0c02a7fa loads 0x0c2d9618; 0x0c02a87c is unreferenced.",
       "sha256": "88d47f2daa4c2b130462e6bf03c99dfdf280aca1afff6c54b7920b25efe6dd67"
     },
     {
@@ -1006,7 +1006,7 @@
       "address": "0x0c02a880",
       "size": 16,
       "kind": "data",
-      "evidence": "MOV.L at0c02a848/852/866/860 load these four words.",
+      "evidence": "MOV.L at 0x0c02a848/852/866/860 load these four words.",
       "sha256": "675e11f70d35306e4ebd6fc33e345b6eb960f487fbbea0cfa2d58720b9313084"
     },
     {
@@ -1042,13 +1042,13 @@
       "size": 36,
       "kind": "code",
       "sha256": "da8a514210e2a25dce7668eb036f61f79baed11f575057f28cd3dadfe78e3d0c",
-      "evidence": "Indirect JSR from boot init at0c028408; BSR at0c02ab3a to helper 0c02ab50; tail JMP at0c02ab4c plus PR restore delay slot. Following word at0c02ab50 is that helper, not this function."
+      "evidence": "Indirect JSR from boot init at 0x0c028408; BSR at 0x0c02ab3a to helper 0x0c02ab50; tail JMP at 0x0c02ab4c plus PR restore delay slot. Following word at 0x0c02ab50 is that helper, not this function."
     },
     {
       "address": "0x0c02ab50",
       "size": 88,
       "kind": "code",
-      "evidence": "Direct BSR from reviewed 0c02ab3a; BF 0c02ab84; tail JMP at0c02aba4 plus delay-slot restore. Next function at0c02aba8.",
+      "evidence": "Direct BSR from reviewed 0x0c02ab3a; BF 0x0c02ab84; tail JMP at 0x0c02aba4 plus delay-slot restore. Next function at 0x0c02aba8.",
       "sha256": "8362d8796c76ef66370c4a1245f710e650d1201c25a275c6f41d3553d7a1e335"
     },
     {
@@ -1070,13 +1070,13 @@
       "size": 8,
       "kind": "data",
       "sha256": "78006ed1a312a6e81786d4c51864ffe0c92e125678e0f8d0a6c6efc6975070aa",
-      "evidence": "MOV.L at0c02ab2c/3e load 0c2d6f84; MOV.L at0c02ab4a loads the JMP target 0c028b24."
+      "evidence": "MOV.L at 0x0c02ab2c/3e load 0x0c2d6f84; MOV.L at 0x0c02ab4a loads the JMP target 0x0c028b24."
     },
     {
       "address": "0x0c02ac7c",
       "size": 32,
       "kind": "data",
-      "evidence": "MOV.L at0c02ab50/5e/64/6c/78/7e/94/a2 load these eight words.",
+      "evidence": "MOV.L at 0x0c02ab50/5e/64/6c/78/7e/94/a2 load these eight words.",
       "sha256": "3fe6a135531a7a6c3a1dc082ce5b61f8a0ba4abed7ff1e0a0ae420d4633e35ef"
     },
     {
@@ -1097,14 +1097,14 @@
       "address": "0x0c02c308",
       "size": 12,
       "kind": "code",
-      "evidence": "Direct JSR target from 0c02ab5e; two pointer clears then RTS plus delay-slot store.",
+      "evidence": "Direct JSR target from 0x0c02ab5e; two pointer clears then RTS plus delay-slot store.",
       "sha256": "0e04a2f13f6c35d67d3a38539afa8a7056e324d975f08edad8de5afc92f4f1c4"
     },
     {
       "address": "0x0c02c314",
       "size": 26,
       "kind": "code",
-      "evidence": "Tail JMP from 0c02a868; BT/S 0c02c32a, RTS plus NOP delay. Pool words already reviewed at 0c02c40c.",
+      "evidence": "Tail JMP from 0x0c02a868; BT/S 0x0c02c32a, RTS plus NOP delay. Pool words already reviewed at 0x0c02c40c.",
       "sha256": "1e9a3302a735457cce6599950870c1c820bfc7d6b367252f06da940527fce567"
     },
     {
@@ -1112,56 +1112,56 @@
       "size": 72,
       "kind": "code",
       "sha256": "99096cca2653ab3ee191e644cdd32d0f580427555daa6b2ef34f9b51d52bac3b",
-      "evidence": "Indirect JSR from boot init at0c028412; counted pointer-table walk, second walk, then tail JMP at0c02c3de plus delay-slot restore. Next function at0c02c3e2."
+      "evidence": "Indirect JSR from boot init at 0x0c028412; counted pointer-table walk, second walk, then tail JMP at 0x0c02c3de plus delay-slot restore. Next function at 0x0c02c3e2."
     },
     {
       "address": "0x0c02c3e2",
       "size": 12,
       "kind": "code",
       "sha256": "ed9d9363f99ea222a09f6b3c18491edc9fd29ca5dc1bfbce8a5d0c9414ecbae8",
-      "evidence": "Indirect JSR from boot init at0c0283e2; two pointer stores then RTS at0c02c3ea plus delay-slot store. Next function at0c02c3ee."
+      "evidence": "Indirect JSR from boot init at 0x0c0283e2; two pointer stores then RTS at 0x0c02c3ea plus delay-slot store. Next function at 0x0c02c3ee."
     },
     {
       "address": "0x0c02c40c",
       "size": 16,
       "kind": "data",
       "sha256": "80457fd249c6305ae4a757352de344d3df78ffd85d906ecb9ae4d4bdf01eefa9",
-      "evidence": "MOV.L at0c02c3a4/3ba/3a2/3b8 load these four words; 0c02c41c is unreferenced."
+      "evidence": "MOV.L at 0x0c02c3a4/3ba/3a2/3b8 load these four words; 0x0c02c41c is unreferenced."
     },
     {
       "address": "0x0c02c420",
       "size": 12,
       "kind": "data",
       "sha256": "c18dbd3262de404ca091449432c99b44b53a526fb72e84f95f72bc6fcdc5c953",
-      "evidence": "MOV.L at0c02c3b6/3cc/3d6 load call targets 0c026ae6, 0c1eca20, 0c1ecc20."
+      "evidence": "MOV.L at 0x0c02c3b6/3cc/3d6 load call targets 0x0c026ae6, 0x0c1eca20, 0x0c1ecc20."
     },
     {
       "address": "0x0c02c42c",
       "size": 8,
       "kind": "data",
       "sha256": "788306ebbf9740fe5f47aad46c82f225df5ef972f4f071e1c50ff71c001bd341",
-      "evidence": "MOV.L at0c02c3e2/3e6 load the two store destinations cleared by the 0c02c3e2 leaf."
+      "evidence": "MOV.L at 0x0c02c3e2/3e6 load the two store destinations cleared by the 0x0c02c3e2 leaf."
     },
     {
       "address": "0x0c02c4a2",
       "size": 72,
       "kind": "code",
       "sha256": "c46847b33a87cb7fc4e1d69a3fc16bb525408bd6be53ccdf778a0e2fb4dede04",
-      "evidence": "Indirect JSR from boot init at0c028418; same two-walk plus tail JMP pattern as 0c02c39a; JMP at0c02c4e6 plus delay slot; alignment zero at0c02c4ea left unknown."
+      "evidence": "Indirect JSR from boot init at 0x0c028418; same two-walk plus tail JMP pattern as 0x0c02c39a; JMP at 0x0c02c4e6 plus delay slot; alignment zero at 0x0c02c4ea left unknown."
     },
     {
       "address": "0x0c02c4ec",
       "size": 8,
       "kind": "data",
       "sha256": "4b35e31142c88636410e3237b45e8cc3580c142e067d3ee8cede6aef311c7250",
-      "evidence": "MOV.L at0c02c4c2/4c0 load these two words; 0c02c4f4 is unreferenced."
+      "evidence": "MOV.L at 0x0c02c4c2/4c0 load these two words; 0x0c02c4f4 is unreferenced."
     },
     {
       "address": "0x0c02c4f8",
       "size": 20,
       "kind": "data",
       "sha256": "0fbcc4f30f9999d53ffdf45410da0f08cc46b3416e1151781b29cbfa72412aff",
-      "evidence": "MOV.L at0c02c4ac/4aa/4be/4d4/4de load these five words."
+      "evidence": "MOV.L at 0x0c02c4ac/4aa/4be/4d4/4de load these five words."
     },
     {
       "address": "0x0c033564",
@@ -1343,7 +1343,7 @@
       "size": 26,
       "kind": "code",
       "sha256": "fd1e9cca8d95075880216bf70cf72575fd83f4d2763732007290cda1ccccd2f0",
-      "evidence": "Indirect JSR from boot init at0c0283fa; wait loop BT 0c034294, then tail BRA 0c033f28 with delay-slot restore. Next prologue at0c0342a2."
+      "evidence": "Indirect JSR from boot init at 0x0c0283fa; wait loop BT 0x0c034294, then tail BRA 0x0c033f28 with delay-slot restore. Next prologue at 0x0c0342a2."
     },
     {
       "address": "0x0c034358",
@@ -1357,7 +1357,7 @@
       "size": 8,
       "kind": "data",
       "sha256": "715a1e5391b4f8064bfda58025306a81aa3b379461e28fe752348e8b7d14fcd7",
-      "evidence": "MOV.L at0c03428c/292 load 0c1faf80 and 0c1f7570. Following word is consumed by the next function."
+      "evidence": "MOV.L at 0x0c03428c/292 load 0x0c1faf80 and 0x0c1f7570. Following word is consumed by the next function."
     },
     {
       "address": "0x0c03439c",
@@ -1448,7 +1448,7 @@
       "size": 72,
       "kind": "code",
       "sha256": "0076268b6e2c4a8555ac4610d87e8df423369ff338660e41f4b1ab10821c91a4",
-      "evidence": "Reviewed stack/prologue, BSR at0c04703e to 0c047b0c and BSR at0c04704e to 0c047796, branch0c047046, two RTS epilogues with final delay slot at0c047062."
+      "evidence": "Reviewed stack/prologue, BSR at 0x0c04703e to 0x0c047b0c and BSR at 0x0c04704e to 0x0c047796, branch 0x0c047046, two RTS epilogues with final delay slot at 0x0c047062."
     },
     {
       "address": "0x0c047064",
@@ -1630,14 +1630,14 @@
       "size": 58,
       "kind": "code",
       "sha256": "4de86e9a008c58964bf2cf6bbc4672d0db4d4d8b1515e19be9c867f8655820f7",
-      "evidence": "Direct BSR target at0c04704e; BT/BF to shared stores, BRA 0c0477dc with NOP delay, RTS at0c0477cc plus delay-slot MOV. Next prologue at0c0477dc."
+      "evidence": "Direct BSR target at 0x0c04704e; BT/BF to shared stores, BRA 0x0c0477dc with NOP delay, RTS at 0x0c0477cc plus delay-slot MOV. Next prologue at 0x0c0477dc."
     },
     {
       "address": "0x0c0477d0",
       "size": 12,
       "kind": "data",
       "sha256": "7865bdd6fa9d75f4e963b2830cae467a8d1c12120524b5ab43d4c7337478256a",
-      "evidence": "MOV.W at0c047796/7b4 load 0x0120 and 0x02d0; MOV.L at0c0477a8/7b0 load 0x00008600 and 0x0000fedf. 0c0477dc is a different function."
+      "evidence": "MOV.W at 0x0c047796/7b4 load 0x0120 and 0x02d0; MOV.L at 0x0c0477a8/7b0 load 0x00008600 and 0x0000fedf. 0x0c0477dc is a different function."
     },
     {
       "address": "0x0c0477dc",
@@ -1714,7 +1714,7 @@
       "size": 34,
       "kind": "code",
       "sha256": "e72aa4447c07fbec19da3ebed5cd0be8809e97700761cde0a0bd9676b6c5e5e6",
-      "evidence": "Direct BSR target at0c04703e; leaf straight-line code ending RTS at0c047b2a and NOP delay slot; first instruction reads external literal0c047b4a."
+      "evidence": "Direct BSR target at 0x0c04703e; leaf straight-line code ending RTS at 0x0c047b2a and NOP delay slot; first instruction reads external literal 0x0c047b4a."
     },
     {
       "address": "0x0c047b2e",
@@ -1728,7 +1728,7 @@
       "size": 2,
       "kind": "data",
       "sha256": "4491461c9aaa3786193f0e80b1018a44dc5f67bda4637bd26184a2950f1cf852",
-      "evidence": "MOV.W at0c047b0c reads constant0x0342 here; this is outside the helper instruction range."
+      "evidence": "MOV.W at 0x0c047b0c reads constant0x0342 here; this is outside the helper instruction range."
     },
     {
       "address": "0x0c047b4c",
@@ -2547,7 +2547,7 @@
       "size": 6,
       "kind": "code",
       "sha256": "2167672e5cfca79a54bea99b57e0d3893698149a47a67d90711d78c4cc61b5ca",
-      "evidence": "Direct BSR from 0c1eae82; MOV.L then RTS plus delay-slot load. Trailing NOPs are not executed."
+      "evidence": "Direct BSR from 0x0c1eae82; MOV.L then RTS plus delay-slot load. Trailing NOPs are not executed."
     },
     {
       "address": "0x0c1eae60",
@@ -2568,7 +2568,7 @@
       "size": 14,
       "kind": "code",
       "sha256": "36f5e29eba14400aa711a8948262329db0d8f6c216d514d32f15ddeb59d1ae0d",
-      "evidence": "Indirect JSR from boot init at0c0283d6; BSR 0c1eae50, then RTS at0c1eae8a plus delay-slot store. NOP at0c1eae8e is after the delay slot."
+      "evidence": "Indirect JSR from boot init at 0x0c0283d6; BSR 0x0c1eae50, then RTS at0x0c1eae8a plus delay-slot store. NOP at0x0c1eae8e is after the delay slot."
     },
     {
       "address": "0x0c1eae90",
@@ -2582,7 +2582,7 @@
       "size": 4,
       "kind": "data",
       "sha256": "38bed94912b02424cb8bf6df37601a86c503d9f4ca0196138ef3abc421bc85e1",
-      "evidence": "MOV.L at0c1eae50 loads this MMIO/data pointer. Adjacent 0c1eaf14 is only used by unreviewed 0c1eae60."
+      "evidence": "MOV.L at0x0c1eae50 loads this MMIO/data pointer. Adjacent 0x0c1eaf14 is only used by unreviewed 0x0c1eae60."
     },
     {
       "address": "0x0c1eaf14",
@@ -2596,7 +2596,7 @@
       "size": 4,
       "kind": "data",
       "sha256": "5f6cc045527b9ea76fe9509ce60c5798c86df42b0863b70469d2be396a0a0587",
-      "evidence": "MOV.L at0c1eae88 stores the BSR result through this pointer."
+      "evidence": "MOV.L at0x0c1eae88 stores the BSR result through this pointer."
     },
     {
       "address": "0x0c1eb000",
@@ -7853,49 +7853,49 @@
       "size": 10,
       "kind": "code",
       "sha256": "c4c644d59f5720925bef3eb0f5bfc75a8e9d95218d8ef85b0dbac953faeb6f2b",
-      "evidence": "Direct JSR from reviewed 0c027386/3ec; trampoline JMP at0c2051b8 plus delay slot. Next stub at0c2051bc is a different entry."
+      "evidence": "Direct JSR from reviewed 0x0c027386/3ec; trampoline JMP at0x0c2051b8 plus delay slot. Next stub at0x0c2051bc is a different entry."
     },
     {
       "address": "0x0c205294",
       "size": 4,
       "kind": "data",
       "sha256": "a0a9d8401780de7c224bc5e24ed2bc826a8fd3e5aff639938031e3c561525efc",
-      "evidence": "MOV.L at0c2051b4 loads JMP target 0c211700."
+      "evidence": "MOV.L at0x0c2051b4 loads JMP target 0x0c211700."
     },
     {
       "address": "0x0c205304",
       "size": 6,
       "kind": "code",
       "sha256": "2eb2196012d5e864de7c33573a13e8f3179d01a955e1d5994c123eac1314593c",
-      "evidence": "Direct JSR from reviewed 0c0274b6/538; JMP at0c205306 plus NOP delay."
+      "evidence": "Direct JSR from reviewed 0x0c0274b6/538; JMP at0x0c205306 plus NOP delay."
     },
     {
       "address": "0x0c20536e",
       "size": 38,
       "kind": "code",
       "sha256": "0a62012b5234c702293c460b9d0b96cff073a754f9704aa25f3a697374367205",
-      "evidence": "Direct JSR from reviewed 0c0274f2; BSR 0c205304, RTS at0c205382 plus delay, tail JMP at0c205390 plus PR restore delay. 0c205394 is not on this CFG."
+      "evidence": "Direct JSR from reviewed 0x0c0274f2; BSR 0x0c205304, RTS at0x0c205382 plus delay, tail JMP at0x0c205390 plus PR restore delay. 0x0c205394 is not on this CFG."
     },
     {
       "address": "0x0c20539c",
       "size": 34,
       "kind": "code",
       "sha256": "bbfe07287c05f2d1195d93a1a05338fefb7fa97c24d080a8d3b84a0e9da00d67",
-      "evidence": "Direct JSR from reviewed 0c027542; BSR 0c205304, RTS at0c2053ac plus delay, tail JMP at0c2053ba plus delay. Following 0c2053be is not executed."
+      "evidence": "Direct JSR from reviewed 0x0c027542; BSR 0x0c205304, RTS at0x0c2053ac plus delay, tail JMP at0x0c2053ba plus delay. Following 0x0c2053be is not executed."
     },
     {
       "address": "0x0c2053c8",
       "size": 4,
       "kind": "data",
       "sha256": "ba12e90a0e536bbb1afde404ec5bb858736f5e4f3f5bbb27689f9c359dceb915",
-      "evidence": "MOV.L at0c205304 loads JMP target 0c20a850."
+      "evidence": "MOV.L at0x0c205304 loads JMP target 0x0c20a850."
     },
     {
       "address": "0x0c2053d0",
       "size": 8,
       "kind": "data",
       "sha256": "d0ad38eb62e9f6fdfa25f5b0891ee700033b2a96ab2af18199aa77e98f9c5da9",
-      "evidence": "MOV.L at0c20538e/3b8 load 0c20a92a; MOV.L at0c2053b4 loads 0c23812c."
+      "evidence": "MOV.L at0x0c20538e/3b8 load 0x0c20a92a; MOV.L at0x0c2053b4 loads 0x0c23812c."
     },
     {
       "address": "0x0c2053dc",
