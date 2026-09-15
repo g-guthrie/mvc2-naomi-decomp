@@ -8,6 +8,7 @@ import pathlib
 from collections import defaultdict
 
 from core import ROOT, load, number, sha, verify_rom
+from vendor.sh4dis import sh4
 
 
 def sext(value, bits):
@@ -297,6 +298,11 @@ def walk_function(image, entry, max_insns=2048):
         if word is None:
             issues.append(("noword", pc))
             continue
+        # A word that does not encode an instruction cannot be executed, so the
+        # walk has left real code. Rejection only; decoding never proves code.
+        if sh4.disasm(word, pc) == "error":
+            issues.append(("undecodable", pc))
+            continue
         visited.add(pc)
         if len(visited) > max_insns:
             issues.append(("too_big", entry))
@@ -585,13 +591,15 @@ def uncovered_slices(start, size, existing, kind):
 def proposals_from_functions(image, functions, existing):
     seen = set()
     out = []
+    claimed = list(existing)
     for fn in functions:
         for start, size in fn["code"]:
-            for s, z in uncovered_slices(start, size, existing, "code"):
+            for s, z in uncovered_slices(start, size, claimed, "code"):
                 key = (s, z, "code")
                 if key in seen:
                     continue
                 seen.add(key)
+                claimed.append((s, s + z, "code"))
                 sl = image.blob[s - image.base:s - image.base + z]
                 out.append({
                     "address": f"0x{s:08x}",
@@ -604,11 +612,12 @@ def proposals_from_functions(image, functions, existing):
                     ),
                 })
         for start, size in fn["data"]:
-            for s, z in uncovered_slices(start, size, existing, "data"):
+            for s, z in uncovered_slices(start, size, claimed, "data"):
                 key = (s, z, "data")
                 if key in seen:
                     continue
                 seen.add(key)
+                claimed.append((s, s + z, "data"))
                 sl = image.blob[s - image.base:s - image.base + z]
                 out.append({
                     "address": f"0x{s:08x}",
