@@ -25,20 +25,20 @@
   },
   "scope": "Main SH-4 program only; service/test code and other ROM contents are separate work.",
   "code": {
-    "identified_bytes": 1340034,
-    "total_bytes": 1340034,
+    "identified_bytes": 1340068,
+    "total_bytes": 1340068,
     "matched_bytes": 1068,
     "linked_bytes": 1068,
     "linked_units": 266,
-    "linked_percent": 0.07969947031194731
+    "linked_percent": 0.07969744818919637
   },
   "data": {
-    "identified_bytes": 1084798,
-    "total_bytes": 1084798,
+    "identified_bytes": 1084764,
+    "total_bytes": 1084764,
     "matched_bytes": 272,
     "linked_bytes": 272,
     "linked_units": 24,
-    "linked_percent": 0.025073792540177987
+    "linked_percent": 0.025074578433650085
   },
   "main_image_bytes": 2424832,
   "unclassified_bytes": 0,
@@ -47,8 +47,8 @@
   "layout_complete": true,
   "evidence": {
     "schema_version": 1,
-    "source_fingerprint": "b02ca438f8ef3a382c6350ce134ca791451bd448448165f2c45d3096eb79243a",
-    "source_commit": "ce67ab7a51ee84e3870f1719eb8c17c23a6e2919",
+    "source_fingerprint": "66e69dcee37ac88a8dd12a7c7e9a2b2e4c04984ae4f4c9aac170b568d176acbb",
+    "source_commit": "local",
     "roms_verified": 18,
     "verified_units": [
       {
@@ -8808,12 +8808,35 @@
     {
       "name": "data_0c047aac",
       "address": 201620140,
-      "size": 672,
+      "size": 96,
       "kind": "data",
       "status": "assembly",
       "representation": "placeholder",
       "source": "",
-      "sha256": "1de5bf0e3167bd7cd12178cef83d879f3bbc9b78c9ee22a4c6b115b8ee51c2fd",
+      "sha256": "ea4cbcc6d1e940d759efca700eba3be2fd7a0697ca7da12fad97014dfe59aece",
+      "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+    },
+    {
+      "name": "func_0c047b0c",
+      "address": 201620236,
+      "size": 34,
+      "kind": "code",
+      "status": "candidate",
+      "representation": "placeholder",
+      "source": "src/candidate_0c047b0c.c",
+      "section": ".text.func_0c047b0c",
+      "sha256": "e72aa4447c07fbec19da3ebed5cd0be8809e97700761cde0a0bd9676b6c5e5e6",
+      "notes": "BSR callee of func_0c04701c. SHC 5.0r31 matches load/xor/or/and shape; literal disp, extu order, and rts delay slot still differ. No matching credit."
+    },
+    {
+      "name": "data_0c047b2e",
+      "address": 201620270,
+      "size": 542,
+      "kind": "data",
+      "status": "assembly",
+      "representation": "placeholder",
+      "source": "",
+      "sha256": "bcc2564706827000902090bc35332207a7367ca756b917358c24b6b79d390d88",
       "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
     },
     {
