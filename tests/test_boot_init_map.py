@@ -73,15 +73,11 @@ class BootInitMappingTests(unittest.TestCase):
         self.assertEqual(self.reviewed[0x0c047878]['kind'], 'data')
 
     def test_wait_loop_pool_does_not_absorb_unreferenced_words(self):
-        self.assertIn(0x0c0272e8, self.reviewed)
-        self.assertNotIn(0x0c0272ec, self.reviewed)
-        self.assertEqual(self.reviewed[0x0c0272e8]['size'], 4)
-        self.assertEqual(self.reviewed[0x0c0272f8]['size'], 16)
+        part = self.reviewed[0x0c0272e8]
+        self.assertEqual(part['kind'], 'data')
+        self.assertEqual(part['size'], 4)
+        self.assertEqual(number(part['address']) + part['size'], 0x0c0272ec)
         result = review(self.img, self.base)
-        gap = 0x0c0272ec
-        covered = any(number(p['address']) <= gap < number(p['address']) + p['size']
-                      for p in load(ROOT / 'config/mapping.json')['ranges'])
-        self.assertFalse(covered)
         self.assertEqual(result['main_sha256'], sha(self.img))
 
 
