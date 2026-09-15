@@ -46,6 +46,14 @@ class VerificationTests(unittest.TestCase):
         self.assertTrue(placeholders)
         self.assertTrue(all(u["status"] != "matching" for u in placeholders))
 
+    def test_bsr_callee_of_candidate_is_catalogued_as_code(self):
+        units = load_json(ROOT / "config/units.json")
+        addr = 0x0C047B0C
+        covering = [u for u in units if u["address"] <= addr < u["address"] + u["size"]]
+        self.assertEqual(len(covering), 1)
+        self.assertEqual(covering[0]["kind"], "code")
+        self.assertNotEqual(covering[0]["status"], "matching")
+
     def test_main_entry_is_catalogued_as_code(self):
         target = load_json(ROOT / "config/target.json")
         units = load_json(ROOT / "config/units.json")

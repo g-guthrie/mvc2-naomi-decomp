@@ -37,7 +37,17 @@ SHC `-optimize=1` matches the first **34 bytes** of `func_0c04701c` (r14/pr
 frame and table math). Remaining mismatches are `bsr` displacements to
 `0x0c047b0c` / `0x0c047796` and an extra FPSCR save.
 
-`func_0c047b0c` is a 32-byte leaf (word xor/or/and into `*out`, `movt`
-return). SHC `-optimize=1` emits the same algorithm with different
-registers and `movt` in the `rts` delay slot; retail uses `movt` then
-`rts; nop`. Still a candidate.
+`func_0c047b0c` is catalogued as a 34-byte **candidate** (it is a BSR
+target of `func_0c04701c`, not data). Closest SHC 5.0r31 `-optimize=1`
+shape:
+
+```
+*out = ((*(a+0x344)^z) | (*(a+0x340)^z)) & w;  /* z = *(a+0x342) */
+return *out == w;
+```
+
+That reproduces `mov.w @(r0,r4),r7` / `r3` / `r2`, the xor/or, and
+`and r5,r3`. It still misses a byte match: PC-relative displacement to
+the `0x0342` pool (pool sits 62 bytes after the entry in retail, 32
+bytes after in a standalone object), `extu` order, and `rts; movt`
+instead of `movt; rts; nop`. Not promoted.
