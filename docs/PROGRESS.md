@@ -12,10 +12,12 @@ It does not invent percentages where the original layout is still unknown.
 | Unclassified bytes | Main-image bytes not yet assigned a reviewed code/data range |
 | Main image reconstructed | Linked source code + data divided by the fixed full main-image size |
 
-**The code and data total sizes remain unavailable while unclassified bytes
-remain.** A report of 32 matching bytes out of 32 currently identified code
-bytes would be mathematically true but misleading as game progress. We report
-32 linked code bytes and 0.00132% of the main image instead.
+**Code and data percentages use the reviewed catalog totals once every main-image
+byte is classified.** Until then they stay unavailable so a handful of matching
+leaves cannot look like 100% of the game. The README infographic and
+`docs/index.html` show two decomp.dev-style bars (code and data) plus the
+fixed main-image percentage. CI rewrites those files after every successful
+`main` build.
 
 The initial data observations are raw address-reference cells. They have no
 source reconstruction credit. Data must gain meaningful boundaries,

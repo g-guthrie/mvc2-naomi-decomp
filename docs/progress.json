@@ -25,20 +25,20 @@
   },
   "scope": "Main SH-4 program only; service/test code and other ROM contents are separate work.",
   "code": {
-    "identified_bytes": 1339878,
-    "total_bytes": 1339878,
+    "identified_bytes": 1340034,
+    "total_bytes": 1340034,
     "matched_bytes": 1068,
     "linked_bytes": 1068,
     "linked_units": 266,
-    "linked_percent": 0.07970874960257576
+    "linked_percent": 0.07969947031194731
   },
   "data": {
-    "identified_bytes": 1084954,
-    "total_bytes": 1084954,
+    "identified_bytes": 1084798,
+    "total_bytes": 1084798,
     "matched_bytes": 272,
     "linked_bytes": 272,
     "linked_units": 24,
-    "linked_percent": 0.025070187307480316
+    "linked_percent": 0.025073792540177987
   },
   "main_image_bytes": 2424832,
   "unclassified_bytes": 0,
@@ -47,7 +47,7 @@
   "layout_complete": true,
   "evidence": {
     "schema_version": 1,
-    "source_fingerprint": "81f91c3b91510082446962c2eed67975596b97bdea61710920be7b4bd03855c4",
+    "source_fingerprint": "820762b79e9cbba4a98ff36abe1add603d66c46cb44dfd0db2e11211262af32d",
     "source_commit": "local",
     "roms_verified": 18,
     "verified_units": [
@@ -2403,15 +2403,26 @@
   },
   "units": [
     {
-      "name": "data_0c021000",
+      "name": "code_0c021000",
       "address": 201461760,
-      "size": 204,
+      "size": 156,
+      "kind": "code",
+      "status": "assembly",
+      "representation": "placeholder",
+      "source": "",
+      "sha256": "45fbce110990d37edf4e50643cc175769ec389af6f691389dae711d6869d5101",
+      "notes": "Reviewed CRT0 at the main entry: P2 jump, BSS clear, register/FPU wipe, jsr to start. Not reconstructed C."
+    },
+    {
+      "name": "data_0c02109c",
+      "address": 201461916,
+      "size": 48,
       "kind": "data",
       "status": "assembly",
       "representation": "placeholder",
       "source": "",
-      "sha256": "f110290145b1fcddb7a71c1cc2db57bfd4c29f1bde35d361ba99d03e8b24252b",
-      "notes": "Reviewed data or remainder after evidence-based function ranges: pointer runs, strings, zeros, or bytes not entered as functions. Not reconstructed objects."
+      "sha256": "694dba306cc2e2c37297cdd44ebabc543a13836c5e07a43b8dd64979b9d29b21",
+      "notes": "Literal pool for CRT0 (BSS range, stack, start address, P2/cache masks)."
     },
     {
       "name": "code_0c0210cc",
