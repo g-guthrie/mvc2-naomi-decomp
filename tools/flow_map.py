@@ -208,6 +208,58 @@ def recover_indexed_tables(image, pcs):
     return tables, seeds
 
 
+def recover_callback_cells(image, pcs):
+    """ROM cells loaded with MOV.L @Rm then JSR/JMP @Rn; Rm from a PC-relative MOV.L."""
+    visited = set(pcs)
+    runs = []
+    seeds = []
+    seen = set()
+    for pc in sorted(visited):
+        word = image.word(pc)
+        if word is None or (word & 0xF00F) != 0x6002:
+            continue
+        dest = (word >> 8) & 0xF
+        ptr_reg = (word >> 4) & 0xF
+        uses = False
+        ahead = pc + 2
+        for _ in range(4):
+            if ahead not in visited:
+                break
+            nxt = image.word(ahead)
+            if nxt is None:
+                break
+            inf = decode(ahead, nxt)
+            if inf["kind"] in {"jmp", "jsr"} and (inf.get("jmp_reg") == dest or inf.get("jsr_reg") == dest):
+                uses = True
+                break
+            ahead += 2
+        if not uses:
+            continue
+        back = pc - 2
+        base = None
+        for _ in range(12):
+            if back not in visited:
+                break
+            prev = image.word(back)
+            if prev is None:
+                break
+            inf = decode(back, prev)
+            if inf.get("lit_reg") == ptr_reg and inf["lit"] and inf["lit"][1] == 4:
+                base = image.u32(inf["lit"][0])
+                break
+            if inf["kind"] in {"rts", "rte", "jmp", "bra", "bsr", "jsr", "bt", "bf", "bts", "bfs"}:
+                break
+            back -= 2
+        if not base or base in seen or not image.contains(base, 4):
+            continue
+        seen.add(base)
+        runs.append((base, 4))
+        value = image.u32(base)
+        if value and value % 2 == 0 and image.contains(value):
+            seeds.append(value)
+    return runs, seeds
+
+
 def walk_function(image, entry, max_insns=2048):
     if not image.contains(entry) or entry % 2:
         return None
@@ -303,6 +355,9 @@ def walk_function(image, entry, max_insns=2048):
                 run_s = run_e = addr
         data_runs.append((run_s, run_e + 1 - run_s))
     tables, table_seeds = recover_indexed_tables(image, code_pcs)
+    cells, cell_seeds = recover_callback_cells(image, code_pcs)
+    tables = tables + cells
+    table_seeds = table_seeds + cell_seeds
     table_bytes = set()
     for start, size in tables:
         data_runs.append((start, size))
