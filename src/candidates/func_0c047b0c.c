@@ -1,8 +1,4 @@
-/* Candidate: SHC 5.0r31 -optimize=1 emits this algorithm with r7/r3/r2
- * loads matching retail, but the PC-relative literal displacement, extu
- * order, and rts delay-slot (movt vs nop) still differ. Not in the strict
- * matching link. */
-
+/* Unverified candidate. Original function and reference size are in config/units.json. */
 int func_0c047b0c(unsigned char *a, unsigned short w, unsigned short *out)
 {
     unsigned short z = *(unsigned short *)(a + 0x342);

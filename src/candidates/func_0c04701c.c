@@ -1,9 +1,4 @@
-/* Candidate only: GCC 13 SH-4 -O2 does not reproduce this sequence.
- * Original at 0x0c04701c..0x0c047064 (72 bytes) saves r14/pr, uses 12 stack
- * bytes, stores 0 to *r6, calls 0x0c047b0c then maybe 0x0c047796.
- * Not included in the strict matching link.
- */
-
+/* Unverified candidate. Original function and reference size are in config/units.json. */
 int func_0c047b0c(int a, int w, short *local);
 int func_0c047796(int a, unsigned char *table, unsigned char *obj, int w);
 
