@@ -1423,6 +1423,69 @@
       "evidence": "Handler-table entry at 0x0c23bf2c targets this function. It has an evidenced tail branch to 0x0c046f9a, BSR to 0x0c047a8c, and indirect dispatch through table 0x0c23bf40; all local delay slots are included through 0x0c047538."
     },
     {
+      "address": "0x0c04753a",
+      "size": 50,
+      "kind": "code",
+      "sha256": "18e71638e6ac8a7a0dbdfec3acbfb278912e80859baa73a569d68a09178729e4",
+      "evidence": "Handler-table entry at 0x0c23bf40 targets this function. BSR at 0x0c047556 calls 0x0c047a8c and RTS at 0x0c047568 includes its delay slot at 0x0c04756a."
+    },
+    {
+      "address": "0x0c04756c",
+      "size": 34,
+      "kind": "code",
+      "sha256": "584f216168f35b7323b716ff60293bed6abb158523e071f35fcbd1d3f6ff02b5",
+      "evidence": "Handler-table entry at 0x0c23bf44 targets this function. Its branch reaches code at 0x0c0475a8 around the pool; RTS at 0x0c04758a includes the delay slot at 0x0c04758c."
+    },
+    {
+      "address": "0x0c04758e",
+      "size": 26,
+      "kind": "data",
+      "sha256": "9d3817b014163eb3f600dac6269127a973f936f29b6c6f033454114b1492987a",
+      "evidence": "PC-relative loads from reviewed handlers consume this shared literal and dispatch-table pool. Direct control flow branches around it to 0x0c0475a8."
+    },
+    {
+      "address": "0x0c0475a8",
+      "size": 278,
+      "kind": "code",
+      "sha256": "ff96533188f528539880c65d6d73798be7b64698bb1f677c926447e882e1b69f",
+      "evidence": "Continuation targeted around the shared pool. Direct paths remain in reviewed handler code or tail-branch to reviewed entries 0x0c047796 and 0x0c0477dc; all RTS/JMP delay slots are included through 0x0c0476bc."
+    },
+    {
+      "address": "0x0c0476be",
+      "size": 22,
+      "kind": "data",
+      "sha256": "a3e9dba39a6fa4e5c1effaa8b54d4e3dd7071361ea593ca8223f86bc2c072474",
+      "evidence": "PC-relative loads in 0x0c0475a8..0x0c0476bc consume this pool, including the dispatch-table pointer at 0x0c0476d0; the next table-backed entry starts at 0x0c0476d4."
+    },
+    {
+      "address": "0x0c0476d4",
+      "size": 32,
+      "kind": "code",
+      "sha256": "2082239914b91007e71f5a50046d6e841beacb6cdfe47375fd65128d986e8067",
+      "evidence": "Handler-table entry at 0x0c23bf54 targets this function. Its conditional paths end at RTS 0x0c0476f0 with the delay slot at 0x0c0476f2."
+    },
+    {
+      "address": "0x0c0476f4",
+      "size": 38,
+      "kind": "code",
+      "sha256": "0aad26784ae0f185d89b164f2a1febbc9d6d982bec0a651a3f860ff3742328bc",
+      "evidence": "Handler-table entry at 0x0c23bf58 targets this function. Conditional and BRA paths converge at 0x0c047716; all BRA and RTS delay slots are included through 0x0c047718."
+    },
+    {
+      "address": "0x0c04771a",
+      "size": 66,
+      "kind": "code",
+      "sha256": "122251543fbccddfad17093425d77dd54117012de83eae71bff49c7ce8af7b13",
+      "evidence": "Handler-table entry at 0x0c23bf5c targets this function. BSR at 0x0c047730 calls reviewed 0x0c0477dc; both return paths include their delay slots through 0x0c04775a."
+    },
+    {
+      "address": "0x0c04775c",
+      "size": 58,
+      "kind": "code",
+      "sha256": "8d12e0612bc0a0d146e8c13d04952a78834bcc790b7eee1ef3c19f12a5c9eb80",
+      "evidence": "Coherent contiguous helper after the previous return. BSR at 0x0c047778 calls reviewed 0x0c0477dc and both RTS paths include delay slots through 0x0c047794, before the next reviewed entry at 0x0c047796."
+    },
+    {
       "address": "0x0c047796",
       "size": 58,
       "kind": "code",
