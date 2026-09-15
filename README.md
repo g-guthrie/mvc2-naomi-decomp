@@ -17,7 +17,7 @@ The command verifies all 18 ROM members and bundled tool hashes, exercises the H
 ## Progress
 
 <!-- progress:start -->
-**4 / 2,424,832 main-image bytes verified from Hitachi C** (0.000165%).
+**584 / 2,424,832 main-image bytes verified from Hitachi C** (0.024084%).
 
 ![Byte-weighted progress treemap](assets/progress.svg)
 

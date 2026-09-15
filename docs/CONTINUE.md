@@ -15,6 +15,10 @@ A unit may contain several original functions or data objects if needed to repro
 
 ## Baseline
 
-`noop` is a four-byte no-op at `0x0c0275dc` and exercises the complete C-to-linked-byte path. Two other C candidates are retained as starting points. Earlier experiments and progress are archived in tag `pre-hitachi-foundation-20260915`; do not restore their progress claims without rebuilding through the current verifier.
+`noop` plus `leaves_00`–`leaves_18` are verified Hitachi `-optimize=1` four-byte leaves at original **4-aligned** addresses: empty functions, `return 0/1/42/120`, `return x`, and three word-field accessors. That is **146 functions / 584 bytes**. Hitachi `lnk` rejects 2-aligned `START` addresses (`ILLEGAL START ADDRESS ALIGNMENT`), so odd-address copies of the same shapes are not in the matching link yet.
 
-The next substantive work is identifying original compilation patterns/options and converting meaningful small functions. This setup supplies tools and strict evidence, not a claim that SHC 5.0R31 is the exact revision for every original file.
+`mask_helper` (`0x0c047b0c`, 34 bytes) still fails: 22/34 equal bytes, linked size 36. The instruction body wants `MOVT; RTS; NOP` and a PC-relative `0x0342` literal at `0x0c047b4a` (28 bytes of other code sit between the function and that pool). Isolated compile puts the literal immediately after the function (`disp=0x0f` vs retail `0x1d`) and uses a different compare/return sequence. `dispatch_parent` remains 12/72.
+
+Earlier GCC/layout work is archived in tag `pre-hitachi-foundation-20260915`; do not restore those progress claims without rebuilding through this verifier.
+
+Next: match `mask_helper` as a complete 34-byte P section (or a larger unit that also reconstructs the following code and the shared literal), then `dispatch_parent`. Do not credit 2-aligned leaves until the linker can place them. This is not a claim that SHC 5.0R31 is the exact revision for every original file.
