@@ -16,7 +16,7 @@ class BulkTests(unittest.TestCase):
         main = verify_rom(target)[number(target['main']['rom_offset']):]
         base = number(target['main']['address'])
         units = {u['id']: u for u in load(ROOT / 'config/units.json')}
-        for uid in ('bulk_000', 'bulk_152'):
+        for uid in ('bulk_000', 'bulk_152', 'rest_000', 'leaves_rest_00'):
             work = ROOT / 'build' / f'work-{uid}'
             if work.exists():
                 shutil.rmtree(work)

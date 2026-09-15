@@ -1,0 +1,337 @@
+/* Hitachi const data remaining after earlier bulk units. */
+
+#pragma section n0d7958
+const unsigned int dat_0c0f8958[] = {
+    0x0c24a64cu, 0x0c2f83f8u, 0x0c02a0c4u, 0x0c0346dau, 0x0c24a74cu, 0x0c2d9260u,
+};
+
+#pragma section n0d7a40
+const unsigned int dat_0c0f8a40[] = {
+    0x01fe01ffu,
+};
+
+#pragma section n0d7b8e
+const unsigned short dat_0c0f8b8e[] = {
+    0x01a1u,
+};
+
+#pragma section n0d7b94
+const unsigned int dat_0c0f8b94[] = {
+    0x01d20141u, 0x0c044cbcu, 0x0c2f83f8u,
+};
+
+#pragma section n0d7bbc
+const unsigned int dat_0c0f8bbc[] = {
+    0x0c24a75cu, 0x41200000u, 0xc1200000u,
+};
+
+#pragma section n0d7d1e
+const unsigned short dat_0c0f8d1e[] = {
+    0x01d2u, 0x0141u,
+};
+
+#pragma section n0d7d24
+const unsigned int dat_0c0f8d24[] = {
+    0x0c02a026u, 0x40d55555u, 0xc0d55555u, 0x0c02a0c4u, 0x0c0437b8u, 0x0c24a76cu,
+};
+
+#pragma section n0d7e4a
+const unsigned short dat_0c0f8e4a[] = {
+    0x0141u, 0x01d2u, 0x041cu, 0xa026u, 0x0c02u, 0x5555u, 0x3f55u, 0x0000u,
+    0xbe20u, 0xaaaau, 0xc13au, 0xaaaau, 0x413au, 0x5555u, 0x3dd5u, 0x5555u,
+    0xbdd5u, 0x5555u, 0xc0d5u, 0x5555u, 0x40d5u, 0xa0c4u, 0x0c02u,
+};
+
+#pragma section n0d7fa0
+const unsigned int dat_0c0f8fa0[] = {
+    0x0130012cu,
+};
+
+#pragma section n0d7fb8
+const unsigned int dat_0c0f8fb8[] = {
+    0xc0555555u,
+};
+
+#pragma section n0d80e8
+const unsigned int dat_0c0f90e8[] = {
+    0x014101a1u, 0x0c2f8384u, 0x0c2f83f8u, 0x0c2d9260u, 0x0c02a0c4u, 0x0c02a026u, 0x0c1b3e6cu,
+};
+
+#pragma section n0d8206
+const unsigned short dat_0c0f9206[] = {
+    0x020cu, 0x0414u, 0x01e9u, 0xa39au, 0x0c02u, 0x8338u, 0x0c2fu, 0x0000u,
+    0x0400u, 0xa780u, 0x0c24u, 0x6f84u, 0x0c2du, 0xa0c4u, 0x0c02u, 0xa788u,
+    0x0c24u, 0xa7a8u, 0x0c24u, 0xa7d0u, 0x0c24u,
+};
+
+#pragma section n0d834e
+const unsigned short dat_0c0f934e[] = {
+    0x02a9u, 0x041cu, 0x01a1u, 0x01f9u,
+};
+
+#pragma section n0d835c
+const unsigned int dat_0c0f935c[] = {
+    0x0c0442fau, 0x0c2f83f8u,
+};
+
+#pragma section n0d84ae
+const unsigned short dat_0c0f94ae[] = {
+    0x0255u,
+};
+
+#pragma section n0d84ba
+const unsigned short dat_0c0f94ba[] = {
+    0x03f8u, 0x0328u, 0x03f1u, 0x0141u,
+};
+
+#pragma section n0d84cc
+const unsigned int dat_0c0f94cc[] = {
+    0x0c24a7e0u,
+};
+
+#pragma section n0d84e4
+const unsigned int dat_0c0f94e4[] = {
+    0x434db6dbu, 0x0c0429a4u,
+};
+
+#pragma section n0d85ea
+const unsigned short dat_0c0f95ea[] = {
+    0x0141u, 0x01d2u, 0x03f8u, 0x0328u, 0x02a5u, 0x019eu, 0x02b0u, 0x5555u,
+    0x4155u, 0x5555u, 0xc155u, 0x5555u, 0x3ed5u, 0x5555u, 0xbed5u, 0x3e6cu,
+    0x0c1bu, 0xa026u, 0x0c02u, 0xa7f5u, 0x0c24u, 0xa684u, 0x0c02u, 0xa39au,
+    0x0c02u,
+};
+
+#pragma section n0d8720
+const unsigned int dat_0c0f9720[] = {
+    0x0081019eu, 0x01fd02b0u, 0x010001d2u, 0x020c02a4u, 0x03f90420u, 0x01a10327u, 0x0c047bbeu, 0x0c24a7f0u,
+    0x0c2f83f8u, 0x0c2d9260u, 0x0c02a39au, 0x0c02a0c4u,
+};
+
+#pragma section n0d8898
+const unsigned int dat_0c0f9898[] = {
+    0x02a4019eu, 0x02a6041cu, 0x02a901f9u, 0x01a10255u,
+};
+
+#pragma section n0d8a04
+const unsigned short dat_0c0f9a04[] = {
+    0x01a3u, 0x01acu, 0x0141u, 0x01d2u, 0x0140u,
+};
+
+#pragma section n0d8a10
+const unsigned int dat_0c0f9a10[] = {
+    0x0c2f83f8u,
+};
+
+#pragma section n0d8a28
+const unsigned int dat_0c0f9a28[] = {
+    0x0c2d9260u, 0x0c24a81cu,
+};
+
+#pragma section n0d8b30
+const unsigned int dat_0c0f9b30[] = {
+    0x01f902a9u, 0x01a101a3u, 0x01d20141u,
+};
+
+#pragma section n0d8b4c
+const unsigned int dat_0c0f9b4c[] = {
+    0x0c2f83f8u, 0x0c02a026u, 0x0c0451f2u, 0x0c24a82cu, 0xc0092492u, 0xbc092492u,
+};
+
+#pragma section n0d8c9a
+const unsigned short dat_0c0f9c9a[] = {
+    0x019eu, 0x01f9u,
+};
+
+#pragma section n0d8ca0
+const unsigned int dat_0c0f9ca0[] = {
+    0x0c02a026u, 0x42892492u, 0x0c2d9260u, 0x0c043324u,
+};
+
+#pragma section n0d8cb4
+const unsigned int dat_0c0f9cb4[] = {
+    0x0c0437b8u, 0x0c0442fau,
+};
+
+#pragma section n0d8db4
+const unsigned int dat_0c0f9db4[] = {
+    0x01f90141u, 0x01a101d2u,
+};
+
+#pragma section n0d8dd4
+const unsigned int dat_0c0f9dd4[] = {
+    0x41f00000u, 0x40892492u, 0xbf4db6dbu, 0x0c2f83f8u,
+};
+
+#pragma section n0d8f14
+const unsigned short dat_0c0f9f14[] = {
+    0x01f9u, 0x041cu, 0x01a1u,
+};
+
+#pragma section n0d8f3c
+const unsigned int dat_0c0f9f3c[] = {
+    0x0c2f83f8u, 0x0c1b3e6cu, 0x0c0437b8u,
+};
+
+#pragma section n0d904e
+const unsigned short dat_0c0fa04e[] = {
+    0x0141u, 0x01fau, 0x0c00u, 0x01a3u, 0x01f9u, 0x01feu, 0x01f7u, 0x0800u,
+    0x0130u, 0x01d2u, 0x01c8u, 0x02aau,
+};
+
+#pragma section n0d9068
+const unsigned int dat_0c0fa068[] = {
+    0x42b40000u, 0x43340000u,
+};
+
+#pragma section n0d9182
+const unsigned short dat_0c0fa182[] = {
+    0x01c8u, 0x01f7u, 0x01a0u, 0x02a9u, 0x0141u, 0x01a1u, 0x01d2u, 0x01b4u,
+};
+
+#pragma section n0d92c8
+const unsigned int dat_0c0fa2c8[] = {
+    0x01a101b4u,
+};
+
+#pragma section n0d92d0
+const unsigned int dat_0c0fa2d0[] = {
+    0x01c80130u, 0x01e904c9u, 0x0c034946u, 0xc32baaaau, 0x43362492u, 0x0c1ce916u, 0x0c0438deu, 0x0c03edccu,
+};
+
+#pragma section n0d9378
+const unsigned short dat_0c0fa378[] = {
+    0x04c9u, 0x01e9u, 0x01a3u,
+};
+
+#pragma section n0d9380
+const unsigned int dat_0c0fa380[] = {
+    0x0c045248u,
+};
+
+#pragma section n0d9c18
+const unsigned int dat_0c0fac18[] = {
+    0x0c044cbcu, 0x0c1fb5acu, 0x0c24a8d8u,
+};
+
+#pragma section n0d9e78
+const unsigned int dat_0c0fae78[] = {
+    0x01fe0201u, 0x01ff01d6u,
+};
+
+#pragma section n0d9faa
+const unsigned short dat_0c0fafaa[] = {
+    0x01ffu,
+};
+
+#pragma section n0da11a
+const unsigned short dat_0c0fb11a[] = {
+    0x0141u, 0x01d2u, 0x01d1u, 0xa026u, 0x0c02u, 0x5555u, 0xc185u, 0x5555u,
+    0x3e55u, 0x5555u, 0x4185u, 0x5555u, 0xbe55u, 0x4548u, 0x0c1bu, 0x44a0u,
+    0x0c03u, 0xa0c4u, 0x0c02u, 0xc938u, 0x0c0fu, 0xaa70u, 0x0c24u,
+};
+
+#pragma section n0da240
+const unsigned int dat_0c0fb240[] = {
+    0x01d20141u, 0x0c02a026u, 0x418c0000u, 0xc18c0000u, 0x0c1b4548u, 0x0c0344a0u, 0x0c02a0c4u, 0x0c0fc938u,
+    0x0c24aa7cu,
+};
+
+#pragma section n0da3ba
+const unsigned short dat_0c0fb3ba[] = {
+    0x012cu, 0x041cu, 0x0141u, 0x0130u,
+};
+
+#pragma section n0da3c4
+const unsigned int dat_0c0fb3c4[] = {
+    0x0c2f8338u, 0xc1ab6db6u, 0x42d55555u, 0xc2d55555u, 0x0c02a0c4u, 0x0c02a026u, 0x0c24aa88u, 0x47800000u,
+    0x3fd55555u, 0x40092492u, 0x0c043324u,
+};
+
+#pragma section n0da4e0
+const unsigned int dat_0c0fb4e0[] = {
+    0x01a301e9u, 0x01f901a1u,
+};
+
+#pragma section n0da508
+const unsigned int dat_0c0fb508[] = {
+    0x0c2f83f8u, 0x0c0432cau,
+};
+
+#pragma section n0da5f4
+const unsigned int dat_0c0fb5f4[] = {
+    0x01f9041cu, 0x027b0141u, 0x41800000u, 0x41000000u, 0x42800000u, 0x0c02a026u, 0x0c0438deu, 0x0c0fc938u,
+    0x0c16ce38u, 0x0c24ab20u,
+};
+
+#pragma section n0da726
+const unsigned short dat_0c0fb726[] = {
+    0x00ffu,
+};
+
+#pragma section n0da72a
+const unsigned short dat_0c0fb72a[] = {
+    0x01f9u, 0x01a1u, 0x02c8u,
+};
+
+#pragma section n0da738
+const unsigned int dat_0c0fb738[] = {
+    0x0c0442fau, 0x0c02a39au, 0x0c0432cau, 0x0c2f83f8u, 0x0c02a0c4u,
+};
+
+#pragma section n0da876
+const unsigned short dat_0c0fb876[] = {
+    0x03f8u, 0x0328u,
+};
+
+#pragma section n0da880
+const unsigned short dat_0c0fb880[] = {
+    0x03f9u, 0x0327u, 0x01f9u,
+};
+
+#pragma section n0da88c
+const unsigned int dat_0c0fb88c[] = {
+    0x0c02a026u,
+};
+
+#pragma section n0da89c
+const unsigned int dat_0c0fb89c[] = {
+    0x0c0438deu, 0x0c0fc938u,
+};
+
+#pragma section n0da8a8
+const unsigned int dat_0c0fb8a8[] = {
+    0x0c24ab30u,
+};
+
+#pragma section n0da9ca
+const unsigned short dat_0c0fb9ca[] = {
+    0x01f9u, 0x041cu, 0x0340u, 0x0525u, 0x02e8u, 0x0130u, 0x02dcu, 0x02a8u,
+    0x01a1u, 0x02e0u,
+};
+
+#pragma section n0da9e0
+const unsigned int dat_0c0fb9e0[] = {
+    0x40092492u,
+};
+
+#pragma section n0da9f4
+const unsigned int dat_0c0fb9f4[] = {
+    0x0c2f83f8u, 0x0c02a0c4u, 0x0c02a026u, 0x0c1b4b48u,
+};
+
+#pragma section n0dab0e
+const unsigned short dat_0c0fbb0e[] = {
+    0x01f5u, 0x041cu, 0x01f9u, 0x019eu, 0x02acu,
+};
+
+#pragma section n0dab1c
+const unsigned int dat_0c0fbb1c[] = {
+    0xc2092492u,
+};
+
+#pragma section n0dab24
+const unsigned int dat_0c0fbb24[] = {
+    0x3fd55555u,
+};
+
