@@ -14,6 +14,28 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  shc:
+    name: Hitachi SHC via wibo
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download wibo 1.2.0
+        run: |
+          curl -sL -o wibo https://github.com/decompals/wibo/releases/download/1.2.0/wibo-x86_64
+          chmod +x wibo
+          ./wibo -V
+      - name: Extract SHC 5.0r31 from the decomp.me compiler image
+        run: |
+          docker pull ghcr.io/decompme/compilers/dreamcast/shc-v5.0r31:latest
+          python3 tools/extract_compiler_image.py \
+            ghcr.io/decompme/compilers/dreamcast/shc-v5.0r31:latest \
+            "$RUNNER_TEMP/shc"
+      - name: Compile SHC smoke fixture
+        env:
+          WIBO: ${{ github.workspace }}/wibo
+          SHC_BIN: ${{ runner.temp }}/shc
+        run: python3 tools/shc_smoke.py
+
   build:
     runs-on: ubuntu-24.04
     steps:
