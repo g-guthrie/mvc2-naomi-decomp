@@ -9,7 +9,7 @@ import subprocess
 import sys
 
 from core import (ROOT, compare, input_fingerprint, load, memory_bytes, number,
-                  runner, sha, validate_units, verify_rom, verify_tools)
+                  preflight, runner, sha, validate_units, verify_rom, verify_tools)
 
 
 def compile_unit(unit, work, flags):
@@ -64,6 +64,7 @@ def build(selected=None):
     program = verify_rom(target)
     base, offset, size = (number(target['main'][k]) for k in ('address', 'rom_offset', 'size'))
     main = program[offset:offset + size]
+    from mapping import review
     flags = load(ROOT / 'config/compiler.json')['flags']
     output = ROOT / 'build'
     work = output / 'work'
@@ -103,16 +104,23 @@ def build(selected=None):
         raise ValueError('Reconstructed image does not match the reference')
     if failed:
         raise ValueError('Verified unit mismatch: ' + ', '.join(failed))
+    mapping = review(main, base, verified=rows)
     proof = {'schema_version': 1, 'input_sha256': input_fingerprint(), 'toolchain': metadata,
              'main_size': size, 'main_address': base, 'main_sha256': sha(rebuilt),
              'program_sha256': sha(merged), 'rom_members_verified': len(target['roms']),
              'units': rows,
+             'mapping': {k:v for k,v in mapping.items() if k != 'ranges'},
              'scope': 'Main image source progress only. Untranslated reference bytes preserve the remainder of the image.'}
     (output / 'main.bin').write_bytes(rebuilt)
     (output / target['program_rom']).write_bytes(merged)
+    (output / 'mapping.json').write_text(json.dumps(mapping, indent=2) + '\n')
     (output / 'proof.json').write_text(json.dumps(proof, indent=2) + '\n')
     from report import publish
+    from handoff import render
+    handoff, _ = render(proof, mapping, main)
+    (output / "NEXT.md").write_text(handoff)
     publish(proof)
+    print("NEXT: read build/NEXT.md for current work and exact commands.", flush=True)
     print(f'PASS full main ({size:,} bytes) and program ROM ({len(program):,} bytes) match; original remainder is not decompilation credit.')
 
 
@@ -124,9 +132,12 @@ def main():
     if args.command == 'unit' and not args.unit:
         parser.error('unit requires an id from config/units.json')
     if args.command == 'check':
+        # A failed new check must not leave a previous successful handoff.
+        for name in ('proof.json', 'NEXT.md'):
+            (ROOT / 'build' / name).unlink(missing_ok=True)
+    preflight()
+    if args.command == 'check':
         subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-v'], cwd=ROOT, check=True)
-        # Remove stale evidence before attempting a new full build.
-        (ROOT / 'build/proof.json').unlink(missing_ok=True)
     build(args.unit if args.command == 'unit' else None)
 
 

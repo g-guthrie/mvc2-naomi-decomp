@@ -6,16 +6,16 @@
 - `toolchain/wibo/`: pinned wibo 1.2.0 executables for macOS and Linux x86_64, plus license notices. Hashes and upstream provenance are in toolchain/wibo.json.
 - `orig/mvsc2.zip`: all 18 reference ROM members, checked against the pinned MAME manifest in config/target.json.
 
-The runtime is invoked directly; no online downloads are part of the build. Python's standard library handles checksums, ZIP reading, ELF loading, reports, and tests.
+The runtime is invoked directly; no online downloads are part of the build. Python's standard library handles checksums, ZIP reading, ELF loading, reports, and tests. A small bundled public-domain SH-4 decoder supports original-byte inspection; it is not a compiler.
 
 ## Platforms
 
 | Host | Build route |
 | --- | --- |
 | Linux x86_64 | Bundled native wibo; verified in GitHub Actions |
-| macOS Intel | Bundled macOS wibo |
+| macOS Intel | Same Intel executable runs natively; not separately hardware-tested |
 | macOS Apple Silicon | Same executable through installed Rosetta; verified locally |
-| Windows | Run the Win32 Hitachi tools directly; supported by the script, not yet tested in this project |
+| Windows | Local build not validated; use GitHub Actions |
 | Linux ARM / x86 emulation on ARM | Unsupported; use the native Linux GitHub Actions job |
 
 ## One pipeline

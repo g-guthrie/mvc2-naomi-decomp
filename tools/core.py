@@ -6,6 +6,8 @@ from pathlib import Path
 import platform
 import re
 import struct
+import subprocess
+import sys
 import zipfile
 import zlib
 
@@ -43,13 +45,31 @@ def verify_tools(root=ROOT):
 
 def runner(root=ROOT):
     system, machine = platform.system(), platform.machine().lower()
-    if system == "Windows":
-        return []
     key = "Darwin" if system == "Darwin" else "Linux-x86_64" if system == "Linux" and machine in {"x86_64", "amd64"} else None
     if key is None:
-        raise ValueError("Use macOS (Rosetta on Apple Silicon), Windows, or native Linux x86_64. "
-                         "An unsupported agent can use this repository's GitHub Actions build.")
+        raise ValueError("Use macOS with Intel-app support, or native Linux x86_64. "
+                         "For this host, open GitHub > Actions > Hitachi build > Run workflow on your branch.")
     return [str(root / load(root / "toolchain/wibo.json")["assets"][key]["path"])]
+
+
+
+def preflight():
+    if sys.version_info < (3, 10):
+        raise ValueError("Python 3.10+ is required. Run with a newer python3 interpreter.")
+    runtime = runner()[0]
+    if not Path(runtime).is_file():
+        raise ValueError("Bundled wibo is missing. Use a complete git clone of this private repository.")
+    if platform.system() == "Darwin":
+        try:
+            result = subprocess.run(["/usr/bin/arch", "-x86_64", "/usr/bin/true"],
+                                    capture_output=True, timeout=15)
+        except (OSError, subprocess.SubprocessError) as error:
+            raise ValueError("Cannot run Intel Mac tools. Use the GitHub Actions build for your branch.") from error
+        if result.returncode:
+            raise ValueError("This Mac cannot run Intel tools. On Apple Silicon, enable Rosetta/Intel-app support "
+                             "using Apple's instructions: https://support.apple.com/102527 . "
+                             "Then rerun the same command. Otherwise use GitHub > Actions > Hitachi build > Run workflow.")
+    print(f"HOST {platform.system()} {platform.machine()} — bundled {Path(runtime).name}", flush=True)
 
 
 def verify_rom(target, root=ROOT):
