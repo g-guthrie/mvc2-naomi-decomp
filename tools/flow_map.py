@@ -135,6 +135,79 @@ def literal_reg_target(image, pc, reg, lookback=12):
     return None
 
 
+def grow_pointer_table(image, base, cap=64):
+    """Consecutive in-image even pointers starting at base. Stops at the first invalid word."""
+    if base is None or base % 4 or not image.contains(base, 4):
+        return [], []
+    entries = []
+    addr = base
+    while len(entries) < cap and image.contains(addr, 4):
+        value = image.u32(addr)
+        if not value or value % 2 or not image.contains(value):
+            break
+        entries.append(value)
+        addr += 4
+    if len(entries) < 2:
+        return [], []
+    return entries, [(base, len(entries) * 4)]
+
+
+def recover_indexed_tables(image, pcs):
+    """Jump/call tables: MOV.L @(R0,Rm),Rn then JMP/JSR @Rn, Rm from a PC-relative MOV.L/MOVA."""
+    visited = set(pcs)
+    tables = []
+    seeds = []
+    seen_base = set()
+    for pc in sorted(visited):
+        word = image.word(pc)
+        if word is None or (word & 0xF00F) != 0x000E:
+            continue
+        dest = (word >> 8) & 0xF
+        table_reg = (word >> 4) & 0xF
+        uses = False
+        ahead = pc + 2
+        for _ in range(4):
+            if ahead not in visited:
+                break
+            nxt = image.word(ahead)
+            if nxt is None:
+                break
+            inf = decode(ahead, nxt)
+            if inf["kind"] in {"jmp", "jsr"} and (inf.get("jmp_reg") == dest or inf.get("jsr_reg") == dest):
+                uses = True
+                break
+            ahead += 2
+        if not uses:
+            continue
+        base = None
+        back = pc - 2
+        for _ in range(12):
+            if back not in visited:
+                break
+            prev = image.word(back)
+            if prev is None:
+                break
+            inf = decode(back, prev)
+            if inf.get("lit_reg") == table_reg and inf["lit"] and inf["lit"][1] == 4:
+                base = image.u32(inf["lit"][0])
+                break
+            if (prev & 0xFF00) == 0xC700 and table_reg == 0 and inf["lit"]:
+                base = inf["lit"][0]
+                break
+            if inf["kind"] in {"rts", "rte", "jmp", "bra", "bsr", "jsr", "bt", "bf", "bts", "bfs"}:
+                break
+            back -= 2
+        if base in seen_base:
+            continue
+        ptrs, runs = grow_pointer_table(image, base)
+        if not runs:
+            continue
+        seen_base.add(base)
+        tables.extend(runs)
+        seeds.extend(ptrs)
+    return tables, seeds
+
+
 def walk_function(image, entry, max_insns=2048):
     if not image.contains(entry) or entry % 2:
         return None
@@ -229,6 +302,16 @@ def walk_function(image, entry, max_insns=2048):
                 data_runs.append((run_s, run_e + 1 - run_s))
                 run_s = run_e = addr
         data_runs.append((run_s, run_e + 1 - run_s))
+    tables, table_seeds = recover_indexed_tables(image, code_pcs)
+    table_bytes = set()
+    for start, size in tables:
+        data_runs.append((start, size))
+        table_bytes.update(range(start, start + size))
+    if table_bytes:
+        code_pcs = {p for p in code_pcs if p not in table_bytes}
+        code_runs = [(s, e - s) for s, e in contig(sorted(code_pcs))]
+    for target in table_seeds:
+        calls.append(("table", entry, target))
     return {
         "entry": entry,
         "code": code_runs,
@@ -237,6 +320,8 @@ def walk_function(image, entry, max_insns=2048):
         "indirect": indirect,
         "issues": issues,
         "nins": len(visited),
+        "tables": tables,
+        "table_seeds": table_seeds,
     }
 
 
@@ -289,6 +374,22 @@ def map_from_roots(image, roots, existing=()):
                 for start, size in fn["code"]:
                     reviewed.append((start, start + size, "code"))
                 for start, size in fn["data"]:
+                    reviewed.append((start, start + size, "data"))
+        else:
+            # Already-reviewed function: still harvest jump-table seeds and table bytes.
+            for start, size in fn.get("tables") or []:
+                if covered_kind(reviewed, start) is None:
+                    functions.append({
+                        "entry": entry,
+                        "code": [],
+                        "data": [(start, size)],
+                        "calls": [],
+                        "indirect": [],
+                        "issues": [],
+                        "nins": 0,
+                        "tables": [(start, size)],
+                        "table_seeds": fn.get("table_seeds") or [],
+                    })
                     reviewed.append((start, start + size, "data"))
         if fn is not None:
             for _kind, _pc, target in fn["calls"]:
@@ -352,7 +453,7 @@ def proposals_from_functions(image, functions, existing):
                 "kind": "data",
                 "sha256": sha(sl),
                 "evidence": (
-                    f"PC-relative consumer in CFG of 0x{fn['entry']:08x}; "
+                    f"PC-relative consumer or indexed pointer table in CFG of 0x{fn['entry']:08x}; "
                     f"unreferenced adjacent bytes omitted."
                 ),
             })
@@ -371,8 +472,8 @@ def main():
         if kind == "code":
             roots.append(lo)
     functions = map_from_roots(image, roots, existing)
-    new_fn = [fn for fn in functions if covered_kind(existing, fn["entry"]) != "code"]
-    props = proposals_from_functions(image, new_fn, existing)
+    new_fn = [fn for fn in functions if fn.get("code") or fn.get("tables") or fn.get("data")]
+    props = proposals_from_functions(image, functions, existing)
     code = sum(p["size"] for p in props if p["kind"] == "code")
     data = sum(p["size"] for p in props if p["kind"] == "data")
     summary = {

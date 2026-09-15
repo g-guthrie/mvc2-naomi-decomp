@@ -6043,11 +6043,25 @@
       "evidence": "PC-relative consumer in CFG of 0x0c1fb794; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c1fb7f4",
-      "size": 84,
+      "address": "0x0c1fb7b2",
+      "size": 66,
       "kind": "code",
-      "sha256": "d99a085c379187186bf366b73ccabe5d1d99e2f37816c794b2f572868c4f780a",
-      "evidence": "CFG walk from 0x0c1fb7f4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "dbbd04c0f4517e4e32fa83a51031eba9e1089ba6652c456540a8e0c7eb063749",
+      "evidence": "CFG walk from 0x0c1fb7b2; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1fb7f4",
+      "size": 68,
+      "kind": "data",
+      "sha256": "bdb2f0f533979808eb198bbc218496320ac6d9d3086f275b425d1feee0981b32",
+      "evidence": "Indexed MOV.L @(R0,Rm) then JMP/JSR consumer in reviewed code; consecutive in-image even pointers only."
+    },
+    {
+      "address": "0x0c1fb838",
+      "size": 16,
+      "kind": "code",
+      "sha256": "7004366753ddef421ac578f80edf9b17d3188efd32982b559734865bdc202392",
+      "evidence": "CFG walk from 0x0c1fb7f4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split. Split around indexed jump table."
     },
     {
       "address": "0x0c1fb848",
@@ -6057,11 +6071,25 @@
       "evidence": "PC-relative consumer in CFG of 0x0c1fb7f4; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c1fb894",
-      "size": 100,
+      "address": "0x0c1fb84e",
+      "size": 68,
       "kind": "code",
-      "sha256": "7ffe2b7c4393cf96809a985cbb3a25cb3d53639c4f5c3a13b684449a1a75ea32",
-      "evidence": "CFG walk from 0x0c1fb894; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "e86f46a553b9a11c93eb0f8beca42127cffcbc5477b25aac8cf249a3faf0d97f",
+      "evidence": "CFG walk from 0x0c1fb84e; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1fb894",
+      "size": 68,
+      "kind": "data",
+      "sha256": "342f51fd2ad204fedbd4638597d94d37db38e8382bcbfca9490a5563a8ce7789",
+      "evidence": "Indexed MOV.L @(R0,Rm) then JMP/JSR consumer in reviewed code; consecutive in-image even pointers only."
+    },
+    {
+      "address": "0x0c1fb8d8",
+      "size": 32,
+      "kind": "code",
+      "sha256": "3fbfb51473007057d7226cc3761233ad304c5fe05d2129f6924b893176c0c812",
+      "evidence": "CFG walk from 0x0c1fb894; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split. Split around indexed jump table."
     },
     {
       "address": "0x0c1fb940",
