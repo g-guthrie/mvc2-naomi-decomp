@@ -44,11 +44,123 @@
       "evidence": "PC-relative MOV.L at0c021002/006/010/012 reads the four 32-bit mask, alias and cache-control constants."
     },
     {
+      "address": "0x0c02156c",
+      "size": 64,
+      "kind": "code",
+      "sha256": "487c2822b5ed083a700379121c35c118635d4a08ceb652e88bc31913a56b93c0",
+      "evidence": "Indirect JSR from boot init at0c0283da/3de via pointer 0c02156c; all local BF/BRA targets stay inside the body; RTS at0c0215a8 plus NOP delay slot; no PC-relative pool."
+    },
+    {
+      "address": "0x0c0271de",
+      "size": 74,
+      "kind": "code",
+      "sha256": "d835c03614e7d87dbbf4bd5192b5ab3e4e28e14f1766c12f9d85267204860c41",
+      "evidence": "Indirect JSR from boot init at0c028420; BRA at0c0271fa into the wait loop, BT at0c027210 to epilogue, BT at0c027216 back to 0c0271fe; RTS at0c027224 plus delay-slot restore; next prologue at0c027228 is a different function."
+    },
+    {
+      "address": "0x0c0272e8",
+      "size": 4,
+      "kind": "data",
+      "sha256": "fbe3df336ab2a2f4f16d7ad7969e518e70f8a75e2833882cf6cf03835f87f782",
+      "evidence": "MOV.L at0c0271f8 loads pointer 0c28401c; adjacent words are not referenced by this function."
+    },
+    {
+      "address": "0x0c0272f8",
+      "size": 16,
+      "kind": "data",
+      "sha256": "3ccc657c87869df6b87d22c8d689afa9388ffb9aef445b289c8079a93eb83a5c",
+      "evidence": "MOV.L at0c0271ec/1f2/1f4/1f6 load these four words; 0c0272ec-0c0272f7 are unreferenced and left unknown."
+    },
+    {
       "address": "0x0c0275dc",
       "size": 4,
       "kind": "code",
       "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
       "evidence": "Verified compiled noop unit: RTS followed by NOP delay slot."
+    },
+    {
+      "address": "0x0c028394",
+      "size": 152,
+      "kind": "code",
+      "sha256": "cf6831ec08097c403a16f06a6b44e13695f485d3b1089f28bf14a36832cc7978",
+      "evidence": "Boot JSR target loaded from 0c0210a8; FPSCR setup, chained JSRs, then BRA 0c0283d2 with delay slot forming the main loop. Pool words after 0c02842a are not executed."
+    },
+    {
+      "address": "0x0c02842c",
+      "size": 96,
+      "kind": "data",
+      "sha256": "101a4c6721ca6f0ecfae5cab9179256b4e6dcf42b3ccfd0f04be83f89e6aa556",
+      "evidence": "Every 32-bit word is a PC-relative MOV.L target from 0c028394-0c02841e (call/data pointers). Next instruction-shaped word at0c02848c is a different function and is not referenced."
+    },
+    {
+      "address": "0x0c02ab2c",
+      "size": 36,
+      "kind": "code",
+      "sha256": "da8a514210e2a25dce7668eb036f61f79baed11f575057f28cd3dadfe78e3d0c",
+      "evidence": "Indirect JSR from boot init at0c028408; BSR at0c02ab3a to helper 0c02ab50; tail JMP at0c02ab4c plus PR restore delay slot. Following word at0c02ab50 is that helper, not this function."
+    },
+    {
+      "address": "0x0c02ac74",
+      "size": 8,
+      "kind": "data",
+      "sha256": "78006ed1a312a6e81786d4c51864ffe0c92e125678e0f8d0a6c6efc6975070aa",
+      "evidence": "MOV.L at0c02ab2c/3e load 0c2d6f84; MOV.L at0c02ab4a loads the JMP target 0c028b24."
+    },
+    {
+      "address": "0x0c02c39a",
+      "size": 72,
+      "kind": "code",
+      "sha256": "99096cca2653ab3ee191e644cdd32d0f580427555daa6b2ef34f9b51d52bac3b",
+      "evidence": "Indirect JSR from boot init at0c028412; counted pointer-table walk, second walk, then tail JMP at0c02c3de plus delay-slot restore. Next function at0c02c3e2."
+    },
+    {
+      "address": "0x0c02c3e2",
+      "size": 12,
+      "kind": "code",
+      "sha256": "ed9d9363f99ea222a09f6b3c18491edc9fd29ca5dc1bfbce8a5d0c9414ecbae8",
+      "evidence": "Indirect JSR from boot init at0c0283e2; two pointer stores then RTS at0c02c3ea plus delay-slot store. Next function at0c02c3ee."
+    },
+    {
+      "address": "0x0c02c40c",
+      "size": 16,
+      "kind": "data",
+      "sha256": "80457fd249c6305ae4a757352de344d3df78ffd85d906ecb9ae4d4bdf01eefa9",
+      "evidence": "MOV.L at0c02c3a4/3ba/3a2/3b8 load these four words; 0c02c41c is unreferenced."
+    },
+    {
+      "address": "0x0c02c420",
+      "size": 12,
+      "kind": "data",
+      "sha256": "c18dbd3262de404ca091449432c99b44b53a526fb72e84f95f72bc6fcdc5c953",
+      "evidence": "MOV.L at0c02c3b6/3cc/3d6 load call targets 0c026ae6, 0c1eca20, 0c1ecc20."
+    },
+    {
+      "address": "0x0c02c42c",
+      "size": 8,
+      "kind": "data",
+      "sha256": "788306ebbf9740fe5f47aad46c82f225df5ef972f4f071e1c50ff71c001bd341",
+      "evidence": "MOV.L at0c02c3e2/3e6 load the two store destinations cleared by the 0c02c3e2 leaf."
+    },
+    {
+      "address": "0x0c02c4a2",
+      "size": 72,
+      "kind": "code",
+      "sha256": "c46847b33a87cb7fc4e1d69a3fc16bb525408bd6be53ccdf778a0e2fb4dede04",
+      "evidence": "Indirect JSR from boot init at0c028418; same two-walk plus tail JMP pattern as 0c02c39a; JMP at0c02c4e6 plus delay slot; alignment zero at0c02c4ea left unknown."
+    },
+    {
+      "address": "0x0c02c4ec",
+      "size": 8,
+      "kind": "data",
+      "sha256": "4b35e31142c88636410e3237b45e8cc3580c142e067d3ee8cede6aef311c7250",
+      "evidence": "MOV.L at0c02c4c2/4c0 load these two words; 0c02c4f4 is unreferenced."
+    },
+    {
+      "address": "0x0c02c4f8",
+      "size": 20,
+      "kind": "data",
+      "sha256": "0fbcc4f30f9999d53ffdf45410da0f08cc46b3416e1151781b29cbfa72412aff",
+      "evidence": "MOV.L at0c02c4ac/4aa/4be/4d4/4de load these five words."
     },
     {
       "address": "0x0c04701c",
@@ -70,6 +182,34 @@
       "kind": "data",
       "sha256": "4491461c9aaa3786193f0e80b1018a44dc5f67bda4637bd26184a2950f1cf852",
       "evidence": "MOV.W at0c047b0c reads constant0x0342 here; this is outside the helper instruction range."
+    },
+    {
+      "address": "0x0c1eae50",
+      "size": 6,
+      "kind": "code",
+      "sha256": "2167672e5cfca79a54bea99b57e0d3893698149a47a67d90711d78c4cc61b5ca",
+      "evidence": "Direct BSR from 0c1eae82; MOV.L then RTS plus delay-slot load. Trailing NOPs are not executed."
+    },
+    {
+      "address": "0x0c1eae80",
+      "size": 14,
+      "kind": "code",
+      "sha256": "36f5e29eba14400aa711a8948262329db0d8f6c216d514d32f15ddeb59d1ae0d",
+      "evidence": "Indirect JSR from boot init at0c0283d6; BSR 0c1eae50, then RTS at0c1eae8a plus delay-slot store. NOP at0c1eae8e is after the delay slot."
+    },
+    {
+      "address": "0x0c1eaf10",
+      "size": 4,
+      "kind": "data",
+      "sha256": "38bed94912b02424cb8bf6df37601a86c503d9f4ca0196138ef3abc421bc85e1",
+      "evidence": "MOV.L at0c1eae50 loads this MMIO/data pointer. Adjacent 0c1eaf14 is only used by unreviewed 0c1eae60."
+    },
+    {
+      "address": "0x0c1eaf18",
+      "size": 4,
+      "kind": "data",
+      "sha256": "5f6cc045527b9ea76fe9509ce60c5798c86df42b0863b70469d2be396a0a0587",
+      "evidence": "MOV.L at0c1eae88 stores the BSR result through this pointer."
     }
   ]
 }
