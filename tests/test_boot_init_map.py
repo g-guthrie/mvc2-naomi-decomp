@@ -66,7 +66,11 @@ class BootInitMappingTests(unittest.TestCase):
         pool = self.reviewed[0x0c0477d0]
         self.assertEqual(pool['kind'], 'data')
         self.assertEqual(pool['size'], 12)
-        self.assertNotIn(0x0c0477dc, self.reviewed)
+        callee = self.reviewed[0x0c0477dc]
+        self.assertEqual(callee['kind'], 'code')
+        self.assertEqual(callee['size'], 156)
+        self.assertLess(0x0c047876, number(callee['address']) + callee['size'])
+        self.assertEqual(self.reviewed[0x0c047878]['kind'], 'data')
 
     def test_wait_loop_pool_does_not_absorb_unreferenced_words(self):
         self.assertIn(0x0c0272e8, self.reviewed)
