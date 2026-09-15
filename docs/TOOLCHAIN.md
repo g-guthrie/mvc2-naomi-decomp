@@ -142,6 +142,8 @@ The remaining 14 bytes are a real code-generation mismatch, not a missing
 compiler: 5.0r26–5.1r13 with this C emit `extu.w r5,r5` then store then
 reload `*out`; retail stores first, `extu.w r5,r2` / `extu.w r3,r3`,
 `movt; rts; nop`. 5.0r10 stores first but xors before the third load and
-uses different registers. Intra-section PC-relative pools are resolved
-inside the ROF (no reloc for GNU ld). Dummy pads are test-only. The
-function stays a candidate.
+uses different registers. Further C shapes (running offset, `register`,
+inlined store helper, `do { *out=t; } while(0)`, compare `w` first,
+`(unsigned)t==(unsigned)w`) still miss those 14 bytes. Intra-section
+PC-relative pools are resolved inside the ROF (no reloc for GNU ld). Dummy
+pads are test-only. The function stays a candidate.
