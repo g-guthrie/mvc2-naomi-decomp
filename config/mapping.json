@@ -51,6 +51,41 @@
       "evidence": "Indirect JSR from boot init at0c0283da/3de via pointer 0c02156c; all local BF/BRA targets stay inside the body; RTS at0c0215a8 plus NOP delay slot; no PC-relative pool."
     },
     {
+      "address": "0x0c022354",
+      "size": 70,
+      "kind": "code",
+      "sha256": "e5bc17ccdd8af5ba369a0ca676e687924d5cc2cbf59652e80da107d404a77aaf",
+      "evidence": "Indirect JSR from boot init at0c0283b4; copy loop with BF.S 0c02236c and RTS at0c022396 plus delay-slot restore. 0c02239a is not executed."
+    },
+    {
+      "address": "0x0c02239c",
+      "size": 2,
+      "kind": "data",
+      "sha256": "94190f0fcbf8b25e62422658c7e3e915ac8cb9fc11cc4e4e2d01def02f0d98a1",
+      "evidence": "MOV.W at0c02235c loads 0x0e10; following alignment and unreferenced words stay unknown until 0c0223c0."
+    },
+    {
+      "address": "0x0c0223c0",
+      "size": 20,
+      "kind": "data",
+      "sha256": "ea66845a68f8c70d06e5125313601db6f239f414c5269f232ef1c7008153a3c3",
+      "evidence": "MOV.L at0c022358/368/362/364/366 load these five pointers. Next word at0c0223d4 is a different function."
+    },
+    {
+      "address": "0x0c0223d4",
+      "size": 216,
+      "kind": "code",
+      "sha256": "c63551367ce4b85666fc3528910fff4c9bba4c88f040517e2f643e9e67354110",
+      "evidence": "Indirect JSR from boot init at0c0283f4; BT/BF.S to shared epilogue 0c022498, inner loop 0c02240c, BRA 0c02244a; RTS at0c0224a8 plus delay slot. Next prologue at0c0224ac."
+    },
+    {
+      "address": "0x0c0224ca",
+      "size": 62,
+      "kind": "data",
+      "sha256": "07f064b90cc16eb932d751ac9b44998f55ae54a195029a42556f8fb3ccc9f606",
+      "evidence": "MOV.W at0c0223fe plus MOV.L at0c0223e6/3fa/402/406/40e/420/42a/440/456/45e/460/46c/478/47e/484 consume every halfword from 0c0224ca through 0c022507."
+    },
+    {
       "address": "0x0c0271de",
       "size": 74,
       "kind": "code",
