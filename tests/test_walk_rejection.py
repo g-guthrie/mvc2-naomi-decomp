@@ -58,3 +58,26 @@ class PointerTableTests(unittest.TestCase):
         # bsr/bra run looks page-constant without being a table.
         self.assertFalse(flow_map.looks_like_pointer_table(self.image, 0x0c026e50, 552))
         self.assertFalse(flow_map.looks_like_pointer_table(self.image, 0x0c159070, 296))
+
+
+class LedgerCodeIsDecodableTests(unittest.TestCase):
+    def test_no_reviewed_code_range_holds_an_undecodable_word(self):
+        """Every even address in a code range is an instruction boundary.
+
+        SH-4 instructions are two bytes and two-byte aligned, so a word that
+        encodes no instruction cannot sit inside executed code.
+        """
+        image, _ = flow_map.load_image()
+        undecodable = bytes(flow_map.sh4.disasm(word, 0) == 'error' for word in range(1 << 16))
+        blob, base = image.blob, image.base
+        offenders = []
+        for part in flow_map.load(flow_map.ROOT / 'config/mapping.json')['ranges']:
+            if part['kind'] != 'code':
+                continue
+            start = number(part['address']) - base
+            chunk = blob[start:start + part['size']]
+            for index in range(0, len(chunk) - 1, 2):
+                if undecodable[chunk[index] | (chunk[index + 1] << 8)]:
+                    offenders.append(f"{part['address']} at +{index}")
+                    break
+        self.assertEqual(offenders[:5], [], f"{len(offenders)} code ranges hold undecodable words")
