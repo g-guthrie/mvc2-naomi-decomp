@@ -1,7 +1,10 @@
 PYTHON ?= python3
 
-.PHONY: all test prepare verify report serve
+.PHONY: all test prepare verify report serve shc-smoke
 all: test verify report
+
+shc-smoke:
+	$(PYTHON) tools/shc_smoke.py
 
 test:
 	$(PYTHON) -m unittest discover -s tests -v

@@ -54,6 +54,28 @@ class VerificationTests(unittest.TestCase):
         self.assertEqual(len(covering), 1)
         self.assertEqual(covering[0]["kind"], "code")
 
+    def test_shc_smoke_fixture_is_return_zero(self):
+        src = (ROOT / "tests" / "shc_return0.c").read_text()
+        self.assertIn("return 0", src)
+        smoke = (ROOT / "tools" / "shc_smoke.py").read_text()
+        self.assertIn("0b0000e0", smoke)
+        self.assertIn("wibo", smoke)
+
+    def test_toolchain_doc_uses_wibo_not_wine(self):
+        text = (ROOT / "docs" / "TOOLCHAIN.md").read_text()
+        self.assertIn("wibo 1.2.0", text)
+        self.assertIn("Do **not** use Wine", text)
+        workflow = (ROOT / ".github" / "workflows" / "build.yml").read_text()
+        self.assertIn("tools/shc_smoke.py", workflow)
+        self.assertIn("wibo-x86_64", workflow)
+
+    def test_shc_wibo_smoke_when_configured(self):
+        import os
+        import subprocess
+        if not os.environ.get("SHC_BIN") or not os.environ.get("WIBO"):
+            self.skipTest("WIBO/SHC_BIN not set")
+        subprocess.check_call([sys.executable, str(ROOT / "tools" / "shc_smoke.py")])
+
     def test_dashboard_template_has_code_and_data_percent_bars(self):
         html = (ROOT / "tools/dashboard.html").read_text()
         self.assertIn('id="code-bar"', html)
