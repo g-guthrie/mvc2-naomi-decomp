@@ -321,7 +321,21 @@
       "size": 72,
       "kind": "code",
       "sha256": "0076268b6e2c4a8555ac4610d87e8df423369ff338660e41f4b1ab10821c91a4",
-      "evidence": "Reviewed stack/prologue, calls at0c04703e/04e, branch0c047046, two RTS epilogues with final delay slot at0c047062."
+      "evidence": "Reviewed stack/prologue, BSR at0c04703e to 0c047b0c and BSR at0c04704e to 0c047796, branch0c047046, two RTS epilogues with final delay slot at0c047062."
+    },
+    {
+      "address": "0x0c047796",
+      "size": 58,
+      "kind": "code",
+      "sha256": "4de86e9a008c58964bf2cf6bbc4672d0db4d4d8b1515e19be9c867f8655820f7",
+      "evidence": "Direct BSR target at0c04704e; BT/BF to shared stores, BRA 0c0477dc with NOP delay, RTS at0c0477cc plus delay-slot MOV. Next prologue at0c0477dc."
+    },
+    {
+      "address": "0x0c0477d0",
+      "size": 12,
+      "kind": "data",
+      "sha256": "7865bdd6fa9d75f4e963b2830cae467a8d1c12120524b5ab43d4c7337478256a",
+      "evidence": "MOV.W at0c047796/7b4 load 0x0120 and 0x02d0; MOV.L at0c0477a8/7b0 load 0x00008600 and 0x0000fedf. 0c0477dc is a different function."
     },
     {
       "address": "0x0c047b0c",
