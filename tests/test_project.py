@@ -7,7 +7,7 @@ import zipfile
 import zlib
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
-from project import checked_replacements, digest, read_verified_roms, validate_units
+from project import ROOT, checked_replacements, digest, load_json, read_verified_roms, validate_units
 from report import build_report
 
 
@@ -33,6 +33,18 @@ class VerificationTests(unittest.TestCase):
         elf["symbols"]["function"]["address"] += 4
         with self.assertRaisesRegex(ValueError, "linked symbol/address/size mismatch"):
             checked_replacements(original, 0x1000, [row], elf)
+
+    def test_shipped_catalog_covers_the_main_image_without_overlap(self):
+        target = load_json(ROOT / "config/target.json")
+        units = load_json(ROOT / "config/units.json")
+        validate_units(units, target)
+        self.assertEqual(sum(u["size"] for u in units), target["main"]["size"])
+        matching = [u for u in units if u["status"] == "matching"]
+        self.assertTrue(matching)
+        self.assertTrue(all(u["representation"] == "reconstructed" for u in matching))
+        placeholders = [u for u in units if u["representation"] == "placeholder"]
+        self.assertTrue(placeholders)
+        self.assertTrue(all(u["status"] != "matching" for u in placeholders))
 
     def test_wrong_bytes_at_right_address_are_rejected(self):
         _, row, elf, original, _ = fixture()
