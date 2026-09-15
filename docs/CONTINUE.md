@@ -22,10 +22,10 @@ separate analysis. Do not declare the whole game complete from main-only work.
 
 ## Verified starting work
 
-`src/callback_leaves.c` nominates 257 matching functions / 1030 bytes:
+`src/callback_leaves.c` nominates 261 matching functions / 1046 bytes:
 address-taken and direct-BSR four-byte leaves (`rts; nop`, `rts` delay-slot
-`mov #0,r0` / `mov #1,r0`), four identity `return x` BSR targets, and one
-six-byte `return a - b` at `0x0c1eae70`. GCC 13.3 `-O2 -m4 -ml` matches
+`mov #imm,r0` for 0, 1, 42, and 120), four identity `return x` BSR targets,
+and one six-byte `return a - b` at `0x0c1eae70`. GCC 13.3 `-O2 -m4 -ml` matches
 retail at original addresses. Fingerprints are in `config/units.json`.
 No gameplay role is inferred from these shapes.
 
