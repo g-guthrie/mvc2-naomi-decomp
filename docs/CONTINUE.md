@@ -22,18 +22,22 @@ separate analysis. Do not declare the whole game complete from main-only work.
 
 ## Verified starting work
 
-`src/callback_leaves.c` nominates 261 matching functions / 1046 bytes:
+`src/callback_leaves.c` nominates 262 matching functions / 1052 bytes:
 address-taken and direct-BSR four-byte leaves (`rts; nop`, `rts` delay-slot
 `mov #imm,r0` for 0, 1, 42, and 120), four identity `return x` BSR targets,
-and one six-byte `return a - b` at `0x0c1eae70`. GCC 13.3 `-O2 -m4 -ml` matches
-retail at original addresses. Fingerprints are in `config/units.json`.
+one six-byte `return a - b` at `0x0c1eae70`, and `func_0c206570`
+(`return b - a`, 6 bytes). GCC 13.3 `-O2 -m4 -ml` matches retail at original
+addresses. Fingerprints are in `config/units.json`.
 No gameplay role is inferred from these shapes.
 
 The initial toolchain is open GNU GCC 13.3 / binutils 2.42 targeting SH-4,
 little-endian. Flags are recorded by `tools/project.py` in every build proof.
-The original NAOMI compiler has not been conclusively identified. The related
-Dreamcast project investigated Hitachi SHC; its result is a lead to test, not
-proof for this target.
+GCC 13 was tried on `func_0c04701c` at `-O0/-O1/-O2/-O3/-Os`, with and without
+frame pointer, `-mhitachi`, `-mrenesas`, and delayed-branch scheduling off.
+Every setting emitted a different size and prologue than retail (`e62f` /
+`mov.l r14,@-r15` plus `sts.l pr` and `bsr`, 72 bytes). GCC is ruled out for
+this representative non-leaf. Hitachi SHC remains the compiler to obtain and
+test; it is not in this repository.
 
 ## First session on a new machine
 
@@ -49,9 +53,12 @@ compatible emulator and NAOMI BIOS, which are not included in this repository.
 ## Next useful work
 
 1. **Build a reviewed main-program inventory.** Most bytes are explicitly
-   unclassified. Use control flow, address references, literal pools, and data
-   consumers to establish boundaries. Do not classify every decodable SH-4 word
-   as an instruction: tables and constants also decode as instructions.
+   unclassified. A conservative scan (BSR + address-taken entries that look
+   like prologues, then CFG walk) covers about 1.62 MiB / 66.7% if treated as
+   code, plus ~140 KiB of ≥4-word in-image pointer runs. Walking every pointer
+   as a function falsely covers ~92% and is rejected. Do not catalog those
+   auto-ranges as units until each boundary is reviewed: tables decode as
+   instructions. Unclassified bytes stay unknown.
 2. **Expand a nearby function with real behavior.** `0x0c04701c` (72 bytes,
    through `0x0c047064`) is catalogued as a candidate in
    `src/candidate_0c04701c.c`. GCC 13 `-O2` does not match (jsr via constant
@@ -69,9 +76,9 @@ compatible emulator and NAOMI BIOS, which are not included in this repository.
    `0x0c02be98` is an isolated cell (next word is outside the main image).
    Do not promote raw pointer arrays to reconstructed data until C has
    symbolic function references and a caller-established ABI.
-4. **Investigate the original toolchain on representative code.** Tiny
-   return functions cannot distinguish GCC from Hitachi output. Keep any
-   compiler experiments reproducible and separate from accepted source.
+4. **Obtain Hitachi SHC (or another compiler that emits `bsr` + r14 frames)
+   and match `0x0c04701c` before changing the matching toolchain.** GCC 13
+   flag search on that function is exhausted for the options listed above.
 5. **Add service/test and additional code targets separately.** Each needs
    its own original addresses, fingerprints, layout, and source credit.
 6. **Prepare ports after platform dependencies are understood.** Preserve

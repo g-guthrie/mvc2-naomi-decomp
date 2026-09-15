@@ -73,6 +73,42 @@ class VerificationTests(unittest.TestCase):
         self.assertIsNone(result["code"]["total_bytes"])
         self.assertIsNone(result["code"]["linked_percent"])
         self.assertEqual(result["data"]["linked_bytes"], 0)
+        self.assertFalse(result["layout_complete"])
+        self.assertNotEqual(result["code"]["linked_percent"], 100)
+        self.assertNotEqual(result["data"]["linked_percent"], 100)
+
+    def test_placeholder_data_cannot_report_one_hundred_percent_data(self):
+        target, row, *_ = fixture()
+        row.update(kind="data", representation="placeholder", status="matching")
+        with self.assertRaisesRegex(ValueError, "placeholder cannot earn progress"):
+            validate_units([row], target)
+
+    def test_complete_layout_reports_one_hundred_only_when_all_bytes_match(self):
+        target, row, _, _, evidence = fixture()
+        target["main"]["size"] = 4
+        result = build_report(target, [row], evidence, "current")
+        self.assertEqual(result["unclassified_bytes"], 0)
+        self.assertTrue(result["layout_complete"])
+        self.assertEqual(result["code"]["total_bytes"], 4)
+        self.assertEqual(result["code"]["linked_bytes"], 4)
+        self.assertEqual(result["code"]["linked_percent"], 100)
+        self.assertEqual(result["data"]["linked_bytes"], 0)
+        self.assertEqual(result["data"]["total_bytes"], 0)
+        self.assertIsNone(result["data"]["linked_percent"])
+
+    def test_complete_layout_with_unmatched_gap_cannot_claim_full_code(self):
+        """A classified assembly remainder is not reconstructed matching C."""
+        target, row, _, _, evidence = fixture()
+        gap = {"name": "rest", "address": 0x1004, "size": 60, "kind": "code",
+               "status": "assembly", "representation": "placeholder", "source": "",
+               "section": "", "sha256": digest(b"x" * 60)}
+        result = build_report(target, [row, gap], evidence, "current")
+        self.assertEqual(result["unclassified_bytes"], 0)
+        self.assertTrue(result["layout_complete"])
+        self.assertEqual(result["code"]["total_bytes"], 64)
+        self.assertEqual(result["code"]["linked_bytes"], 4)
+        self.assertEqual(result["code"]["linked_percent"], 6.25)
+        self.assertNotEqual(result["code"]["linked_percent"], 100)
 
     def test_stale_evidence_is_rejected(self):
         target, row, _, _, evidence = fixture()
