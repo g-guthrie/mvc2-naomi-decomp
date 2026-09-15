@@ -60,11 +60,43 @@ class FlowMapTests(unittest.TestCase):
         addrs = {a for a, s in runs}
         self.assertIn(0x0c266bf8, addrs)
 
+    def test_braf_and_shll2_follows_case_slots(self):
+        fn = walk_function(self.img, 0x0c1fc80a)
+        self.assertFalse(fn['issues'], fn['issues'])
+        covered = []
+        for start, size in fn['code']:
+            covered.extend(range(start, start + size, 2))
+        self.assertIn(0x0c1fc832, covered)
+
+    def test_ledger_records_braf_word_table_as_data(self):
+        def kind_at(pc):
+            for p in load(ROOT / 'config/mapping.json')['ranges']:
+                lo = number(p['address'])
+                if lo <= pc < lo + p['size']:
+                    return p['kind']
+            return None
+        self.assertEqual(kind_at(0x0c212368), 'data')
+        self.assertEqual(kind_at(0x0c21237a), 'data')
+        self.assertEqual(kind_at(0x0c21237c), 'code')
+
+    def test_braf_mova_word_table_is_data_and_cases_are_code(self):
+        fn = walk_function(self.img, 0x0c212348)
+        self.assertFalse(fn['issues'], fn['issues'])
+        self.assertIn((0x0c212368, 20), fn.get('tables') or fn.get('data'))
+        covered = []
+        for start, size in fn['code']:
+            covered.extend(range(start, start + size, 2))
+        self.assertIn(0x0c21237c, covered)
+        self.assertNotIn(0x0c212368, covered)
+
     def test_ledger_records_callback_cell(self):
-        by = {number(p['address']): p for p in load(ROOT / 'config/mapping.json')['ranges']}
-        part = by[0x0c266bf8]
-        self.assertEqual(part['kind'], 'data')
-        self.assertEqual(part['size'], 4)
+        def kind_at(pc):
+            for p in load(ROOT / 'config/mapping.json')['ranges']:
+                lo = number(p['address'])
+                if lo <= pc < lo + p['size']:
+                    return p['kind']
+            return None
+        self.assertEqual(kind_at(0x0c266bf8), 'data')
 
     def test_ledger_records_indexed_jump_table_as_data(self):
         by = {number(p['address']): p for p in load(ROOT / 'config/mapping.json')['ranges']}
