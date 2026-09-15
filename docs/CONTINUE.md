@@ -22,10 +22,10 @@ separate analysis. Do not declare the whole game complete from main-only work.
 
 ## Verified starting work
 
-Matching source is **266 C functions / 1068 code bytes** plus **272 reconstructed
-data bytes** (function-pointer tables). GCC 13 `-O2` void/int field accessors
-live in `src/accessors.c`. Symbolic pointer tables of those matching leaves
-are in `src/accessors.c` and `src/ptr_tables.c`.
+Matching source is **271 C functions / 1098 code bytes** plus **1068 reconstructed
+data bytes** (function-pointer tables and pointers to those cells). GCC 13 `-O2`
+void/int field accessors live in `src/accessors.c`. Symbolic pointer tables of
+those matching leaves are in `src/accessors.c` and `src/ptr_tables.c`.
 
 `src/callback_leaves.c` still holds the original four-byte leaves:
 

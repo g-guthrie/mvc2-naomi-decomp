@@ -1,5 +1,7 @@
+import bisect
 import hashlib
 from pathlib import Path
+import struct
 import sys
 import tempfile
 import unittest
@@ -69,6 +71,26 @@ class VerificationTests(unittest.TestCase):
             self.assertIn(u["name"], src)
             self.assertIn(f".rodata.{u['name']}", src)
 
+    def test_pointers_to_matching_data_are_symbolic(self):
+        units = {u["name"]: u for u in load_json(ROOT / "config/units.json")}
+        src = (ROOT / "src" / "ptr_tables.c").read_text()
+        cases = (
+            ("ptr_0c051ce0", "&ptr_0c23f27c"),
+            ("ptr_0c05bc9c", "&ptr_0c23fb78"),
+            ("ptr_0c064518", "&ptr_0c240334"),
+            ("ptr_0c1b104c", "table_0c25abb0"),
+            ("ptr_0c1c8140", "table_0c25ea60"),
+            ("ptr_0c1f072c", "table_0c266dc4"),
+        )
+        for name, needle in cases:
+            self.assertEqual(units[name]["kind"], "data")
+            self.assertEqual(units[name]["status"], "matching")
+            self.assertEqual(units[name]["representation"], "reconstructed")
+            self.assertEqual(units[name]["size"], 4)
+            self.assertIn(name, src)
+            self.assertIn(f".rodata.{name}", src)
+            self.assertIn(needle, src)
+
     def test_isolated_function_pointer_cells_are_matching_data(self):
         units = {u["name"]: u for u in load_json(ROOT / "config/units.json")}
         src = (ROOT / "src" / "ptr_tables.c").read_text()
@@ -82,6 +104,55 @@ class VerificationTests(unittest.TestCase):
             self.assertEqual(units[name]["size"], 4)
             self.assertIn(name, src)
             self.assertIn(f".rodata.{name}", src)
+
+    def test_matching_function_pointers_are_not_trapped_in_assembly_data(self):
+        """Every aligned main-image word that equals a matching function address
+        must not remain inside a status=assembly data unit, and reconstructed
+        pointer data must name the callee symbol rather than a raw address."""
+        target = load_json(ROOT / "config/target.json")
+        units = load_json(ROOT / "config/units.json")
+        main = (ROOT / "orig/unpacked/main.bin").read_bytes()
+        base = target["main"]["address"]
+        self.assertEqual(len(main), target["main"]["size"])
+        self.assertEqual(len(main) % 4, 0)
+
+        matching_code = {u["address"]: u["name"] for u in units
+                         if u["kind"] == "code" and u["status"] == "matching"}
+        self.assertTrue(matching_code)
+
+        units_sorted = sorted(units, key=lambda u: u["address"])
+        starts = [u["address"] for u in units_sorted]
+        sources = {}
+        trapped = []
+        reconstructed_words = 0
+        for off in range(0, len(main), 4):
+            value = struct.unpack_from("<I", main, off)[0]
+            callee = matching_code.get(value)
+            if callee is None:
+                continue
+            va = base + off
+            cover = units_sorted[bisect.bisect_right(starts, va) - 1]
+            self.assertLessEqual(cover["address"], va)
+            self.assertLess(va, cover["address"] + cover["size"])
+            if cover["kind"] == "data" and cover["status"] == "assembly":
+                trapped.append(va)
+                continue
+            if cover["kind"] != "data" or cover["status"] != "matching":
+                continue
+            reconstructed_words += 1
+            path = cover["source"]
+            if path not in sources:
+                sources[path] = (ROOT / path).read_text()
+            src = sources[path]
+            self.assertEqual(cover["representation"], "reconstructed")
+            self.assertIn(cover["name"], src)
+            self.assertIn(f".rodata.{cover['name']}", src)
+            self.assertIn(callee, src)
+            self.assertNotRegex(src, rf"=\s*0x0*{value:x}\b")
+            self.assertNotRegex(src, rf"=\s*0x0*{value:X}\b")
+
+        self.assertEqual(trapped, [])
+        self.assertGreater(reconstructed_words, 0)
 
     def test_gcc_constant_byte_stores_are_matching_source(self):
         units = {u["name"]: u for u in load_json(ROOT / "config/units.json")}
