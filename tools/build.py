@@ -31,6 +31,51 @@ def retarget_pc_word(assembly, func_addr, mapping):
     return assembly
 
 
+def rewrite_bsr_imports(assembly, imports, func_addr):
+    """Replace SHC far JSR/@Rn plus .DATA.L pools with in-range BSR.
+
+    Isolated TUs emit MOV.L label,Rn / JSR @Rn because the callee is .IMPORT.
+    Hitachi `BSR $+H'delta` encodes the 12-bit word displacement immediately.
+    """
+    names = {name: number(dest) for name, dest in imports.items()}
+    regs = {}
+
+    def drop_load(match):
+        reg, symbol = match.group(1), match.group(2)
+        if symbol not in names:
+            return match.group(0)
+        regs[reg] = symbol
+        return ''
+
+    assembly = re.sub(
+        r'^[ \t]*MOV\.L[ \t]+L\d+(?:\+\d+)?,[ \t]*R(\d+)[ \t]*;[ \t]*(_\w+)[ \t]*\n',
+        drop_load,
+        assembly,
+        flags=re.M)
+    for symbol in names:
+        assembly = re.sub(rf'^[ \t]*\.DATA\.L[ \t]+{re.escape(symbol)}[ \t]*\n', '', assembly, flags=re.M)
+    assembly = re.sub(r'\nL\d+:\s*\n(?=\s*\.END)', '\n', assembly)
+
+    lines, pc, out = assembly.splitlines(True), func_addr, []
+    insn = re.compile(r'^[ \t]+([A-Z][A-Z0-9.]*|JSR|BSR|BT|BRA)\b')
+    jsr = re.compile(r'^[ \t]*JSR[ \t]+@R(\d+)[ \t]*\n')
+    for line in lines:
+        match = jsr.match(line)
+        if match and match.group(1) in regs:
+            target = names[regs[match.group(1)]]
+            out.append(f"          BSR         $+H'{target - pc:X}\n")
+            pc += 2
+            continue
+        out.append(line)
+        if insn.match(line):
+            pc += 2
+        elif re.match(r'^[ \t]*\.(DATA|RES)\.L', line):
+            pc += 4
+        elif re.match(r'^[ \t]*\.(DATA|RES)\.', line):
+            pc += 2
+    return ''.join(out)
+
+
 def extract_named_section(assembly, section, exports=None):
     """Assemble one Hitachi .SECTION; sibling functions stay in the C TU."""
     keep = set(exports or ())
@@ -81,6 +126,9 @@ def compile_unit(unit, work, flags):
     if pool:
         placed = retarget_pc_word(placed, number(unit['sections'][0]['address']), pool)
         placed = re.sub(r'\nL\d+:\s*\n(?=\s*\.END)', '\n', placed)
+    if unit.get('bsr_imports') and unit.get('imports'):
+        placed = rewrite_bsr_imports(
+            placed, unit['imports'], number(unit['sections'][0]['address']))
     if unit.get('emit_section'):
         placed = extract_named_section(placed, unit['emit_section'], unit.get('exports', {}))
     (work / (stem + '.src')).write_text(placed)
