@@ -52,13 +52,12 @@ compatible emulator and NAOMI BIOS, which are not included in this repository.
 
 ## Next useful work
 
-1. **Build a reviewed main-program inventory.** Most bytes are explicitly
-   unclassified. A conservative scan (BSR + address-taken entries that look
-   like prologues, then CFG walk) covers about 1.62 MiB / 66.7% if treated as
-   code, plus ~140 KiB of ≥4-word in-image pointer runs. Walking every pointer
-   as a function falsely covers ~92% and is rejected. Do not catalog those
-   auto-ranges as units until each boundary is reviewed: tables decode as
-   instructions. Unclassified bytes stay unknown.
+1. **Main-program inventory is catalogued.** Every main-image byte is a
+   disjoint `config/units.json` unit. Code ranges are BSR or address-taken
+   prologue entries walked to `rts` (not every decodable word). Remaining
+   bytes after those walks are data/remainder placeholders (pointer runs,
+   strings, zeros, or unentered gaps). Layout can be complete while almost
+   all units stay `assembly` placeholders. Do not treat that as matching C.
 2. **Expand a nearby function with real behavior.** `0x0c04701c` (72 bytes,
    through `0x0c047064`) is catalogued as a candidate in
    `src/candidate_0c04701c.c`. GCC 13 `-O2` does not match (jsr via constant
