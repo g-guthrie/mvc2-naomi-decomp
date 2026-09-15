@@ -136,8 +136,12 @@ make shc SOURCE=src/candidate_0c047b0c.c
 
 Seven dummy `return 0` pads in `tests/shc_b0c_prefix.c` push the `0x0342`
 pool to entry+0x3e so SHC bakes retail's `1d90` displacement.
-`tools/shc_b0c_prefix.py` checks the first 20 bytes against the ROM. The
-remaining 14 bytes still differ (`extu`/store order and `rts; movt` vs
-`movt; rts; nop`). Intra-section PC-relative pools are resolved inside the
-ROF (no reloc for GNU ld to retarget). Dummy pads are test-only, not game
-source. The function stays a candidate.
+`tools/shc_b0c_prefix.py` checks the first 20 bytes against the ROM.
+
+The remaining 14 bytes are a real code-generation mismatch, not a missing
+compiler: 5.0r26–5.1r13 with this C emit `extu.w r5,r5` then store then
+reload `*out`; retail stores first, `extu.w r5,r2` / `extu.w r3,r3`,
+`movt; rts; nop`. 5.0r10 stores first but xors before the third load and
+uses different registers. Intra-section PC-relative pools are resolved
+inside the ROF (no reloc for GNU ld). Dummy pads are test-only. The
+function stays a candidate.
