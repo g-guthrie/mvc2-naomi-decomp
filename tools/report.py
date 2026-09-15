@@ -3,6 +3,7 @@ import html
 import json
 import math
 import re
+from collections import deque
 from core import ROOT, load, number
 
 
@@ -42,13 +43,20 @@ def tiles(proof):
     bins = load(ROOT / 'config/regions.json')
     cursor = proof['main_address']
     unknown = []
+    ai = 0
     for start, size in bins:
         if start != cursor or size <= 0:
             raise ValueError('Display regions must partition the main image')
         end = start + size
+        while ai < len(active) and active[ai]['address'] + active[ai]['size'] <= start:
+            ai += 1
         pieces = [(start, end)]
-        for part in active:
-            lo, hi = part['address'], part['address'] + part['size']
+        i = ai
+        while i < len(active) and active[i]['address'] < end:
+            lo, hi = active[i]['address'], active[i]['address'] + active[i]['size']
+            i += 1
+            if hi <= start:
+                continue
             pieces = [(a, b) for x, y in pieces for a, b in [(x, min(y, lo)), (max(x, hi), y)] if a < b]
         unknown.extend({'name': f'No C source 0x{a:08x}', 'address': a, 'size': b-a, 'state': 'unknown',
                         'kind': 'unclassified'} for a, b in pieces)
@@ -65,7 +73,7 @@ def layout(items, width=1152, height=560):
     total = sum(p['size'] for p in items)
     if not total:
         return []
-    pending = sorted([(p['size'] * width * height / total, p) for p in items], key=lambda p: -p[0])
+    pending = deque(sorted([(p['size'] * width * height / total, p) for p in items], key=lambda p: -p[0]))
     x = y = 0.0
     w, h = float(width), float(height)
     output = []
@@ -76,8 +84,8 @@ def layout(items, width=1152, height=560):
             vals = [a for a, _ in cells]
             s = sum(vals)
             return max(side * side * max(vals) / (s*s), s*s / (side*side*min(vals)))
-        while pending and (not row or score(row + pending[:1]) <= score(row)):
-            row.append(pending.pop(0))
+        while pending and (not row or score(row + [pending[0]]) <= score(row)):
+            row.append(pending.popleft())
         area = sum(a for a, _ in row)
         if w >= h:
             strip, cursor = area/h, y
