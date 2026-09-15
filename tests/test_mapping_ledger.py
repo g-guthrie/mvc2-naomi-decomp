@@ -53,6 +53,10 @@ class MappingLedgerTests(unittest.TestCase):
         self.assertEqual(kind_at(0x0c02842a), 'code')
         self.assertEqual(by[0x0c02842c]['kind'], 'data')
         self.assertEqual(by[0x0c02ac7c]['kind'], 'data')
+        self.assertEqual(kind_at(0x0c0477ce), 'code')
+        self.assertEqual(by[0x0c0477d0]['kind'], 'data')
+        self.assertEqual(by[0x0c0477d0]['size'], 12)
+        self.assertEqual(number(by[0x0c047796]['address']) + by[0x0c047796]['size'], 0x0c0477d0)
 
 
 if __name__ == '__main__':

@@ -56,6 +56,18 @@ class BootInitMappingTests(unittest.TestCase):
         self.assertEqual(self.reviewed[0x0c02ac7c]['kind'], 'data')
         self.assertEqual(self.reviewed[0x0c02ac74]['size'], 8)
 
+    def test_mask_apply_pool_is_data_and_bra_delay_is_code(self):
+        code = self.reviewed[0x0c047796]
+        self.assertEqual(code['kind'], 'code')
+        self.assertEqual(code['size'], 58)
+        self.assertEqual(number(code['address']) + code['size'], 0x0c0477d0)
+        self.assertGreaterEqual(0x0c0477c6, number(code['address']))
+        self.assertLess(0x0c0477c6, number(code['address']) + code['size'])
+        pool = self.reviewed[0x0c0477d0]
+        self.assertEqual(pool['kind'], 'data')
+        self.assertEqual(pool['size'], 12)
+        self.assertNotIn(0x0c0477dc, self.reviewed)
+
     def test_wait_loop_pool_does_not_absorb_unreferenced_words(self):
         self.assertIn(0x0c0272e8, self.reviewed)
         self.assertNotIn(0x0c0272ec, self.reviewed)
