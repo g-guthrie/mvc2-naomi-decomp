@@ -133,3 +133,11 @@ is not matching-source credit. Run it directly with:
 ```sh
 make shc SOURCE=src/candidate_0c047b0c.c
 ```
+
+Seven dummy `return 0` pads in `tests/shc_b0c_prefix.c` push the `0x0342`
+pool to entry+0x3e so SHC bakes retail's `1d90` displacement.
+`tools/shc_b0c_prefix.py` checks the first 20 bytes against the ROM. The
+remaining 14 bytes still differ (`extu`/store order and `rts; movt` vs
+`movt; rts; nop`). Intra-section PC-relative pools are resolved inside the
+ROF (no reloc for GNU ld to retarget). Dummy pads are test-only, not game
+source. The function stays a candidate.

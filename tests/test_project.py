@@ -62,6 +62,14 @@ class VerificationTests(unittest.TestCase):
         self.assertEqual(len(covering), 1)
         self.assertEqual(covering[0]["kind"], "code")
 
+    def test_shc_b0c_prefix_fixture_uses_retail_callee_shape(self):
+        src = (ROOT / "tests" / "shc_b0c_prefix.c").read_text()
+        self.assertIn("0x342", src)
+        self.assertIn("func_0c047b0c", src)
+        script = (ROOT / "tools" / "shc_b0c_prefix.py").read_text()
+        self.assertIn("0x0C047B0C", script)
+        self.assertIn("PREFIX_LEN = 20", script)
+
     def test_shc_smoke_fixture_is_return_zero(self):
         src = (ROOT / "tests" / "shc_return0.c").read_text()
         self.assertIn("return 0", src)
@@ -75,6 +83,7 @@ class VerificationTests(unittest.TestCase):
         self.assertIn("Do **not** use Wine", text)
         workflow = (ROOT / ".github" / "workflows" / "build.yml").read_text()
         self.assertIn("tools/shc_smoke.py", workflow)
+        self.assertIn("tools/shc_b0c_prefix.py", workflow)
         self.assertIn("wibo-x86_64", workflow)
 
     def test_shc_wibo_smoke_when_configured(self):
