@@ -128,6 +128,41 @@
       "evidence": "MOV.L at0c0271ec/1f2/1f4/1f6 load these four words; 0c0272ec-0c0272f7 are unreferenced and left unknown."
     },
     {
+      "address": "0x0c027320",
+      "size": 240,
+      "kind": "code",
+      "sha256": "46877487a29770d47aff1c87acf4d7c2d899c94d432641b7182db41506ba609c",
+      "evidence": "Tail JMP from reviewed 0c02aba4; early BRA 0c02758e; loop BF.S 0c027386; BRA 0c02743a skips the inline pool after delay slot 0c02740e."
+    },
+    {
+      "address": "0x0c027410",
+      "size": 36,
+      "kind": "data",
+      "sha256": "28e7470c3cb2e4bf2dc823db7b2aebd1b71bb31eff6212de66cd36b8c9bab70a",
+      "evidence": "MOV.W at0c027398/3b2/3f4 and MOV.L at0c027332/33e/342/346/34a/35a/37c/386 consume 0c027410-0c027433."
+    },
+    {
+      "address": "0x0c027434",
+      "size": 290,
+      "kind": "code",
+      "sha256": "94fdb9d6272a1a2564783c135c0a9b50da0b8d1363eb74074a6183bb3ccb66f8",
+      "evidence": "BT/S target 0c027434 and BRA 0c02743a resume after the first pool; BF.S 0c02744c back to 0c02735a; BRA 0c027552 into the second pool skip."
+    },
+    {
+      "address": "0x0c027556",
+      "size": 42,
+      "kind": "data",
+      "sha256": "e4a233e4f38dcdaa4b8d32db46a9bb82bcda85cf48af5568778a4afd00c8cadf",
+      "evidence": "MOV.W at0c027486 and MOV.L at0c027450/468/472/488/49e/4a2/4b6/4d8/4f2/538/542 consume 0c027556-0c02757f."
+    },
+    {
+      "address": "0x0c027580",
+      "size": 34,
+      "kind": "code",
+      "sha256": "dfddd7f22e8ed8fd2f5f8e2caa070a19f2d85ba91a0b471e61ac6cb73e182388",
+      "evidence": "BF.S 0c027580/538 loop then BT 0c027588 to shared epilogue; RTS at0c02759e plus delay-slot restore. Next word 0c0275a2 is padding/unknown."
+    },
+    {
       "address": "0x0c0275dc",
       "size": 4,
       "kind": "code",
@@ -329,6 +364,55 @@
       "kind": "data",
       "sha256": "5f6cc045527b9ea76fe9509ce60c5798c86df42b0863b70469d2be396a0a0587",
       "evidence": "MOV.L at0c1eae88 stores the BSR result through this pointer."
+    },
+    {
+      "address": "0x0c2051b2",
+      "size": 10,
+      "kind": "code",
+      "sha256": "c4c644d59f5720925bef3eb0f5bfc75a8e9d95218d8ef85b0dbac953faeb6f2b",
+      "evidence": "Direct JSR from reviewed 0c027386/3ec; trampoline JMP at0c2051b8 plus delay slot. Next stub at0c2051bc is a different entry."
+    },
+    {
+      "address": "0x0c205294",
+      "size": 4,
+      "kind": "data",
+      "sha256": "a0a9d8401780de7c224bc5e24ed2bc826a8fd3e5aff639938031e3c561525efc",
+      "evidence": "MOV.L at0c2051b4 loads JMP target 0c211700."
+    },
+    {
+      "address": "0x0c205304",
+      "size": 6,
+      "kind": "code",
+      "sha256": "2eb2196012d5e864de7c33573a13e8f3179d01a955e1d5994c123eac1314593c",
+      "evidence": "Direct JSR from reviewed 0c0274b6/538; JMP at0c205306 plus NOP delay."
+    },
+    {
+      "address": "0x0c20536e",
+      "size": 38,
+      "kind": "code",
+      "sha256": "0a62012b5234c702293c460b9d0b96cff073a754f9704aa25f3a697374367205",
+      "evidence": "Direct JSR from reviewed 0c0274f2; BSR 0c205304, RTS at0c205382 plus delay, tail JMP at0c205390 plus PR restore delay. 0c205394 is not on this CFG."
+    },
+    {
+      "address": "0x0c20539c",
+      "size": 34,
+      "kind": "code",
+      "sha256": "bbfe07287c05f2d1195d93a1a05338fefb7fa97c24d080a8d3b84a0e9da00d67",
+      "evidence": "Direct JSR from reviewed 0c027542; BSR 0c205304, RTS at0c2053ac plus delay, tail JMP at0c2053ba plus delay. Following 0c2053be is not executed."
+    },
+    {
+      "address": "0x0c2053c8",
+      "size": 4,
+      "kind": "data",
+      "sha256": "ba12e90a0e536bbb1afde404ec5bb858736f5e4f3f5bbb27689f9c359dceb915",
+      "evidence": "MOV.L at0c205304 loads JMP target 0c20a850."
+    },
+    {
+      "address": "0x0c2053d0",
+      "size": 8,
+      "kind": "data",
+      "sha256": "d0ad38eb62e9f6fdfa25f5b0891ee700033b2a96ab2af18199aa77e98f9c5da9",
+      "evidence": "MOV.L at0c20538e/3b8 load 0c20a92a; MOV.L at0c2053b4 loads 0c23812c."
     }
   ]
 }
