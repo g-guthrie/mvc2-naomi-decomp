@@ -1,4 +1,4 @@
-"""mask_helper stays a candidate until SHC emits the 34 retail bytes unaided."""
+"""New p[4] six-byte leaves must compile to retail at their original addresses."""
 import shutil
 import sys
 import unittest
@@ -9,20 +9,19 @@ from build import compile_unit
 from core import ROOT, compare, load, number, verify_rom
 
 
-class MaskHelperTests(unittest.TestCase):
-    def test_mask_helper_is_uncredited_candidate(self):
+class SixbyteP4Tests(unittest.TestCase):
+    def test_sixbyte_p4_matches_retail(self):
         flags = load(ROOT / 'config/compiler.json')['flags']
-        work = ROOT / 'build' / 'work-mask-helper'
+        work = ROOT / 'build' / 'work-sixbyte-p4'
         if work.exists():
             shutil.rmtree(work)
         shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work)
-        unit = {u['id']: u for u in load(ROOT / 'config/units.json')}['mask_helper']
-        self.assertEqual(unit['mode'], 'candidate')
-        self.assertNotIn('pc_word_pool', unit)
-        self.assertNotIn('pc_rel_imm', unit)
+        unit = {u['id']: u for u in load(ROOT / 'config/units.json')}['sixbyte_p4']
+        self.assertEqual(unit['mode'], 'verified')
         target = load(ROOT / 'config/target.json')
         main = verify_rom(target)[number(target['main']['rom_offset']):]
         elf, link = compile_unit(unit, work, flags)
         proof, _ = compare(unit, elf, link, main, number(target['main']['address']))
-        self.assertFalse(proof['exact'], 'do not credit a rewrite-shaped match')
+        self.assertTrue(proof['exact'], proof['problems'])
+        self.assertEqual(sum(part['equal_bytes'] for part in proof['sections']), 42)
         shutil.rmtree(work)

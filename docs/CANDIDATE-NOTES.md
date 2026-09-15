@@ -2,6 +2,7 @@
 
 Bounded Hitachi SHC 5.0R31 experiments for `0x0c047b0c` (reference size 34 bytes):
 
+* Assembly rewrites (`MOV.W` retarget, `JSR`→`BSR`) are rejected: C must make SHC emit retail bytes via the original TU and shared pool.
 * Baseline `-cpu=sh4 -endian=little -optimize=1`: linked P is 36 bytes, 22/34 equal.
 * `-optimize=0`: linked P is 92 bytes, 0/34 equal.
 * `-optimize=2` is rejected by this SHC revision (`Invalid command parameter "2"`).
