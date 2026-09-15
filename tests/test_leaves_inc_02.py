@@ -16,7 +16,7 @@ class LeavesInc02Tests(unittest.TestCase):
         main = verify_rom(target)[number(target['main']['rom_offset']):]
         base = number(target['main']['address'])
         units = {u['id']: u for u in load(ROOT / 'config/units.json')}
-        for uid in ('leaves_inc_02', 'leaves_inc_03', 'leaves_inc_04'):
+        for uid in ('leaves_inc_02', 'leaves_inc_03', 'leaves_inc_04', 'leaves_inc_05'):
             work = ROOT / 'build' / f'work-{uid}'
             if work.exists():
                 shutil.rmtree(work)
