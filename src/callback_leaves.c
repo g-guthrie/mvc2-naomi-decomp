@@ -175,6 +175,40 @@ void func_0c1fbf20(void) {}
 void func_0c20740e(void) {}
 void func_0c215260(void) {}
 void func_0c21b998(void) {}
+void func_0c02abc4(void) {}
+void func_0c035026(void) {}
+void func_0c04339c(void) {}
+void func_0c068d20(void) {}
+void func_0c0a3cca(void) {}
+void func_0c0ba57e(void) {}
+void func_0c0cf7c6(void) {}
+void func_0c0f6800(void) {}
+void func_0c1318be(void) {}
+void func_0c13d052(void) {}
+void func_0c13d8c2(void) {}
+void func_0c1501f6(void) {}
+void func_0c150c90(void) {}
+void func_0c151a74(void) {}
+void func_0c151cda(void) {}
+void func_0c152030(void) {}
+void func_0c152390(void) {}
+void func_0c1618c8(void) {}
+void func_0c1623ca(void) {}
+void func_0c16b05e(void) {}
+void func_0c17d3ce(void) {}
+void func_0c17d774(void) {}
+void func_0c17e3ca(void) {}
+void func_0c17ed10(void) {}
+void func_0c18f284(void) {}
+void func_0c1977b8(void) {}
+void func_0c1c01da(void) {}
+void func_0c1c01de(void) {}
+void func_0c1d07bc(void) {}
+void func_0c1d117e(void) {}
+void func_0c1dff00(void) {}
+void func_0c1e6f98(void) {}
+void func_0c1e6f9c(void) {}
+void func_0c1e750a(void) {}
 
 int func_0c047064(void) { return 0; }
 int func_0c051b50(void) { return 0; }
@@ -218,7 +252,16 @@ int func_0c118ee8(void) { return 0; }
 int func_0c11e2ec(void) { return 0; }
 int func_0c124eb4(void) { return 0; }
 int func_0c18102c(void) { return 0; }
+int func_0c1f04f0(void) { return 0; }
 int func_0c20f678(void) { return 0; }
 
 int func_0c04d210(void) { return 1; }
+int func_0c1e9e90(void) { return 1; }
 int func_0c2154f8(void) { return 1; }
+
+int func_0c1433d2(int x) { return x; }
+int func_0c16310c(int x) { return x; }
+int func_0c1769fc(int x) { return x; }
+int func_0c190ea0(int x) { return x; }
+
+int func_0c1eae70(int a, int b) { return a - b; }
