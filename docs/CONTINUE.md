@@ -42,9 +42,11 @@ GCC 13 was tried on `func_0c04701c` at `-O0/-O1/-O2/-O3/-Os`, with and without
 frame pointer, `-mhitachi`, `-mrenesas`, and delayed-branch scheduling off.
 Every setting emitted a different size and prologue than retail (`e62f` /
 `mov.l r14,@-r15` plus `sts.l pr` and `bsr`, 72 bytes). GCC is ruled out for
-this representative non-leaf. Hitachi SHC (1998 PE32 `shc.exe` from the
-owner's `Hitachi.zip`) is the next compiler to run under Wine; it is not
-checked into this repository.
+this representative non-leaf. Hitachi SHC 5.0r31 from the owner's `Hitachi.zip`
+runs under wibo (not Wine). It matches the first 34 bytes of `func_0c04701c`
+and the same 4-byte leaves as GCC 13. Callee `bsr` displacements and an extra
+FPSCR save still block a 72-byte match. See [TOOLCHAIN.md](TOOLCHAIN.md).
+Keep it a candidate until `make all` proves a linked SHC object.
 
 ## First session on a new machine
 
