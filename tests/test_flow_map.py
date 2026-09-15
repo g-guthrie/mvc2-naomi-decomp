@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 from core import ROOT, load, number, verify_rom
-from flow_map import Image, recover_indexed_tables, walk_function
+from flow_map import Image, recover_callback_cells, recover_indexed_tables, walk_function
 
 
 def image():
@@ -47,6 +47,24 @@ class FlowMapTests(unittest.TestCase):
         self.assertIn((0x0c1fb7f4, 68), fn['tables'])
         self.assertIn(0x0c1fb7f0, fn['table_seeds'])
         self.assertTrue(all(self.img.contains(p) and p % 2 == 0 for p in fn['table_seeds']))
+
+    def test_callback_cell_from_mov_l_then_jsr_is_data(self):
+        fn = walk_function(self.img, 0x0c1e9b20)
+        self.assertIsNotNone(fn)
+        cells = [run for run in fn.get('tables') or [] if run[1] == 4 and run[0] in {
+            0x0c266bf8, 0x0c266bfc, 0x0c266c00, 0x0c266bdc,
+        }]
+        self.assertTrue(cells, fn.get('tables'))
+        pcs = list(range(0x0c1e9b20, 0x0c1e9b20 + 80, 2))
+        runs, _seeds = recover_callback_cells(self.img, pcs)
+        addrs = {a for a, s in runs}
+        self.assertIn(0x0c266bf8, addrs)
+
+    def test_ledger_records_callback_cell(self):
+        by = {number(p['address']): p for p in load(ROOT / 'config/mapping.json')['ranges']}
+        part = by[0x0c266bf8]
+        self.assertEqual(part['kind'], 'data')
+        self.assertEqual(part['size'], 4)
 
     def test_ledger_records_indexed_jump_table_as_data(self):
         by = {number(p['address']): p for p in load(ROOT / 'config/mapping.json')['ranges']}
