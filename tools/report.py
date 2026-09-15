@@ -152,7 +152,7 @@ def publish(proof):
         '<!-- progress:start -->\n'
         '| Track | Progress | Bytes |\n'
         '| --- | --- | ---: |\n'
-        f'| [Map](config/mapping.json) | `{progress_bar(mapped, total)}` **{100 * mapped / total:.3f}%** | {mapped:,} / {total:,} |\n'
+        f'| Map | `{progress_bar(mapped, total)}` **{100 * mapped / total:.3f}%** | {mapped:,} / {total:,} |\n'
         f'| [Decomp](config/units.json) | `{progress_bar(matched, total)}` **{100 * matched / total:.3f}%** | {matched:,} / {total:,} |\n'
         '<!-- progress:end -->')
     readme = ROOT / 'README.md'
