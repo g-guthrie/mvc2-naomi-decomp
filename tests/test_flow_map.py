@@ -21,6 +21,21 @@ class FlowMapTests(unittest.TestCase):
     def setUpClass(cls):
         cls.img = image()
 
+    def test_boot_init_jsr_r11_survives_intervening_other_jsrs(self):
+        from flow_map import literal_reg_target
+        target = literal_reg_target(self.img, 0x0c028424, 11)
+        self.assertEqual(target, 0x0c023060)
+        fn = walk_function(self.img, 0x0c028394)
+        dests = [c[2] for c in fn['calls'] if c[0] == 'jsr']
+        self.assertIn(0x0c023060, dests)
+        def kind_at(pc):
+            for p in load(ROOT / 'config/mapping.json')['ranges']:
+                lo = number(p['address'])
+                if lo <= pc < lo + p['size']:
+                    return p['kind']
+            return None
+        self.assertEqual(kind_at(0x0c023060), 'code')
+
     def test_jsr_lookback_recovers_pointer_across_straight_line_stores(self):
         from flow_map import literal_reg_target
         target = literal_reg_target(self.img, 0x0c20b7b0, 3)

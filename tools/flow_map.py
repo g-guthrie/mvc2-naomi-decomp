@@ -117,7 +117,7 @@ class Image:
         return self.base <= addr and addr + size <= self.end
 
 
-def literal_reg_target(image, pc, reg, lookback=32):
+def literal_reg_target(image, pc, reg, lookback=64):
     """Last PC-relative MOV.L into reg in the preceding lookback halfwords."""
     addr = pc - 2
     steps = 0
@@ -131,7 +131,17 @@ def literal_reg_target(image, pc, reg, lookback=32):
             return None
         if info.get("lit_reg") == reg and info["lit"] and info["lit"][1] == 4:
             return image.u32(info["lit"][0])
-        if info["kind"] in {"rts", "rte", "jmp", "bra", "bsr", "jsr", "bt", "bf", "bts", "bfs", "braf", "bsrf"}:
+        # jsr/jmp of a different callee-saved register does not kill r8-r14.
+        if info["kind"] in {"jsr", "jmp"}:
+            used = info.get("jsr_reg") if info["kind"] == "jsr" else info.get("jmp_reg")
+            if used == reg:
+                break
+            if reg < 8:
+                break
+            addr -= 2
+            steps += 1
+            continue
+        if info["kind"] in {"rts", "rte", "bra", "bsr", "bt", "bf", "bts", "bfs", "braf", "bsrf"}:
             break
         addr -= 2
         steps += 1

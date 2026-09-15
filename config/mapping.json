@@ -541,6 +541,90 @@
       "evidence": "PC-relative consumer in CFG of 0x0c022dc8; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c022e7e",
+      "size": 62,
+      "kind": "code",
+      "sha256": "3ac6a3c87f8f0c771794b62a30d18af3410bd58a026ec8840af2e869c13c11f7",
+      "evidence": "CFG walk from 0x0c022e7e; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c022ebc",
+      "size": 116,
+      "kind": "code",
+      "sha256": "9f8af14e04fc8f375d056d2db748883cbbe61849f432053b7ff1235033ee623a",
+      "evidence": "CFG walk from 0x0c022ebc; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c022f30",
+      "size": 2,
+      "kind": "data",
+      "sha256": "474f2af47544e9c7ce4338cabd43c5ca1c26432b7300ce387406157ea433891f",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c022ebc; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c022f34",
+      "size": 4,
+      "kind": "data",
+      "sha256": "63ab22c8e27f9953a575fac57fe5d579add15b6f26b8b09692aa7cc235fe4a9d",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c022ebc; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c022f44",
+      "size": 8,
+      "kind": "data",
+      "sha256": "77059016e69f29252580a94c2f52c388e4d66717bd2e450ced805b916d7c7d79",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c022e7e; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c022f4c",
+      "size": 16,
+      "kind": "data",
+      "sha256": "98a0609a1f93406d54c68211df0dfbe78d58b26c08ff9251e2cee90b973c23f7",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c022ebc; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c022f5c",
+      "size": 212,
+      "kind": "code",
+      "sha256": "133f3f78a556b7d6dade1749627fd53989cfcbbf0d1a848d5f42d32df0e5ede2",
+      "evidence": "CFG walk from 0x0c022f5c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c023030",
+      "size": 2,
+      "kind": "data",
+      "sha256": "640c66e32ed1a523d9a1cca42fc8f877722f7d134568b70c681b927c3f10f448",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c022f5c; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c023034",
+      "size": 44,
+      "kind": "data",
+      "sha256": "f900665dd14710b1ec0430b77ff5f0c3d41fddb891a44c7fb1896a9e23a590dd",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c022f5c; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c023060",
+      "size": 94,
+      "kind": "code",
+      "sha256": "aa39ab8557d470aa96d48ae279d5245afcfd29f06839d06f2bd29274ecb0225d",
+      "evidence": "CFG walk from 0x0c023060; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c02311e",
+      "size": 2,
+      "kind": "data",
+      "sha256": "f85ad8f0233b99ba122d3b79773c1a1936b3d3b988b9d1b475fd890b4032f3c4",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c023060; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c023124",
+      "size": 16,
+      "kind": "data",
+      "sha256": "7bfaca32000954f3fa411b6d03e1aaa24b67d4ee646fffb472058f4453747dc6",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c023060; unreferenced adjacent bytes omitted."
+    },
+    {
       "address": "0x0c0233d0",
       "size": 12,
       "kind": "code",
@@ -2466,6 +2550,20 @@
       "evidence": "Direct BSR from 0c1eae82; MOV.L then RTS plus delay-slot load. Trailing NOPs are not executed."
     },
     {
+      "address": "0x0c1eae60",
+      "size": 16,
+      "kind": "code",
+      "sha256": "3373487d2f4ae11b1230b8cb2ab4f720630cf1530fefe9b5ca7030372ce07d69",
+      "evidence": "CFG walk from 0x0c1eae60; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1eae70",
+      "size": 6,
+      "kind": "code",
+      "sha256": "462681db3bcece33e55abe4d4b831fc1586aba0a8f2622d8fe792719e0014072",
+      "evidence": "CFG walk from 0x0c1eae70; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
       "address": "0x0c1eae80",
       "size": 14,
       "kind": "code",
@@ -2473,11 +2571,25 @@
       "evidence": "Indirect JSR from boot init at0c0283d6; BSR 0c1eae50, then RTS at0c1eae8a plus delay-slot store. NOP at0c1eae8e is after the delay slot."
     },
     {
+      "address": "0x0c1eae90",
+      "size": 20,
+      "kind": "code",
+      "sha256": "ae942fc8a4df17364738930ac8fb6268898eb6a57a18b5c4e64e8f453b8ed6a0",
+      "evidence": "CFG walk from 0x0c1eae90; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
       "address": "0x0c1eaf10",
       "size": 4,
       "kind": "data",
       "sha256": "38bed94912b02424cb8bf6df37601a86c503d9f4ca0196138ef3abc421bc85e1",
       "evidence": "MOV.L at0c1eae50 loads this MMIO/data pointer. Adjacent 0c1eaf14 is only used by unreviewed 0c1eae60."
+    },
+    {
+      "address": "0x0c1eaf14",
+      "size": 4,
+      "kind": "data",
+      "sha256": "0680ba750ca666d4b95d7d983983d09ccfeb64b5877b256cf579e6b88d35a88c",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1eae60; unreferenced adjacent bytes omitted."
     },
     {
       "address": "0x0c1eaf18",
@@ -3705,6 +3817,41 @@
       "evidence": "CFG walk from 0x0c1f2970; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c1f2a30",
+      "size": 14,
+      "kind": "code",
+      "sha256": "c8f0417068abf59084935810a2c761f95f25dad01de6b6f4247f51b1bd584bf1",
+      "evidence": "CFG walk from 0x0c1f2a30; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f2a40",
+      "size": 22,
+      "kind": "code",
+      "sha256": "cdcaeb38b63ffbe74cb1a94cfbeb74a58f89eb77c8a102d7a436319aa9a00693",
+      "evidence": "CFG walk from 0x0c1f2a30; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f2a60",
+      "size": 12,
+      "kind": "code",
+      "sha256": "8c17a398b93007df5099950bd5daa2611e2f3361d01ec85f5a0c7f318222f315",
+      "evidence": "CFG walk from 0x0c1f2a30; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f2a70",
+      "size": 6,
+      "kind": "code",
+      "sha256": "a67f14f676b9b0bd61551311a9bb3b91aa924f91c98b1f4fdb7bed02d43efaaa",
+      "evidence": "CFG walk from 0x0c1f2a30; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f2a80",
+      "size": 124,
+      "kind": "code",
+      "sha256": "ef9e8162cc1d838efd602bc61a20c53acb76d2c03ff828b0a97458490b9a9cda",
+      "evidence": "CFG walk from 0x0c1f2a80; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
       "address": "0x0c1f2afc",
       "size": 24,
       "kind": "data",
@@ -3838,11 +3985,158 @@
       "evidence": "CFG walk from 0x0c1f2cb0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c1f2df0",
+      "size": 30,
+      "kind": "code",
+      "sha256": "d8ef6642fda9d58b5f7fcda4fcfa724e8e08743f8f69ef39fd18a2eca22154c7",
+      "evidence": "CFG walk from 0x0c1f2df0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
       "address": "0x0c1f2e0e",
       "size": 10,
       "kind": "data",
       "sha256": "0d8514e752f69c86829f032238d981ba0dc489ced50e98e143b08724c6bd8a92",
       "evidence": "PC-relative consumer in CFG of 0x0c1f2cb0; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c1f2e20",
+      "size": 54,
+      "kind": "code",
+      "sha256": "674bbd63f9703a96324b88cecc9e29d5deecfcfbc8b92d193a806bc665518705",
+      "evidence": "CFG walk from 0x0c1f2df0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f2f18",
+      "size": 24,
+      "kind": "data",
+      "sha256": "d174f3cb830ed0bb364bc74368cc07075b3c12ce53712057cea2a53c945eb7ee",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1f2df0; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c1f2f50",
+      "size": 62,
+      "kind": "code",
+      "sha256": "69767015a7dfdc42838d8509e7029a9ba4962bd28b753003849877b0c3c50f45",
+      "evidence": "CFG walk from 0x0c1f2f50; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f2f90",
+      "size": 4,
+      "kind": "code",
+      "sha256": "4f76904173673c1d255bf2ba3d006440b8472684e47c16f967bfded5c369b2f4",
+      "evidence": "CFG walk from 0x0c1f2f50; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f2fa0",
+      "size": 24,
+      "kind": "code",
+      "sha256": "13617dc0e97ae8ca71214fa65852a66c218bc3870c5fb463a6de9937e3ed7063",
+      "evidence": "CFG walk from 0x0c1f2f50; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f2fc0",
+      "size": 8,
+      "kind": "code",
+      "sha256": "efa1f7ae647be204a6c8fd6c07c211803d45d52a12cd5018d5a0dfc6abe1b02d",
+      "evidence": "CFG walk from 0x0c1f2f50; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f2fd0",
+      "size": 28,
+      "kind": "code",
+      "sha256": "e9a467f0507239f1276307ad1f4d96caca8d26f50c5c493164e9f8cc4153ba56",
+      "evidence": "CFG walk from 0x0c1f2f50; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f2fec",
+      "size": 2,
+      "kind": "data",
+      "sha256": "91a9c5eaa0c0fb119bb49cb67e24530ab952cf4df863a84e81c03823af4185db",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1f2f50; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c1f2ff0",
+      "size": 24,
+      "kind": "data",
+      "sha256": "826e928abf6d0b2ff6c90232a92a165746700bd3e25c291b3671ebbc29d5007c",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1f2f50; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c1f3010",
+      "size": 30,
+      "kind": "code",
+      "sha256": "c6e5c2ff3c345a3043b9970c94c7ee27fbd9d400794115102235ed41e4f3addc",
+      "evidence": "CFG walk from 0x0c1f2f50; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f3030",
+      "size": 42,
+      "kind": "code",
+      "sha256": "e69c4b57d91cdac81edbb0ba3a400fc0d641a6bde2fe2c28ca93150e2cbf9927",
+      "evidence": "CFG walk from 0x0c1f2f50; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f3060",
+      "size": 14,
+      "kind": "code",
+      "sha256": "44d0cb43b031fd3b3f754d9652a444c27424d6ae479244c5fd56f3ba7a6b509f",
+      "evidence": "CFG walk from 0x0c1f2f50; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f3070",
+      "size": 26,
+      "kind": "code",
+      "sha256": "370cff36b30a977c0afcb4d6fe0fbd12ae0d7772daede6574bfde2bdb620e4de",
+      "evidence": "CFG walk from 0x0c1f2f50; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f3090",
+      "size": 20,
+      "kind": "code",
+      "sha256": "a59cb0a8b7ef6ea370e46910bdc6173e1f148b1e3fd9626983b8b4e5051d4841",
+      "evidence": "CFG walk from 0x0c1f2f50; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f30a4",
+      "size": 2,
+      "kind": "data",
+      "sha256": "b413f47d13ee2fe6c845b2ee141af81de858df4ec549a58b7970bb96645bc8d2",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1f2f50; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c1f30a8",
+      "size": 12,
+      "kind": "data",
+      "sha256": "99a79d16a25cad559a88f94121eeb59353620471e355787d820ed2dd5b71e611",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1f2f50; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c1f31c0",
+      "size": 22,
+      "kind": "code",
+      "sha256": "4289d26d7d51666a6f8801992756f69afc4f1598eb4f2a806e1c56314a5a7a79",
+      "evidence": "CFG walk from 0x0c1f31c0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f31e0",
+      "size": 56,
+      "kind": "code",
+      "sha256": "dfb5214d74f89a3d9ec63fd273d9bf0ec9c2b53419496654d08ba92918fc7a02",
+      "evidence": "CFG walk from 0x0c1f31c0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f321a",
+      "size": 2,
+      "kind": "data",
+      "sha256": "9dcf97a184f32623d11a73124ceb99a5709b083721e878a16d78f596718ba7b2",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1f31c0; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c1f3220",
+      "size": 20,
+      "kind": "data",
+      "sha256": "9d07fe6b17fb92f1e4f82c148d3b40d2ba12834f18afddbb96164879d5513c5d",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1f31c0; unreferenced adjacent bytes omitted."
     },
     {
       "address": "0x0c1f3240",
