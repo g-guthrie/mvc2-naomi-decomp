@@ -126,9 +126,12 @@ def literal_reg_target(image, pc, reg, lookback=12):
         if word is None:
             break
         info = decode(addr, word)
+        # Indexed load into the same register replaces any earlier literal.
+        if (word & 0xF00F) == 0x000E and ((word >> 8) & 0xF) == reg:
+            return None
         if info.get("lit_reg") == reg and info["lit"] and info["lit"][1] == 4:
             return image.u32(info["lit"][0])
-        if info["kind"] in {"rts", "rte", "jmp", "bra", "bsr", "jsr", "bt", "bf", "bts", "bfs"}:
+        if info["kind"] in {"rts", "rte", "jmp", "bra", "bsr", "jsr", "bt", "bf", "bts", "bfs", "braf", "bsrf"}:
             break
         addr -= 2
         steps += 1
@@ -270,6 +273,7 @@ def walk_function(image, entry, max_insns=2048):
     calls = []
     indirect = []
     issues = []
+    braf_tables = []
     work = [entry]
     while work:
         pc = work.pop()
@@ -311,6 +315,71 @@ def walk_function(image, entry, max_insns=2048):
                 work.append(target)
             else:
                 calls.append(("bra_tail", pc, target))
+        elif info["kind"] == "braf":
+            # and #imm; shll2 r0; braf r0 — 4-byte case slots at PC+4
+            back = pc - 2
+            imm = None
+            saw_shll2 = False
+            for _ in range(6):
+                if back not in visited and back not in delay:
+                    prevw = image.word(back)
+                else:
+                    prevw = image.word(back)
+                if prevw is None:
+                    break
+                if prevw == 0x4008:
+                    saw_shll2 = True
+                if (prevw & 0xFF00) == 0xC900:
+                    imm = prevw & 0xFF
+                    break
+                back -= 2
+            if saw_shll2 and imm is not None:
+                slot = pc + 4
+                for i in range(imm + 1):
+                    tgt = slot + 4 * i
+                    if image.contains(tgt) and tgt >= entry:
+                        work.append(tgt)
+            # mova tbl; mov.w @(r0,r1),r0; braf r0 — 16-bit offset table
+            back = pc - 2
+            mova = None
+            saw_movw = False
+            bound = None
+            for _ in range(12):
+                prevw = image.word(back)
+                if prevw is None:
+                    break
+                pinf = decode(back, prevw)
+                if (prevw & 0xF00F) == 0x000D and ((prevw >> 8) & 0xF) == 0:
+                    saw_movw = True
+                if (prevw & 0xFF00) == 0xC700 and pinf["lit"] and mova is None:
+                    mova = pinf["lit"][0]
+                if (prevw & 0xF00F) == 0x3002:  # cmp/hs
+                    rm = (prevw >> 4) & 0xF
+                    # look further for mov #imm, rm
+                    b2 = back - 2
+                    for _2 in range(4):
+                        w2 = image.word(b2)
+                        if w2 is not None and (w2 >> 12) == 0xE and ((w2 >> 8) & 0xF) == rm:
+                            bound = w2 & 0xFF
+                            break
+                        b2 -= 2
+                back -= 2
+            if mova is not None and saw_movw and bound:
+                addr = mova
+                for i in range(bound):
+                    if not image.contains(addr, 2):
+                        break
+                    off = image.word(addr)
+                    if off >= 0x8000:
+                        off -= 0x10000
+                    dest = pc + 4 + off
+                    if image.contains(dest) and dest % 2 == 0:
+                        if dest >= entry:
+                            work.append(dest)
+                        calls.append(("braf", pc, dest))
+                    addr += 2
+                if addr > mova:
+                    braf_tables.append((mova, addr - mova))
         elif info["kind"] == "bsr" and info["call"] is not None:
             calls.append(("bsr", pc, info["call"]))
         elif info["kind"] == "jsr":
@@ -356,7 +425,7 @@ def walk_function(image, entry, max_insns=2048):
         data_runs.append((run_s, run_e + 1 - run_s))
     tables, table_seeds = recover_indexed_tables(image, code_pcs)
     cells, cell_seeds = recover_callback_cells(image, code_pcs)
-    tables = tables + cells
+    tables = tables + cells + braf_tables
     table_seeds = table_seeds + cell_seeds
     table_bytes = set()
     for start, size in tables:
@@ -431,21 +500,30 @@ def map_from_roots(image, roots, existing=()):
                 for start, size in fn["data"]:
                     reviewed.append((start, start + size, "data"))
         else:
-            # Already-reviewed function: still harvest jump-table seeds and table bytes.
-            for start, size in fn.get("tables") or []:
-                if covered_kind(reviewed, start) is None:
-                    functions.append({
-                        "entry": entry,
-                        "code": [],
-                        "data": [(start, size)],
-                        "calls": [],
-                        "indirect": [],
-                        "issues": [],
-                        "nins": 0,
-                        "tables": [(start, size)],
-                        "table_seeds": fn.get("table_seeds") or [],
-                    })
-                    reviewed.append((start, start + size, "data"))
+            extra_code = []
+            extra_data = []
+            for start, size in fn["code"]:
+                for s, z in uncovered_slices(start, size, reviewed, "code"):
+                    if merge_into(reviewed, s, z, "code"):
+                        extra_code.append((s, z))
+                        reviewed.append((s, s + z, "code"))
+            for start, size in list(fn.get("data") or []) + list(fn.get("tables") or []):
+                for s, z in uncovered_slices(start, size, reviewed, "data"):
+                    if merge_into(reviewed, s, z, "data"):
+                        extra_data.append((s, z))
+                        reviewed.append((s, s + z, "data"))
+            if extra_code or extra_data:
+                functions.append({
+                    "entry": entry,
+                    "code": extra_code,
+                    "data": extra_data,
+                    "calls": fn.get("calls") or [],
+                    "indirect": [],
+                    "issues": [],
+                    "nins": fn.get("nins") or 0,
+                    "tables": extra_data,
+                    "table_seeds": fn.get("table_seeds") or [],
+                })
         if fn is not None:
             for _kind, _pc, target in fn["calls"]:
                 if isinstance(target, int) and image.contains(target) and target not in seen:
@@ -470,48 +548,67 @@ def existing_ranges(image):
     return rows
 
 
+def uncovered_slices(start, size, existing, kind):
+    pieces = [(start, start + size)]
+    for lo, hi, k in existing:
+        nxt = []
+        for a, b in pieces:
+            if b <= lo or a >= hi:
+                nxt.append((a, b))
+                continue
+            if a < lo:
+                nxt.append((a, lo))
+            if hi < b:
+                nxt.append((hi, b))
+        pieces = nxt
+    out = []
+    for a, b in pieces:
+        if b <= a:
+            continue
+        if kind == "code" and (a % 2 or (b - a) % 2):
+            continue
+        out.append((a, b - a))
+    return out
+
+
 def proposals_from_functions(image, functions, existing):
     seen = set()
     out = []
     for fn in functions:
         for start, size in fn["code"]:
-            if covered_kind(existing, start) == "code":
-                continue
-            key = (start, size, "code")
-            if key in seen:
-                continue
-            seen.add(key)
-            sl = image.blob[start - image.base:start - image.base + size]
-            out.append({
-                "address": f"0x{start:08x}",
-                "size": size,
-                "kind": "code",
-                "sha256": sha(sl),
-                "evidence": (
-                    f"CFG walk from 0x{fn['entry']:08x}; delay slots included; "
-                    f"direct BSR/JSR/JMP targets recorded; PC-relative pools split."
-                ),
-            })
+            for s, z in uncovered_slices(start, size, existing, "code"):
+                key = (s, z, "code")
+                if key in seen:
+                    continue
+                seen.add(key)
+                sl = image.blob[s - image.base:s - image.base + z]
+                out.append({
+                    "address": f"0x{s:08x}",
+                    "size": z,
+                    "kind": "code",
+                    "sha256": sha(sl),
+                    "evidence": (
+                        f"CFG walk from 0x{fn['entry']:08x}; delay slots included; "
+                        f"direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+                    ),
+                })
         for start, size in fn["data"]:
-            if covered_kind(existing, start) == "data":
-                continue
-            if covered_kind(existing, start) == "code":
-                continue
-            key = (start, size, "data")
-            if key in seen:
-                continue
-            seen.add(key)
-            sl = image.blob[start - image.base:start - image.base + size]
-            out.append({
-                "address": f"0x{start:08x}",
-                "size": size,
-                "kind": "data",
-                "sha256": sha(sl),
-                "evidence": (
-                    f"PC-relative consumer or indexed pointer table in CFG of 0x{fn['entry']:08x}; "
-                    f"unreferenced adjacent bytes omitted."
-                ),
-            })
+            for s, z in uncovered_slices(start, size, existing, "data"):
+                key = (s, z, "data")
+                if key in seen:
+                    continue
+                seen.add(key)
+                sl = image.blob[s - image.base:s - image.base + z]
+                out.append({
+                    "address": f"0x{s:08x}",
+                    "size": z,
+                    "kind": "data",
+                    "sha256": sha(sl),
+                    "evidence": (
+                        f"PC-relative consumer or indexed pointer table in CFG of 0x{fn['entry']:08x}; "
+                        f"unreferenced adjacent bytes omitted."
+                    ),
+                })
     out.sort(key=lambda r: int(r["address"], 16))
     return out
 
