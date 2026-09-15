@@ -7,8 +7,10 @@ void func_0c225040(unsigned *p, unsigned v) { p[11] = v; }
 unsigned func_0c225044(unsigned *p) { return p[11]; }
 
 void func_0c02e316(unsigned char *p) { p[4] = 10; }
+void func_0c1a2c1c(unsigned char *p) { p[4] = 2; }
 void func_0c1b29fc(unsigned char *p) { p[4] = 2; }
 void func_0c1bfdda(unsigned char *p) { p[4] = 3; }
+void func_0c1c0014(unsigned char *p) { p[4] = 3; }
 
 void (*const table_0c2197f8[])(unsigned *, unsigned)
     __attribute__((section(".rodata.table_0c2197f8"), used)) = {
