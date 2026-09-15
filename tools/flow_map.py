@@ -117,7 +117,7 @@ class Image:
         return self.base <= addr and addr + size <= self.end
 
 
-def literal_reg_target(image, pc, reg, lookback=12):
+def literal_reg_target(image, pc, reg, lookback=32):
     """Last PC-relative MOV.L into reg in the preceding lookback halfwords."""
     addr = pc - 2
     steps = 0
