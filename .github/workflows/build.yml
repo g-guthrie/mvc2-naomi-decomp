@@ -1,0 +1,63 @@
+name: Compile and verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Prepare SH-4 toolchain
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          tags: mvc2-naomi-build:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Test, compile, link, compare with retail, and render progress
+        run: |
+          docker run --rm \
+            -e SOURCE_COMMIT="$GITHUB_SHA" \
+            -v "$GITHUB_WORKSPACE:/project" \
+            mvc2-naomi-build:ci make all
+      - name: Upload verified build and dashboard
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-naomi-build
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            build/evidence.json
+            build/matching.elf
+            build/link.map
+            build/epr-23085a.ic11
+            docs/index.html
+            docs/progress.json
+            assets/progress.svg
+      - name: Update the repository infographic after a successful main build
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          latest=$(git ls-remote origin refs/heads/main | cut -f1)
+          if [ "$latest" != "$GITHUB_SHA" ]; then
+            echo 'A newer source commit exists; its build will publish progress.'
+            exit 0
+          fi
+          git add assets/progress.svg docs/progress.json docs/index.html
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update verified decompilation progress [skip ci]'
+          git push origin HEAD:main

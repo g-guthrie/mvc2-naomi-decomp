@@ -1,0 +1,98 @@
+# Marvel vs. Capcom 2 — NAOMI decompilation
+
+[![Compile and verify](https://github.com/g-guthrie/mvc2-naomi-decomp/actions/workflows/build.yml/badge.svg)](https://github.com/g-guthrie/mvc2-naomi-decomp/actions/workflows/build.yml)
+
+**Target: Sega NAOMI arcade · Export/Korea Rev A · MAME set `mvsc2`.**
+This is a matching C decompilation of the arcade game, with native ports as a
+later goal. It is an early foundation, not a finished source-built game.
+
+![Live verified source progress](assets/progress.svg)
+
+The infographic updates automatically after every successful build on `main`.
+[Builds and downloadable dashboard](https://github.com/g-guthrie/mvc2-naomi-decomp/actions/workflows/build.yml)
+· [Machine-readable progress](docs/progress.json)
+· [Metric definitions](docs/PROGRESS.md)
+· [Continue the work](docs/CONTINUE.md)
+
+## Start here — humans and cloud agents
+
+This **private repository includes the owner's supplied, verified ROM** at
+[`orig/mvsc2.zip`](orig/mvsc2.zip). An agent needs authenticated access to this
+repository; there is no additional ROM download, external secret, SDK upload,
+or emulator required for the current build.
+
+```sh
+git clone https://github.com/g-guthrie/mvc2-naomi-decomp.git
+cd mvc2-naomi-decomp
+docker build -t mvc2-naomi-build .
+docker run --rm -v "$PWD:/project" mvc2-naomi-build make all
+```
+
+Docker supports the same setup on Linux and macOS. On Ubuntu 24.04 without
+Docker, install `gcc-13-sh4-linux-gnu`, `binutils-sh4-linux-gnu`, `python3`, and
+`make`, then run `make all` directly. The current build uses GCC 13 for the
+first compiler-independent leaf shapes; the original compiler is not yet
+established.
+
+Read [AGENTS.md](AGENTS.md) and [docs/CONTINUE.md](docs/CONTINUE.md) before editing.
+
+## What the automatic build actually checks
+
+1. Verify **all 18 original ROM files** against their catalogued size, CRC32,
+   and SHA-1, and verify the main/test boot descriptors.
+2. Compile every nominated matching C source to SH-4.
+3. Link its code/data sections at the original addresses, with exact size
+   assertions and no unexplained allocated sections.
+4. Compare each compiled section directly with the original ROM bytes.
+5. Insert the source-built sections into the original main-program remainder
+   and require byte-for-byte equality of both the main image and complete
+   program ROM. Original remainder bytes never count as source progress.
+6. Generate the infographic and interactive HTML dashboard from fresh build
+   evidence. Failed or stale evidence cannot publish new progress.
+
+GitHub Actions runs these steps for pushes and pull requests. After a successful
+`main` build, it commits the generated graphic and reports back to this private
+repository. Build artifacts include the linked source ELF, link map, rebuilt
+program ROM, evidence, and a self-contained interactive dashboard.
+
+## Explore the color map
+
+After `make all`, open `docs/index.html` locally, or run:
+
+```sh
+make serve
+# Open http://127.0.0.1:8000
+```
+
+Switch between the whole main image, known code, and known data. Select a tile
+to inspect its address, byte count, status, and source. The README embeds a
+static version because GitHub does not execute HTML dashboards inside README
+files. Download `verified-naomi-build` from Actions for the standalone version.
+
+## Starting checkpoint
+
+- **8 C functions / 32 bytes** compile, match, and link at original addresses.
+- **0 reconstructed data bytes.** Identified raw pointer cells earn no credit.
+- The main image is **2,424,832 bytes**; service/test code is tracked separately.
+- Most bytes remain unclassified. Code/data totals are pending a complete
+  inventory; the graphic never presents the handful of known functions as
+  “100% of the game.”
+- No gameplay or emulator run is claimed by the build. The linked source ELF
+  alone is not a bootable game. A compatible NAOMI BIOS and emulator are needed
+  for runtime work, not for compiling or verifying source.
+
+## Target and provenance
+
+[`config/target.json`](config/target.json) pins all 18 ROM fingerprints, the
+program ROM, boot segments, and the MAME source revision used for identification.
+The supplied ZIP passed every check. The previously examined standalone `.dat`
+image had a different program ROM and is not an input to this project.
+
+The NAOMI target has its own address map, compiler evidence, and progress.
+Dreamcast's `marvelous2` research and the separate PS2 project may help explain
+behavior, but their matching percentages do not transfer to this target.
+
+The game belongs to its respective rights holders. The supplied retail archive
+is kept here at the owner's request for private research and cloud-agent access.
+Keep this repository and ROM-containing build artifacts private. No blanket
+license for the original game is implied.
