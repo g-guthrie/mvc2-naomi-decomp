@@ -16,7 +16,7 @@ class LeavesRetTests(unittest.TestCase):
         main = verify_rom(target)[number(target['main']['rom_offset']):]
         base = number(target['main']['address'])
         units = {u['id']: u for u in load(ROOT / 'config/units.json')}
-        for uid in ('leaves_ret_20', 'leaves_ret_21', 'leaves_ret_22'):
+        for uid in ('leaves_ret_20', 'leaves_ret_21', 'leaves_ret_22', 'leaves_ret_23'):
             work = ROOT / 'build' / f'work-{uid}'
             if work.exists():
                 shutil.rmtree(work)
