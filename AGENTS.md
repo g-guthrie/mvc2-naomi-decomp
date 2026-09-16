@@ -12,7 +12,7 @@ python3 tools/ghidra_draft.py --ghidra DIR        # once per clone, optional
 ```
 
 The check verifies the ROMs, runs the tests, compiles every unit and rebuilds
-the ROM. The draft step needs a Ghidra install (see
+the ROM. The draft step needs a Ghidra install patched for single precision (see
 [docs/TOOLCHAIN.md](docs/TOOLCHAIN.md)) and writes a decompilation draft of
 every reviewed function into `build/drafts/`; without it you read
 disassembly instead.
