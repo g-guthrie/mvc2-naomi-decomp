@@ -91,7 +91,7 @@ void func_0c05a9e8(struct Obj_ub8_03 *a)
 {
     struct Sub2a4_ub8_03 *p = &a->sub2a4;
 
-    if (p->b3 == 0)
+    if (!p->b3)
         func_0c02a026(a);
     else {
         a->b6 = a->b6 + 1;

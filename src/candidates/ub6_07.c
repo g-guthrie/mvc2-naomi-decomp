@@ -62,8 +62,8 @@ void func_0c0b468e(struct Obj_ub6_07 *a)
     a->b12c = 1;
     func_0c02a0c4(a, 18, 1);
     a->f264 = 0.2f;
-    a->f56 += 100.0f;
     a->b1f9 = 2;
+    a->f56 += 100.0f;
     func_0c1a62b0(a);
 }
 
@@ -80,6 +80,6 @@ void func_0c0b46d4(struct Obj_ub6_07 *a)
         a->f108 = -0.803571f;
     }
     if (a->b141 == 3) {
-        a->f264 += 0.016f;
+        a->f264 = a->f264 + 0.016f;
     }
 }

@@ -38,7 +38,7 @@ struct Obj_tu3_01 {
             unsigned char pad12[0x13c - 0x12d];
             char b13c, b13d;
             unsigned char pad13[0x159 - 0x13e];
-            unsigned char b159;
+            char b159;
         } u;
     } v;
     unsigned char b19c, b19d, b19e;

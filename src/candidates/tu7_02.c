@@ -13,8 +13,8 @@ struct Link_tu7_02 { unsigned char pad0[9]; char b9; };
 struct Obj_tu7_02 {
     unsigned char pad0[37];
     unsigned char b37;
-    unsigned char pad1[0x141 - 38];
     char b141;
+    unsigned char pad1[0x141 - 38];
     unsigned char pad2[0x158 - 0x142];
     unsigned char b158, b159;
     unsigned char pad3[0x1a3 - 0x15a];
@@ -25,8 +25,8 @@ struct Obj_tu7_02 {
     char b1f9;
     unsigned char pad6[0x1fe - 0x1fa];
     char b1fe;
-    unsigned char b1ff;
     unsigned char pad7[0x2a4 - 0x200];
+    unsigned char b1ff;
     struct Link_tu7_02 s2a4;
 };
 

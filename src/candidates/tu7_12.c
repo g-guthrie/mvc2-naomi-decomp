@@ -61,8 +61,8 @@ void func_0c161728(struct Obj_tu7_12 *a)
     a->f56 += a->f96;
     a->f96 += a->f108;
     if (func_0c02a026(a) < 0) {
-        a->b4 = 2;
         a->v.u.b12c = 0;
+        a->b4 = 2;
     }
 }
 
