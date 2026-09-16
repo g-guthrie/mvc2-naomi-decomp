@@ -39,7 +39,9 @@ function with the pool literals substituted, produced by
 `tools/ghidra_draft.py`. It gives the control flow, the calls and the field
 offsets. It is not the shape that reproduces the bytes: rewrite it with struct
 members and the rules below, and keep the disassembly open for the details
-the draft loses, such as float mode and register choice.
+the draft loses. Do not trust a draft's branches around float stores: Ghidra
+does not know the FPU mode and invents a dead branch between a 32-bit and a
+64-bit store.
 
 ## Iterate with the diff tool
 
@@ -124,6 +126,13 @@ at once; only `tools/build.py` needs the tree to itself.
 | a 12-byte frame with `mov r15,r5` passed to a call | `struct { float x, y, z; } v;` passed as `&v`, not `float v[3]` |
 | `add #-12,r15` for two floats written | a three-float struct local |
 | a byte at 0x159 where a `mov.w` reads 0x158 | a union of the short and two bytes |
+
+Pad arrays run from the end of the previous member, not its start:
+`unsigned char pad[0x1a3 - 0x40]` after a `float f3c` is wrong by four and
+shows up as pool words off by four with correct-looking code around them.
+An `extern short *dat_0cXXXXXX;` is a pointer variable and costs a load; an
+`extern short dat_0cXXXXXX[];` is the array itself. Retail's `mov.l @dat,rN`
+before the index means the pointer; its absence means the array.
 
 ## Float literals
 
