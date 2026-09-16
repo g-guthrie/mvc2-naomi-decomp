@@ -75,8 +75,11 @@ section.
 `build/progress.svg`, `build/active.svg` and `build/index.html` are drawn from
 it, and the README bars are rewritten from the same numbers.
 
-## Mapping tools
+## Tools
 
+- `tools/diff_unit.py FILE [--register ID]`: compile one file, compare it with
+  retail function by function, and register it. See
+  [MATCHING.md](MATCHING.md).
 - `tools/inspect_rom.py --address A --size N`: disassemble retail bytes.
 - `tools/flow_map.py`: walk the control-flow graph from the entry point and every
   reviewed code range and propose new ranges. `--roots FILE` adds candidate
