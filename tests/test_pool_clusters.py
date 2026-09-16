@@ -1,4 +1,4 @@
-"""Pool clustering must recover the translation unit that already matches."""
+"""Pool clustering must recover the registered mask translation unit."""
 import sys
 import unittest
 from pathlib import Path

@@ -16,38 +16,6 @@
     }
   },
   {
-    "id": "mask_helper",
-    "source": "src/candidates/func_0c047b0c.c",
-    "mode": "candidate",
-    "sections": [
-      {
-        "section": "P",
-        "kind": "code",
-        "address": "0x0c047b0c",
-        "size": 34
-      }
-    ],
-    "exports": {
-      "_func_0c047b0c": "0x0c047b0c"
-    }
-  },
-  {
-    "id": "mask_pool",
-    "source": "src/verified/field_off_0c047b2e.c",
-    "mode": "verified",
-    "sections": [
-      {
-        "section": "C",
-        "kind": "data",
-        "address": "0x0c047b2e",
-        "size": 30
-      }
-    ],
-    "exports": {
-      "_field_off_0c047b2e": "0x0c047b2e"
-    }
-  },
-  {
     "id": "dispatch_parent",
     "source": "src/candidates/func_0c04701c.c",
     "mode": "candidate",
@@ -65,13 +33,39 @@
     "imports": {
       "_func_0c047b0c": "0x0c047b0c",
       "_func_0c047796": "0x0c047796"
+    }
+  },
+  {
+    "id": "mask_tu",
+    "source": "src/candidates/mask_tu.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c047a40",
+        "size": 288,
+        "interior": [
+          {
+            "address": "0x0c047b2e",
+            "size": 50,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c047a40": "0x0c047a40",
+      "_func_0c047a8c": "0x0c047a8c",
+      "_func_0c047aac": "0x0c047aac",
+      "_func_0c047b0c": "0x0c047b0c"
     },
-    "flags": [
-      "-cpu=sh4",
-      "-endian=little",
-      "-optimize=1",
-      "-fpu=single"
-    ]
+    "imports": {
+      "_dat_0c2d9300": "0x0c2d9300",
+      "_dat_0c23bf64": "0x0c23bf64",
+      "_dat_0c23bf87": "0x0c23bf87",
+      "_func_0c02849a": "0x0c02849a"
+    }
   },
   {
     "id": "leaves_00",
@@ -40117,12 +40111,6 @@
         "size": 12
       },
       {
-        "section": "Cn047b4c",
-        "kind": "data",
-        "address": "0x0c047b4c",
-        "size": 20
-      },
-      {
         "section": "Cn047c4a",
         "kind": "data",
         "address": "0x0c047c4a",
@@ -40202,7 +40190,6 @@
       "_dat_0c047934": "0x0c047934",
       "_dat_0c047a1a": "0x0c047a1a",
       "_dat_0c047a30": "0x0c047a30",
-      "_dat_0c047b4c": "0x0c047b4c",
       "_dat_0c047c4a": "0x0c047c4a",
       "_dat_0c047c5a": "0x0c047c5a",
       "_dat_0c047d30": "0x0c047d30"
@@ -222821,13 +222808,7 @@
     "exports": {
       "_func_0c07a162": "0x0c07a162",
       "_func_0c07a52a": "0x0c07a52a"
-    },
-    "flags": [
-      "-cpu=sh4",
-      "-endian=little",
-      "-optimize=1",
-      "-fpu=single"
-    ]
+    }
   },
   {
     "id": "decomp_01",
@@ -222994,13 +222975,7 @@
     "exports": {
       "_func_0c13b6cc": "0x0c13b6cc",
       "_func_0c1d96fc": "0x0c1d96fc"
-    },
-    "flags": [
-      "-cpu=sh4",
-      "-endian=little",
-      "-optimize=1",
-      "-fpu=single"
-    ]
+    }
   },
   {
     "id": "tu_01",
@@ -223043,13 +223018,7 @@
     ],
     "exports": {
       "_func_0c025bf0": "0x0c025bf0"
-    },
-    "flags": [
-      "-cpu=sh4",
-      "-endian=little",
-      "-optimize=1",
-      "-fpu=single"
-    ]
+    }
   },
   {
     "id": "decomp_05",
@@ -223137,13 +223106,7 @@
       "_func_0c02f29c": "0x0c02f29c",
       "_func_0c02f2be": "0x0c02f2be",
       "_func_0c13686a": "0x0c13686a"
-    },
-    "flags": [
-      "-cpu=sh4",
-      "-endian=little",
-      "-optimize=1",
-      "-fpu=single"
-    ]
+    }
   },
   {
     "id": "decomp_07",
@@ -223196,13 +223159,7 @@
       "_func_0c125ef0": "0x0c125ef0",
       "_func_0c1a1124": "0x0c1a1124",
       "_func_0c1d2b5a": "0x0c1d2b5a"
-    },
-    "flags": [
-      "-cpu=sh4",
-      "-endian=little",
-      "-optimize=1",
-      "-fpu=single"
-    ]
+    }
   },
   {
     "id": "decomp_09",
@@ -223232,12 +223189,7 @@
       "_func_0c200790": "0x0c200790",
       "_func_0c2008aa": "0x0c2008aa",
       "_func_0c2008f0": "0x0c2008f0"
-    },
-    "flags": [
-      "-cpu=sh4",
-      "-endian=little",
-      "-optimize=1"
-    ]
+    }
   },
   {
     "id": "decomp_10",
@@ -223344,13 +223296,7 @@
       "_func_0c1d0684": "0x0c1d0684",
       "_func_0c1d9706": "0x0c1d9706",
       "_func_0c1d9732": "0x0c1d9732"
-    },
-    "flags": [
-      "-cpu=sh4",
-      "-endian=little",
-      "-optimize=1",
-      "-fpu=single"
-    ]
+    }
   },
   {
     "id": "decomp_11",
