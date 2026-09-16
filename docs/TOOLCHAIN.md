@@ -116,7 +116,10 @@ it, and the README bars are rewritten from the same numbers.
   `ghidra_11.3.2_PUBLIC` from its GitHub releases (Java 17 or newer is
   required) and pass the directory. The run takes about half an hour and
   needs no analysis pass; `tools/ghidra/DraftSome.java` drafts a few named
-  functions in seconds.
+  functions in seconds. Run `tools/ghidra/single_precision.sh DIR` once
+  after unpacking: Ghidra's SH-4 model decides float width at run time and
+  otherwise fills float code with double-precision noise; the script forces
+  single precision, which is how the game runs, and recompiles the language.
 - `tools/inspect_rom.py --address A --size N`: disassemble retail bytes.
 - `tools/flow_map.py`: walk the control-flow graph from the entry point and every
   reviewed code range and propose new ranges. `--roots FILE` adds candidate
