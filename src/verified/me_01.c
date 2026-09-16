@@ -1,4 +1,5 @@
 /* Actor state machine at 0x0c1aab2c: seven handlers of the object in me_00. */
+struct Vec3_me01 { float x, y, z; };
 struct Blk_me01 {
     unsigned char pad0[0x50];
     unsigned char b12c;
