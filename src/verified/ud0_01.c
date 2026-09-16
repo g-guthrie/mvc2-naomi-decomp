@@ -1,9 +1,8 @@
-/* Unit 0x0c112f24-0x0c11308c: 8 functions, 358/360 bytes match. Every function
- * is exact except func_0c112f4e, which differs at 0x0c112f8c-0x0c112f90:
- * retail reloads a->f41c into fr2 for `a->f38 = a->f41c;` (continuing the
- * fr1/fr2/fr3 rotation from the preceding fcmp/gt), but this source, with the
- * same statement order and expression shapes tried several ways, compiles
- * that reload into fr3 instead (two bytes: F246/F427 vs F346/F437). */
+/* Unit 0x0c112f24-0x0c11308c: 8 functions, all exact. func_0c112f4e
+ * matches only when its post-guard body is written inline after a negated
+ * `if` guard: an early `return` after the guard makes SHC resume the
+ * fr1/fr2/fr3 rotation on a fresh fr3 for the a->f41c reload, while retail
+ * keeps it in fr2. */
 struct Obj_ud0_01 {
     unsigned char pad0[6];
     unsigned char b6;
@@ -59,20 +58,20 @@ void func_0c112f4e(struct Obj_ud0_01 *a)
 
     a->f38 += a->f60;
     a->f60 += a->f6c;
-    if (a->f38 > a->f41c + -120.0f)
-        return;
-    a->f38 = a->f41c;
-    a->f60 = 0;
-    a->f6c = 0;
-    p->p1b4 = a;
-    p->b1a1 = 0x24;
-    a->b1a1 = 0x24;
-    p->b1f6 = 2;
-    p->b1d2 = a->b1d2;
-    p->b1d2 ^= 1;
-    a->b6++;
-    func_0c02a026(a);
-    func_0c03489c(p);
+    if (!(a->f38 > a->f41c + -120.0f)) {
+        a->f38 = a->f41c;
+        a->f60 = 0;
+        a->f6c = 0;
+        p->p1b4 = a;
+        p->b1a1 = 0x24;
+        a->b1a1 = 0x24;
+        p->b1f6 = 2;
+        p->b1d2 = a->b1d2;
+        p->b1d2 ^= 1;
+        a->b6++;
+        func_0c02a026(a);
+        func_0c03489c(p);
+    }
 }
 
 void func_0c112fd0(struct Obj_ud0_01 *a)
