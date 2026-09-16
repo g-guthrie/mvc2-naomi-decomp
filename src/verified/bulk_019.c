@@ -62,17 +62,6 @@ extern void func_0c24010c(void);
 extern void func_0c240120(void);
 extern void func_0c240130(void);
 
-#pragma section n05f174
-const unsigned short dat_0c05f174[] = {
-    0x01f9u, 0x01a1u, 0x0141u,
-};
-
-#pragma section n05f180
-const unsigned int dat_0c05f180[] = {
-    0x0c02a39au, 0x41f00000u, 0xc1f00000u, 0x40892492u,
-    0xbf4db6dbu, 0x0c2f83f8u, 0x0c02a0c4u,
-};
-
 #pragma section n05f288
 const unsigned short dat_0c05f288[] = {
     0x01c8u,
