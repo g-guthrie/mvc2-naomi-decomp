@@ -9,8 +9,8 @@ disagrees with this one, this one wins.
 1. `python3 tools/build.py check`. It must pass before and after your change.
 2. Pick work from the build output, never from memory:
    - a `CANDIDATE` line: a unit that does not match yet;
-   - `python3 tools/pool_clusters.py`: runs of code sharing one literal pool.
-     A retail unit usually spans several; find its real extent first;
+   - `python3 tools/unit_spans.py`: proposed translation units, code and
+     pools that no branch crosses. Check the extent before writing;
    - `build/mapping.json`: unreviewed bytes to map.
 3. Write one translation unit as one file. Iterate with
    `python3 tools/diff_unit.py <file>` until every function matches.
