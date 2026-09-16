@@ -56,8 +56,8 @@ class ProofTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'Overlapping'):
             validate_units([self.unit,other], {'main':{'address':0x1000,'size':100}})
 
-    def test_candidate_has_no_progress_credit(self):
-        proof = {'main_size':100, 'units':[dict(credited=False, sections=[dict(kind='code',size=4)])]}
+    def test_candidate_without_matching_functions_has_no_progress_credit(self):
+        proof = {'main_size':100, 'units':[dict(credited=False, function_bytes=0, sections=[dict(kind='code',size=4)])]}
         self.assertEqual(metrics(proof)['code']['matched_bytes'],0)
 
     def test_unknown_bytes_stay_in_lower_bound(self):
@@ -123,8 +123,9 @@ class RepositoryStateTests(unittest.TestCase):
         readme = (ROOT / 'README.md').read_text()
         self.assertNotIn('build/NEXT.md', readme)
         self.assertNotIn('Next candidate', readme)
-        self.assertIn('<!-- progress:start -->', readme)
-        self.assertIn('<!-- progress:end -->', readme)
+        self.assertIn('| Code |', readme)
+        self.assertIn('| Data |', readme)
+        self.assertIn('| Map |', readme)
 
     def test_ci_only_writes_generated_readme_progress(self):
         workflow = (ROOT / '.github/workflows/build.yml').read_text()

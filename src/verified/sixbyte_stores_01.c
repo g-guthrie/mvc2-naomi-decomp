@@ -1,8 +1,5 @@
 /* Hitachi SHC 5.0R31 six-byte byte stores. */
 
-#pragma section n180e24
-void func_0c180e24(unsigned char *p) { p[6] = 0; }
-
 #pragma section n1dc14c
 void func_0c1dc14c(unsigned char *p) { p[6] = 3; }
 

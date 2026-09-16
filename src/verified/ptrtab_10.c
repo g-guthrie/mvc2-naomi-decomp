@@ -1,0 +1,452 @@
+/* Hitachi symbolic pointer tables into the main image. */
+
+extern void func_0c025900(void);
+extern void func_0c02a026(void);
+extern void func_0c02a0c4(void);
+extern void func_0c0344a0(void);
+extern void func_0c0346da(void);
+extern void func_0c03489c(void);
+extern void func_0c037d54(void);
+extern void func_0c03edcc(void);
+extern void func_0c03efea(void);
+extern void func_0c042018(void);
+extern void func_0c0421b8(void);
+extern void func_0c0432ca(void);
+extern void func_0c043324(void);
+extern void func_0c0437b8(void);
+extern void func_0c0438de(void);
+extern void func_0c0439c4(void);
+extern void func_0c0442fa(void);
+extern void func_0c044e52(void);
+extern void func_0c044f1c(void);
+extern void func_0c045248(void);
+extern void func_0c045f1c(void);
+extern void func_0c0463fc(void);
+extern void func_0c046d54(void);
+extern void func_0c046dd0(void);
+extern void func_0c046e7e(void);
+extern void func_0c0474f8(void);
+extern void func_0c047aac(void);
+extern void func_0c047bbe(void);
+extern void func_0c048ce6(void);
+extern void func_0c145ba8(void);
+extern void func_0c148d54(void);
+extern void func_0c199414(void);
+extern void func_0c19a560(void);
+extern void func_0c19d2ac(void);
+extern void func_0c1d4610(void);
+extern void func_0c1fb7a0(void);
+extern void func_0c242f48(void);
+extern void func_0c242f54(void);
+extern void func_0c242f9c(void);
+extern void func_0c242fd4(void);
+extern void func_0c242fe4(void);
+extern void func_0c242ff4(void);
+extern void func_0c243004(void);
+extern void func_0c243014(void);
+extern void func_0c243220(void);
+extern void func_0c243330(void);
+extern void func_0c243340(void);
+extern void func_0c243350(void);
+extern void func_0c243360(void);
+extern void func_0c243370(void);
+extern void func_0c243380(void);
+extern void func_0c243394(void);
+extern void func_0c2433a4(void);
+extern void func_0c2433c4(void);
+extern void func_0c2433d4(void);
+extern void func_0c243574(void);
+extern void func_0c243668(void);
+extern void func_0c24367c(void);
+extern void func_0c243734(void);
+extern void func_0c243744(void);
+extern void func_0c243754(void);
+extern void func_0c243762(void);
+extern void func_0c243772(void);
+extern void func_0c243782(void);
+extern void func_0c243792(void);
+extern void func_0c24381c(void);
+
+#pragma section n094d20
+void (*const ptr_0c094d20)(void) = func_0c037d54;
+
+#pragma section n094e64
+void (*const ptr_0c094e64)(void) = func_0c037d54;
+
+#pragma section n094fec
+void (*const table_0c094fec[])(void) = {
+    func_0c1d4610,
+    func_0c048ce6,
+};
+
+#pragma section n094ff8
+void (*const table_0c094ff8[])(void) = {
+    func_0c02a026,
+    func_0c199414,
+    func_0c0344a0,
+};
+
+#pragma section n095138
+void (*const table_0c095138[])(void) = {
+    func_0c02a026,
+    func_0c02a0c4,
+    func_0c0437b8,
+    func_0c242f48,
+    func_0c03489c,
+    func_0c199414,
+    func_0c0344a0,
+};
+
+#pragma section n09528c
+void (*const table_0c09528c[])(void) = {
+    func_0c02a026,
+    func_0c02a0c4,
+    func_0c0438de,
+    func_0c242f54,
+};
+
+#pragma section n0952a0
+void (*const ptr_0c0952a0)(void) = func_0c03edcc;
+
+#pragma section n0955b0
+void (*const table_0c0955b0[])(void) = {
+    func_0c242fd4,
+    func_0c046e7e,
+    func_0c047aac,
+    func_0c045248,
+    func_0c242fe4,
+    func_0c242ff4,
+};
+
+#pragma section n0956d4
+void (*const table_0c0956d4[])(void) = {
+    func_0c243004,
+    func_0c046e7e,
+    func_0c045248,
+    func_0c243014,
+    func_0c046d54,
+    func_0c046dd0,
+};
+
+#pragma section n0957ec
+void (*const table_0c0957ec[])(void) = {
+    func_0c243014,
+    func_0c046e7e,
+    func_0c243004,
+};
+
+#pragma section n095a58
+void (*const ptr_0c095a58)(void) = func_0c242f9c;
+
+#pragma section n095b94
+void (*const ptr_0c095b94)(void) = func_0c0346da;
+
+#pragma section n095cb4
+void (*const ptr_0c095cb4)(void) = func_0c0346da;
+
+#pragma section n0964c0
+void (*const table_0c0964c0[])(void) = {
+    func_0c02a026,
+    func_0c0438de,
+};
+
+#pragma section n09664c
+void (*const ptr_0c09664c)(void) = func_0c0437b8;
+
+#pragma section n0967ac
+void (*const ptr_0c0967ac)(void) = func_0c0437b8;
+
+#pragma section n0969f8
+void (*const ptr_0c0969f8)(void) = func_0c02a026;
+
+#pragma section n0970a0
+void (*const table_0c0970a0[])(void) = {
+    func_0c02a026,
+    func_0c19a560,
+};
+
+#pragma section n098160
+void (*const table_0c098160[])(void) = {
+    func_0c145ba8,
+    func_0c243220,
+};
+
+#pragma section n098e28
+void (*const ptr_0c098e28)(void) = func_0c2433d4;
+
+#pragma section n098f64
+void (*const table_0c098f64[])(void) = {
+    func_0c243330,
+    func_0c046e7e,
+    func_0c047aac,
+    func_0c045248,
+    func_0c243340,
+    func_0c243350,
+};
+
+#pragma section n09909c
+void (*const table_0c09909c[])(void) = {
+    func_0c243380,
+    func_0c046e7e,
+    func_0c047aac,
+    func_0c045248,
+    func_0c243360,
+    func_0c19d2ac,
+    func_0c243370,
+};
+
+#pragma section n0991c0
+void (*const table_0c0991c0[])(void) = {
+    func_0c047aac,
+    func_0c045248,
+    func_0c243394,
+    func_0c046e7e,
+    func_0c2433a4,
+};
+
+#pragma section n0992ec
+void (*const table_0c0992ec[])(void) = {
+    func_0c047aac,
+    func_0c045248,
+    func_0c2433c4,
+    func_0c046e7e,
+    func_0c046d54,
+    func_0c046dd0,
+};
+
+#pragma section n0993e8
+void (*const table_0c0993e8[])(void) = {
+    func_0c243394,
+    func_0c046e7e,
+    func_0c2433a4,
+    func_0c2433c4,
+};
+
+#pragma section n0998a4
+void (*const ptr_0c0998a4)(void) = func_0c02a0c4;
+
+#pragma section n099c10
+void (*const table_0c099c10[])(void) = {
+    func_0c02a026,
+    func_0c0437b8,
+};
+
+#pragma section n099e00
+void (*const ptr_0c099e00)(void) = func_0c02a026;
+
+#pragma section n099e10
+void (*const table_0c099e10[])(void) = {
+    func_0c042018,
+    func_0c0421b8,
+    func_0c044e52,
+    func_0c044f1c,
+    func_0c0438de,
+};
+
+#pragma section n09a5c8
+void (*const ptr_0c09a5c8)(void) = func_0c02a0c4;
+
+#pragma section n09a5ec
+void (*const ptr_0c09a5ec)(void) = func_0c0432ca;
+
+#pragma section n09aab0
+void (*const ptr_0c09aab0)(void) = func_0c0437b8;
+
+#pragma section n09b2e8
+void (*const ptr_0c09b2e8)(void) = func_0c0437b8;
+
+#pragma section n09b598
+void (*const table_0c09b598[])(void) = {
+    func_0c243574,
+    func_0c0442fa,
+    func_0c0432ca,
+    func_0c02a0c4,
+};
+
+#pragma section n09b86c
+void (*const table_0c09b86c[])(void) = {
+    func_0c02a026,
+    func_0c0437b8,
+};
+
+#pragma section n09b878
+void (*const ptr_0c09b878)(void) = func_0c0442fa;
+
+#pragma section n09bc7c
+void (*const table_0c09bc7c[])(void) = {
+    func_0c02a0c4,
+    func_0c043324,
+    func_0c02a026,
+    func_0c0438de,
+    func_0c0437b8,
+};
+
+#pragma section n09bdd4
+void (*const ptr_0c09bdd4)(void) = func_0c02a026;
+
+#pragma section n09bde4
+void (*const table_0c09bde4[])(void) = {
+    func_0c148d54,
+    func_0c19d2ac,
+    func_0c02a0c4,
+};
+
+#pragma section n09bee0
+void (*const table_0c09bee0[])(void) = {
+    func_0c02a026,
+    func_0c148d54,
+    func_0c19d2ac,
+};
+
+#pragma section n09c058
+void (*const table_0c09c058[])(void) = {
+    func_0c02a026,
+    func_0c19d2ac,
+    func_0c02a0c4,
+};
+
+#pragma section n09c1c8
+void (*const table_0c09c1c8[])(void) = {
+    func_0c02a026,
+    func_0c0437b8,
+};
+
+#pragma section n09c348
+void (*const table_0c09c348[])(void) = {
+    func_0c025900,
+    func_0c02a0c4,
+};
+
+#pragma section n09c464
+void (*const table_0c09c464[])(void) = {
+    func_0c02a026,
+    func_0c02a0c4,
+};
+
+#pragma section n09c724
+void (*const table_0c09c724[])(void) = {
+    func_0c025900,
+    func_0c0437b8,
+};
+
+#pragma section n09c854
+void (*const table_0c09c854[])(void) = {
+    func_0c02a026,
+    func_0c0437b8,
+};
+
+#pragma section n09cbd8
+void (*const table_0c09cbd8[])(void) = {
+    func_0c02a026,
+    func_0c044e52,
+    func_0c043324,
+    func_0c0439c4,
+};
+
+#pragma section n09cf24
+void (*const table_0c09cf24[])(void) = {
+    func_0c1fb7a0,
+    func_0c03edcc,
+};
+
+#pragma section n09cf30
+void (*const ptr_0c09cf30)(void) = func_0c243668;
+
+#pragma section n09d0ac
+void (*const table_0c09d0ac[])(void) = {
+    func_0c02a026,
+    func_0c025900,
+};
+
+#pragma section n09d1fc
+void (*const table_0c09d1fc[])(void) = {
+    func_0c02a026,
+    func_0c043324,
+    func_0c02a0c4,
+    func_0c0437b8,
+    func_0c24367c,
+};
+
+#pragma section n09d374
+void (*const table_0c09d374[])(void) = {
+    func_0c02a026,
+    func_0c02a0c4,
+};
+
+#pragma section n09d47c
+void (*const ptr_0c09d47c)(void) = func_0c047bbe;
+
+#pragma section n09d5a0
+void (*const table_0c09d5a0[])(void) = {
+    func_0c02a026,
+    func_0c02a0c4,
+};
+
+#pragma section n09d728
+void (*const ptr_0c09d728)(void) = func_0c0437b8;
+
+#pragma section n09d74c
+void (*const ptr_0c09d74c)(void) = func_0c025900;
+
+#pragma section n09d754
+void (*const ptr_0c09d754)(void) = func_0c03efea;
+
+#pragma section n09d82c
+void (*const ptr_0c09d82c)(void) = func_0c045248;
+
+#pragma section n09d964
+void (*const ptr_0c09d964)(void) = func_0c24381c;
+
+#pragma section n09da54
+void (*const table_0c09da54[])(void) = {
+    func_0c046dd0,
+    func_0c045f1c,
+    func_0c0463fc,
+    func_0c243734,
+    func_0c046e7e,
+    func_0c047aac,
+    func_0c045248,
+};
+
+#pragma section n09db8c
+void (*const table_0c09db8c[])(void) = {
+    func_0c243744,
+    func_0c046e7e,
+    func_0c047aac,
+    func_0c045248,
+    func_0c243754,
+    func_0c243762,
+    func_0c243772,
+};
+
+#pragma section n09dcdc
+void (*const table_0c09dcdc[])(void) = {
+    func_0c047aac,
+    func_0c045248,
+    func_0c243782,
+    func_0c046e7e,
+    func_0c243792,
+    func_0c0474f8,
+    func_0c243762,
+};
+
+#pragma section n09de08
+void (*const table_0c09de08[])(void) = {
+    func_0c243772,
+    func_0c046e7e,
+    func_0c047aac,
+    func_0c045248,
+    func_0c243792,
+    func_0c0474f8,
+    func_0c046dd0,
+    func_0c046d54,
+};
+
+#pragma section n09df18
+void (*const table_0c09df18[])(void) = {
+    func_0c243762,
+    func_0c046e7e,
+    func_0c243772,
+    func_0c243782,
+};
+

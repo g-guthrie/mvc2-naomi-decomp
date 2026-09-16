@@ -12,6 +12,9 @@ int func_0c213866(void) { return 24; }
 #pragma section n21b168
 int func_0c21b168(void) { return 2; }
 
+#pragma section n21b16c
+int func_0c21b16c(void) { return 1; }
+
 #pragma section n21b1a6
 int func_0c21b1a6(void) { return 4; }
 
