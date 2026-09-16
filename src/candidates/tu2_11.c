@@ -1,6 +1,8 @@
 /* func_0c1cdff0 differs from retail in register numbering only: the store
  * o->p24->ld4 = 0 uses r2 for the constant and r3 for the pointer where retail
- * uses r3 and r2 (3 words at 0x0c1ce008..0x0c1ce00c). func_0c1cdf30 is exact. */
+ * uses r3 and r2 (3 words at 0x0c1ce008..0x0c1ce00c). func_0c1cdf30 and the
+ * pool are exact. The 0.6f multiplier must be spelled 1.0f - 0.4f so SHC loads
+ * 0x3f19999a (a bare 0.6f compiles one ULP low, 0x3f199999). */
 struct V3 { float x, y, z; };
 
 struct Parent_tu2_11 {
@@ -58,9 +60,9 @@ void func_0c1cdf30(struct Parent_tu2_11 *a)
         r->arr64[1] = (int)(dat_0c23209c.y * 65536.0f / 360.0f + 0.5f) & 0xffff;
         r->arr64[2] = (int)(dat_0c23209c.z * 65536.0f / 360.0f + 0.5f) & 0xffff;
         r->lcc = 0x0c1f;
-        r->f80 = 0.6f;
-        r->f84 = 0.6f;
-        r->f88 = 0.6f;
+        r->f80 = 1.0f - 0.4f;
+        r->f84 = 1.0f - 0.4f;
+        r->f88 = 1.0f - 0.4f;
         r->f92 = dat_0c23209c.x;
         r->p24->ld4 = 1;
         r->f120 = 1.0f;
