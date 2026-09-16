@@ -43,7 +43,7 @@ void func_0c096a18(struct Obj_ub3_06 *a)
     a->f92 += a->f104;
     if (func_0c02a026(a) < 0)
         func_0c0437b8(a);
-    if (a->b141 != 0) {
+    if (a->b141) {
         a->b141 = 0;
         a->f92 = 0.0f;
         a->f104 = 0.0f;

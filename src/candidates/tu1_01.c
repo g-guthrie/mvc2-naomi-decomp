@@ -81,7 +81,7 @@ void func_0c18ce40(struct Obj_tu1_01 *a, struct Obj_tu1_01 *b)
     }
     if (dat_0c2f8338.w60 & (1 << dat_0c2f8338.b59))
         return;
-    if (dat_0c2f8338.b6 == 0) {
+    if (!dat_0c2f8338.b6) {
         func_0c029fc4(a);
         if (a->s30 != 0) {
             a->s30 = a->s30 - 1;
