@@ -294,26 +294,6 @@ const unsigned int dat_0c1982ec[] = {
     0x43800000u, 0x41400000u,
 };
 
-#pragma section n198468
-const unsigned short dat_0c198468[] = {
-    0x0e04u,
-};
-
-#pragma section n198480
-const unsigned int dat_0c198480[] = {
-    0x0c2583d8u,
-};
-
-#pragma section n198484
-void (*const table_0c198484[])(void) = {
-    func_0c2583e4,
-    func_0c1fb838,
-    func_0c1fb7a0,
-    func_0c044788,
-    func_0c0346da,
-    func_0c258350,
-};
-
 #pragma section n1985b6
 const unsigned short dat_0c1985b6[] = {
     0x012cu,
