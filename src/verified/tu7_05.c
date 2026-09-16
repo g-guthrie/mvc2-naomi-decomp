@@ -1,10 +1,4 @@
-/* Four functions sharing the literal pool at 0x0c080d80. Candidate:
- * func_0c080d04 differs only by r2/r3 for the conditional call
- * func_0c025900 and the constant 10; func_0c080d78 matches; func_0c080c90
- * and func_0c080cec differ by a `nop` retail places after `mov r4,r0`
- * (return value copy, and the table index base) and by the order of the
- * `mov.l r4,@-r15` spill in the table tail call. No source shape found for
- * the nop. */
+/* Four functions sharing the literal pool at 0x0c080d80. */
 struct V3_tu7_05 { float x, y, z; };
 struct Sub_tu7_05 { unsigned char pad0[1]; unsigned char b1; unsigned char pad1[56 - 2]; float f56; };
 
@@ -68,7 +62,7 @@ void func_0c080d04(struct Obj_tu7_05 *a)
     loc.x = -110.0f;
     loc.y = 171.42855834960938f;
     func_0c1d4610(a, &loc);
-    if (a->b411 == 0)
+    if (!a->b411)
         func_0c025900(a, 5, 5);
     a->b1a0 = 10;
     q = a->p1c8;
