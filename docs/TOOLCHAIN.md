@@ -14,6 +14,19 @@
 | macOS Intel or Apple Silicon with Rosetta | native |
 | anything else | push and use GitHub → Actions → Hitachi build → Run workflow |
 
+## Where the options came from
+
+The NAOMI SDK preserved at archive.org (item `NaomiSDK`) holds the Hitachi
+compiler releases Sega shipped, `pcv5r10` through `pcv5r32` and `pcv51r01`
+and `pcv51r08`, and in `hitachi990119.zip` the file
+`doc/english/misc/read_1st.txt`, Sega's tool manual, whose section 1 lists
+the options every application must be built with. Those are the `game` set.
+Releases 31, 32 and 5.1 produce identical bytes for every unit tried; release
+28 does not. The `library` set drops `-extra=a=400` because Sega's libraries
+above 0x0c1e9000 were built without it. The compiler runtime routines the
+generated code calls are listed with their retail addresses in
+`config/runtime.json`, each proven by a verified unit.
+
 ## Pipeline
 
 For every unit in `config/units.json`, `tools/build.py`:
@@ -92,7 +105,11 @@ it, and the README bars are rewritten from the same numbers.
   float bits.
 - `tools/ghidra_draft.py --ghidra DIR`: a Ghidra decompilation draft of every
   reviewed function into `build/drafts/`, pool literals substituted by
-  `tools/draft_pools.py`. Ghidra is not bundled.
+  `tools/draft_pools.py`. Ghidra is not bundled: unpack a release such as
+  `ghidra_11.3.2_PUBLIC` from its GitHub releases (Java 17 or newer is
+  required) and pass the directory. The run takes about half an hour and
+  needs no analysis pass; `tools/ghidra/DraftSome.java` drafts a few named
+  functions in seconds.
 - `tools/inspect_rom.py --address A --size N`: disassemble retail bytes.
 - `tools/flow_map.py`: walk the control-flow graph from the entry point and every
   reviewed code range and propose new ranges. `--roots FILE` adds candidate
