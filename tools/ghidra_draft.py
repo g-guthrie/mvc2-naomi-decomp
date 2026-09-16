@@ -8,7 +8,8 @@ imported as SuperH4 little-endian at its load address, functions are created
 at every reviewed code range that starts a function (previous range is data,
 or the previous code ends in rts or bra), reviewed data is marked as bytes so
 the decompiler never reads a pool as code, and the decompiler output lands in
-build/drafts/func_0cXXXXXX.c with build/drafts/index.txt.
+build/drafts/func_0cXXXXXX.c with build/drafts/index.txt, with every pool
+literal substituted by tools/draft_pools.py.
 
 A draft is a starting point for reading a function, never source: it has the
 control flow and field offsets, not the shape that reproduces the bytes.
@@ -17,6 +18,8 @@ import argparse
 import shutil
 import struct
 import subprocess
+import sys
+from pathlib import Path
 
 from core import ROOT, load, number, verify_rom
 
@@ -56,13 +59,15 @@ def main():
     with open(work / 'spec.txt', 'w') as spec:
         for lo, n, kind in sorted(ranges):
             spec.write(f"0x{lo:08x} {n} {'data' if kind == 'data' else 'function' if lo in starts else 'code'}\n")
-    headless = str(shutil.which('analyzeHeadless') or (ROOT.parent / args.ghidra / 'support' / 'analyzeHeadless'))
     headless = args.ghidra.rstrip('/') + '/support/analyzeHeadless'
     command = [headless, str(work), 'mvc2', '-import', str(work / 'main.bin'), '-processor', 'SuperH4:LE:32:default',
                '-loader', 'BinaryLoader', '-loader-baseAddr', f'0x{base:08x}', '-scriptPath', str(ROOT / 'tools' / 'ghidra'),
                '-noanalysis', '-postScript', 'DraftExport.java', str(work / 'spec.txt'), args.out]
     print(' '.join(command), flush=True)
     result = subprocess.run(command, cwd=work)
+    if result.returncode == 0:
+        drafts = sorted(Path(args.out).glob('func_*.c'))
+        subprocess.run([sys.executable, str(ROOT / 'tools' / 'draft_pools.py'), *map(str, drafts)], check=True)
     return result.returncode
 
 
