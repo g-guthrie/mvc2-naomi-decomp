@@ -108,6 +108,8 @@ def validate_units(units, target):
         names.add(unit["id"])
         if unit["mode"] not in {"verified", "candidate"}:
             raise ValueError("Unknown unit mode")
+        if "flags" in unit:
+            raise ValueError("Units take their compiler options from config/compiler.json only: " + unit["id"])
         source = Path(unit["source"])
         if source.is_absolute() or ".." in source.parts or source.parts[0] != "src" or source.suffix != ".c":
             raise ValueError("Unit source must be a C file below src/")
@@ -221,12 +223,44 @@ def compare(unit, elf, map_text, main, base):
         if not row["exact"]:
             problems.append("Not an exact section match: " + part["section"])
         checks.append(row)
+    functions = function_rows(unit, sections, symbols, segments, main, base)
     expected_bytes = sum(number(p["size"]) for p in unit["sections"] if p["kind"] != "bss")
     if sum(p["size"] for p in segments) != expected_bytes:
         problems.append("Linked image contains extra or missing initialized bytes")
     if sum(p["memory_size"] for p in segments) != sum(number(p["size"]) for p in unit["sections"]):
         problems.append("Linked image contains extra or missing memory bytes")
-    return {"exact": not problems, "sections": checks, "problems": problems}, segments
+    return {"exact": not problems, "sections": checks, "functions": functions,
+            "function_bytes": sum(f["size"] for f in functions if f["exact"]), "problems": problems}, segments
+
+
+def function_rows(unit, sections, symbols, segments, main, base):
+    """One row per exported function: its retail bytes from the export address to
+    the next export, declared interior data, or section end. A candidate unit is
+    credited for exactly the functions whose rows match, once the section links
+    at the declared address and size."""
+    rows = []
+    for part in unit["sections"]:
+        if part["kind"] != "code":
+            continue
+        start, end = number(part["address"]), number(part["address"]) + number(part["size"])
+        mapped = sections.get(part["section"], {})
+        placed = mapped.get("address") == start and mapped.get("size") == end - start
+        stops = sorted({number(spare["address"]) for spare in part.get("interior", ())} | {end})
+        entries = sorted((number(address), symbol) for symbol, address in unit.get("exports", {}).items()
+                         if start <= number(address) < end)
+        for i, (address, symbol) in enumerate(entries):
+            limit = entries[i + 1][0] if i + 1 < len(entries) else end
+            limit = min([limit] + [stop for stop in stops if stop > address])
+            size = limit - address
+            reference = main[address - base:address - base + size]
+            try:
+                actual = memory_bytes(segments, address, size)
+            except ValueError:
+                actual = b""
+            equal = sum(a == b for a, b in zip(actual, reference))
+            rows.append({"symbol": symbol, "address": address, "size": size, "equal_bytes": equal,
+                         "exact": placed and symbols.get(symbol) == address and actual == reference})
+    return rows
 
 
 def input_fingerprint(root=ROOT):

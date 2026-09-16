@@ -7,22 +7,39 @@ from collections import deque
 from core import ROOT, load, number
 
 
+def credited_bytes(unit):
+    """Bytes a unit earns: every code and data byte of a verified unit, or the
+    bytes of the functions that match inside a candidate unit."""
+    kinds = dict(code=0, data=0)
+    if unit.get('credited'):
+        for part in unit['sections']:
+            if part['kind'] in kinds:
+                kinds[part['kind']] += number(part['size'])
+    else:
+        kinds['code'] = unit.get('function_bytes', 0)
+    return kinds
+
+
 def metrics(proof):
     known = dict(code=0, data=0)
     matched = dict(code=0, data=0)
     for unit in proof['units']:
         for part in unit['sections']:
             if part['kind'] in known:
-                known[part['kind']] += part['size']
-                if unit['credited']:
-                    matched[part['kind']] += part['size']
+                known[part['kind']] += number(part['size'])
+        for kind, count in credited_bytes(unit).items():
+            matched[kind] += count
     if 'mapping' in proof:
-        known = {kind:proof['mapping']['reviewed_'+kind+'_bytes'] for kind in known}
+        known = {kind: proof['mapping']['reviewed_' + kind + '_bytes'] for kind in known}
     total = proof['main_size']
-    return {kind: {'matched_bytes': matched[kind], 'known_bytes': known[kind],
-                   'possible_total_bytes': total - known['data' if kind == 'code' else 'code'],
-                   'lower_bound_percent': 100 * matched[kind] / max(1, total - known['data' if kind == 'code' else 'code'])}
-            for kind in known}
+    result = {kind: {'matched_bytes': matched[kind], 'known_bytes': known[kind],
+                     'possible_total_bytes': total - known['data' if kind == 'code' else 'code'],
+                     'lower_bound_percent': 100 * matched[kind] / max(1, total - known['data' if kind == 'code' else 'code'])}
+              for kind in known}
+    if 'mapping' in proof:
+        result['map'] = {'matched_bytes': total - proof['mapping']['unknown_bytes'], 'known_bytes': total}
+        result['decomp'] = {'matched_bytes': matched['code'] + matched['data'], 'known_bytes': total}
+    return result
 
 
 def progress_bar(current, total, width=32):
@@ -121,7 +138,7 @@ def svg(items, proof, active=False):
         out += [f'<text x="{x}" y="96" font-size="15">{kind.title()} ≥ {pct:.6f}% · {value["matched_bytes"]:,} matched bytes</text>',
                 f'<rect x="{x}" y="107" width="564" height="8" rx="4" fill="#343b43"/>',
                 f'<rect x="{x}" y="107" width="{564*pct/100:.9f}" height="8" fill="#00cf23"/>']
-    out += ['<text x="24" y="142" font-size="12" fill="#a8b4c1">Code/data totals are not fully mapped; percentages are conservative lower bounds.</text>']
+    out += ['<text x="24" y="142" font-size="12" fill="#a8b4c1">Percentages are against the whole image and are lower bounds; the README bars are against reviewed bytes.</text>']
     for p,x,y,w,h in layout(items):
         detail = f"{p['name']} · 0x{p['address']:08x} · {p['size']:,} bytes · {p['state']} · {p['kind']}"
         out.append(f'<g class="tile" role="button" aria-label="{esc(detail, quote=True)}" tabindex="0" data-detail="{esc(detail, quote=True)}"><title>{esc(detail)}</title><rect x="{24+x:.5f}" y="{160+y:.5f}" width="{w:.5f}" height="{h:.5f}" fill="url(#{prefix}{p["state"]})" stroke="#14191c" stroke-width="0.8"/>')
@@ -147,30 +164,21 @@ def publish(proof):
 <style>body{margin:0;background:#171c24;color:#e9f1f5;font:15px system-ui}main{max-width:1400px;margin:auto;padding:20px}nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}button,a{color:inherit}button{background:#303b48;border:1px solid #657180;padding:10px 18px;border-radius:5px;cursor:pointer}button[aria-pressed=true]{background:#096d95}svg{width:100%;display:block}.tile:hover rect,.tile:focus rect{stroke:#fff;stroke-width:2}#detail{min-height:40px;color:#bccbd9}a{margin-left:auto}p{color:#acb9c6;line-height:1.6}</style>
 <main><nav><button id="mainButton" aria-pressed="true">Main image</button><button id="activeButton" aria-pressed="false">Active source units</button><a href="https://github.com/g-guthrie/mvc2-naomi-decomp">Repository ↗</a></nav>
 <div id="mainMap">MAIN_SVG</div><div id="activeMap" hidden>ACTIVE_SVG</div><div id="detail" aria-live="polite">Hover, focus, or tap a tile to inspect its address and size.</div>
-<p>Only complete configured source ranges that pass the current Hitachi compile, link-address, section-size and byte comparison checks receive credit. Candidate bytes receive no credit. Matching fragments do not establish original translation-unit boundaries. The full image comparison retains original bytes for untranslated regions. Progress covers the 2,424,832-byte main executable; the test program and graphics/audio ROMs remain outside this source metric.</p></main>
+<p>A verified unit earns credit for every byte once it compiles, links at its original address and matches retail byte for byte. A candidate unit earns credit only for the functions inside it that already match. Matching fragments do not establish original translation-unit boundaries. The full image comparison retains original bytes for untranslated regions. Progress covers the 2,424,832-byte main executable; the test program and graphics/audio ROMs remain outside this source metric.</p></main>
 <script>const buttons=[document.getElementById('mainButton'),document.getElementById('activeButton')],maps=[document.getElementById('mainMap'),document.getElementById('activeMap')];buttons.forEach((b,i)=>b.onclick=()=>{maps.forEach((m,j)=>m.hidden=i!==j);buttons.forEach((b,j)=>b.setAttribute('aria-pressed',i===j));});document.querySelectorAll('.tile').forEach(t=>['mouseenter','focus','click'].forEach(e=>t.addEventListener(e,()=>document.getElementById('detail').textContent=t.dataset.detail)));</script></html>'''
     (output/'index.html').write_text(page.replace('MAIN_SVG',main_svg).replace('ACTIVE_SVG',active_svg))
-    mapped = proof['main_size'] - proof['mapping']['unknown_bytes']
-    matched_kinds = {'code': 0, 'data': 0}
-    for unit in proof['units']:
-        if not unit.get('credited'):
-            continue
-        for part in unit['sections']:
-            if part['kind'] in matched_kinds:
-                matched_kinds[part['kind']] += number(part['size'])
-    matched = matched_kinds['code'] + matched_kinds['data']
-    total = proof['main_size']
-    code_known = proof['mapping']['reviewed_code_bytes']
-    data_known = proof['mapping']['reviewed_data_bytes']
-    block = (
-        '<!-- progress:start -->\n'
-        '| Track | Progress | Bytes |\n'
-        '| --- | --- | ---: |\n'
-        f'| Map | `{progress_bar(mapped, total)}` **{100 * mapped / total:.3f}%** | {mapped:,} / {total:,} |\n'
-        f'| Code | `{progress_bar(matched_kinds["code"], code_known)}` **{100 * matched_kinds["code"] / max(1, code_known):.3f}%** | {matched_kinds["code"]:,} / {code_known:,} |\n'
-        f'| Data | `{progress_bar(matched_kinds["data"], data_known)}` **{100 * matched_kinds["data"] / max(1, data_known):.3f}%** | {matched_kinds["data"]:,} / {data_known:,} |\n'
-        f'| [Decomp](config/units.json) | `{progress_bar(matched, total)}` **{100 * matched / total:.3f}%** | {matched:,} / {total:,} |\n'
-        '<!-- progress:end -->')
+    m = metrics(proof)
+    def row(label, kind):
+        value = m[kind]
+        return (f"| {label} | `{progress_bar(value['matched_bytes'], value['known_bytes'])}` "
+                f"**{100 * value['matched_bytes'] / max(1, value['known_bytes']):.3f}%** | "
+                f"{value['matched_bytes']:,} / {value['known_bytes']:,} |\n")
+    block = ('<!-- progress:start -->\n'
+             '| Track | Progress | Bytes |\n'
+             '| --- | --- | ---: |\n'
+             + row('Map', 'map') + row('Code', 'code') + row('Data', 'data')
+             + row('[Decomp](config/units.json)', 'decomp')
+             + '<!-- progress:end -->')
     readme = ROOT / 'README.md'
     readme.write_text(re.sub(
         r'<!-- progress:start -->.*?<!-- progress:end -->',
