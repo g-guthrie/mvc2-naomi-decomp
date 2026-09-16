@@ -1,3 +1,13 @@
+/* Unit 0x0c05f030-0x0c05f1b0 (five functions + shared pool). func_0c05f030
+ * matches exactly (18/18). func_0c05f0ba, func_0c05f128 and func_0c05f15c
+ * appear correct in isolation but the tool cannot confirm them because the
+ * whole-unit link is 4 bytes short of retail (380 of 384), all of it inside
+ * func_0c05f042: content is close (81/120 equal at its fixed address) but
+ * some source shape there still emits two fewer instructions than retail.
+ * Tried: reordering the triple zero-store chain, +=/=+1 vs ++ forms for the
+ * b6 and array increments (the "p->x=p->x+1" shape measurably helped, ++
+ * measurably hurt), and flipping the b1d2 if/else polarity. None closed the
+ * gap; left as a candidate. */
 struct Obj_ud1_01 {
     unsigned char pad0[2];
     unsigned char b2;
@@ -58,7 +68,7 @@ void func_0c05f042(struct Obj_ud1_01 *a)
     a->f96 = 4.285714f;
     a->f108 = -0.803571f;
     a->b1a1 = 55;
-    a->w1ac = a->b19e = a->x1c4 = 0;
+    a->x1c4 = a->b19e = a->w1ac = 0;
     dat_0c2f83f8->arr[a->b2] = dat_0c2f83f8->arr[a->b2] + 1;
     func_0c02a0c4(a, 20, 0);
 }
