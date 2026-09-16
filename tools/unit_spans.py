@@ -28,7 +28,13 @@ def branch_target(word, pc):
 
 
 def spans(image, base, ranges, owned):
-    ranges = sorted(ranges, key=lambda r: r[0])
+    merged = []
+    for lo, size, kind in sorted(ranges, key=lambda r: r[0]):
+        if merged and kind == 'data' and merged[-1][2] == 'data' and merged[-1][0] + merged[-1][1] == lo:
+            merged[-1] = (merged[-1][0], merged[-1][1] + size, kind)
+        else:
+            merged.append((lo, size, kind))
+    ranges = merged
     words = lambda lo, hi: [struct.unpack_from('<H', image, a - base)[0] for a in range(lo, hi, 2)]
     # crossing edges: any branch from a to target t
     edges = []
