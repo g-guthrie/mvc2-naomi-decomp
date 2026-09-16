@@ -58,6 +58,12 @@ def main():
             w = table.get(a)
             return literal(image, base, a, w) if w else m.group(0)
         text = re.sub(r'_DAT_(0c[0-9a-f]{6})', sub, text)
+        def sub_array(m):
+            a = int(m.group(1), 16) + int(m.group(2))
+            w = int(m.group(3))
+            return literal(image, base, a, w) if w in (2, 4) else m.group(0)
+        text = re.sub(r'(?:\((?:short|int|uint|ushort)\))?BYTE_ARRAY_(0c[0-9a-f]{6})\._(\d+)_(\d)_', sub_array, text)
+        text = re.sub(r'BYTE_ARRAY_(0c[0-9a-f]{6})\b', lambda m: '0x' + m.group(1), text)
         open(path, 'w').write(text)
 
 
