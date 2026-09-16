@@ -61,7 +61,7 @@ def function_starts(image, base, ranges):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--ghidra', required=True, help='Ghidra install directory')
-    parser.add_argument('--out', default=str(ROOT / 'build' / 'drafts'))
+    parser.add_argument('--out', default=str(ROOT / 'build' / 'drafts'), type=lambda p: str(Path(p).resolve()))
     args = parser.parse_args()
     target = load(ROOT / 'config/target.json')
     program = verify_rom(target)
