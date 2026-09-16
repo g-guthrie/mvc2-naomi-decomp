@@ -22,8 +22,10 @@ disassembly instead.
 1. Pick a unit from `python3 tools/unit_spans.py`, or a `CANDIDATE` line in
    the check output. A unit is a run of functions and their literal pools that
    no branch crosses; confirm its extent before writing.
-2. Read the drafts and the disassembly (`tools/inspect_rom.py`) for every
-   function in the unit, and write them all into one file in address order.
+2. Run `python3 tools/twins.py START SIZE`: functions with a verified twin
+   are that twin's source with other constants, copy and adjust. Read the
+   drafts and the disassembly (`tools/inspect_rom.py`) for the rest, and
+   write every function into one file in address order.
    [docs/MATCHING.md](docs/MATCHING.md) says how to shape the C.
 3. Iterate with `python3 tools/diff_unit.py <file>` until every function
    matches. `tools/permute.py <file>` searches the mechanical spellings for
