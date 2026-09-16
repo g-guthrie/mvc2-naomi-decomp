@@ -401,12 +401,3 @@ void (*const table_0c1d0ac4[])(void) = {
 #pragma section n1d0f6c
 void (*const ptr_0c1d0f6c)(void) = func_0c037688;
 
-#pragma section n1d1074
-void (*const ptr_0c1d1074)(void) = func_0c0374da;
-
-#pragma section n1d1080
-void (*const ptr_0c1d1080)(void) = func_0c1fb7a0;
-
-#pragma section n1d1088
-void (*const ptr_0c1d1088)(void) = func_0c1d0fd4;
-

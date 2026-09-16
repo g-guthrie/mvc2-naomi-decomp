@@ -453,17 +453,6 @@ const unsigned int dat_0c12b0b4[] = {
     0xbf9a4924u, 0x0c02a0c4u,
 };
 
-#pragma section n12b1d0
-const unsigned short dat_0c12b1d0[] = {
-    0x01a3u, 0x01d2u, 0x014bu,
-};
-
-#pragma section n12b1e0
-const unsigned int dat_0c12b1e0[] = {
-    0x0c24dba8u, 0x3fd55555u, 0x47800000u, 0x40092492u,
-    0x0c2f83f8u,
-};
-
 #pragma section n12b2bc
 void (*const table_0c12b2bc[])(void) = {
     func_0c048bb0,

@@ -11,10 +11,12 @@ so their addresses are known. A file whose functions each follow a
 `#pragma section NAME` line is a set of pool-free leaves: each becomes section
 PNAME at its function's address with the size of the reviewed code range there.
 Any other file is one translation unit: section P starts at the first function
-and runs to the end of the reviewed data that follows the code, which is the
-literal pool, declared as interior data. Imports are read off the compiler's
+and runs through every reviewed code and data range up to the pool that follows
+the last function in the file. Each data range inside is a literal pool,
+declared as interior data, so a unit may hold several pools. Imports are read off the compiler's
 .IMPORT lines; a symbol named func_0cXXXXXX or dat_0cXXXXXX resolves to that
-address, anything else needs --import SYMBOL=ADDRESS.
+address, compiler runtime routines come from config/runtime.json, and anything
+else needs --import SYMBOL=ADDRESS.
 
 --register writes the unit into config/units.json as verified when exact and
 as candidate otherwise. A file under src/verified/ must be exact.
@@ -34,7 +36,8 @@ from vendor.sh4dis import sh4
 
 FUNCTION = re.compile(r'^\s*(?:[\w\s\*]+?)\b(func_0c[0-9a-f]{6})\s*\(', re.M)
 PRAGMA = re.compile(r'^\s*#pragma\s+section\s+(\w+)\s*$', re.M)
-SYMBOL = re.compile(r'^_?(?:func|dat)_(0c[0-9a-f]{6})$')
+SYMBOL = re.compile(r'^_?(?:func|dat|ptr|table)_(0c[0-9a-f]{6})$')
+RUNTIME = load(ROOT / 'config/runtime.json')
 
 
 def mapping_ranges():
@@ -60,27 +63,35 @@ def describe(path, ranges, imports):
                 raise ValueError(f'No reviewed code range starts at {name}; map it first')
             unit['sections'].append({'section': 'P' + section, 'kind': 'code', 'address': address, 'size': by_start[address][0]})
         return unit
-    start = min(unit['exports'].values())
+    start, last = min(unit['exports'].values()), max(unit['exports'].values())
     holder = [lo for lo, size, kind in ranges if lo <= start < lo + size and kind == 'code']
     if not holder:
         raise ValueError('A translation unit must start on reviewed code')
-    cursor, interior, seen_code = holder[0], [], False
+    cursor, interior = holder[0], []
     while cursor in by_start:
         size, kind = by_start[cursor]
         if kind == 'code':
-            if interior:
+            if cursor > last and interior and interior[-1]['address'] + interior[-1]['size'] == cursor:
                 break
-            seen_code = True
         else:
             interior.append({'address': cursor, 'size': size, 'kind': 'data'})
         cursor += size
     if not interior:
         raise ValueError('No reviewed pool follows the code; use #pragma section for pool-free leaves')
-    lo = min(i['address'] for i in interior)
-    hi = max(i['address'] + i['size'] for i in interior)
-    unit['sections'].append({'section': 'P', 'kind': 'code', 'address': start, 'size': cursor - start,
-                             'interior': [{'address': lo, 'size': hi - lo, 'kind': 'data'}]})
+    interior = coalesce(interior)
+    unit['sections'].append({'section': 'P', 'kind': 'code', 'address': start, 'size': cursor - start, 'interior': interior})
     return unit
+
+
+def coalesce(ranges):
+    """Adjacent ranges of one kind are one range."""
+    merged = []
+    for item in sorted(ranges, key=lambda r: number(r['address'])):
+        if merged and number(merged[-1]['address']) + number(merged[-1]['size']) == number(item['address']) and merged[-1]['kind'] == item['kind']:
+            merged[-1]['size'] = number(merged[-1]['size']) + number(item['size'])
+        else:
+            merged.append({'address': number(item['address']), 'size': number(item['size']), 'kind': item['kind']})
+    return merged
 
 
 def resolve_imports(unit, work, stem):
@@ -89,13 +100,18 @@ def resolve_imports(unit, work, stem):
         if symbol in unit['imports']:
             continue
         match = SYMBOL.match(symbol)
-        if not match:
+        if match:
+            unit['imports'][symbol] = number('0x' + match.group(1))
+        elif symbol in RUNTIME:
+            unit['imports'][symbol] = number(RUNTIME[symbol])
+        else:
             raise ValueError(f'Unknown import {symbol}: pass --import {symbol}=ADDRESS')
-        unit['imports'][symbol] = number('0x' + match.group(1))
 
 
 def hexed(unit):
     out = json.loads(json.dumps(unit))
+    if out.get('options', 'game') == 'game':
+        out.pop('options', None)
     for part in out['sections']:
         part['address'] = f"0x{number(part['address']):08x}"
         for spare in part.get('interior', ()):
@@ -107,6 +123,36 @@ def hexed(unit):
     return out
 
 
+def release_pools(unit, units):
+    """A unit owns everything inside its sections. Sections of other units that
+    lie inside them, pools and pool-free leaves alike, are removed from the
+    registry and from their source."""
+    spans = [(number(part['address']), number(part['address']) + number(part['size'])) for part in unit['sections']]
+    for other in units:
+        if other['id'] == unit['id'] or other['source'] == unit['source']:
+            continue
+        keep, drop = [], []
+        for part in other['sections']:
+            lo, hi = number(part['address']), number(part['address']) + number(part['size'])
+            (drop if any(a <= lo and hi <= b for a, b in spans) else keep).append(part)
+        if not drop:
+            continue
+        source = ROOT / other['source']
+        text = source.read_text()
+        for part in drop:
+            pattern = re.compile(r'#pragma section ' + re.escape(part['section'][1:]) + r'\n.*?\n(?=#pragma section |\Z)', re.S)
+            text, count = pattern.subn('', text, count=1)
+            if count != 1:
+                raise ValueError(f"Cannot find section {part['section']} in {other['source']} to release it")
+            symbol = next((k for k, v in other.get('exports', {}).items() if number(v) == number(part['address'])), None)
+            if symbol:
+                del other['exports'][symbol]
+            print(f"RELEASED {other['id']} {part['section']} to {unit['id']}")
+        source.write_text(text)
+        other['sections'] = keep
+    return [u for u in units if u['sections']]
+
+
 def register(unit, exact):
     unit = hexed(unit)
     unit['mode'] = 'verified' if exact else 'candidate'
@@ -115,14 +161,13 @@ def register(unit, exact):
     path = ROOT / 'config/units.json'
     with open(path, 'r+') as handle:
         fcntl.flock(handle, fcntl.LOCK_EX)
-        units = json.load(handle)
+        units = release_pools(unit, json.load(handle))
         slots = [i for i, u in enumerate(units) if u['id'] == unit['id'] or u['source'] == unit['source']]
         units = [u for i, u in enumerate(units) if i not in slots]
         units.insert(slots[0] if slots else len(units), unit)
-        handle.seek(0)
-        handle.truncate()
-        json.dump(units, handle, indent=2)
-        handle.write('\n')
+        temp = path.with_suffix('.json.tmp')
+        temp.write_text(json.dumps(units, indent=2) + '\n')
+        os.replace(temp, path)
     print(f"REGISTERED {unit['id']} as {unit['mode']} ({len(units)} units)")
 
 
@@ -131,22 +176,31 @@ def main():
     parser.add_argument('target', help='unit id from config/units.json, or a C file below src/')
     parser.add_argument('--import', dest='imports', action='append', default=[], metavar='SYMBOL=ADDRESS')
     parser.add_argument('--register', metavar='ID', help='write the unit into config/units.json under this id')
+    parser.add_argument('--options', choices=['game', 'library'], help='option set for a bare file; the default is game')
     parser.add_argument('--context', type=int, default=2, help='matching instructions shown around each difference')
     args = parser.parse_args()
     target = load(ROOT / 'config/target.json')
     program = verify_rom(target)
     offset, base, size = (number(target['main'][k]) for k in ('rom_offset', 'address', 'size'))
     main = program[offset:offset + size]
-    flags = load(ROOT / 'config/compiler.json')['flags']
+    sets = load(ROOT / 'config/compiler.json')['sets']
     units = {u['id']: u for u in load(ROOT / 'config/units.json')}
     imports = {k: number(v) for k, v in (item.split('=', 1) for item in args.imports)}
     if args.target in units:
         unit = units[args.target]
         unit['imports'] = {**unit.get('imports', {}), **imports}
     else:
-        unit = describe(args.target, mapping_ranges(), imports)
+        known = next((u for u in units.values() if u['source'] == args.target), {})
+        unit = describe(args.target, mapping_ranges(), {**{k: number(v) for k, v in known.get('imports', {}).items()}, **imports})
+        if known:
+            unit['id'] = known['id']
+            if 'options' in known:
+                unit['options'] = known['options']
     if args.register:
         unit['id'] = args.register
+    if args.options:
+        unit['options'] = args.options
+    flags = sets[unit.get('options', 'game')]
     work = ROOT / 'build' / f'work-diff-{os.getpid()}'
     if work.exists():
         shutil.rmtree(work)
@@ -166,6 +220,8 @@ def main():
               f"linked {part['linked_size']} at {placed}")
     for row in proof['functions']:
         print(f"  {row['symbol']} 0x{row['address']:08x} {row['size']} bytes: {row['equal_bytes']}/{row['size']} equal")
+    for row in proof['pools']:
+        print(f"  pool 0x{row['address']:08x} {row['size']} bytes: {row['equal_bytes']}/{row['size']} equal")
     for part in proof['sections']:
         if part['kind'] != 'code' or part['exact']:
             continue

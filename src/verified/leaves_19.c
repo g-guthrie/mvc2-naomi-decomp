@@ -18,8 +18,3 @@ void func_0c1acf28(void) {}
 #pragma section n1acff8
 void func_0c1acff8(void) {}
 
-#pragma section n207104
-int func_0c207104(void) { return 120; }
-
-#pragma section n20710c
-int func_0c20710c(void) { return 120; }

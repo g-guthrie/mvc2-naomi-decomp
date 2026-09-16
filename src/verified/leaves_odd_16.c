@@ -3,11 +3,3 @@
 #pragma section n13c7fc
 void func_0c13c7fc(void) {}
 
-#pragma section n1e9a40
-void func_0c1e9a40(void) {}
-
-#pragma section n1ea4a0
-void func_0c1ea4a0(void) {}
-
-#pragma section n1f7470
-int func_0c1f7470(void) { return 0; }
