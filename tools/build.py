@@ -95,8 +95,10 @@ def build(selected=None):
     rows, rebuilt = [], bytearray(main)
     failed = []
     matched_units = matched_sections = matched_bytes = 0
-    for unit in units:
-        elf, link = compile_unit(unit, work, flags)
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=os.cpu_count() or 2) as pool:
+        compiled = list(pool.map(lambda unit: compile_unit(unit, work, flags), units))
+    for unit, (elf, link) in zip(units, compiled):
         try:
             proof, segments = compare(unit, elf, link, main, base)
         except ValueError as error:
