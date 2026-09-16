@@ -5,6 +5,10 @@
 - `toolchain/hitachi-shc-5.0r31/`: the Hitachi SH C/C++ compiler package. Its
   manifest records every file's size and SHA-256.
 - `toolchain/wibo/`: the wibo 1.2.0 Windows runtime for Linux x86_64 and macOS.
+- `toolchain/naomi-sdk/lib/`: Sega's prebuilt NAOMI SDK libraries, in Hitachi
+  library format, with a manifest recording every file's size and SHA-256. The
+  retail ROM links these objects unchanged, so library units link them instead
+  of reconstructing their source.
 - `orig/mvsc2.zip`: the 18 reference ROM members, hash-checked against
   `config/target.json`.
 
@@ -70,6 +74,24 @@ instructions, only section alignment directives.
   `config/runtime.json`.
 - `options` names the option set, `game` or `library`.
 
+A **library unit** links one prebuilt SDK module instead of compiling C, so it
+names a `library` and a `module` in place of a `source`, and takes no `options`:
+
+```json
+{ "id": "lib_kamui2_km2ver_kamui2_lib_", "library": "toolchain/naomi-sdk/lib/libkamui2.lib",
+  "module": "km2ver_kamui2_lib_", "mode": "verified",
+  "sections": [ { "section": "PSG", "kind": "code", "address": "0x0c206780", "size": 64 } ],
+  "imports": { "_kmiWriteRegister": "0x0c213200" },
+  "exports": { "_kmGetVersionInfo": "0x0c206780" } }
+```
+
+The build extracts that one module into a private library, links it at the
+declared addresses against a reference object that names only its exports, and
+compares the result with retail exactly as it compares a compiled unit. Because
+the module is the compiler's own output, a library unit carries no `interior`
+and makes no claim about which of its bytes are instructions: the reviewed
+mapping keeps its own classification of them, and the decoder test ignores them.
+
 ## Verification
 
 A unit is exact when the linked ELF has the expected sections and no others,
@@ -106,6 +128,9 @@ it, and the README bars are rewritten from the same numbers.
   twins, symbols and immediates substituted; functions without a twin become
   stubs carrying their Ghidra draft. `--list` names the units whose every
   function has a twin.
+- `tools/libunit.py LIB [--register]`: find every module of a bundled SDK
+  library in the retail image, solve the addresses its relocations point at,
+  prove the link byte-exact, and register the exact ones as library units.
 - `tools/permute.py FILE`: hill-climb over the mechanical rewrites in
   MATCHING.md, scored by equal bytes against retail.
 - `tools/float_literal.py 0xBITS`: the decimal spelling SHC parses to those

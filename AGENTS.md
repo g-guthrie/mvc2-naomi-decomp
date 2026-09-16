@@ -35,8 +35,33 @@ disassembly instead.
    when exact, under `src/verified/`; candidate otherwise, under
    `src/candidates/`, with a comment at the top saying what differs. Units
    above 0x0c1e9000 are Sega library code and take `--options library`.
+   Before writing C for a unit above 0x0c1e9000, try `tools/libunit.py`
+   (below): most of that region is Sega's prebuilt SDK objects, and a module it
+   places is matched without any source at all.
 5. Run the check, commit source and configuration together, push, and merge
    to `main`. CI republishes the README bars from `main`.
+
+## Library modules
+
+The region above 0x0c1e9000 is Sega's SDK, linked into the ROM unchanged from
+the prebuilt libraries in `toolchain/naomi-sdk/lib/`. Those bytes are matched
+by linking, not by writing C:
+
+```sh
+python3 tools/libunit.py toolchain/naomi-sdk/lib/libkamui2.lib            # report
+python3 tools/libunit.py toolchain/naomi-sdk/lib/libkamui2.lib --register # register the exact ones
+```
+
+For each module the tool links it alone at two different bases; the words that
+move are its relocations, and the rest is fixed content it searches for in the
+retail image. Having placed the module it reads the real addresses of its
+imports off the retail bytes, links it there, and keeps it only if every byte
+matches. A module it cannot place uniquely, or whose link differs anywhere, is
+reported and skipped. Nothing about this is a shortcut around matching: the
+proof is the same byte comparison every other unit passes.
+
+Run it again after adding a library, or after a unit frees a range it was
+blocked on. `SKIP` lines say which of the two applies.
 
 Several agents may run the loop at once: `diff_unit.py` uses a private work
 directory and locks the registry. Only `tools/build.py` needs the tree to

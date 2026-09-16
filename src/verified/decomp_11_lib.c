@@ -8,5 +8,3 @@ struct S_0c2006a8 { int a; int b; unsigned char *c; unsigned char *d; };
 int func_0c2006a8(struct S_0c2006a8 *p) { unsigned int v; v = *p->d; p->d++; p->a--; p->c++; p->b--; while (*p->c != 0) { p->c++; p->b--; } return v; }
 
 struct Node_0c224cb8 { unsigned char pad[4]; struct Node_0c224cb8 *next; int f8; };
-#pragma section n203cb8
-int func_0c224cb8(struct Node_0c224cb8 *p, struct Node_0c224cb8 *a, int b) { struct Node_0c224cb8 *n = p->next; int result = 0; int one = 1; if (n != 0) { do { if (n == a && n && n->f8 == b) result = one; n = n->next; } while (n != 0); } return result; }

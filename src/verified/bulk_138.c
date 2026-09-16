@@ -132,11 +132,6 @@ const unsigned short dat_0c203d52[] = {
     0x00ffu,
 };
 
-#pragma section n203dcc
-const unsigned short dat_0c203dcc[] = {
-    0x00ffu,
-};
-
 #pragma section n203e46
 const unsigned short dat_0c203e46[] = {
     0x0100u,
@@ -146,21 +141,6 @@ const unsigned short dat_0c203e46[] = {
 const unsigned int dat_0c203f6c[] = {
     0x00807ff0u, 0x00008000u, 0xffe7ffffu, 0x0c204324u,
     0x0c1fb940u, 0x0c203d08u,
-};
-
-#pragma section n203ff4
-const unsigned int dat_0c203ff4[] = {
-    0x0c358464u,
-};
-
-#pragma section n204226
-const unsigned short dat_0c204226[] = {
-    0x0080u,
-};
-
-#pragma section n204264
-const unsigned int dat_0c204264[] = {
-    0x7ff00000u, 0x000fffffu,
 };
 
 #pragma section n2042b0
@@ -188,79 +168,6 @@ const unsigned short dat_0c20479c[] = {
     0x0080u,
 };
 
-#pragma section n204864
-const unsigned int dat_0c204864[] = {
-    0x01010000u,
-};
-
-#pragma section n204874
-const unsigned int dat_0c204874[] = {
-    0x43000000u,
-};
-
-#pragma section n204a48
-const unsigned int dat_0c204a48[] = {
-    0x3f000000u,
-};
-
-#pragma section n204bee
-const unsigned short dat_0c204bee[] = {
-    0x00c0u, 0x80acu, 0x0c23u, 0x57c0u, 0x0c3au, 0x1aa8u, 0x0c21u,
-};
-
-#pragma section n204cde
-const unsigned short dat_0c204cde[] = {
-    0x04e0u, 0x00c0u, 0x00a0u, 0x630cu, 0x0c3au, 0x5dc4u, 0x0c3au, 0x5dc0u,
-    0x0c3au, 0x5dc8u, 0x0c3au, 0x5dccu, 0x0c3au, 0xba00u, 0x0c1fu, 0x0da0u,
-    0x0c21u, 0x62acu, 0x0c3au, 0x1700u, 0x0c21u, 0x6312u, 0x0c3au, 0x632au,
-    0x0c3au, 0x6310u, 0x0c3au, 0x6311u, 0x0c3au,
-};
-
-#pragma section n204e34
-const unsigned int dat_0c204e34[] = {
-    0x00a000c0u, 0x0c3a630cu,
-};
-
-#pragma section n204e54
-const unsigned int dat_0c204e54[] = {
-    0x0c3a6312u, 0x0c211700u, 0x0c3a62acu, 0x0c3a632au,
-    0x0c3a6310u, 0x0c3a6311u,
-};
-
-#pragma section n204e70
-const unsigned int dat_0c204e70[] = {
-    0xffff0000u, 0xfffdffffu,
-};
-
-#pragma section n204f60
-const unsigned int dat_0c204f60[] = {
-    0x0c3a6311u, 0x00020000u, 0xfffdffffu, 0x0c3a632au,
-    0x0c3a6310u, 0xfffeffffu, 0x00010000u, 0x0c3a630cu,
-    0x00040000u, 0x00080000u, 0x00100000u, 0x00200000u,
-};
-
-#pragma section n205042
-const unsigned short dat_0c205042[] = {
-    0x00f0u, 0x00fcu, 0x00ffu, 0xff00u, 0x003fu, 0x0000u, 0x0002u, 0x0000u,
-    0x0001u, 0x1f0cu, 0x0c21u, 0x2348u, 0x0c21u, 0x00fcu, 0xff00u, 0x0000u,
-    0xff00u, 0x810cu, 0x0c23u,
-};
-
-#pragma section n205148
-const unsigned int dat_0c205148[] = {
-    0x0c2116c0u, 0x0c211700u, 0x0c3a5dccu, 0x0c3a62acu,
-    0x0c1fb5acu, 0x0c3a630cu,
-};
-
-#pragma section n2052ac
-void (*const table_0c2052ac[])(void) = {
-    func_0c238108,
-    func_0c2125e0,
-    func_0c2124e0,
-    func_0c212520,
-    func_0c23811c,
-};
-
 #pragma section n2054f6
 const unsigned short dat_0c2054f6[] = {
     0xff0fu, 0x6358u, 0x0c3au, 0x6354u, 0x0c3au, 0x6344u, 0x0c3au, 0x6348u,
@@ -284,31 +191,6 @@ void (*const table_0c205ac0[])(void) = {
     func_0c20d47e,
     func_0c20c050,
     func_0c20c060,
-};
-
-#pragma section n206088
-const unsigned short dat_0c206088[] = {
-    0xff00u,
-};
-
-#pragma section n206182
-const unsigned short dat_0c206182[] = {
-    0x0080u, 0xba00u, 0x0c1fu, 0x9824u, 0x0c26u, 0x9834u, 0x0c26u,
-};
-
-#pragma section n206268
-const unsigned int dat_0c206268[] = {
-    0x020001ffu,
-};
-
-#pragma section n206384
-const unsigned int dat_0c206384[] = {
-    0xff210080u, 0x000e1000u, 0x0c269824u, 0x0c269834u,
-};
-
-#pragma section n20640c
-const unsigned int dat_0c20640c[] = {
-    0x1021ff20u, 0x00008000u,
 };
 
 #pragma section n2064f2
@@ -346,20 +228,5 @@ const unsigned int dat_0c2067b8[] = {
 #pragma section n2068a4
 const unsigned int dat_0c2068a4[] = {
     0xffd80004u, 0xffd80028u, 0xffd80020u, 0xffd80024u,
-};
-
-#pragma section n206920
-const unsigned int dat_0c206920[] = {
-    0x0c3b22c0u, 0x0c3b22b4u,
-};
-
-#pragma section n206960
-const unsigned int dat_0c206960[] = {
-    0x0c3b22bcu, 0x0c3b22b4u,
-};
-
-#pragma section n2069e0
-const unsigned int dat_0c2069e0[] = {
-    0x01fc0080u, 0x437f0000u, 0x0c3b20b4u, 0x0c3b22b4u,
 };
 

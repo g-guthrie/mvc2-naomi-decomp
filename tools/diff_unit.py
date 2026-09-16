@@ -129,7 +129,7 @@ def release_pools(unit, units):
     registry and from their source."""
     spans = [(number(part['address']), number(part['address']) + number(part['size'])) for part in unit['sections']]
     for other in units:
-        if other['id'] == unit['id'] or other['source'] == unit['source']:
+        if other['id'] == unit['id'] or (unit.get('source') and other.get('source') == unit['source']):
             continue
         keep, drop = [], []
         for part in other['sections']:
@@ -137,6 +137,8 @@ def release_pools(unit, units):
             (drop if any(a <= lo and hi <= b for a, b in spans) else keep).append(part)
         if not drop:
             continue
+        if 'source' not in other:
+            raise ValueError(f"Cannot release sections of library unit {other['id']}")
         source = ROOT / other['source']
         text = source.read_text()
         for part in drop:
@@ -162,7 +164,7 @@ def register(unit, exact):
     with open(path, 'r+') as handle:
         fcntl.flock(handle, fcntl.LOCK_EX)
         units = release_pools(unit, json.load(handle))
-        slots = [i for i, u in enumerate(units) if u['id'] == unit['id'] or u['source'] == unit['source']]
+        slots = [i for i, u in enumerate(units) if u['id'] == unit['id'] or u.get('source') == unit['source']]
         units = [u for i, u in enumerate(units) if i not in slots]
         units.insert(slots[0] if slots else len(units), unit)
         temp = path.with_suffix('.json.tmp')
@@ -179,7 +181,7 @@ def evaluate(path, imports=None, options=None):
     main_image = program[offset:offset + size]
     sets = load(ROOT / 'config/compiler.json')['sets']
     units = {u['id']: u for u in load(ROOT / 'config/units.json')}
-    known = next((u for u in units.values() if u['source'] == path), {})
+    known = next((u for u in units.values() if u.get('source') == path), {})
     unit = describe(path, mapping_ranges(), {**{k: number(v) for k, v in known.get('imports', {}).items()}, **(imports or {})})
     unit['id'] = known.get('id', 'diff')
     unit['options'] = options or known.get('options', 'game')
@@ -219,7 +221,7 @@ def main():
         unit = units[args.target]
         unit['imports'] = {**unit.get('imports', {}), **imports}
     else:
-        known = next((u for u in units.values() if u['source'] == args.target), {})
+        known = next((u for u in units.values() if u.get('source') == args.target), {})
         unit = describe(args.target, mapping_ranges(), {**{k: number(v) for k, v in known.get('imports', {}).items()}, **imports})
         if known:
             unit['id'] = known['id']

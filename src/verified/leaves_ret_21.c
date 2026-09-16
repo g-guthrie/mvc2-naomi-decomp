@@ -1,11 +1,5 @@
 /* Hitachi SHC 5.0R31 four-byte return-imm leaves. */
 
-#pragma section n2141f4
-int func_0c2141f4(void) { return 7; }
-
-#pragma section n21b1c2
-int func_0c21b1c2(void) { return 7; }
-
 #pragma section n1f2940
 int func_0c1f2940(void) { return -4; }
 
