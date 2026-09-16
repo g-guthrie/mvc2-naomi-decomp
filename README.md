@@ -41,7 +41,8 @@ them by hand. The treemap at `build/index.html` comes from the same build.
 | `src/include/` | Shared object definitions |
 | `src/verified/` | Units that match retail |
 | `src/candidates/` | Units that do not match yet |
-| `tools/` | The build, the verifier, the diff tool and the mapping tools |
+| `tools/` | The build, the verifier, the diff tool, the draft and search tools |
+| `build/` | Generated: work files, proof, progress views and Ghidra drafts; never committed |
 | `toolchain/` | Hitachi SHC 5.0R31 and the wibo runtime that executes it |
 | `tests/` | Checks on the verifier and the mapping, not on individual units |
 
