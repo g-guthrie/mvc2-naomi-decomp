@@ -90,6 +90,9 @@ it, and the README bars are rewritten from the same numbers.
 - `tools/flow_map.py`: walk the control-flow graph from the entry point and every
   reviewed code range and propose new ranges. `--roots FILE` adds candidate
   entry points, for example the BSR destinations from `tools/survey.py`.
+- `tools/unit_spans.py`: propose translation-unit extents, runs of code and
+  pools that no branch crosses and that start on a function. This is the list
+  to hand out.
 - `tools/pool_clusters.py`: group reviewed code that reads one literal pool.
-  Each group is a retail translation unit and the right size for one C file.
+  A unit usually holds several.
 - `tools/nonexecutable.py`: find runs that decode as no SH-4 instruction.
