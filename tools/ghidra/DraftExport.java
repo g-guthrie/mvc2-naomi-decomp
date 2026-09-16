@@ -1,5 +1,6 @@
 // Ghidra headless script: create functions at the reviewed starts, mark pools as data,
-// analyze, and write one decompiled draft per function.
+// and write one decompiled draft per function. No whole-image analysis: the map
+// already says where code and data are, and per-function decompilation is fast.
 import ghidra.app.script.GhidraScript;
 import ghidra.app.decompiler.DecompInterface;
 import ghidra.app.decompiler.DecompileResults;
@@ -33,7 +34,14 @@ public class DraftExport extends GhidraScript {
                 disassemble(a);
             }
         }
-        analyzeAll(currentProgram);
+        for (ghidra.program.model.mem.MemoryBlock block : currentProgram.getMemory().getBlocks()) block.setWrite(false);
+        // The game runs the FPU in single precision with 32-bit moves; tell the decompiler so.
+        ghidra.program.model.listing.ProgramContext ctx = currentProgram.getProgramContext();
+        ghidra.program.model.address.Address lo = currentProgram.getMinAddress(), hi = currentProgram.getMaxAddress();
+        for (String rn : new String[]{"FPSCR_PR", "FPSCR_SZ", "FPSCR_FR"}) {
+            ghidra.program.model.lang.Register reg = ctx.getRegister(rn);
+            if (reg != null) ctx.setRegisterValue(lo, hi, new ghidra.program.model.lang.RegisterValue(reg, java.math.BigInteger.ZERO));
+        }
         DecompInterface dec = new DecompInterface();
         dec.openProgram(currentProgram);
         FunctionIterator it = currentProgram.getFunctionManager().getFunctions(true);

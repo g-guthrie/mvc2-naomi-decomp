@@ -32,6 +32,15 @@ both came from Sega's own tool manual and both are now in
   pool-free leaves. Pragma sections also reset the scratch-register rotation
   (below), so a leaf that retail compiled inside a unit may only match there.
 
+## Start from the Ghidra draft
+
+`build/drafts/func_0cXXXXXX.c` holds a Ghidra decompilation of every reviewed
+function with the pool literals substituted, produced by
+`tools/ghidra_draft.py`. It gives the control flow, the calls and the field
+offsets. It is not the shape that reproduces the bytes: rewrite it with struct
+members and the rules below, and keep the disassembly open for the details
+the draft loses, such as float mode and register choice.
+
 ## Iterate with the diff tool
 
 ```sh
@@ -99,13 +108,17 @@ at once; only `tools/build.py` needs the tree to itself.
 | a tail call selected by a condition, callee in r3 | two call statements in `if` and `else`, not a ternary argument |
 | two identical call sites merged into one `jmp` | exactly two sites, reached by `goto` or fallthrough, never three |
 | `bra` to a shared `rts; nop` | a `goto` to a label before the call, see the file for `func_0c12eade` |
+| `bra` over a short block to the single epilogue | `if (c) { A; } else { B; }`; an early `return` duplicates the epilogue |
+| `extu.w` before a mask test on a word field | the field is `unsigned short` |
+| a field address computed early and dereferenced later | `unsigned char *p = &b->field;` then `*p`, not a second `b->field` |
+| a call after an early-return block with the target register off by one | try `else if` in place of the sibling `if`, or the reverse |
 | `mov r14,r3; add #64,r3; mov.l @r3` next to `@(r0,Rn)` accesses | a one-element array member, `int arr64[1]`, used as `arr64[0]` |
 | index computed before the pointer chain | pointer-to-array member: `(*g->p0)[a->b32 + 110]` |
 | `mov.l @r5+,r3` on consecutive ints | a walked pointer: `int *p = tbl[i]; x = *p++;` |
 | `lds r1,fpul; fsts fpul,fr3` for a float constant | the field is a struct member; a `float[]` element gives `mova; fmov @r0` |
 | `mova C; fmov; ...; mova -C; fmov` with no `bra` | `x = C; if (cond) x = -C;` |
 | `fldi1 frN; fadd frN,frN` for 2.0 | not produced yet by any spelling; open |
-| `r1 = dst; r2 = src; r0 = size; jsr` | struct assignment `a->s = b->s` with a member of that size; the routine name follows the struct's alignment |
+| `r1 = dst; r2 = src; r0 = size; jsr` | struct assignment `a->s = b->s` with a member of that size; the routine name follows the struct's alignment. Never call the routine by hand |
 | `r1 = dividend; r0 = divisor; jsr __modls` | `%` |
 | `sts.l macl` around a multiply | any code; that is `-macsave=1`, and the game set has `-macsave=0` |
 | a 12-byte frame with `mov r15,r5` passed to a call | `struct { float x, y, z; } v;` passed as `&v`, not `float v[3]` |
