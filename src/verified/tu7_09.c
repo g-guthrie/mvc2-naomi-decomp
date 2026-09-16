@@ -1,7 +1,4 @@
-/* Three functions sharing the literal pool at 0x0c1a415a. 262/264 bytes:
- * func_0c1a4074 and func_0c1a4148 match; func_0c1a4100 loads the callee
- * func_0c029fc4 into r2 where retail uses r3 (jsr @r3), one instruction.
- * Imports: __slow_mvn=0x0c1fb838, __quick_odd_mvn=0x0c1fb7a0. */
+/* Three functions sharing the literal pool at 0x0c1a415a. */
 struct V3_tu7_09 { float x, y, z; };
 struct Copy_c0_tu7_09 { unsigned char raw[0xc0]; };
 
@@ -66,7 +63,7 @@ void func_0c1a4074(struct Obj_tu7_09 *a)
 
 void func_0c1a4100(struct Obj_tu7_09 *a)
 {
-    if (a->b5 == 0) {
+    if (!a->b5) {
         if (func_0c029fc4(a) < 0) {
             a->b5 = a->b5 + 1;
             a->v.u.f108 = 1.0f;
