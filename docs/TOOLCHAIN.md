@@ -88,6 +88,9 @@ it, and the README bars are rewritten from the same numbers.
   [MATCHING.md](MATCHING.md).
 - `tools/float_literal.py 0xBITS`: the decimal spelling SHC parses to those
   float bits.
+- `tools/ghidra_draft.py --ghidra DIR`: a Ghidra decompilation draft of every
+  reviewed function into `build/drafts/`, pool literals substituted by
+  `tools/draft_pools.py`. Ghidra is not bundled.
 - `tools/inspect_rom.py --address A --size N`: disassemble retail bytes.
 - `tools/flow_map.py`: walk the control-flow graph from the entry point and every
   reviewed code range and propose new ranges. `--roots FILE` adds candidate
