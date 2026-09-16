@@ -319251,6 +319251,20 @@
       "evidence": "CFG walk from 0x0c1aa8aa; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c1aa8bc",
+      "size": 214,
+      "kind": "code",
+      "sha256": "3200ecf8d87c054780205670a168975981f9bbd9bfef0eab115950887a9a5879",
+      "evidence": "Function entered by fall-through from 0x0c1aa8aa dispatch table 0x0c259bf4 and ending with bra 0x0c1aa9c4 over its own pool; prologue saves r14, r13, r12, pr; every branch target lies inside the range."
+    },
+    {
+      "address": "0x0c1aa992",
+      "size": 14,
+      "kind": "data",
+      "sha256": "70f7aa97c10f13eb523665305cfe6ca7b622126675a8657e0cc002eee5fe2706",
+      "evidence": "mov.w literals read by 0x0c1aa8c6, 8e2, 8e6, 8f0, 8f2, 8fc, 91a, 942, 96a, 978."
+    },
+    {
       "address": "0x0c1aa9a0",
       "size": 4,
       "kind": "data",
@@ -319272,11 +319286,11 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1aa8aa; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c1aa9b4",
-      "size": 12,
-      "kind": "code",
-      "sha256": "f458fb95e6e9b6d7af47d5ccd5c7ea3093af59cd66fe279b11f4f192c2cba4e0",
-      "evidence": "CFG walk from 0x0c1aa9b4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "address": "0x0c1aa9b0",
+      "size": 20,
+      "kind": "data",
+      "sha256": "301a9c2ff8bada1116d22dd1a149b1d571b308b7b53de4026670876f46823782",
+      "evidence": "mov.l literals read by 0x0c1aa8bc, 8f6, 930, 95a, 960: pointers 0x0c2d6f84, __slow_mvn, __quick_odd_mvn, func_0c02a0c4, func_0c1d53e4."
     },
     {
       "address": "0x0c1aa9c4",
