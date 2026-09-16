@@ -189,11 +189,6 @@ const unsigned int dat_0c170b14[] = {
     0x01580088u, 0x0c02a18cu, 0x0c1fb794u,
 };
 
-#pragma section n170bf2
-const unsigned short dat_0c170bf2[] = {
-    0x2e00u, 0x74dau, 0x0c03u, 0x0bcau, 0x0c17u, 0x27ecu, 0x0c25u,
-};
-
 #pragma section n170d76
 const unsigned short dat_0c170d76[] = {
     0x012cu, 0x01a3u, 0x01a1u, 0x019cu, 0x0159u, 0x0130u,
