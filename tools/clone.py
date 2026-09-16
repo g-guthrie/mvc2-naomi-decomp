@@ -106,13 +106,13 @@ def main():
         twins = [t for t in groups[shape(image, base, a, e)] if t in verified and t != a]
         draft = ROOT / 'build' / 'drafts' / f'func_{a:08x}.c'
         if not twins:
-            body = draft.read_text() if draft.exists() else ''
+            body = (draft.read_text() if draft.exists() else '').replace('/*', '/-').replace('*/', '-/')
             bodies.append(f'/* func_{a:08x}: no verified twin. Ghidra draft:\n{body}*/\nvoid func_{a:08x}(void) {{ }}\n')
             notes.append(f'func_{a:08x}: no twin')
             continue
         t = twins[0]
         text = open(ROOT / verified[t]).read()
-        m = re.search(rf'^[^\n]*\bfunc_{t:08x}\s*\(.*?^\}}', text, re.S | re.M)
+        m = re.search(rf'^[^\n;]*\bfunc_{t:08x}\s*\([^;{{]*\)\s*\n\{{.*?^\}}', text, re.S | re.M)
         if not m:
             notes.append(f'func_{a:08x}: twin func_{t:08x} source not found')
             continue
@@ -145,11 +145,19 @@ def main():
                     notes.append(f'func_{a:08x}: immediate {s1} -> {s2} not found in source')
         # header with the same symbol renames, deduplicated by line
         head = SYMBOL.sub(lambda mm: f'{mm.group(1)}_{renames.get(mm.group(2), mm.group(2))}', head)
+        blocks, block = [], []
         for line in head.split('\n'):
-            key = line.strip()
-            if key and key not in seen_headers and not key.startswith('/*') and not key.startswith('*'):
-                seen_headers.add(key)
-                headers.append(line)
+            if block or re.match(r'\s*(struct|union)\s+\w+\s*\{', line):
+                block.append(line)
+                if line.strip() == '};':
+                    blocks.append('\n'.join(block))
+                    block = []
+            elif line.strip() and not line.strip().startswith(('/*', '*')):
+                blocks.append(line)
+        for item in blocks:
+            if item not in seen_headers:
+                seen_headers.add(item)
+                headers.append(item)
         # externs for symbols the twin's file defined itself
         bodies.append(body + '\n')
         notes.append(f'func_{a:08x}: from twin func_{t:08x}' + (f' with {len(renames)} symbols renamed' if renames else ''))

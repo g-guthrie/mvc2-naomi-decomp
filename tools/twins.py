@@ -78,7 +78,7 @@ def main():
             continue
         t = twins[0]
         text = open(ROOT / verified[t]).read()
-        m = re.search(rf'^[^\n]*\bfunc_{t:08x}\s*\(.*?^\}}', text, re.S | re.M)
+        m = re.search(rf'^[^\n;]*\bfunc_{t:08x}\s*\([^;{{]*\)\s*\n\{{.*?^\}}', text, re.S | re.M)
         if m:
             print(f'  twin func_{t:08x} in {verified[t]}:')
             print('    ' + m.group(0).replace('\n', '\n    '))
