@@ -65,6 +65,12 @@ section for compile and link verification. Reconciliation is per byte: an
 overlap of a different kind passes only where a declared interior covers it,
 and an undeclared one still fails. An interior outside its section fails.
 
+`tools/pool_clusters.py` lists the candidates. It coalesces adjacent reviewed
+data into whole pools, because one pool is usually several ledger ranges, then
+walks back from each pool through the code ranges that are adjacent and read it.
+It recovers the span `mask_tu.c` already matches: four functions at
+`0x0c047a3c` sharing the pool at `0x0c047b2e`.
+
 Isolated functions do not move the code measure. The verified code sections
 average a few bytes each because each one is a leaf compiled alone under its
 own `#pragma section`, and a lone function whose pool SHC places in `P` cannot
