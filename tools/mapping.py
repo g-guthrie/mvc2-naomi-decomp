@@ -20,6 +20,17 @@ def review(image, base, entries=None, verified=()):
             if part['kind'] == 'bss':
                 continue
             start, end = number(part['address']), number(part['address']) + number(part['size'])
+            # A compiled object holds bytes that are not instructions: SHC emits a
+            # translation unit's literal pool inside the same linked section as its
+            # code. The unit declares those interiors so the ledger can keep calling
+            # them data while the unit still owns the whole section.
+            interiors = []
+            for spare in part.get('interior', ()):
+                lo = number(spare['address'])
+                interiors.append((lo, lo + number(spare['size']), spare['kind']))
+            for lo, hi, _kind in interiors:
+                if lo < start or hi > end:
+                    raise ValueError('Interior range falls outside its unit section')
             pieces = [(start, end)]
             i = bisect.bisect_right(starts, start) - 1
             if i < 0:
@@ -30,7 +41,11 @@ def review(image, base, entries=None, verified=()):
                 if hi <= start or lo >= end:
                     continue
                 if kind != part['kind']:
-                    raise ValueError('Verified source conflicts with reviewed code/data mapping')
+                    covered = any(spare_lo <= max(lo, start) and min(hi, end) <= spare_hi
+                                  and spare_kind == kind
+                                  for spare_lo, spare_hi, spare_kind in interiors)
+                    if not covered:
+                        raise ValueError('Verified source conflicts with reviewed code/data mapping')
                 pieces = [(a, b) for x, y in pieces for a, b in [(x, min(y, lo)), (max(x, hi), y)] if a < b]
             for lo, hi in pieces:
                 entries.append(dict(address=lo, size=hi-lo, kind=part['kind'],

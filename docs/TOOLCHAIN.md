@@ -47,6 +47,30 @@ are the strongest candidates.
 Proposals are reviewed before they enter `config/mapping.json`. Nothing about a
 successful walk makes a range correct.
 
+## Translation units
+
+SHC emits a translation unit's literal pool inside the same linked section as
+its code, so an object that covers several functions covers their shared pool
+too. A unit section may therefore declare `interior` ranges: sub-ranges of the
+section that hold the other kind, each with an address, size and kind.
+
+```json
+{ "section": "P", "kind": "code", "address": "0x0c047a40", "size": 288,
+  "interior": [ { "address": "0x0c047b2e", "size": 30, "kind": "data" } ] }
+```
+
+The ledger keeps calling those bytes data, because they are literals and a walk
+must never read one as an instruction, while the unit still owns the whole
+section for compile and link verification. Reconciliation is per byte: an
+overlap of a different kind passes only where a declared interior covers it,
+and an undeclared one still fails. An interior outside its section fails.
+
+Isolated functions do not move the code measure. The verified code sections
+average a few bytes each because each one is a leaf compiled alone under its
+own `#pragma section`, and a lone function whose pool SHC places in `P` cannot
+match a section declared as pure code. Grouping the functions that share a pool
+into one unit is what the retail objects actually look like.
+
 ## Evidence
 
 - `build/proof.json`: input fingerprint, tool versions, ROM/image hashes, and per-unit comparisons.
