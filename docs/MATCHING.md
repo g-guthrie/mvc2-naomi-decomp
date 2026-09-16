@@ -32,6 +32,18 @@ both came from Sega's own tool manual and both are now in
   pool-free leaves. Pragma sections also reset the scratch-register rotation
   (below), so a leaf that retail compiled inside a unit may only match there.
 
+## Start from a verified twin
+
+The game stamps its state handlers from a few templates: a dispatcher
+`table[a->state](a)`, `if (f(a) < 0) g(a);`, check-then-set-state handlers,
+init handlers. `python3 tools/twins.py START SIZE` names, for every function
+in a span, a verified function with the same instruction shape and prints its
+source. `python3 tools/clone.py START SIZE OUT.c` does the copy and the
+substitution of pool symbols and immediates for a whole unit. What it cannot
+do is change member offsets: when the twin reads other offsets, add the
+members to the struct and rename them in the copied body. Keep the twin's
+spelling; it is the one that matched.
+
 ## Start from the Ghidra draft
 
 `build/drafts/func_0cXXXXXX.c` holds a Ghidra decompilation of every reviewed

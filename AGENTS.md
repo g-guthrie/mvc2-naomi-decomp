@@ -22,8 +22,11 @@ disassembly instead.
 1. Pick a unit from `python3 tools/unit_spans.py`, or a `CANDIDATE` line in
    the check output. A unit is a run of functions and their literal pools that
    no branch crosses; confirm its extent before writing.
-2. Read the drafts and the disassembly (`tools/inspect_rom.py`) for every
-   function in the unit, and write them all into one file in address order.
+2. Run `python3 tools/clone.py START SIZE src/candidates/<id>.c`. It writes
+   the functions that have a verified twin and leaves a stub with the Ghidra
+   draft for each that does not. Write the stubs from the draft and the
+   disassembly (`tools/inspect_rom.py`); `tools/twins.py START SIZE` shows
+   what the clone was built from.
    [docs/MATCHING.md](docs/MATCHING.md) says how to shape the C.
 3. Iterate with `python3 tools/diff_unit.py <file>` until every function
    matches. `tools/permute.py <file>` searches the mechanical spellings for

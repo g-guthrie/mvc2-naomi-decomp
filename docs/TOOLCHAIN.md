@@ -99,6 +99,13 @@ it, and the README bars are rewritten from the same numbers.
 - `tools/diff_unit.py FILE [--register ID]`: compile one file, compare it with
   retail function by function, and register it. See
   [MATCHING.md](MATCHING.md).
+- `tools/twins.py START SIZE`: for each function in a span, the verified
+  function of the same instruction shape, with its source. The game stamps
+  its state handlers from a few templates, so most units are half twins.
+- `tools/clone.py START SIZE OUT.c`: assemble a unit from its verified
+  twins, symbols and immediates substituted; functions without a twin become
+  stubs carrying their Ghidra draft. `--list` names the units whose every
+  function has a twin.
 - `tools/permute.py FILE`: hill-climb over the mechanical rewrites in
   MATCHING.md, scored by equal bytes against retail.
 - `tools/float_literal.py 0xBITS`: the decimal spelling SHC parses to those
