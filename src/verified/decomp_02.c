@@ -17,7 +17,7 @@ void func_0c180e44(unsigned char *p) { p[4]++; p[5] = 0; p[6] = 0; }
 void func_0c1c1068(unsigned char *p) { p[4]++; *(short *)(p + 28) = 44; }
 
 #pragma section n1a025e
-void func_0c1c125e(unsigned char *p) { p[4]++; *(short*)(p+28)=20; *(short*)(p+30)=20; }
+void func_0c1c125e(unsigned char *p) { p[4]++; *(short *)(p + 28) = 20; *(short *)(p + 30) = 20; }
 
 #pragma section n1bd46c
 void func_0c1de46c(unsigned char *p) { if (--*(short *)(p + 28) == 0) p[4] = 0; }
