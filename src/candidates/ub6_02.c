@@ -1,17 +1,16 @@
-/* Translation unit around 0x0c0e9950: six functions from func_0c0e9950 to
- * func_0c0e9c0c, each state-machine style callback on a moving actor. The
- * assignment gave size 754 (span ending at 0x0c0e9c42), but func_0c0e9c0c's
- * final literal at 0x0c0e9c44 lands one word past that end; extended to
- * size 768 so the derived section covers it.
+/* Translation unit around 0x0c0e9950: six state-machine style callbacks on a
+ * moving actor. 763/768 bytes match: func_0c0e9950, func_0c0e99b2,
+ * func_0c0e99c8, func_0c0e99da and func_0c0e9c0c are exact, and all three
+ * pools (0x0c0e9a78, 0x0c0e9bb0, 0x0c0e9c40) are exact.
  *
- * func_0c0e9950, func_0c0e99b2, func_0c0e99c8 and func_0c0e99da match
- * exactly, along with the pool at 0x0c0e9a78. func_0c0e9b04's dispatch on
- * b1f9/b1e8 (offsets 0x1f9/0x1e8) shares one call site between its
- * b1f9==2/b1e8==97 case and its b1f9!=2/b1e8==97 case (a `goto call;`
- * here), which got the call-site addresses close but not exact, so
- * func_0c0e9b04 and the downstream func_0c0e9c0c/pools are left as
- * differing. Left as a candidate. */
-
+ * The float multipliers must be spelled to the exact retail bits: 10.833333,
+ * 6.66666667, -8.5714283, -6.4285712, -11.7857141 (plain spellings land one
+ * ULP off). func_0c0e9b04's final dispatch (a->_b1f9/b1e8-97 shared call)
+ * is 168/172: retail shares one jsr between the b1f9==2/97 and b1f9!=2/97
+ * call-argument paths (bra into the middle of the else block); every C shape
+ * tried here either keeps two separate jsr sites (4 extra bytes) or makes
+ * SHC's register allocation collapse (a `goto` variant demotes the other
+ * functions). Left as a candidate. */
 struct Obj_ub6_02 {
     unsigned char pad0[6];
     unsigned char b6;
@@ -103,16 +102,16 @@ void func_0c0e99da(struct Obj_ub6_02 *a)
     a->f108 = 0.0f;
     a->b1fc = 0;
     if (a->b1e8 == 97) {
-        a->f92 = 10.833333f;
-        a->f96 = -6.428571f;
+        a->f92 = 10.833333015441895f;
+        a->f96 = -6.4285712242126465f;
         a->s28 = (short)dat_0c249ab0[0];
     } else if (a->b1e8 == 98) {
-        a->f92 = 6.666667f;
-        a->f96 = -8.571428f;
+        a->f92 = 6.66666667f;
+        a->f96 = -8.5714283f;
         a->s28 = (short)dat_0c249ab0[1];
     } else {
         a->f92 = 2.5f;
-        a->f96 = -11.785714f;
+        a->f96 = -11.785714149475098f;
         a->s28 = (short)dat_0c249ab0[2];
     }
     if (a->b1d2)
@@ -143,34 +142,21 @@ void func_0c0e9b04(struct Obj_ub6_02 *a)
     a->f104 = 0.0f;
     a->f108 = 0.0f;
     if (a->b1f9 == 2) {
-        if (a->b1e8 == 97) {
-            r6 = 15;
-            r5 = 12;
-            goto call;
-        }
-        r5 = 12;
-        if (a->b1e8 == 98)
-            r6 = 16;
+        if (a->b1e8 == 97)
+            func_0c02a0c4(a, 12, 15);
+        else if (a->b1e8 == 98)
+            func_0c02a0c4(a, 12, 16);
         else
-            r6 = 17;
-        func_0c02a0c4(a, r5, r6);
+            func_0c02a0c4(a, 12, 17);
         return;
     }
-    if (a->b1e8 == 97) {
-        r6 = 12;
-        r5 = r6;
-call:
-        func_0c02a0c4(a, r5, r6);
-        return;
-    }
-    r5 = 12;
-    if (a->b1e8 == 98)
-        r6 = 13;
+    if (a->b1e8 == 97)
+        func_0c02a0c4(a, 12, 12);
+    else if (a->b1e8 == 98)
+        func_0c02a0c4(a, 12, 13);
     else
-        r6 = 14;
-    func_0c02a0c4(a, r5, r6);
+        func_0c02a0c4(a, 12, 14);
 }
-
 void func_0c0e9c0c(struct Obj_ub6_02 *a)
 {
     if (func_0c02a026(a) < 0) {
