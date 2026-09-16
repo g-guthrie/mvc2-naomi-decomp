@@ -51,9 +51,7 @@ function with the pool literals substituted, produced by
 `tools/ghidra_draft.py`. It gives the control flow, the calls and the field
 offsets. It is not the shape that reproduces the bytes: rewrite it with struct
 members and the rules below, and keep the disassembly open for the details
-the draft loses. Do not trust a draft's branches around float stores: Ghidra
-does not know the FPU mode and invents a dead branch between a 32-bit and a
-64-bit store.
+the draft loses, such as register choice and float literal spelling.
 
 ## Iterate with the diff tool
 
