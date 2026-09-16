@@ -19,13 +19,27 @@ from source shape or from unit layout, not from the compiler.
 ## Iterate with the diff tool
 
 ```sh
-python3 tools/diff_unit.py mask_tu
-python3 tools/diff_unit.py src/candidates/new.c --address 0x0c047a40 --import _dat_0c2d9300=0x0c2d9300
+python3 tools/diff_unit.py src/candidates/new.c
+python3 tools/diff_unit.py src/verified/new.c --register new_id
 ```
+
+The tool reads the unit off the file: functions are named `func_0cXXXXXX`, so
+their addresses are known. A file whose functions each follow a
+`#pragma section` line is a set of pool-free leaves, one section each, sized
+from the reviewed code range at that address. Any other file is one
+translation unit whose section runs from the first function to the end of the
+reviewed data after the code, which is the pool. Outside symbols named
+`func_0cXXXXXX` or `dat_0cXXXXXX` are imported at those addresses; anything
+else takes `--import SYMBOL=ADDRESS`.
 
 It prints each section and each function with its equal byte count, then every
 differing instruction with retail on the left and the compiled result on the
 right. Fix the first difference; later ones are usually its consequences.
+
+`--register` writes the unit into `config/units.json`: verified when exact,
+candidate otherwise. A file under `src/verified/` must be exact. Several
+copies of the tool can run at once; only `tools/build.py` needs the tree to
+itself.
 
 ## Source shapes that decide the bytes
 

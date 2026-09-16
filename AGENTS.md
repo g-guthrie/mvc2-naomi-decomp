@@ -13,10 +13,11 @@ disagrees with this one, this one wins.
      which are the retail translation units;
    - `build/mapping.json`: unreviewed bytes to map.
 3. Write one translation unit as one file. Iterate with
-   `python3 tools/diff_unit.py <unit or file>` until every function matches.
+   `python3 tools/diff_unit.py <file>` until every function matches.
    [docs/MATCHING.md](docs/MATCHING.md) says how.
-4. Register the unit in `config/units.json`, run the check, commit source and
-   configuration together, push, and confirm CI is green.
+4. Register it with `python3 tools/diff_unit.py <file> --register <id>`, run
+   the check, commit source and configuration together, push, and confirm CI
+   is green.
 
 ## Rules
 
