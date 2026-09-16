@@ -86,6 +86,8 @@ it, and the README bars are rewritten from the same numbers.
 - `tools/diff_unit.py FILE [--register ID]`: compile one file, compare it with
   retail function by function, and register it. See
   [MATCHING.md](MATCHING.md).
+- `tools/permute.py FILE`: hill-climb over the mechanical rewrites in
+  MATCHING.md, scored by equal bytes against retail.
 - `tools/float_literal.py 0xBITS`: the decimal spelling SHC parses to those
   float bits.
 - `tools/ghidra_draft.py --ghidra DIR`: a Ghidra decompilation draft of every
