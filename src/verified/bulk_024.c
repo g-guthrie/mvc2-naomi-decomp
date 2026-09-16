@@ -362,11 +362,6 @@ void (*const table_0c0762d0[])(void) = {
     func_0c0346da,
 };
 
-#pragma section n076356
-const unsigned short dat_0c076356[] = {
-    0x01f7u,
-};
-
 #pragma section n076442
 const unsigned short dat_0c076442[] = {
     0x0428u,
