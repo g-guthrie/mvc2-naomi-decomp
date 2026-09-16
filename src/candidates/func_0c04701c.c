@@ -1,5 +1,6 @@
-/* Candidate. Isolated SHC emits JSR/@Rn plus a pointer pool; retail uses
- * in-range BSR. Needs the original TU so Hitachi emits BSR itself. */
+/* Matches retail except the two BSR words: SHC emits BSR only for a callee in
+ * the same translation unit, so this function joins its unit once the object
+ * spanning 0x0c04701c to the pool at 0x0c047b2e is written as one file. */
 int func_0c047b0c(int a, int w, short *local);
 int func_0c047796(int a, unsigned char *table, unsigned char *obj, int w);
 
