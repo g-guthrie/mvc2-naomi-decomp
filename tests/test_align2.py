@@ -11,7 +11,7 @@ from core import ROOT, elf_segments, load, number, verify_rom
 
 class Align2Tests(unittest.TestCase):
     def test_two_aligned_noop_links_at_retail_address(self):
-        flags = load(ROOT / 'config/compiler.json')['flags']
+        flags = load(ROOT / 'config/compiler.json')['sets']['game']
         work = ROOT / 'build' / 'work-align2'
         if work.exists():
             shutil.rmtree(work)
