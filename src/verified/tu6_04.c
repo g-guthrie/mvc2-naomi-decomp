@@ -1,9 +1,4 @@
-/* Four functions sharing the literal pool at 0x0c12b1d0.
- * func_0c12b17a differs: retail emits `mov r6,r0; nop; mov.w r0,@(28,r4)` for
- * both `a->s28 = 1` stores (a nop after the register copy, 4 bytes in all);
- * SHC emits no nop here for any spelling tried (constant, int/short/unsigned
- * char local, early returns). Without those 4 bytes the pool sits 4 bytes
- * early, so the other three functions differ only in pool displacements. */
+/* Four functions sharing the literal pool at 0x0c12b1d0. */
 
 struct Obj_0c12b0c4 {
     unsigned char pad0[2];
@@ -56,10 +51,10 @@ void func_0c12b0c4(struct Obj_0c12b0c4 *a, int idx)
     v = dat_0c24dba8[idx];
     v += a->b1a3 * 4;
 
-    a->f92 = (float)*v++ * 1.6666666f / 65536.0f;
-    a->f104 = (float)*v++ * 1.6666666f / 65536.0f;
-    a->f96 = (float)*v++ * 2.142857f / 65536.0f;
-    a->f108 = (float)*v * 2.142857f / 65536.0f;
+    a->f92 = (float)*v++ * 1.66666663f / 65536.0f;
+    a->f104 = (float)*v++ * 1.66666663f / 65536.0f;
+    a->f96 = (float)*v++ * 2.1428571f / 65536.0f;
+    a->f108 = (float)*v * 2.1428571f / 65536.0f;
     if (a->b1d2) {
         a->f92 = -a->f92;
         a->f104 = -a->f104;
