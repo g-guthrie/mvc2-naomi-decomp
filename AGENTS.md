@@ -1,18 +1,38 @@
-# Agent entry point
+# Working on this repository
 
-**Objective: 100% byte-identical C reconstruction of MVC2 NAOMI. Keep working toward it.**
+**Goal: every byte of the main image reproduced from C.** The rest of this file
+is the whole process. Nothing here is restated elsewhere; if another document
+disagrees with this one, this one wins.
 
-1. Run `python3 tools/build.py check` from the repository root. It selects the bundled runtime and checks the host, ROMs, compiler, current source, and linked output.
-2. Read the current `CANDIDATE` lines and `build/proof.json`. Choose any unverified unit, or use `build/mapping.json` to investigate an unknown gap. Do not use a remembered starting state or a prose task list.
-3. Make the smallest coherent improvement and rerun the full check. Repeat from the new build output.
+## Loop
+
+1. `python3 tools/build.py check`. It must pass before and after your change.
+2. Pick work from the build output, never from memory:
+   - a `CANDIDATE` line: a unit that does not match yet;
+   - `python3 tools/pool_clusters.py`: runs of code sharing one literal pool,
+     which are the retail translation units;
+   - `build/mapping.json`: unreviewed bytes to map.
+3. Write one translation unit as one file. Iterate with
+   `python3 tools/diff_unit.py <unit or file>` until every function matches.
+   [docs/MATCHING.md](docs/MATCHING.md) says how.
+4. Register the unit in `config/units.json`, run the check, commit source and
+   configuration together, push, and confirm CI is green.
 
 ## Rules
 
-- Use the included Hitachi toolchain. If preflight rejects the host, use **GitHub → Actions → Hitachi build → Run workflow** on your pushed branch; the proof, mapping, and compiler evidence are in its artifact.
-- Inspect original bytes with `tools/inspect_rom.py`. Raw survey hits are hints. Review control flow, delay slots, and literal pools before declaring boundaries. Unreviewed bytes remain unknown in `config/mapping.json`.
-- Register C units in `config/units.json`. Original addresses and complete sizes come from reference evidence. Keep candidates uncredited until every linked section, export address, size, and byte matches. A matching prefix is insufficient.
-- Code credit requires compiled C, not raw-byte substitutes or inline assembly. Represent data meaningfully in C. Do not change ROMs, tool binaries, or valid checks to force a match.
-- Preserve concurrent work. Independent agents use separate worktrees; builds recreate `build/work/`. Keep changes small and avoid new setup dependencies.
-- Commit source and configuration changes after a successful full check. Build evidence and dashboards stay in `build/` and in the exact-commit CI artifact; do not commit generated status files. Push and verify CI. Keep this repository and its artifacts private.
-
-`config/target.json` defines the reference. The current verifier reports main-image scope; do not call a partial scope or an image retaining original bytes a fully reconstructed game.
+- **Only the bundled compiler.** `config/compiler.json` holds the only options.
+  Do not add per-unit options. If your host cannot run it, push and use
+  GitHub → Actions → Hitachi build → Run workflow.
+- **C only.** No inline assembly, no assembler input, no byte arrays standing in
+  for code. Data is declared with its real type where that is known.
+- **Retail decides.** Addresses and sizes come from the ROM. Nothing in
+  `orig/`, `toolchain/` or the verifier is changed to make a unit match.
+- **One definition per object.** Shared structs live in `src/include/objects.h`.
+  A unit never declares its own copy of an object that is already there.
+- **Unreviewed bytes stay unknown.** A range enters `config/mapping.json` only
+  after its control flow, delay slots and literal pools were reviewed.
+  Survey hits are hints.
+- **Small commits.** One unit or one mapping change per commit, made after a
+  passing check. Generated files under `build/` are never committed.
+- **Concurrent work is normal.** Use your own worktree; the build recreates
+  `build/work/`.
