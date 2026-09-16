@@ -22832,12 +22832,6 @@
         "size": 4
       },
       {
-        "section": "Cn15b858",
-        "kind": "data",
-        "address": "0x0c15b858",
-        "size": 4
-      },
-      {
         "section": "Cn15b89c",
         "kind": "data",
         "address": "0x0c15b89c",
@@ -23007,7 +23001,6 @@
       "_ptr_0c15b20c": "0x0c15b20c",
       "_ptr_0c15b344": "0x0c15b344",
       "_ptr_0c15b60c": "0x0c15b60c",
-      "_ptr_0c15b858": "0x0c15b858",
       "_table_0c15b89c": "0x0c15b89c",
       "_ptr_0c15b9e8": "0x0c15b9e8",
       "_ptr_0c15ba08": "0x0c15ba08",
@@ -29853,12 +29846,6 @@
         "size": 16
       },
       {
-        "section": "Cn1bcfd8",
-        "kind": "data",
-        "address": "0x0c1bcfd8",
-        "size": 8
-      },
-      {
         "section": "Cn1bd11c",
         "kind": "data",
         "address": "0x0c1bd11c",
@@ -30182,7 +30169,6 @@
       "_table_0c1bcaa4": "0x0c1bcaa4",
       "_table_0c1bcbb4": "0x0c1bcbb4",
       "_table_0c1bccc8": "0x0c1bccc8",
-      "_table_0c1bcfd8": "0x0c1bcfd8",
       "_ptr_0c1bd11c": "0x0c1bd11c",
       "_ptr_0c1bd290": "0x0c1bd290",
       "_ptr_0c1bd3ec": "0x0c1bd3ec",
@@ -76045,12 +76031,6 @@
         "size": 12
       },
       {
-        "section": "Cn15b838",
-        "kind": "data",
-        "address": "0x0c15b838",
-        "size": 32
-      },
-      {
         "section": "Cn15b89a",
         "kind": "data",
         "address": "0x0c15b89a",
@@ -76298,7 +76278,6 @@
       "_dat_0c15b4a4": "0x0c15b4a4",
       "_dat_0c15b5f6": "0x0c15b5f6",
       "_dat_0c15b600": "0x0c15b600",
-      "_dat_0c15b838": "0x0c15b838",
       "_dat_0c15b89a": "0x0c15b89a",
       "_dat_0c15b8a4": "0x0c15b8a4",
       "_dat_0c15b9d4": "0x0c15b9d4",
@@ -90880,12 +90859,6 @@
         "size": 10
       },
       {
-        "section": "Cn1bcfba",
-        "kind": "data",
-        "address": "0x0c1bcfba",
-        "size": 26
-      },
-      {
         "section": "Cn1bd10c",
         "kind": "data",
         "address": "0x0c1bd10c",
@@ -91083,7 +91056,6 @@
       "_dat_0c1bca9a": "0x0c1bca9a",
       "_dat_0c1bcbaa": "0x0c1bcbaa",
       "_dat_0c1bccbc": "0x0c1bccbc",
-      "_dat_0c1bcfba": "0x0c1bcfba",
       "_dat_0c1bd10c": "0x0c1bd10c",
       "_dat_0c1bd120": "0x0c1bd120",
       "_dat_0c1bd280": "0x0c1bd280",
@@ -157177,18 +157149,6 @@
         "section": "Cn19bcd8",
         "kind": "data",
         "address": "0x0c1bccd8",
-        "size": 4
-      },
-      {
-        "section": "Cn19bfd4",
-        "kind": "data",
-        "address": "0x0c1bcfd4",
-        "size": 4
-      },
-      {
-        "section": "Cn19bfe0",
-        "kind": "data",
-        "address": "0x0c1bcfe0",
         "size": 4
       },
       {
@@ -225879,14 +225839,14 @@
   },
   {
     "id": "tu5_04",
-    "source": "src/candidates/tu5_04.c",
-    "mode": "candidate",
+    "source": "src/verified/tu5_04.c",
+    "mode": "verified",
     "sections": [
       {
         "section": "P",
         "kind": "code",
         "address": "0x0c15b610",
-        "size": 550,
+        "size": 588,
         "interior": [
           {
             "address": "0x0c15b708",
@@ -225895,7 +225855,7 @@
           },
           {
             "address": "0x0c15b82c",
-            "size": 10,
+            "size": 48,
             "kind": "data"
           }
         ]
@@ -225908,12 +225868,12 @@
       "_func_0c15b826": "0x0c15b826"
     },
     "imports": {
-      "__modls": "0x0c1fb5ac",
       "_dat_0c2f83f8": "0x0c2f83f8",
       "_func_0c02a0c4": "0x0c02a0c4",
       "_func_0c02a026": "0x0c02a026",
       "_func_0c037d0c": "0x0c037d0c",
       "_func_0c037688": "0x0c037688",
+      "__modls": "0x0c1fb5ac",
       "__slow_mvn": "0x0c1fb838",
       "__quick_odd_mvn": "0x0c1fb7a0"
     }
@@ -225954,18 +225914,23 @@
   },
   {
     "id": "tu5_05",
-    "source": "src/candidates/tu5_05.c",
-    "mode": "candidate",
+    "source": "src/verified/tu5_05.c",
+    "mode": "verified",
     "sections": [
       {
         "section": "P",
         "kind": "code",
         "address": "0x0c1bccdc",
-        "size": 712,
+        "size": 776,
         "interior": [
           {
             "address": "0x0c1bce42",
             "size": 38,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c1bcfba",
+            "size": 42,
             "kind": "data"
           }
         ]
