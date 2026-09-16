@@ -70,29 +70,9 @@ const unsigned int dat_0c20a104[] = {
     0x0c3a7ba4u,
 };
 
-#pragma section n20bcca
-const unsigned short dat_0c20bcca[] = {
-    0x0400u,
-};
-
-#pragma section n20bd10
-const unsigned int dat_0c20bd10[] = {
-    0x0c3a7ee8u, 0x0c1fba00u,
-};
-
 #pragma section n210ea6
 const unsigned short dat_0c210ea6[] = {
     0x0c22u, 0x0000u, 0xa000u, 0xc108u, 0x0c21u, 0x1e68u, 0x0c3bu,
-};
-
-#pragma section n214d60
-const unsigned short dat_0c214d60[] = {
-    0x1000u, 0x2000u, 0x3000u, 0x4000u, 0x5000u, 0x6000u, 0x7000u,
-};
-
-#pragma section n214d70
-const unsigned int dat_0c214d70[] = {
-    0x0c269a9cu, 0x0000f000u, 0x00008000u,
 };
 
 #pragma section n21c1a0

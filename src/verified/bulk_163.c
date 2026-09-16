@@ -88,31 +88,6 @@ void (*const table_0c269880[])(void) = {
     func_0c20a472,
 };
 
-#pragma section n269894
-const unsigned short dat_0c269894[] = {
-    0x0000u,
-};
-
-#pragma section n2698cc
-const unsigned short dat_0c2698cc[] = {
-    0x0000u,
-};
-
-#pragma section n2698d8
-const unsigned short dat_0c2698d8[] = {
-    0x0002u,
-};
-
-#pragma section n2698e8
-const unsigned short dat_0c2698e8[] = {
-    0x0002u,
-};
-
-#pragma section n269924
-const unsigned short dat_0c269924[] = {
-    0x0003u,
-};
-
 #pragma section n269a48
 const unsigned short dat_0c269a48[] = {
     0x0000u,

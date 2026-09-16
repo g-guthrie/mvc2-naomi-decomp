@@ -1,40 +1,5 @@
 /* Hitachi const data: leftover mapped arrays, pointer runs, nonexecutable unknown. */
 
-#pragma section n1ea17a
-const unsigned short dat_0c20b17a[] = {
-    0x0000u, 0x0000u,
-};
-
-#pragma section n1ea208
-const unsigned int dat_0c20b208[] = {
-    0x00010000u,
-};
-
-#pragma section n1ea2a8
-const unsigned short dat_0c20b2a8[] = {
-    0x0000u, 0x0000u, 0x0000u,
-};
-
-#pragma section n1ea2ba
-const unsigned short dat_0c20b2ba[] = {
-    0x0000u, 0x0fe0u, 0x0000u, 0x0000u,
-};
-
-#pragma section n1ea332
-const unsigned short dat_0c20b332[] = {
-    0x0000u, 0x0000u,
-};
-
-#pragma section n1ea3ba
-const unsigned short dat_0c20b3ba[] = {
-    0x0000u, 0x0000u,
-};
-
-#pragma section n1ea3ce
-const unsigned short dat_0c20b3ce[] = {
-    0x0000u, 0x0000u,
-};
-
 #pragma section n1ea6c0
 const unsigned int dat_0c20b6c0[] = {
     0x0d000000u,
@@ -48,31 +13,6 @@ const unsigned short dat_0c20b6c6[] = {
 #pragma section n1ea6f4
 const unsigned int dat_0c20b6f4[] = {
     0x8c000000u,
-};
-
-#pragma section n1eb230
-const unsigned int dat_0c20c230[] = {
-    0x0c1fba78u, 0x0c269894u,
-};
-
-#pragma section n1eb5b0
-const unsigned int dat_0c20c5b0[] = {
-    0x00000a40u,
-};
-
-#pragma section n1ebe5c
-const unsigned int dat_0c20ce5c[] = {
-    0x0c21bea4u, 0x0c21bee4u, 0x0c205726u,
-};
-
-#pragma section n1ec074
-const unsigned int dat_0c20d074[] = {
-    0x0c21bea4u, 0x0c21bee4u, 0x0c205726u,
-};
-
-#pragma section n1ed5c0
-const unsigned int dat_0c20e5c0[] = {
-    0x0c21bea4u, 0x0c20c8a6u, 0x0c21bee4u,
 };
 
 #pragma section n1ef13a

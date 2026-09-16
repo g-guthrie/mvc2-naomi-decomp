@@ -12,11 +12,24 @@ from core import (ROOT, compare, input_fingerprint, load, memory_bytes, number,
                   preflight, runner, sha, validate_units, verify_rom, verify_tools)
 
 
+def link_lines(unit, stem):
+    """The linker subcommands every unit shares: section placement and imports."""
+    start, chunk = [], []
+    for part in unit['sections']:
+        item = f"{part['section']}({number(part['address']):08X})"
+        if chunk and sum(len(x) + 1 for x in chunk) + len(item) > 180:
+            start.append('START ' + ','.join(chunk))
+            chunk = []
+        chunk.append(item)
+    if chunk:
+        start.append('START ' + ','.join(chunk))
+    lines = [f'OUTPUT {stem}.elf', 'ELF', *start]
+    lines += [f'DEFINE {symbol}({number(address):08X})' for symbol, address in unit.get('imports', {}).items()]
+    return lines + [f'PRINT {stem}.map', 'EXIT']
+
+
 def compile_unit(unit, work, flags):
     stem = unit['id']
-    shutil.copyfile(ROOT / unit['source'], work / (stem + '.c'))
-    for header in sorted((ROOT / 'src/include').glob('*.h')):
-        shutil.copyfile(header, work / header.name)
     env = {**os.environ, 'SHC_LIB': '.', 'SHC_TMP': '.'}
     log = []
 
@@ -30,6 +43,31 @@ def compile_unit(unit, work, flags):
         if result.returncode:
             raise ValueError(f'{stem}: {exe} failed; see build/work/{stem}.log\n{output}')
 
+    if 'library' in unit:
+        # A library unit links one prebuilt SDK module at its retail address. The
+        # pull object lives in a DUMMY section, so it contributes no bytes; it only
+        # references the module's exports, which makes the linker pull that module.
+        symbols = list(unit['exports'])
+        pull = ['        .SECTION PULL,DUMMY'] + [f'        .IMPORT {s}' for s in symbols]
+        pull += [f'        .DATA.L {s}' for s in symbols] + ['        .END']
+        (work / (stem + '.src')).write_text('\n'.join(pull) + '\n')
+        run('asmsh.exe', [stem + '.src', '-cpu=sh4', '-endian=little', '-object=' + stem + '.obj'])
+        # The linker prefers a library module over a DEFINE, so it links against
+        # a library holding only this module; every other symbol is an import.
+        (work / (stem + '.lib')).unlink(missing_ok=True)
+        (work / (stem + '.sub')).write_text(f'LIBRARY {Path(unit["library"]).name}\nOUTPUT {stem}.lib\nEXTRACT {unit["module"]}\nEXIT\n')
+        run('lbr.exe', ['-subcommand=' + stem + '.sub'])
+        if not (work / (stem + '.lib')).exists():
+            raise ValueError(f'{stem}: lbr did not extract module {unit["module"]}; see build/work/{stem}.log')
+        lines = [f'INPUT {stem}.obj', f'LIBRARY {stem}.lib'] + link_lines(unit, stem)
+        (work / (stem + '.lnk')).write_text('\n'.join(lines) + '\n')
+        run('lnk.exe', ['-subcommand=' + stem + '.lnk'])
+        return (work / (stem + '.elf')).read_bytes(), (work / (stem + '.map')).read_text(errors='replace')
+
+    shutil.copyfile(ROOT / unit['source'], work / (stem + '.c'))
+    for header in sorted((ROOT / 'src/include').glob('*.h')):
+        shutil.copyfile(header, work / header.name)
+
     options = load(ROOT / 'config/compiler.json')['sets'][unit.get('options', 'game')]
     run('shc.exe', [stem + '.c', *options, '-code=asmcode', '-object=' + stem + '.src'])
     assembly = (work / (stem + '.src')).read_text(errors='replace')
@@ -37,18 +75,7 @@ def compile_unit(unit, work, flags):
               .replace('ALIGN=4', 'ALIGN=2'))
     (work / (stem + '.src')).write_text(placed)
     run('asmsh.exe', [stem + '.src', '-cpu=sh4', '-endian=little', '-object=' + stem + '.obj'])
-    start, chunk = [], []
-    for part in unit['sections']:
-        item = f"{part['section']}({number(part['address']):08X})"
-        if chunk and sum(len(x) + 1 for x in chunk) + len(item) > 180:
-            start.append('START ' + ','.join(chunk))
-            chunk = []
-        chunk.append(item)
-    if chunk:
-        start.append('START ' + ','.join(chunk))
-    lines = [f'INPUT {stem}.obj', f'OUTPUT {stem}.elf', 'ELF', *start]
-    lines += [f'DEFINE {symbol}({number(address):08X})' for symbol, address in unit.get('imports', {}).items()]
-    lines += [f'PRINT {stem}.map', 'EXIT']
+    lines = [f'INPUT {stem}.obj'] + link_lines(unit, stem)
     (work / (stem + '.lnk')).write_text('\n'.join(lines) + '\n')
     run('lnk.exe', ['-subcommand=' + stem + '.lnk'])
     run('shc.exe', [stem + '.c', *options, '-code=asmcode', '-object=' + stem + '.src'])
@@ -87,6 +114,8 @@ def build(selected=None):
     if work.exists():
         shutil.rmtree(work)
     shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work)
+    for library in sorted((ROOT / 'toolchain/naomi-sdk/lib').glob('*.lib')):
+        shutil.copyfile(library, work / library.name)
     smoke(work, flags)
     if selected:
         units = [u for u in units if u['id'] == selected]
