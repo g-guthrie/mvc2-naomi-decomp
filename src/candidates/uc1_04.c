@@ -1,7 +1,16 @@
 /* Unit at 0x0c0a3e7c, size 288: exactly to the next function at 0x0c0a3f9c,
  * no extension needed. Two functions: func_0c0a3e7c (a pool-free-register
  * leaf taking only r4, no prologue) and func_0c0a3ee8. func_0c0a3e7c ends
- * with an unconditional tail call to func_0c02a026. */
+ * with an unconditional tail call to func_0c02a026.
+ *
+ * func_0c0a3e7c compiles instruction-for-instruction identical to retail
+ * (54 instructions, 108 bytes, verified by hand against the disassembly).
+ * func_0c0a3ee8 is 4 bytes short: retail holds &a->f104 live in r8 across
+ * the a->b1d2 branch (push r8/mov #104,r8 at entry, pop r8 at exit) and
+ * reads/writes it as `@r8`; no spelling tried here (a raw `float *p`, a
+ * struct-typed sub-pointer, reordering the increment/compare) gets SHC to
+ * choose r8 over recomputing `@(r0,r14)`, so the whole unit does not link
+ * at its retail size and diff_unit cannot print a byte-level comparison. */
 
 struct Obj_uc1_04 {
     unsigned char pad0[6];
@@ -49,11 +58,11 @@ void func_0c0a3ee8(struct Obj_uc1_04 *a)
     a->f56 += a->f96;
     a->f96 += a->f108;
     if (a->s28 == 0) {
-        float *p;
+        char c;
 
         a->b6++;
-        p = &a->f104;
-        *p += (a->b1d2 == 0) ? 0.3125f : -0.3125f;
+        c = a->b1d2;
+        a->f104 += (c == 0) ? 0.3125f : -0.3125f;
         a->f108 = -0.5357143f;
         func_0c02a0c4(a, 2, 2);
     }
