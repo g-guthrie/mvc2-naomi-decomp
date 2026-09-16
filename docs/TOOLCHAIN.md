@@ -44,6 +44,8 @@ instructions, only section alignment directives.
   the check fails.
 - A section is one linked Hitachi section: `P` for code, `C` for constants,
   `D` for initialized data, `B` for BSS, or the `#pragma section` name.
+- A pool is its `mov.w` literals, a two-byte zero pad when their count is odd,
+  then its `mov.l` literals. The pad is mapped as data like the literals.
 - `interior` lists bytes of the other kind inside a section. SHC emits a
   translation unit's literal pool inside its code section, so a code section
   declares its pool as interior data. The mapping keeps calling those bytes
