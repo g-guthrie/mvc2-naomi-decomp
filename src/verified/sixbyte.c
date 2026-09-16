@@ -15,9 +15,3 @@ void func_0c1bfdda(unsigned char *p) { p[4] = 3; }
 #pragma section n1c0014
 void func_0c1c0014(unsigned char *p) { p[4] = 3; }
 
-#pragma section n1eae70
-int func_0c1eae70(int a, int b) { return a - b; }
-
-#pragma section n206570
-int func_0c206570(int a, int b) { return b - a; }
-

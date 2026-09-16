@@ -533,14 +533,3 @@ const unsigned int dat_0c073358[] = {
     0xbf9a4924u, 0x0c02a0c4u,
 };
 
-#pragma section n073474
-const unsigned short dat_0c073474[] = {
-    0x01a3u, 0x01d2u, 0x014bu,
-};
-
-#pragma section n073484
-const unsigned int dat_0c073484[] = {
-    0x0c240fe0u, 0x3fd55555u, 0x47800000u, 0x40092492u,
-    0x0c2f83f8u,
-};
-

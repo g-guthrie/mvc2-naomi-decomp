@@ -9,8 +9,8 @@ disagrees with this one, this one wins.
 1. `python3 tools/build.py check`. It must pass before and after your change.
 2. Pick work from the build output, never from memory:
    - a `CANDIDATE` line: a unit that does not match yet;
-   - `python3 tools/pool_clusters.py`: runs of code sharing one literal pool,
-     which are the retail translation units;
+   - `python3 tools/pool_clusters.py`: runs of code sharing one literal pool.
+     A retail unit usually spans several; find its real extent first;
    - `build/mapping.json`: unreviewed bytes to map.
 3. Write one translation unit as one file. Iterate with
    `python3 tools/diff_unit.py <file>` until every function matches.
@@ -21,8 +21,8 @@ disagrees with this one, this one wins.
 
 ## Rules
 
-- **Only the bundled compiler.** `config/compiler.json` holds the only options.
-  Do not add per-unit options. If your host cannot run it, push and use
+- **Only the bundled compiler.** `config/compiler.json` holds the only two
+  option sets, `game` and `library`. A unit names one; nothing else is added. If your host cannot run it, push and use
   GitHub → Actions → Hitachi build → Run workflow.
 - **C only.** No inline assembly, no assembler input, no byte arrays standing in
   for code. Data is declared with its real type where that is known.

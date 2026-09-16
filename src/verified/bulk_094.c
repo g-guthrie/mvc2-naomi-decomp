@@ -37,11 +37,6 @@ const unsigned int dat_0c172500[] = {
     0x0c252954u,
 };
 
-#pragma section n17267a
-const unsigned short dat_0c17267a[] = {
-    0x0159u,
-};
-
 #pragma section n1727bc
 const unsigned int dat_0c1727bc[] = {
     0x012c00ccu, 0x019f01a1u, 0x0c028708u, 0x0c02a026u,

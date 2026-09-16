@@ -19,8 +19,10 @@
 For every unit in `config/units.json`, `tools/build.py`:
 
 1. copies the unit's C file and every header in `src/include/` into `build/work/`;
-2. runs `shc.exe` with the options in `config/compiler.json`
-   (`-cpu=sh4 -endian=little -optimize=1 -fpu=single`) to produce assembly;
+2. runs `shc.exe` with one of the two option sets in `config/compiler.json`:
+   `game` for the game's own code and `library` for Sega's libraries above
+   0x0c1e9000, which were built without the `-extra=a=400` nop workaround.
+   A unit names its set with `"options"`; the default is `game`.
 3. runs `asmsh.exe` on that assembly and `lnk.exe` to place each section at its
    original address, defining the unit's imports at their retail addresses;
 4. compares the linked ELF with the main image.
@@ -49,7 +51,9 @@ instructions, only section alignment directives.
 - `exports` are the symbols the unit defines, with their retail addresses.
   Every function is exported.
 - `imports` are the symbols it references from elsewhere, with their retail
-  addresses.
+  addresses. Compiler runtime routines are listed once in
+  `config/runtime.json`.
+- `options` names the option set, `game` or `library`.
 
 ## Verification
 
@@ -65,9 +69,9 @@ section.
 ## Credit
 
 - A **verified** unit is credited for every code and data byte once it is exact.
-- A **candidate** unit is credited for the bytes of each function that matches,
-  provided its section links at the declared address and size. Its pool and its
-  other functions earn nothing.
+- A **candidate** unit is credited for the bytes of each function and each
+  declared pool that matches, provided its section links at the declared
+  address and size. Its other functions earn nothing.
 - Only verified bytes are written into the rebuilt ROM. Everything else stays
   retail, and the rebuilt ROM must hash to retail.
 
@@ -80,6 +84,8 @@ it, and the README bars are rewritten from the same numbers.
 - `tools/diff_unit.py FILE [--register ID]`: compile one file, compare it with
   retail function by function, and register it. See
   [MATCHING.md](MATCHING.md).
+- `tools/float_literal.py 0xBITS`: the decimal spelling SHC parses to those
+  float bits.
 - `tools/inspect_rom.py --address A --size N`: disassemble retail bytes.
 - `tools/flow_map.py`: walk the control-flow graph from the entry point and every
   reviewed code range and propose new ranges. `--roots FILE` adds candidate
