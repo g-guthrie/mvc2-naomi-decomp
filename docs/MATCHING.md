@@ -177,6 +177,10 @@ differences; read what it changed afterwards.
 
 ## Open questions
 
+- `if (a->b == 0 || a->b == 1 || a->b == 2) a->t = N;` in retail is a chain
+  of `cmp/eq #k; bt store`; the `||` spelling does not reproduce it. Seen at
+  three sites.
+
 - 2.0f materialised as `fldi1; fadd` at 106 retail sites, never from a pool.
   No spelling produces it.
 - Three shared constants held in r7, r4 and r13 across one function
