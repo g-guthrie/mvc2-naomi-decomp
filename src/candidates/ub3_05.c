@@ -1,7 +1,9 @@
-/* 16 of 17 functions match exactly. func_0c056910 differs from retail only
- * by a scratch-register swap (r2<->r3) at the a->b1d2 test inside the
- * a->b202==0 branch: 143/146 bytes equal, both floats and every branch
- * target correct. */
+/* All 17 functions and the 0x0c056a08 pool match retail exactly
+ * (618/618 equal bytes). The section still links to 0x0c056ba3: SHC flushes
+ * a second, 8-byte tail pool at 0x0c056b9c from func_0c056b4e's literals,
+ * between bulk_017's table at 0x0c056b7c and the next unit's code at
+ * 0x0c056ba4. The registry's one-pool layout cannot own that tail without
+ * overlapping bulk_017, so the unit stays a candidate. */
 struct Rec_ub3_05 { unsigned char pad[28]; int l28; };
 
 struct Obj_ub3_05 {
