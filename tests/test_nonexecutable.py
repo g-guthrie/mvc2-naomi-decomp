@@ -28,7 +28,18 @@ class NonExecutableTests(unittest.TestCase):
                 if part['kind'] != 'code':
                     continue
                 start, size = number(part['address']), number(part['size'])
+                # A code section holds the literal pool SHC emits with the code.
+                # Those bytes are not instructions and the unit says so; only the
+                # words the unit still claims are code are evidence about the decoder.
+                spare = set()
+                for interior in part.get('interior', ()):
+                    if interior['kind'] == 'code':
+                        continue
+                    lo = number(interior['address'])
+                    spare.update(range(lo, lo + number(interior['size'])))
                 for pc in range(start, start + size, 2):
+                    if pc in spare or pc + 1 in spare:
+                        continue
                     word = self.image[pc - self.base] | (self.image[pc - self.base + 1] << 8)
                     self.assertNotEqual(sh4.disasm(word, pc), 'error', f'at 0x{pc:08x}')
                     checked += 1
