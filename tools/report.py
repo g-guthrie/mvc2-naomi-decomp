@@ -56,7 +56,7 @@ def tiles(proof):
                 continue
             active.append({'name': unit['id'] + ':' + part['section'], 'address': part['address'],
                            'size': part['size'], 'state': 'matched' if unit['credited'] else 'candidate',
-                           'source': unit['source'], 'kind': part['kind']})
+                           'source': unit.get('source') or f"{unit['library']}:{unit['module']}", 'kind': part['kind']})
     active.sort(key=lambda p: p['address'])
     bins = load(ROOT / 'config/regions.json')
     cursor = proof['main_address']

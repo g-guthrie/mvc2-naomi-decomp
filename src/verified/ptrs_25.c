@@ -53,24 +53,6 @@ void (*const ptr_0c1ea778)(void) = func_0c207108;
 #pragma section n1f84c8
 void (*const ptr_0c1f84c8)(void) = func_0c1f6210;
 
-#pragma section n20d178
-void (*const ptr_0c20d178)(void) = func_0c20f678;
-
-#pragma section n20d294
-void (*const ptr_0c20d294)(void) = func_0c20f678;
-
-#pragma section n20d4cc
-void (*const ptr_0c20d4cc)(void) = func_0c20f678;
-
-#pragma section n20e29c
-void (*const ptr_0c20e29c)(void) = func_0c20f678;
-
-#pragma section n20e3a8
-void (*const ptr_0c20e3a8)(void) = func_0c20f678;
-
-#pragma section n218edc
-void (*const ptr_0c218edc)(void) = func_0c225044;
-
 #pragma section n21cccc
 void (*const ptr_0c21cccc)(void) = func_0c206570;
 
