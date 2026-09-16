@@ -25,8 +25,26 @@ from core import ROOT, load, number, verify_rom
 
 
 def function_starts(image, base, ranges):
+    """Reviewed code range starts that begin a function: after data, after a
+    range ending in rts or bra, or the target of a bsr or of a pool pointer."""
     ranges = sorted(ranges)
-    starts = []
+    code = [(lo, lo + size) for lo, size, kind in ranges if kind == 'code']
+    starts = set()
+    for lo, size, kind in ranges:
+        if kind == 'code':
+            for pc in range(lo, lo + size, 2):
+                w = struct.unpack_from('<H', image, pc - base)[0]
+                if w >> 12 == 0xB:
+                    d = w & 0xFFF
+                    starts.add(pc + 4 + (d - 0x1000 if d & 0x800 else d) * 2)
+        else:
+            for a in range(lo & ~3, lo + size - 3, 4):
+                v = struct.unpack_from('<I', image, a - base)[0]
+                if v % 2 == 0 and base <= v < base + len(image):
+                    starts.add(v)
+    heads = {lo for lo, size, kind in ranges if kind == 'code'}
+    starts = {a for a in starts if a in heads}
+    starts = list(starts)
     for i, (lo, size, kind) in enumerate(ranges):
         if kind != 'code':
             continue
@@ -37,7 +55,7 @@ def function_starts(image, base, ranges):
         tail = [struct.unpack_from('<H', image, a - base)[0] for a in range(max(plo, plo + psize - 4), plo + psize, 2)]
         if 0x000b in tail or any(w >> 12 == 0xa for w in tail):
             starts.append(lo)
-    return starts
+    return sorted(set(starts))
 
 
 def main():
