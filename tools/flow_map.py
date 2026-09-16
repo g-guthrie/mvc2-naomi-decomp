@@ -4,9 +4,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import pathlib
 from collections import defaultdict
 
 from core import ROOT, load, number, sha, verify_rom
+from vendor.sh4dis import sh4
 
 
 def sext(value, bits):
@@ -296,6 +298,11 @@ def walk_function(image, entry, max_insns=2048):
         if word is None:
             issues.append(("noword", pc))
             continue
+        # A word that does not encode an instruction cannot be executed, so the
+        # walk has left real code. Rejection only; decoding never proves code.
+        if sh4.disasm(word, pc) == "error":
+            issues.append(("undecodable", pc))
+            continue
         visited.add(pc)
         if len(visited) > max_insns:
             issues.append(("too_big", entry))
@@ -459,6 +466,38 @@ def walk_function(image, entry, max_insns=2048):
     }
 
 
+def looks_like_pointer_table(image, start, size):
+    """True when a run reads as a table of in-image pointers rather than code.
+
+    Table entries share the image page in their high halfword. Ordinary
+    bsr/bra pairs do too, because the common `stc sr,r12` delay slot encodes
+    as 0x0c02, so a run only counts as a table when its low halfwords are not
+    branches or when the same pointer repeats.
+    """
+    if size < 16 or start % 4:
+        return False
+    words = []
+    for pos in range(start, start + size - 3, 4):
+        value = image.word(pos)
+        high = image.word(pos + 2)
+        if value is None or high is None:
+            return False
+        words.append((high << 16) | value)
+    if len(words) < 4:
+        return False
+    pages = {}
+    for value in words:
+        pages[value >> 16] = pages.get(value >> 16, 0) + 1
+    page, count = max(pages.items(), key=lambda kv: kv[1])
+    lo = image.base >> 16
+    hi = (image.base + len(image.blob)) >> 16
+    if count < 4 or count < 0.8 * len(words) or not lo <= page <= hi:
+        return False
+    branches = sum(1 for value in words if (value & 0xF000) in (0xA000, 0xB000))
+    repeated = max(words.count(value) for value in set(words))
+    return branches < 0.8 * len(words) or repeated >= 4
+
+
 def covered_kind(ranges, addr):
     for lo, hi, kind in ranges:
         if lo <= addr < hi:
@@ -497,6 +536,8 @@ def map_from_roots(image, roots, existing=()):
                 if not merge_into(reviewed, start, size, "code"):
                     conflict = True
                 if covered_kind(reviewed, start) == "data":
+                    conflict = True
+                if looks_like_pointer_table(image, start, size):
                     conflict = True
             for start, size in fn["data"]:
                 if not merge_into(reviewed, start, size, "data"):
@@ -584,13 +625,36 @@ def uncovered_slices(start, size, existing, kind):
 def proposals_from_functions(image, functions, existing):
     seen = set()
     out = []
+    claimed = list(existing)
+    # A byte a walk resolved as a PC-relative literal is data, whoever else's
+    # walk ran over it, so every data run is claimed before any code run.
+    for fn in functions:
+        for start, size in fn["data"]:
+            for s, z in uncovered_slices(start, size, claimed, "data"):
+                key = (s, z, "data")
+                if key in seen:
+                    continue
+                seen.add(key)
+                claimed.append((s, s + z, "data"))
+                sl = image.blob[s - image.base:s - image.base + z]
+                out.append({
+                    "address": f"0x{s:08x}",
+                    "size": z,
+                    "kind": "data",
+                    "sha256": sha(sl),
+                    "evidence": (
+                        f"PC-relative consumer or indexed pointer table in CFG of 0x{fn['entry']:08x}; "
+                        f"unreferenced adjacent bytes omitted."
+                    ),
+                })
     for fn in functions:
         for start, size in fn["code"]:
-            for s, z in uncovered_slices(start, size, existing, "code"):
+            for s, z in uncovered_slices(start, size, claimed, "code"):
                 key = (s, z, "code")
                 if key in seen:
                     continue
                 seen.add(key)
+                claimed.append((s, s + z, "code"))
                 sl = image.blob[s - image.base:s - image.base + z]
                 out.append({
                     "address": f"0x{s:08x}",
@@ -603,11 +667,12 @@ def proposals_from_functions(image, functions, existing):
                     ),
                 })
         for start, size in fn["data"]:
-            for s, z in uncovered_slices(start, size, existing, "data"):
+            for s, z in uncovered_slices(start, size, claimed, "data"):
                 key = (s, z, "data")
                 if key in seen:
                     continue
                 seen.add(key)
+                claimed.append((s, s + z, "data"))
                 sl = image.blob[s - image.base:s - image.base + z]
                 out.append({
                     "address": f"0x{s:08x}",
@@ -626,6 +691,7 @@ def proposals_from_functions(image, functions, existing):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--json", action="store_true")
+    parser.add_argument("--roots", help="JSON file of extra candidate entry addresses to try")
     args = parser.parse_args()
     image, target = load_image()
     existing = existing_ranges(image)
@@ -633,6 +699,11 @@ def main():
     for lo, _hi, kind in existing:
         if kind == "code":
             roots.append(lo)
+    if args.roots:
+        for extra in json.loads(pathlib.Path(args.roots).read_text()):
+            address = number(extra)
+            if image.contains(address) and address % 2 == 0:
+                roots.append(address)
     functions = map_from_roots(image, roots, existing)
     new_fn = [fn for fn in functions if fn.get("code") or fn.get("tables") or fn.get("data")]
     props = proposals_from_functions(image, functions, existing)

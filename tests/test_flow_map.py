@@ -21,6 +21,19 @@ class FlowMapTests(unittest.TestCase):
     def setUpClass(cls):
         cls.img = image()
 
+    def test_pcrel_loaded_prologs_are_reviewed_code(self):
+        fn = walk_function(self.img, 0x0c2103a0)
+        self.assertFalse(fn['issues'], fn['issues'])
+        def kind_at(pc):
+            for p in load(ROOT / 'config/mapping.json')['ranges']:
+                lo = number(p['address'])
+                if lo <= pc < lo + p['size']:
+                    return p['kind']
+            return None
+        self.assertEqual(kind_at(0x0c2103a0), 'code')
+        self.assertEqual(kind_at(0x0c224d82), 'code')
+        self.assertEqual(kind_at(0x0c225e0e), 'code')
+
     def test_boot_init_jsr_r11_survives_intervening_other_jsrs(self):
         from flow_map import literal_reg_target
         target = literal_reg_target(self.img, 0x0c028424, 11)
