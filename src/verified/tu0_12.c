@@ -1,9 +1,4 @@
-/* One function with its literal pool at 0x0c0915d6 (the mapping splits its
- * code at 0x0c0914c6, which is a branch target, not a function start).
- * Candidate: 311/314 bytes. func_0c09149c differs only at 0x0c0914e4..e6,
- * where retail loads a->b140 into r3 (`mov.b @(r0,r14),r3; tst r3,r3`) and
- * SHC picks r2 for every spelling tried (char/unsigned char, != 0, goto to
- * a shared return, nested else-return). */
+/* One function with its literal pool at 0x0c0915d6. */
 
 struct Obj_0c09149c {
     unsigned char pad0[6];
@@ -48,7 +43,7 @@ void func_0c09149c(struct Obj_0c09149c *a, struct Tgt_0c09149c *b)
         a->b1f5 = 0;
         func_0c02a026(a);
         func_0c0903b6(a, b);
-        if (a->b7 == 0) {
+        if (!a->b7) {
             if (a->b140)
                 return;
             a->b7++;
