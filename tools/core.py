@@ -40,7 +40,16 @@ def verify_tools(root=ROOT):
     for item in wibo["assets"].values():
         if sha((root / item["path"]).read_bytes()) != item["sha256"]:
             raise ValueError("wibo checksum mismatch: " + item["path"])
-    return {"compiler": manifest["version"], "compiler_files": len(expected), "wibo": wibo["version"]}
+    sdk = load(root / "toolchain/naomi-sdk.json")
+    folder = root / "toolchain/naomi-sdk/lib"
+    if {item["name"] for item in sdk["files"]} != {p.name for p in folder.iterdir() if p.is_file()}:
+        raise ValueError("NAOMI SDK library folder is incomplete or contains unexpected files")
+    for item in sdk["files"]:
+        blob = (folder / item["name"]).read_bytes()
+        if len(blob) != item["size"] or sha(blob) != item["sha256"]:
+            raise ValueError("NAOMI SDK library checksum mismatch: " + item["name"])
+    return {"compiler": manifest["version"], "compiler_files": len(expected), "wibo": wibo["version"],
+            "sdk_libraries": len(sdk["files"])}
 
 
 def runner(root=ROOT):
@@ -112,9 +121,18 @@ def validate_units(units, target):
             raise ValueError("Units take their compiler options from config/compiler.json only: " + unit["id"])
         if unit.get("options", "game") not in load(ROOT / "config/compiler.json")["sets"]:
             raise ValueError("Unknown option set for unit " + unit["id"])
-        source = Path(unit["source"])
-        if source.is_absolute() or ".." in source.parts or source.parts[0] != "src" or source.suffix != ".c":
-            raise ValueError("Unit source must be a C file below src/")
+        if "library" in unit or "module" in unit:
+            if "source" in unit or "options" in unit or not unit.get("module") or not unit.get("exports"):
+                raise ValueError("A library unit names a library, a module and its exports, and nothing to compile: " + unit["id"])
+            library = Path(unit["library"])
+            if library.is_absolute() or ".." in library.parts or library.parts[:2] != ("toolchain", "naomi-sdk") or library.suffix != ".lib":
+                raise ValueError("Unit library must be a .lib file below toolchain/naomi-sdk/")
+            if not re.fullmatch(r"[A-Za-z_$][A-Za-z0-9_$]*", unit["module"]):
+                raise ValueError("Invalid library module name: " + unit["id"])
+        else:
+            source = Path(unit["source"])
+            if source.is_absolute() or ".." in source.parts or source.parts[0] != "src" or source.suffix != ".c":
+                raise ValueError("Unit source must be a C file below src/")
         sections = set()
         for part in unit["sections"]:
             name = part["section"]

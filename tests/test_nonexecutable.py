@@ -22,7 +22,9 @@ class NonExecutableTests(unittest.TestCase):
         """The elimination only holds if a valid instruction never reads as error."""
         checked = 0
         for unit in load(ROOT / 'config/units.json'):
-            if unit.get('mode') != 'verified':
+            # Library units link an SDK object whose literal pools sit inside its
+            # code section undeclared; only compiled C says which words are code.
+            if unit.get('mode') != 'verified' or 'library' in unit:
                 continue
             for part in unit['sections']:
                 if part['kind'] != 'code':

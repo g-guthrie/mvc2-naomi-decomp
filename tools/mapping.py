@@ -44,13 +44,19 @@ def review(image, base, entries=None, verified=()):
                     covered = any(spare_lo <= max(lo, start) and min(hi, end) <= spare_hi
                                   and spare_kind == kind
                                   for spare_lo, spare_hi, spare_kind in interiors)
+                    # A library unit links a prebuilt SDK object. It proves the
+                    # bytes, not which of them are instructions, so the reviewed
+                    # classification of its interior stands as it is.
+                    covered = covered or 'library' in unit
                     if not covered:
                         raise ValueError('Verified source conflicts with reviewed code/data mapping')
                 pieces = [(a, b) for x, y in pieces for a, b in [(x, min(y, lo)), (max(x, hi), y)] if a < b]
             for lo, hi in pieces:
+                origin = (f"library unit {unit['id']} module {unit['module']}" if 'library' in unit
+                          else f"C unit {unit['id']} section {part['section']}")
                 entries.append(dict(address=lo, size=hi-lo, kind=part['kind'],
                                     sha256=sha(image[lo-base:hi-base]),
-                                    evidence=f"Current build verifies C unit {unit['id']} section {part['section']}"))
+                                    evidence=f"Current build verifies {origin}"))
     ordered = sorted(entries, key=lambda p: number(p['address']))
     cursor, ranges = base, []
     totals = {'code': 0, 'data': 0, 'unknown': 0}

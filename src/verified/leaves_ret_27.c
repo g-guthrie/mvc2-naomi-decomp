@@ -12,5 +12,3 @@ int func_0c205ca0(void) { return -1; }
 #pragma section n205d1a
 int func_0c205d1a(void) { return -1; }
 
-#pragma section n20f916
-int func_0c20f916(void) { return -1; }
