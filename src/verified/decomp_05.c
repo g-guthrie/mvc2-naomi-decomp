@@ -18,5 +18,3 @@ void func_0c17e91e(unsigned char *p) { if (--*(short *)(p + 30) == 0) { p[5]++; 
 #pragma section n16c206
 void func_0c18d206(char *p, unsigned char *q) { if (p[33]) { p[4]++; q[6] = 2; } }
 
-#pragma section n1daa00
-void *func_0c1fba00(unsigned char *p, unsigned char v, unsigned int n) { unsigned char *q = p; unsigned int i; for (i = 0; i < n; i++) *q++ = v; return p; }

@@ -9,7 +9,7 @@ from core import ROOT, load, number
 
 def credited_bytes(unit):
     """Bytes a unit earns: every code and data byte of a verified unit, or the
-    bytes of the functions that match inside a candidate unit."""
+    bytes of the functions and pools that match inside a candidate unit."""
     kinds = dict(code=0, data=0)
     if unit.get('credited'):
         for part in unit['sections']:
@@ -17,6 +17,7 @@ def credited_bytes(unit):
                 kinds[part['kind']] += number(part['size'])
     else:
         kinds['code'] = unit.get('function_bytes', 0)
+        kinds['data'] = unit.get('pool_bytes', 0)
     return kinds
 
 

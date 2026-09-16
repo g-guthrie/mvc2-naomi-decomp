@@ -65,9 +65,9 @@ section.
 ## Credit
 
 - A **verified** unit is credited for every code and data byte once it is exact.
-- A **candidate** unit is credited for the bytes of each function that matches,
-  provided its section links at the declared address and size. Its pool and its
-  other functions earn nothing.
+- A **candidate** unit is credited for the bytes of each function and each
+  declared pool that matches, provided its section links at the declared
+  address and size. Its other functions earn nothing.
 - Only verified bytes are written into the rebuilt ROM. Everything else stays
   retail, and the rebuilt ROM must hash to retail.
 

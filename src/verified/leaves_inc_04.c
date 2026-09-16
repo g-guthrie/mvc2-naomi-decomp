@@ -1,8 +1,5 @@
 /* Hitachi SHC 5.0R31 eight-byte unsigned char increment leaves. */
 
-#pragma section n1bcf80
-void func_0c1bcf80(unsigned char *p) { p[4]++; }
-
 #pragma section n1bd078
 void func_0c1bd078(unsigned char *p) { p[4]++; }
 

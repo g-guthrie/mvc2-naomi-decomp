@@ -110,6 +110,8 @@ def validate_units(units, target):
             raise ValueError("Unknown unit mode")
         if "flags" in unit:
             raise ValueError("Units take their compiler options from config/compiler.json only: " + unit["id"])
+        if unit.get("options", "game") not in load(ROOT / "config/compiler.json")["sets"]:
+            raise ValueError("Unknown option set for unit " + unit["id"])
         source = Path(unit["source"])
         if source.is_absolute() or ".." in source.parts or source.parts[0] != "src" or source.suffix != ".c":
             raise ValueError("Unit source must be a C file below src/")
@@ -224,13 +226,35 @@ def compare(unit, elf, map_text, main, base):
             problems.append("Not an exact section match: " + part["section"])
         checks.append(row)
     functions = function_rows(unit, sections, symbols, segments, main, base)
+    pools = pool_rows(unit, sections, segments, main, base)
     expected_bytes = sum(number(p["size"]) for p in unit["sections"] if p["kind"] != "bss")
     if sum(p["size"] for p in segments) != expected_bytes:
         problems.append("Linked image contains extra or missing initialized bytes")
     if sum(p["memory_size"] for p in segments) != sum(number(p["size"]) for p in unit["sections"]):
         problems.append("Linked image contains extra or missing memory bytes")
-    return {"exact": not problems, "sections": checks, "functions": functions,
-            "function_bytes": sum(f["size"] for f in functions if f["exact"]), "problems": problems}, segments
+    return {"exact": not problems, "sections": checks, "functions": functions, "pools": pools,
+            "function_bytes": sum(f["size"] for f in functions if f["exact"]),
+            "pool_bytes": sum(f["size"] for f in pools if f["exact"]), "problems": problems}, segments
+
+
+def pool_rows(unit, sections, segments, main, base):
+    """One row per declared interior data range, judged like a function: a
+    candidate unit is credited for the pools that match once the section links."""
+    rows = []
+    for part in unit["sections"]:
+        mapped = sections.get(part["section"], {})
+        placed = mapped.get("address") == number(part["address"]) and mapped.get("size") == number(part["size"])
+        for spare in part.get("interior", ()):
+            address, size = number(spare["address"]), number(spare["size"])
+            reference = main[address - base:address - base + size]
+            try:
+                actual = memory_bytes(segments, address, size)
+            except ValueError:
+                actual = b""
+            rows.append({"address": address, "size": size, "kind": spare["kind"],
+                         "equal_bytes": sum(a == b for a, b in zip(actual, reference)),
+                         "exact": placed and actual == reference})
+    return rows
 
 
 def function_rows(unit, sections, symbols, segments, main, base):

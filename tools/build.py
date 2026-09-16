@@ -30,7 +30,7 @@ def compile_unit(unit, work, flags):
         if result.returncode:
             raise ValueError(f'{stem}: {exe} failed; see build/work/{stem}.log\n{output}')
 
-    options = flags
+    options = load(ROOT / 'config/compiler.json')['sets'][unit.get('options', 'game')]
     run('shc.exe', [stem + '.c', *options, '-code=asmcode', '-object=' + stem + '.src'])
     assembly = (work / (stem + '.src')).read_text(errors='replace')
     placed = (assembly.replace('ALIGN=16', 'ALIGN=2').replace('ALIGN=8', 'ALIGN=2')
@@ -80,7 +80,8 @@ def build(selected=None):
     base, offset, size = (number(target['main'][k]) for k in ('address', 'rom_offset', 'size'))
     main = program[offset:offset + size]
     from mapping import review
-    flags = load(ROOT / 'config/compiler.json')['flags']
+    sets = load(ROOT / 'config/compiler.json')['sets']
+    flags = sets['game']
     output = ROOT / 'build'
     work = output / 'work'
     if work.exists():
@@ -96,7 +97,10 @@ def build(selected=None):
     matched_units = matched_sections = matched_bytes = 0
     for unit in units:
         elf, link = compile_unit(unit, work, flags)
-        proof, segments = compare(unit, elf, link, main, base)
+        try:
+            proof, segments = compare(unit, elf, link, main, base)
+        except ValueError as error:
+            raise ValueError(f"{unit['id']}: {error}") from error
         credited = unit['mode'] == 'verified' and proof['exact']
         row = {**unit, **proof, 'credited': credited, 'elf_sha256': sha(elf)}
         rows.append(row)
@@ -113,7 +117,7 @@ def build(selected=None):
         details = ', '.join(f"{p['section']}: {p['equal_bytes']}/{p['size']} equal bytes, linked size {p['linked_size']}" for p in proof['sections'])
         if proof['functions'] and not credited:
             exact = sum(f['exact'] for f in proof['functions'])
-            details += f"; {exact}/{len(proof['functions'])} functions match, {proof['function_bytes']} bytes"
+            details += f"; {exact}/{len(proof['functions'])} functions match, {proof['function_bytes']} bytes; pools {proof['pool_bytes']} bytes"
         if selected or not credited:
             print(f"{'MATCH' if credited else 'CANDIDATE' if unit['mode'] == 'candidate' else 'FAIL'} {unit['id']} — {details}", flush=True)
     if selected:
@@ -121,9 +125,9 @@ def build(selected=None):
         if failed:
             raise ValueError('Verified unit mismatch: ' + ', '.join(failed))
         return
-    function_bytes = sum(row['function_bytes'] for row in rows if not row['credited'])
+    function_bytes = sum(row['function_bytes'] + row['pool_bytes'] for row in rows if not row['credited'])
     print(f'MATCH {matched_units} verified config units, {matched_sections} source ranges, {matched_bytes:,} bytes; '
-          f'{function_bytes:,} more bytes of matched functions in candidate units', flush=True)
+          f'{function_bytes:,} more bytes of matched functions and pools in candidate units', flush=True)
     merged = bytearray(program)
     merged[offset:offset+size] = rebuilt
     if rebuilt != main or merged != program:

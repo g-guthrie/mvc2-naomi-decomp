@@ -3,8 +3,3 @@
 #pragma section n0284c6
 int func_0c0284c6(unsigned char *p) { return *p; }
 
-#pragma section n20c04c
-int func_0c20c04c(int *p) { return p[1]; }
-
-#pragma section n214e82
-int func_0c214e82(int *p) { return p[1]; }

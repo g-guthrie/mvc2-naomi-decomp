@@ -18,9 +18,3 @@ void func_0c1e6f98(void) {}
 #pragma section n1e6f9c
 void func_0c1e6f9c(void) {}
 
-#pragma section n1e9e90
-int func_0c1e9e90(void) { return 1; }
-
-#pragma section n1eaff0
-void func_0c1eaff0(void) {}
-
