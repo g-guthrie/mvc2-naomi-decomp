@@ -101,15 +101,15 @@ void func_0c19754c(struct Obj_tu4_08 *a, struct Obj_tu4_08 *b)
     a->s52 = b->s52;
     a->f92 = 0.0f;
     a->f96 = 0.0f;
-    a->f104 = 0.0f;
     a->f108 = 0.0f;
+    a->f104 = 0.0f;
     if (a->b32 == 0) {
         v = dat_0c2580d0[b->b1a3];
         if (a->w130)
             v = -v;
         a->f92 = v;
-        a->f104 = v;
         a->s28 = 8;
+        a->f104 = v;
     } else {
         a->b5 = 3;
     }

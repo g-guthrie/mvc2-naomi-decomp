@@ -75,7 +75,7 @@ void func_0c1cdff0(struct Obj_tu2_11 *o)
 {
     if (dat_0c2d6f84->b2 != 3)
         goto tail;
-    if (o->p24->s28 == 0)
+    if (!o->p24->s28)
         goto dispatch;
     o->p24->ld4 = 0;
 tail:

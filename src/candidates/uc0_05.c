@@ -19,8 +19,8 @@ struct Obj_uc0_05 {
     float f104, f108;
     unsigned char pad5[0xd2 - 112];
     unsigned char bd2, bd3;
-    unsigned char pad6[0x130 - 0xd4];
     short w130;
+    unsigned char pad6[0x130 - 0xd4];
 };
 
 typedef void (*handler1_uc0_05)(struct Obj_uc0_05 *);
@@ -84,8 +84,8 @@ void func_0c1aad64(struct Obj_uc0_05 *a, struct Obj_uc0_05 *b)
     a->f92 = 0.0f;
     a->f104 = 0.0f;
     a->f96 = 0.0f;
-    a->f108 = 0.0f;
     a->w130 ^= 1;
+    a->f108 = 0.0f;
     func_0c02a0c4(a, 25, 6);
     func_0c1aadb8(a, b);
 }

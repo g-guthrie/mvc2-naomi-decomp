@@ -20,7 +20,7 @@ struct Obj_ub5_02 {
     signed char b321;
     unsigned char b322;
     unsigned char pad3[413 - 323];
-    unsigned char b413;
+    char b413;
     unsigned char pad4[456 - 414];
     struct P456_ub5_02 *p456;
     unsigned char pad5[466 - 460];

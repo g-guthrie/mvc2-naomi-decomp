@@ -65,8 +65,8 @@ void func_0c0ec088(struct Obj_tu2_02 *o)
     o->b6 = 0;
     switch (o->b4c9) {
     case 0:
-        o->b1e9 = 0;
         o->b1a3 = 1;
+        o->b1e9 = 0;
         break;
     case 1:
         o->b1e9 = 1;
@@ -95,8 +95,8 @@ void func_0c0ec0ca(struct Obj_tu2_02 *o)
         o->b1a3 = 1;
         break;
     case 2:
-        o->b1e9 = 2;
         o->b1a3 = 1;
+        o->b1e9 = 2;
         break;
     }
     func_0c045248(o, 21);

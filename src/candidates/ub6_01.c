@@ -103,14 +103,14 @@ void func_0c1b5d26(struct Obj_ub6_01 *a, struct Obj_ub6_01 *b)
         /* fall through */
     case 1:
         if (!b->xdc.b141)
-            return;
         a->b5++;
+            return;
         /* fall through */
     case 2:
         func_0c02a026(a);
         if (!a->xdc.b141)
             return;
-        a->pos.x += a->f92;
+        a->pos.x = a->pos.x + a->f92;
         a->f92 += a->f104;
         a->pos.y += a->f96;
         a->f96 += a->f108;
