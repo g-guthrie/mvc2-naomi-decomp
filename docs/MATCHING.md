@@ -131,6 +131,18 @@ SHC's decimal parser truncates. The shortest decimal for a float often lands
 one ulp low. When a pool float is off in its last hex digit, run
 `python3 tools/float_literal.py 0xBITS` and use the spelling it prints.
 
+## Let the permuter search
+
+```sh
+python3 tools/permute.py src/candidates/unit.c
+```
+
+It applies the mechanical rewrites in the table above one site at a time,
+compiles each variant, keeps the one with the most equal bytes, and repeats.
+Retail is the oracle: a rewrite only has to reach the bytes. Run it on a
+candidate before spending your own attempts on register and spelling
+differences; read what it changed afterwards.
+
 ## When it will not match
 
 - Try the spellings above and a few of your own with the diff tool, about ten

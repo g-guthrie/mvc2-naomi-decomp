@@ -171,6 +171,35 @@ def register(unit, exact):
     print(f"REGISTERED {unit['id']} as {unit['mode']} ({len(units)} units)")
 
 
+def evaluate(path, imports=None, options=None):
+    """Compile a C file below src/ and compare it: (proof, unit). No output."""
+    target = load(ROOT / 'config/target.json')
+    program = verify_rom(target)
+    offset, base, size = (number(target['main'][k]) for k in ('rom_offset', 'address', 'size'))
+    main_image = program[offset:offset + size]
+    sets = load(ROOT / 'config/compiler.json')['sets']
+    units = {u['id']: u for u in load(ROOT / 'config/units.json')}
+    known = next((u for u in units.values() if u['source'] == path), {})
+    unit = describe(path, mapping_ranges(), {**{k: number(v) for k, v in known.get('imports', {}).items()}, **(imports or {})})
+    unit['id'] = known.get('id', 'diff')
+    unit['options'] = options or known.get('options', 'game')
+    flags = sets[unit['options']]
+    work = ROOT / 'build' / f'work-diff-{os.getpid()}'
+    if work.exists():
+        shutil.rmtree(work)
+    shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work)
+    try:
+        elf, link = compile_unit(unit, work, flags)
+        before = len(unit['imports'])
+        resolve_imports(unit, work, unit['id'])
+        if len(unit['imports']) != before:
+            elf, link = compile_unit(unit, work, flags)
+        proof, _ = compare(unit, elf, link, main_image, base)
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
+    return proof, unit
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('target', help='unit id from config/units.json, or a C file below src/')
