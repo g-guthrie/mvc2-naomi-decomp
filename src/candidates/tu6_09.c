@@ -66,7 +66,7 @@ void func_0c19bf1c(struct Obj_0c19be60 *a, struct Obj_0c19be60 *b)
     float f;
 
     func_0c02a026(a);
-    a->f52 += a->f92;
+    a->f52 = a->f52 + a->f92;
     a->f92 += a->f104;
     f = func_0c19c91a(b, 56);
     if (--a->s28 == 0 || (a->w130 == 0 && a->f52 <= f) || (a->w130 != 0 && a->f52 >= f)) {
