@@ -12,9 +12,6 @@ int func_0c1f280e(int x) { return x; }
 #pragma section n1f3aaa
 int func_0c1f3aaa(int x) { return x; }
 
-#pragma section n1fb934
-int func_0c1fb934(int x) { return x; }
-
 #pragma section n200c8e
 int func_0c200c8e(int x) { return x; }
 

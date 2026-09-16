@@ -11,7 +11,7 @@ from core import ROOT, compare, load, number, verify_rom
 
 class LeavesIdTests(unittest.TestCase):
     def test_identity_leaves_match_retail(self):
-        flags = load(ROOT / 'config/compiler.json')['flags']
+        flags = load(ROOT / 'config/compiler.json')['sets']['game']
         target = load(ROOT / 'config/target.json')
         main = verify_rom(target)[number(target['main']['rom_offset']):]
         base = number(target['main']['address'])
