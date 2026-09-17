@@ -144,6 +144,16 @@ An `extern short *dat_0cXXXXXX;` is a pointer variable and costs a load; an
 `extern short dat_0cXXXXXX[];` is the array itself. Retail's `mov.l @dat,rN`
 before the index means the pointer; its absence means the array.
 
+### A compound assignment is not its expanded form
+
+`x ^= 1` and `x = x ^ 1` compile differently when `x` is a struct member at an
+offset too large for a displacement. The expanded form loads the offset twice,
+once into r0 to read the member and once into another register to build its
+address for the store, which is eight bytes longer than the compound form on a
+pair of members. Retail uses the expanded form in places. If a unit links
+shorter than its declared size and the missing bytes sit around a
+read-modify-write, expand it.
+
 ## Float literals
 
 SHC truncates a decimal float literal toward zero instead of rounding it to
