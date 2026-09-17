@@ -34,7 +34,6 @@ extern handler_ud0_12 dat_0c24b69c[];
 extern void func_0c02a0c4(struct Obj_ud0_12 *, int, int);
 extern void func_0c1d4610(struct Obj_ud0_12 *, struct Vec3_ud0_12 *);
 extern void func_0c048ce6(struct Obj_ud0_12 *);
-extern char func_0c02a026(struct Obj_ud0_12 *);
 extern void func_0c199414(struct Obj_ud0_12 *, int, int);
 extern void func_0c0344a0(struct Obj_ud0_12 *, int);
 struct Obj_0c03f15c {
@@ -48,9 +47,9 @@ struct Obj_0c03f15c {
     char b1dc;
     unsigned char pad4[0x1ed - 0x1dd];
     unsigned char b1ed;
-    unsigned char pad5[0x233 - 0x1ee];
-    unsigned char b233;
-    unsigned char pad6[0x238 - 0x234];
+    unsigned char pad5[0x1f7 - 0x1ee];
+    unsigned char b1f7;
+    unsigned char pad6[0x238 - 0x1f8];
     char b238;
 };
 typedef void (*handler_0c03f15c)(struct Obj_0c03f15c *);
@@ -76,8 +75,8 @@ void func_0c094e80(struct Obj_ud0_12 *a)
     a->f96 = 0;
     a->f104 = 0;
     a->f108 = 0;
-    v.x = -58.3333321f;
-    v.y = 135.0f;
+    v.x = -238.33333f;
+    v.y = 147.857132f;
     v.z = 0;
     func_0c1d4610(a, &v);
     func_0c048ce6(a);
@@ -97,8 +96,8 @@ void func_0c094eee(struct Obj_ud0_12 *a)
     a->f96 = 0;
     a->f104 = 0;
     a->f108 = 0;
-    v.x = -58.3333321f;
-    v.y = 135.0f;
+    v.x = -238.33333f;
+    v.y = 147.857132f;
     v.z = 0;
     func_0c1d4610(a, &v);
     func_0c048ce6(a);
@@ -106,7 +105,7 @@ void func_0c094eee(struct Obj_ud0_12 *a)
 
 void func_0c094f5c(struct Obj_0c03f15c *p)
 {
-    dat_0c242f38[p->b233](p);
+    dat_0c242f38[p->b1f7](p);
 }
 
 void func_0c094f70(struct Obj_ud0_12 *a)
@@ -114,7 +113,7 @@ void func_0c094f70(struct Obj_ud0_12 *a)
     struct Obj_ud0_12 *q;
 
     func_0c02a026(a);
-    if (a->b141 == 0)
+    if (!a->b141)
         return;
     a->b141 = 0;
     a->b6++;
