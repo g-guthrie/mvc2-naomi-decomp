@@ -35,7 +35,7 @@ struct Obj_0c07c778 *func_0c0a6c8c(struct Obj_0c07c778 *p)
     struct Obj_0c07c778 *q;
 
     z = 0;
-    if (!(p->b34 = (p->w1fa & 0x0c00) >> 10))
+    if (!(p->b34 = (p->w1fa & 0x1c00) >> 10))
         return (struct Obj_0c07c778 *)z;
     if (p->b1fe)
         return (struct Obj_0c07c778 *)z;
@@ -60,11 +60,11 @@ void func_0c0a6d04(struct Obj_0c07c778 *a)
     struct Vec3_me04 v;
 
     if (a->w1fa & 0x400) {
-        a->b1d2 ^= 1;
-        a->w130 ^= 1;
+        a->b1d2 = a->b1d2 ^ 1;
+        a->w130 = a->w130 ^ 1;
     }
     a->b1a0 = 10;
-    v.x = -83.333328f;
+    v.x = -83.33333f;
     v.y = 158.57143f;
     func_0c1d4610(a, &v);
     func_0c048ce6(a);
