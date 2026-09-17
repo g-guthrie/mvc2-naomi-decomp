@@ -154704,7 +154704,7 @@
         "section": "Cn1e3a50",
         "kind": "data",
         "address": "0x0c204a54",
-        "size": 28
+        "size": 12
       },
       {
         "section": "Cn1e4528",
@@ -155643,8 +155643,8 @@
       {
         "section": "Cn205448",
         "kind": "data",
-        "address": "0x0c226460",
-        "size": 96
+        "address": "0x0c2264a4",
+        "size": 28
       },
       {
         "section": "Cn2060dc",
@@ -207161,8 +207161,8 @@
       {
         "section": "Cn248a96",
         "kind": "data",
-        "address": "0x0c269a9c",
-        "size": 25960
+        "address": "0x0c269af4",
+        "size": 25872
       },
       {
         "section": "Cn24f00e",
@@ -218740,6 +218740,80 @@
       "_nl_SprRes": "0x0c343a94",
       "_nl_sprImaginaryScreenSize": "0x0c343a98",
       "_nl_spr_img_size": "0x0c343aa0"
+    }
+  },
+  {
+    "id": "lib_kamui2_kmiasmglobal_km2base_lib_",
+    "library": "toolchain/naomi-sdk/lib/libkamui2.lib",
+    "module": "kmiasmglobal_km2base_lib_",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "PSG",
+        "kind": "code",
+        "address": "0x0c226460",
+        "size": 68
+      }
+    ],
+    "imports": {},
+    "exports": {
+      "_kmiEOL": "0x0c226460",
+      "_kmiGlobalWork": "0x0c226464"
+    }
+  },
+  {
+    "id": "lib_kamui2_texture_tex_lib_",
+    "library": "toolchain/naomi-sdk/lib/libkamui2.lib",
+    "module": "texture_tex_lib_",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "DSG",
+        "kind": "data",
+        "address": "0x0c269a9c",
+        "size": 88
+      }
+    ],
+    "imports": {},
+    "exports": {
+      "_kmytex_TW": "0x0c269a9c"
+    }
+  },
+  {
+    "id": "lib_naomik2_nl_inv_camera_vec",
+    "library": "toolchain/naomi-sdk/lib/libnaomik2.lib",
+    "module": "nl_inv_camera_vec",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c204a60",
+        "size": 16
+      }
+    ],
+    "imports": {},
+    "exports": {
+      "_inv_camera_vec": "0x0c204a60",
+      "_nl_specular_flag": "0x0c204a6c"
+    }
+  },
+  {
+    "id": "lib_sh4nlfzn__umemcmp",
+    "library": "toolchain/naomi-sdk/lib/sh4nlfzn.lib",
+    "module": "_umemcmp",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c203e48",
+        "size": 52
+      }
+    ],
+    "imports": {},
+    "exports": {
+      "__umemcmp": "0x0c203e48"
     }
   }
 ]

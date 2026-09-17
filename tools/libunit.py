@@ -128,7 +128,7 @@ def parse_map(text):
     return modules, symbols
 
 
-def place(work, lib, module, symbols, stem, main, base):
+def place(work, lib, module, symbols, stem, main, base, table=None):
     """Link this module alone at two bases; the words that move are its relocations.
     Everything else is fixed content, which is searched for in the retail image."""
     alone = extract(work, lib, module, stem)
@@ -179,6 +179,19 @@ def place(work, lib, module, symbols, stem, main, base):
                     all(mask[i] == 0 or main[candidate + i] == ours[i] for i in range(size)):
                 hits.append(base + candidate)
             position = main.find(anchor, position + 1)
+        if len(hits) != 1:
+            # A module that is almost all relocations has too little fixed content
+            # to find by search. Another module's solved import names one of its
+            # symbols, and that address says where the section starts.
+            for symbol, address in map_symbols.items():
+                if not (start <= address < start + size) or symbol not in (table or {}):
+                    continue
+                candidate = table[symbol] - (address - start)
+                if candidate < LIBRARY_START or candidate - base + size > len(main):
+                    continue
+                if all(mask[i] == 0 or main[candidate - base + i] == ours[i] for i in range(size)):
+                    hits = [candidate]
+                    break
         if len(hits) != 1:
             unplaced.append((section, size, 'not in the image' if not hits else f'{len(hits)} possible addresses'))
             continue
@@ -358,6 +371,12 @@ def main():
     base, offset, size = (number(target['main'][k]) for k in ('address', 'rom_offset', 'size'))
     main_image = program[offset:offset + size]
     units = load(ROOT / 'config/units.json')
+    # Every address the registry already knows a symbol by. A module too small to
+    # find by content search is placed by one of these instead.
+    table = {}
+    for unit in units:
+        for symbol, address in {**unit.get('exports', {}), **unit.get('imports', {})}.items():
+            table.setdefault(symbol, number(address))
     spans = registry_intervals(units)
     sizes = {unit['id']: len(unit['sections']) for unit in units}
     work = ROOT / 'build' / 'libwork'
@@ -374,7 +393,7 @@ def main():
         if not symbols:
             return module, None, f'no exported symbol to pull the module with'
         try:
-            return module, place(work, library.name, module, symbols, f'place{index:04d}', main_image, base), None
+            return module, place(work, library.name, module, symbols, f'place{index:04d}', main_image, base, table), None
         except ValueError as error:
             return module, None, str(error).splitlines()[0]
 
