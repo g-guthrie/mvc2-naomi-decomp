@@ -146,9 +146,19 @@ before the index means the pointer; its absence means the array.
 
 ## Float literals
 
-SHC's decimal parser truncates. The shortest decimal for a float often lands
-one ulp low. When a pool float is off in its last hex digit, run
-`python3 tools/float_literal.py 0xBITS` and use the spelling it prints.
+SHC truncates a decimal float literal toward zero instead of rounding it to
+nearest, so the shortest spelling of a value is usually one ulp low and the pool
+differs from retail in its last hex digit. Ask for the spelling that lands:
+
+```sh
+python3 tools/float_literal.py 0x44092492      # -> 548.571411133f
+```
+
+Before treating a pool float as arbitrary, check it against the screen scales in
+[PLAYER.md](PLAYER.md): the game scales CPS2 coordinates to the display, so
+1.6666666 (5/3) and 2.1428571 (15/7), their powers of two and their small
+multiples run through the whole image. A mantissa ending in `92492` is one of
+them.
 
 ## Let the permuter search
 

@@ -31,6 +31,24 @@ above 0x0c1e9000 were built without it. The compiler runtime routines the
 generated code calls are listed with their retail addresses in
 `config/runtime.json`, each proven by a verified unit.
 
+## Option sets that were tried and rejected
+
+Other decompilation projects have found one executable built at several
+optimization levels, so the same was tested here. Each switch below was added to
+the `game` set and a stubborn candidate recompiled; nothing beat the set in
+`config/compiler.json`.
+
+| Switch | Effect on a 620-byte candidate | On a 680-byte candidate |
+| --- | ---: | ---: |
+| none (`game`) | 313/620 equal | 658/680 equal, 5/7 functions |
+| `-optimize=0` | 9/620 | 14/680 |
+| `-speed` | 316/620 | 522/680, 2/7 functions |
+| `-size`, `-inline`, `-noinline`, `-loop`, `-noloop`, `-double=float` | no change | no change |
+
+A unit that will not match is telling you about the shape of its C, not about a
+missing switch. Add an option set only with a unit that matches exactly under it
+and under nothing else.
+
 ## Pipeline
 
 For every unit in `config/units.json`, `tools/build.py`:

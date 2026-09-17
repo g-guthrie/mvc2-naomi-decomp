@@ -1,6 +1,7 @@
 /* Game objects that recur across the image. One definition per object; a unit
  * that touches an object includes this file instead of declaring its own copy.
- * Members are named by their byte offset until their meaning is known. */
+ * Members are named by their byte offset until their meaning is known; where a
+ * meaning is known the comment gives the name from docs/PLAYER.md. */
 #ifndef OBJECTS_H
 #define OBJECTS_H
 
@@ -9,27 +10,27 @@ struct MaskTarget { unsigned char pad[0x235]; unsigned char b235; };
 
 struct MaskObject {
     unsigned char pad0[0x38];
-    float f38;
+    float f38;                  /* y_pos */
     unsigned char pad1[0x1a3 - 0x3c];
-    unsigned char b1a3;
+    unsigned char b1a3;         /* sp_move_strength */
     unsigned char pad2[0x1d0 - 0x1a4];
-    unsigned char b1d0;
+    unsigned char b1d0;         /* unk_01d0, chooses the animation to play */
     unsigned char pad3[0x1f9 - 0x1d1];
-    unsigned char b1f9;
+    unsigned char b1f9;         /* stance: 0 standing, 1 crouching, 2 jumping */
     unsigned short w1fa;
     unsigned char pad4[2];
-    unsigned char b1fe;
+    unsigned char b1fe;         /* limb_choice: 0 punch, 1 kick */
     unsigned char pad5[0x20c - 0x1ff];
-    struct MaskTarget *p20c;
+    struct MaskTarget *p20c;    /* EnemyPointer */
     unsigned char pad6[0x340 - 0x210];
     unsigned short w340, w342, w344;
     unsigned char pad7[0x41c - 0x346];
-    float f41c;
+    float f41c;                 /* compared against y_pos; the ground line */
     unsigned char pad8[0x4aa - 0x420];
     unsigned char b4aa, b4ab;
     unsigned short w4ac;
     unsigned char pad9[0x525 - 0x4ae];
-    unsigned char b525;
+    unsigned char b525;         /* is_cpu */
 };
 
 /* Second argument of func_0c047aac: an input record with a flag word at 6. */
