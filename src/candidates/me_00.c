@@ -123,8 +123,8 @@ void func_0c1aa8bc(struct Obj_me00 *a)
 
 void func_0c1aa9c4(struct Obj_me00 *a)
 {
-    struct Obj_me00 *b = a->p18;
     unsigned char m = dat_0c2f833e;
+    struct Obj_me00 *b = a->p18;
 
     if (m & (1 << (b->b02 ^ 1)))
         return;
@@ -151,7 +151,7 @@ void func_0c1aaa20(struct Obj_me00 *a, struct Obj_me00 *b)
     else
         d = -80.0f;
     a->f34 = b->f34 + d;
-    a->f38 = b->f41c + 548.57141f;
+    a->f38 = b->f41c + 548.571411133f;
     a->f5c = 0;
     a->f68 = 0;
     a->f60 = 0;
