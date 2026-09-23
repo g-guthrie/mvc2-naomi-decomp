@@ -1,4 +1,8 @@
-/* Actor state machine at 0x0c1aa884. Five of seven functions exact. func_0c1aa9c4: retail keeps a->p18 in r5 and the global byte in r4, ours the reverse. func_0c1aaa20: retail computes the conditional into fr3 and the zero into fr4 before the add, ours fr4/fr3. Pool float 0x44092492 spelled one ulp low. */
+/* Actor state machine at 0x0c1aa884: six of seven functions and both pools
+ * match. func_0c1aa9c4 matches 64/74 bytes; retail keeps a->p18 in r5 and
+ * the global byte in r4, while SHC gives this source the reverse registers.
+ * The conditional float expression in func_0c1aaa20 yields retail's fr3/fr4
+ * allocation and the 548.571411133f pool spelling lands on 0x44092492. */
 struct Vec3_me00 { float x, y, z; };
 struct Blk_me00 {
     unsigned char pad0[0x50];
@@ -142,15 +146,9 @@ void func_0c1aaa0e(struct Obj_me00 *a)
 
 void func_0c1aaa20(struct Obj_me00 *a, struct Obj_me00 *b)
 {
-    float d;
-
     a->b07++;
     a->b00 = 1;
-    if (b->blk_dc.w130 == 0)
-        d = 80.0f;
-    else
-        d = -80.0f;
-    a->f34 = b->f34 + d;
+    a->f34 = b->f34 + (b->blk_dc.w130 == 0 ? 80.0f : -80.0f);
     a->f38 = b->f41c + 548.571411133f;
     a->f5c = 0;
     a->f68 = 0;
