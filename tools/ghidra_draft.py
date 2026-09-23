@@ -84,8 +84,7 @@ def main():
     print(' '.join(command), flush=True)
     result = subprocess.run(command, cwd=work)
     if result.returncode == 0:
-        drafts = sorted(Path(args.out).glob('func_*.c'))
-        subprocess.run([sys.executable, str(ROOT / 'tools' / 'draft_pools.py'), *map(str, drafts)], check=True)
+        subprocess.run([sys.executable, str(ROOT / 'tools' / 'draft_pools.py'), args.out], check=True)
     return result.returncode
 
 
