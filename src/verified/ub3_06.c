@@ -1,7 +1,5 @@
-/* func_0c096a6c, func_0c096a7e and func_0c096ae6 match exactly. func_0c096a18
- * differs from retail only by a scratch-register swap (r1 instead of r3) at
- * the mov #0 storing a->b141: 82/84 bytes equal, both floats and the branch
- * correct. */
+/* All four callbacks and their shared pool match at the reviewed 364-byte
+ * extent. The three 5/3-derived constants need SHC's exact decimal spellings. */
 struct Obj_ub3_06 {
     unsigned char pad0[6];
     unsigned char b6;
@@ -61,10 +59,10 @@ void func_0c096a7e(struct Obj_ub3_06 *a)
     a->b12c = 1;
     a->f100 = a->f52;
     if ((a->b1a4 & 1) == 0) {
-        a->f52 -= 426.6666564941406f;
+        a->f52 -= 426.66666f;
         a->f92 = 10.0f;
     } else {
-        a->f52 += 426.6666564941406f;
+        a->f52 += 426.66666f;
         a->f92 = -10.0f;
     }
     a->f56 = a->f41c;
@@ -80,7 +78,7 @@ void func_0c096ae6(struct Obj_ub3_06 *a)
     a->f92 += a->f104;
     if (--a->s28 <= 0) {
         a->b6++;
-        a->f104 = (a->b1a4 & 1) == 0 ? -0.4166666567325592f : 0.4166666567325592f;
+        a->f104 = (a->b1a4 & 1) == 0 ? -0.41666666f : 0.41666666f;
         func_0c02a0c4(a, 18, 1);
         func_0c0344a0(a, 10);
     }

@@ -1,8 +1,6 @@
-/* func_0c1cdff0 differs from retail in register numbering only: the store
- * o->p24->ld4 = 0 uses r2 for the constant and r3 for the pointer where retail
- * uses r3 and r2 (3 words at 0x0c1ce008..0x0c1ce00c). func_0c1cdf30 and the
- * pool are exact. The 0.6f multiplier must be spelled 1.0f - 0.4f so SHC loads
- * 0x3f19999a (a bare 0.6f compiles one ULP low, 0x3f199999). */
+/* The nonzero branch preserves retail's register allocation for the store.
+ * The 0.6f multiplier is spelled 1.0f - 0.4f so SHC loads 0x3f19999a;
+ * a bare 0.6f compiles one ULP low. */
 struct V3 { float x, y, z; };
 
 struct Parent_tu2_11 {
@@ -75,9 +73,10 @@ void func_0c1cdff0(struct Obj_tu2_11 *o)
 {
     if (dat_0c2d6f84->b2 != 3)
         goto tail;
-    if (!o->p24->s28)
+    if (o->p24->s28 != 0)
+        o->p24->ld4 = 0;
+    else
         goto dispatch;
-    o->p24->ld4 = 0;
 tail:
     func_0c037688(o);
     return;

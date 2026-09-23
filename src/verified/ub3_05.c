@@ -1,9 +1,6 @@
-/* All 17 functions and the 0x0c056a08 pool match retail exactly
- * (618/618 equal bytes). The section still links to 0x0c056ba3: SHC flushes
- * a second, 8-byte tail pool at 0x0c056b9c from func_0c056b4e's literals,
- * between bulk_017's table at 0x0c056b7c and the next unit's code at
- * 0x0c056ba4. The registry's one-pool layout cannot own that tail without
- * overlapping bulk_017, so the unit stays a candidate. */
+/* All 17 functions and both literal pools match retail across the 660-byte
+ * section. The two-byte alignment pad at 0x0c056b7a joins the tail pool to
+ * this unit; earlier data-only owners are released on registration. */
 struct Rec_ub3_05 { unsigned char pad[28]; int l28; };
 
 struct Obj_ub3_05 {
