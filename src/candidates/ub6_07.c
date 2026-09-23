@@ -5,10 +5,8 @@
  * size 296.
  *
  * func_0c0b4630, func_0c0b465a and func_0c0b467a match exactly. The shared
- * pool is still nonexact (a 0x12c/0x108 ordering shift
- * that a `func_0c1a62b0(a, 4)` two-arg guess for func_0c0b468e's tail call
- * did not fix, so left with one argument); func_0c0b468e and func_0c0b46d4
- * are close but not exact. Left as a candidate. */
+ * pool is exact with SHC's decimal spellings for 0.2, -0.8035714, and 0.016.
+ * func_0c0b468e and func_0c0b46d4 remain nonexact, so this is a candidate. */
 
 struct Obj_ub6_07 {
     unsigned char pad0[5];
@@ -61,7 +59,7 @@ void func_0c0b468e(struct Obj_ub6_07 *a)
     a->b32++;
     a->b12c = 1;
     func_0c02a0c4(a, 18, 1);
-    a->f264 = 0.2f;
+    a->f264 = 0.200000003f;
     a->b1f9 = 2;
     a->f56 += 100.0f;
     func_0c1a62b0(a);
@@ -77,9 +75,9 @@ void func_0c0b46d4(struct Obj_ub6_07 *a)
         a->f96 = 0.0f;
         a->f104 = 0.0f;
         a->f108 = 0.0f;
-        a->f108 = -0.803571f;
+        a->f108 = -0.80357140303f;
     }
     if (a->b141 == 3) {
-        a->f264 = a->f264 + 0.016f;
+        a->f264 = a->f264 + 0.016000001f;
     }
 }
