@@ -1,10 +1,8 @@
-/* Four functions sharing the literal pool at 0x0c161810. Candidate:
- * func_0c16170c and func_0c161728 match apart from pool displacements;
- * func_0c161782 stores b12c before loading the jump target in retail
- * (`mov.b; mov.l; jmp; nop`) where SHC here puts the store in the delay slot;
- * func_0c16178e differs by a `nop` after `mov r3,r0` and the placement of
- * `mov #11,r2`. The unit's mov.l pool starts at 0x0c16181c behind an unmapped
- * pad word at 0x0c16181a, so the diff tool's section stops there.
+/* The full 288-byte section links at retail. func_0c16170c,
+ * func_0c16178e, and the 28-byte pool are exact. func_0c161728 matches
+ * 80/90 bytes; retail stores b4 before b12c, but simply swapping source
+ * statements changes SHC's section layout. func_0c161782 matches 10/12
+ * bytes and uses r3 where retail uses r2 for its zero store.
  * Imports: __slow_mvn=0x0c1fb838, __quick_odd_mvn=0x0c1fb7a0. */
 struct V3_tu7_12 { float x, y, z; };
 struct Copy_c0_tu7_12 { unsigned char raw[0xc0]; };
