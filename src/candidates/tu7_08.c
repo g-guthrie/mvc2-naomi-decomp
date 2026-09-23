@@ -1,9 +1,7 @@
-/* Two functions sharing the literal pool at 0x0c10276e. Candidate:
- * func_0c1026f2 has the retail instruction stream; func_0c102648 differs only
- * by two `nop`s retail places after `mov r4,r0` in the s == 28 || s == 22
- * chain, which shift every later address and pool displacement by 4 bytes.
- * The unit's mov.l pool starts at 0x0c102778 behind an unmapped pad word at
- * 0x0c102776, so the diff tool's section stops there. */
+/* The full 312-byte section links at retail. func_0c1026f2 and the 18-byte
+ * shared pool match exactly. func_0c102648 matches 162/170 bytes; retail
+ * sign-extends b15 twice before the final 0-or-4 check, while SHC compiles
+ * this source without those extensions. The w420 condition is zero in retail. */
 struct Obj_tu7_08 {
     unsigned char pad0[28];
     short s28;
@@ -34,7 +32,7 @@ void func_0c102648(struct Obj_tu7_08 *a, struct Ctl_tu7_08 *b)
     if (b->b9 == 0)
         return;
     s = a->b1d0;
-    if (s == 28 || s == 22 || a->w420)
+    if (s == 28 || s == 22 || !a->w420)
         b->s10 = 1;
     if (--b->s10 == 0) {
         b->b9 = 0;
