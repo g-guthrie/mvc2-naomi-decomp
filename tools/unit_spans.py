@@ -28,6 +28,11 @@ def branch_target(word, pc):
     return None
 
 
+def owned_code_sections(units):
+    return [(number(p['address']), number(p['address']) + number(p['size']))
+            for u in units for p in u['sections'] if p['kind'] == 'code']
+
+
 def spans(image, base, ranges, owned):
     merged = []
     for lo, size, kind in sorted(ranges, key=lambda r: r[0]):
@@ -106,8 +111,9 @@ def main():
     offset, base, size = (number(target['main'][k]) for k in ('rom_offset', 'address', 'size'))
     image = program[offset:offset + size]
     ranges = [(number(r['address']), number(r['size']), r['kind']) for r in load(ROOT / 'config/mapping.json')['ranges']]
-    owned = [(number(p['address']), number(p['address']) + number(p['size']))
-             for u in load(ROOT / 'config/units.json') for p in u['sections']]
+    # Registered data pools can be released and reassigned when a C unit is
+    # registered. Only existing code ownership makes a span unavailable.
+    owned = owned_code_sections(load(ROOT / 'config/units.json'))
     found = [(s, n) for s, n in spans(image, base, ranges, owned) if args.min <= n <= args.max and s < args.below]
     found = found[:args.limit]
     if args.json:
