@@ -57,6 +57,8 @@ struct Actor {
     float f52, f56, f60;
     unsigned char pad4[24];
     float f88, f92, f96, f100, f104, f108, f112, f116;
+    unsigned char pad5[0x12c - 120];
+    unsigned char b12c;
 };
 
 /* Byte stream reader used by the script interpreter at 0x0c2007xx. */

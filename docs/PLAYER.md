@@ -39,8 +39,8 @@ this table is wrong. Rows our own units have since confirmed are marked.
 | 0x00e0 | 4 | `x_pos_screenspace` |  |
 | 0x00e4 | 4 | `y_pos_screenspace` |  |
 | 0x0110 | 1 | `xflip_copy_2` |  |
-| 0x012c | 1 | `unk_012c` | not sure, seems to be 1 all the time loc_8c05176e sets it to 1 |
-| 0x0130 | 1 | `xflip_copy` | **(confirmed here)** |
+| 0x012c | 1 | `unk_012c` | flag accessed as a byte in exact NAOMI units; Dreamcast notes say it is often 1 |
+| 0x0130 | 2 | `xflip_copy` | exact NAOMI units read and write a 16-bit field here; name from Dreamcast notes |
 | 0x0142 | 2 | `frame_count` |  |
 | 0x0144 | 2 | `sprite_id` |  |
 | 0x014a | 1 | `anim_flags` | if == 128 then opponent can preblock also seems to control whether special cancels are allowed 64 seems to directly inherit from 0x10 of animation structs in pldat files definitely flags |
