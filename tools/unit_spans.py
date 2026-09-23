@@ -74,7 +74,8 @@ def spans(image, base, ranges, owned):
             if rkind != 'data':
                 continue
             # pool ends at `end`: does anything cross it?
-            crossing = any((a < end <= t) or (t < end <= a) for a, t in edges if start <= a < end + 2048 and start <= t < end + 2048 and (a < end) != (t < end))
+            crossing = any(((a < end <= t) or (t < end <= a)) for a, t in edges
+                           if a >= start and t >= start)
             if not crossing:
                 closed = True
                 break
