@@ -8,6 +8,7 @@ after it does not call back across with bsr or bra. Spans between boundaries
 that start with a real function start are candidate units.
 
     python3 tools/unit_spans.py --min 200 --max 1400 --limit 40
+    python3 tools/unit_spans.py --start 0x0c025528 --explain
 """
 import argparse
 import bisect
@@ -31,6 +32,40 @@ def branch_target(word, pc):
 def owned_code_sections(units):
     return [(number(p['address']), number(p['address']) + number(p['size']))
             for u in units for p in u['sections'] if p['kind'] == 'code']
+
+
+def span_evidence(image, base, ranges, units, start, size):
+    """Show the pools, owners, and control-flow/literal dependencies of a span."""
+    end = start + size
+    parts = [(lo, lo + n, kind) for lo, n, kind in ranges
+             if lo < end and lo + n > start]
+    pools = [(lo, hi) for lo, hi, kind in parts if kind == 'data']
+    pool_rows = []
+    for lo, hi in pools:
+        owners = sorted({u['id'] for u in units for p in u['sections']
+                         if p['kind'] == 'data' and number(p['address']) < hi
+                         and number(p['address']) + number(p['size']) > lo})
+        pool_rows.append({'address': f'0x{lo:08x}', 'size': hi - lo, 'owners': owners})
+    dependencies = []
+    for lo, hi, kind in parts:
+        if kind != 'code':
+            continue
+        for pc in range(max(lo, start), min(hi, end), 2):
+            word = struct.unpack_from('<H', image, pc - base)[0]
+            branch = branch_target(word, pc)
+            literal = pc_relative_target(word, pc)
+            for edge_kind, target in [('branch', branch),
+                                      ('literal', literal[0] if literal else None)]:
+                if target is None:
+                    continue
+                crossed = [f'0x{a:08x}' for a, b in pools
+                           if (pc < a <= target or target < b <= pc)]
+                if crossed or not start <= target < end:
+                    dependencies.append({'kind': edge_kind, 'source': f'0x{pc:08x}',
+                                         'target': f'0x{target:08x}',
+                                         'crossed_pools': crossed,
+                                         'external': not start <= target < end})
+    return {'pools': pool_rows, 'dependencies': dependencies}
 
 
 def spans(image, base, ranges, owned):
@@ -104,7 +139,9 @@ def main():
     parser.add_argument('--max', type=int, default=1400)
     parser.add_argument('--limit', type=int, default=50)
     parser.add_argument('--below', type=number, default=0x0c1e9000, help='only spans below this address (game code)')
+    parser.add_argument('--start', type=number, help='show only the proposal at this address')
     parser.add_argument('--json', action='store_true')
+    parser.add_argument('--explain', action='store_true', help='JSON with pool ownership and branch/literal dependencies')
     args = parser.parse_args()
     target = load(ROOT / 'config/target.json')
     program = verify_rom(target)
@@ -113,10 +150,17 @@ def main():
     ranges = [(number(r['address']), number(r['size']), r['kind']) for r in load(ROOT / 'config/mapping.json')['ranges']]
     # Registered data pools can be released and reassigned when a C unit is
     # registered. Only existing code ownership makes a span unavailable.
-    owned = owned_code_sections(load(ROOT / 'config/units.json'))
-    found = [(s, n) for s, n in spans(image, base, ranges, owned) if args.min <= n <= args.max and s < args.below]
+    units = load(ROOT / 'config/units.json')
+    owned = owned_code_sections(units)
+    found = [(s, n) for s, n in spans(image, base, ranges, owned)
+             if (args.start is not None or args.min <= n <= args.max)
+             and s < args.below and (args.start is None or s == args.start)]
     found = found[:args.limit]
-    if args.json:
+    if args.explain:
+        print(json.dumps([{'start': f'0x{s:08x}', 'size': n,
+                           **span_evidence(image, base, ranges, units, s, n)}
+                          for s, n in found], indent=2))
+    elif args.json:
         print(json.dumps([{'start': f'0x{s:08x}', 'size': n} for s, n in found]))
     else:
         for s, n in found:
