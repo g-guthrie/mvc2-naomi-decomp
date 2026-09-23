@@ -90,9 +90,13 @@ struct LinkedActor {
     float f52, f56, f60;
     unsigned char pad7[80 - 64];
     struct LinkedActorVec3 v80;
-    unsigned char pad8[0xdc - 92];
+    unsigned char pad8[96 - 92];
+    float f96;
+    unsigned char pad9[0xcc - 100];
+    short wcc;
+    unsigned char pad10[0xdc - 0xce];
     struct LinkedActorBlock sdc;
-    unsigned char pad9[0x1a3 - 0x19c];
+    unsigned char pad11[0x1a3 - 0x19c];
     unsigned char b1a3, b1a4;
 };
 
