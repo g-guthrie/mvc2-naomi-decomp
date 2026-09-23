@@ -59,6 +59,12 @@ struct Actor {
     float f88, f92, f96, f100, f104, f108, f112, f116;
     unsigned char pad5[0x12c - 120];
     unsigned char b12c;
+    unsigned char pad6[0x158 - 0x12d];
+    char b158, b159;
+    unsigned char pad7[0x1f9 - 0x15a];
+    unsigned char b1f9;
+    unsigned char pad8[0x41c - 0x1fa];
+    float f41c;
 };
 
 /* Linked actor variant with pointers at 0x14 and 0x18. The 0xc0-byte block at
