@@ -61,6 +61,41 @@ struct Actor {
     unsigned char b12c;
 };
 
+/* Linked actor variant with pointers at 0x14 and 0x18. The 0xc0-byte block at
+ * 0xdc is copied by SHC's runtime helper in the 0x0c19dxxx callbacks. */
+struct LinkedActorVec3 { float x, y, z; };
+struct LinkedActorBlock {
+    unsigned char pad0[0x50];
+    unsigned char b12c;
+    unsigned char pad1[0x7c - 0x51];
+    short w158;
+    unsigned char pad2[0xc0 - 0x7e];
+};
+struct LinkedActor {
+    unsigned char pad0;
+    unsigned char b1, b2;
+    unsigned char pad1;
+    unsigned char b4;
+    unsigned char pad2[16 - 5];
+    void (*p16)(struct LinkedActor *);
+    struct LinkedActor *p20, *p24;
+    short s28;
+    unsigned char pad3[33 - 30];
+    char b33;
+    unsigned char pad4[36 - 34];
+    unsigned char b36;
+    unsigned char pad5[48 - 37];
+    unsigned char b48;
+    unsigned char pad6[52 - 49];
+    float f52, f56, f60;
+    unsigned char pad7[80 - 64];
+    struct LinkedActorVec3 v80;
+    unsigned char pad8[0xdc - 92];
+    struct LinkedActorBlock sdc;
+    unsigned char pad9[0x1a3 - 0x19c];
+    unsigned char b1a3, b1a4;
+};
+
 /* Byte stream reader used by the script interpreter at 0x0c2007xx. */
 struct ByteCursor { int cnt0; int cnt4; int cnt8; unsigned char *cur; };
 
