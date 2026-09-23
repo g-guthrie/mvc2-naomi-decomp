@@ -5,8 +5,8 @@ import struct
 import sys
 import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
-from core import ROOT, compare, elf_segments, validate_units
-from report import layout, metrics
+from core import ROOT, compare, elf_segments, load, validate_units
+from report import layout, metrics, work_queue
 
 
 def executable(address=0x1000, data=b'\x0b\0\x09\0', kind=2):
@@ -20,6 +20,12 @@ def link(address=0x1000, size=4):
 
 
 class ProofTests(unittest.TestCase):
+    def test_every_source_unit_is_registered(self):
+        registered = {unit['source'] for unit in load(ROOT / 'config/units.json') if 'source' in unit}
+        sources = {str(path.relative_to(ROOT)) for folder in ('verified', 'candidates')
+                   for path in (ROOT / 'src' / folder).glob('*.c')}
+        self.assertEqual(sources, registered)
+
     def setUp(self):
         self.unit = dict(id='func', source='src/func.c', mode='verified',
                          exports={'_func':0x1000}, sections=[dict(section='P',kind='code',address=0x1000,size=4)])
@@ -59,6 +65,31 @@ class ProofTests(unittest.TestCase):
     def test_candidate_without_matching_functions_has_no_progress_credit(self):
         proof = {'main_size':100, 'units':[dict(credited=False, function_bytes=0, sections=[dict(kind='code',size=4)])]}
         self.assertEqual(metrics(proof)['code']['matched_bytes'],0)
+
+    def test_progress_provenance_sums_to_credited_bytes(self):
+        units = [dict(credited=True, sections=[dict(kind='code', size=4)]),
+                 dict(credited=True, library='sdk.lib', sections=[dict(kind='code', size=6)]),
+                 dict(credited=False, function_bytes=2, pool_bytes=1,
+                      sections=[dict(kind='code', size=4)])]
+        result = metrics({'main_size': 100, 'units': units, 'mapping':
+                          {'reviewed_code_bytes': 20, 'reviewed_data_bytes': 5, 'unknown_bytes': 75}})
+        self.assertEqual(result['provenance'], {
+            'c_source': {'code': 4, 'data': 0},
+            'sdk_modules': {'code': 6, 'data': 0},
+            'candidate_fragments': {'code': 2, 'data': 1}})
+        self.assertEqual(sum(sum(row.values()) for row in result['provenance'].values()),
+                         result['decomp']['matched_bytes'])
+
+    def test_work_queue_separates_near_match_from_wrong_extent(self):
+        def candidate(name, equal, linked):
+            return dict(id=name, source=f'src/candidates/{name}.c', credited=False,
+                        sections=[dict(address=0x1000, size=100, linked_address=0x1000,
+                                       linked_size=linked, kind='code', equal_bytes=equal)],
+                        functions=[], function_bytes=0, pool_bytes=0, problems=[])
+        queue = work_queue(dict(input_sha256='test', units=[candidate('extent', 100, 120),
+                                                         candidate('near', 98, 100)]))
+        self.assertEqual([(row['id'], row['kind']) for row in queue['candidates']],
+                         [('near', 'near_match'), ('extent', 'review_extent')])
 
     def test_unknown_bytes_stay_in_lower_bound(self):
         proof = {'main_size':100, 'units':[dict(credited=True, sections=[dict(kind='code',size=4)])]}

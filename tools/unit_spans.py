@@ -15,6 +15,7 @@ import json
 import struct
 
 from core import ROOT, load, number, verify_rom
+from pool_clusters import pc_relative_target
 
 
 def branch_target(word, pc):
@@ -36,15 +37,19 @@ def spans(image, base, ranges, owned):
             merged.append((lo, size, kind))
     ranges = merged
     words = lambda lo, hi: [struct.unpack_from('<H', image, a - base)[0] for a in range(lo, hi, 2)]
-    # crossing edges: any branch from a to target t
+    # Branches and PC-relative loads both tie code to bytes across a pool.
     edges = []
     for lo, size, kind in ranges:
         if kind != 'code':
             continue
         for i, w in enumerate(words(lo, lo + size)):
-            t = branch_target(w, lo + 2 * i)
+            pc = lo + 2 * i
+            t = branch_target(w, pc)
             if t is not None:
-                edges.append((lo + 2 * i, t))
+                edges.append((pc, t))
+            literal = pc_relative_target(w, pc)
+            if literal is not None:
+                edges.append((pc, literal[0]))
     # boundary candidates: each data range end (pool end) and start
     result = []
     i = 0
@@ -61,6 +66,7 @@ def spans(image, base, ranges, owned):
                 i += 1
                 continue
         start, j = lo, i
+        closed = False
         while j < len(ranges):
             rlo, rsize, rkind = ranges[j]
             end = rlo + rsize
@@ -70,8 +76,9 @@ def spans(image, base, ranges, owned):
             # pool ends at `end`: does anything cross it?
             crossing = any((a < end <= t) or (t < end <= a) for a, t in edges if start <= a < end + 2048 and start <= t < end + 2048 and (a < end) != (t < end))
             if not crossing:
+                closed = True
                 break
-        if j >= len(ranges):
+        if not closed:
             break
         end = ranges[j - 1][0] + ranges[j - 1][1]
         if ranges[j - 1][2] == 'data':

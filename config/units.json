@@ -73665,12 +73665,6 @@
         "size": 12
       },
       {
-        "section": "Cn159050",
-        "kind": "data",
-        "address": "0x0c159050",
-        "size": 4
-      },
-      {
         "section": "Cn1591da",
         "kind": "data",
         "address": "0x0c1591da",
@@ -73900,7 +73894,6 @@
       "_dat_0c158f42": "0x0c158f42",
       "_dat_0c159024": "0x0c159024",
       "_dat_0c159030": "0x0c159030",
-      "_dat_0c159050": "0x0c159050",
       "_dat_0c1591da": "0x0c1591da",
       "_dat_0c1591ec": "0x0c1591ec",
       "_dat_0c159366": "0x0c159366",
@@ -147474,18 +147467,6 @@
         "size": 8
       },
       {
-        "section": "Cn14c04c",
-        "kind": "data",
-        "address": "0x0c16d04c",
-        "size": 2
-      },
-      {
-        "section": "Cn14c050",
-        "kind": "data",
-        "address": "0x0c16d050",
-        "size": 4
-      },
-      {
         "section": "Cn14c6fa",
         "kind": "data",
         "address": "0x0c16d6fa",
@@ -213413,8 +213394,8 @@
   },
   {
     "id": "ud0_01",
-    "source": "src/candidates/ud0_01.c",
-    "mode": "candidate",
+    "source": "src/verified/ud0_01.c",
+    "mode": "verified",
     "sections": [
       {
         "section": "P",
@@ -218832,6 +218813,59 @@
       "_func_0c02a0c4": "0x0c02a0c4",
       "_func_0c037d54": "0x0c037d54",
       "_dat_0c2442ac": "0x0c2442ac"
+    }
+  },
+  {
+    "id": "func_0c15903c",
+    "source": "src/verified/func_0c15903c.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c15903c",
+        "size": 24,
+        "interior": [
+          {
+            "address": "0x0c15904e",
+            "size": 6,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c15903c": "0x0c15903c"
+    },
+    "imports": {
+      "_dat_0c2508d8": "0x0c2508d8"
+    }
+  },
+  {
+    "id": "tu_0c16d038",
+    "source": "src/verified/tu_0c16d038.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c16d038",
+        "size": 28,
+        "interior": [
+          {
+            "address": "0x0c16d04c",
+            "size": 8,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c16d038": "0x0c16d038",
+      "_func_0c16d046": "0x0c16d046"
+    },
+    "imports": {
+      "_func_0c037688": "0x0c037688"
     }
   }
 ]
