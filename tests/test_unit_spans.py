@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
-from unit_spans import owned_code_sections, spans
+from unit_spans import owned_code_sections, span_evidence, spans
 
 
 class UnitSpanTests(unittest.TestCase):
@@ -43,6 +43,21 @@ class UnitSpanTests(unittest.TestCase):
         ranges = [(base, 4, 'code'), (base + 4, 4, 'data')]
         units = [{'sections': [{'kind': 'data', 'address': base + 4, 'size': 4}]}]
         self.assertEqual(spans(image, base, ranges, owned_code_sections(units)), [(base, 8)])
+
+    def test_evidence_identifies_literal_pool_owner_and_crossing(self):
+        base = 0x1000
+        image = bytearray(0x30)
+        image[:4] = bytes.fromhex('0ad17ea4')  # MOV.L to 0x102c; BRA to 0x1100.
+        ranges = [(base, 4, 'code'), (base + 4, 4, 'data'),
+                  (base + 8, 0x24, 'code'), (base + 0x2c, 4, 'data')]
+        units = [{'id': 'old_pool', 'sections': [
+            {'kind': 'data', 'address': base + 4, 'size': 4}]}]
+        evidence = span_evidence(image, base, ranges, units, base, 0x30)
+        self.assertEqual(evidence['pools'][0]['owners'], ['old_pool'])
+        self.assertTrue(any(d['kind'] == 'literal' and d['target'] == '0x0000102c'
+                            for d in evidence['dependencies']))
+        self.assertTrue(any(d['kind'] == 'branch' and d['external']
+                            for d in evidence['dependencies']))
 
 
 if __name__ == '__main__':
