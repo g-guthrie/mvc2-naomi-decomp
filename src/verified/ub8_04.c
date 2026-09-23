@@ -1,15 +1,7 @@
-/* Assignment gave 0x0c1221f8 size 602 (end 0x0c122452), but the last
- * function's mova float pool reaches 0x0c122470-0x0c12247f, and that pool is
- * contiguous with the rest of the reviewed data back to 0x0c12244e; the next
- * code range starts at 0x0c122480. Extended the unit to end there: size 648
- * (0x0c122480 - 0x0c1221f8).
- *
- * func_0c12229a, func_0c1222ac, func_0c122388 and func_0c1223f8 match retail
- * exactly. func_0c1221f8 differs only by two scratch-register swaps (r2 vs
- * r4 for the reloaded a->b141 in the "a->b141 &= (a->b141 - 67)"-shaped
- * clear, and r2 vs r3 for the a->w130 reload just below it); every other
- * byte, including both float pool constants and the bit-clear's own shape,
- * matches. Registering as a candidate. */
+/* Five functions and both shared pools match retail across the 648-byte
+ * section. The bit clear is a compound &= 0xfe: SHC reuses the 0x141 member
+ * offset to make that mask, and the expanded assignment changes registers.
+ * The -12.85714245f spelling lands on retail's 0xc14db6db pool word. */
 
 struct Obj_ub8_04 {
     unsigned char pad0[2];
@@ -60,10 +52,10 @@ void func_0c1221f8(struct Obj_ub8_04 *a)
 {
     func_0c02a026(a);
     if (a->b141 & 1) {
-        a->b141 = a->b141 & (a->b141 - 67);
+        a->b141 &= 0xfe;
         a->f92 = -11.6666667f;
         a->f104 = 0.0f;
-        a->f96 = -12.8661404f;
+        a->f96 = -12.85714245f;
         a->f108 = 0.0f;
         if (a->w130 != 0) {
             a->f92 = -a->f92;
