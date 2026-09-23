@@ -2,6 +2,7 @@
 """Substitute literal-pool words into a Ghidra draft.
 
     python3 tools/draft_pools.py DRAFT.c [DRAFT.c ...]
+    python3 tools/draft_pools.py build/drafts
 
 A draft names each PC-relative literal as _DAT_0cXXXXXX. The value is in the
 ROM: 16 bits for a mov.w load, 32 bits for mov.l and mova. This rewrites the
@@ -11,6 +12,7 @@ the float spelling as a comment when the 32-bit pattern is a plausible float.
 import re
 import struct
 import sys
+from pathlib import Path
 
 from core import ROOT, load, number, verify_rom
 
@@ -51,7 +53,11 @@ def main():
     offset, base, size = (number(target['main'][k]) for k in ('rom_offset', 'address', 'size'))
     image = program[offset:offset + size]
     table = widths(image, base)
-    for path in sys.argv[1:]:
+    paths = []
+    for arg in sys.argv[1:]:
+        path = Path(arg)
+        paths.extend(sorted(path.glob('func_*.c')) if path.is_dir() else [path])
+    for path in paths:
         text = open(path).read()
         def sub(m):
             a = int(m.group(1), 16)
