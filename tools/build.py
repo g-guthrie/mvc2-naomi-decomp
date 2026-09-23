@@ -66,7 +66,11 @@ def compile_unit(unit, work, flags):
 
     shutil.copyfile(ROOT / unit['source'], work / (stem + '.c'))
     for header in sorted((ROOT / 'src/include').glob('*.h')):
-        shutil.copyfile(header, work / header.name)
+        # Units compile in parallel in one work directory. Never expose a
+        # truncated header to another compiler while refreshing its copy.
+        staged = work / (stem + '.' + header.name + '.tmp')
+        shutil.copyfile(header, staged)
+        os.replace(staged, work / header.name)
 
     options = load(ROOT / 'config/compiler.json')['sets'][unit.get('options', 'game')]
     run('shc.exe', [stem + '.c', *options, '-code=asmcode', '-object=' + stem + '.src'])
