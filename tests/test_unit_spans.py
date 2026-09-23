@@ -24,6 +24,19 @@ class UnitSpanTests(unittest.TestCase):
                   (base + 8, 0x8fc, 'code'), (base + 0x904, 4, 'data')]
         self.assertEqual(spans(image, base, ranges, []), [(base, 0x908)])
 
+    def test_unreviewed_gap_does_not_hide_later_unit(self):
+        base = 0x1000
+        image = bytearray(0x20)
+        ranges = [(base, 4, 'code'), (base + 8, 4, 'data'),
+                  (base + 12, 4, 'code'), (base + 16, 4, 'data')]
+        self.assertEqual(spans(image, base, ranges, []), [(base + 12, 8)])
+
+    def test_owned_pool_excludes_proposal(self):
+        base = 0x1000
+        image = bytearray(8)
+        ranges = [(base, 4, 'code'), (base + 4, 4, 'data')]
+        self.assertEqual(spans(image, base, ranges, [(base + 4, base + 8)]), [])
+
 
 if __name__ == '__main__':
     unittest.main()
