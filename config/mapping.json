@@ -3453,6 +3453,13 @@
       "evidence": "CFG walk from 0x0c0275fc; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c02763a",
+      "size": 14,
+      "kind": "code",
+      "sha256": "84f6189bc7d52274046959f862195ddc78188b780471155abf7ce4b52111c9f7",
+      "evidence": "14-byte wrapper: saves PR, loads the 0x0c022ccc callee from 0x0c027648, JSR with MOV #1,R6 delay slot, restores PR, RTS with NOP delay slot."
+    },
+    {
       "address": "0x0c027648",
       "size": 4,
       "kind": "data",
