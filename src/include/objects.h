@@ -59,6 +59,14 @@ struct Actor {
     float f88, f92, f96, f100, f104, f108, f112, f116;
     unsigned char pad5[0x12c - 120];
     unsigned char b12c;
+    unsigned char pad6[0x158 - 0x12d];
+    char b158, b159;
+    unsigned char pad7[0x1f9 - 0x15a];
+    unsigned char b1f9;
+    unsigned char pad8[0x1fc - 0x1fa];
+    unsigned char b1fc;
+    unsigned char pad9[0x41c - 0x1fd];
+    float f41c;
 };
 
 /* Linked actor variant with pointers at 0x14 and 0x18. The 0xc0-byte block at
@@ -90,9 +98,13 @@ struct LinkedActor {
     float f52, f56, f60;
     unsigned char pad7[80 - 64];
     struct LinkedActorVec3 v80;
-    unsigned char pad8[0xdc - 92];
+    unsigned char pad8[96 - 92];
+    float f96;
+    unsigned char pad9[0xcc - 100];
+    short wcc;
+    unsigned char pad10[0xdc - 0xce];
     struct LinkedActorBlock sdc;
-    unsigned char pad9[0x1a3 - 0x19c];
+    unsigned char pad11[0x1a3 - 0x19c];
     unsigned char b1a3, b1a4;
 };
 
