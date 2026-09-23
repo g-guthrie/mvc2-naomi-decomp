@@ -1,8 +1,7 @@
-/* Two functions sharing the literal pool at 0x0c1e1690. 202/206 compared bytes
- * match. Not creditable yet: the retail pool runs to 0x0c1e16c0 but
- * config/mapping.json leaves the 2-byte alignment pad at 0x0c1e169a unmapped,
- * so the tool sizes the section at 206 bytes while the compiled unit is 244.
- * Remaining code difference, in func_0c1e1610 at 0x0c1e1640: retail loads the
+/* Two functions share the pool at 0x0c1e1690. The current 244-byte section
+ * links at retail; func_0c1e15cc matches exactly, while the pool and the
+ * second function remain nonexact (236/244 equal bytes overall).
+ * In func_0c1e1610 at 0x0c1e1640, retail loads the
  * callee into r1 and dat_0c2d964c->p0 into r2; ours uses r2 and r4. */
 struct Obj_tu3_05 {
     unsigned char pad0[4];
