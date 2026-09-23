@@ -1,14 +1,5 @@
-/* All three functions and the leading pool match retail exactly (294/294 of
- * the reviewed span). config/mapping.json has a 2-byte gap between the data
- * range at 0x0c19584a (end of the 8-byte 0xdc/0xc0/0x1a3/0x130 block) and
- * the next one at 0x0c19584c (the __quick_odd_mvn pointer), so
- * tools/diff_unit.py's describe() stops deriving the section there (294
- * bytes) even though the compiled unit correctly continues for another 42
- * bytes of real, matching pool content up to the next function at
- * 0x0c195874 (336 bytes total) -- the same kind of unreviewed-gap artifact
- * documented in src/verified/tu5_05.c, just inside the pool instead of
- * between functions. That size mismatch is reported as "extra bytes"
- * despite every compared byte being equal. */
+/* All three functions and their shared 56-byte pool match retail across the
+ * reviewed 336-byte extent. Float literals use SHC's exact decimal spellings. */
 struct Block12_ub5_04 { float f[3]; };
 struct Block192_ub5_04 {
     unsigned char pad0[80];
@@ -103,12 +94,12 @@ void func_0c195788(struct Obj_ub5_04 *a, struct Obj_ub5_04 *b)
     a->f92 = 20.0f;
     a->f104 = 0.0f;
     a->f96 = 0.0f;
-    a->f108 = -0.803571403f;
-    f4 = 106.666664f;
+    a->f108 = -0.80357140303f;
+    f4 = 106.666664124f;
     if (a->s220.w84 != 0) {
         a->f92 = -a->f92;
         a->f104 = -a->f104;
-        f4 = -106.666664f;
+        f4 = -106.666664124f;
     }
     a->u52.fv.f52 = b->u52.fv.f52 + f4;
     a->u52.fv.f56 = 107.142853f + b->u52.fv.f56;

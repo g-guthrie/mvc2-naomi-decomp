@@ -280,13 +280,6 @@ const unsigned short dat_0c1956fe[] = {
     0x4385u, 0xa0c4u, 0x0c02u,
 };
 
-#pragma section n19584c
-const unsigned int dat_0c19584c[] = {
-    0x0c1fb7a0u, 0x43855555u, 0x0c257f20u, 0x0c1fb838u,
-    0x41a00000u, 0xbf4db6dbu, 0x42d55555u, 0xc2d55555u,
-    0x42d64924u, 0x0c02a0c4u,
-};
-
 #pragma section n19591c
 const unsigned int dat_0c19591c[] = {
     0x041c012cu, 0x0c2f8338u, 0x0c02a026u, 0x0c037688u,
