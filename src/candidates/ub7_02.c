@@ -3,7 +3,8 @@
  * from the previous pool. The current reviewed section spans 360 bytes from
  * 0x0c0c6590 through 0x0c0c66f8 and links at retail.
  *
- * 355/360 bytes match. func_0c0c6590, func_0c0c669e and func_0c0c66c6 are
+ * 356/360 bytes match; the 32-byte pool is exact with SHC's decimal spelling
+ * for -0.80357140303f. func_0c0c6590, func_0c0c669e and func_0c0c66c6 are
  * exact. func_0c0c65f6 and func_0c0c663e each differ by one instruction: the
  * final tail-jmp to func_0c02a026 loads it into r3 in one function and r2 in
  * the other in retail, but the compiler swaps which function gets which
@@ -74,7 +75,7 @@ void func_0c0c65f6(struct Obj_ub7_02 *a)
         a->f92 = 0.0f;
         a->f104 = 0.0f;
         a->f96 = 0.0f;
-        a->f108 = -0.8035714f;
+        a->f108 = -0.80357140303f;
         func_0c02a0c4(a, 18, 2);
     } else {
         func_0c02a026(a);
