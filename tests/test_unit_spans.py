@@ -16,6 +16,14 @@ class UnitSpanTests(unittest.TestCase):
                   (base + 8, 0x24, 'code'), (base + 0x2c, 4, 'data')]
         self.assertEqual(spans(image, base, ranges, []), [(base, 0x30)])
 
+    def test_long_branch_crosses_pool_boundary(self):
+        base = 0x1000
+        image = bytearray(0x908)
+        image[:4] = bytes.fromhex('7ea40900')  # BRA from 0x1000 to 0x1900; NOP delay.
+        ranges = [(base, 4, 'code'), (base + 4, 4, 'data'),
+                  (base + 8, 0x8fc, 'code'), (base + 0x904, 4, 'data')]
+        self.assertEqual(spans(image, base, ranges, []), [(base, 0x908)])
+
 
 if __name__ == '__main__':
     unittest.main()
