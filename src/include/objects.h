@@ -63,7 +63,9 @@ struct Actor {
     char b158, b159;
     unsigned char pad7[0x1f9 - 0x15a];
     unsigned char b1f9;
-    unsigned char pad8[0x41c - 0x1fa];
+    unsigned char pad8[0x1fc - 0x1fa];
+    unsigned char b1fc;
+    unsigned char pad9[0x41c - 0x1fd];
     float f41c;
 };
 
