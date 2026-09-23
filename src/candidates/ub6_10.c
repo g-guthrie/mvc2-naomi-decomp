@@ -6,7 +6,8 @@
  * next function's prologue begins. The full section is 272 bytes and links
  * at retail.
  *
- * func_0c060f7c matches exactly; the trailing pool is nonexact.
+ * func_0c060f7c and the trailing pool match exactly after using the precise
+ * 15/14-derived float spellings.
  * func_0c060fc0, func_0c060ff6 and func_0c061034 are close (same shape
  * and branches, only a handful of scratch-register choices off, likely a
  * rotation carried from func_0c060f7c's own register use) but not exact.
@@ -34,23 +35,23 @@ extern void func_0c0437b8(struct Obj_ub6_10 *);
 
 void func_0c060f7c(struct Obj_ub6_10 *a)
 {
-    float d = 1.071428f;
+    float d = 1.07142854f;
 
     if (a->b14b)
         a->f56 += d;
     if (func_0c02a026(a) < 0) {
         a->b7++;
         a->f96 = d;
-        a->f108 = -0.066964f;
+        a->f108 = -0.066964284f;
     }
 }
 
 void func_0c060fc0(struct Obj_ub6_10 *a)
 {
     if (a->b14b) {
-        if (a->f96 > 1.071428f)
+        if (a->f96 > 1.07142854f)
             a->f108 = -a->f108;
-        if (-1.071428f > a->f96)
+        if (-1.07142854f > a->f96)
             a->f108 = -a->f108;
     }
     func_0c02a026(a);
