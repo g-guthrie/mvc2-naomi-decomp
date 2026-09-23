@@ -6,6 +6,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 from core import ROOT, load, number, verify_rom
 from flow_map import Image, recover_callback_cells, recover_indexed_tables, walk_function
+from ghidra_draft import function_starts
 
 
 def image():
@@ -17,6 +18,13 @@ def image():
 
 
 class FlowMapTests(unittest.TestCase):
+    def test_code_after_tail_jump_is_a_function_start(self):
+        base = 0x1000
+        image = bytes.fromhex('2b4209000b000900')  # JMP @R2; NOP; RTS; NOP
+        self.assertEqual(function_starts(image, base, [(base, 4, 'code'),
+                                                        (base + 4, 4, 'code')]),
+                         [base, base + 4])
+
     @classmethod
     def setUpClass(cls):
         cls.img = image()

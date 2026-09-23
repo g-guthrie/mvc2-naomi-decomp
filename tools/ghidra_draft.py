@@ -53,7 +53,7 @@ def function_starts(image, base, ranges):
             continue
         plo, psize, _ = ranges[i - 1]
         tail = [struct.unpack_from('<H', image, a - base)[0] for a in range(max(plo, plo + psize - 4), plo + psize, 2)]
-        if 0x000b in tail or any(w >> 12 == 0xa for w in tail):
+        if 0x000b in tail or any(w >> 12 == 0xa or w & 0xf0ff == 0x402b for w in tail):
             starts.append(lo)
     return sorted(set(starts))
 
