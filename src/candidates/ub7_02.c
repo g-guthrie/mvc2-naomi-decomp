@@ -1,12 +1,9 @@
 /* Translation unit whose real first function is func_0c0c6590, not
- * 0x0c0c658c as the assigned span implied: 0x0c0c658c-0x0c0c6590 is 4 bytes
- * of data (the tail of the previous unit's pool) that the reviewed mapping
- * mislabels as this unit's code. Naming the first function at its true
- * address (0x0c0c6590) makes the tool derive the correct 334-byte section
- * (0x0c0c6590-0x0c0c66de), matching the assigned size once the 4 leading
- * bytes are excluded.
+ * 0x0c0c658c as the assigned span implied: the preceding 4 bytes are data
+ * from the previous pool. The current reviewed section spans 360 bytes from
+ * 0x0c0c6590 through 0x0c0c66f8 and links at retail.
  *
- * 330/334 bytes match. func_0c0c6590, func_0c0c669e and func_0c0c66c6 are
+ * 355/360 bytes match. func_0c0c6590, func_0c0c669e and func_0c0c66c6 are
  * exact. func_0c0c65f6 and func_0c0c663e each differ by one instruction: the
  * final tail-jmp to func_0c02a026 loads it into r3 in one function and r2 in
  * the other in retail, but the compiler swaps which function gets which
