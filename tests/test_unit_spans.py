@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
-from unit_spans import spans
+from unit_spans import owned_code_sections, spans
 
 
 class UnitSpanTests(unittest.TestCase):
@@ -36,6 +36,13 @@ class UnitSpanTests(unittest.TestCase):
         image = bytearray(8)
         ranges = [(base, 4, 'code'), (base + 4, 4, 'data')]
         self.assertEqual(spans(image, base, ranges, [(base + 4, base + 8)]), [])
+
+    def test_previously_registered_data_pool_can_be_released(self):
+        base = 0x1000
+        image = bytearray(8)
+        ranges = [(base, 4, 'code'), (base + 4, 4, 'data')]
+        units = [{'sections': [{'kind': 'data', 'address': base + 4, 'size': 4}]}]
+        self.assertEqual(spans(image, base, ranges, owned_code_sections(units)), [(base, 8)])
 
 
 if __name__ == '__main__':
