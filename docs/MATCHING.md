@@ -202,6 +202,12 @@ differences; read what it changed afterwards.
   three sites.
 
 - 2.0f materialised as `fldi1; fadd` at 106 retail sites, never from a pool.
-  No spelling produces it.
+  No known C spelling produces that exact constant sequence. A small probe with
+  the bundled SHC and the full `game` options gave a pool load for each of
+  `return 2.0f`, `return 1.0f + 1.0f`, and a local initialized to `1.0f`
+  then added to itself. `return x + 1.0f` emits `fldi1; fadd`, but adds a
+  dynamic argument rather than materializing 2.0f. A volatile local emits
+  `fldi1` followed by stack stores and reloads before `fadd`. These are
+  different instruction sequences, so none is a match for the retail sites.
 - Three shared constants held in r7, r4 and r13 across one function
   (`func_0c16fc14`); SHC keeps at most two in registers.
