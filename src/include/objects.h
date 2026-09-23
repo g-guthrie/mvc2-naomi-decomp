@@ -59,9 +59,13 @@ struct Actor {
     float f88, f92, f96, f100, f104, f108, f112, f116;
     unsigned char pad5[0x12c - 120];
     unsigned char b12c;
-    unsigned char pad6[0x158 - 0x12d];
+    unsigned char pad6[0x130 - 0x12d];
+    short w130;
+    unsigned char pad6b[0x158 - 0x132];
     char b158, b159;
-    unsigned char pad7[0x1f9 - 0x15a];
+    unsigned char pad7[0x19e - 0x15a];
+    char b19e;
+    unsigned char pad7b[0x1f9 - 0x19f];
     unsigned char b1f9;
     unsigned char pad8[0x1fc - 0x1fa];
     unsigned char b1fc;
