@@ -314022,11 +314022,46 @@
       "evidence": "CFG walk from 0x0c1a4abc; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c1a4ae8",
+      "size": 28,
+      "kind": "code",
+      "sha256": "ecad149d7b79b667ee692ea29e64f6afc0f23cf767bac21281a023053c3a1e0f",
+      "evidence": "CFG walk from 0x0c1a4ae8; delay slots included; table dispatch and PC-relative pool references reviewed."
+    },
+    {
+      "address": "0x0c1a4b04",
+      "size": 154,
+      "kind": "code",
+      "sha256": "a059617990360113f7c46cebd11a4a0fe0928ad159b9e43c77d8aa76e5cae6ea",
+      "evidence": "CFG walk from 0x0c1a4b04 through RTS and delay slot; calls and shared pool references reviewed."
+    },
+    {
+      "address": "0x0c1a4b9e",
+      "size": 80,
+      "kind": "code",
+      "sha256": "a9158f71a7168aa29c7b4e5900b4618b043a734b076a2be53e1c6ba2b640993a",
+      "evidence": "CFG walk from 0x0c1a4b9e through RTS and delay slot; tail branch to reviewed code at 0x0c1a4c42 and PC-relative pool references reviewed."
+    },
+    {
       "address": "0x0c1a4bee",
       "size": 2,
       "kind": "data",
       "sha256": "b526b58ea54eb5e51923aaa258c34f1c531abed47f75276646ab082f424382b0",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1a4abc; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c1a4bf0",
+      "size": 2,
+      "kind": "data",
+      "sha256": "d163e01f4d7afe6cd0db22a4efe8ecfb617b8fb129c152a4cbd742afd6f7ba4b",
+      "evidence": "MOV.W literal at 0x0c1a4bf0 consumed by the dispatch at 0x0c1a4ae8."
+    },
+    {
+      "address": "0x0c1a4bf2",
+      "size": 6,
+      "kind": "data",
+      "sha256": "78ea778e69a55df9283710da613d71502d5ad7741af66b2556aa75ae6087e7d2",
+      "evidence": "Three MOV.W literals consumed by code rooted at 0x0c1a4b04 and 0x0c1a4b9e."
     },
     {
       "address": "0x0c1a4bf8",
@@ -314041,6 +314076,13 @@
       "kind": "data",
       "sha256": "dabf253a57bacff6ef5976667e0128b817dc2b271f3c8929e5e90b63b4f0e95c",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1a4abc; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c1a4c04",
+      "size": 4,
+      "kind": "data",
+      "sha256": "497b95ab422b412e5da850c65b5f7654791fe242f1f6b6be0e5f5360d716e8de",
+      "evidence": "MOV.L literal for 0x0c2fb3f4, consumed by the callback at 0x0c1a4ae8 and the update routine at 0x0c1a4b9e."
     },
     {
       "address": "0x0c1a4c08",
