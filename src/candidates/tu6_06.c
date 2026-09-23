@@ -1,8 +1,7 @@
-/* Six functions around the literal pool at 0x0c132d7a. Retail places the
- * pool inside func_0c132d14, after its first `bra`, and SHC does the same from
- * this source; the loop continues at 0x0c132da8 and the unit ends with a
- * second pool at 0x0c132dd4 that the diff tool's one-pool section cannot yet
- * describe. 423/434 bytes match, five of six functions exactly.
+/* The full 440-byte section links at retail. Five of six functions and both
+ * pools are exact. Retail places the first pool inside func_0c132d14 after
+ * a `bra`; the loop continues at 0x0c132da8 and the second pool begins at
+ * 0x0c132dd4. The whole section matches 429/440 bytes.
  * func_0c132d14 differs in the loop head: retail loads the constant 0x150
  * twice (mov.w into r2 for the p24 side, mov.w into r3 for the p side) and
  * keeps the pointers in r2/r3; SHC loads it once into r3 and uses r4/r5.
