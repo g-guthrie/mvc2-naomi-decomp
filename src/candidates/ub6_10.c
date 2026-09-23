@@ -3,9 +3,10 @@
  * they do once armed (a table dispatch vs. a plain continue). The
  * assignment gave size 240 (span ending at 0x0c06106a, mid pool); the
  * real extent runs through one more pool block to 0x0c06108c, where the
- * next function's prologue begins. Extended to size 270.
+ * next function's prologue begins. The full section is 272 bytes and links
+ * at retail.
  *
- * func_0c060f7c matches exactly, and so does the trailing pool.
+ * func_0c060f7c matches exactly; the trailing pool is nonexact.
  * func_0c060fc0, func_0c060ff6 and func_0c061034 are close (same shape
  * and branches, only a handful of scratch-register choices off, likely a
  * rotation carried from func_0c060f7c's own register use) but not exact.

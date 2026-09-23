@@ -2,10 +2,10 @@
  * one actor-like object. The assignment gave size 252 (span ending at
  * 0x0c0b472c, mid pool); the real extent runs through one more pool block
  * to 0x0c0b4758, where the next function's prologue begins. Extended to
- * size 294.
+ * size 296.
  *
- * func_0c0b465a and func_0c0b467a match exactly. func_0c0b4630 is off by
- * one halfword in the shared literal pool (a 0x12c/0x108 ordering shift
+ * func_0c0b4630, func_0c0b465a and func_0c0b467a match exactly. The shared
+ * pool is still nonexact (a 0x12c/0x108 ordering shift
  * that a `func_0c1a62b0(a, 4)` two-arg guess for func_0c0b468e's tail call
  * did not fix, so left with one argument); func_0c0b468e and func_0c0b46d4
  * are close but not exact. Left as a candidate. */
