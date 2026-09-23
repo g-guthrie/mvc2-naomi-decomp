@@ -5,7 +5,7 @@ import struct
 import sys
 import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
-from core import ROOT, compare, elf_segments, validate_units
+from core import ROOT, compare, elf_segments, load, validate_units
 from report import layout, metrics
 
 
@@ -20,6 +20,12 @@ def link(address=0x1000, size=4):
 
 
 class ProofTests(unittest.TestCase):
+    def test_every_source_unit_is_registered(self):
+        registered = {unit['source'] for unit in load(ROOT / 'config/units.json') if 'source' in unit}
+        sources = {str(path.relative_to(ROOT)) for folder in ('verified', 'candidates')
+                   for path in (ROOT / 'src' / folder).glob('*.c')}
+        self.assertEqual(sources, registered)
+
     def setUp(self):
         self.unit = dict(id='func', source='src/func.c', mode='verified',
                          exports={'_func':0x1000}, sections=[dict(section='P',kind='code',address=0x1000,size=4)])
