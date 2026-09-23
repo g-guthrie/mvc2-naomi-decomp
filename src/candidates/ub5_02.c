@@ -1,12 +1,7 @@
-/* func_0c12d8ac differs from retail by one scheduling swap: retail loads the
- * -128 constant for `a->b413 = -128;` before reloading a->b466 for the
- * `a->w304 = a->b466;` store just above it; our compile does the reload
- * first. 4 bytes differ (0x0c12d8da-0c12d8e0) and the rest of the function
- * shifts by that amount; every other function (func_0c12d81c, func_0c12d856,
- * func_0c12d88a, func_0c12d94a, func_0c12d950) and 144/158 of func_0c12d8ac
- * match exactly (310/330 total). Reordering the source statements to put
- * `a->b413 = -128;` first made it worse, not better, so this looks like an
- * SHC scheduling artifact rather than a source-shape fix. */
+/* The full 380-byte section links at retail. Five functions and the 66-byte
+ * pool are exact. func_0c12d8ac matches 156/158 bytes; its indirect tail
+ * jump loads the target into r3 while retail uses r1 at 0x0c12d944-946.
+ * The counter-gated calls must stay inside the positive-counter branch. */
 struct P456_ub5_02 { unsigned char pad[604]; short w604; };
 
 struct Nested676_ub5_02 { unsigned char pad[12]; signed char b12; };
@@ -92,11 +87,11 @@ void func_0c12d8ac(struct Obj_ub5_02 *a)
     if (n->b12 > 0) {
         if (func_0c0427f2(a))
             a->b322 = 1;
-    }
-    p->w604--;
-    if (func_0c042780(p)) {
-        n->b12 = -1;
-        func_0c02a0c4(a, 15, 1);
+        p->w604--;
+        if (func_0c042780(p)) {
+            n->b12 = -1;
+            func_0c02a0c4(a, 15, 1);
+        }
     }
     dat_0c24de4c[a->b321 >> 1](a, p);
 }
