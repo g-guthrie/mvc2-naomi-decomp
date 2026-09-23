@@ -133,6 +133,10 @@ section.
 `build/proof.json` records every comparison. `build/progress.json`,
 `build/progress.svg`, `build/active.svg` and `build/index.html` are drawn from
 it, and the README bars are rewritten from the same numbers.
+`build/work_queue.json` ranks candidates from that same proof. `near_match`
+means the section is placed and sized correctly with at least 95% equal bytes;
+`review_extent` means the declared bytes match but the linked size or address
+does not. These are work suggestions, not matching credit.
 
 ## Tools
 

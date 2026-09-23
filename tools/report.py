@@ -24,12 +24,16 @@ def credited_bytes(unit):
 def metrics(proof):
     known = dict(code=0, data=0)
     matched = dict(code=0, data=0)
+    provenance = {key: dict(code=0, data=0) for key in ('c_source', 'sdk_modules', 'candidate_fragments')}
     for unit in proof['units']:
         for part in unit['sections']:
             if part['kind'] in known:
                 known[part['kind']] += number(part['size'])
+        origin = ('candidate_fragments' if not unit.get('credited') else
+                  'sdk_modules' if 'library' in unit else 'c_source')
         for kind, count in credited_bytes(unit).items():
             matched[kind] += count
+            provenance[origin][kind] += count
     if 'mapping' in proof:
         known = {kind: proof['mapping']['reviewed_' + kind + '_bytes'] for kind in known}
     total = proof['main_size']
@@ -40,7 +44,41 @@ def metrics(proof):
     if 'mapping' in proof:
         result['map'] = {'matched_bytes': total - proof['mapping']['unknown_bytes'], 'known_bytes': total}
         result['decomp'] = {'matched_bytes': matched['code'] + matched['data'], 'known_bytes': total}
+    result['provenance'] = provenance
     return result
+
+
+def work_queue(proof):
+    """Rank current candidates from linker evidence; never store a hand-edited task list."""
+    rows = []
+    for unit in proof['units']:
+        if unit['credited']:
+            continue
+        sections = [part for part in unit['sections'] if part['kind'] != 'bss']
+        expected = sum(part['size'] for part in sections)
+        equal = sum(part['equal_bytes'] for part in sections)
+        placed = all(part['linked_address'] == part['address'] and
+                     part['linked_size'] == part['size'] for part in sections)
+        if placed and equal * 100 >= expected * 95:
+            kind = 'near_match'
+        elif not placed and equal == expected:
+            kind = 'review_extent'
+        elif placed and unit['function_bytes']:
+            kind = 'partial_functions'
+        else:
+            kind = 'investigate'
+        rows.append({'id': unit['id'], 'source': unit.get('source'), 'kind': kind,
+                     'address': min(part['address'] for part in sections),
+                     'equal_bytes': equal, 'expected_bytes': expected,
+                     'linked_sizes': [part['linked_size'] for part in sections],
+                     'exact_functions': sum(bool(f['exact']) for f in unit['functions']),
+                     'total_functions': len(unit['functions']),
+                     'credited_bytes': unit['function_bytes'] + unit['pool_bytes'],
+                     'problems': unit['problems']})
+    priority = {'near_match': 0, 'review_extent': 1, 'partial_functions': 2, 'investigate': 3}
+    rows.sort(key=lambda row: (priority[row['kind']], row['expected_bytes'] - row['equal_bytes'],
+                               -row['credited_bytes'], row['address']))
+    return {'input_sha256': proof['input_sha256'], 'candidates': rows}
 
 
 def progress_bar(current, total, width=32):
@@ -55,7 +93,8 @@ def tiles(proof):
             if part['kind'] == 'bss':
                 continue
             active.append({'name': unit['id'] + ':' + part['section'], 'address': part['address'],
-                           'size': part['size'], 'state': 'matched' if unit['credited'] else 'candidate',
+                           'size': part['size'], 'state': 'candidate' if not unit['credited'] else
+                           'sdk' if 'library' in unit else 'matched',
                            'source': unit.get('source') or f"{unit['library']}:{unit['module']}", 'kind': part['kind']})
     active.sort(key=lambda p: p['address'])
     bins = load(ROOT / 'config/regions.json')
@@ -126,7 +165,8 @@ def svg(items, proof, active=False):
     prefix = 'active-' if active else 'main-'
     out = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="group" aria-label="Hitachi decompilation progress treemap">',
            '<defs>']
-    for name, center, edge in [('matched','#00e500','#008600'),('candidate','#0086bb','#104253'),('unknown','#343737','#272a2b')]:
+    for name, center, edge in [('matched','#00e500','#008600'),('sdk','#e4ad36','#80591c'),
+                               ('candidate','#0086bb','#104253'),('unknown','#343737','#272a2b')]:
         out.append(f'<radialGradient id="{prefix}{name}"><stop stop-color="{center}"/><stop offset="1" stop-color="{edge}"/></radialGradient>')
     out += ['</defs><rect width="1200" height="800" fill="#171c24"/>',
             '<g font-family="system-ui,sans-serif" fill="#e9f1f5">',
@@ -147,7 +187,7 @@ def svg(items, proof, active=False):
             out += [f'<text x="{36+x:.3f}" y="{190+y:.3f}" font-size="17">{esc(p["name"])}</text>',
                     f'<text x="{36+x:.3f}" y="{214+y:.3f}" font-size="13">{p["size"]} bytes · {p["state"]}</text>']
         out.append('</g>')
-    out += ['<text x="24" y="749" font-size="13"><tspan fill="#00d823">■ Exact, verified C</tspan><tspan dx="24" fill="#00a6df">■ Candidate C</tspan><tspan dx="24" fill="#a8b4c1">■ No C source</tspan></text>',
+    out += ['<text x="24" y="749" font-size="13"><tspan fill="#00d823">■ Exact C</tspan><tspan dx="24" fill="#e4ad36">■ Prebuilt SDK</tspan><tspan dx="24" fill="#00a6df">■ Candidate C</tspan><tspan dx="24" fill="#a8b4c1">■ Original bytes</tspan></text>',
             f'<text x="24" y="776" font-size="12" fill="#a8b4c1">{"This zoom excludes unmapped bytes. " if active else "Gray tiles are display regions, not inferred functions. "}Build input: {proof["input_sha256"][:16]}</text>', '</g></svg>']
     return ''.join(out)
 
@@ -165,20 +205,29 @@ def publish(proof):
 <style>body{margin:0;background:#171c24;color:#e9f1f5;font:15px system-ui}main{max-width:1400px;margin:auto;padding:20px}nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}button,a{color:inherit}button{background:#303b48;border:1px solid #657180;padding:10px 18px;border-radius:5px;cursor:pointer}button[aria-pressed=true]{background:#096d95}svg{width:100%;display:block}.tile:hover rect,.tile:focus rect{stroke:#fff;stroke-width:2}#detail{min-height:40px;color:#bccbd9}a{margin-left:auto}p{color:#acb9c6;line-height:1.6}</style>
 <main><nav><button id="mainButton" aria-pressed="true">Main image</button><button id="activeButton" aria-pressed="false">Active source units</button><a href="https://github.com/g-guthrie/mvc2-naomi-decomp">Repository ↗</a></nav>
 <div id="mainMap">MAIN_SVG</div><div id="activeMap" hidden>ACTIVE_SVG</div><div id="detail" aria-live="polite">Hover, focus, or tap a tile to inspect its address and size.</div>
-<p>A verified unit earns credit for every byte once it compiles, links at its original address and matches retail byte for byte. A candidate unit earns credit only for the functions inside it that already match. Matching fragments do not establish original translation-unit boundaries. The full image comparison retains original bytes for untranslated regions. Progress covers the 2,424,832-byte main executable; the test program and graphics/audio ROMs remain outside this source metric.</p></main>
+<p>Green is C compiled by the bundled Hitachi compiler. Gold is a prebuilt Sega SDK module linked at its retail address. Blue is candidate C with matching functions or pools, without a verified whole unit. The full image comparison retains original bytes for untranslated regions. Progress covers the 2,424,832-byte main executable; the test program and graphics/audio ROMs remain outside this source metric.</p></main>
 <script>const buttons=[document.getElementById('mainButton'),document.getElementById('activeButton')],maps=[document.getElementById('mainMap'),document.getElementById('activeMap')];buttons.forEach((b,i)=>b.onclick=()=>{maps.forEach((m,j)=>m.hidden=i!==j);buttons.forEach((b,j)=>b.setAttribute('aria-pressed',i===j));});document.querySelectorAll('.tile').forEach(t=>['mouseenter','focus','click'].forEach(e=>t.addEventListener(e,()=>document.getElementById('detail').textContent=t.dataset.detail)));</script></html>'''
     (output/'index.html').write_text(page.replace('MAIN_SVG',main_svg).replace('ACTIVE_SVG',active_svg))
+    (output/'work_queue.json').write_text(json.dumps(work_queue(proof), indent=2)+'\n')
     m = metrics(proof)
     def row(label, kind):
         value = m[kind]
         return (f"| {label} | `{progress_bar(value['matched_bytes'], value['known_bytes'])}` "
                 f"**{100 * value['matched_bytes'] / max(1, value['known_bytes']):.3f}%** | "
                 f"{value['matched_bytes']:,} / {value['known_bytes']:,} |\n")
+    def origin_row(label, kind):
+        amount = sum(m['provenance'][kind].values())
+        total = proof['main_size']
+        return (f"| {label} | `{progress_bar(amount, total)}` "
+                f"**{100 * amount / total:.3f}%** | {amount:,} / {total:,} |\n")
     block = ('<!-- progress:start -->\n'
              '| Track | Progress | Bytes |\n'
              '| --- | --- | ---: |\n'
              + row('Map', 'map') + row('Code', 'code') + row('Data', 'data')
              + row('[Decomp](config/units.json)', 'decomp')
+             + origin_row('Verified C source', 'c_source')
+             + origin_row('Prebuilt SDK modules', 'sdk_modules')
+             + origin_row('Candidate fragments', 'candidate_fragments')
              + '<!-- progress:end -->')
     readme = ROOT / 'README.md'
     readme.write_text(re.sub(
