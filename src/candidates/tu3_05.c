@@ -1,8 +1,8 @@
-/* Two functions share the pool at 0x0c1e1690. The current 244-byte section
- * links at retail; func_0c1e15cc matches exactly, while the pool and the
- * second function remain nonexact (236/244 equal bytes overall).
- * In func_0c1e1610 at 0x0c1e1640, retail loads the
- * callee into r1 and dat_0c2d964c->p0 into r2; ours uses r2 and r4. */
+/* Two functions share the pool at 0x0c1e1690. The 244-byte section links at
+ * retail; func_0c1e15cc and the 48-byte pool match exactly. The remaining
+ * function matches 124/128 bytes. At 0x0c1e1640, retail loads the callee
+ * into r1 and dat_0c2d964c->p0 into r2; this source uses r2 and r4.
+ * The pool scalar is 0.005f (0x3ba3d70a). */
 struct Obj_tu3_05 {
     unsigned char pad0[4];
     unsigned char b4;
@@ -54,7 +54,7 @@ void func_0c1e1610(struct Obj_tu3_05 *a)
         func_0c1d8ff8(dat_0c2d964c->p0->l8c, a->l84);
         while (func_0c1d901e() == 0) {
             func_0c1d912a(&x, &y);
-            y += (float)a->s28 * 2.1445862716350486e-36f;
+            y += (float)a->s28 * 0.005f;
             func_0c1d917e(&x, &y);
         }
         break;

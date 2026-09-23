@@ -1,4 +1,6 @@
-/* Unit 0x0c05b474-0x0c05b720: 7 functions, two pairs near-duplicated with
+/* Unit 0x0c05b474-0x0c05b720: 7 functions. The first 72-byte pool matches
+ * exactly with SHC's float spellings; the second pool is still nonexact.
+ * Two pairs are near-duplicated with
  * different constants (35/50 vs 36/51). func_0c05b508 and func_0c05b532
  * match exactly; func_0c05b6d4 too. func_0c05b474/func_0c05b616 each differ
  * by one anonymous-register choice (r2 vs r3 rebuilding the a->b141 test
@@ -67,8 +69,8 @@ void func_0c05b474(struct Obj_ud0_05 *a)
         p->b1a1 = 35;
         a->b1a1 = 35;
         func_0c04b02a(a);
-        v.x = -106.66666412f;
-        v.y = 205.71427917f;
+        v.x = -106.666664124f;
+        v.y = 205.71428f;
         func_0c1ceafe(a, &v);
         func_0c0346da(a, 12);
     }
@@ -103,8 +105,8 @@ void func_0c05b544(struct Obj_ud0_05 *a)
     }
     if (a->b141 == 2) {
         a->b141 = 0;
-        v.x = -186.66665649f;
-        v.y = 137.14285278f;
+        v.x = -186.66666f;
+        v.y = 137.142853f;
         func_0c1ceafe(a, &v);
         func_0c0344a0(a, 32);
         return;
@@ -139,8 +141,8 @@ void func_0c05b616(struct Obj_ud0_05 *a)
         p->b1a1 = 36;
         a->b1a1 = 36;
         func_0c04b02a(a);
-        v.x = -186.66665649f;
-        v.y = 137.14285278f;
+        v.x = -186.66666f;
+        v.y = 137.142853f;
         func_0c1ceafe(a, &v);
         func_0c0344a0(a, 32);
     }
