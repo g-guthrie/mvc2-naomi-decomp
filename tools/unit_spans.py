@@ -67,9 +67,13 @@ def spans(image, base, ranges, owned):
                 continue
         start, j = lo, i
         closed = False
+        previous_end = lo
         while j < len(ranges):
             rlo, rsize, rkind = ranges[j]
+            if rlo != previous_end:
+                break  # An unreviewed gap cannot belong to a proposed unit.
             end = rlo + rsize
+            previous_end = end
             j += 1
             if rkind != 'data':
                 continue
@@ -80,7 +84,8 @@ def spans(image, base, ranges, owned):
                 closed = True
                 break
         if not closed:
-            break
+            i = max(j, i + 1)
+            continue
         end = ranges[j - 1][0] + ranges[j - 1][1]
         if ranges[j - 1][2] == 'data':
             result.append((start, end - start))
@@ -102,7 +107,7 @@ def main():
     image = program[offset:offset + size]
     ranges = [(number(r['address']), number(r['size']), r['kind']) for r in load(ROOT / 'config/mapping.json')['ranges']]
     owned = [(number(p['address']), number(p['address']) + number(p['size']))
-             for u in load(ROOT / 'config/units.json') for p in u['sections'] if p['kind'] == 'code']
+             for u in load(ROOT / 'config/units.json') for p in u['sections']]
     found = [(s, n) for s, n in spans(image, base, ranges, owned) if args.min <= n <= args.max and s < args.below]
     found = found[:args.limit]
     if args.json:
