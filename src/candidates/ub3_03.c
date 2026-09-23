@@ -1,4 +1,5 @@
-/* func_0c091608 matches exactly (144/144). func_0c091698 matches in
+/* The 312-byte section links at retail. func_0c091608 (144 bytes) and the
+ * 32-byte pool match exactly. func_0c091698 matches in
  * structure, branch targets and byte count (136/136 expected) but differs
  * from retail only by a scratch-register swap (r2<->r3) at three anonymous
  * temporaries: the (a->w1fa & 0x0c00) test, the a->b1fe test, and the
