@@ -1,6 +1,4 @@
-/* Two callbacks and the shared pool match exactly. The 142-byte third
- * callback differs in eight bytes of register allocation for the b36 copy
- * and b33-based state, so the linked unit is not yet verified. */
+/* Actor constructor, dispatcher, and initialization callback. */
 #include "objects.h"
 
 extern struct LinkedActor *func_0c0374da(int, int, int);
@@ -29,8 +27,6 @@ void func_0c1b5518(struct LinkedActor *a)
 
 void func_0c1b552c(struct LinkedActor *a, struct LinkedActor *b)
 {
-    int state;
-    unsigned char flag;
     a->b4++;
     a->sdc = b->sdc;
     a->sdc.b12c = 1;
@@ -42,14 +38,9 @@ void func_0c1b552c(struct LinkedActor *a, struct LinkedActor *b)
     a->b1a4 = b->b1a4;
     a->b48 = b->b48;
     a->v80 = b->v80;
-    flag = b->b36;
-    a->b36 = flag;
+    a->b36 = b->b36;
     a->sdc.b12c = 0;
     a->sdc.w130 = a->b32;
-    if (a->b33)
-        state = 12;
-    else
-        state = 11;
-    a->b36 = state;
+    a->b36 = a->b33 ? 12 : 11;
     func_0c02a0c4(a, 23, a->b33 + 21);
 }
