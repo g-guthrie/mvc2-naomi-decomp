@@ -292,4 +292,34 @@ struct LinkedActorSequence {
 /* Byte stream reader used by the script interpreter at 0x0c2007xx. */
 struct ByteCursor { int cnt0; int cnt4; int cnt8; unsigned char *cur; };
 
+/* Actor used by the 0x0c1d0a8c-0x0c1d109c callback sequence. */
+struct Vec3_tu5_03 { float x, y, z; };
+struct Obj_tu5_03 {
+    unsigned char pad0[4];
+    unsigned char b4;
+    char b5;
+    unsigned char pad1[16 - 6];
+    void (*p16)(struct Obj_tu5_03 *);
+    unsigned char pad2[28 - 20];
+    short w28;
+    unsigned char pad3[52 - 30];
+    struct Vec3_tu5_03 pos;
+    unsigned char pad4[72 - 64];
+    int l48;
+    unsigned char pad5[80 - 76];
+    float f80, f84, f88;
+    unsigned char pad6[120 - 92];
+    float f120, f124, f128;
+    int l84;
+    unsigned char pad7[0xcc - 0x88];
+    int lcc;
+    unsigned char pad8[0xe4 - 0xd0];
+    int lE4, lE8, lEC;
+    int lf0;
+    unsigned char pad9[0x12c - 0xf4];
+    unsigned char b12c;
+    unsigned char pad10[0x130 - 0x12d];
+    short w130;
+};
+
 #endif
