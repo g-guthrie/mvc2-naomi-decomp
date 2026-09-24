@@ -79,6 +79,7 @@ def spans(image, base, ranges, owned):
     words = lambda lo, hi: [struct.unpack_from('<H', image, a - base)[0] for a in range(lo, hi, 2)]
     # Branches and PC-relative loads both tie code to bytes across a pool.
     edges = []
+    incoming_branches = []
     literal_edges = []
     for lo, size, kind in ranges:
         if kind != 'code':
@@ -88,11 +89,16 @@ def spans(image, base, ranges, owned):
             t = branch_target(w, pc)
             if t is not None:
                 edges.append((pc, t))
+                # A call may enter a new function at its first instruction.
+                # Any other branch into a proposal joins its control flow to
+                # earlier code, even when a pool or mapping gap separates it.
+                incoming_branches.append((t, pc, w >> 12 == 0xb))
             literal = pc_relative_target(w, pc)
             if literal is not None:
                 edges.append((pc, literal[0]))
                 literal_edges.append((literal[0], pc))
     literal_edges.sort()
+    incoming_branches.sort()
     # boundary candidates: each data range end (pool end) and start
     result = []
     i = 0
@@ -136,7 +142,12 @@ def spans(image, base, ranges, owned):
         first = bisect.bisect_left(literal_edges, (start, -1))
         last = bisect.bisect_left(literal_edges, (end, -1))
         incoming_literal = any(pc < start for _, pc in literal_edges[first:last])
-        if ranges[j - 1][2] == 'data' and not incoming_literal:
+        first_branch = bisect.bisect_left(incoming_branches, (start, -1))
+        last_branch = bisect.bisect_left(incoming_branches, (end, -1))
+        incoming_branch = any(pc < start and (not call or target != start)
+                              for target, pc, call
+                              in incoming_branches[first_branch:last_branch])
+        if ranges[j - 1][2] == 'data' and not incoming_literal and not incoming_branch:
             result.append((start, end - start))
         i = j
     return [(s, n) for s, n in result if not any(o_lo < s + n and o_hi > s for o_lo, o_hi in owned)]
