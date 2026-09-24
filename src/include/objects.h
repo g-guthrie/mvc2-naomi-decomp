@@ -96,7 +96,7 @@ struct Actor {
     unsigned char pad7[0x19e - 0x15a];
     char b19e;
     char b19f;
-    unsigned char pad7b[0x1a1 - 0x1a0];
+    unsigned char b1a0;
     unsigned char b1a1;
     unsigned char pad7c[0x1a3 - 0x1a2];
     char b1a3;
