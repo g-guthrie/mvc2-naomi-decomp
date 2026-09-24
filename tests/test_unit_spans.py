@@ -31,6 +31,14 @@ class UnitSpanTests(unittest.TestCase):
                   (base + 12, 4, 'code'), (base + 16, 4, 'data')]
         self.assertEqual(spans(image, base, ranges, []), [(base + 12, 8)])
 
+    def test_earlier_code_reading_later_pool_invalidates_start_after_gap(self):
+        base = 0x1000
+        image = bytearray(0x30)
+        image[:2] = bytes.fromhex('0ad1')  # MOV.L at 0x1000 reads 0x102c.
+        ranges = [(base, 4, 'code'), (base + 4, 4, 'data'),
+                  (base + 12, 0x20, 'code'), (base + 0x2c, 4, 'data')]
+        self.assertEqual(spans(image, base, ranges, []), [])
+
     def test_owned_pool_excludes_proposal(self):
         base = 0x1000
         image = bytearray(8)

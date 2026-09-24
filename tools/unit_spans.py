@@ -79,6 +79,7 @@ def spans(image, base, ranges, owned):
     words = lambda lo, hi: [struct.unpack_from('<H', image, a - base)[0] for a in range(lo, hi, 2)]
     # Branches and PC-relative loads both tie code to bytes across a pool.
     edges = []
+    literal_edges = []
     for lo, size, kind in ranges:
         if kind != 'code':
             continue
@@ -90,6 +91,8 @@ def spans(image, base, ranges, owned):
             literal = pc_relative_target(w, pc)
             if literal is not None:
                 edges.append((pc, literal[0]))
+                literal_edges.append((literal[0], pc))
+    literal_edges.sort()
     # boundary candidates: each data range end (pool end) and start
     result = []
     i = 0
@@ -127,7 +130,13 @@ def spans(image, base, ranges, owned):
             i = max(j, i + 1)
             continue
         end = ranges[j - 1][0] + ranges[j - 1][1]
-        if ranges[j - 1][2] == 'data':
+        # A reader before this start still owns a literal in the proposed
+        # extent. The unit must start earlier, even if a gap or prior owner
+        # prevented the earlier scan from reaching this pool.
+        first = bisect.bisect_left(literal_edges, (start, -1))
+        last = bisect.bisect_left(literal_edges, (end, -1))
+        incoming_literal = any(pc < start for _, pc in literal_edges[first:last])
+        if ranges[j - 1][2] == 'data' and not incoming_literal:
             result.append((start, end - start))
         i = j
     return [(s, n) for s, n in result if not any(o_lo < s + n and o_hi > s for o_lo, o_hi in owned)]
