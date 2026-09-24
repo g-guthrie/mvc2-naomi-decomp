@@ -39,6 +39,18 @@ class UnitSpanTests(unittest.TestCase):
                   (base + 12, 0x20, 'code'), (base + 0x2c, 4, 'data')]
         self.assertEqual(spans(image, base, ranges, []), [])
 
+    def test_branch_into_later_code_invalidates_start_after_gap(self):
+        base = 0x1000
+        image = bytearray(0x14)
+        image[:2] = bytes.fromhex('04a0')  # BRA from 0x1000 to 0x100c.
+        ranges = [(base, 4, 'code'), (base + 4, 4, 'data'),
+                  (base + 12, 4, 'code'), (base + 16, 4, 'data')]
+        self.assertEqual(spans(image, base, ranges, []), [])
+        image[:2] = bytes.fromhex('04b0')  # BSR may enter a new function.
+        self.assertEqual(spans(image, base, ranges, []), [(base + 12, 8)])
+        image[:2] = bytes.fromhex('05b0')  # A call into its interior cannot.
+        self.assertEqual(spans(image, base, ranges, []), [])
+
     def test_owned_pool_excludes_proposal(self):
         base = 0x1000
         image = bytearray(8)
