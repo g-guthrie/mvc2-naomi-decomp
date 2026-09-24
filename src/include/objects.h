@@ -201,6 +201,25 @@ struct LinkedActor {
     unsigned char b1d0;
 };
 
+/* Timed callback record allocated by the 0x0c1cd2c0 dispatcher. Its p84
+ * callback table spans to 0xcc, where entry 18 is cleared during setup. */
+struct LinkedActorDispatch;
+typedef void (*LinkedActorDispatchHandler)(struct LinkedActorDispatch *);
+struct LinkedActorDispatch {
+    unsigned char pad0;
+    unsigned char b1;
+    unsigned char pad1[16 - 2];
+    LinkedActorDispatchHandler p16;
+    unsigned char pad2[28 - 20];
+    short s28;
+    unsigned char pad3[32 - 30];
+    unsigned char b32;
+    unsigned char pad4[0x84 - 33];
+    LinkedActorDispatchHandler p84[19];
+    unsigned char pad5[0x12c - 0xd0];
+    unsigned char b12c;
+};
+
 /* Object shared by the me_00 and me_01 actor state machines. */
 struct MeActorVec3 { float x, y, z; };
 struct MeActorBlock {
