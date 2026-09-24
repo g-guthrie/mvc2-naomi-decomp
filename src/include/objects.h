@@ -119,7 +119,7 @@ struct Actor {
     struct Actor *p1c8;
     unsigned char pad7e[0x1d0 - 0x1cc];
     unsigned char b1d0;
-    unsigned char pad7eb;
+    unsigned char b1d1;
     unsigned char b1d2;
     unsigned char pad7f[0x1d4 - 0x1d3];
     char b1d4;
