@@ -99,7 +99,8 @@ struct Actor {
     unsigned char b1d2;
     unsigned char pad7f[0x1d4 - 0x1d3];
     char b1d4;
-    unsigned char pad7f2[0x1e9 - 0x1d5];
+    unsigned char pad7f2[0x1e8 - 0x1d5];
+    unsigned char b1e8;
     unsigned char b1e9, b1ea;
     unsigned char pad7fb[0x1f2 - 0x1eb];
     unsigned char b1f2;
@@ -111,7 +112,9 @@ struct Actor {
     unsigned char b1fc;
     unsigned char b1fd;
     char b1fe;
-    unsigned char pad9[0x20c - 0x1ff];
+    unsigned char pad9[0x201 - 0x1ff];
+    unsigned char b201;
+    unsigned char pad9a[0x20c - 0x202];
     struct Actor *p20c;
     unsigned char pad9b[0x255 - 0x210];
     unsigned char b255;
