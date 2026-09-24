@@ -5,11 +5,6 @@ extern void func_0c029fc4(void);
 extern void func_0c1fb7a0(void);
 extern void func_0c1fb838(void);
 
-#pragma section n1a127c
-const unsigned int dat_0c1a127c[] = {
-    0x0c037688u,
-};
-
 #pragma section n1a13b4
 const unsigned int dat_0c1a13b4[] = {
     0x012c00dcu, 0x140001a3u, 0x00cc013du, 0x01580159u,
