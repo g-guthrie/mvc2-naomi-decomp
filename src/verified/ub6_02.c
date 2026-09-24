@@ -84,8 +84,6 @@ void func_0c0e99da(struct Actor *a)
 
 void func_0c0e9b04(struct Actor *a)
 {
-    int r5, r6;
-
     if (a->b140) {
         a->b140 = 0;
         if (a->b1e8 == 97)
