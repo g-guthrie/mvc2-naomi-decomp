@@ -147,6 +147,11 @@ struct Actor {
 /* Global game flags record exposed through the pointer at 0x0c2d6f84. */
 struct ActorFlags { unsigned char pad[28]; int flags; };
 
+/* Indexed data shared by actor constructors through the root at 0x0c2d964c. */
+union ActorGlobalEntry { void *pointer; int value; };
+struct ActorGlobalTable { union ActorGlobalEntry entries[36]; };
+struct ActorGlobalRoot { struct ActorGlobalTable *p0; };
+
 /* Halfword counters stored after a 124-byte header at 0x0c2f83f8. */
 struct Tbl_ub3_01 { unsigned char pad[124]; short arr[100]; };
 
@@ -165,6 +170,7 @@ struct LinkedActorBlock {
 union LinkedActorWcc {
     short short_value;
     unsigned int dword_value;
+    int arrcc[1];
 };
 struct LinkedActor {
     unsigned char pad0;
