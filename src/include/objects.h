@@ -36,6 +36,13 @@ struct MaskObject {
 /* Second argument of func_0c047aac: an input record with a flag word at 6. */
 struct MaskInput { unsigned char pad[6]; unsigned short w6; };
 
+/* A child record embedded at offset 0x2a4 in actors that dispatch through the
+ * 0x0c24b6a8 handler table. */
+struct ActorSub2a4 {
+    unsigned char pad[10];
+    short s10;
+};
+
 /* The moving object most leaf functions update: a state byte at 4, a timer at
  * 28, position at 52, velocity at 92 and acceleration at 104. */
 struct Actor {
@@ -76,19 +83,27 @@ struct Actor {
     unsigned short w1ac;
     unsigned char pad7d[0x1c4 - 0x1ae];
     int p1c4;
-    unsigned char pad7e[0x1d2 - 0x1c8];
+    struct Actor *p1c8;
+    unsigned char pad7e[0x1d2 - 0x1cc];
     char b1d2;
-    unsigned char pad7f[0x1f2 - 0x1d3];
+    unsigned char pad7f[0x1e9 - 0x1d3];
+    unsigned char b1e9, b1ea;
+    unsigned char pad7fb[0x1f2 - 0x1eb];
     unsigned char b1f2;
-    unsigned char pad7ff[0x1f9 - 0x1f3];
+    unsigned char pad7ff[0x1f6 - 0x1f3];
+    unsigned char b1f6, b1f7;
+    unsigned char pad7ffc[0x1f9 - 0x1f8];
     unsigned char b1f9;
     unsigned char pad8[0x1fc - 0x1fa];
     unsigned char b1fc;
-    unsigned char pad9[0x20c - 0x1fd];
+    unsigned char b1fd;
+    unsigned char pad9[0x20c - 0x1fe];
     struct Actor *p20c;
     unsigned char pad9b[0x255 - 0x210];
     unsigned char b255;
-    unsigned char pad10[0x327 - 0x256];
+    unsigned char pad10[0x2a4 - 0x256];
+    struct ActorSub2a4 sub2a4;
+    unsigned char pad10b[0x327 - 0x2b0];
     unsigned char b327;
     unsigned char b328;
     unsigned char pad11[0x3f0 - 0x329];
@@ -97,6 +112,8 @@ struct Actor {
     unsigned char b3f8, b3f9;
     unsigned char pad13[0x41c - 0x3fa];
     float f41c;
+    unsigned char pad14[0x4c9 - 0x420];
+    char b4c9;
 };
 
 /* Linked actor variant with pointers at 0x14 and 0x18. The 0xc0-byte block at
