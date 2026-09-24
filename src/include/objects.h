@@ -156,7 +156,9 @@ struct LinkedActorVec3 { float x, y, z; };
 struct LinkedActorBlock {
     unsigned char pad0[0x50];
     unsigned char b12c;
-    unsigned char pad1[0x7c - 0x51];
+    unsigned char pad1[0x54 - 0x51];
+    short w130;
+    unsigned char pad1b[0x7c - 0x56];
     short w158;
     unsigned char pad2[0xc0 - 0x7e];
 };
@@ -169,11 +171,13 @@ struct LinkedActor {
     unsigned char b1, b2;
     unsigned char pad1;
     unsigned char b4;
-    unsigned char pad2[16 - 5];
+    char b5;
+    unsigned char pad2[16 - 6];
     void (*p16)(struct LinkedActor *);
     struct LinkedActor *p20, *p24;
     short s28;
-    unsigned char pad3[33 - 30];
+    short s30;
+    unsigned char pad3[33 - 32];
     char b33;
     unsigned char pad4[36 - 34];
     unsigned char b36;
@@ -193,6 +197,8 @@ struct LinkedActor {
     struct LinkedActorBlock sdc;
     unsigned char pad11[0x1a3 - 0x19c];
     unsigned char b1a3, b1a4;
+    unsigned char pad12[0x1d0 - 0x1a5];
+    unsigned char b1d0;
 };
 
 /* Object shared by the me_00 and me_01 actor state machines. */
