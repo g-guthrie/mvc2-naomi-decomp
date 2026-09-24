@@ -88,13 +88,14 @@ struct Actor {
     struct Actor *p20c;
     unsigned char pad9b[0x255 - 0x210];
     unsigned char b255;
-    unsigned char pad10[0x328 - 0x256];
+    unsigned char pad10[0x327 - 0x256];
+    unsigned char b327;
     unsigned char b328;
     unsigned char pad11[0x3f0 - 0x329];
     unsigned char b3f0, b3f1;
     unsigned char pad12[0x3f8 - 0x3f2];
-    unsigned char b3f8;
-    unsigned char pad13[0x41c - 0x3f9];
+    unsigned char b3f8, b3f9;
+    unsigned char pad13[0x41c - 0x3fa];
     float f41c;
 };
 
