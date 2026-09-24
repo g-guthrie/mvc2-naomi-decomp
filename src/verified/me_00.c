@@ -1,8 +1,6 @@
 /* Actor state machine handlers at 0x0c1aa884 share this object with me_01. */
 #include "objects.h"
 
-struct Glob_me00 { unsigned char pad[0x14]; int l14; };
-
 typedef void (*handler_me00)(struct MeActor *);
 
 extern struct Glob_me00 *dat_0c2d6f84;
