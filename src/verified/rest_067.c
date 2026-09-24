@@ -311,8 +311,3 @@ const unsigned int dat_0c12be24[] = {
     0x0c043352u, 0x41000000u, 0x0c0344a0u,
 };
 
-#pragma section n10af34
-const unsigned int dat_0c12bf34[] = {
-    0x01f901f2u, 0x01a3041cu, 0x0c2d6f84u,
-};
-
