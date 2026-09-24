@@ -337,24 +337,6 @@ const unsigned int dat_0c122dac[] = {
     0x41092492u, 0xbe892492u,
 };
 
-#pragma section n122ece
-const unsigned short dat_0c122ece[] = {
-    0x0298u,
-};
-
-#pragma section n122ed4
-const unsigned int dat_0c122ed4[] = {
-    0x0c02a026u, 0x42555555u, 0x0c02a0c4u,
-};
-
-#pragma section n122ee8
-void (*const table_0c122ee8[])(void) = {
-    func_0c03916c,
-    func_0c0438de,
-    func_0c0437b8,
-    func_0c24d5f4,
-};
-
 #pragma section n123024
 const unsigned short dat_0c123024[] = {
     0x01f9u, 0x01d2u, 0x01a1u,
