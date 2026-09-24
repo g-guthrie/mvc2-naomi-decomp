@@ -15,6 +15,11 @@ def credited_bytes(unit):
         for part in unit['sections']:
             if part['kind'] in kinds:
                 kinds[part['kind']] += number(part['size'])
+                for interior in part.get('interior', ()):
+                    if interior['kind'] != part['kind'] and interior['kind'] in kinds:
+                        size = number(interior['size'])
+                        kinds[part['kind']] -= size
+                        kinds[interior['kind']] += size
     else:
         kinds['code'] = unit.get('function_bytes', 0)
         kinds['data'] = unit.get('pool_bytes', 0)
