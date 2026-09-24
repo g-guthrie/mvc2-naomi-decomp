@@ -150,6 +150,8 @@ struct Actor {
     float f41c;
     unsigned char pad14[0x4c9 - 0x420];
     char b4c9;
+    unsigned char pad15[0x525 - 0x4ca];
+    unsigned char b525;
 };
 
 /* Global game flags record exposed through the pointer at 0x0c2d6f84. */
