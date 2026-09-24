@@ -350779,6 +350779,13 @@
       "evidence": "CFG walk from 0x0c1d0ef2; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c1d0f5e",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Zero halfword alignment pad after the RTS delay slot at 0x0c1d0f5c and before the 4-byte-aligned literal pool at 0x0c1d0f60; MOVA instructions in func_0c1d0e90 read that pool."
+    },
+    {
       "address": "0x0c1d0f60",
       "size": 12,
       "kind": "data",
