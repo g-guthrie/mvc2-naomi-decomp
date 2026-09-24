@@ -2,35 +2,7 @@
  * Every linked byte and all five literal pools match. Returning directly from
  * the two terminal case-2 paths preserves SHC's matching r2 tail jumps.
  * Twelve-byte vector copies use __quick_odd_mvn at 0x0c1fb7a0. */
-struct Vec3_tu5_03 { float x, y, z; };
-
-struct Obj_tu5_03 {
-    unsigned char pad0[4];
-    unsigned char b4;
-    char b5;
-    unsigned char pad1[16 - 6];
-    void (*p16)(struct Obj_tu5_03 *);
-    unsigned char pad2[28 - 20];
-    short w28;
-    unsigned char pad3[52 - 30];
-    struct Vec3_tu5_03 pos;
-    unsigned char pad4[72 - 64];
-    int l48;
-    unsigned char pad5[80 - 76];
-    float f80, f84, f88;
-    unsigned char pad6[120 - 92];
-    float f120, f124, f128;
-    int l84;
-    unsigned char pad7[0xcc - 0x88];
-    int lcc;
-    unsigned char pad8[0xe4 - 0xd0];
-    int lE4, lE8, lEC;
-    int lf0;
-    unsigned char pad9[0x12c - 0xf4];
-    unsigned char b12c;
-    unsigned char pad10[0x130 - 0x12d];
-    short w130;
-};
+#include "objects.h"
 
 struct Ref_tu5_03 { struct Obj_tu5_03 *p0; };
 extern struct Ref_tu5_03 *dat_0c2d9650;
