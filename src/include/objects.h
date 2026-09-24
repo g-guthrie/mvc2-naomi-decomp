@@ -143,6 +143,9 @@ struct Actor {
     char b4c9;
 };
 
+/* Global game flags record exposed through the pointer at 0x0c2d6f84. */
+struct ActorFlags { unsigned char pad[28]; int flags; };
+
 /* Halfword counters stored after a 124-byte header at 0x0c2f83f8. */
 struct Tbl_ub3_01 { unsigned char pad[124]; short arr[100]; };
 
@@ -169,7 +172,8 @@ struct LinkedActor {
     char b33;
     unsigned char pad4[36 - 34];
     unsigned char b36;
-    unsigned char pad5[48 - 37];
+    unsigned char b37;
+    unsigned char pad5[48 - 38];
     unsigned char b48;
     unsigned char pad6[52 - 49];
     float f52, f56, f60;
