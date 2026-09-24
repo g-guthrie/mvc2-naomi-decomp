@@ -42,14 +42,14 @@ void func_0c1b552c(struct LinkedActor *a, struct LinkedActor *b)
     a->b1a4 = b->b1a4;
     a->b48 = b->b48;
     a->v80 = b->v80;
-    if (a->b33)
-        state = 12;
-    else
-        state = 11;
     flag = b->b36;
     a->b36 = flag;
     a->sdc.b12c = 0;
     a->sdc.w130 = a->b32;
+    if (a->b33)
+        state = 12;
+    else
+        state = 11;
     a->b36 = state;
     func_0c02a0c4(a, 23, a->b33 + 21);
 }
