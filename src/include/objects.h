@@ -43,6 +43,9 @@ struct ActorSub2a4 {
     short w4;
     unsigned char pad1[4];
     short s10;
+    unsigned char pad2[0x16 - 0xc];
+    unsigned char b16;
+    unsigned char pad3;
 };
 
 /* The moving object most leaf functions update: a state byte at 4, a timer at
@@ -127,7 +130,7 @@ struct Actor {
     unsigned char b255;
     unsigned char pad10[0x2a4 - 0x256];
     struct ActorSub2a4 sub2a4;
-    unsigned char pad10b[0x327 - 0x2b0];
+    unsigned char pad10b[0x327 - 0x2a4 - sizeof(struct ActorSub2a4)];
     unsigned char b327;
     unsigned char b328;
     unsigned char pad11[0x37c - 0x329];
