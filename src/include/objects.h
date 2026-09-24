@@ -267,6 +267,20 @@ struct MeActor {
     float f41c;
 };
 
+/* Type-5 timed actor allocated by the callback at 0x0c1e10e2. */
+struct LinkedActorSequence {
+    unsigned char pad0[16];
+    void (*p16)(struct LinkedActorSequence *);
+    unsigned char pad1[28 - 20];
+    short s28;
+    unsigned char pad2[0x84 - 30];
+    int l84;
+    unsigned char pad3[0xcc - 0x88];
+    int lcc;
+    unsigned char pad4[0x12c - 0xd0];
+    unsigned char b12c;
+};
+
 /* Byte stream reader used by the script interpreter at 0x0c2007xx. */
 struct ByteCursor { int cnt0; int cnt4; int cnt8; unsigned char *cur; };
 
