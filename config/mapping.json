@@ -107502,10 +107502,17 @@
     },
     {
       "address": "0x0c0ad080",
-      "size": 70,
+      "size": 8,
+      "kind": "data",
+      "sha256": "7a983d1cc1f2c4364bad7935c39d3100c4f791cefead9fcf8010022bac039a35",
+      "evidence": "Two 32-bit code pointers (0x0c03edcc, 0x0c045248) after the prior function pool; 0x0c0ad068 loads the second word. No code path enters these bytes."
+    },
+    {
+      "address": "0x0c0ad088",
+      "size": 62,
       "kind": "code",
-      "sha256": "aa77e40f86d0654c2aa7275cc516a6f066d9bf3ff9760a5e974eb519c95cdb3e",
-      "evidence": "CFG walk from 0x0c0ad080; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "5ef34b96667bf554b0ad4f918328474c64c935a6e508507a1d98efc5c29a6d58",
+      "evidence": "Actor state handler begins at mov #0,r5, resets state bytes, branches among 0/1/2 cases, and tail-jumps through the literal at 0x0c0ad1cc; delay slot ends at 0x0c0ad0c4."
     },
     {
       "address": "0x0c0ad0c6",
