@@ -1,10 +1,4 @@
-/* func_0c077be0, func_0c077bf2 and func_0c077c26 match exactly (18/18,
- * 52/52, 96/96). func_0c077bac (47/52) differs only by scratch-register
- * choice (retail: r2 then r3; ours: r3 then r1) for the trailing
- * "if (a->b141) a->b141 = 0;" -- tried "!(x==0)" in place of "x!=0", no
- * change. -6.428571f (0xc0cdb6db) and -0.2678571f (0xbe892492) have no
- * decimal spelling tools/float_literal.py can find; used the closest
- * 7-digit spelling (both landed exact here, so not an issue after all). */
+/* Four exact state callbacks and their 62-byte literal pool. */
 typedef void (*handler_ud1_09)(struct Obj_ud1_09 *);
 
 struct Obj_ud1_09 {
@@ -29,7 +23,7 @@ struct Obj_ud1_09 {
 extern char func_0c02a026(struct Obj_ud1_09 *);
 extern void func_0c02a39a(struct Obj_ud1_09 *, int);
 extern void func_0c0439c4(struct Obj_ud1_09 *);
-extern handler_ud1_09 dat_0c077c98[];
+extern handler_ud1_09 dat_0c241460[];
 extern void func_0c076980(struct Obj_ud1_09 *);
 extern unsigned char dat_0c2f8338;
 extern void func_0c02a0c4(struct Obj_ud1_09 *, int, int);
@@ -39,15 +33,13 @@ void func_0c077bac(struct Obj_ud1_09 *a)
     if (func_0c02a026(a) < 0) {
         func_0c02a39a(a, 0);
         func_0c0439c4(a);
-        return;
-    }
-    if (a->b141 != 0)
+    } else if (a->b141)
         a->b141 = 0;
 }
 
 void func_0c077be0(struct Obj_ud1_09 *a)
 {
-    dat_0c077c98[a->b6](a);
+    dat_0c241460[a->b6](a);
 }
 
 void func_0c077bf2(struct Obj_ud1_09 *a)
@@ -73,7 +65,7 @@ void func_0c077c26(struct Obj_ud1_09 *a)
         a->f34 += -213.33333f;
         a->f5c = 8.33333302f;
     }
-    a->f60 = -6.428571f;
-    a->f6c = -0.2678571f;
+    a->f60 = -6.42857143f;
+    a->f6c = -0.267857143f;
     func_0c02a0c4(a, 0x12, 0);
 }
