@@ -1,5 +1,4 @@
-/* Four functions sharing the literal pool at 0x0c047b2e. 281/288 bytes match:
- * func_0c047a40 loads the table index into r2 where retail uses r3. */
+/* Complete 288-byte mask translation unit with four functions and shared pool. */
 #include "objects.h"
 
 extern float dat_0c2d9300;
@@ -12,9 +11,10 @@ int func_0c047a40(struct MaskObject *a)
     if (a->p20c->b235)
         return 0;
     if (a->b1f9 == 2) {
-        if (a->f38 <= a->f41c)
-            return 0;
-        if (a->f38 >= dat_0c2d9300 + -68.57143f)
+        if (a->f38 > a->f41c) {
+            if (a->f38 >= dat_0c2d9300 + -68.57143f)
+                return 0;
+        } else
             return 0;
     }
     if (dat_0c23bf64[a->b1d0])
