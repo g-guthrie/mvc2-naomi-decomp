@@ -46,6 +46,21 @@ def immediates(image, base, lo, hi):
             if struct.unpack_from('<H', image, pc - base)[0] >> 12 == 0xE]
 
 
+def header_blocks(head):
+    """Keep complete struct/union declarations and following prototypes."""
+    blocks, block, depth = [], [], 0
+    for line in head.splitlines():
+        if block or re.match(r'\s*(struct|union)\s+\w+\s*\{', line):
+            block.append(line)
+            depth += line.count('{') - line.count('}')
+            if depth == 0:
+                blocks.append('\n'.join(block))
+                block = []
+        elif line.strip() and not line.strip().startswith(('/*', '*')):
+            blocks.append(line)
+    return blocks
+
+
 def full_twin_spans(image, base, ranges, starts, extent, groups, verified):
     """Proposed units whose every function has a verified twin."""
     from unit_spans import spans
@@ -117,7 +132,6 @@ def main():
             notes.append(f'func_{a:08x}: twin func_{t:08x} source not found')
             continue
         body = m.group(0)
-        header = text[:text.find(m.group(0).split('\n')[0])] if False else text
         # header: everything before the first function definition in the twin file
         first = re.search(r'^[^\n;{}]*\bfunc_0c[0-9a-f]{6}\s*\([^;]*\)\s*\n\{', text, re.M)
         head = text[:first.start()] if first else ''
@@ -145,16 +159,7 @@ def main():
                     notes.append(f'func_{a:08x}: immediate {s1} -> {s2} not found in source')
         # header with the same symbol renames, deduplicated by line
         head = SYMBOL.sub(lambda mm: f'{mm.group(1)}_{renames.get(mm.group(2), mm.group(2))}', head)
-        blocks, block = [], []
-        for line in head.split('\n'):
-            if block or re.match(r'\s*(struct|union)\s+\w+\s*\{', line):
-                block.append(line)
-                if line.strip() == '};':
-                    blocks.append('\n'.join(block))
-                    block = []
-            elif line.strip() and not line.strip().startswith(('/*', '*')):
-                blocks.append(line)
-        for item in blocks:
+        for item in header_blocks(head):
             if item not in seen_headers:
                 seen_headers.add(item)
                 headers.append(item)
@@ -162,8 +167,6 @@ def main():
         bodies.append(body + '\n')
         notes.append(f'func_{a:08x}: from twin func_{t:08x}' + (f' with {len(renames)} symbols renamed' if renames else ''))
     text = '/* Assembled by tools/clone.py from verified twins. */\n' + '\n'.join(headers).strip() + '\n\n' + '\n'.join(bodies)
-    # declare any function or data symbol used but not declared
-    declared = set(re.findall(r'\b(?:func|dat|ptr|table)_0c[0-9a-f]{6}\b(?=\s*[\[(;=,])', '\n'.join(headers)))
     open(ROOT / out_path, 'w').write(text)
     for n in notes:
         print(n)
