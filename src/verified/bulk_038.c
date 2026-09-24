@@ -45,18 +45,6 @@ extern void func_0c244928(void);
 extern void func_0c24495c(void);
 extern void func_0c244974(void);
 
-#pragma section n0ae554
-void (*const table_0c0ae554[])(void) = {
-    func_0c1ec190,
-    func_0c02a0c4,
-    func_0c03916c,
-    func_0c0437b8,
-    func_0c244840,
-    func_0c02a026,
-    func_0c244854,
-    func_0c02a39a,
-};
-
 #pragma section n0ae6d6
 const unsigned short dat_0c0ae6d6[] = {
     0x01feu, 0x01a3u,
