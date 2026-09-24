@@ -66,6 +66,13 @@ class ProofTests(unittest.TestCase):
         proof = {'main_size':100, 'units':[dict(credited=False, function_bytes=0, sections=[dict(kind='code',size=4)])]}
         self.assertEqual(metrics(proof)['code']['matched_bytes'],0)
 
+    def test_verified_literal_pool_counts_as_data(self):
+        unit = dict(credited=True, sections=[dict(kind='code', size=10,
+                    interior=[dict(kind='data', size=4)])])
+        result = metrics({'main_size': 100, 'units': [unit]})
+        self.assertEqual(result['code']['matched_bytes'], 6)
+        self.assertEqual(result['data']['matched_bytes'], 4)
+
     def test_progress_provenance_sums_to_credited_bytes(self):
         units = [dict(credited=True, sections=[dict(kind='code', size=4)]),
                  dict(credited=True, library='sdk.lib', sections=[dict(kind='code', size=6)]),
