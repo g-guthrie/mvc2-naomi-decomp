@@ -1,10 +1,8 @@
-/* The 312-byte section links at retail. func_0c091608 (144 bytes) and the
- * 32-byte pool match exactly. func_0c091698 matches in
- * structure, branch targets and byte count (136/136 expected) but differs
- * from retail only by a scratch-register swap (r2<->r3) at three anonymous
- * temporaries: the (a->w1fa & 0x0c00) test, the a->b1fe test, and the
- * mov #2,rN before storing a->b1f7 in the b1f9==2 case. 125/136 bytes equal;
- * every other byte, including all branch displacements, matches. */
+/* The 312-byte section links at retail and matches 307/312 bytes. The
+ * 144-byte func_0c091608 and 32-byte pool match exactly. In the
+ * 136-byte func_0c091698, a switch on b1f9 matches the mask test's register
+ * order; the only differences left are two r3-vs-r2 choices: loading/testing
+ * b1fe at 0x0c0916c2/c4, and mov #2/store at 0x0c0916f0/f4. */
 struct Obj_ub3_03 {
     unsigned char pad0[52];
     float f52;
@@ -58,8 +56,10 @@ int func_0c091698(struct Obj_ub3_03 *a)
 {
     int r;
 
-    if (a->b1f9 == 1)
+    switch (a->b1f9) {
+    case 1:
         return 0;
+    }
     if (!(a->w1fa & 0x0c00))
         return 0;
     if (a->b1a3 == 0)
