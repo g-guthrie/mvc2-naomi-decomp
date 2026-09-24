@@ -1,3 +1,5 @@
+#include "objects.h"
+
 /* View the source record as 32-bit words so SHC preserves the pointer
  * temporary used by the retail call at 0x0c1e1648. */
 struct Obj_tu3_05 {
@@ -15,10 +17,7 @@ struct Obj_tu3_05 {
     unsigned char b12c;
 };
 
-struct Inner_tu3_05 { unsigned char pad[0x88]; int l88; int l8c; };
-struct Outer_tu3_05 { struct Inner_tu3_05 *p0; };
-
-extern struct Outer_tu3_05 *dat_0c2d964c;
+extern struct ActorGlobalRoot *dat_0c2d964c;
 extern struct Obj_tu3_05 *func_0c0374da(int, int, int);
 extern void func_0c1d91a8(int);
 extern void func_0c1d8ff8(int, int);
