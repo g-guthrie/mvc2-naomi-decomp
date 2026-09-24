@@ -363,11 +363,6 @@ const unsigned int dat_0c059ffc[] = {
     0x0c03489cu, 0x0c1d357au, 0x0c0346dau, 0x0c04b02au,
 };
 
-#pragma section n05a0e8
-const unsigned short dat_0c05a0e8[] = {
-    0x01d2u,
-};
-
 #pragma section n05a238
 void (*const table_0c05a238[])(void) = {
     func_0c0344a0,
