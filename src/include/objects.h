@@ -199,12 +199,13 @@ struct LinkedActor {
     unsigned char pad1;
     unsigned char b4;
     char b5;
-    unsigned char pad2[16 - 6];
+    unsigned char b6, b7;
+    unsigned char pad2[16 - 8];
     void (*p16)(struct LinkedActor *);
     struct LinkedActor *p20, *p24;
     short s28;
     short s30;
-    unsigned char pad3[33 - 32];
+    unsigned char b32;
     char b33;
     unsigned char pad4[36 - 34];
     unsigned char b36;
