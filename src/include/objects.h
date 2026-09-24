@@ -146,6 +146,7 @@ struct Actor {
 
 /* Global game flags record exposed through the pointer at 0x0c2d6f84. */
 struct ActorFlags { unsigned char pad[28]; int flags; };
+struct Glob_me00 { unsigned char pad[0x14]; int l14; };
 
 /* Indexed data shared by actor constructors through the root at 0x0c2d964c. */
 union ActorGlobalEntry { void *pointer; int value; };
@@ -238,7 +239,9 @@ struct MeActorBlock {
     unsigned char pad2[0x60 - 0x56];
     unsigned char b13c, b13d, b13e, b13f;
     unsigned char b140, b141;
-    unsigned char pad3[0xc0 - 0x66];
+    unsigned char pad3[0x7d - 0x66];
+    unsigned char b159;
+    unsigned char pad4[0xc0 - 0x7e];
 };
 struct MeActor {
     unsigned char b00, b01, b02, b03, b04, b05, b06, b07;
@@ -269,7 +272,10 @@ struct MeActor {
     unsigned char b1d0;
     unsigned char pad15[0x1e9 - 0x1d1];
     unsigned char b1e9;
-    unsigned char pad16[0x411 - 0x1ea];
+    unsigned char pad16[0x2a4 - 0x1ea];
+    struct MeActor *p2a4;
+    unsigned char b2a8;
+    unsigned char pad16b[0x411 - 0x2a9];
     unsigned char b411;
     unsigned char pad17[0x41c - 0x412];
     float f41c;
