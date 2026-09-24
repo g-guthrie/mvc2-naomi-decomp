@@ -126,6 +126,9 @@ struct Actor {
     char b4c9;
 };
 
+/* Halfword counters stored after a 124-byte header at 0x0c2f83f8. */
+struct Tbl_ub3_01 { unsigned char pad[124]; short arr[100]; };
+
 /* Linked actor variant with pointers at 0x14 and 0x18. The 0xc0-byte block at
  * 0xdc is copied by SHC's runtime helper in the 0x0c19dxxx callbacks. */
 struct LinkedActorVec3 { float x, y, z; };
