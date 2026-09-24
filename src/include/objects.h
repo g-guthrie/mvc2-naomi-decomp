@@ -12,7 +12,7 @@ struct MaskObject {
     unsigned char pad0[0x38];
     float f38;                  /* y_pos */
     unsigned char pad1[0x1a3 - 0x3c];
-    unsigned char b1a3;         /* sp_move_strength */
+    char b1a3;         /* sp_move_strength */
     unsigned char pad2[0x1d0 - 0x1a4];
     unsigned char b1d0;         /* unk_01d0, chooses the animation to play */
     unsigned char pad3[0x1f9 - 0x1d1];
@@ -61,7 +61,8 @@ struct Actor {
     short s30;
     unsigned char b32;
     unsigned char b33;
-    unsigned char pad3[2];
+    unsigned char b34;
+    unsigned char pad3;
     unsigned char b36;
     unsigned char pad3b[15];
     float f52, f56, f60;
@@ -73,7 +74,7 @@ struct Actor {
     unsigned char pad5b[0x12c - 0x8c];
     unsigned char b12c;
     unsigned char pad6[0x130 - 0x12d];
-    short w130;
+    unsigned short w130;
     unsigned char pad6b[0x140 - 0x132];
     unsigned char b140;
     char b141;
@@ -93,7 +94,7 @@ struct Actor {
     unsigned char pad7e[0x1d0 - 0x1cc];
     unsigned char b1d0;
     unsigned char pad7eb;
-    char b1d2;
+    unsigned char b1d2;
     unsigned char pad7f[0x1e9 - 0x1d3];
     unsigned char b1e9, b1ea;
     unsigned char pad7fb[0x1f2 - 0x1eb];
@@ -102,10 +103,11 @@ struct Actor {
     unsigned char b1f6, b1f7;
     unsigned char pad7ffc[0x1f9 - 0x1f8];
     unsigned char b1f9;
-    unsigned char pad8[0x1fc - 0x1fa];
+    unsigned short w1fa;
     unsigned char b1fc;
     unsigned char b1fd;
-    unsigned char pad9[0x20c - 0x1fe];
+    char b1fe;
+    unsigned char pad9[0x20c - 0x1ff];
     struct Actor *p20c;
     unsigned char pad9b[0x255 - 0x210];
     unsigned char b255;
