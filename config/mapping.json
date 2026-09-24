@@ -67622,11 +67622,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c07cdf0",
+      "size": 4,
+      "kind": "data",
+      "sha256": "639c76a3317f81cd6137d8078d0711b0f3f8f45447b0f8c40c817a033e96bd4e",
+      "evidence": "PC-relative mov.w at 0x0c07cddc reads the 0x01a3 literal at 0x0c07cdf0; 0x0c07cdf2 is alignment before the following longword literals."
+    },
+    {
       "address": "0x0c07cdf4",
-      "size": 76,
+      "size": 16,
+      "kind": "data",
+      "sha256": "5e4a6cbb87ab15de6e68e716f0c5fb00e4dffceb8cff150befc8e78f07355a84",
+      "evidence": "Four PC-relative longword literals consumed by code at 0x0c07cd1c, 0x0c07cd32, 0x0c07cd4e, and 0x0c07cd80; each word resolves to a known function or handler table."
+    },
+    {
+      "address": "0x0c07ce04",
+      "size": 60,
       "kind": "code",
-      "sha256": "ef0d02ca7e448242c1435a35155b1811b6e9c87a06b40e04dff288898f132ec8",
-      "evidence": "CFG walk from 0x0c07cdf4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "637b48a0087aac35d9081104d2d24dd39fab5ac69657bf1a16de9b68b961d29e",
+      "evidence": "CFG walk from the real function entry 0x0c07ce04 through the tail-jump delay slot at 0x0c07ce3e; 0x0c07cdf4-0x0c07ce03 are PC-relative literals, not instructions."
     },
     {
       "address": "0x0c07ce40",
@@ -67654,7 +67668,7 @@
       "size": 6,
       "kind": "data",
       "sha256": "d038355b455942abe0bc94591507b55fc307e16b5201c44f528e0211d9cc2ade",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c07cdf4; unreferenced adjacent bytes omitted."
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c07ce04; unreferenced adjacent bytes omitted."
     },
     {
       "address": "0x0c07cf3a",
@@ -67668,7 +67682,7 @@
       "size": 4,
       "kind": "data",
       "sha256": "809b2c5bb087475db012bd2681338226a9f4fb584625b489dc4d097676b6abc0",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c07cdf4; unreferenced adjacent bytes omitted."
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c07ce04; unreferenced adjacent bytes omitted."
     },
     {
       "address": "0x0c07cf44",
