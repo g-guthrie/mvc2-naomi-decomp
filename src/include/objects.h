@@ -160,6 +160,10 @@ struct LinkedActorBlock {
     short w158;
     unsigned char pad2[0xc0 - 0x7e];
 };
+union LinkedActorWcc {
+    short short_value;
+    unsigned int dword_value;
+};
 struct LinkedActor {
     unsigned char pad0;
     unsigned char b1, b2;
@@ -174,7 +178,8 @@ struct LinkedActor {
     unsigned char pad4[36 - 34];
     unsigned char b36;
     unsigned char b37;
-    unsigned char pad5[48 - 38];
+    unsigned short w38;
+    unsigned char pad5[48 - 40];
     unsigned char b48;
     unsigned char pad6[52 - 49];
     float f52, f56, f60;
@@ -183,8 +188,8 @@ struct LinkedActor {
     unsigned char pad8[96 - 92];
     float f96;
     unsigned char pad9[0xcc - 100];
-    short wcc;
-    unsigned char pad10[0xdc - 0xce];
+    union LinkedActorWcc wcc;
+    unsigned char pad10[0xdc - 0xd0];
     struct LinkedActorBlock sdc;
     unsigned char pad11[0x1a3 - 0x19c];
     unsigned char b1a3, b1a4;
