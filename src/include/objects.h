@@ -48,6 +48,7 @@ struct ActorSub2a4 {
     unsigned char pad2[0x16 - 0xc];
     unsigned char b16;
     unsigned char pad3;
+    unsigned int l24;
 };
 
 /* The moving object most leaf functions update: a state byte at 4, a timer at
