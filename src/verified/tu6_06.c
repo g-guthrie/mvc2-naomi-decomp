@@ -114,9 +114,8 @@ void func_0c132d14(struct Obj_0c132c24 *p)
         p->f52 -= 53.333334f;
     func_0c02a0c4(p, 23, 3);
     for (;;) {
-        struct Pair_0c132c24 *x = &p->p24->sdc.s150;
-        struct Pair_0c132c24 *y = &p->sdc.s150;
-        if (x->b1 == y->b1) {
+        if (*((char *)&p->p24->sdc.s150 + 1) ==
+            *((char *)&p->sdc.s150 + 1)) {
             p->sdc.b12c = 1;
             break;
         }
