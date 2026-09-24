@@ -45,16 +45,6 @@ const unsigned int dat_0c0b2890[] = {
     0x0c244c00u,
 };
 
-#pragma section n0919ec
-const unsigned short dat_0c0b29ec[] = {
-    0x01f7u,
-};
-
-#pragma section n091a18
-const unsigned int dat_0c0b2a18[] = {
-    0x0c244c0cu,
-};
-
 #pragma section n091b0c
 const unsigned short dat_0c0b2b0c[] = {
     0x01f9u,
