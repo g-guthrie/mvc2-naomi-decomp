@@ -1,8 +1,6 @@
 /* Full C translation unit from 0x0c1d0ad0 through its pool at 0x0c1d108c.
- * All BSR targets are defined in this section. Four byte values remain: the
- * high bytes at 0x0c1d0df9, 0x0c1d0dfb, 0x0c1d0f55, and 0x0c1d0f57 differ
- * because SHC uses r3 for two func_0c037688 tail jumps where retail uses r2.
- * The linked extent and all pools match; 0x0c1d0f5e is alignment padding.
+ * Every linked byte and all five literal pools match. Returning directly from
+ * the two terminal case-2 paths preserves SHC's matching r2 tail jumps.
  * Twelve-byte vector copies use __quick_odd_mvn at 0x0c1fb7a0. */
 struct Vec3_tu5_03 { float x, y, z; };
 
@@ -190,7 +188,7 @@ advance:
         a->f124 -= 0.125f;
         a->f128 -= 0.125f;
         if (a->w28 < 20)
-            goto out;
+            return;
 finish:
         func_0c037688(a);
         return;
@@ -256,7 +254,7 @@ advance:
         a->f124 -= 0.200000003f;
         a->f128 -= 0.200000003f;
         if (a->w28 < 20)
-            goto out;
+            return;
 finish:
         func_0c037688(a);
         return;
