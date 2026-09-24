@@ -1,6 +1,5 @@
 #include "objects.h"
 
-struct ActorFlags { unsigned char pad[28]; int flags; };
 typedef void (*ActorHandler)(struct Actor *);
 
 extern struct ActorFlags *dat_0c2d6f84;
