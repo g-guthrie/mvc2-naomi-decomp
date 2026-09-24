@@ -155,7 +155,7 @@ struct Actor {
 };
 
 /* Global game flags record exposed through the pointer at 0x0c2d6f84. */
-struct ActorFlags { unsigned char pad[28]; int flags; };
+struct ActorFlags { unsigned char pad[28]; int flags; unsigned char pad2[0x80 - 32]; char b128; };
 struct Glob_me00 { unsigned char pad[0x14]; int l14; };
 
 /* Indexed data shared by actor constructors through the root at 0x0c2d964c. */
