@@ -179,6 +179,53 @@ struct LinkedActor {
     unsigned char b1a3, b1a4;
 };
 
+/* Object shared by the me_00 and me_01 actor state machines. */
+struct MeActorVec3 { float x, y, z; };
+struct MeActorBlock {
+    unsigned char pad0[0x50];
+    unsigned char b12c;
+    unsigned char pad1[3];
+    unsigned short w130;
+    unsigned char pad2[0x60 - 0x56];
+    unsigned char b13c, b13d, b13e, b13f;
+    unsigned char b140, b141;
+    unsigned char pad3[0xc0 - 0x66];
+};
+struct MeActor {
+    unsigned char b00, b01, b02, b03, b04, b05, b06, b07;
+    unsigned char pad0[0x10 - 8];
+    void (*p10)(struct MeActor *);
+    unsigned char pad1[0x18 - 0x14];
+    struct MeActor *p18;
+    unsigned char pad2[0x1e - 0x1c];
+    short w1e;
+    unsigned char pad3[0x24 - 0x20];
+    unsigned char b24;
+    unsigned char pad4;
+    unsigned short w26;
+    unsigned char pad5[0x30 - 0x28];
+    unsigned char b30;
+    unsigned char pad6[0x34 - 0x31];
+    float f34, f38;
+    unsigned char pad7[0x50 - 0x3c];
+    struct MeActorVec3 v50;
+    float f5c, f60;
+    unsigned char pad8[0x68 - 0x64];
+    float f68, f6c;
+    unsigned char pad9[0xdc - 0x70];
+    struct MeActorBlock blk_dc;
+    unsigned char pad13[0x1a3 - 0x19c];
+    unsigned char b1a3, b1a4;
+    unsigned char pad14[0x1d0 - 0x1a5];
+    unsigned char b1d0;
+    unsigned char pad15[0x1e9 - 0x1d1];
+    unsigned char b1e9;
+    unsigned char pad16[0x411 - 0x1ea];
+    unsigned char b411;
+    unsigned char pad17[0x41c - 0x412];
+    float f41c;
+};
+
 /* Byte stream reader used by the script interpreter at 0x0c2007xx. */
 struct ByteCursor { int cnt0; int cnt4; int cnt8; unsigned char *cur; };
 
