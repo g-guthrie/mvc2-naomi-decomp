@@ -191,7 +191,9 @@ struct LinkedActor {
     struct LinkedActorVec3 v80;
     unsigned char pad8[96 - 92];
     float f96;
-    unsigned char pad9[0xcc - 100];
+    unsigned char pad9[0x84 - 100];
+    void *p84;
+    unsigned char pad9b[0xcc - 0x88];
     union LinkedActorWcc wcc;
     unsigned char pad10[0xdc - 0xd0];
     struct LinkedActorBlock sdc;
