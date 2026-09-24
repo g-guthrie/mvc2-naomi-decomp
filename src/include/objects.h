@@ -137,7 +137,8 @@ struct Actor {
     unsigned char b1fc;
     unsigned char b1fd;
     char b1fe;
-    unsigned char pad9[0x201 - 0x1ff];
+    unsigned char b1ff;
+    unsigned char pad9[0x201 - 0x200];
     unsigned char b201;
     unsigned char pad9a[0x20c - 0x202];
     struct Actor *p20c;
