@@ -370771,11 +370771,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0xc1f0d30",
+      "size": 90,
+      "kind": "code",
+      "sha256": "54d63291acd5070e0550cc396e31b52812a8b00f11afd87f4404874ebccef790",
+      "evidence": "Rooted CFG from 0x0c1f0d30 (PC-relative global setup immediately before the 0x0c1f0d32 frame prologue) has a coherent loop, balanced register restoration, clean RTS/delay slot, and no unresolved CFG edges; no static caller was recovered."
+    },
+    {
       "address": "0x0c1f0d98",
       "size": 4,
       "kind": "data",
       "sha256": "c7aabc1551e33ab8e44b496a294db2529d984c82fc23828c08726ccd83ae1d03",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0xc1f0da0",
+      "size": 4,
+      "kind": "data",
+      "sha256": "cdfaa1ac4360cf8806f41ae5d299bba00d4b6ae5df4cc72757d1b734f2c33415",
+      "evidence": "Four-byte PC-relative literal consumed by MOV.L at 0x0c1f0d30; same pool value is independently loaded by the rooted CFG at 0x0c1f0bb0."
     },
     {
       "address": "0x0c1f0dac",
