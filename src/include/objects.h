@@ -225,7 +225,7 @@ struct LinkedActor {
     short s30;
     unsigned char b32;
     char b33;
-    unsigned char pad4[36 - 34];
+    unsigned char b34, b35;
     unsigned char b36;
     unsigned char b37;
     unsigned short w38;
