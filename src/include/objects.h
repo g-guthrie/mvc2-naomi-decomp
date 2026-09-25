@@ -160,7 +160,9 @@ struct Actor {
     float f664;
     unsigned char pad10a[0x2a4 - 0x29c];
     struct ActorSub2a4 sub2a4;
-    unsigned char pad10b[0x327 - 0x2a4 - sizeof(struct ActorSub2a4)];
+    unsigned char pad10b[0x2c6 - 0x2a4 - sizeof(struct ActorSub2a4)];
+    short s2c6;
+    unsigned char pad10c[0x327 - 0x2c8];
     unsigned char b327;
     unsigned char b328;
     unsigned char pad11a[0x34a - 0x329];
@@ -180,7 +182,9 @@ struct Actor {
     unsigned short w420;
     unsigned char pad14[0x4c9 - 0x422];
     char b4c9;
-    unsigned char pad15[0x525 - 0x4ca];
+    unsigned char pad15[0x4dc - 0x4ca];
+    unsigned short w4dc;
+    unsigned char pad15b[0x525 - 0x4de];
     unsigned char b525;
 };
 

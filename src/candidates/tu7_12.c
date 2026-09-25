@@ -1,8 +1,6 @@
-/* The full 288-byte section links at retail. func_0c16170c,
- * func_0c16178e, and the 28-byte pool are exact. func_0c161728 matches
- * 80/90 bytes; retail stores b4 before b12c, but simply swapping source
- * statements changes SHC's section layout. func_0c161782 matches 10/12
- * bytes and uses r3 where retail uses r2 for its zero store.
+/* 286/288. func_0c16170c, func_0c161728, func_0c16178e and the pool match.
+ * func_0c161782's tail loads func_0c037688 into r2; retail uses r3.
+ * The goto keeps the zero store ahead of that load (a direct call sinks it).
  * Imports: __slow_mvn=0x0c1fb838, __quick_odd_mvn=0x0c1fb7a0. */
 struct V3_tu7_12 { float x, y, z; };
 struct Copy_c0_tu7_12 { unsigned char raw[0xc0]; };
@@ -59,15 +57,17 @@ void func_0c161728(struct Obj_tu7_12 *a)
     a->f56 += a->f96;
     a->f96 += a->f108;
     if (func_0c02a026(a) < 0) {
-        a->v.u.b12c = 0;
         a->b4 = 2;
+        a->v.u.b12c = 0;
     }
 }
 
 void func_0c161782(struct Obj_tu7_12 *a)
 {
     a->v.u.b12c = 0;
-    func_0c037688(a);
+    goto call;
+call:
+    func_0c037688(a + 0);
 }
 
 void func_0c16178e(struct Obj_tu7_12 *a)

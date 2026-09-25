@@ -1,8 +1,8 @@
-/* The 312-byte section links at retail and matches 307/312 bytes. The
- * 144-byte func_0c091608 and 32-byte pool match exactly. In the
- * 136-byte func_0c091698, a switch on b1f9 matches the mask test's register
- * order; the only differences left are two r3-vs-r2 choices: loading/testing
- * b1fe at 0x0c0916c2/c4, and mov #2/store at 0x0c0916f0/f4. */
+/* The 312-byte section links at retail and matches 309/312 bytes. The
+ * 144-byte func_0c091608 and 32-byte pool match exactly. Dropping the
+ * inner else in func_0c091698 put mov #2 into r2. The only difference left
+ * is the b1fe load/test at 0x0c0916c2/c4, which still uses r3 instead of r2.
+ * ! versus == 0 on b1a3 and b1fe does not move that load. */
 struct Obj_ub3_03 {
     unsigned char pad0[52];
     float f52;
@@ -52,6 +52,7 @@ void func_0c091608(struct Obj_ub3_03 *a)
     }
 }
 
+
 int func_0c091698(struct Obj_ub3_03 *a)
 {
     int r;
@@ -64,16 +65,15 @@ int func_0c091698(struct Obj_ub3_03 *a)
         return 0;
     if (a->b1a3 == 0)
         return 0;
-    if (a->b1fe == 0) {
+    if (!a->b1fe) {
         if (a->b1f9 != 2) {
             if ((r = func_0c037d54(a)) != 0)
                 a->b1f7 = 0;
             return r;
-        } else {
-            if ((r = func_0c037d54(a)) != 0)
-                a->b1f7 = 2;
-            return r;
         }
+        if ((r = func_0c037d54(a)) != 0)
+            a->b1f7 = 2;
+        return r;
     }
     if (a->b1f9 == 2)
         return 0;

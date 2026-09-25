@@ -4,9 +4,8 @@
  * to 0x0c0b4758, where the next function's prologue begins. Extended to
  * size 296.
  *
- * func_0c0b4630, func_0c0b465a and func_0c0b467a match exactly. The shared
- * pool is exact with SHC's decimal spellings for 0.2, -0.8035714, and 0.016.
- * func_0c0b468e and func_0c0b46d4 remain nonexact, so this is a candidate. */
+ * All five functions and the shared pool match. func_0c0b468e tails into
+ * func_0c1a62b0(a, 4); b141 is signed so the cmp/eq immediates skip extu.b. */
 
 struct Obj_ub6_07 {
     unsigned char pad0[5];
@@ -22,7 +21,7 @@ struct Obj_ub6_07 {
     unsigned char pad5[0x12c - 0x10c];
     unsigned char b12c;
     unsigned char pad6[0x141 - 0x12d];
-    unsigned char b141;
+    char b141;
     unsigned char pad7[0x1f9 - 0x142];
     unsigned char b1f9;
 };
@@ -33,7 +32,7 @@ extern handler_ub6_07 dat_0c244e18[];
 extern signed char func_0c02a026(struct Obj_ub6_07 *);
 extern void func_0c02a0c4(struct Obj_ub6_07 *, int, int);
 extern void func_0c0344a0(struct Obj_ub6_07 *, int);
-extern void func_0c1a62b0(struct Obj_ub6_07 *);
+extern void func_0c1a62b0(struct Obj_ub6_07 *, int);
 
 void func_0c0b4630(struct Obj_ub6_07 *a)
 {
@@ -60,9 +59,9 @@ void func_0c0b468e(struct Obj_ub6_07 *a)
     a->b12c = 1;
     func_0c02a0c4(a, 18, 1);
     a->f264 = 0.200000003f;
-    a->b1f9 = 2;
     a->f56 += 100.0f;
-    func_0c1a62b0(a);
+    a->b1f9 = 2;
+    func_0c1a62b0(a, 4);
 }
 
 void func_0c0b46d4(struct Obj_ub6_07 *a)
@@ -78,6 +77,6 @@ void func_0c0b46d4(struct Obj_ub6_07 *a)
         a->f108 = -0.80357140303f;
     }
     if (a->b141 == 3) {
-        a->f264 = a->f264 + 0.016000001f;
+        a->f264 += 0.016000001f;
     }
 }
