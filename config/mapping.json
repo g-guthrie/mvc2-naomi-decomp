@@ -425126,6 +425126,48 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c23e098",
+      "size": 236,
+      "kind": "data",
+      "sha256": "071bf4cf102e81a1ee73774417019c7402a5b4aff875b502ad1c53330d713de1",
+      "evidence": "Indexed halfword loads reached from the CFG at 0x0c042018 use this base; the next independently referenced lookup base is 0x0c23e184."
+    },
+    {
+      "address": "0x0c23e184",
+      "size": 236,
+      "kind": "data",
+      "sha256": "079781f3b85d57d3f714d027342c783d5c991d742f12ef2109f51751b32df711",
+      "evidence": "Indexed halfword loads in the CFG at 0x0c042098 use this base; the next independently referenced lookup base is 0x0c23e270."
+    },
+    {
+      "address": "0x0c23e270",
+      "size": 118,
+      "kind": "data",
+      "sha256": "907d5a097d1b1e8f50747cf957efbadec892ad21d096f8ad661127488d2b030e",
+      "evidence": "Indexed halfword loads in the CFG at 0x0c0421b8 use this base; the next independently referenced lookup base is 0x0c23e2e6."
+    },
+    {
+      "address": "0x0c23e2e6",
+      "size": 708,
+      "kind": "data",
+      "sha256": "9cd3b4105fe3fa7b6feba8bda6bdf78997a5c006abfcb9668bde9b8f9b765480",
+      "evidence": "The CFG at 0x0c0420f8 indexes 12-byte records from this base and reads a halfword at record offset 4; the next independently referenced lookup base is 0x0c23e5aa."
+    },
+    {
+      "address": "0x0c23e5aa",
+      "size": 118,
+      "kind": "data",
+      "sha256": "ac8038c541e9b5ad6d0e9634813d606a365f6f96f1af66f69d7c597ed0e5a0f6",
+      "evidence": "Indexed halfword loads in the CFG at 0x0c044cbc use this base; the next independently referenced lookup base is 0x0c23e620."
+    },
+    {
+      "address": "0x0c23e620",
+      "size": 120,
+      "kind": "data",
+      "sha256": "7493616ac688cd98a82302a5c763b033fd70e565375791a195665a668e74dc99",
+      "evidence": "Indexed halfword loads in the CFG at 0x0c04608a use this base; the next mapped pointer table begins at 0x0c23e698."
+    },
+    {
       "address": "0x0c23e698",
       "size": 12,
       "kind": "data",
