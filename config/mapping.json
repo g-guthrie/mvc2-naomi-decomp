@@ -366802,6 +366802,48 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c1e83a0",
+      "size": 162,
+      "kind": "code",
+      "sha256": "23f34d9c8ffffd638c111c3202b0976e42fa2e7881f3af858d4b30845f4e1cba",
+      "evidence": "Rooted SH-4 CFG walk from containing function at 0x0c1e83a0; every reachable instruction decodes and all exits resolve."
+    },
+    {
+      "address": "0x0c1e8450",
+      "size": 162,
+      "kind": "code",
+      "sha256": "f331fe2cdf0c38d10d7e52c7a3d9b16ec50b9ff3ea19fc3f53d89ad367a8fa09",
+      "evidence": "Rooted SH-4 CFG walk from containing function at 0x0c1e8450; every reachable instruction decodes and all exits resolve."
+    },
+    {
+      "address": "0x0c1e8500",
+      "size": 74,
+      "kind": "code",
+      "sha256": "e3884809ca83937ace2462de370d2151caf853e741e4efcd2f2ece8e77b34bc1",
+      "evidence": "Rooted SH-4 CFG walk from containing function at 0x0c1e8500; every reachable instruction decodes and all exits resolve."
+    },
+    {
+      "address": "0x0c1e8550",
+      "size": 136,
+      "kind": "code",
+      "sha256": "6c20a790315bd227881459f9441f7a87fbbd3d1363abc695157c7baad5ee051d",
+      "evidence": "Rooted SH-4 CFG walk from containing function at 0x0c1e8500; every reachable instruction decodes and all exits resolve."
+    },
+    {
+      "address": "0x0c1e85e0",
+      "size": 74,
+      "kind": "code",
+      "sha256": "f9297f785fa90ca4268a208c7163fb288aa99142c064a10b8b19cf90e8007d95",
+      "evidence": "Rooted SH-4 CFG walk from containing function at 0x0c1e85e0; every reachable instruction decodes and all exits resolve."
+    },
+    {
+      "address": "0x0c1e862c",
+      "size": 12,
+      "kind": "data",
+      "sha256": "cc99d1c9e496246bca785b511cbd3984c98c3b64dacda9952ac03647b831c0b6",
+      "evidence": "MOV.L pool consumers at 0x0c1e83ae/845e/8526/8606 identify these three words; all four rooted handler walks resolve them."
+    },
+    {
       "address": "0x0c1e8638",
       "size": 10,
       "kind": "data",
@@ -366809,11 +366851,32 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c1e8642",
+      "size": 4,
+      "kind": "data",
+      "sha256": "486d93e874bd07146db0d9eb373a2a999532c263b11e4d725f7b8c6bb0d7f77b",
+      "evidence": "The four-byte pool word is bounded by direct MOV.L literal references at 0x0c1e8542 and 0x0c1e8622; addresses are corroborated by the handler CFG walks."
+    },
+    {
       "address": "0x0c1e8646",
       "size": 4,
       "kind": "data",
       "sha256": "fb049beb9c0b890de593ac93212f03d0f882bc61f4eb19539e2d630ca440d734",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c1e864a",
+      "size": 6,
+      "kind": "data",
+      "sha256": "1be532a2a795bd99187dd655ed240ecaaa4b48f8b95899ae92bb88020901c5c2",
+      "evidence": "MOV.L consumers at 0x0c1e840a/84ba read the four-byte literal at 0x0c1e8648, whose final two bytes are here; consumers at 0x0c1e851a/85fa read the adjacent word at 0x0c1e864c."
+    },
+    {
+      "address": "0x0c1e8650",
+      "size": 136,
+      "kind": "code",
+      "sha256": "8b1c9c45a28eeb9ac364e226b2fbc3ae7368727e0d19a5adfb93186100925fe6",
+      "evidence": "Rooted SH-4 CFG walk from containing function at 0x0c1e85e0; every reachable instruction decodes and all exits resolve."
     },
     {
       "address": "0x0c1e8810",
