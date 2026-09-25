@@ -423369,6 +423369,27 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c23cb66",
+      "size": 470,
+      "kind": "data",
+      "sha256": "d5f5ad89e221f1443abfc96d2d7531b6033f90fac8548c6e309f5ce6081782a2",
+      "evidence": "Indexed halfword loads in the CFG at 0x0c041f02 read this continuation of the two-lane table based at 0x0c23cb64; the alternate table base 0x0c23cd3c follows."
+    },
+    {
+      "address": "0x0c23cd3c",
+      "size": 236,
+      "kind": "data",
+      "sha256": "c5b05a7a6d298fb30d4a952ccf92a957fe0a6d16957254c246a6ea644c33fd00",
+      "evidence": "Indexed halfword loads in the CFG at 0x0c041f02 read this alternate table base; the other directly loaded table base is 0x0c23cb64, and the next indexed table base is 0x0c23ce28."
+    },
+    {
+      "address": "0x0c23ce28",
+      "size": 4,
+      "kind": "data",
+      "sha256": "23713d0c1615e913ada8d08f2b4ccba568dae87dc361b7430d81496962691153",
+      "evidence": "Indexed halfword loads in the CFG at 0x0c041e14 read this table base; the next existing mapped data range starts at 0x0c23ce2c."
+    },
+    {
       "address": "0x0c23ce2c",
       "size": 6,
       "kind": "data",
