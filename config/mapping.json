@@ -76057,11 +76057,18 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0860d8; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c08624e",
-      "size": 80,
+      "address": "0x0c08624c",
+      "size": 16,
+      "kind": "data",
+      "sha256": "8d99dbe6abe2bb2ac8d00a92134ad349562dd258728b5eaf9fc336e35bf3a0c2",
+      "evidence": "Four aligned 32-bit words are pointers to the handler table and called functions; execution starts at 0x0c08625c."
+    },
+    {
+      "address": "0x0c08625c",
+      "size": 66,
       "kind": "code",
-      "sha256": "1e45db924f32e2eac0c54478b33eee6fb34167690771afff77d12606006a5a28",
-      "evidence": "CFG walk from 0x0c08624e; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "e4391d8214cebe17bee0a1a981ab57900c770409b85f7f139f35e2e49f5e3370",
+      "evidence": "Reviewed function begins at 0x0c08625c; its instructions end before the next function at 0x0c08629e."
     },
     {
       "address": "0x0c08629e",
@@ -76806,11 +76813,18 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0871c8; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c087256",
-      "size": 68,
+      "address": "0x0c087254",
+      "size": 4,
+      "kind": "data",
+      "sha256": "49561f20bf52f9a5d8e2103b8c33642c66d13a799c5b1c34ea9bbd52bb5a13be",
+      "evidence": "This aligned word is the in-image table pointer 0x0c242400; the following function starts at 0x0c087258."
+    },
+    {
+      "address": "0x0c087258",
+      "size": 66,
       "kind": "code",
-      "sha256": "8de8240b09ca5b68a8e2d0e046979298d58356cbcb646c1aa9ce06cea9a7fdf5",
-      "evidence": "CFG walk from 0x0c087256; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "35ef20cad5c64c31cafa445ba4a07c23296494049a0ac8df6f42591934259cc0",
+      "evidence": "Reviewed function begins with the actor state increment at 0x0c087258 and ends before 0x0c08729a."
     },
     {
       "address": "0x0c08729a",
