@@ -366473,6 +366473,34 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1e7120; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c1e7208",
+      "size": 704,
+      "kind": "code",
+      "sha256": "21854ffaae15dbe5a510c5e8cd856bbd8f59954972b304702e3c8ac5a2e7ea00",
+      "evidence": "Rooted SH-4 CFG walk from 0x0c1e7208; 352 instruction words, 9 resolved calls, no unresolved exits; literal-pool edges split to data."
+    },
+    {
+      "address": "0x0c1e74c8",
+      "size": 8,
+      "kind": "data",
+      "sha256": "6ce81c8b80c4d9e730e43ee28891a7cf8a9b0d7480ac3adcdc783939d0d6119a",
+      "evidence": "MOV.L consumers at 0x0c1e722a and 0x0c1e721e resolve within the shared pool of 0x0c1e7208."
+    },
+    {
+      "address": "0x0c1e74d8",
+      "size": 4,
+      "kind": "data",
+      "sha256": "b3494eb87ffbc3458cd07f5dbc793500840b952d38db02233000ac51e75aeb2c",
+      "evidence": "MOV.L at 0x0c1e72c0 resolves to this pool word (0x0c303414) in the rooted CFG of 0x0c1e7208."
+    },
+    {
+      "address": "0x0c1e74f4",
+      "size": 22,
+      "kind": "code",
+      "sha256": "50ab954bbf6d46ec278555053490e84cf4360e953a6c79ae74586af4b983acbe",
+      "evidence": "Reachable continuation and return epilogue from the rooted CFG of 0x0c1e7208; all 11 instruction words decode and no unresolved exits."
+    },
+    {
       "address": "0x0c1e750e",
       "size": 174,
       "kind": "code",
