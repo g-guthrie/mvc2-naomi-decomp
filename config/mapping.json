@@ -370897,6 +370897,104 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1f11e0; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c1f1248",
+      "size": 4,
+      "kind": "data",
+      "sha256": "0df210f832eb4a66d88619df387a4a55ba0e5646c3c93a76575a3271390fc590",
+      "evidence": "PC-relative MOV.L literal read by the CFG from 0x0c1f1220; the table value begins at this address."
+    },
+    {
+      "address": "0x0c1f1250",
+      "size": 76,
+      "kind": "code",
+      "sha256": "96d44f14a1f177146227ce74b70853935390b842f613f6be6f03c700502fc539",
+      "evidence": "CFG walk from 0x0c1f1250, the registered exact `nlobjput` SDK export; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f129c",
+      "size": 36,
+      "kind": "data",
+      "sha256": "f254c06820ce2a51801c3c327d507532bce4036d5b414210b15175ca2ebb81c1",
+      "evidence": "PC-relative MOV.L literals read by the CFG at 0x0c1f1250; the next code entry is the registered export at 0x0c1f12d0."
+    },
+    {
+      "address": "0x0c1f12d0",
+      "size": 12,
+      "kind": "code",
+      "sha256": "81b3a24d0fd812c6fa4874bb258fa42223389e68cddcd745460bd14e638bce33",
+      "evidence": "CFG walk from 0x0c1f12d0, the registered exact `nlobjput` SDK export; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f12e0",
+      "size": 12,
+      "kind": "code",
+      "sha256": "171c5ec32c6f18bf3b01905af5ba8b7269d568902ab77e962c0d6047d09c35fc",
+      "evidence": "CFG walk from 0x0c1f12d0, the registered exact `nlobjput` SDK export; branch target and delay slots included."
+    },
+    {
+      "address": "0x0c1f12f0",
+      "size": 12,
+      "kind": "code",
+      "sha256": "d8e57d7185840624fcc76ca9dc5c00c6244038dfe3e48a4036edfd22499bb4d2",
+      "evidence": "CFG walk from 0x0c1f12d0, the registered exact `nlobjput` SDK export; branch target and delay slots included."
+    },
+    {
+      "address": "0x0c1f1300",
+      "size": 30,
+      "kind": "code",
+      "sha256": "a2fb29867a6a35a4b81d2cc8b6df8a759e37e9b193d1073db6c94f91557202f7",
+      "evidence": "CFG walk from 0x0c1f1300, the registered exact `nlobjput` SDK export; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f1320",
+      "size": 50,
+      "kind": "code",
+      "sha256": "81c9cc694ee66bc389c3a133394b9e029f2ee5877e618e524ebe7fcb315b9ff4",
+      "evidence": "CFG walk from 0x0c1f1320, the registered exact `nlobjput` SDK export; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f1360",
+      "size": 180,
+      "kind": "code",
+      "sha256": "febddd2541a98342d475658cf11660fe6f61f1e345bf4d01f62d96ed9779ba9f",
+      "evidence": "CFG walk from 0x0c1f1360, the registered exact `nlobjput` SDK export; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f1420",
+      "size": 10,
+      "kind": "code",
+      "sha256": "5542763a77f165347bda85b883e8e4d140fe66b0fa29fa5215573d121ee06603",
+      "evidence": "CFG walk from 0x0c1f1360, the registered exact `nlobjput` SDK export; branch target and delay slots included."
+    },
+    {
+      "address": "0x0c1f1430",
+      "size": 150,
+      "kind": "code",
+      "sha256": "cb236359e81e15a8f12f76d0700f85bec89bf25a42f17e4abb0492cacf79990f",
+      "evidence": "CFG walk from 0x0c1f1430, the registered exact `nlobjput` SDK export; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f14d0",
+      "size": 10,
+      "kind": "code",
+      "sha256": "782304b4ee8115f303da8b575f10841d514924a4632396c09b5361d74a9b5b6c",
+      "evidence": "CFG walk from 0x0c1f1430, the registered exact `nlobjput` SDK export; branch target and delay slots included."
+    },
+    {
+      "address": "0x0c1f14e0",
+      "size": 16,
+      "kind": "code",
+      "sha256": "8b253c71bb222c980ed5a4777d40031b373a405a94287ff181e44018dc259da2",
+      "evidence": "CFG walk from 0x0c1f14e0, the registered exact `nlobjput` SDK export; delay slots included; the later branch target is outside this gap."
+    },
+    {
+      "address": "0x0c1f14f0",
+      "size": 18,
+      "kind": "data",
+      "sha256": "9277d639652dc4411978fc530a82cf74af8378c8821c62333ff229c1e4061a4c",
+      "evidence": "PC-relative MOV.L literal cells read by CFGs from 0x0c1f12d0, 0x0c1f1300, and 0x0c1f1320; the 0x0c1f1500 literal continues into the already mapped data range at 0x0c1f1502."
+    },
+    {
       "address": "0x0c1f1502",
       "size": 4,
       "kind": "data",
