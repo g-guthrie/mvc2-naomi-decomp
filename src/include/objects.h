@@ -199,7 +199,7 @@ struct LinkedActorBlock {
     unsigned char pad1[0x54 - 0x51];
     short w130;
     unsigned char pad1b[0x65 - 0x56];
-    unsigned char b141;
+    char b141;
     unsigned char pad1c[0x7c - 0x66];
     short w158;
     unsigned char pad2[0xc0 - 0x7e];
