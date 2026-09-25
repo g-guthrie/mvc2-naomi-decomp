@@ -1,14 +1,10 @@
-/* Unit 0x0c05b474-0x0c05b720: 7 functions. The first 72-byte pool matches
- * exactly with SHC's float spellings; the second pool is still nonexact.
- * Two pairs are near-duplicated with
- * different constants (35/50 vs 36/51). func_0c05b508 and func_0c05b532
- * match exactly; func_0c05b6d4 too. func_0c05b474/func_0c05b616 each differ
- * by one anonymous-register choice (r2 vs r3 rebuilding the a->b141 test
- * address) that no tried rephrasing of the surrounding `if` changed.
- * func_0c05b544 differs by a bf/bf.s (delay-slot) choice after the
- * `a->b141==2` compare and a following r2-vs-r4 register swap for storing 0;
- * func_0c05b6aa inherits the same cascade. Every mismatch found so far is a
- * scratch-register pick, not a structural difference. */
+/* Candidate unit 0x0c05b474–0x0c05b720. The latest source spelling treats
+ * b141 as an unsigned byte and matches 605/684 linked bytes; this is an
+ * improvement over the previous 420-byte trial, but it is still not exact.
+ * func_0c05b508, func_0c05b532, func_0c05b6aa, and func_0c05b6d4 are exact.
+ * Remaining mismatches include two near-duplicate state handlers, one
+ * delay-slot choice, and shifted bytes in the first shared pool. Keep the
+ * entire unit a candidate until both pool extents and every instruction match. */
 struct Obj_ud0_05;
 
 struct Vec2_ud0_05 { float x, y, z; };
@@ -19,7 +15,7 @@ struct Obj_ud0_05 {
     unsigned char pad1[28 - 8];
     short s28;
     unsigned char pad2[0x141 - 30];
-    char b141;
+    unsigned char b141;
     unsigned char b142;
     unsigned char pad3[0x1a1 - 0x143];
     unsigned char b1a1;
