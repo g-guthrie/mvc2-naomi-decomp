@@ -150,7 +150,9 @@ struct Actor {
     unsigned char b236;
     unsigned char pad9bb[0x255 - 0x237];
     unsigned char b255;
-    unsigned char pad10[0x298 - 0x256];
+    unsigned char pad10[0x27a - 0x256];
+    unsigned char b27a, b27b;
+    unsigned char pad10b2[0x298 - 0x27c];
     float f664;
     unsigned char pad10a[0x2a4 - 0x29c];
     struct ActorSub2a4 sub2a4;
