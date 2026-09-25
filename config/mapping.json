@@ -258757,6 +258757,13 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0xc160792",
+      "size": 70,
+      "kind": "code",
+      "sha256": "dc9e332ef31a8d01cafb173f5dd78c68f1992b29ca2819ee4f63a17b425eb150",
+      "evidence": "Rooted CFG for the callback at 0x0c160792 (listed in verified dispatch table dat_0c2514a4) has no unresolved edges; the run includes the indirect jump and its delay slot at 0x0c1607d4\u20130x0c1607d8."
+    },
+    {
       "address": "0x0c1607dc",
       "size": 54,
       "kind": "code",
