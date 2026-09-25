@@ -370001,11 +370001,46 @@
       "evidence": "CFG walk from 0x0c1ef410; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c1ef690",
+      "size": 108,
+      "kind": "code",
+      "sha256": "f77466cf2ba5d29225bbaca85d4aa9b3a42de59fc347f4294fd2822ce8192750",
+      "evidence": "CFG walk from 0x0c1ef690; canonical saved-register/FPU prologue, reachable control flow, calls and delay slots included; literal pool split."
+    },
+    {
+      "address": "0x0c1ef700",
+      "size": 44,
+      "kind": "code",
+      "sha256": "1aa788e89b6cf71cf0dd06f2d1ab404837c06c8ed691f7c6cec3caaad1012068",
+      "evidence": "CFG walk from 0x0c1ef690; reachable branch target with delay slots; literal pool split."
+    },
+    {
+      "address": "0x0c1ef730",
+      "size": 90,
+      "kind": "code",
+      "sha256": "98eee1cfcfa01328f1a3d843014db0820978955c686002a219a5738a96c11886",
+      "evidence": "CFG walk from 0x0c1ef690; reachable branch target with delay slots; literal pool split."
+    },
+    {
+      "address": "0x0c1ef790",
+      "size": 166,
+      "kind": "code",
+      "sha256": "09f880d6d76bbde8c34d6ec9a95fe2b5134431293c62b0c41db633b96ddbb227",
+      "evidence": "CFG walk from 0x0c1ef690; reachable branch target through clean RTS and register-restore delay slot; literal pool split."
+    },
+    {
       "address": "0x0c1ef838",
       "size": 24,
       "kind": "data",
       "sha256": "ec579556e5b13d6969ef0f2c83805336b231527a2ca204fa7c787bd4fa546516",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1ef410; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c1ef868",
+      "size": 20,
+      "kind": "data",
+      "sha256": "d360077e7984bd528fa48c60867db5cbb2b3e94138c5eb8e99f7938116ce16ee",
+      "evidence": "MOVA/MOV.L consumers in CFG of 0x0c1ef690 read five literals at 0x0c1ef868, 0x0c1ef86c, 0x0c1ef870, 0x0c1ef874 and 0x0c1ef878; adjacent literals already have separate owners."
     },
     {
       "address": "0x0c1ef9b6",
