@@ -198,7 +198,9 @@ struct LinkedActorBlock {
     unsigned char b12c;
     unsigned char pad1[0x54 - 0x51];
     short w130;
-    unsigned char pad1b[0x7c - 0x56];
+    unsigned char pad1b[0x65 - 0x56];
+    unsigned char b141;
+    unsigned char pad1c[0x7c - 0x66];
     short w158;
     unsigned char pad2[0xc0 - 0x7e];
 };
@@ -227,7 +229,8 @@ struct LinkedActor {
     unsigned short w38;
     unsigned char pad5[48 - 40];
     unsigned char b48;
-    unsigned char pad6[52 - 49];
+    char b49;
+    unsigned char pad6[52 - 50];
     float f52, f56, f60;
     unsigned char pad7[80 - 64];
     struct LinkedActorVec3 v80;
