@@ -269446,6 +269446,13 @@
       "evidence": "CFG walk from 0x0c16d0ac; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c16d10a",
+      "size": 22,
+      "kind": "code",
+      "sha256": "dd8568e051ebc364f6bd6ccef4eda75166d1ded7723b38fc0f9f2f0bee619194",
+      "evidence": "CFG walk from 0x0c16d10a; delay slots included; JMP to dat_0c25239c[b4] with r5 from offset 0xd4; RTS delay restores r14; PC-relative pool at 0x0c16d120."
+    },
+    {
       "address": "0x0c16d120",
       "size": 2,
       "kind": "data",
@@ -269481,11 +269488,18 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c16d0ac; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c16d132",
-      "size": 302,
+      "address": "0x0c16d130",
+      "size": 4,
+      "kind": "data",
+      "sha256": "79415f596c2953f42aec13e2d78ef50b4308b1a4ecb875e8369b37262fbb49fc",
+      "evidence": "PC-relative MOV.L consumer in CFG of 0x0c16d10a; table pointer 0x0c25239c."
+    },
+    {
+      "address": "0x0c16d134",
+      "size": 300,
       "kind": "code",
-      "sha256": "3f3c255dd8acc3ee6f46f252d914b11fec97ec07f1c976efbf2c3d5097bb4590",
-      "evidence": "CFG walk from 0x0c16d132; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "36adcd03b144b15aa1009678518c5e65a6ec843a4ac7d727815153471e98d6de",
+      "evidence": "CFG walk from 0x0c16d134; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split. Function prologue at 0x0c16d134; preceding word is the 0x0c16d10a table literal."
     },
     {
       "address": "0x0c16d260",

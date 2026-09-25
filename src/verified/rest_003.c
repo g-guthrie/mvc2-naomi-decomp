@@ -218,11 +218,6 @@ const unsigned int dat_0c051ba0[] = {
     0x0c2d6f84u,
 };
 
-#pragma section n030c0a
-const unsigned short dat_0c051c0a[] = {
-    0x1100u, 0x04dcu, 0x2100u, 0x01d2u, 0x2500u, 0x6f84u, 0x0c2du,
-};
-
 #pragma section n03113a
 const unsigned short dat_0c05213a[] = {
     0x01ffu, 0x01feu, 0x01f9u, 0x0159u, 0x01e8u,

@@ -1,8 +1,7 @@
-/* Candidate for the complete 668-byte retail span at 0x0c1190dc.
- * The linked extent is correct, but only 634/668 bytes match. Four complete
- * functions and the first 34-byte pool are exact; the later functions and
- * second pool remain unverified. Code at 0x0c119210 is a continuation of
- * func_0c1191d4 across the first pool, not a separate function entry. */
+/* Complete 668-byte retail span at 0x0c1190dc. Code at 0x0c119210 is a
+ * continuation of func_0c1191d4 across the first pool, not a separate entry.
+ * func_0c11932a's identical case stores must not be a named local: a local
+ * lands in r6 and the tail call then uses r3. */
 #include "objects.h"
 struct ActorFlagsGlobal { unsigned char pad[5]; unsigned char b5, b6; };
 typedef void (*ActorHandler)(struct Actor *);
@@ -176,21 +175,15 @@ void func_0c119312(struct Obj_0c07c778 *p)
 
 void func_0c11932a(struct Actor *a)
 {
-    int value;
-
     a->b6 = a->b7 = a->b5 = 0;
     switch (a->b4c9) {
     case 0:
     case 1:
-        value = 1;
+        a->b1e9 = 1;
         break;
     case 2:
-        value = 1;
+        a->b1e9 = 1;
         break;
-    default:
-        goto finish;
     }
-    a->b1e9 = value;
-finish:
     func_0c045248(a, 29);
 }

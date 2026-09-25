@@ -1,17 +1,7 @@
-/* Translation unit around 0x0c060f7c: five small callbacks sharing one
- * actor-like object; func_0c060ff6 and func_0c061034 differ only in what
- * they do once armed (a table dispatch vs. a plain continue). The
- * assignment gave size 240 (span ending at 0x0c06106a, mid pool); the
- * real extent runs through one more pool block to 0x0c06108c, where the
- * next function's prologue begins. The full section is 272 bytes and links
- * at retail.
- *
- * func_0c060f7c and the trailing pool match exactly after using the precise
- * 15/14-derived float spellings.
- * func_0c060fc0, func_0c060ff6 and func_0c061034 are close (same shape
- * and branches, only a handful of scratch-register choices off, likely a
- * rotation carried from func_0c060f7c's own register use) but not exact.
- * Left as a candidate. */
+/* Translation unit 0x0c060f7c-0x0c06108c, 272 bytes.
+ * func_0c060ff6 and func_0c061034 share the armed path; a goto keeps the
+ * pointer spill ahead of the call, and an early return (not else) selects
+ * the r2 tail in func_0c061034. */
 
 struct Obj_ub6_10 {
     unsigned char pad0[7];
@@ -22,7 +12,9 @@ struct Obj_ub6_10 {
     float f96, f100, f104, f108;
     unsigned char pad3[0x14b - 112];
     unsigned char b14b;
-    unsigned char pad4[0x2b0 - 0x14c];
+    unsigned char pad4[0x2a4 - 0x14c];
+    unsigned char b2a4;
+    unsigned char pad5[11];
     unsigned char b2b0;
 };
 
@@ -51,7 +43,7 @@ void func_0c060fc0(struct Obj_ub6_10 *a)
     if (a->b14b) {
         if (a->f96 > 1.07142854f)
             a->f108 = -a->f108;
-        if (-1.07142854f > a->f96)
+        if (a->f96 < -1.07142854f)
             a->f108 = -a->f108;
     }
     func_0c02a026(a);
@@ -59,8 +51,10 @@ void func_0c060fc0(struct Obj_ub6_10 *a)
 
 void func_0c060ff6(struct Obj_ub6_10 *a)
 {
-    unsigned char *p = (unsigned char *)a + 0x2a4;
+    unsigned char *p = &a->b2a4;
 
+    goto check;
+check:
     if (func_0c03916c(a)) {
         p[12] = 0;
         func_0c0437b8(a);
@@ -71,12 +65,14 @@ void func_0c060ff6(struct Obj_ub6_10 *a)
 
 void func_0c061034(struct Obj_ub6_10 *a)
 {
-    unsigned char *p = (unsigned char *)a + 0x2a4;
+    unsigned char *p = &a->b2a4;
 
+    goto check;
+check:
     if (func_0c03916c(a)) {
         p[12] = 0;
         func_0c0437b8(a);
-    } else {
-        func_0c02a026(a);
+        return;
     }
+    func_0c02a026(a);
 }
