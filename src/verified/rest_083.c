@@ -10,11 +10,6 @@ const unsigned int dat_0c1b5968[] = {
     0x0c0374dau, 0x0c1b586cu,
 };
 
-#pragma section n195198
-const unsigned short dat_0c1b6198[] = {
-    0x01f9u,
-};
-
 #pragma section n195424
 const unsigned int dat_0c1b6424[] = {
     0x00c000dcu,
