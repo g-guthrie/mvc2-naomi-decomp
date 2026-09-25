@@ -381355,6 +381355,34 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c2090a0",
+      "size": 240,
+      "kind": "code",
+      "sha256": "82f807522bcb411d87a92dcc6acc069e264a23773c6c10b99d91ca5366d171c6",
+      "evidence": "CFG walk from 0x0c2090a0; canonical prolog/frame and all reachable control flow through the return/delay slot verified."
+    },
+    {
+      "address": "0x0c2091a0",
+      "size": 16,
+      "kind": "data",
+      "sha256": "992b4e45572620ad6be128101a2429e1587933736af01d77c84b8bb98f1b167a",
+      "evidence": "PC-relative MOV.W/MOV.L/MOVA literal cells read by the CFG rooted at 0x0c2090a0."
+    },
+    {
+      "address": "0x0c2091c0",
+      "size": 234,
+      "kind": "code",
+      "sha256": "740e658ab96113bcfb4809651da715d8e41f56da38e9dd11b0c76da2b1bb61d2",
+      "evidence": "CFG walk from 0x0c2090a0; alternate path and loop branches through the return/delay slot verified."
+    },
+    {
+      "address": "0x0c2092c0",
+      "size": 12,
+      "kind": "data",
+      "sha256": "3fb28aed1bcc061fc5b7d2b62a06bc1e7f4fef0e33583bf3f1c59ab138983d04",
+      "evidence": "PC-relative MOV.L literal cells read by the CFG rooted at 0x0c2090a0; the following code entry at 0x0c2092e0 is already mapped."
+    },
+    {
       "address": "0x0c2092e0",
       "size": 276,
       "kind": "code",
