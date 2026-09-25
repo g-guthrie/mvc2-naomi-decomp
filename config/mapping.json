@@ -366592,6 +366592,41 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1e7616; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0xc1e76e8",
+      "size": 8,
+      "kind": "data",
+      "sha256": "10ed49ddf5ba149e290d808bd2161b40cda4013995d9868c7c3ea494c8523e63",
+      "evidence": "PC-relative literal pool loaded by MOV.L instructions at 0x0c1e7690 and 0x0c1e7694; the two words are global data bases consumed by the rooted dispatcher."
+    },
+    {
+      "address": "0xc1e76f0",
+      "size": 264,
+      "kind": "code",
+      "sha256": "ffc2ff3724b48b32ab24eefb75a054a5ee8c83d8f7ea5326420cb5787101d63e",
+      "evidence": "Rooted CFG from 0x0c1e7690; includes the state-dispatch branches, all delay slots, and straight-line paths through this code run."
+    },
+    {
+      "address": "0xc1e77f8",
+      "size": 6,
+      "kind": "data",
+      "sha256": "a4b016eda7ed4621d2e2a56244cc06e4721567418329bbbb7fde14cbc28d2faa",
+      "evidence": "Three halfword constants directly loaded by MOV.W instructions at 0x0c1e77bc, 0x0c1e77c2, and 0x0c1e77c8; the following two-byte pad at 0x0c1e77fe remains unknown."
+    },
+    {
+      "address": "0xc1e7800",
+      "size": 32,
+      "kind": "data",
+      "sha256": "ab680b8e06239b11ef187e74aad206483aa6dc8a193941395b534d05e7415de0",
+      "evidence": "PC-relative literal pool consumed by rooted CFG from 0x0c1e7690; every four-byte value in this span is loaded by MOV.L consumers in the dispatched paths."
+    },
+    {
+      "address": "0xc1e7820",
+      "size": 128,
+      "kind": "code",
+      "sha256": "9ed6f0575817d97b13579070117c27cd19deca42d8c64700bab9e2390971e4af",
+      "evidence": "Rooted CFG from 0x0c1e7690; reached by its state-4 branch at 0x0c1e76b8 and ending at the shared clean RTS block before the separately mapped code at 0x0c1e78a0."
+    },
+    {
       "address": "0x0c1e78a0",
       "size": 16,
       "kind": "code",
