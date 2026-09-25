@@ -470465,6 +470465,83 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c2657f0; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c265fbe",
+      "size": 7,
+      "kind": "data",
+      "sha256": "057f6e8c32fde45a8a403b140ba25ea1fbbded81c273dcc100b60bf3024c3638",
+      "evidence": "Continuation of NUL-terminated string at 0x0c265fb4 copied by SH4 _strcpy at 0x0c1fba54 from CFG function 0x0c1e6fb4; this slice ends at the string terminator."
+    },
+    {
+      "address": "0x0c265fc6",
+      "size": 33,
+      "kind": "data",
+      "sha256": "ced23e47809028395e53b40554e9f87d0273b0787d5e5b35409c8bd861c66b20",
+      "evidence": "NUL-terminated source string copied by SH4 _strcpy at 0x0c1fba54 from CFG function 0x0c1e6fb4; terminator is the final byte."
+    },
+    {
+      "address": "0x0c265fe8",
+      "size": 16,
+      "kind": "data",
+      "sha256": "17dddbab077a3c2b8e4439384eec3b29c19b4431dcee649d0ef35ca055258b73",
+      "evidence": "Sixteen-byte source buffer passed in r5 to SH4 _memcpy at 0x0c1fb940 with r6=16 by CFG function 0x0c1e6fb4."
+    },
+    {
+      "address": "0x0c26603c",
+      "size": 17,
+      "kind": "data",
+      "sha256": "ccf7f7a95af0956313277ae883c03a5b213f5a03a853528c5624ab4e0c201093",
+      "evidence": "NUL-terminated source string copied by SH4 _strcpy at 0x0c1fba54 from CFG function 0x0c1e6fb4; terminator is the final byte."
+    },
+    {
+      "address": "0x0c26604e",
+      "size": 33,
+      "kind": "data",
+      "sha256": "5c48ebb454019cd4b4a9202252f86bdd732bc3d65d755190279e65e2335eb74d",
+      "evidence": "NUL-terminated source string copied by SH4 _strcpy at 0x0c1fba54 from CFG function 0x0c1e6fb4; terminator is the final byte."
+    },
+    {
+      "address": "0x0c266070",
+      "size": 16,
+      "kind": "data",
+      "sha256": "b9d7a6c2be4e92eb222570a8e09dc408f092528eca2bb462e0e460545c264382",
+      "evidence": "Sixteen-byte source buffer passed in r5 to SH4 _memcpy at 0x0c1fb940 with r6=16 by CFG function 0x0c1e6fb4."
+    },
+    {
+      "address": "0x0c266080",
+      "size": 17,
+      "kind": "data",
+      "sha256": "2f996bf58bb197a1f9293c198bd1bb6d124b9b9ca7c905afebf773f3ef35bb87",
+      "evidence": "NUL-terminated source string copied by SH4 _strcpy at 0x0c1fba54 from CFG function 0x0c1e6fb4; terminator is the final byte."
+    },
+    {
+      "address": "0x0c266092",
+      "size": 33,
+      "kind": "data",
+      "sha256": "5b9da5b4d901fa7e09d7438f2e67b3aee89703047e5831d2e84459336f165483",
+      "evidence": "NUL-terminated source string copied by SH4 _strcpy at 0x0c1fba54 from CFG function 0x0c1e6fb4; terminator is the final byte."
+    },
+    {
+      "address": "0x0c2660b4",
+      "size": 16,
+      "kind": "data",
+      "sha256": "194b1182c82ddefb0af3dfc8db1df4aeef5eab3f8f127fd79eab5406bfbac46a",
+      "evidence": "Sixteen-byte source buffer passed in r5 to SH4 _memcpy at 0x0c1fb940 with r6=16 by CFG function 0x0c1e6fb4."
+    },
+    {
+      "address": "0x0c2660c4",
+      "size": 160,
+      "kind": "data",
+      "sha256": "a9801b94b3d4da2d90c89076f82732e31a99f59178482c4f44402dc7dabee472",
+      "evidence": "Five consecutive 32-byte binary assets, each addressed by the five-entry pointer table at 0x0c266164; CFG function 0x0c1e6fb4 selects and passes these pointers in the buffer consumed by SDK _buMakeBackupFileImage at 0x0c206030."
+    },
+    {
+      "address": "0x0c266164",
+      "size": 20,
+      "kind": "data",
+      "sha256": "bf347ad4bc405fea119f1c0875810086f38c20828bd3ba1dd063b3c1a69351c9",
+      "evidence": "Five-entry 32-bit pointer table loaded by indexed MOV.L in CFG function 0x0c1e6fb4 and consumed as asset pointers by SDK _buMakeBackupFileImage at 0x0c206030; entries point to the five 32-byte data blocks at 0x0c2660c4, 0x0c2660e4, 0x0c266104, 0x0c266124, and 0x0c266144."
+    },
+    {
       "address": "0x0c26635a",
       "size": 2,
       "kind": "data",
