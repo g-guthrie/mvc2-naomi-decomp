@@ -157,7 +157,9 @@ struct Actor {
     unsigned char pad10b[0x327 - 0x2a4 - sizeof(struct ActorSub2a4)];
     unsigned char b327;
     unsigned char b328;
-    unsigned char pad11[0x37c - 0x329];
+    unsigned char pad11a[0x34a - 0x329];
+    unsigned short w34a;
+    unsigned char pad11b[0x37c - 0x34c];
     unsigned char x37c[8];
     unsigned char x384[0x3e4 - 0x384];
     unsigned short w3e4;
