@@ -443942,6 +443942,13 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c139c18; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c24eb84",
+      "size": 360,
+      "kind": "data",
+      "sha256": "fb58a3124bcf9ca23caeb27ac46fec53f9e1b65fd61d64fd3c6fe1bb39badd23",
+      "evidence": "Indexed halfword lookup records: rooted reader at 0x0c13abb4 loads pointers from 0x0c24ecec/0x0c24ed2c then reads the selected target and target+2; the 32-entry table in bulk_156.c identifies 18 target starts spaced 0x14 bytes from 0x0c24eb84 through 0x0c24ecd8, ending at the separately owned table at 0x0c24ecec."
+    },
+    {
       "address": "0x0c24ed7c",
       "size": 4,
       "kind": "data",
