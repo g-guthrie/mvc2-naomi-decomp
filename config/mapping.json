@@ -370883,11 +370883,46 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c1f0c00",
+      "size": 248,
+      "kind": "code",
+      "sha256": "c55d959263cd01c432295232edc9b14cf2f2de8d2e9ba3fc8797d199e6a44dfb",
+      "evidence": "CFG walk from 0x0c1f0bb0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f0d00",
+      "size": 6,
+      "kind": "code",
+      "sha256": "06a9389255c1f33c42bf68ba561523be29bcf7a61d28ff5c6083880fe529102a",
+      "evidence": "CFG walk from 0x0c1f0d00; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f0d10",
+      "size": 4,
+      "kind": "code",
+      "sha256": "fe00bd2f3b658c0ac3d3cf1c7053087a815ce26cb45b2e4eba345a308ddf7b4d",
+      "evidence": "CFG walk from 0x0c1f0d10; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1f0d20",
+      "size": 6,
+      "kind": "code",
+      "sha256": "d7ab9d19dcf0daca3415a430f53cb03ee6e985510245509d412af8ca85b380bf",
+      "evidence": "CFG walk from 0x0c1f0d20; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
       "address": "0xc1f0d30",
       "size": 90,
       "kind": "code",
       "sha256": "54d63291acd5070e0550cc396e31b52812a8b00f11afd87f4404874ebccef790",
       "evidence": "Rooted CFG from 0x0c1f0d30 (PC-relative global setup immediately before the 0x0c1f0d32 frame prologue) has a coherent loop, balanced register restoration, clean RTS/delay slot, and no unresolved CFG edges; no static caller was recovered."
+    },
+    {
+      "address": "0x0c1f0d8c",
+      "size": 12,
+      "kind": "data",
+      "sha256": "75411011188de1de3864fddfc4a31ada312b2d5609aa2484f7728b4bf50b0bd0",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1f0bb0; unreferenced adjacent bytes omitted."
     },
     {
       "address": "0x0c1f0d98",
@@ -370897,11 +370932,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c1f0d9c",
+      "size": 4,
+      "kind": "data",
+      "sha256": "77d21e1391f0b74feca4c3b1d759434d6f153cc6cdf15c8776bf10a688620ab1",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1f0bb0; unreferenced adjacent bytes omitted."
+    },
+    {
       "address": "0xc1f0da0",
       "size": 4,
       "kind": "data",
       "sha256": "cdfaa1ac4360cf8806f41ae5d299bba00d4b6ae5df4cc72757d1b734f2c33415",
       "evidence": "Four-byte PC-relative literal consumed by MOV.L at 0x0c1f0d30; same pool value is independently loaded by the rooted CFG at 0x0c1f0bb0."
+    },
+    {
+      "address": "0x0c1f0da4",
+      "size": 8,
+      "kind": "data",
+      "sha256": "f107ee360aa6ec110f4ff6250f17ade1ff79fee7a4eba70ba7bcac3dadf8f8ae",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1f0bb0; unreferenced adjacent bytes omitted."
     },
     {
       "address": "0x0c1f0dac",
