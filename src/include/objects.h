@@ -205,6 +205,7 @@ struct ActorFlags {
     signed char b24, b25; unsigned char pad26[2]; int flags;
     unsigned char pad32[10]; signed char b42; unsigned char pad43[3];
     signed char b46; unsigned char pad47[0x80-47]; char b128;
+    unsigned char pad129[0x8e-0x81]; signed char b8e;
 };
 struct Glob_me00 { unsigned char pad[0x14]; int l14; };
 
