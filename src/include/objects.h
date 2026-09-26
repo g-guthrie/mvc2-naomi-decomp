@@ -47,7 +47,8 @@ struct MaskInput { unsigned char pad[6]; unsigned short w6; };
 /* A child record embedded at offset 0x2a4 in actors that dispatch through the
  * 0x0c24b6a8 handler table. */
 struct ActorSub2a4 {
-    unsigned char pad0[2];
+    char b0;
+    unsigned char b1;
     unsigned char b2;
     unsigned char pad0b;
     short w4;
@@ -140,7 +141,9 @@ struct Actor {
     char b142;
     char b143;
     unsigned int l144;
-    unsigned char pad6ca[0x14b - 0x148];
+    unsigned char pad6ca[1];
+    unsigned char b149;
+    unsigned char pad14a[1];
     unsigned char b14b;
     unsigned char b14c;
     unsigned char pad6d[0x150 - 0x14d];
