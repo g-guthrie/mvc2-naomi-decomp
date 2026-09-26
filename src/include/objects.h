@@ -5,6 +5,11 @@
 #ifndef OBJECTS_H
 #define OBJECTS_H
 
+/* Fade weights and color multipliers used by the rendering setup. */
+struct F3_0c0268b8 { float pad0; float f4, f8, f12; };
+struct FadeState { unsigned char enabled, pad[3]; int count; unsigned char pad8, red, green, blue; float value; float weights[129]; };
+
+
 /* Object of at least 0x526 bytes handled by the mask functions at 0x0c047a40. */
 struct MaskTarget { unsigned char pad[0x235]; unsigned char b235; };
 
