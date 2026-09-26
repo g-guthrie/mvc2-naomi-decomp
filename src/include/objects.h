@@ -84,6 +84,7 @@ struct AnimationFrame20 {
     unsigned char pad8[10];
     unsigned short index;
 };
+struct ActorMotionFixed3 { int x_speed, y_speed, y_acceleration; };
 struct ActorChildReference {
     unsigned char pad[4];
     struct Actor *child;
@@ -231,7 +232,8 @@ struct Actor {
     unsigned char pad11b2[0x352 - 0x350];
     unsigned short w352;
     unsigned char pad354[0x36c - 0x354];
-    unsigned char x36c[16];
+    unsigned char x36c[8];
+    unsigned char x374[8];
     unsigned char x37c[8];
     unsigned char x384[8];
     unsigned char x38c[8];
