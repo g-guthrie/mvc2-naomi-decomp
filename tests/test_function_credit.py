@@ -51,6 +51,21 @@ class FunctionCreditTests(unittest.TestCase):
         proof = self.rows(self.retail, address=0x2000)
         self.assertEqual(proof['function_bytes'], 0)
 
+    def test_matching_instructions_with_wrong_literal_are_not_credited(self):
+        for instruction, second_instruction in ((0x9004, 0x0009), (0xd002, 0x0009), (0xc702, 0xf008)):
+            with self.subTest(instruction=instruction):
+                retail = struct.pack('<6H', instruction, second_instruction, 0x000b, 0x0009,
+                                     0x000b, 0x0009) + bytes.fromhex('0000803f')
+                actual = retail[:12] + bytes.fromhex('0100803f')
+                unit = dict(id='literal', mode='candidate', exports={'_first': 0x1000, '_second': 0x1008},
+                            sections=[dict(section='P', kind='code', address=0x1000, size=16,
+                                           interior=[dict(address=0x100c, size=4, kind='data')])])
+                symbols = {'_first': 0x1000, '_second': 0x1008}
+                proof, _ = compare(unit, executable(0x1000, actual), link(0x1000, 16, symbols), retail, 0x1000)
+                self.assertEqual(proof['functions'][0]['equal_bytes'], 8)
+                self.assertFalse(proof['functions'][0]['exact'])
+                self.assertEqual(proof['function_bytes'], 4)
+
     def test_report_counts_candidate_functions_and_verified_units(self):
         candidate = dict(credited=False, function_bytes=8, sections=[dict(kind='code', size=12)])
         verified = dict(credited=True, sections=[dict(kind='code', size=4), dict(kind='data', size=2)])
