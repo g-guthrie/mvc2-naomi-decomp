@@ -357037,6 +357037,13 @@
       "evidence": "CFG walk from 0x0c1d912a; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c1d9140",
+      "size": 12,
+      "kind": "code",
+      "sha256": "63950f853a8668eaa49f8650541d57e3ef1323d181c752f15fde58cfe8b313fe",
+      "evidence": "Reviewed stream metadata getter: MOV.L PC-relative cursor at 0x0c1d9250, read word at offset 16, store to R4, RTS with zero return in the delay slot."
+    },
+    {
       "address": "0x0c1d914c",
       "size": 28,
       "kind": "code",
@@ -357105,6 +357112,13 @@
       "kind": "data",
       "sha256": "5ba8dea0cf376bd6dbf2d9ede919f4e744ad9acaab0ac844e83aa29887a49a3f",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1d91a8; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c1d9274",
+      "size": 4,
+      "kind": "data",
+      "sha256": "acc7e98acb0ed5433dc9b7ef593a9f88c18b64844b12275009f00a237853f934",
+      "evidence": "MOV.L at 0x0c1d9214 loads the 0x03ffffff mask used by the packed stream-key update."
     },
     {
       "address": "0x0c1d9278",
