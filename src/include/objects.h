@@ -157,7 +157,7 @@ struct Actor {
     unsigned char b1fd;
     char b1fe;
     unsigned char b1ff;
-    unsigned char pad9[0x201 - 0x200];
+    unsigned char b200;
     unsigned char b201;
     unsigned char pad9a[0x20c - 0x202];
     struct Actor *p20c;
@@ -205,7 +205,9 @@ struct Actor {
     unsigned char pad13c[0x41c - 0x412];
     float f41c;
     unsigned short w420;
-    unsigned char pad14[0x4c9 - 0x422];
+    unsigned char pad14[0x428 - 0x422];
+    void *p428;
+    unsigned char pad14b[0x4c9 - 0x42c];
     char b4c9;
     unsigned char pad15[0x4dc - 0x4ca];
     unsigned short w4dc;
@@ -394,9 +396,11 @@ struct Obj_tu5_03 {
     void (*p16)(struct Obj_tu5_03 *);
     unsigned char pad2[28 - 20];
     short w28;
-    unsigned char pad3[52 - 30];
+    short w30;
+    unsigned char pad3[52 - 32];
     struct Vec3_tu5_03 pos;
-    unsigned char pad4[72 - 64];
+    int arr64[1];
+    int l44;
     int l48;
     unsigned char pad5[80 - 76];
     float f80, f84, f88;
