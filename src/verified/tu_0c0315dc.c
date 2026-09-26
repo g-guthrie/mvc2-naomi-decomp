@@ -9,7 +9,7 @@ void func_0c0315dc(void)
     struct ActorFlags *g;
     if (dat_0c2d6f84->s14) {
         --dat_0c2d6f84->s14;
-        dat_0c2d93d0.count=((dat_0c2d6f84->s14 * 32u)%60u)+10;
+        dat_0c2d93d0.count=((dat_0c2d6f84->s14 * 32)/60)+10;
         dat_0c2d93d0.value=8994.0f/(float)(2 << (60-dat_0c2d6f84->s14)) + 6.0f;
         dat_0c2d93d0.red-=4;dat_0c2d93d0.green-=4;dat_0c2d93d0.blue-=4;
         if (dat_0c2d93d0.value<6.0f) {
