@@ -34225,18 +34225,6 @@
     "mode": "verified",
     "sections": [
       {
-        "section": "Cn033c42",
-        "kind": "data",
-        "address": "0x0c033c42",
-        "size": 8
-      },
-      {
-        "section": "Cn033c4c",
-        "kind": "data",
-        "address": "0x0c033c4c",
-        "size": 40
-      },
-      {
         "section": "Cn033d7e",
         "kind": "data",
         "address": "0x0c033d7e",
@@ -34598,8 +34586,6 @@
       }
     ],
     "exports": {
-      "_dat_0c033c42": "0x0c033c42",
-      "_dat_0c033c4c": "0x0c033c4c",
       "_dat_0c033d7e": "0x0c033d7e",
       "_dat_0c033d88": "0x0c033d88",
       "_dat_0c033da4": "0x0c033da4",
@@ -47380,12 +47366,6 @@
         "size": 2
       },
       {
-        "section": "Cn0a0d88",
-        "kind": "data",
-        "address": "0x0c0a0d88",
-        "size": 24
-      },
-      {
         "section": "Cn0a12d0",
         "kind": "data",
         "address": "0x0c0a12d0",
@@ -47449,7 +47429,6 @@
       "_dat_0c0a0aba": "0x0c0a0aba",
       "_dat_0c0a0c16": "0x0c0a0c16",
       "_dat_0c0a0c1a": "0x0c0a0c1a",
-      "_table_0c0a0d88": "0x0c0a0d88",
       "_dat_0c0a12d0": "0x0c0a12d0"
     },
     "imports": {
@@ -125153,12 +125132,6 @@
         "kind": "data",
         "address": "0x0c0a0c38",
         "size": 12
-      },
-      {
-        "section": "Cn07fd76",
-        "kind": "data",
-        "address": "0x0c0a0d76",
-        "size": 18
       },
       {
         "section": "Cn0802ca",
@@ -222129,6 +222102,75 @@
       "_func_0c1c97e4": "0x0c1c97e4",
       "_func_0c1c9a16": "0x0c1c9a16",
       "_func_0c0374b8": "0x0c0374b8"
+    }
+  },
+  {
+    "id": "tu_0c033b98",
+    "source": "src/candidates/tu_0c033b98.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c033b98",
+        "size": 220,
+        "interior": [
+          {
+            "address": "0x0c033c42",
+            "size": 50,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c033b98": "0x0c033b98",
+      "_func_0c033bec": "0x0c033bec"
+    },
+    "imports": {
+      "_dat_0c2d6f84": "0x0c2d6f84",
+      "_dat_0c2d6f24": "0x0c2d6f24",
+      "_dat_0c2d6f38": "0x0c2d6f38",
+      "_func_0c0374b8": "0x0c0374b8",
+      "_func_0c037354": "0x0c037354",
+      "_func_0c023658": "0x0c023658",
+      "_func_0c033cbe": "0x0c033cbe",
+      "_func_0c033cd8": "0x0c033cd8",
+      "_func_0c034358": "0x0c034358"
+    }
+  },
+  {
+    "id": "tu_0c0a0c44",
+    "source": "src/candidates/tu_0c0a0c44.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c0a0c44",
+        "size": 348,
+        "interior": [
+          {
+            "address": "0x0c0a0d76",
+            "size": 42,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c0a0c44": "0x0c0a0c44",
+      "_func_0c0a0cc4": "0x0c0a0cc4",
+      "_func_0c0a0d64": "0x0c0a0d64"
+    },
+    "imports": {
+      "_dat_0c2f83f8": "0x0c2f83f8",
+      "_dat_0c2437b4": "0x0c2437b4",
+      "_table_0c243a14": "0x0c243a14",
+      "_func_0c02a026": "0x0c02a026",
+      "_func_0c0432ca": "0x0c0432ca",
+      "_func_0c0437b8": "0x0c0437b8",
+      "_func_0c19ee9c": "0x0c19ee9c"
     }
   }
 ]

@@ -187,7 +187,9 @@ struct Actor {
     unsigned char b3f8, b3f9;
     unsigned char pad13[0x40c - 0x3fa];
     char *p40c;
-    unsigned char pad13b[0x41c - 0x410];
+    unsigned char pad13b[1];
+    unsigned char b411;
+    unsigned char pad13c[0x41c - 0x412];
     float f41c;
     unsigned short w420;
     unsigned char pad14[0x4c9 - 0x422];
@@ -205,7 +207,8 @@ struct ActorFlags {
     signed char b24, b25; unsigned char pad26[2]; int flags;
     unsigned char pad32[10]; signed char b42; unsigned char pad43[3];
     signed char b46; unsigned char pad47[0x80-47]; char b128;
-    unsigned char pad129[0x8e-0x81]; signed char b8e;
+    unsigned char pad129[3]; signed char b84;
+    unsigned char pad133[0x8e-0x85]; signed char b8e;
 };
 struct Glob_me00 { unsigned char pad[0x14]; int l14; };
 
