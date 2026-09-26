@@ -275,6 +275,36 @@ def pool_rows(unit, sections, segments, main, base):
     return rows
 
 
+def function_literals_match(address, code, part, segments, main, base):
+    """PC-relative operands must resolve to retail data, not just identical loads."""
+    for offset in range(0, len(code) - 1, 2):
+        word = struct.unpack_from('<H', code, offset)[0]
+        pc = address + offset
+        if word >> 12 == 9:
+            target, size = pc + 4 + (word & 255) * 2, 2
+        elif word >> 12 == 13 or word >> 8 == 0xc7:
+            target, size = ((pc + 4) & ~3) + (word & 255) * 4, 4
+            if word >> 8 == 0xc7:
+                # MOVA also addresses switch tables and other compound data.
+                # Require the declared data region rather than assuming one word.
+                for interior in part.get('interior', ()):
+                    start, count = number(interior['address']), number(interior['size'])
+                    if start <= target < start + count:
+                        target, size = start, count
+                        break
+        else:
+            continue
+        if target < base or target + size > base + len(main):
+            return False
+        try:
+            actual = memory_bytes(segments, target, size)
+        except ValueError:
+            return False
+        if actual != main[target - base:target - base + size]:
+            return False
+    return True
+
+
 def function_rows(unit, sections, symbols, segments, main, base):
     """One row per exported function: its retail bytes from the export address to
     the next export, declared interior data, or section end. A candidate unit is
@@ -301,7 +331,8 @@ def function_rows(unit, sections, symbols, segments, main, base):
                 actual = b""
             equal = sum(a == b for a, b in zip(actual, reference))
             rows.append({"symbol": symbol, "address": address, "size": size, "equal_bytes": equal,
-                         "exact": placed and symbols.get(symbol) == address and actual == reference})
+                         "exact": placed and symbols.get(symbol) == address and actual == reference
+                                  and function_literals_match(address, actual, part, segments, main, base)})
     return rows
 
 
