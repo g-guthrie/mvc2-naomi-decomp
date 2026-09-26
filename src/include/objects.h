@@ -54,10 +54,22 @@ struct ActorSub2a4 {
     unsigned char b6, pad7;
     unsigned short w8;
     short s10;
-    unsigned char pad2[0x16 - 0xc];
+    short s12, s14;
+    unsigned char pad16[2];
+    short s18;
+    unsigned char pad20[2];
     unsigned char b16;
     unsigned char pad3;
     unsigned int l24;
+};
+
+struct ActorSub2a4Extended {
+    struct ActorSub2a4 base;
+    unsigned char pad[34 - sizeof(struct ActorSub2a4)];
+    short s34;
+    int l36;
+    unsigned char pad40[2];
+    unsigned short w42;
 };
 
 /* The moving object most leaf functions update: a state byte at 4, a timer at
@@ -106,7 +118,7 @@ struct Actor {
     unsigned char pad6bb[0x140 - 0x13d];
     unsigned char b140;
     char b141;
-    unsigned char pad6c[0x143 - 0x142];
+    char b142;
     char b143;
     unsigned int l144;
     unsigned char pad6ca[0x14b - 0x148];
@@ -148,7 +160,7 @@ struct Actor {
     unsigned char pad7fc[0x1f2 - 0x1ee];
     unsigned char b1f2;
     unsigned char b1f3;
-    unsigned char pad7ff[0x1f5 - 0x1f4];
+    unsigned char b1f4;
     unsigned char b1f5;
     unsigned char b1f6, b1f7;
     unsigned char pad7ffc[0x1f9 - 0x1f8];
@@ -198,7 +210,9 @@ struct Actor {
     unsigned char pad354[0x36c - 0x354];
     unsigned char x36c[16];
     unsigned char x37c[8];
-    unsigned char x384[0x3e4 - 0x384];
+    unsigned char x384[8];
+    unsigned char x38c[8];
+    unsigned char x394[0x3e4 - 0x394];
     unsigned short w3e4;
     unsigned char pad3e6[0x3f0 - 0x3e6];
     unsigned char b3f0, b3f1;
