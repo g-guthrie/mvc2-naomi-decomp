@@ -79,22 +79,6 @@ const unsigned int dat_0c05ab98[] = {
     0x0c0429a4u,
 };
 
-#pragma section n05ad24
-void (*const table_0c05ad24[])(void) = {
-    func_0c02a026,
-    func_0c044e52,
-    func_0c043324,
-    func_0c0437b8,
-};
-
-#pragma section n05ae40
-void (*const table_0c05ae40[])(void) = {
-    func_0c23f9d4,
-    func_0c02a39a,
-    func_0c0442fa,
-    func_0c0432ca,
-};
-
 #pragma section n05afd4
 void (*const table_0c05afd4[])(void) = {
     func_0c02a0c4,
