@@ -83,36 +83,6 @@ const unsigned int dat_0c0315b0[] = {
     0x0c2d93d0u, 0x460ca000u, 0x0c0267ceu,
 };
 
-#pragma section n031860
-void (*const table_0c031860[])(void) = {
-    func_0c034258,
-    func_0c037354,
-    func_0c0275a4,
-    func_0c23b220,
-    func_0c0275bc,
-    func_0c0275d0,
-    func_0c02aa78,
-    func_0c02aaac,
-    func_0c027ff0,
-    func_0c023a50,
-};
-
-#pragma section n03188c
-void (*const table_0c03188c[])(void) = {
-    func_0c023658,
-    func_0c0268b8,
-    func_0c02a7ea,
-    func_0c0267c4,
-};
-
-#pragma section n0318a4
-void (*const table_0c0318a4[])(void) = {
-    func_0c0267ce,
-    func_0c0342a2,
-    func_0c033ef8,
-    func_0c034312,
-};
-
 #pragma section n0319cc
 const unsigned int dat_0c0319cc[] = {
     0x0c2d6f24u, 0x00008000u, 0x0c2d6f38u,
