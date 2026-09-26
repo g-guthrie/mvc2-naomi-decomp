@@ -6391,12 +6391,6 @@
         "size": 8
       },
       {
-        "section": "Cn027648",
-        "kind": "data",
-        "address": "0x0c027648",
-        "size": 4
-      },
-      {
         "section": "Cn027930",
         "kind": "data",
         "address": "0x0c027930",
@@ -6691,7 +6685,6 @@
       "_ptr_0c026dac": "0x0c026dac",
       "_table_0c0272ec": "0x0c0272ec",
       "_table_0c0275ec": "0x0c0275ec",
-      "_ptr_0c027648": "0x0c027648",
       "_table_0c027930": "0x0c027930",
       "_table_0c027a48": "0x0c027a48",
       "_ptr_0c027b88": "0x0c027b88",
@@ -35056,18 +35049,6 @@
         "size": 24
       },
       {
-        "section": "Cn038428",
-        "kind": "data",
-        "address": "0x0c038428",
-        "size": 2
-      },
-      {
-        "section": "Cn03842c",
-        "kind": "data",
-        "address": "0x0c03842c",
-        "size": 12
-      },
-      {
         "section": "Cn038582",
         "kind": "data",
         "address": "0x0c038582",
@@ -35246,8 +35227,6 @@
       "_dat_0c0381c0": "0x0c0381c0",
       "_dat_0c038292": "0x0c038292",
       "_dat_0c03837c": "0x0c03837c",
-      "_dat_0c038428": "0x0c038428",
-      "_dat_0c03842c": "0x0c03842c",
       "_dat_0c038582": "0x0c038582",
       "_dat_0c0386a8": "0x0c0386a8",
       "_dat_0c0386b4": "0x0c0386b4",
@@ -221925,6 +221904,61 @@
     },
     "imports": {
       "_func_0c037688": "0x0c037688"
+    }
+  },
+  {
+    "id": "tu_0c0275fc",
+    "source": "src/verified/tu_0c0275fc.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c0275fc",
+        "size": 80,
+        "interior": [
+          {
+            "address": "0x0c027648",
+            "size": 4,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c0275fc": "0x0c0275fc",
+      "_func_0c02763a": "0x0c02763a"
+    },
+    "imports": {
+      "_func_0c022ccc": "0x0c022ccc"
+    }
+  },
+  {
+    "id": "tu_0c0383a4",
+    "source": "src/verified/tu_0c0383a4.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c0383a4",
+        "size": 148,
+        "interior": [
+          {
+            "address": "0x0c038428",
+            "size": 16,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c0383a4": "0x0c0383a4"
+    },
+    "imports": {
+      "_dat_0c2f8350": "0x0c2f8350",
+      "_func_0c0431ec": "0x0c0431ec",
+      "_func_0c043150": "0x0c043150"
     }
   }
 ]
