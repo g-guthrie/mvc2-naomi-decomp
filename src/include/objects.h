@@ -400,7 +400,8 @@ struct Obj_tu5_03 {
     unsigned char pad2[28 - 20];
     short w28;
     short w30;
-    unsigned char pad3[52 - 32];
+    unsigned char b32;
+    unsigned char pad3[52 - 33];
     struct Vec3_tu5_03 pos;
     int arr64[1];
     int l44;
