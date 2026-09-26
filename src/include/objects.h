@@ -404,7 +404,8 @@ struct Obj_tu5_03 {
     unsigned char pad0[4];
     unsigned char b4;
     char b5;
-    unsigned char pad1[16 - 6];
+    unsigned char b6;
+    unsigned char pad1[16 - 7];
     void (*p16)(struct Obj_tu5_03 *);
     unsigned char pad2[28 - 20];
     short w28;
@@ -422,7 +423,9 @@ struct Obj_tu5_03 {
     unsigned char pad6[120 - 100];
     float f120, f124, f128;
     int l84;
-    unsigned char pad7[0xcc - 0x88];
+    float f136;
+    unsigned char pad7[0xc8 - 0x8c];
+    float *p200;
     int lcc;
     unsigned char pad8[0xe4 - 0xd0];
     int lE4, lE8, lEC;
