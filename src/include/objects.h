@@ -57,7 +57,7 @@ struct ActorSub2a4 {
     short s12, s14;
     unsigned char pad16[2];
     short s18;
-    unsigned char pad20[2];
+    unsigned char b20, pad21;
     unsigned char b16;
     unsigned char pad3;
     unsigned int l24;
@@ -68,7 +68,7 @@ struct ActorSub2a4Extended {
     unsigned char pad[34 - sizeof(struct ActorSub2a4)];
     short s34;
     int l36;
-    unsigned char pad40[2];
+    unsigned char b40, pad41;
     unsigned short w42;
 };
 
