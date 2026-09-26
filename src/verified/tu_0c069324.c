@@ -1,5 +1,4 @@
 #include "objects.h"
-struct SolHorizontalTarget { unsigned char pad[16]; float x; };
 extern char func_0c02a026(struct Actor *);
 extern void func_0c1385f8(struct Actor *, int);
 extern void func_0c02a0c4(struct Actor *, int, int);

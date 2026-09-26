@@ -391,6 +391,15 @@ struct ByteCursor { int cnt0; int cnt4; int cnt8; unsigned char *cur; };
 
 /* Actor used by the 0x0c1d0a8c-0x0c1d109c callback sequence. */
 struct Vec3_tu5_03 { float x, y, z; };
+struct MotionGlobal_0c2d9260 {
+    unsigned char pad[5];
+    unsigned char b5, b6;
+    unsigned char pad7[0x88 - 7];
+    float f88, f8c;
+};
+
+struct SolHorizontalTarget { unsigned char pad[16]; float x, y; };
+
 struct Obj_tu5_03 {
     unsigned char pad0[4];
     unsigned char b4;
@@ -408,7 +417,9 @@ struct Obj_tu5_03 {
     int l48;
     unsigned char pad5[80 - 76];
     float f80, f84, f88;
-    unsigned char pad6[120 - 92];
+    unsigned char pad6a[4];
+    float f96;
+    unsigned char pad6[120 - 100];
     float f120, f124, f128;
     int l84;
     unsigned char pad7[0xcc - 0x88];
