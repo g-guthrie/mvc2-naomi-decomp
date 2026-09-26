@@ -20,25 +20,26 @@ void func_0c0a5978(struct Actor *a)
     float *choices=dat_0c243f68;
     float *table;
     unsigned short index;
-    if (a->s30>=4) return;
-    a->b35=(unsigned char)func_0c02887e(&a->f52,&a->p20c->f52)>>3;
-    table=dat_0c243da8;
-    a->b35=(int)choices[a->b35];
-    index=a->b35;
-    table+=index*7;
-    a->b6=a->b6+1;
-    a->s28=30;
-    a->s30=a->s30+1;
-    a->f92=table[0];
-    a->f104=table[1];
-    a->f96=table[2];
-    a->f108=table[3];
-    a->b7=(int)table[6];
-    a->w130=(int)(!(table[5]<0) ? table[5] : (float)(short)a->w130);
-    func_0c19fadc(a,0);
-    func_0c19fadc(a,1);
-    a->i72=0;
-    func_0c02a0c4(a,22,1);
+    if (a->s30<4) {
+        a->b35=(unsigned char)func_0c02887e(&a->f52,&a->p20c->f52)>>3;
+        table=dat_0c243da8;
+        a->b35=(int)choices[a->b35];
+        index=a->b35;
+        table+=index*7;
+        a->b6=a->b6+1;
+        a->s28=30;
+        a->s30=a->s30+1;
+        a->f92=table[0];
+        a->f104=table[1];
+        a->f96=table[2];
+        a->f108=table[3];
+        a->b7=(int)table[6];
+        a->w130=(int)(!(table[5]<0) ? table[5] : (float)(short)a->w130);
+        func_0c19fadc(a,0);
+        func_0c19fadc(a,1);
+        a->i72=0;
+        func_0c02a0c4(a,22,1);
+    }
 }
 void func_0c0a5a52(struct Actor *a)
 {
