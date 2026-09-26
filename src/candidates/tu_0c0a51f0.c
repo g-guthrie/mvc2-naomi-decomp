@@ -84,7 +84,7 @@ void func_0c0a52d2(struct Actor *a)
     sub=&a->sub2a4;
     a->b33=0;
     *(unsigned char *)&sub->s10=0;
-    *(unsigned short *)sub->pad2=0;
+    *(unsigned short *)&sub->s12=0;
 }
 void func_0c0a53dc(struct Actor *a)
 {
