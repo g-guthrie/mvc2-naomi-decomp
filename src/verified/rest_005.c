@@ -168,36 +168,10 @@ const unsigned short dat_0c05789c[] = {
     0x02a4u, 0x01eau, 0x0141u, 0x01c8u, 0x0205u,
 };
 
-#pragma section n0369cc
-const unsigned short dat_0c0579cc[] = {
-    0x01a1u, 0x00c4u, 0x01f7u,
-};
-
-#pragma section n0369d4
-const unsigned int dat_0c0579d4[] = {
-    0x0c23f7a0u, 0x0c2f83f8u,
-};
-
-#pragma section n0369ec
-const unsigned int dat_0c0579ec[] = {
-    0x41800000u, 0x41000000u, 0x42800000u, 0x0c037da4u, 0x0c0344a0u, 0x0c025900u, 0xc312aaaau, 0x432b6db6u,
-    0x0c1d4610u, 0x0c044548u,
-};
-
 #pragma section n036b2a
 const unsigned short dat_0c057b2a[] = {
     0x02a4u, 0x01eau, 0x01a3u, 0xa026u, 0x0c02u, 0xa0c4u, 0x0c02u, 0xf7c8u,
     0x0c23u, 0x0000u, 0x4780u, 0x5555u, 0x3fd5u, 0x2492u, 0x4009u,
-};
-
-#pragma section n036c44
-const unsigned short dat_0c057c44[] = {
-    0x02a4u, 0x01eau, 0x0525u, 0x0141u, 0x0142u,
-};
-
-#pragma section n036c50
-const unsigned int dat_0c057c50[] = {
-    0x0c02a026u, 0x0c047b98u, 0x0c044e52u, 0x0c2d9260u, 0x0c05bbd6u,
 };
 
 #pragma section n036db2
@@ -233,21 +207,6 @@ const unsigned int dat_0c05807c[] = {
 #pragma section n037098
 const unsigned int dat_0c058098[] = {
     0x0c23f7f8u, 0x3c555555u, 0x40a00000u, 0x40baaaaau, 0x40555555u,
-};
-
-#pragma section n0371ae
-const unsigned short dat_0c0581ae[] = {
-    0x03e4u, 0x00c6u, 0x01f7u, 0x01d2u,
-};
-
-#pragma section n0371b8
-const unsigned int dat_0c0581b8[] = {
-    0x0c043352u, 0x0c02a026u, 0x0c037d54u, 0xc312aaaau, 0x432b6db6u, 0x0c1d4610u, 0x0c025900u,
-};
-
-#pragma section n0371d8
-const unsigned int dat_0c0581d8[] = {
-    0x0c044548u, 0x0c0437b8u,
 };
 
 #pragma section n037428
