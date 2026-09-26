@@ -1,7 +1,7 @@
 #include "objects.h"
 extern int dat_0c2d9610;
 extern int dat_0c264724;
-extern int **dat_0c2d964c;
+extern struct ActorGlobalRoot *dat_0c2d964c;
 extern struct Obj_tu5_03 *func_0c0374da(int,int,int);
 void func_0c1e565c(struct Obj_tu5_03 *a)
 {
@@ -28,7 +28,7 @@ void func_0c1e56d0(void)
     if ((a = func_0c0374da(0,5,1)) != 0) {
         a->b12c = 1;
         a->p16 = func_0c1e565c;
-        a->l84 = **dat_0c2d964c;
+        a->l84 = dat_0c2d964c->p0->entries[0].value;
         a->lcc = 0xc01;
         a->f120 = 0.0f;
         a->f124 = 1.0f;
