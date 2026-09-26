@@ -2,8 +2,7 @@
 extern int func_0c038fdc(int);
 extern float func_0c1ec2c0(int);
 extern struct Obj_tu5_03 *func_0c0374da(int,int,int);
-struct SolLink68 { unsigned char pad[68]; int value; };
-extern struct SolLink68 **dat_0c2d964c;
+extern struct ActorGlobalRoot *dat_0c2d964c;
 void func_0c1e1dc0(struct Obj_tu5_03 *a)
 {
     switch (a->b4) {
@@ -32,7 +31,7 @@ void func_0c1e1e92(void)
     if ((a = func_0c0374da(0,5,1)) != 0) {
         a->b12c = 1;
         a->p16 = func_0c1e1dc0;
-        a->l84 = (*dat_0c2d964c)->value;
+        a->l84 = dat_0c2d964c->p0->entries[17].value;
         a->lcc = 0xc01;
     }
 }

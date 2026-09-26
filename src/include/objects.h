@@ -63,7 +63,7 @@ struct ActorSub2a4 {
 /* The moving object most leaf functions update: a state byte at 4, a timer at
  * 28, position at 52, velocity at 92 and acceleration at 104. */
 struct Actor {
-    unsigned char pad0[2];
+    unsigned char b0,b1;
     unsigned char b2;
     unsigned char b3;
     unsigned char b4;
@@ -165,7 +165,8 @@ struct Actor {
     unsigned char b233;
     unsigned char pad9c[0x236 - 0x234];
     unsigned char b236;
-    unsigned char pad9bb[0x248 - 0x237];
+    unsigned char b237;
+    unsigned char pad9bb[0x248 - 0x238];
     unsigned char b248;
     unsigned char pad248[0x255 - 0x249];
     unsigned char b255;
@@ -187,7 +188,9 @@ struct Actor {
     unsigned char pad342[0x348 - 0x342];
     unsigned short w348;
     unsigned short w34a;
-    unsigned char pad11b[0x352 - 0x34c];
+    unsigned char pad11b[2];
+    unsigned short w34e;
+    unsigned char pad11b2[0x352 - 0x350];
     unsigned short w352;
     unsigned char pad354[0x37c - 0x354];
     unsigned char x37c[8];

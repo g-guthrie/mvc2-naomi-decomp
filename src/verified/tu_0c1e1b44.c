@@ -1,8 +1,7 @@
 #include "objects.h"
 extern struct Obj_tu5_03 *func_0c0374da(int, int, int);
 extern void func_0c037688(struct Obj_tu5_03 *);
-struct SolLink { unsigned char pad[20]; int value; };
-extern struct SolLink **dat_0c2d964c;
+extern struct ActorGlobalRoot *dat_0c2d964c;
 extern struct Vec3_tu5_03 dat_0c2332e4;
 void func_0c1e1b96(struct Obj_tu5_03 *);
 void func_0c1e1b44(struct Vec3_tu5_03 *v)
@@ -11,7 +10,7 @@ void func_0c1e1b44(struct Vec3_tu5_03 *v)
     if ((a = func_0c0374da(0, 5, 1)) != 0) {
         a->b12c = 1;
         a->p16 = func_0c1e1b96;
-        a->l84 = (*dat_0c2d964c)->value;
+        a->l84 = dat_0c2d964c->p0->entries[5].value;
         a->lcc = 0x811;
         a->pos = *v;
         *(struct Vec3_tu5_03 *)&a->f80 = dat_0c2332e4;
