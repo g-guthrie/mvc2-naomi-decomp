@@ -6894,12 +6894,6 @@
         "size": 4
       },
       {
-        "section": "Cn034094",
-        "kind": "data",
-        "address": "0x0c034094",
-        "size": 4
-      },
-      {
         "section": "Cn0341dc",
         "kind": "data",
         "address": "0x0c0341dc",
@@ -7203,7 +7197,6 @@
       "_ptr_0c0332f0": "0x0c0332f0",
       "_table_0c033590": "0x0c033590",
       "_ptr_0c033a4c": "0x0c033a4c",
-      "_ptr_0c034094": "0x0c034094",
       "_ptr_0c0341dc": "0x0c0341dc",
       "_table_0c034378": "0x0c034378",
       "_ptr_0c034398": "0x0c034398",
@@ -34218,18 +34211,6 @@
     "mode": "verified",
     "sections": [
       {
-        "section": "Cn034076",
-        "kind": "data",
-        "address": "0x0c034076",
-        "size": 30
-      },
-      {
-        "section": "Cn034098",
-        "kind": "data",
-        "address": "0x0c034098",
-        "size": 4
-      },
-      {
         "section": "Cn0341c2",
         "kind": "data",
         "address": "0x0c0341c2",
@@ -34555,8 +34536,6 @@
       }
     ],
     "exports": {
-      "_dat_0c034076": "0x0c034076",
-      "_dat_0c034098": "0x0c034098",
       "_dat_0c0341c2": "0x0c0341c2",
       "_dat_0c0341cc": "0x0c0341cc",
       "_dat_0c0341e4": "0x0c0341e4",
@@ -222132,14 +222111,24 @@
     "mode": "verified",
     "sections": [
       {
-        "section": "P",
+        "section": "PCtrl",
         "kind": "code",
         "address": "0x0c033c74",
-        "size": 324,
+        "size": 1064,
         "interior": [
           {
             "address": "0x0c033d7e",
             "size": 58,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c033f18",
+            "size": 16,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c034076",
+            "size": 38,
             "kind": "data"
           }
         ]
@@ -222155,7 +222144,18 @@
       "_func_0c033d00": "0x0c033d00",
       "_func_0c033d16": "0x0c033d16",
       "_func_0c033d2a": "0x0c033d2a",
-      "_func_0c033d3e": "0x0c033d3e"
+      "_func_0c033d3e": "0x0c033d3e",
+      "_func_0c033db8": "0x0c033db8",
+      "_func_0c033e0e": "0x0c033e0e",
+      "_func_0c033e6c": "0x0c033e6c",
+      "_func_0c033ed6": "0x0c033ed6",
+      "_func_0c033ef8": "0x0c033ef8",
+      "_func_0c033f28": "0x0c033f28",
+      "_func_0c033f6c": "0x0c033f6c",
+      "_func_0c033f7c": "0x0c033f7c",
+      "_func_0c033f8e": "0x0c033f8e",
+      "_func_0c033fd0": "0x0c033fd0",
+      "_func_0c034060": "0x0c034060"
     },
     "imports": {
       "_dat_0c2d6f84": "0x0c2d6f84",
@@ -222166,38 +222166,8 @@
       "_func_0c035106": "0x0c035106",
       "_func_0c1f3240": "0x0c1f3240",
       "_func_0c1fa8b0": "0x0c1fa8b0",
-      "__modlu": "0x0c1fb400"
-    }
-  },
-  {
-    "id": "tu_0c033db8",
-    "source": "src/verified/tu_0c033db8.c",
-    "mode": "verified",
-    "sections": [
-      {
-        "section": "P",
-        "kind": "code",
-        "address": "0x0c033db8",
-        "size": 368,
-        "interior": [
-          {
-            "address": "0x0c033f18",
-            "size": 16,
-            "kind": "data"
-          }
-        ]
-      }
-    ],
-    "exports": {
-      "_func_0c033db8": "0x0c033db8",
-      "_func_0c033e0e": "0x0c033e0e",
-      "_func_0c033e6c": "0x0c033e6c",
-      "_func_0c033ed6": "0x0c033ed6",
-      "_func_0c033ef8": "0x0c033ef8"
-    },
-    "imports": {
-      "_dat_0c2fb1f0": "0x0c2fb1f0",
-      "_func_0c1f3240": "0x0c1f3240",
+      "_func_0c1fa450": "0x0c1fa450",
+      "_func_0c1f3340": "0x0c1f3340",
       "__modlu": "0x0c1fb400"
     }
   }

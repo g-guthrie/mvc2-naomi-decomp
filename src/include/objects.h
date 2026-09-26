@@ -214,7 +214,7 @@ struct ActorFlags {
 struct Glob_me00 { unsigned char pad[0x14]; int l14; };
 
 /* Scalar control record used by 0x0c033d3e and 0x0c033db8. */
-struct Control_0c2fb1f0 { unsigned char pad0[48]; float f48; float values[8]; unsigned int i84; };
+struct Control_0c2fb1f0 { unsigned char pad0[12]; int i12; unsigned char pad16[28]; float f44, f48; float values[8]; unsigned int i84; };
 
 /* Indexed data shared by actor constructors through the root at 0x0c2d964c. */
 union ActorGlobalEntry { void *pointer; int value; };
