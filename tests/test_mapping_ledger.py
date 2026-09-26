@@ -37,6 +37,20 @@ class MappingLedgerTests(unittest.TestCase):
         self.assertEqual(result['reviewed_code_bytes'] + result['reviewed_data_bytes'] + result['unknown_bytes'], self.size)
         self.assertEqual(result['main_sha256'], sha(self.img))
 
+    def test_verified_source_classifies_unknown_literal_pool_as_data(self):
+        image, base = bytes(range(16)), 0x1000
+        entries = [
+            dict(address=base, size=4, kind='code', sha256=sha(image[:4]), evidence='code'),
+            dict(address=base + 8, size=2, kind='data', sha256=sha(image[8:10]), evidence='pool'),
+        ]
+        unit = dict(id='source', credited=True, sections=[dict(
+            section='P', address=base, size=16, kind='code',
+            interior=[dict(address=base + 8, size=8, kind='data')])])
+        result = review(image, base, entries=entries, verified=[unit])
+        self.assertEqual(result['reviewed_code_bytes'], 8)
+        self.assertEqual(result['reviewed_data_bytes'], 8)
+        self.assertEqual(result['unknown_bytes'], 0)
+
     def test_sampled_delay_slots_and_pool_kinds(self):
         by = {number(p['address']): p for p in self.ranges}
 

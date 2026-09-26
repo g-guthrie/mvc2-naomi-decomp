@@ -54,9 +54,17 @@ def review(image, base, entries=None, verified=()):
             for lo, hi in pieces:
                 origin = (f"library unit {unit['id']} module {unit['module']}" if 'library' in unit
                           else f"C unit {unit['id']} section {part['section']}")
-                entries.append(dict(address=lo, size=hi-lo, kind=part['kind'],
-                                    sha256=sha(image[lo-base:hi-base]),
-                                    evidence=f"Current build verifies {origin}"))
+                cuts = {lo, hi}
+                for spare_lo, spare_hi, _kind in interiors:
+                    if spare_lo < hi and lo < spare_hi:
+                        cuts.update((max(lo, spare_lo), min(hi, spare_hi)))
+                ordered_cuts = sorted(cuts)
+                for start, end in zip(ordered_cuts, ordered_cuts[1:]):
+                    kind = next((spare_kind for spare_lo, spare_hi, spare_kind in interiors
+                                 if spare_lo <= start and end <= spare_hi), part['kind'])
+                    entries.append(dict(address=start, size=end-start, kind=kind,
+                                        sha256=sha(image[start-base:end-base]),
+                                        evidence=f"Current build verifies {origin}"))
     ordered = sorted(entries, key=lambda p: number(p['address']))
     cursor, ranges = base, []
     totals = {'code': 0, 'data': 0, 'unknown': 0}

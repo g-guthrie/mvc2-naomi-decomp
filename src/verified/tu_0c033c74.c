@@ -51,7 +51,7 @@ void func_0c033d3e(register unsigned char value)
     float amount;
     value &= 0x7f;
     amount=(int)(dat_0c2fb1f0.i84 % value);
-    dat_0c2fb1f0.f52-=amount;
-    if (dat_0c2fb1f0.f52<0.0f) dat_0c2fb1f0.f52=0.0f;
-    func_0c1f3240(0,0x1a0,(unsigned char)(int)dat_0c2fb1f0.f52);
+    dat_0c2fb1f0.values[0]-=amount;
+    if (dat_0c2fb1f0.values[0]<0.0f) dat_0c2fb1f0.values[0]=0.0f;
+    func_0c1f3240(0,0x1a0,(unsigned char)(int)dat_0c2fb1f0.values[0]);
 }
