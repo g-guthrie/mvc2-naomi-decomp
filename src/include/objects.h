@@ -180,7 +180,8 @@ struct Actor {
     struct ActorSub2a4 sub2a4;
     unsigned char pad10b[0x2c6 - 0x2a4 - sizeof(struct ActorSub2a4)];
     short s2c6;
-    unsigned char pad10c[0x326 - 0x2c8];
+    int l2c8;
+    unsigned char pad10c[0x326 - 0x2cc];
     unsigned char b326;
     unsigned char b327;
     unsigned char b328;
