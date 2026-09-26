@@ -203,14 +203,18 @@ struct Actor {
 /* Global game flags record exposed through the pointer at 0x0c2d6f84. */
 struct ActorFlags {
     unsigned char pad0[2]; signed char b2, b3, b4, b5, b6; unsigned char pad7;
-    short s8, s10, s12, s14; unsigned char pad16[8];
+    short s8, s10, s12, s14; unsigned char pad16[4]; int i20;
     signed char b24, b25; unsigned char pad26[2]; int flags;
     unsigned char pad32[10]; signed char b42; unsigned char pad43[3];
-    signed char b46; unsigned char pad47[0x80-47]; char b128;
+    signed char b46; unsigned char pad47[67-47]; signed char b67;
+    unsigned char pad68[0x80-68]; char b128;
     unsigned char pad129[3]; signed char b84;
     unsigned char pad133[0x8e-0x85]; signed char b8e;
 };
 struct Glob_me00 { unsigned char pad[0x14]; int l14; };
+
+/* Scalar control record used by 0x0c033d3e and 0x0c033db8. */
+struct Control_0c2fb1f0 { unsigned char pad0[52]; float f52; unsigned char pad56[28]; unsigned int i84; };
 
 /* Indexed data shared by actor constructors through the root at 0x0c2d964c. */
 union ActorGlobalEntry { void *pointer; int value; };
