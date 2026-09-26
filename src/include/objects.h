@@ -5,6 +5,9 @@
 #ifndef OBJECTS_H
 #define OBJECTS_H
 
+/* Rectangle submitted to the renderer at 0x0c1f1f10. */
+struct DrawRect { int flags; float x,y,z,u0,v0,u1,v1,u2,v2; int a; float b; int c,d,e,f; };
+
 /* Fade weights and color multipliers used by the rendering setup. */
 struct F3_0c0268b8 { float pad0; float f4, f8, f12; };
 struct FadeState { unsigned char enabled, pad[3]; int count; unsigned char pad8, red, green, blue; float value; float weights[129]; };
