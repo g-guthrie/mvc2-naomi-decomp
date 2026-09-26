@@ -307,7 +307,7 @@ def function_literals_match(address, code, part, segments, main, base):
 
 def function_rows(unit, sections, symbols, segments, main, base):
     """One row per exported function: its retail bytes from the export address to
-    the next export, declared interior data, or section end. A candidate unit is
+    the next export or section end, excluding declared interior data. A candidate unit is
     credited for exactly the functions whose rows match, once the section links
     at the declared address and size."""
     rows = []
@@ -317,22 +317,34 @@ def function_rows(unit, sections, symbols, segments, main, base):
         start, end = number(part["address"]), number(part["address"]) + number(part["size"])
         mapped = sections.get(part["section"], {})
         placed = mapped.get("address") == start and mapped.get("size") == end - start
-        stops = sorted({number(spare["address"]) for spare in part.get("interior", ())} | {end})
+        pools = sorted((number(spare["address"]), number(spare["address"]) + number(spare["size"]))
+                       for spare in part.get("interior", ()))
         entries = sorted((number(address), symbol) for symbol, address in unit.get("exports", {}).items()
                          if start <= number(address) < end)
         for i, (address, symbol) in enumerate(entries):
             limit = entries[i + 1][0] if i + 1 < len(entries) else end
-            limit = min([limit] + [stop for stop in stops if stop > address])
-            size = limit - address
-            reference = main[address - base:address - base + size]
-            try:
-                actual = memory_bytes(segments, address, size)
-            except ValueError:
-                actual = b""
-            equal = sum(a == b for a, b in zip(actual, reference))
+            fragments, cursor = [], address
+            for lo, hi in pools:
+                if hi <= cursor or lo >= limit:
+                    continue
+                if cursor < lo:
+                    fragments.append((cursor, min(lo, limit)))
+                cursor = max(cursor, min(hi, limit))
+            if cursor < limit:
+                fragments.append((cursor, limit))
+            size, equal = 0, 0
+            exact = placed and symbols.get(symbol) == address
+            for lo, hi in fragments:
+                reference = main[lo - base:hi - base]
+                try:
+                    actual = memory_bytes(segments, lo, hi - lo)
+                except ValueError:
+                    actual = b""
+                size += hi - lo
+                equal += sum(a == b for a, b in zip(actual, reference))
+                exact = exact and actual == reference and function_literals_match(lo, actual, part, segments, main, base)
             rows.append({"symbol": symbol, "address": address, "size": size, "equal_bytes": equal,
-                         "exact": placed and symbols.get(symbol) == address and actual == reference
-                                  and function_literals_match(address, actual, part, segments, main, base)})
+                         "exact": bool(size) and exact})
     return rows
 
 

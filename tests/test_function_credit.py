@@ -47,6 +47,22 @@ class FunctionCreditTests(unittest.TestCase):
         self.assertEqual(proof['functions'][1]['size'], 4)
         self.assertEqual(proof['function_bytes'], 8)
 
+    def test_function_continues_after_an_interior_pool(self):
+        retail = bytes.fromhex('04a0090000e00900') + bytes.fromhex('deadbeef') + bytes.fromhex('01e009000b000900') + bytes.fromhex('0b000900')
+        unit = dict(id='split', mode='candidate', exports={'_first': 0x1000, '_second': 0x1014},
+                    sections=[dict(section='P', kind='code', address=0x1000, size=24,
+                                   interior=[dict(address=0x1008, size=4, kind='data')])])
+        symbols = unit['exports']
+        for changed, expected in ((True, 4), (False, 20)):
+            with self.subTest(changed_continuation=changed):
+                actual = bytearray(retail)
+                if changed:
+                    actual[12] ^= 1
+                proof, _ = compare(unit, executable(0x1000, actual), link(0x1000, 24, symbols), retail, 0x1000)
+                self.assertEqual(proof['functions'][0]['size'], 16)
+                self.assertEqual(proof['functions'][0]['exact'], not changed)
+                self.assertEqual(proof['function_bytes'], expected)
+
     def test_misplaced_section_credits_nothing(self):
         proof = self.rows(self.retail, address=0x2000)
         self.assertEqual(proof['function_bytes'], 0)

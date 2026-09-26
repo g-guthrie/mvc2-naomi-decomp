@@ -119,7 +119,9 @@ struct Actor {
     unsigned char b1a1;
     unsigned char pad7c[0x1a3 - 0x1a2];
     char b1a3;
-    unsigned char pad7cc[0x1ac - 0x1a4];
+    unsigned char pad7cc[0x1a7 - 0x1a4];
+    unsigned char b1a7;
+    unsigned char pad1a8[0x1ac - 0x1a8];
     unsigned short w1ac;
     unsigned char pad7d[0x1b0 - 0x1ae];
     struct Actor *p1b0;
@@ -133,7 +135,9 @@ struct Actor {
     unsigned char b1d2;
     unsigned char pad7f[0x1d4 - 0x1d3];
     char b1d4;
-    unsigned char pad7f2[0x1e8 - 0x1d5];
+    unsigned char pad7f2;
+    char b1d6;
+    unsigned char pad1d7[0x1e8 - 0x1d7];
     unsigned char b1e8;
     unsigned char b1e9, b1ea;
     unsigned char pad7fb[0x1ed - 0x1eb];
@@ -183,7 +187,8 @@ struct Actor {
     unsigned short w3e4;
     unsigned char pad3e6[0x3f0 - 0x3e6];
     unsigned char b3f0, b3f1;
-    unsigned char pad12[0x3f8 - 0x3f2];
+    unsigned char pad12[2];
+    void *p3f4;
     unsigned char b3f8, b3f9;
     unsigned char pad13[0x40c - 0x3fa];
     char *p40c;
