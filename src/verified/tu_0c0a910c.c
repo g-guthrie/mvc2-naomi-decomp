@@ -1,5 +1,3 @@
-/* The first handler differs only in the register testing b141.
- * The other three complete functions and both literal pools match retail. */
 #include "objects.h"
 extern struct Tbl_ub3_01 *dat_0c2f83f8;
 extern char func_0c02a026(struct Actor *);
@@ -24,7 +22,10 @@ void func_0c0a910c(struct Actor *a)
     if (func_0c02a026(a) < 0) {
         if (a->b1f9 == 2) func_0c0438de(a);
         else func_0c0437b8(a);
-    } else if (a->b141) a->b141 = 0U;
+        return;
+    }
+    if (!a->b141) return;
+    a->b141 = 0;
 }
 void func_0c0a9198(struct Actor *a) { table_0c2444e0[a->b6](a, &a->sub2a4); }
 void func_0c0a91ae(struct Actor *a, struct ActorSub2a4 *unused)

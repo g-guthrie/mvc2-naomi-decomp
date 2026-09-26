@@ -1,5 +1,5 @@
-/* Two handlers still differ in register allocation; the other complete
- * functions and every referenced literal pool match retail exactly. */
+/* The last initializer differs only in function-target registers.
+ * The other five complete functions and all three pools match retail. */
 #include "objects.h"
 extern void func_0c042018(struct Actor *);
 extern void (*table_0c2444cc[])(struct Actor *, struct ActorSub2a4 *);
@@ -52,11 +52,12 @@ void func_0c0a8e3e(struct Actor *a, struct ActorSub2a4 *unused)
     if (func_0c02a026(a) < 0) {
         if (a->b1f9 == 2) func_0c0438de(a);
         else func_0c0437b8(a);
-    } else if (*(unsigned char *)&a->b141 != 0) {
-        *(unsigned char *)&a->b141 = 0;
-        func_0c1a1a34(a, 12, 7);
-        func_0c1a286c(a, 34, 3);
+        return;
     }
+    if (!a->b141) return;
+    a->b141 = 0;
+    func_0c1a1a34(a, 12, 7);
+    func_0c1a286c(a, 34, 3);
 }
 void func_0c0a8ed6(struct Actor *a)
 {
