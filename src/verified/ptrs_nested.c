@@ -42,9 +42,6 @@ void (*const *const ptr_0c067be4)(void) = &ptr_0c24060c;
 #pragma section n095484
 void (*const *const ptr_0c095484)(void) = &ptr_0c243024;
 
-#pragma section n0a2dec
-void (*const *const ptr_0c0a2dec)(void) = &ptr_0c244028;
-
 #pragma section n0bc54c
 void (*const *const ptr_0c0bc54c)(void) = &ptr_0c245ae8;
 
