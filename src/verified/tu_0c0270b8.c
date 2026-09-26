@@ -1,7 +1,8 @@
 #include "objects.h"
 extern struct DrawRect dat_0c23a40c;
 extern void func_0c1f1f10(struct DrawRect *);
-void func_0c0270b8(void) {
+void func_0c0270b8(void)
+{
     float end, scale, zero;
     struct DrawRect *r = &dat_0c23a40c;
     r->flags=0xd50;

@@ -4,7 +4,8 @@ extern struct FadeState dat_0c2d93d0;
 extern unsigned short dat_0c2d6f24[];
 extern void func_0c0275dc(void), func_0c0267ce(void);
 extern void func_0c033cbe(void), func_0c033cd8(void), func_0c034358(void);
-void func_0c0315dc(void) {
+void func_0c0315dc(void)
+{
     struct ActorFlags *g;
     if (dat_0c2d6f84->s14) {
         --dat_0c2d6f84->s14;
@@ -24,7 +25,8 @@ void func_0c0315dc(void) {
         if ((dat_0c2d6f24[0]&0x8000) || (dat_0c2d6f24[10]&0x8000) || g->s8==0) ++g->b3;
     }
 }
-void func_0c0316b2(void) {
+void func_0c0316b2(void)
+{
     dat_0c2d6f84->b2=6;dat_0c2d6f84->b3=0;
     func_0c033cbe();func_0c033cd8();func_0c034358();
 }
