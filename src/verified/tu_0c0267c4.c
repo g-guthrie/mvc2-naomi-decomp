@@ -6,8 +6,10 @@ extern void func_0c1ecd40(float);
 extern void func_0c1ecce0(unsigned int);
 extern void func_0c1ecd30(float *);
 extern void func_0c1eccb0(void);
-void func_0c0267c4(void) { func_0c1fba00(&dat_0c2d93d0, 0, 0x214); }
-void func_0c0267ce(void) {
+void func_0c0267c4(void)
+{ func_0c1fba00(&dat_0c2d93d0, 0, 0x214); }
+void func_0c0267ce(void)
+{
     int i = 0;
     float one = 1.0f;
     unsigned char green, red, blue;
@@ -22,7 +24,8 @@ void func_0c0267ce(void) {
     blue = (int)(dat_0c2d95ec.f12 * dat_0c2d93d0.blue);
     func_0c1ecce0((red << 16) | (green << 8) | blue);
 }
-void func_0c02687c(void) {
+void func_0c02687c(void)
+{
     if (dat_0c2d93d0.enabled) func_0c1ecd30(dat_0c2d93d0.weights);
     else func_0c1eccb0();
 }
