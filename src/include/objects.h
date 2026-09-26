@@ -72,6 +72,23 @@ struct ActorSub2a4Extended {
     unsigned short w42;
 };
 
+struct AnimationFrame8 {
+    unsigned char flag, event;
+    char duration, attributes;
+    unsigned int data;
+};
+struct AnimationFrame20 {
+    unsigned char flag, event;
+    char duration, attributes;
+    unsigned int data;
+    unsigned char pad8[10];
+    unsigned short index;
+};
+struct ActorChildReference {
+    unsigned char pad[4];
+    struct Actor *child;
+};
+
 /* The moving object most leaf functions update: a state byte at 4, a timer at
  * 28, position at 52, velocity at 92 and acceleration at 104. */
 struct Actor {
@@ -113,7 +130,8 @@ struct Actor {
     unsigned char b12c;
     unsigned char pad6[0x130 - 0x12d];
     unsigned short w130;
-    unsigned char pad6b[0x13c - 0x132];
+    unsigned short w132;
+    unsigned char pad6b[0x13c - 0x134];
     unsigned char b13c;
     unsigned char pad6bb[0x140 - 0x13d];
     unsigned char b140;
@@ -123,11 +141,15 @@ struct Actor {
     unsigned int l144;
     unsigned char pad6ca[0x14b - 0x148];
     unsigned char b14b;
-    unsigned char pad6d[0x150 - 0x14c];
+    unsigned char b14c;
+    unsigned char pad6d[0x150 - 0x14d];
     unsigned short w150;
-    unsigned char pad6e[0x158 - 0x152];
+    unsigned char pad6e[2];
+    struct AnimationFrame20 *p154;
     char b158, b159;
-    unsigned char pad7[0x19e - 0x15a];
+    unsigned char pad7[0x168 - 0x15a];
+    unsigned char *p168, *p16c;
+    unsigned char pad170[0x19e - 0x170];
     char b19e;
     char b19f;
     unsigned char b1a0;
@@ -141,7 +163,8 @@ struct Actor {
     unsigned char pad7d[0x1b0 - 0x1ae];
     struct Actor *p1b0;
     struct Actor *p1b4;
-    unsigned char pad7dd[0x1c4 - 0x1b8];
+    unsigned char pad7dd[0x1c0 - 0x1b8];
+    unsigned char *p1c0;
     int p1c4;
     struct Actor *p1c8;
     unsigned char pad7e[0x1d0 - 0x1cc];
