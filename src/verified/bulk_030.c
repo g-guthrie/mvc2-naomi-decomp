@@ -181,18 +181,6 @@ void (*const table_0c08e64c[])(void) = {
     func_0c037d54,
 };
 
-#pragma section n08e920
-void (*const table_0c08e920[])(void) = {
-    func_0c1d4610,
-    func_0c048ce6,
-    func_0c24299c,
-    func_0c02a026,
-    func_0c0437b8,
-    func_0c03489c,
-    func_0c0438de,
-    func_0c196c1c,
-};
-
 #pragma section n08ea6c
 void (*const table_0c08ea6c[])(void) = {
     func_0c02a026,
