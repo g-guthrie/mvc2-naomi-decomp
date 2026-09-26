@@ -407,7 +407,8 @@ struct Obj_tu5_03 {
     unsigned char b6;
     unsigned char pad1[16 - 7];
     void (*p16)(struct Obj_tu5_03 *);
-    unsigned char pad2[28 - 20];
+    struct Obj_tu5_03 *p20;
+    unsigned char pad2[28 - 24];
     short w28;
     short w30;
     unsigned char b32;
