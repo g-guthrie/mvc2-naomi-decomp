@@ -1,7 +1,4 @@
-struct F3_0c0268b8 {
-    float pad0;
-    float f4, f8, f12;
-};
+#include "objects.h"
 
 extern unsigned char dat_0c2d95e4[];
 extern struct F3_0c0268b8 dat_0c2d95ec;
