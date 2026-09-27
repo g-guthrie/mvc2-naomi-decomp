@@ -4,10 +4,11 @@ extern struct ActorGlobalRoot *dat_0c2d964c;
 extern struct Obj_tu5_03 *func_0c0374da(int,int,int);
 extern struct Vec3_tu5_03 dat_0c2646fc;
 extern void func_0c1d91a8(int);
-extern int func_0c1d8ff8(void *,void *);
+extern int func_0c1d8ff8(int,int);
 extern int func_0c1d901e(void);
-extern int func_0c1d912a(int *,float *),func_0c1d917e(int *,float *);
-void func_0c1e52d8(struct Obj_tu5_03 *a)
+extern int func_0c1d912a(int *,float *);
+extern int func_0c1d917e(int *,float *);
+void func_0c1e52d8(register struct Obj_tu5_03 *a)
 {
     int id;
     float value;
@@ -51,10 +52,10 @@ void func_0c1e52d8(struct Obj_tu5_03 *a)
         }
         a->w28++;
         if(a->w28>=1000)a->w28=0;
-        func_0c1d8ff8(dat_0c2d964c->p0->entries[11].pointer,(void *)a->l84);
+        func_0c1d8ff8((*(int (*)[36])dat_0c2d964c->p0)[11],a->l84);
         while(func_0c1d901e()==0){
             func_0c1d912a(&id,&value);
-            value+=a->w28*0.00100000005f;
+            value=value+a->w28*0.00100000005f;
             func_0c1d917e(&id,&value);
         }
         a->l48+=55;
