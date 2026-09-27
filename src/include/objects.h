@@ -136,8 +136,8 @@ struct Actor {
     float f80, f84;
     float f88, f92, f96, f100, f104, f108, f112, f116;
     unsigned char pad5[0x88 - 120];
-    float f136;
-    unsigned char pad5b[0xcc - 0x8c];
+    float f136,f140;
+    unsigned char pad5b[0xcc - 0x90];
     int i204;
     unsigned char pad5ba[0x108 - 0xd0];
     float f264;
@@ -527,7 +527,8 @@ struct Obj_tu5_03 {
     unsigned char pad7[0xc8 - 0x8c];
     float *p200;
     int lcc;
-    unsigned char pad8[0xe4 - 0xd0];
+    int i208;
+    unsigned char pad8[0xe4 - 0xd4];
     int lE4, lE8, lEC;
     int lf0;
     unsigned char pad9[0x12c - 0xf4];

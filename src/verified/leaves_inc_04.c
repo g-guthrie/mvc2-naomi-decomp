@@ -17,6 +17,3 @@ void func_0c1d7b0a(unsigned char *p) { p[4]++; }
 
 #pragma section n1d8bbe
 void func_0c1d8bbe(unsigned char *p) { p[4]++; }
-
-#pragma section n1d8e6a
-void func_0c1d8e6a(unsigned char *p) { p[4]++; }
