@@ -88,7 +88,7 @@ struct AnimationFrame20 {
 struct ActorVec2 { float x, y; };
 struct NaomiClock { unsigned char pad[4]; unsigned char hour, minute; unsigned char rest[6]; };
 /* Command view of action storage; preserve the retail timer reads. */
-struct ActorSubByteState { char b0; unsigned char b1; short w2; unsigned char b4,pad5; char b6; unsigned char b7; };
+struct ActorSubByteState { char b0; unsigned char b1; short w2; unsigned char b4,b5; char b6; unsigned char b7; };
 struct ActorInputRecord20 { unsigned short buttons; unsigned char pad[18]; };
 struct ActorSubMotionFlags { unsigned char pad[25], flag25, pad26[2], flag28; };
 struct ActorSubCommandPrefix { unsigned char pad[5]; char command; };
