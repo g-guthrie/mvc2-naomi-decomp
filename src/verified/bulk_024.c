@@ -150,35 +150,6 @@ void (*const table_0c074c08[])(void) = {
     func_0c24120c,
 };
 
-#pragma section n075174
-const unsigned short dat_0c075174[] = {
-    0x0255u,
-};
-
-#pragma section n075180
-const unsigned int dat_0c075180[] = {
-    0x032803f8u,
-};
-
-#pragma section n075184
-void (*const table_0c075184[])(void) = {
-    func_0c02a026,
-    func_0c02a39a,
-    func_0c0437b8,
-    func_0c241220,
-};
-
-#pragma section n0752ec
-const unsigned int dat_0c0752ec[] = {
-    0x014103f1u, 0x020003f0u, 0x03ea01e0u,
-};
-
-#pragma section n075308
-const unsigned int dat_0c075308[] = {
-    0x0c02a026u, 0x41200000u, 0x4311b6dbu, 0x0c042ad2u,
-    0x0c1c1678u,
-};
-
 #pragma section n0757e0
 void (*const table_0c0757e0[])(void) = {
     func_0c037d54,
@@ -336,4 +307,3 @@ const unsigned short dat_0c077292[] = {
 const unsigned int dat_0c0772a0[] = {
     0x01d601acu,
 };
-

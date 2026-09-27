@@ -87,6 +87,9 @@ struct AnimationFrame20 {
 };
 struct ActorVec2 { float x, y; };
 struct NaomiClock { unsigned char pad[4]; unsigned char hour, minute; unsigned char rest[6]; };
+/* Command view of action storage; preserve the retail timer reads. */
+struct ActorSubCommandPrefix { unsigned char pad[5]; char command; };
+struct ActorCommandState { unsigned char pad0[12]; int flags12; unsigned char pad16[16]; volatile int timer32; };
 struct ActorMotionFixed3 { int x_speed, y_speed, y_acceleration; };
 struct ActorMotionFixed4 { int x_speed, x_acceleration, y_speed, y_acceleration; };
 struct ActorMotionFloat2 { float x, y; };
@@ -148,7 +151,7 @@ struct Actor {
     unsigned int l144;
     unsigned char pad6ca[1];
     unsigned char b149;
-    unsigned char pad14a[1];
+    unsigned char b14a;
     unsigned char b14b;
     unsigned char b14c;
     unsigned char pad6d[0x150 - 0x14d];
@@ -212,7 +215,8 @@ struct Actor {
     unsigned char b1ff;
     unsigned char b200;
     unsigned char b201;
-    unsigned char pad9a[0x205 - 0x202];
+    unsigned char b202;
+    unsigned char pad9a[0x205 - 0x203];
     unsigned char b205;
     unsigned char pad205[0x20c - 0x206];
     struct Actor *p20c;
@@ -262,9 +266,12 @@ struct Actor {
     unsigned char x38c[8];
     unsigned char x394[8];
     unsigned char x39c[8];
-    unsigned char x3a4[0x3e4 - 0x3a4];
+    unsigned char x3a4[0x3cc - 0x3a4];
+    unsigned char x3cc[0x3e4 - 0x3cc];
     unsigned short w3e4;
-    unsigned char pad3e6[0x3f0 - 0x3e6];
+    unsigned char pad3e6[0x3ea - 0x3e6];
+    unsigned short w3ea;
+    unsigned char pad3ec[0x3f0 - 0x3ec];
     unsigned char b3f0, b3f1;
     unsigned char pad12[2];
     void *p3f4;
