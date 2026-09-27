@@ -7750,12 +7750,6 @@
         "size": 4
       },
       {
-        "section": "Cn04bac4",
-        "kind": "data",
-        "address": "0x0c04bac4",
-        "size": 8
-      },
-      {
         "section": "Cn04c38c",
         "kind": "data",
         "address": "0x0c04c38c",
@@ -8069,7 +8063,6 @@
       "_ptr_0c04ad1c": "0x0c04ad1c",
       "_table_0c04b55c": "0x0c04b55c",
       "_ptr_0c04ba14": "0x0c04ba14",
-      "_table_0c04bac4": "0x0c04bac4",
       "_table_0c04c38c": "0x0c04c38c",
       "_table_0c04c4d0": "0x0c04c4d0",
       "_table_0c04c62c": "0x0c04c62c",
@@ -36345,18 +36338,6 @@
         "size": 4
       },
       {
-        "section": "Cn04babc",
-        "kind": "data",
-        "address": "0x0c04babc",
-        "size": 8
-      },
-      {
-        "section": "Cn04bacc",
-        "kind": "data",
-        "address": "0x0c04bacc",
-        "size": 4
-      },
-      {
         "section": "Cn04bc08",
         "kind": "data",
         "address": "0x0c04bc08",
@@ -36620,8 +36601,6 @@
       "_dat_0c04b8bc": "0x0c04b8bc",
       "_dat_0c04b9ee": "0x0c04b9ee",
       "_dat_0c04ba10": "0x0c04ba10",
-      "_dat_0c04babc": "0x0c04babc",
-      "_dat_0c04bacc": "0x0c04bacc",
       "_dat_0c04bc08": "0x0c04bc08",
       "_dat_0c04bd5c": "0x0c04bd5c",
       "_dat_0c04be36": "0x0c04be36",
@@ -85658,30 +85637,6 @@
         "size": 16
       },
       {
-        "section": "Cn1d4f50",
-        "kind": "data",
-        "address": "0x0c1d4f50",
-        "size": 10
-      },
-      {
-        "section": "Cn1d4f5c",
-        "kind": "data",
-        "address": "0x0c1d4f5c",
-        "size": 36
-      },
-      {
-        "section": "Cn1d5004",
-        "kind": "data",
-        "address": "0x0c1d5004",
-        "size": 2
-      },
-      {
-        "section": "Cn1d5008",
-        "kind": "data",
-        "address": "0x0c1d5008",
-        "size": 20
-      },
-      {
         "section": "Cn1d5162",
         "kind": "data",
         "address": "0x0c1d5162",
@@ -86005,10 +85960,6 @@
       "_dat_0c1d4ca4": "0x0c1d4ca4",
       "_dat_0c1d4df8": "0x0c1d4df8",
       "_dat_0c1d4e00": "0x0c1d4e00",
-      "_dat_0c1d4f50": "0x0c1d4f50",
-      "_dat_0c1d4f5c": "0x0c1d4f5c",
-      "_dat_0c1d5004": "0x0c1d5004",
-      "_dat_0c1d5008": "0x0c1d5008",
       "_dat_0c1d5162": "0x0c1d5162",
       "_dat_0c1d5170": "0x0c1d5170",
       "_dat_0c1d517c": "0x0c1d517c",
@@ -139708,12 +139659,6 @@
         "kind": "data",
         "address": "0x0c04b9ea",
         "size": 4
-      },
-      {
-        "section": "Cn02aad0",
-        "kind": "data",
-        "address": "0x0c04bad0",
-        "size": 8
       },
       {
         "section": "Cn02b8d0",
@@ -223926,6 +223871,80 @@
       "_func_0c0451f2": "0x0c0451f2",
       "_func_0c0438de": "0x0c0438de",
       "_dat_0c2d926c": "0x0c2d926c"
+    }
+  },
+  {
+    "id": "tu_0c04ba18",
+    "source": "src/candidates/tu_0c04ba18.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "PN04ba18",
+        "kind": "code",
+        "address": "0x0c04ba18",
+        "size": 192,
+        "interior": [
+          {
+            "address": "0x0c04babc",
+            "size": 28,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c04ba18": "0x0c04ba18",
+      "_func_0c04ba48": "0x0c04ba48",
+      "_func_0c04baa8": "0x0c04baa8"
+    },
+    "imports": {
+      "_dat_0c2f83f8": "0x0c2f83f8",
+      "_dat_0c23c82c": "0x0c23c82c",
+      "_dat_0c23c816": "0x0c23c816",
+      "_func_0c0344a0": "0x0c0344a0",
+      "_func_0c0346da": "0x0c0346da"
+    }
+  },
+  {
+    "id": "tu_0c1d4e18",
+    "source": "src/candidates/tu_0c1d4e18.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c1d4e18",
+        "size": 516,
+        "interior": [
+          {
+            "address": "0x0c1d4f50",
+            "size": 48,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c1d5004",
+            "size": 24,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c1d4e18": "0x0c1d4e18",
+      "_func_0c1d4e64": "0x0c1d4e64",
+      "_func_0c1d4ef6": "0x0c1d4ef6",
+      "_func_0c1d4f40": "0x0c1d4f40",
+      "_func_0c1d4fba": "0x0c1d4fba"
+    },
+    "imports": {
+      "_func_0c037688": "0x0c037688",
+      "_dat_0c2d9650": "0x0c2d9650",
+      "_dat_0c261558": "0x0c261558",
+      "_dat_0c2615ac": "0x0c2615ac",
+      "_dat_0c2615dc": "0x0c2615dc",
+      "_dat_0c26160c": "0x0c26160c",
+      "_dat_0c261638": "0x0c261638",
+      "_dat_0c261664": "0x0c261664"
     }
   }
 ]
