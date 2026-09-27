@@ -88,6 +88,8 @@ struct AnimationFrame20 {
 struct ActorVec2 { float x, y; };
 struct NaomiClock { unsigned char pad[4]; unsigned char hour, minute; unsigned char rest[6]; };
 /* Command view of action storage; preserve the retail timer reads. */
+struct ActorSubByteState { char b0; unsigned char b1; short w2; unsigned char b4,pad5; char b6; unsigned char b7; };
+struct ActorSubMotionFlags { unsigned char pad[25], flag25, pad26[2], flag28; };
 struct ActorSubCommandPrefix { unsigned char pad[5]; char command; };
 struct ActorCommandState { unsigned char pad0[12]; int flags12; unsigned char pad16[16]; volatile int timer32; };
 struct ActorMotionFixed3 { int x_speed, y_speed, y_acceleration; };
@@ -98,6 +100,8 @@ struct ActorChildReference {
     unsigned char pad[4];
     struct Actor *child;
 };
+struct ActorSubThrowContext { struct ActorChildReference base; unsigned char pad8[11], b19; };
+
 
 /* The moving object most leaf functions update: a state byte at 4, a timer at
  * 28, position at 52, velocity at 92 and acceleration at 104. */
@@ -121,7 +125,7 @@ struct Actor {
     unsigned char b34;
     unsigned char b35;
     unsigned char b36;
-    unsigned char pad3b[1];
+    unsigned char b37;
     unsigned short w38;
     unsigned char pad3c[12];
     float f52, f56, f60;
@@ -302,7 +306,7 @@ struct ActorFlags {
     signed char b46; unsigned char pad47[67-47]; signed char b67;
     unsigned char pad68[0x80-68]; char b128;
     unsigned char pad129[3]; signed char b84;
-    unsigned char pad133[0x8e-0x85]; signed char b8e;
+    unsigned char pad133[0x88-0x85]; unsigned char b88; unsigned char pad137[0x8e-0x89]; signed char b8e;
     unsigned char pad143[5]; void *p94;
 };
 struct Glob_me00 { unsigned char pad[0x14]; int l14; };
