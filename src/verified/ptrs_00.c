@@ -11,9 +11,6 @@ void (*const ptr_0c023a48)(void) = func_0c0239e2;
 #pragma section n0272fc
 void (*const ptr_0c0272fc)(void) = func_0c206570;
 
-#pragma section n02be98
-void (*const ptr_0c02be98)(void) = func_0c0275dc;
-
 #pragma section n030d58
 void (*const ptr_0c030d58)(void) = func_0c02776c;
 
@@ -25,4 +22,3 @@ void (*const ptr_0c032c98)(void) = func_0c0275dc;
 
 #pragma section n0332ec
 void (*const ptr_0c0332ec)(void) = func_0c0275dc;
-
