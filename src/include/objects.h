@@ -263,7 +263,9 @@ struct Actor {
     unsigned char pad10b[0x2c6 - 0x2a4 - sizeof(struct ActorSub2a4)];
     short s2c6;
     int l2c8;
-    unsigned char pad10c[0x326 - 0x2cc];
+    unsigned char pad10c[0x320 - 0x2cc];
+    int l320;
+    unsigned char pad324[2];
     unsigned char b326;
     unsigned char b327;
     unsigned char b328;
@@ -274,7 +276,7 @@ struct Actor {
     unsigned short w34a;
     unsigned char pad11b[2];
     unsigned short w34e;
-    unsigned char pad11b2[0x352 - 0x350];
+    unsigned short w350;
     unsigned short w352;
     unsigned char pad354[0x364 - 0x354];
     unsigned char x364[8];
