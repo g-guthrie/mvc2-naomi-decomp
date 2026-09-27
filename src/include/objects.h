@@ -236,9 +236,10 @@ struct Actor {
     unsigned char b248;
     unsigned char pad248[0x24c - 0x249];
     struct ActorVec2 position24c;
-    unsigned char pad254[0x255 - 0x254];
+    unsigned char b254;
     unsigned char b255;
-    unsigned char pad10[0x258 - 0x256];
+    unsigned char b256;
+    unsigned char pad257[1];
     unsigned char b258;
     unsigned char pad10b0[0x27a - 0x259];
     unsigned char b27a, b27b;
