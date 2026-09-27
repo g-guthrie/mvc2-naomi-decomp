@@ -1,4 +1,4 @@
-/* Candidate: 17/21 complete functions match. Four functions retain copy
+/* Candidate: 19/21 complete functions match. Two functions retain copy
  * scheduling, scratch register, and shared literal placement differences. */
 #include "objects.h"
 extern void func_0c0442fa(struct Actor *);
@@ -169,9 +169,8 @@ void func_0c0b1718(struct Actor *a)
 void func_0c0b1764(struct Actor *a)
 {
  float *position = (float *)&a->sub2a4;
- struct MotionGlobal_0c2d9260 *global = &dat_0c2d9260;
- a->f52 += global->f12 - *position;
- *position = global->f12;
+ a->f52 += dat_0c2d9260.f12 - *position;
+ *position = dat_0c2d9260.f12;
  func_0c02a026(a);
  a->f52 += a->f92; a->f92 += a->f104;
  a->f56 += a->f96; a->f96 += a->f108;
@@ -201,7 +200,6 @@ void func_0c0b1826(struct Actor *a)
 }
 void func_0c0b1940(struct Actor *a)
 {
- int zero=0;
  if (a->b19e && !a->s30) {
   a->s30=1; a->b34++;
   if (--a->s28==0) {
@@ -210,7 +208,7 @@ void func_0c0b1940(struct Actor *a)
    a->f104=0;
    a->f96=dat_0c244b20[(unsigned char)a->b1a3].y;
    a->f108=dat_0c244b20[(unsigned char)a->b1a3].z;
-   a->i72=zero;
+   a->i72=0;
    func_0c02a0c4(a,21,a->b1a3+16);
    func_0c1a44e4(a,1);
    return;
@@ -218,13 +216,13 @@ void func_0c0b1940(struct Actor *a)
  }
  a->f52+=a->f92; a->f92+=a->f104;
  a->f56+=a->f96; a->f96+=a->f108;
- if (!(a->f56>a->f41c)) { a->i72=zero; func_0c0b1b86(a); return; }
+ if (!(a->f56>a->f41c)) { a->i72=0; func_0c0b1b86(a); return; }
  func_0c02a026(a);
  if (a->b141) {
   a->b1a1=(a->b1a3 ? 57 : 54)+(char)a->b34;
-  a->w1ac=zero; a->b19e=zero; a->p1c4=0;
+  a->w1ac=0; a->b19e=0; a->p1c4=0;
   dat_0c2f83f8->arr[a->b2]++;
-  a->b141=zero; a->s30=zero;
+  a->b141=0; a->s30=0;
  }
 }
 void func_0c0b1af8(struct Actor *a)

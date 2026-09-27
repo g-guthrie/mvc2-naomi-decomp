@@ -74,14 +74,6 @@ extern void func_0c242bf8(void);
 extern void func_0c242c00(void);
 extern void func_0c242c08(void);
 
-#pragma section n08c9e8
-void (*const table_0c08c9e8[])(void) = {
-    func_0c048bb0,
-    func_0c0442fa,
-    func_0c02a39a,
-    func_0c0432ca,
-};
-
 #pragma section n08ce00
 const unsigned int dat_0c08ce00[] = {
     0x47800000u, 0x40092492u, 0x0c0344a0u, 0x0c196c1cu,
