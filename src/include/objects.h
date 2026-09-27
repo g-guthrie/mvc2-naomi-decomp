@@ -300,10 +300,10 @@ struct Actor {
 
 /* Global game flags record exposed through the pointer at 0x0c2d6f84. */
 struct ActorFlags {
-    unsigned char pad0[2]; signed char b2, b3, b4, b5, b6; unsigned char pad7;
+    unsigned char pad0[1], b1; signed char b2, b3, b4, b5, b6; unsigned char b7;
     short s8, s10, s12, s14; unsigned char pad16[4]; int i20;
     signed char b24, b25; unsigned char pad26[2]; int flags;
-    int i32; unsigned char pad36[5]; signed char b41,b42; unsigned char pad43[3];
+    int i32; unsigned char pad36[5]; signed char b41,b42; unsigned char pad43[1], b44, pad45[1];
     signed char b46; unsigned char pad47[67-47]; signed char b67;
     unsigned char pad68[0x80-68]; char b128;
     unsigned char pad129[3]; signed char b84;
