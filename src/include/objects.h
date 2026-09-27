@@ -86,6 +86,7 @@ struct AnimationFrame20 {
     unsigned short index;
 };
 struct ActorVec2 { float x, y; };
+struct NaomiClock { unsigned char pad[4]; unsigned char hour, minute; unsigned char rest[6]; };
 struct ActorMotionFixed3 { int x_speed, y_speed, y_acceleration; };
 struct ActorMotionFixed4 { int x_speed, x_acceleration, y_speed, y_acceleration; };
 struct ActorMotionFloat2 { float x, y; };
@@ -188,7 +189,8 @@ struct Actor {
     unsigned char pad1d7[0x1dd - 0x1d7];
     char b1dd;
     unsigned char b1de;
-    unsigned char pad1df[0x1e8 - 0x1df];
+    unsigned char pad1df[0x1e6 - 0x1df];
+    unsigned short w1e6;
     unsigned char b1e8;
     unsigned char b1e9, b1ea;
     unsigned char pad7fb[0x1ed - 0x1eb];
