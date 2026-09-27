@@ -38338,12 +38338,6 @@
         "size": 4
       },
       {
-        "section": "Cn060540",
-        "kind": "data",
-        "address": "0x0c060540",
-        "size": 4
-      },
-      {
         "section": "Cn06063c",
         "kind": "data",
         "address": "0x0c06063c",
@@ -38598,7 +38592,6 @@
       "_dat_0c0600a4": "0x0c0600a4",
       "_table_0c06040c": "0x0c06040c",
       "_dat_0c060420": "0x0c060420",
-      "_dat_0c060540": "0x0c060540",
       "_table_0c06063c": "0x0c06063c",
       "_table_0c0607ac": "0x0c0607ac",
       "_dat_0c06092e": "0x0c06092e",
@@ -113727,46 +113720,10 @@
         "size": 8
       },
       {
-        "section": "Cn03f1ae",
-        "kind": "data",
-        "address": "0x0c0601ae",
-        "size": 8
-      },
-      {
-        "section": "Cn03f1b8",
-        "kind": "data",
-        "address": "0x0c0601b8",
-        "size": 28
-      },
-      {
-        "section": "Cn03f2e2",
-        "kind": "data",
-        "address": "0x0c0602e2",
-        "size": 8
-      },
-      {
-        "section": "Cn03f2ec",
-        "kind": "data",
-        "address": "0x0c0602ec",
-        "size": 20
-      },
-      {
         "section": "Cn03f402",
         "kind": "data",
         "address": "0x0c060402",
         "size": 4
-      },
-      {
-        "section": "Cn03f528",
-        "kind": "data",
-        "address": "0x0c060528",
-        "size": 14
-      },
-      {
-        "section": "Cn03f538",
-        "kind": "data",
-        "address": "0x0c060538",
-        "size": 8
       }
     ]
   },
@@ -113775,12 +113732,6 @@
     "source": "src/verified/rest_009.c",
     "mode": "verified",
     "sections": [
-      {
-        "section": "Cn03f544",
-        "kind": "data",
-        "address": "0x0c060544",
-        "size": 28
-      },
       {
         "section": "Cn03f634",
         "kind": "data",
@@ -223867,6 +223818,76 @@
       "_func_0c1d975e": "0x0c1d975e",
       "_func_0c1ce8c4": "0x0c1ce8c4",
       "__quick_odd_mvn": "0x0c1fb7a0"
+    }
+  },
+  {
+    "id": "tu_0c0600b8",
+    "source": "src/verified/tu_0c0600b8.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c0600b8",
+        "size": 584,
+        "interior": [
+          {
+            "address": "0x0c0601ae",
+            "size": 38,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c0602e2",
+            "size": 30,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c0600b8": "0x0c0600b8",
+      "_func_0c0600da": "0x0c0600da",
+      "_func_0c060150": "0x0c060150",
+      "_func_0c0601d4": "0x0c0601d4",
+      "_func_0c06025a": "0x0c06025a",
+      "_func_0c06027c": "0x0c06027c"
+    },
+    "imports": {
+      "_func_0c02a026": "0x0c02a026",
+      "_func_0c0437b8": "0x0c0437b8",
+      "_func_0c02a0c4": "0x0c02a0c4",
+      "_dat_0c2f83f8": "0x0c2f83f8",
+      "_func_0c043324": "0x0c043324"
+    }
+  },
+  {
+    "id": "tu_0c060424",
+    "source": "src/verified/tu_0c060424.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c060424",
+        "size": 316,
+        "interior": [
+          {
+            "address": "0x0c060528",
+            "size": 56,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c060424": "0x0c060424"
+    },
+    "imports": {
+      "_func_0c02a026": "0x0c02a026",
+      "_func_0c043324": "0x0c043324",
+      "_func_0c0438ea": "0x0c0438ea",
+      "_func_0c0437b8": "0x0c0437b8",
+      "_func_0c02a0c4": "0x0c02a0c4"
     }
   }
 ]
