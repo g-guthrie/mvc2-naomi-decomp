@@ -505,8 +505,8 @@ struct Obj_tu5_03 {
     unsigned char pad0[4];
     unsigned char b4;
     char b5;
-    unsigned char b6;
-    unsigned char pad1[16 - 7];
+    unsigned char b6, b7;
+    unsigned char pad1[16 - 8];
     void (*p16)(struct Obj_tu5_03 *);
     struct Obj_tu5_03 *p20;
     struct Obj_tu5_03 *p24;
