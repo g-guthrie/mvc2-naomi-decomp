@@ -535,4 +535,6 @@ struct Obj_tu5_03 {
     short w130;
 };
 
+struct ActorSubLaunchState36 { unsigned char pad[22], b22,b23,b24,b25,b26,b27,b28,b29,b30,b31; struct Actor *target32; };
+struct ActorChildTimerReference { struct ActorChildReference base; short timer; };
 #endif
