@@ -517,9 +517,7 @@ struct Obj_tu5_03 {
     int l48;
     unsigned char pad5[80 - 76];
     float f80, f84, f88;
-    unsigned char pad6a[4];
-    float f96;
-    unsigned char pad6[120 - 100];
+    float f92, f96, f100, f104, f108, f112, f116;
     float f120, f124, f128;
     int l84;
     float f136;
