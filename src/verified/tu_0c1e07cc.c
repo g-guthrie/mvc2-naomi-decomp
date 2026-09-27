@@ -23,7 +23,7 @@ void func_0c1e07da(struct Obj_tu5_03 *parent,int n)
 }
 void func_0c1e083e(struct Obj_tu5_03 *a)
 {
-    float units,angle,half;
+    float units; float angle; register float half;
     if(a->w28>=300)a->w28=180;
     units=65536.0f;
     angle=360.0f;

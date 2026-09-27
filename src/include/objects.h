@@ -448,7 +448,9 @@ struct Vec3_tu5_03 { float x, y, z; };
 struct MotionGlobal_0c2d9260 {
     unsigned char pad[5];
     unsigned char b5, b6;
-    unsigned char pad7[0x88 - 7];
+    unsigned char pad7[12 - 7];
+    float f12;
+    unsigned char pad16[0x88 - 16];
     float f88, f8c;
 };
 
