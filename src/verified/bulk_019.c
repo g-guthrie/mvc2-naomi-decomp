@@ -101,11 +101,6 @@ const unsigned int dat_0c060420[] = {
     0xbecdb6dbu,
 };
 
-#pragma section n060540
-const unsigned int dat_0c060540[] = {
-    0xc2009249u,
-};
-
 #pragma section n06063c
 void (*const table_0c06063c[])(void) = {
     func_0c044e52,
