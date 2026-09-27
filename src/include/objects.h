@@ -303,12 +303,12 @@ struct Actor {
 struct ActorFlags {
     unsigned char b0, b1; signed char b2, b3, b4, b5, b6; unsigned char b7;
     short s8, s10, s12, s14; unsigned char pad16[4]; int i20;
-    signed char b24, b25; unsigned char pad26[2]; int flags;
+    signed char b24, b25; unsigned char b1a, pad27; int flags;
     int i32; unsigned char pad36[5]; signed char b41,b42; unsigned char pad43[1], b44, pad45[1];
     signed char b46; unsigned char pad47[67-47]; signed char b67;
-    unsigned char pad68[0x50-68], b50; unsigned char pad81[0x80-0x51]; char b128;
+    unsigned char pad68[0x4e-68], b4e, pad4f, b50; unsigned char pad81[0x80-0x51]; char b128;
     signed char b81; unsigned char pad130[2]; signed char b84;
-    signed char b85; unsigned char pad134[0x88-0x86]; unsigned char b88; unsigned char pad137[0x8e-0x89]; signed char b8e;
+    signed char b85; unsigned char pad134[0x88-0x86]; unsigned char b88; unsigned char pad137[0x8d-0x89], b8d; signed char b8e;
     unsigned char pad143[5]; void *p94; unsigned char pad98[2], b9a; unsigned char pad9b[0xa5-0x9b]; signed char b_a5;
 };
 struct Glob_me00 { unsigned char pad[0x14]; int l14; };
