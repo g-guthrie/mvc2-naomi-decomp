@@ -87696,18 +87696,6 @@
         "size": 8
       },
       {
-        "section": "Cn1e2590",
-        "kind": "data",
-        "address": "0x0c1e2590",
-        "size": 2
-      },
-      {
-        "section": "Cn1e25a0",
-        "kind": "data",
-        "address": "0x0c1e25a0",
-        "size": 28
-      },
-      {
         "section": "Cn1e2c0c",
         "kind": "data",
         "address": "0x0c1e2c0c",
@@ -87754,8 +87742,6 @@
       "_dat_0c1e1abc": "0x0c1e1abc",
       "_dat_0c1e1ac8": "0x0c1e1ac8",
       "_dat_0c1e1b3c": "0x0c1e1b3c",
-      "_dat_0c1e2590": "0x0c1e2590",
-      "_dat_0c1e25a0": "0x0c1e25a0",
       "_dat_0c1e2c0c": "0x0c1e2c0c",
       "_dat_0c1e2c14": "0x0c1e2c14",
       "_dat_0c1e2e4c": "0x0c1e2e4c",
@@ -139303,18 +139289,6 @@
         "section": "Cn1c080c",
         "kind": "data",
         "address": "0x0c1e180c",
-        "size": 12
-      },
-      {
-        "section": "Cn1c158c",
-        "kind": "data",
-        "address": "0x0c1e258c",
-        "size": 4
-      },
-      {
-        "section": "Cn1c1594",
-        "kind": "data",
-        "address": "0x0c1e2594",
         "size": 12
       },
       {
@@ -221815,46 +221789,6 @@
     }
   },
   {
-    "id": "tu_0c1e2254",
-    "source": "src/verified/tu_0c1e2254.c",
-    "mode": "verified",
-    "sections": [
-      {
-        "section": "P",
-        "kind": "code",
-        "address": "0x0c1e2254",
-        "size": 644,
-        "interior": [
-          {
-            "address": "0x0c1e2330",
-            "size": 56,
-            "kind": "data"
-          },
-          {
-            "address": "0x0c1e249e",
-            "size": 58,
-            "kind": "data"
-          }
-        ]
-      }
-    ],
-    "exports": {
-      "_func_0c1e2254": "0x0c1e2254",
-      "_func_0c1e22c6": "0x0c1e22c6",
-      "_func_0c1e2368": "0x0c1e2368",
-      "_func_0c1e23da": "0x0c1e23da",
-      "_func_0c1e241e": "0x0c1e241e"
-    },
-    "imports": {
-      "_func_0c0374da": "0x0c0374da",
-      "_dat_0c2d964c": "0x0c2d964c",
-      "_func_0c1ec2c0": "0x0c1ec2c0",
-      "_dat_0c2632c0": "0x0c2632c0",
-      "_dat_0c2632d8": "0x0c2632d8",
-      "__quick_odd_mvn": "0x0c1fb7a0"
-    }
-  },
-  {
     "id": "tu_0c0b3088",
     "source": "src/candidates/tu_0c0b3088.c",
     "mode": "candidate",
@@ -223088,37 +223022,6 @@
     }
   },
   {
-    "id": "tu_0c1e2138_head",
-    "source": "src/candidates/tu_0c1e2138_head.c",
-    "mode": "candidate",
-    "sections": [
-      {
-        "section": "P",
-        "address": "0x0c1e2138",
-        "size": 284,
-        "kind": "code",
-        "interior": [
-          {
-            "address": "0x0c1e221e",
-            "size": 54,
-            "kind": "data"
-          }
-        ]
-      }
-    ],
-    "exports": {
-      "_func_0c1e2138": "0x0c1e2138",
-      "_func_0c1e21ba": "0x0c1e21ba"
-    },
-    "imports": {
-      "_func_0c0374da": "0x0c0374da",
-      "_dat_0c2d964c": "0x0c2d964c",
-      "_dat_0c2632a0": "0x0c2632a0",
-      "_dat_0c2632b8": "0x0c2632b8",
-      "__quick_odd_mvn": "0x0c1fb7a0"
-    }
-  },
-  {
     "id": "tu_0c1e3cec",
     "source": "src/candidates/tu_0c1e3cec.c",
     "mode": "candidate",
@@ -223762,6 +223665,64 @@
       "_dat_0c23bf64": "0x0c23bf64",
       "_func_0c02849a": "0x0c02849a",
       "_dat_0c23bf87": "0x0c23bf87"
+    }
+  },
+  {
+    "id": "tu_0c1e2138",
+    "mode": "candidate",
+    "source": "src/candidates/tu_0c1e2138.c",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c1e2138",
+        "size": 1156,
+        "interior": [
+          {
+            "address": "0x0c1e221e",
+            "size": 54,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c1e2330",
+            "size": 56,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c1e249e",
+            "size": 58,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c1e258c",
+            "size": 48,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c1e2138": "0x0c1e2138",
+      "_func_0c1e21ba": "0x0c1e21ba",
+      "_func_0c1e2254": "0x0c1e2254",
+      "_func_0c1e22c6": "0x0c1e22c6",
+      "_func_0c1e2368": "0x0c1e2368",
+      "_func_0c1e23da": "0x0c1e23da",
+      "_func_0c1e241e": "0x0c1e241e",
+      "_func_0c1e24d8": "0x0c1e24d8",
+      "_func_0c1e2564": "0x0c1e2564"
+    },
+    "imports": {
+      "_func_0c0374da": "0x0c0374da",
+      "_dat_0c2d964c": "0x0c2d964c",
+      "_dat_0c2632a0": "0x0c2632a0",
+      "_dat_0c2632c0": "0x0c2632c0",
+      "_dat_0c2632e0": "0x0c2632e0",
+      "_dat_0c2632ec": "0x0c2632ec",
+      "_dat_0c2632b8": "0x0c2632b8",
+      "_dat_0c2632d8": "0x0c2632d8",
+      "_func_0c1ec2c0": "0x0c1ec2c0",
+      "__quick_odd_mvn": "0x0c1fb7a0"
     }
   }
 ]
