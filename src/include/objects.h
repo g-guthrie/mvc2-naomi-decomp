@@ -514,7 +514,8 @@ struct Obj_tu5_03 {
     short w30;
     unsigned char b32;
     unsigned char b33;
-    unsigned char pad3[52 - 34];
+    unsigned char pad34,b35;
+    unsigned char pad3[52 - 36];
     struct Vec3_tu5_03 pos;
     int arr64[1];
     int l44;
