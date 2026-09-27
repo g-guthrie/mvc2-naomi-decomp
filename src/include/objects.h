@@ -174,7 +174,7 @@ struct Actor {
     char b19f;
     unsigned char b1a0;
     unsigned char b1a1;
-    unsigned char pad7c[0x1a3 - 0x1a2];
+    unsigned char b1a2;
     char b1a3;
     unsigned char pad7cc[0x1a7 - 0x1a4];
     unsigned char b1a7;
@@ -513,7 +513,8 @@ struct Obj_tu5_03 {
     short w28;
     short w30;
     unsigned char b32;
-    unsigned char pad3[52 - 33];
+    unsigned char b33;
+    unsigned char pad3[52 - 34];
     struct Vec3_tu5_03 pos;
     int arr64[1];
     int l44;

@@ -118,16 +118,6 @@ const unsigned int dat_0c04ba10[] = {
     0x0c23c1dcu,
 };
 
-#pragma section n04babc
-const unsigned int dat_0c04babc[] = {
-    0x01a201b8u, 0x02350411u,
-};
-
-#pragma section n04bacc
-const unsigned int dat_0c04bacc[] = {
-    0x0c2f83f8u,
-};
-
 #pragma section n04bc08
 const unsigned int dat_0c04bc08[] = {
     0x05a401a4u, 0x0420026cu, 0x032e027cu, 0x026003e7u,
@@ -338,4 +328,3 @@ const unsigned int dat_0c04d6f8[] = {
 const unsigned int dat_0c04d7fc[] = {
     0x045c043du, 0x0c2f8339u, 0x0c04dba2u, 0x0c04de48u,
 };
-
