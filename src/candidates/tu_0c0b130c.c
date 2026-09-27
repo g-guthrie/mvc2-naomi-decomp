@@ -75,7 +75,6 @@ extern void (*table_0c244ae8[])(struct Actor *);
 extern void (*table_0c244af4[])(struct Actor *);
 extern void func_0c1544e8(struct Actor *, int);
 extern float dat_0c2d926c;
-extern struct ActorMotionFloatTable2 dat_0c22f308;
 void func_0c0b14e4(struct Actor *a) { table_0c244ae8[a->b6](a); }
 void func_0c0b14f6(struct Actor *a)
 {
@@ -116,9 +115,8 @@ void func_0c0b1584(struct Actor *a)
 void func_0c0b1602(struct Actor *a) { table_0c244af4[a->b6](a); }
 void func_0c0b1614(struct Actor *a)
 {
-    float table[2][2];
+    float table[2][2]={{19.2857132f,-0.80357140303f},{19.2857132f,-0.80357140303f}};
     float position;
-    *(struct ActorMotionFloatTable2 *)table = dat_0c22f308;
     a->b6++;
     a->b1a1 = a->b1a3 + 54;
     a->w1ac = 0;
