@@ -81,8 +81,8 @@ void func_0c0a52d2(struct Actor *a)
     a->f108=table[3];
     a->s28=30;
     a->s30=0;
-    sub=&a->sub2a4;
     a->b33=0;
+    sub=&a->sub2a4;
     *(unsigned char *)&sub->s10=0;
     *(unsigned short *)&sub->s12=0;
 }
