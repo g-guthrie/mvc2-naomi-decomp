@@ -118,7 +118,9 @@ void func_0c0a5e4a(struct Actor *a)
     if (a->b143<0) {
         func_0c025900(a,0,13);
         func_0c0437b8(a);
-    } else func_0c02a026(a);
+        return;
+    }
+    func_0c02a026(a);
 }
 void func_0c0a5e88(struct Actor *a)
 {
