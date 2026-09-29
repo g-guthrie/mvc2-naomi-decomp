@@ -398,16 +398,6 @@ const unsigned int dat_0c12a520[] = {
     0x0c0438deu, 0x0c043324u, 0x0c02a0c4u,
 };
 
-#pragma section n12a620
-void (*const table_0c12a620[])(void) = {
-    func_0c044cbc,
-    func_0c048bb0,
-    func_0c02a0c4,
-    func_0c0346da,
-    func_0c043352,
-    func_0c044df4,
-};
-
 #pragma section n12ab34
 void (*const table_0c12ab34[])(void) = {
     func_0c02a026,
