@@ -1,5 +1,5 @@
 /* Reset routine 0c033bec matches all86bytes and the shared50-byte pool is
- * exact. Input handler:76/84bytes; flag-mask and counter temporaries differ. */
+ * exact. Input handler:78/84bytes; only the counter temporaries differ. */
 #include "objects.h"
 extern struct ActorFlags *dat_0c2d6f84;
 extern unsigned short dat_0c2d6f24[],dat_0c2d6f38[];
@@ -7,11 +7,9 @@ extern void func_0c0374b8(int),func_0c037354(void),func_0c023658(unsigned int);
 extern void func_0c033cbe(void),func_0c033cd8(void),func_0c034358(void);
 void func_0c033b98(void)
 {
-    int flags;
     func_0c0374b8(11);
     --dat_0c2d6f84->s8;
-    flags=dat_0c2d6f84->b84;
-    if (((flags&1) && (dat_0c2d6f24[0]&0x360)) || ((flags&2) && (dat_0c2d6f38[0]&0x360)) || dat_0c2d6f84->s8==0)
+    if (((dat_0c2d6f84->b84&1) && (dat_0c2d6f24[0]&0x360)) || ((dat_0c2d6f84->b84&2) && (dat_0c2d6f38[0]&0x360)) || dat_0c2d6f84->s8==0)
         ++dat_0c2d6f84->b8e;
 }
 void func_0c033bec(void)
