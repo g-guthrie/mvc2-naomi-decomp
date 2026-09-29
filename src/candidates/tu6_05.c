@@ -1,14 +1,12 @@
-/* Two functions sharing the literal pool at 0x0c0aa36c. Every byte of the
- * mapped span 0x0c0aa28c..0x0c0aa39c matches (272/272). Retail places the
- * pool inside func_0c0aa348, after its first `bra`, and SHC does the same
- * from this source; the rest of that function follows at 0x0c0aa39c with a
- * second pool at 0x0c0aa48a, which the diff tool's one-pool section cannot
- * yet describe, so the unit stays a candidate. */
+/* Five reconstructed actor handlers. The first two functions and first
+ * literal pool match exactly; the full unit remains a candidate while the
+ * later handlers and shared pool placement are refined. */
 
 struct Obj_0c0aa28c {
     unsigned char pad0[2];
     unsigned char b2;
-    unsigned char pad1[4];
+    unsigned char pad1[3];
+    unsigned char b6;
     unsigned char b7;
     unsigned char pad2[37 - 8];
     unsigned char b37;
@@ -117,4 +115,76 @@ void func_0c0aa348(struct Obj_0c0aa28c *a, struct Rec_0c0aa28c *b)
         a->b1eb = 2;
         func_0c04be40(a);
     }
+}
+
+struct SharedFlags_0c2d6f84 { unsigned char pad[0x1c]; unsigned int flags; };
+extern struct SharedFlags_0c2d6f84 *dat_0c2d6f84;
+extern unsigned char dat_0c2d9260[8];
+extern void func_0c02a39a(struct Obj_0c0aa28c *a, int b);
+extern void (*dat_0c244568[])(struct Obj_0c0aa28c *a, struct Rec_0c0aa28c *b);
+
+void func_0c0aa450(struct Obj_0c0aa28c *a, struct Rec_0c0aa28c *b)
+{
+    a->b3f8 = 2;
+    a->b328 = 5;
+    if (!(dat_0c2d6f84->flags & 1))
+        func_0c02a684(a, 0, a->b37 + 6, 1);
+    else
+        func_0c02a39a(a, 8);
+
+    if (!(dat_0c2d6f84->flags & 7)) {
+        dat_0c2d9260[5] = 2;
+        dat_0c2d9260[6] = 1;
+    }
+
+    b->f12 += 1.1551427327817006e-19f;
+    b->f20 += 1.1551427327817006e-19f;
+    a->f80 = b->f12;
+    a->f84 = b->f20;
+
+    if (b->f20 > 1.0f) {
+        b->f12 = 1.0f;
+        a->f80 = b->f12;
+        a->f84 = b->f20;
+        a->b7++;
+        b->s8 = 30;
+        func_0c02a0c4(a, 22, 55);
+        func_0c02a39a(a, 0);
+        func_0c02a684(a, 0, a->b37 + 6, 1);
+        func_0c02a684(a, 2, 12, 2);
+        func_0c0344a0(a, 37);
+    }
+
+    a->b202 |= 0x80;
+    a->b1eb = 2;
+    func_0c04be40(a);
+}
+
+extern void func_0c1c1678(struct Obj_0c0aa28c *a, unsigned short *b, int n);
+extern void func_0c0aafe6(struct Obj_0c0aa28c *a);
+
+void func_0c0aa57a(struct Obj_0c0aa28c *a, struct Rec_0c0aa28c *b)
+{
+    a->b3f8 = 2;
+    a->b328 = 5;
+    if (--b->s8 <= 0) {
+        a->b6++;
+        a->b7 = 0;
+        b->s10 = 0xf0;
+        func_0c1c1678(a, &b->s10, 6);
+        func_0c0aafe6(a);
+    }
+    a->b202 |= 0x80;
+    a->b1eb = 2;
+    func_0c04be40(a);
+}
+
+void func_0c0aa5d6(struct Obj_0c0aa28c *a)
+{
+    a->b3f8 = 2;
+    a->b328 = 5;
+    dat_0c244568[a->b7](a, (struct Rec_0c0aa28c *)((unsigned char *)a + 0x2a4));
+    a->b202 |= 0x80;
+    a->b1eb = 2;
+    func_0c04be40(a);
 }
