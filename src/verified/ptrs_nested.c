@@ -36,17 +36,11 @@ void (*const *const ptr_0c05bc9c)(void) = &ptr_0c23fb78;
 #pragma section n064518
 void (*const *const ptr_0c064518)(void) = &ptr_0c240334;
 
-#pragma section n067be4
-void (*const *const ptr_0c067be4)(void) = &ptr_0c24060c;
-
 #pragma section n095484
 void (*const *const ptr_0c095484)(void) = &ptr_0c243024;
 
 #pragma section n0bc54c
 void (*const *const ptr_0c0bc54c)(void) = &ptr_0c245ae8;
-
-#pragma section n0ca010
-void (*const *const ptr_0c0ca010)(void) = &ptr_0c247e78;
 
 #pragma section n0ce58c
 void (*const *const ptr_0c0ce58c)(void) = &ptr_0c2481dc;
@@ -54,17 +48,11 @@ void (*const *const ptr_0c0ce58c)(void) = &ptr_0c2481dc;
 #pragma section n0d27ec
 void (*const *const ptr_0c0d27ec)(void) = &ptr_0c2484a4;
 
-#pragma section n0def3c
-void (*const *const ptr_0c0def3c)(void) = &ptr_0c249068;
-
 #pragma section n0e2fe0
 void (*const *const ptr_0c0e2fe0)(void) = &ptr_0c24941c;
 
 #pragma section n0f0ec0
 void (*const *const ptr_0c0f0ec0)(void) = &ptr_0c24a0d4;
-
-#pragma section n0f4a2c
-void (*const *const ptr_0c0f4a2c)(void) = &ptr_0c24a3f0;
 
 #pragma section n0f6858
 void (*const *const ptr_0c0f6858)(void) = &ptr_0c24a554;
