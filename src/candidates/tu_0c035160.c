@@ -1,5 +1,5 @@
 /* Three complete helpers match: shift32, status34, byte copy38 bytes.
- * Display loop57/76 bytes; cached locals use different registers.
+ * Display loop58/76 bytes; cached locals use different registers.
  * Full204-byte extent and24-byte shared pool match placement. */
 struct History_0c2fb248 { unsigned char pad[84]; int values[11]; };
 extern struct History_0c2fb248 dat_0c2fb248;
@@ -12,10 +12,10 @@ void func_0c035160(void)
 {
     register int i=0;
     register struct History_0c2fb248 *history=&dat_0c2fb248;
+    register int count=10;
     register unsigned char *format=dat_0c22dc78;
     register void (*print)(int,int,int,unsigned char *,...)=func_0c02c32e;
     register int row=25;
-    register int count=10;
 next:
     print(row,row-i,0,format,history->values[i]);
     if (++i<count) goto next;
