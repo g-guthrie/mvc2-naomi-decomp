@@ -370,14 +370,3 @@ void (*const table_0c05ead4[])(void) = {
     func_0c23fd40,
     func_0c037d54,
 };
-
-#pragma section n05f000
-const unsigned short dat_0c05f000[] = {
-    0x0141u, 0x041cu, 0x01f9u,
-};
-
-#pragma section n05f008
-const unsigned int dat_0c05f008[] = {
-    0x0c02a026u, 0x43ab6db6u, 0x0c02a0c4u, 0x0c03489cu,
-    0x0c0346dau,
-};
