@@ -6889,12 +6889,6 @@
         "size": 4
       },
       {
-        "section": "Cn03c458",
-        "kind": "data",
-        "address": "0x0c03c458",
-        "size": 8
-      },
-      {
         "section": "Cn03c8f0",
         "kind": "data",
         "address": "0x0c03c8f0",
@@ -7004,7 +6998,6 @@
       "_ptr_0c03b858": "0x0c03b858",
       "_ptr_0c03b984": "0x0c03b984",
       "_ptr_0c03baa4": "0x0c03baa4",
-      "_table_0c03c458": "0x0c03c458",
       "_ptr_0c03c8f0": "0x0c03c8f0",
       "_table_0c03cb5c": "0x0c03cb5c",
       "_table_0c03cc78": "0x0c03cc78",
@@ -8299,24 +8292,6 @@
         "size": 4
       },
       {
-        "section": "Cn057f4c",
-        "kind": "data",
-        "address": "0x0c057f4c",
-        "size": 8
-      },
-      {
-        "section": "Cn058074",
-        "kind": "data",
-        "address": "0x0c058074",
-        "size": 8
-      },
-      {
-        "section": "Cn058094",
-        "kind": "data",
-        "address": "0x0c058094",
-        "size": 4
-      },
-      {
         "section": "Cn05937c",
         "kind": "data",
         "address": "0x0c05937c",
@@ -8443,9 +8418,6 @@
       "_ptr_0c056ffc": "0x0c056ffc",
       "_ptr_0c057484": "0x0c057484",
       "_ptr_0c05748c": "0x0c05748c",
-      "_table_0c057f4c": "0x0c057f4c",
-      "_table_0c058074": "0x0c058074",
-      "_ptr_0c058094": "0x0c058094",
       "_table_0c05937c": "0x0c05937c",
       "_table_0c0594ac": "0x0c0594ac",
       "_table_0c059638": "0x0c059638",
@@ -33820,18 +33792,6 @@
         "size": 62
       },
       {
-        "section": "Cn03c440",
-        "kind": "data",
-        "address": "0x0c03c440",
-        "size": 24
-      },
-      {
-        "section": "Cn03c460",
-        "kind": "data",
-        "address": "0x0c03c460",
-        "size": 20
-      },
-      {
         "section": "Cn03c81a",
         "kind": "data",
         "address": "0x0c03c81a",
@@ -34087,8 +34047,6 @@
     "exports": {
       "_dat_0c03c140": "0x0c03c140",
       "_dat_0c03c2ca": "0x0c03c2ca",
-      "_dat_0c03c440": "0x0c03c440",
-      "_dat_0c03c460": "0x0c03c460",
       "_dat_0c03c81a": "0x0c03c81a",
       "_dat_0c03c82c": "0x0c03c82c",
       "_dat_0c03c8da": "0x0c03c8da",
@@ -37269,24 +37227,6 @@
         "size": 4
       },
       {
-        "section": "Cn057f2e",
-        "kind": "data",
-        "address": "0x0c057f2e",
-        "size": 2
-      },
-      {
-        "section": "Cn057f30",
-        "kind": "data",
-        "address": "0x0c057f30",
-        "size": 28
-      },
-      {
-        "section": "Cn058066",
-        "kind": "data",
-        "address": "0x0c058066",
-        "size": 4
-      },
-      {
         "section": "Cn05936c",
         "kind": "data",
         "address": "0x0c05936c",
@@ -37336,9 +37276,6 @@
       "_dat_0c057390": "0x0c057390",
       "_table_0c05739c": "0x0c05739c",
       "_dat_0c057466": "0x0c057466",
-      "_dat_0c057f2e": "0x0c057f2e",
-      "_table_0c057f30": "0x0c057f30",
-      "_dat_0c058066": "0x0c058066",
       "_table_0c05936c": "0x0c05936c",
       "_dat_0c059622": "0x0c059622",
       "_table_0c059640": "0x0c059640",
@@ -111780,36 +111717,6 @@
         "kind": "data",
         "address": "0x0c057488",
         "size": 4
-      },
-      {
-        "section": "Cn036f28",
-        "kind": "data",
-        "address": "0x0c057f28",
-        "size": 6
-      },
-      {
-        "section": "Cn037062",
-        "kind": "data",
-        "address": "0x0c058062",
-        "size": 4
-      },
-      {
-        "section": "Cn03706a",
-        "kind": "data",
-        "address": "0x0c05806a",
-        "size": 8
-      },
-      {
-        "section": "Cn03707c",
-        "kind": "data",
-        "address": "0x0c05807c",
-        "size": 24
-      },
-      {
-        "section": "Cn037098",
-        "kind": "data",
-        "address": "0x0c058098",
-        "size": 20
       }
     ]
   },
@@ -224365,6 +224272,93 @@
       "_table_0c242b98": "0x0c242b98",
       "_table_0c242ba8": "0x0c242ba8",
       "_table_0c242bb4": "0x0c242bb4"
+    }
+  },
+  {
+    "id": "tu_0c057dd8",
+    "source": "src/candidates/tu_0c057dd8.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c057dd8",
+        "size": 724,
+        "interior": [
+          {
+            "address": "0x0c057f28",
+            "size": 44,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c058062",
+            "size": 74,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c057dd8": "0x0c057dd8",
+      "_func_0c057e52": "0x0c057e52",
+      "_func_0c057e78": "0x0c057e78",
+      "_func_0c057eec": "0x0c057eec",
+      "_func_0c057efe": "0x0c057efe",
+      "_func_0c057f6c": "0x0c057f6c"
+    },
+    "imports": {
+      "_func_0c02a026": "0x0c02a026",
+      "_func_0c02a0c4": "0x0c02a0c4",
+      "_func_0c025900": "0x0c025900",
+      "_func_0c044e52": "0x0c044e52",
+      "_func_0c043324": "0x0c043324",
+      "_func_0c0437b8": "0x0c0437b8",
+      "_table_0c23f7e0": "0x0c23f7e0",
+      "_func_0c0438de": "0x0c0438de",
+      "_func_0c056bb8": "0x0c056bb8",
+      "_func_0c048bb0": "0x0c048bb0",
+      "_func_0c04b5cc": "0x0c04b5cc",
+      "_func_0c037d54": "0x0c037d54",
+      "_func_0c1d4610": "0x0c1d4610",
+      "_func_0c044548": "0x0c044548",
+      "_dat_0c23f7f8": "0x0c23f7f8"
+    }
+  },
+  {
+    "id": "tu_0c03c308",
+    "source": "src/candidates/tu_0c03c308.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c03c308",
+        "size": 364,
+        "interior": [
+          {
+            "address": "0x0c03c440",
+            "size": 52,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c03c308": "0x0c03c308",
+      "_func_0c03c326": "0x0c03c326",
+      "_func_0c03c360": "0x0c03c360",
+      "_func_0c03c41e": "0x0c03c41e"
+    },
+    "imports": {
+      "_table_0c23ba7c": "0x0c23ba7c",
+      "_table_0c23ba84": "0x0c23ba84",
+      "_func_0c045144": "0x0c045144",
+      "_func_0c02a0c4": "0x0c02a0c4",
+      "_func_0c02a39a": "0x0c02a39a",
+      "_func_0c02a026": "0x0c02a026",
+      "_func_0c043324": "0x0c043324",
+      "_dat_0c2f83f8": "0x0c2f83f8",
+      "_func_0c0453c4": "0x0c0453c4"
     }
   }
 ]
