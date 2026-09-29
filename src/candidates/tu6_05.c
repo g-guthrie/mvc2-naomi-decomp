@@ -40,7 +40,8 @@ struct Obj_0c0aa28c {
 
 struct Rec_0c0aa28c {
     unsigned char pad0[8];
-    short s8, s10;
+    short s8;
+    unsigned short s10;
     float f12;
     unsigned char pad1[4];
     float f20;
