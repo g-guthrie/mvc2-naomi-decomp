@@ -16,7 +16,7 @@ void func_0c1d605c(struct Obj_tu5_03 *a)
  a->pos.x=a->p20->pos.x+(short)dx;
  a->pos.y+=((struct Actor *)a->p20)->f84*222.857131959f;
  if(!((struct Actor *)a->p20)->b1a0){
-  float degrees,half,scale;
+  float degrees,half; register float scale;
   int mask;
   a->w28++;
   degrees=360.0f;half=0.5f;scale=65536.0f;mask=65535;

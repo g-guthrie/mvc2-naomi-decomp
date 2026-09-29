@@ -11,7 +11,7 @@ void func_0c1da918(struct Obj_tu5_03 *a)
  case 0:
   {
   a->f96+=-4.0f;
-  a->pos.y=a->pos.y+*(float *)(void *)&a->f96;
+  a->pos.y+=a->f96;
   if(a->pos.y<dat_0c2329e8[a->b32].y) {
    a->pos.y=dat_0c2329e8[a->b32].y;
    a->f96=0.0f;
