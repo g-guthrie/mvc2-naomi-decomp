@@ -410,18 +410,6 @@ void (*const table_0c0fafc4[])(void) = {
     func_0c24aa64,
 };
 
-#pragma section n0fb4e8
-void (*const table_0c0fb4e8[])(void) = {
-    func_0c03916c,
-    func_0c0fc938,
-    func_0c24aad8,
-    func_0c02a0c4,
-    func_0c02a026,
-    func_0c24aaec,
-    func_0c0442fa,
-    func_0c048bb0,
-};
-
 #pragma section n0fb724
 const unsigned short dat_0c0fb724[] = {
     0x0255u,
