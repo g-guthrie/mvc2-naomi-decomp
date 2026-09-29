@@ -1,7 +1,8 @@
+/* The first function is 376/388 bytes; the other two and both pools match.
+ * The remaining differences are literal-load scheduling before its loop. */
 #include "objects.h"
 extern struct Obj_tu5_03 *func_0c0374da(int,int,int);
 extern struct ActorGlobalRoot *dat_0c2d964c;
-struct StreamPair {void *first,*second;};
 extern struct Vec3_tu5_03 dat_0c26214c;
 extern float _builtin_fabsf(float);
 extern float func_0c1ec1b0(void),func_0c1ec2c0(int);
@@ -19,13 +20,13 @@ void func_0c1da6b4(register struct Obj_tu5_03 *a)
  case 0:
   a->w28+=5;
   if(a->w28>=360)a->w28=0;
-  {float *rate=&a->f96;a->f92+=*rate;}
+  a->f92+=a->f96;
   if(a->f96>0.0f)a->f96+=-0.000004999999874f;
   if(a->f92<=0.00004999999874f){
    a->f92=0.0f;
    a->f96=_builtin_fabsf(func_0c1ec1b0()*0.00009999999748f+func_0c1ec1b0()*0.00009999999748f-0.00009999999748f);
   }
-  func_0c1d8ff8(((struct StreamPair *)((void **)dat_0c2d964c->p0+a->b32*2+8))->second,(void *)a->l84);
+  func_0c1d8ff8(*(void **)((char *)dat_0c2d964c->p0+((a->b32*2+8)*4)+4),(void *)a->l84);
   advance=func_0c1d901e;write=func_0c1d914c;read=func_0c1d9100;cosine=func_0c1ec2c0;
   degrees=360.0f;mask=65535;scale=65536.0f;
   while(advance()==0){
