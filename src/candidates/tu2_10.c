@@ -41,7 +41,7 @@ int func_0c0ca114(struct Obj_tu2_10 *o)
 {
     struct Sub_tu2_10 *s = &o->s2a4;
 
-    if (func_0c046e7e(o, &dat_0c247d90, o->s364) == 0 || s->b2 != 0)
+    if (func_0c046e7e(o, &dat_0c247d90, o->s364) == 0 || s->b2)
         return 0;
     func_0c047aac(o, o->s364);
     o->b5 = 0;
