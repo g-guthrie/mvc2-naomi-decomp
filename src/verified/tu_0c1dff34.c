@@ -12,7 +12,7 @@ void func_0c1dff40(struct Obj_tu5_03 *parent,int n)
   a->b12c=1;a->p16=func_0c1dff34;
   a->l84=(*(int (*)[36])dat_0c2d964c->p0)[10];
   {int angle;
-  register float radius=2730.0f;
+  float radius=2730.0f;
   a->pos.y=func_0c1ebd40(angle=(int)(n*30*65536.0/360.0+0.5)&65535)*radius;
   a->pos.z=func_0c1ec2c0(angle)*radius;
   {struct Vec3_tu5_03 *scale=&dat_0c2624cc[n];
