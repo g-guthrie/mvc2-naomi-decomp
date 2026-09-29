@@ -1,5 +1,4 @@
-/* Three functions (256 code bytes) and all 52 pool bytes match. The fourth,
- * func_0c0f0960, differs only in its temporary register for b141. */
+/* Actor motion and dispatch handlers. */
 #include "objects.h"
 extern struct Tbl_ub3_01 *dat_0c2f83f8;
 extern int func_0c02a39a(struct Actor *, int);
@@ -45,11 +44,9 @@ void func_0c0f08f2(struct Actor *a)
 
 void func_0c0f0960(struct Actor *a)
 {
-    if (func_0c02a026(a) < 0) {
+    if (func_0c02a026(a) < 0)
         func_0c0439c4(a);
-        return;
-    }
-    if (a->b141)
+    else if (a->b141)
         a->b141 = 0;
 }
 
