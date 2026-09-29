@@ -89,9 +89,6 @@ extern void func_0c242eec(void);
 extern void func_0c242ef4(void);
 extern void func_0c242efc(void);
 
-#pragma section n087764
-void (*const ptr_0c087764)(void) = func_0c02a0c4;
-
 #pragma section n08806c
 void (*const ptr_0c08806c)(void) = func_0c02a026;
 
