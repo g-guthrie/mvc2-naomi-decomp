@@ -50,7 +50,7 @@ struct ActorSub2a4 {
     char b0;
     unsigned char b1;
     unsigned char b2;
-    unsigned char pad0b;
+    unsigned char b3;
     short w4;
     unsigned char b6, b7;
     unsigned short w8;
@@ -58,7 +58,7 @@ struct ActorSub2a4 {
     short s12, s14;
     unsigned char pad16[2];
     short s18;
-    unsigned char b20, pad21;
+    unsigned char b20, b21;
     unsigned char b16;
     unsigned char pad3;
     unsigned int l24;
@@ -72,6 +72,8 @@ struct ActorSub2a4Extended {
     unsigned char b40, pad41;
     unsigned short w42;
 };
+
+union ActorParameter4 { int integer; float real; };
 
 struct AnimationFrame8 {
     unsigned char flag, event;
@@ -169,7 +171,8 @@ struct Actor {
     unsigned char *p168, *p16c;
     unsigned char pad170[0x174 - 0x170];
     unsigned char *p174;
-    unsigned char pad178[0x19e - 0x178];
+    unsigned char pad178[0x19d - 0x178];
+    char b19d;
     char b19e;
     char b19f;
     unsigned char b1a0;
@@ -253,7 +256,9 @@ struct Actor {
     unsigned char b256;
     unsigned char b257;
     unsigned char b258;
-    unsigned char pad10b0[0x278 - 0x259];
+    unsigned char pad10b0[0x25c - 0x259];
+    short s25c;
+    unsigned char pad10b0b[0x278 - 0x25e];
     short s278;
     unsigned char b27a, b27b;
     unsigned char pad10b2[0x298 - 0x27c];
@@ -307,13 +312,17 @@ struct Actor {
     unsigned short w420;
     unsigned char pad14[0x428 - 0x422];
     void *p428;
-    unsigned char pad14b[0x448 - 0x42c];
+    unsigned char pad14b[0x446 - 0x42c];
+    unsigned char b446, b447;
     signed char b448;
-    unsigned char pad449[0x45d - 0x449],b45d,pad45e[0x4c9 - 0x45e];
+    unsigned char pad449[0x45d - 0x449],b45d,pad45e[0x4b4 - 0x45e];
+    union ActorParameter4 parameter4b4;
+    unsigned char pad4b8[0x4c9 - 0x4b8];
     char b4c9;
     unsigned char pad15[0x4dc - 0x4ca];
     unsigned short w4dc;
-    unsigned char pad15b[0x525 - 0x4de];
+    unsigned char pad15b[0x524 - 0x4de];
+    char b524;
     unsigned char b525;
 };
 
