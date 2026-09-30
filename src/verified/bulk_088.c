@@ -300,15 +300,3 @@ const unsigned short dat_0c1629fa[] = {
     0x019eu, 0x019fu, 0x012cu,
 };
 
-#pragma section n162f88
-const unsigned int dat_0c162f88[] = {
-    0x012c00dcu, 0x019c01a3u, 0x02f80130u, 0x0c1fb838u,
-    0x0c1fb7a0u, 0x0c22f728u, 0x0c22f740u, 0x0c2f83f8u,
-    0x0c02a0c4u, 0x0c1af566u,
-};
-
-#pragma section n1630b8
-const unsigned short dat_0c1630b8[] = {
-    0x02f8u, 0x019eu, 0x019fu, 0x0159u, 0x041cu, 0x0141u, 0x012cu,
-};
-
