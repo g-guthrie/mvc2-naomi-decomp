@@ -385,17 +385,6 @@ const unsigned int dat_0c11f3d4[] = {
     0xbf4db6dbu, 0x0c02a0c4u,
 };
 
-#pragma section n11f74a
-const unsigned short dat_0c11f74a[] = {
-    0x01d2u, 0x0525u, 0x034au, 0x0800u,
-};
-
-#pragma section n11f754
-const unsigned int dat_0c11f754[] = {
-    0x41200000u, 0xc1200000u, 0x0c02a026u, 0x3f555555u,
-    0xbf555555u, 0x0c02a0c4u,
-};
-
 #pragma section n11f8b2
 const unsigned short dat_0c11f8b2[] = {
     0x01d2u, 0x0141u,
