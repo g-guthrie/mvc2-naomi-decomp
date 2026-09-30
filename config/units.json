@@ -12262,18 +12262,6 @@
         "size": 4
       },
       {
-        "section": "Cn0c4d10",
-        "kind": "data",
-        "address": "0x0c0c4d10",
-        "size": 20
-      },
-      {
-        "section": "Cn0c4e3c",
-        "kind": "data",
-        "address": "0x0c0c4e3c",
-        "size": 16
-      },
-      {
         "section": "Cn0c4f58",
         "kind": "data",
         "address": "0x0c0c4f58",
@@ -12389,8 +12377,6 @@
       "_table_0c0c4754": "0x0c0c4754",
       "_table_0c0c48b0": "0x0c0c48b0",
       "_ptr_0c0c4b90": "0x0c0c4b90",
-      "_table_0c0c4d10": "0x0c0c4d10",
-      "_table_0c0c4e3c": "0x0c0c4e3c",
       "_ptr_0c0c4f58": "0x0c0c4f58",
       "_table_0c0c5084": "0x0c0c5084",
       "_table_0c0c52b8": "0x0c0c52b8",
@@ -46589,24 +46575,6 @@
         "kind": "data",
         "address": "0x0c0c4b94",
         "size": 20
-      },
-      {
-        "section": "Cn0c4ce0",
-        "kind": "data",
-        "address": "0x0c0c4ce0",
-        "size": 8
-      },
-      {
-        "section": "Cn0c4cea",
-        "kind": "data",
-        "address": "0x0c0c4cea",
-        "size": 34
-      },
-      {
-        "section": "Cn0c4e2a",
-        "kind": "data",
-        "address": "0x0c0c4e2a",
-        "size": 10
       }
     ],
     "exports": {
@@ -46667,10 +46635,7 @@
       "_dat_0c0c4a28": "0x0c0c4a28",
       "_table_0c0c4a38": "0x0c0c4a38",
       "_dat_0c0c4b80": "0x0c0c4b80",
-      "_dat_0c0c4b94": "0x0c0c4b94",
-      "_dat_0c0c4ce0": "0x0c0c4ce0",
-      "_dat_0c0c4cea": "0x0c0c4cea",
-      "_dat_0c0c4e2a": "0x0c0c4e2a"
+      "_dat_0c0c4b94": "0x0c0c4b94"
     },
     "imports": {
       "_func_0c02a026": "0x0c02a026",
@@ -46693,12 +46658,6 @@
     "source": "src/verified/bulk_044.c",
     "mode": "verified",
     "sections": [
-      {
-        "section": "Cn0c4e38",
-        "kind": "data",
-        "address": "0x0c0c4e38",
-        "size": 4
-      },
       {
         "section": "Cn0c4f52",
         "kind": "data",
@@ -47055,7 +47014,6 @@
       }
     ],
     "exports": {
-      "_dat_0c0c4e38": "0x0c0c4e38",
       "_dat_0c0c4f52": "0x0c0c4f52",
       "_dat_0c0c5078": "0x0c0c5078",
       "_dat_0c0c51a2": "0x0c0c51a2",
@@ -119337,30 +119295,6 @@
         "section": "Cn0a3b88",
         "kind": "data",
         "address": "0x0c0c4b88",
-        "size": 8
-      },
-      {
-        "section": "Cn0a3ce8",
-        "kind": "data",
-        "address": "0x0c0c4ce8",
-        "size": 2
-      },
-      {
-        "section": "Cn0a3d0c",
-        "kind": "data",
-        "address": "0x0c0c4d0c",
-        "size": 4
-      },
-      {
-        "section": "Cn0a3e34",
-        "kind": "data",
-        "address": "0x0c0c4e34",
-        "size": 4
-      },
-      {
-        "section": "Cn0a3e4c",
-        "kind": "data",
-        "address": "0x0c0c4e4c",
         "size": 8
       },
       {
@@ -224612,6 +224546,59 @@
       "_dat_0c24af00": "0x0c24af00",
       "_dat_0c24af20": "0x0c24af20",
       "_dat_0c24af40": "0x0c24af40"
+    }
+  },
+  {
+    "id": "tu_0c0c4ba8",
+    "source": "src/verified/tu_0c0c4ba8.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c0c4ba8",
+        "size": 684,
+        "interior": [
+          {
+            "address": "0x0c0c4ce0",
+            "size": 68,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c0c4e2a",
+            "size": 42,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c0c4ba8": "0x0c0c4ba8",
+      "_func_0c0c4c44": "0x0c0c4c44",
+      "_func_0c0c4c62": "0x0c0c4c62",
+      "_func_0c0c4c74": "0x0c0c4c74",
+      "_func_0c0c4cc6": "0x0c0c4cc6",
+      "_func_0c0c4d64": "0x0c0c4d64",
+      "_func_0c0c4d76": "0x0c0c4d76",
+      "_func_0c0c4dd2": "0x0c0c4dd2",
+      "_func_0c0c4df8": "0x0c0c4df8",
+      "_func_0c0c4e06": "0x0c0c4e06"
+    },
+    "imports": {
+      "_func_0c02a026": "0x0c02a026",
+      "_func_0c0437b8": "0x0c0437b8",
+      "_func_0c0438de": "0x0c0438de",
+      "_func_0c048ce6": "0x0c048ce6",
+      "_func_0c03489c": "0x0c03489c",
+      "_func_0c0c201a": "0x0c0c201a",
+      "_func_0c025762": "0x0c025762",
+      "_func_0c02a0c4": "0x0c02a0c4",
+      "_func_0c045248": "0x0c045248",
+      "_func_0c03edcc": "0x0c03edcc",
+      "_func_0c1d4610": "0x0c1d4610",
+      "_table_0c246d8c": "0x0c246d8c",
+      "_table_0c246d94": "0x0c246d94",
+      "_table_0c246d9c": "0x0c246d9c"
     }
   }
 ]
