@@ -1,5 +1,4 @@
-/* Three functions and the literal pool match. func_0c077696 links at the
- * retail size but its failure tail jumps through r2 instead of retail r3. */
+/* Actor callback dispatch and shared animation-failure flow. */
 #include "objects.h"
 extern void func_0c0421f4(struct Actor *);
 extern void func_0c0420f8(struct Actor *);
@@ -52,6 +51,8 @@ void func_0c077696(struct Actor *a)
         goto failed;
     goto check_flag;
 failed:
+    goto finish;
+finish:
     func_0c0438de(a);
     return;
 check_flag:
