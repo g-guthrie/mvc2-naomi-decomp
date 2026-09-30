@@ -301,15 +301,3 @@ const unsigned int dat_0c135400[] = {
     0x0c037688u,
 };
 
-#pragma section n135546
-const unsigned short dat_0c135546[] = {
-    0x0400u, 0x00dcu, 0x012cu, 0x01a3u, 0x019cu, 0x0255u, 0x01a1u, 0x01acu,
-};
-
-#pragma section n135560
-const unsigned int dat_0c135560[] = {
-    0x0c24e4c8u, 0x0c1fb838u, 0x0c1fb7a0u, 0x0c2d92f0u,
-    0xc1892492u, 0xbf892492u, 0x0c24e4d8u, 0x0c2f83f8u,
-    0x0c02a0c4u,
-};
-
