@@ -38,14 +38,6 @@ extern void func_0c24d594(void);
 extern void func_0c24d59c(void);
 extern void func_0c24d5f4(void);
 
-#pragma section n11fde8
-const unsigned int dat_0c11fde8[] = {
-    0x00ff0255u, 0x01f903f0u, 0x03f801a1u, 0x03f10328u,
-    0x00b40141u, 0x0c0432cau, 0x0c0442fau, 0x0c2f83f8u,
-    0x0c02a0c4u, 0x0c1bc460u, 0x0c02a026u, 0x0c0344a0u,
-    0x42200000u, 0x43ab6db6u, 0x0c0429a4u,
-};
-
 #pragma section n11fefe
 const unsigned short dat_0c11fefe[] = {
     0x03f8u, 0x0328u, 0x00ffu, 0x03f9u, 0x0327u, 0x02c0u,
