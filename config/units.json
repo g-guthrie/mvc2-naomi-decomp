@@ -19523,36 +19523,6 @@
         "size": 4
       },
       {
-        "section": "Cn157498",
-        "kind": "data",
-        "address": "0x0c157498",
-        "size": 8
-      },
-      {
-        "section": "Cn1574a4",
-        "kind": "data",
-        "address": "0x0c1574a4",
-        "size": 4
-      },
-      {
-        "section": "Cn1575ec",
-        "kind": "data",
-        "address": "0x0c1575ec",
-        "size": 4
-      },
-      {
-        "section": "Cn15773c",
-        "kind": "data",
-        "address": "0x0c15773c",
-        "size": 4
-      },
-      {
-        "section": "Cn157748",
-        "kind": "data",
-        "address": "0x0c157748",
-        "size": 8
-      },
-      {
         "section": "Cn157a24",
         "kind": "data",
         "address": "0x0c157a24",
@@ -19843,11 +19813,6 @@
       "_table_0c157030": "0x0c157030",
       "_ptr_0c1572f4": "0x0c1572f4",
       "_ptr_0c1572fc": "0x0c1572fc",
-      "_table_0c157498": "0x0c157498",
-      "_ptr_0c1574a4": "0x0c1574a4",
-      "_ptr_0c1575ec": "0x0c1575ec",
-      "_ptr_0c15773c": "0x0c15773c",
-      "_table_0c157748": "0x0c157748",
       "_table_0c157a24": "0x0c157a24",
       "_table_0c157bac": "0x0c157bac",
       "_table_0c157f00": "0x0c157f00",
@@ -63211,54 +63176,6 @@
         "size": 16
       },
       {
-        "section": "Cn157488",
-        "kind": "data",
-        "address": "0x0c157488",
-        "size": 16
-      },
-      {
-        "section": "Cn1574a0",
-        "kind": "data",
-        "address": "0x0c1574a0",
-        "size": 4
-      },
-      {
-        "section": "Cn1574a8",
-        "kind": "data",
-        "address": "0x0c1574a8",
-        "size": 12
-      },
-      {
-        "section": "Cn1575c8",
-        "kind": "data",
-        "address": "0x0c1575c8",
-        "size": 36
-      },
-      {
-        "section": "Cn15772c",
-        "kind": "data",
-        "address": "0x0c15772c",
-        "size": 16
-      },
-      {
-        "section": "Cn157740",
-        "kind": "data",
-        "address": "0x0c157740",
-        "size": 8
-      },
-      {
-        "section": "Cn157750",
-        "kind": "data",
-        "address": "0x0c157750",
-        "size": 8
-      },
-      {
-        "section": "Cn157878",
-        "kind": "data",
-        "address": "0x0c157878",
-        "size": 40
-      },
-      {
         "section": "Cn157a20",
         "kind": "data",
         "address": "0x0c157a20",
@@ -63335,14 +63252,6 @@
       "_dat_0c1572f8": "0x0c1572f8",
       "_dat_0c157300": "0x0c157300",
       "_dat_0c157398": "0x0c157398",
-      "_dat_0c157488": "0x0c157488",
-      "_dat_0c1574a0": "0x0c1574a0",
-      "_dat_0c1574a8": "0x0c1574a8",
-      "_dat_0c1575c8": "0x0c1575c8",
-      "_dat_0c15772c": "0x0c15772c",
-      "_dat_0c157740": "0x0c157740",
-      "_dat_0c157750": "0x0c157750",
-      "_dat_0c157878": "0x0c157878",
       "_dat_0c157a20": "0x0c157a20",
       "_dat_0c157a2c": "0x0c157a2c",
       "_dat_0c157b82": "0x0c157b82",
@@ -226380,6 +226289,64 @@
       "_func_0c1af566": "0x0c1af566",
       "_func_0c037d0c": "0x0c037d0c",
       "_func_0c037688": "0x0c037688",
+      "__slow_mvn": "0x0c1fb838",
+      "__quick_odd_mvn": "0x0c1fb7a0"
+    }
+  },
+  {
+    "id": "tu_0c1573a8",
+    "source": "src/candidates/tu_0c1573a8.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c1573a8",
+        "size": 1272,
+        "interior": [
+          {
+            "address": "0x0c157488",
+            "size": 44,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c1575c8",
+            "size": 40,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c15772c",
+            "size": 44,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c157878",
+            "size": 40,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c1573a8": "0x0c1573a8",
+      "_func_0c1573e6": "0x0c1573e6",
+      "_func_0c1573fa": "0x0c1573fa",
+      "_func_0c15754a": "0x0c15754a",
+      "_func_0c157766": "0x0c157766"
+    },
+    "imports": {
+      "_func_0c0374da": "0x0c0374da",
+      "_table_0c250720": "0x0c250720",
+      "_dat_0c2f83f8": "0x0c2f83f8",
+      "_func_0c02a0c4": "0x0c02a0c4",
+      "_func_0c1a6308": "0x0c1a6308",
+      "_func_0c0447bc": "0x0c0447bc",
+      "_func_0c028642": "0x0c028642",
+      "_func_0c037d0c": "0x0c037d0c",
+      "_func_0c02a026": "0x0c02a026",
+      "_func_0c1a6d1c": "0x0c1a6d1c",
+      "_func_0c0344a0": "0x0c0344a0",
+      "_func_0c157968": "0x0c157968",
       "__slow_mvn": "0x0c1fb838",
       "__quick_odd_mvn": "0x0c1fb7a0"
     }
