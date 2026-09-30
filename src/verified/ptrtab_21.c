@@ -90,15 +90,6 @@ extern void func_0c24beac(void);
 extern void func_0c24bf1c(void);
 extern void func_0c24bf3a(void);
 
-#pragma section n10c4a8
-void (*const table_0c10c4a8[])(void) = {
-    func_0c24ba9c,
-    func_0c046e7e,
-    func_0c045248,
-    func_0c24babc,
-    func_0c047aac,
-};
-
 #pragma section n10c5b0
 void (*const table_0c10c5b0[])(void) = {
     func_0c24bacc,
