@@ -139,11 +139,6 @@ const unsigned short dat_0c13940a[] = {
     0x041cu, 0x01d0u, 0x012cu,
 };
 
-#pragma section n139588
-const unsigned short dat_0c139588[] = {
-    0x00dcu, 0x012cu, 0x01a3u, 0x019cu, 0x013cu,
-};
-
 #pragma section n139722
 const unsigned short dat_0c139722[] = {
     0x0411u, 0x012cu,
