@@ -77,9 +77,6 @@ extern void func_0c24efec(void);
 #pragma section n135b68
 void (*const ptr_0c135b68)(void) = func_0c24e528;
 
-#pragma section n135c50
-void (*const ptr_0c135c50)(void) = func_0c037688;
-
 #pragma section n135e74
 void (*const ptr_0c135e74)(void) = func_0c037688;
 
