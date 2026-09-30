@@ -1,6 +1,6 @@
-/* The 314-byte flight initializer and its first pool match exactly.
- * The second callback still differs in how it addresses and clears the high
- * byte of w150; its flag-offset literal also differs. */
+/* The flight initializer and both literal pools match exactly.
+ * The second callback still differs in flag-byte address calculation,
+ * register allocation, and instruction scheduling. */
 #include "objects.h"
 extern char func_0c02a026(struct Actor *);
 extern void func_0c0442fa(struct Actor *),func_0c043324(struct Actor *),func_0c1b2e10(struct Actor *,int),func_0c02a0c4(struct Actor *,int,int);
@@ -31,7 +31,7 @@ void func_0c0eef70(struct Actor *a)
  func_0c02a026(a);
  if(a->f56>a->f41c){
 
-  if(((char (*)[2])a)[0xa8][1]){((char (*)[2])a)[0xa8][1]=0;func_0c1b2e10(a,7);}
+  if(((char (*)[2])((char *)a+0x150))[0][1]){((char (*)[2])((char *)a+0x150))[0][1]=0;func_0c1b2e10(a,7);}
   if(!a->b525){if(a->w340&0x800)a->f92=-6.66666651f;else if(a->w340&0x400)a->f92=6.66666651f;}
  }else{
   a->b6++;a->f56=a->f41c;a->b1f9=1;func_0c043324(a);func_0c02a0c4(a,21,15);
