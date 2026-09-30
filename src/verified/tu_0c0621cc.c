@@ -44,11 +44,10 @@ void func_0c062246(struct Actor *a) {
   }
 }
 void func_0c06228c(struct Actor *a) {
-  char *sub;
-  if ((sub = (char *)&a->sub2a4, func_0c02a026(a)) < 0) {
-    sub[12] = 0;
-    func_0c0437b8(a);
-  }
+ char *sub=(char*)&a->sub2a4;
+ goto animate;
+animate:
+ if(func_0c02a026(a)<0){sub[12]=0;func_0c0437b8(a);}
 }
 void func_0c0622c0(struct Actor *a) { table_0c240120[a->b32](a); }
 void func_0c0622d4(struct Actor *a) {
