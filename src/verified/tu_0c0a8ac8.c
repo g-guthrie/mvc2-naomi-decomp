@@ -1,5 +1,4 @@
-/* The selection handler differs only in the register holding its final
- * tail-call target. All other complete functions and both literal pools match. */
+/* Actor motion, selection, and animation dispatch handlers. */
 #include "objects.h"
 extern char func_0c02a026(struct Actor *);
 extern void func_0c02a0c4(struct Actor *, int, int);
@@ -70,6 +69,8 @@ void func_0c0a8be4(struct Actor *a)
         variation = 10;
         kind = 20;
 spawn:
+        goto tail;
+tail:
         func_0c1a1a34(a, kind, variation);
         return;
     case 2: variation = 4; goto animate;
