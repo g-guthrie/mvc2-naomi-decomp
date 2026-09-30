@@ -1,5 +1,4 @@
-/* Four functions and both pools match. The main handler differs only in
- * the temporary register for the no-argument call at 0c102046. */
+/* Input-driven actor setup and state selection. */
 #include "objects.h"
 extern char func_0c02a026(struct Actor *);
 extern void func_0c025762(void);
@@ -37,6 +36,8 @@ void func_0c101f54(struct Actor *a)
  }
  if(func_0c02a026(a)<0){
 failed:
+  goto complete;
+complete:
   func_0c025762();
   func_0c1004a0(a,a->b1f9);
  }else if(a->b141){
