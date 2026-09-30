@@ -300,11 +300,6 @@ const unsigned short dat_0c1629fa[] = {
     0x019eu, 0x019fu, 0x012cu,
 };
 
-#pragma section n162c8a
-const unsigned short dat_0c162c8a[] = {
-    0x041cu,
-};
-
 #pragma section n162d8a
 const unsigned short dat_0c162d8a[] = {
     0x012cu,
