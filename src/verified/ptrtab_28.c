@@ -109,9 +109,6 @@ void (*const ptr_0c145108)(void) = func_0c1fb7a0;
 #pragma section n1452a8
 void (*const ptr_0c1452a8)(void) = func_0c24faf4;
 
-#pragma section n14542c
-void (*const ptr_0c14542c)(void) = func_0c02a026;
-
 #pragma section n145590
 void (*const ptr_0c145590)(void) = func_0c24fb14;
 
