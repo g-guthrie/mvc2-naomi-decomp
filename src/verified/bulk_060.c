@@ -28,12 +28,6 @@ extern void func_0c24b8e4(void);
 extern void func_0c24b8fc(void);
 extern void func_0c24b960(void);
 
-#pragma section n107d24
-const unsigned int dat_0c107d24[] = {
-    0x0c048bb0u, 0x0c0442fau, 0x0c02a39au, 0x0c0432cau,
-    0x0c2f83f8u, 0x0c1713d8u,
-};
-
 #pragma section n107e88
 const unsigned int dat_0c107e88[] = {
     0x014101a1u, 0x020101f9u,
