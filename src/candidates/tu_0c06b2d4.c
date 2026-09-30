@@ -1,4 +1,4 @@
-/* The input test at 0c06b2ee and state setup at 0c06b332 remain non-exact.
+/* The state setup at 0c06b332 remains non-exact.
  * All other functions and literal pools match. */
 #include "objects.h"
 struct ActorSubByte8 {
@@ -27,6 +27,8 @@ unsigned char func_0c06b2ee(struct Actor *a, struct ActorSub2a4 *s) {
     s->b7 = zero;
     goto fail;
   }
+  goto test;
+test:
   if ((a->w34e & 2048) == zero) {
   fail:
     return 0;
