@@ -1,3 +1,5 @@
+/* All functions and pools match except func_0c08755c's temporary register
+ * and func_0c0875ce's ordering of the frame-offset addition. */
 #include "objects.h"
 typedef void (*ActorCallback)(struct Actor *);
 extern ActorCallback table_0c242418[], table_0c242424[], table_0c242430[],
@@ -150,7 +152,10 @@ void func_0c087838(struct Actor *a) {
       return;
     }
     {
-      int value = (a->b37 << 4);
+      int value;
+      goto animate;
+animate:
+      value = (a->b37 << 4);
       func_0c02a684(a, 0, value + a->s28, 1);
       a->s28++;
     }
