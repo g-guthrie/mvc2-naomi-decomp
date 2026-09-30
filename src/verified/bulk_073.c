@@ -8,21 +8,6 @@ extern void func_0c037d0c(void);
 extern void func_0c24e868(void);
 extern void func_0c24e86c(void);
 
-#pragma section n1356ae
-const unsigned short dat_0c1356ae[] = {
-    0x01a1u, 0x0130u, 0x041cu, 0x019eu,
-};
-
-#pragma section n1356b8
-const unsigned int dat_0c1356b8[] = {
-    0x0c2f83f8u, 0x0c02a0c4u,
-};
-
-#pragma section n1356c4
-const unsigned int dat_0c1356c4[] = {
-    0x0c2d9260u, 0x0c02a026u, 0x0c0346dau, 0x0c037d0cu,
-};
-
 #pragma section n1358ae
 const unsigned short dat_0c1358ae[] = {
     0x0401u, 0x0130u, 0x00dcu, 0x012cu, 0x01a3u, 0x019cu,
