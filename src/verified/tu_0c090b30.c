@@ -87,7 +87,9 @@ void func_0c090d08(struct Actor *a) {
     a->b7 = zero;
     func_0c02a0c4(a, 22, 8);
   } else {
-    (func_0c1977f8(a, 0), func_0c1977f8(a, 1));
+    goto first;
+first:
+    func_0c1977f8(a,0);func_0c1977f8(a,1);
     sub->b4 = zero;
     sub->b5 = 14;
     command = 61;
