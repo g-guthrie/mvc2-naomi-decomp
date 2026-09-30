@@ -253549,6 +253549,13 @@
       "evidence": "CFG walk from 0x0c15a2c0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c15a2ee",
+      "size": 6,
+      "kind": "code",
+      "sha256": "2e6595aaaaa71054e0ec9c59412a996adc0c5dd608991e0523e7a88d9426ed64",
+      "evidence": "Reviewed trailing SHC epilogue after tail branch at 0x0c15a2ea: LDS.L @R15+,PR; RTS; MOV.L @R15+,R14 delay slot. Unreachable from local CFG, consistent with the saved PR/R14 frame at 0x0c15a2b4, before the next function at 0x0c15a2f4; not a literal pool."
+    },
+    {
       "address": "0x0c15a2f4",
       "size": 48,
       "kind": "code",
