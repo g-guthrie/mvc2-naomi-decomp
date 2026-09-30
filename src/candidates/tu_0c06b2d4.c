@@ -1,3 +1,5 @@
+/* The input test at 0c06b2ee and state setup at 0c06b332 remain non-exact.
+ * All other functions and literal pools match. */
 #include "objects.h"
 struct ActorSubByte8 {
   unsigned char pad[8], b8;
@@ -59,7 +61,8 @@ void func_0c06b3b4(struct Actor *a) {
   }
   if (a->b141) {
     a->b141 = 0;
-    func_0c137500(a, a->b1a3 ? 6 : 0);
+    {char argument=a->b1a3?6:0;goto call;
+call:func_0c137500(a,argument);}
   }
 }
 void func_0c06b432(struct Actor *a) { table_0c2408c0[a->b6](a); }
