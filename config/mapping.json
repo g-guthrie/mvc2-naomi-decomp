@@ -272407,6 +272407,13 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1711fe; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c171224",
+      "size": 222,
+      "kind": "code",
+      "sha256": "b3bd08d723290ba00dbddd8c9548a0865c32a1a865732e4d04110c517c853531",
+      "evidence": "Reviewed complete initialization and fallthrough to 0x0c171302: parent block copies, feedback bookkeeping, animation selection, optional mirror-bit XOR and restored frame. Independently rebuilt as part of the exact 592-byte C unit."
+    },
+    {
       "address": "0x0c171302",
       "size": 18,
       "kind": "code",
@@ -272415,10 +272422,24 @@
     },
     {
       "address": "0x0c171314",
-      "size": 122,
+      "size": 108,
       "kind": "code",
-      "sha256": "bb9b8582ef9506bb560ac77586fe42a65addea2e153ba8855c7d882b5d213f00",
-      "evidence": "CFG walk from 0x0c171314; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "e079054bc3192fb3c8bb7781cb3aaebeee801ce566df22dd5cef46ac33604a3f",
+      "evidence": "Reviewed motion update: parent position copy, indexed height offset, draw and animation calls; negative animation branches to the advance-state helper at 0x0c171380."
+    },
+    {
+      "address": "0x0c171380",
+      "size": 14,
+      "kind": "code",
+      "sha256": "b139a291cf1cf2e83278cf42b839ff2a539fc54cf8cc28344a99a1095e0d1654",
+      "evidence": "Reviewed shared advance-state helper: increment b4, clear 0x12c, RTS with the clear in its delay slot."
+    },
+    {
+      "address": "0x0c17138e",
+      "size": 4,
+      "kind": "data",
+      "sha256": "0cf0d3059131bc8df07388935a5a44968cd0a3d8f4edb1728f99a41968737563",
+      "evidence": "Reviewed 0x00dc and 0x00c0 literals used by the block-copy setup at 0x0c17122c and 0x0c17123c."
     },
     {
       "address": "0x0c171392",
@@ -272428,11 +272449,18 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c171314; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c171394",
+      "size": 28,
+      "kind": "data",
+      "sha256": "275350f6f5d13f52ca8bdc9408e76687cccac1656fa0349dda5666c6e963003c",
+      "evidence": "Reviewed member-offset words and imported pointer literals read by the initialization routine, including the copy helpers and the animation/feedback tables."
+    },
+    {
       "address": "0x0c1713b0",
       "size": 4,
-      "kind": "code",
+      "kind": "data",
       "sha256": "ef78768f27b52ba158c0c4afcc05efb9cc9d86ac3fc8b82af3a7d92d31fc8492",
-      "evidence": "CFG walk from 0x0c1713b0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "MOV.L at 0x0c1712dc reads this literal as function pointer 0x0c02a0c4. It is data, not a BRA/STC function."
     },
     {
       "address": "0x0c1713b4",
