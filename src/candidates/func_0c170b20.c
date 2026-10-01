@@ -1,6 +1,6 @@
-/* Complete connected effect group. Sixteen functions match independently.
- * Position update 170cba and velocity update 170fe6 still differ in scheduling
- * and register allocation; the first position-update pool also differs. */
+/* Complete connected effect group. Seventeen functions match independently.
+ * Position update 170cba still differs in scheduling and register allocation;
+ * its position-offset pool also differs. */
 #include "objects.h"
 typedef void (*handler2_0c170b20)(struct LinkedActor *, struct LinkedActor *);
 typedef void (*handler_0c170b20)(struct LinkedActor *);
@@ -137,9 +137,9 @@ void func_0c170fb6(struct LinkedActor *a,struct LinkedActor *owner)
 void func_0c170fe6(struct LinkedActor *a,struct LinkedActor *owner)
 {
  char *state=(char *)&A(owner)->sub2a4;
- A(a)->f92+=A(a)->f104;func_0c1710f2(a,a->p20);func_0c02a026(a);func_0c037d0c(a);
- if(*state){a->b5++;func_0c02a0c4(a,23,a->b32==2?1:4);}
- else if(!func_0c028642(a)){a->b4++;func_0c1710da(a,owner);}
+ func_0c1710f2((A(a)->f92+=A(a)->f104,a),a->p20);func_0c02a026(a);func_0c037d0c(a);
+ if(*state){a->b5++;func_0c02a0c4(a,23,a->b32==2?1:4);return;}
+ if(!func_0c028642(a)){a->b4++;func_0c1710da(a,owner);}
 }
 void func_0c171092(struct LinkedActor *a,struct LinkedActor *owner)
 {
