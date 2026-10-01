@@ -273002,11 +273002,11 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c171ac8; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c171e58",
-      "size": 2,
+      "address": "0x0c171e0c",
+      "size": 78,
       "kind": "code",
-      "sha256": "724a6f1525e8536c7e6df20dcc4924afe213adb9a37ac78b06827e70a8f845d2",
-      "evidence": "CFG walk from 0x0c171e58; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "b6594f4a01db8a621cbb74ce8776e69ada0bc9c20a7532cc87e88eecc05d16ac",
+      "evidence": "Reviewed full constructor from 0x0c171e0c: preserve three arguments, allocate actor, handle null, set callback/owner/state fields, and return the allocated pointer in the RTS delay slot at 0x0c171e58. Independently reproduced by the exact 240-byte C unit."
     },
     {
       "address": "0x0c171e5a",
