@@ -185,16 +185,6 @@ const unsigned int dat_0c17f358[] = {
     0x0c25404cu,
 };
 
-#pragma section n15e740
-const unsigned int dat_0c17f740[] = {
-    0x019e019fu, 0x041101b0u,
-};
-
-#pragma section n15e75c
-const unsigned int dat_0c17f75c[] = {
-    0x0c180e1au, 0x0c180e52u, 0x0c180e44u, 0x0c25407cu, 0x0c180dd2u, 0x0c180f3eu, 0x0c254084u,
-};
-
 #pragma section n15e866
 const unsigned short dat_0c17f866[] = {
     0x0130u, 0x041cu,
