@@ -240,9 +240,9 @@ const unsigned int dat_0c17dc58[] = {
     0x0c253e2cu,
 };
 
-#pragma section n17ddca
-const unsigned short dat_0c17ddca[] = {
-    0x012cu, 0x041cu,
+#pragma section n17ddcc
+const unsigned short dat_0c17ddcc[] = {
+    0x041cu,
 };
 
 #pragma section n17df48
