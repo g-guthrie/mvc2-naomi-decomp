@@ -5,14 +5,6 @@ extern void func_0c1fb838(void);
 extern void func_0c252948(void);
 extern void func_0c2529f8(void);
 
-#pragma section n174970
-const unsigned int dat_0c174970[] = {
-    0x01e93001u, 0x008800beu, 0x0c0374dau, 0x0c17495au,
-    0x0c1fb7a0u, 0x48c80000u, 0x43800000u, 0x447a0000u,
-    0x0c1ebd40u, 0x47c35000u, 0x3fd55555u, 0x0c1ec2c0u,
-    0x47f42400u, 0x40092492u, 0x0c253558u,
-};
-
 #pragma section n174a48
 const unsigned int dat_0c174a48[] = {
     0x00c000dcu, 0x01a3012cu, 0x00a8015au, 0x0c1fb838u,
