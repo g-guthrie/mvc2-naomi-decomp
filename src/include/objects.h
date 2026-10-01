@@ -106,6 +106,9 @@ struct ActorChildReference {
 struct ActorSubThrowContext { struct ActorChildReference base; unsigned char pad8[11], b19; };
 
 
+struct Rect8_15dc08 { short x,half_x,y,half_y; };
+struct HitboxSelection_15dc08 { short index0,pad2,index4; unsigned char pad6[10]; };
+
 /* The moving object most leaf functions update: a state byte at 4, a timer at
  * 28, position at 52, velocity at 92 and acceleration at 104. */
 struct Actor {
@@ -169,7 +172,7 @@ struct Actor {
     char b15a;
     unsigned char pad7[0x168 - 0x15b];
     unsigned char *p168, *p16c;
-    unsigned char pad170[0x174 - 0x170];
+    struct Rect8_15dc08 *p170;
     unsigned char *p174;
     unsigned char pad178[0x19d - 0x178];
     char b19d;
@@ -188,7 +191,7 @@ struct Actor {
     struct Actor *p1b4;
     struct Actor *p1b8;
     unsigned char *p1bc;
-    unsigned char *p1c0;
+    struct HitboxSelection_15dc08 *p1c0;
     int p1c4;
     struct Actor *p1c8;
     unsigned char pad7e[0x1d0 - 0x1cc];
