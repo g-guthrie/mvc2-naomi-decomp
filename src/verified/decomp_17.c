@@ -36,11 +36,3 @@ void func_0c15c860(struct Actor *p) {
     }
 }
 
-#pragma section n172f28
-void func_0c172f28(struct Actor *p) {
-    if (--p->s28 == 0) {
-        p->b5 = p->b5 + 1;
-        p->b33 = 0;
-        p->s28 = 0;
-    }
-}
