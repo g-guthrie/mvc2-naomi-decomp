@@ -1,4 +1,4 @@
-/* Complete 0x0c1739b0..0x0c173d38 spawning/placement group. Six functions exact; initializer differs in property-base and temporary-register selection. */
+/* Complete 0x0c1739b0..0x0c173d38 group. Six functions exact; initializer differs only in four animation-index instructions. */
 #define A(a) ((struct Actor *)(a))
 #define SLOT(a,n) (*(int *)&A(a)->pad5ba[(n)-0xd0])
 #include "objects.h"
@@ -38,16 +38,16 @@ extern struct Tbl_ub3_01 *dat_0c2f83f8;
 extern char func_0c02a026(struct LinkedActor *);
 extern void func_0c02a0c4(struct LinkedActor *,int,int),func_0c037d0c(struct LinkedActor *),func_0c037688(struct LinkedActor *);
 void func_0c173cb2(struct LinkedActor *),func_0c173d12(struct LinkedActor *);
-void func_0c173aec(struct LinkedActor *a)
+void func_0c173aec(register struct LinkedActor *a)
 {
- struct LinkedActor *p=a->p24;short direction;short zero;int x,y;short *placement;register float xscale;
+ struct LinkedActor *p=a->p24;short direction;short zero;int x,y;unsigned char *properties;register short *placement;register float xscale;
  a->b4++;a->s28=5;a->sdc=p->sdc;a->sdc.b12c=1;a->b2=p->b2;a->b1=p->b1;a->v80.x=p->v80.x;a->v80.y=p->v80.y;a->b1a3=p->b1a3;a->b1a4=p->b1a4;a->b48=p->b48;a->v80=p->v80;a->b36=p->b36;
  a->sdc.b12c=a->b32&1;a->b36=8;A(a)->b34=A(a)->w130=a->b32>>1;A(a)->w130&=1;
  direction=16;if(A(p)->w130)direction=-16;xscale=1.66666663f;
  a->f52=p->f52+direction*xscale;a->f56=p->f56+291.42856f;a->pad11[0]=66;a->pad11[1]=66;
  zero=dat_0c252b80[func_0c02849a()&15];A(a)->b1a1=zero;zero=0;A(a)->w1ac=zero;A(a)->b19e=zero;A(a)->p1c4=zero;dat_0c2f83f8->arr[a->b2]++;
- placement=dat_0c252b30[SLOT(a,0xd8)];y=SLOT(a,0xd4);x=SLOT(a,0xd0);x+=placement[0];y+=placement[1];if(placement[2])A(a)->w130^=1;
- func_0c02a0c4(a,21,placement[3]+(A(a)->b34&2)*4);
+ properties=(unsigned char *)a+0xcc;placement=dat_0c252b30[*(int *)(properties+12)];x=*(int *)(properties+4);y=*(int *)(properties+8);x+=placement[0];y+=placement[1];if(placement[2])A(a)->w130^=1;
+ func_0c02a0c4(a,21,(unsigned char)(placement[3]+(A(a)->b34&2)*4));
  if(A(a)->b34&1)x=-x;if(A(a)->b34&2){y=-y;A(a)->w130^=1;}
  a->f52+=(short)x*xscale;a->f56+=(short)y*2.1428571f;func_0c173cb2(a);
 }
