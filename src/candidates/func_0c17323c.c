@@ -52,11 +52,11 @@ void func_0c1734ea(struct LinkedActor *a)
  unsigned char attacks[16];struct LinkedActor *p=a->p24;float zero;
  *(struct Bytes16 *)attacks=*(struct Bytes16 *)dat_0c22f802;
  if(a->b5)goto ending;
- if(!func_0c028642(a)){func_0c17383c(a);return;}
- if(A(a)->b19f||a->f56<A(p)->f41c){float vx=3.33333325f,ax=-0.00651041651f;if(A(a)->w130){vx=-3.33333325f;ax=0.00651041651f;}A(a)->f92=vx;A(a)->f96=-6.42857122f;A(a)->f104=ax;A(a)->f108=-0.267857134f;A(a)->b6=1;goto advance;}
+ goto lifetime;lifetime:if(!func_0c028642(a)){func_0c17383c(a);return;}
+ if(A(a)->b19f||a->f56<A(p)->f41c){float vx=3.3333333f,ax=-0.00651041651145f;if(A(a)->w130){vx=-3.3333333f;ax=0.00651041651145f;}A(a)->f92=vx;A(a)->f96=-6.428571224213f;A(a)->f104=ax;A(a)->f108=-0.2678571343422f;A(a)->b6=1;goto advance;}
  zero=0.0f;if(--a->s28==0){func_0c1737cc(a);goto stop;}
- if(A(a)->b1a0){A(a)->b1a0-=2;if((signed char)A(a)->b1a0>0)return;A(a)->b1a0=0;func_0c1737cc(a);if(--a->b33==0)goto stop;A(a)->b1a1=attacks[a->b32*4+MODE(p)];A(a)->w1ac=0;A(a)->b19e=0;A(a)->p1c4=0;dat_0c2f83f8->arr[a->b2]++;func_0c02a026(a);if(!a->b32)goto draw;return;}
- if(A(a)->b19e){A(a)->b19e=0;func_0c1737cc(a);if(--a->b33==0)goto stop;}
+ if(A(a)->b1a0){if((signed char)(A(a)->b1a0-=2)>0)return;A(a)->b1a0=0;func_0c1737cc(a);if((unsigned char)--a->b33==0)goto stop;A(a)->b1a1=(attacks+a->b32*4)[MODE(p)];A(a)->w1ac=0;A(a)->b19e=0;A(a)->p1c4=0;dat_0c2f83f8->arr[a->b2]++;func_0c02a026(a);if(!a->b32)goto draw;return;}
+ goto hit_check;hit_check:if(A(a)->b19e){A(a)->b19e=0;func_0c1737cc(a);if((unsigned char)--a->b33==0)goto stop;}
  goto controls;
  stop:A(a)->f92=zero;A(a)->f96=zero;A(a)->f104=zero;A(a)->f108=zero;
  advance:a->b5++;func_0c02a0c4(a,21,3);return;
