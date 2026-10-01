@@ -293,9 +293,9 @@ const unsigned int dat_0c17e9b0[] = {
     0x0c253fb4u, 0x0c253fc8u,
 };
 
-#pragma section n17eb22
-const unsigned short dat_0c17eb22[] = {
-    0x012cu, 0x0141u,
+#pragma section n17eb24
+const unsigned short dat_0c17eb24[] = {
+    0x0141u,
 };
 
 #pragma section n17ec62
