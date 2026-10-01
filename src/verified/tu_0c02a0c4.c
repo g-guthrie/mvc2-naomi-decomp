@@ -19,6 +19,6 @@ void func_0c02a0c4(struct Actor *a, int bank, int animation)
         *(struct AnimationFrame20 *)&a->b140 = *a->p154;
         } while (!a->b142);
     }
-    a->p1c0 = a->p16c + a->p154->index * 16;
+    a->p1c0 = (struct HitboxSelection_15dc08 *)(a->p16c + a->p154->index * 16);
     if (a->b14c) func_0c0344e4(a);
 }
