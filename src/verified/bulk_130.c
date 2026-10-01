@@ -349,14 +349,6 @@ const unsigned int dat_0c1df920[] = {
     0x3f000000u, 0x0000ffffu,
 };
 
-#pragma section n1dfa00
-void (*const table_0c1dfa00[])(void) = {
-    func_0c0374da,
-    func_0c1df94c,
-    func_0c2332c0,
-    func_0c1fb7a0,
-};
-
 #pragma section n1dfb28
 const unsigned int dat_0c1dfb28[] = {
     0x47800000u,
