@@ -122,11 +122,6 @@ const unsigned int dat_0c0fa2d0[] = {
     0x01c80130u, 0x01e904c9u, 0x0c034946u, 0xc32baaaau, 0x43362492u, 0x0c1ce916u, 0x0c0438deu, 0x0c03edccu,
 };
 
-#pragma section n0d9c18
-const unsigned int dat_0c0fac18[] = {
-    0x0c044cbcu, 0x0c1fb5acu, 0x0c24a8d8u,
-};
-
 #pragma section n0d9e78
 const unsigned int dat_0c0fae78[] = {
     0x01fe0201u, 0x01ff01d6u,
