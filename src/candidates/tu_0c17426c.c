@@ -1,4 +1,4 @@
-/* Complete 0x0c17426c..0x0c1745b4 effect group. Six functions exact; clone constructor and trigonometric placement helper differ in scheduling and scratch registers. */
+/* Complete 0x0c17426c..0x0c1745b4 group. Seven functions exact; clone constructor differs only in two owner-pointer register bytes. */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 extern struct LinkedActor *func_0c0374da(int,int,int);
@@ -40,5 +40,5 @@ void func_0c1744f8(struct LinkedActor *a,struct LinkedActor *owner){a->sdc.b12c=
 void func_0c174530(struct LinkedActor *a,short scale)
 {
  short angle;register float factor=256.0f,value;
- value=scale*factor;angle=(short)(((40-A(a)->b34)&31)<<11);value*=func_0c1ebd40(angle);value*=1000.0f;value/=100000.0f;value/=factor;{float offset=value*1.66666663f;if(A(a)->w130)offset=-offset;a->f52=A(a)->f100+offset;}
+ value=scale*factor;angle=(short)(((40-A(a)->b34)&31)<<11);value*=func_0c1ebd40(angle);value*=1000.0f;goto scaled;scaled:value/=100000.0f;goto divided;divided:value/=factor;{float offset=value*1.66666663f;if(A(a)->w130)offset=-offset;a->f52=offset+A(a)->f100;}
 }
