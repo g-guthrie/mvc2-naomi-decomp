@@ -1,5 +1,4 @@
-/* Complete C translation. Six functions and every pool match exactly.
- * The final history update differs only in the order of two constant loads. */
+/* Exact 0x0c17080c..0x0c170b20: constructors, owner guards, animation and history tracking. */
 #include "objects.h"
 
 #define M(a) ((struct Actor *)(a))
@@ -91,7 +90,7 @@ void func_0c170a7c(struct LinkedActor *a,struct LinkedActor *owner)
  int i,limit;register struct Rec1708 *r=(struct Rec1708 *)((char *)a+0x88);
  a->f52=r->x;a->f56=r->y;a->sdc.w158=r->state;
  func_0c02a18c(a,M(a)->b159,M(a)->b158,r->command);
- i=0;limit=3;do{*r=r[1];r++;i++;}while(i<limit);
+ limit=3;i=0;do{*r=r[1];r++;i++;}while(i<limit);
  if(!a->b32){
   r->x=owner->f52;r->y=owner->f56;r->state=(unsigned short)owner->sdc.w158;
   r->command=M(owner)->b14b;
