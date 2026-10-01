@@ -1,5 +1,3 @@
-/* Candidate: func_0c17f40a callback load/call at 17f450/17f452
- * uses r2 instead of retail r3. First two functions and pool are exact. */
 #include "objects.h"
 extern void func_0c181094(struct LinkedActor *),func_0c180cbc(struct LinkedActor *),func_0c180cf8(struct LinkedActor *);
 extern void func_0c02a0c4(struct LinkedActor *,int,int);
@@ -27,6 +25,6 @@ void func_0c17f40a(struct LinkedActor *a)
   struct Actor *other=((struct Actor *)a)->p1b0;
   if(other->b3 == 0 && !*((char *)other+0x411) && ((unsigned char)other->b1<24 || (unsigned char)other->b1>26) && !(((struct Actor *)a)->b19e&127)) { goto detach;detach:func_0c180dd2(a);return; }
  }else if(!func_0c180f3e(a))goto dispatch;
- func_0c180e44(a);return;
+ goto feedback;feedback:func_0c180e44(a);return;
  dispatch: table_0c254064[a->b6](a);
 }
