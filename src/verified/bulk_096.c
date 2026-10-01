@@ -11,27 +11,6 @@ const unsigned short dat_0c178bbe[] = {
     0x01b0u, 0x012cu, 0x019fu, 0x019eu,
 };
 
-#pragma section n178cda
-const unsigned short dat_0c178cda[] = {
-    0x3101u,
-};
-
-#pragma section n178ce0
-const unsigned int dat_0c178ce0[] = {
-    0x01a3012cu, 0x01a1013fu,
-};
-
-#pragma section n178cf0
-const unsigned int dat_0c178cf0[] = {
-    0x0c25377cu,
-};
-
-#pragma section n178e50
-const unsigned int dat_0c178e50[] = {
-    0x01ac01a1u, 0x0130019cu, 0x0c2f83f8u, 0x0c25375cu,
-    0x40092492u, 0x3fd55555u, 0x0c02a0c4u, 0x0c253790u,
-};
-
 #pragma section n178fbc
 const unsigned short dat_0c178fbc[] = {
     0x041cu, 0x03e8u, 0x012cu,
