@@ -1,27 +1,5 @@
 /* Hitachi const data and symbolic pointer tables. */
 
-#pragma section n033b52
-const unsigned short dat_0c033b52[] = {
-    0x008eu, 0x012cu, 0x00b4u, 0x6f84u, 0x0c2du, 0xb318u, 0x0c23u,
-};
-
-#pragma section n033b94
-const unsigned int dat_0c033b94[] = {
-    0x0c2f833eu,
-};
-
-#pragma section n033c42
-const unsigned short dat_0c033c42[] = {
-    0x0084u, 0x0360u, 0x008eu, 0x008du,
-};
-
-#pragma section n033c4c
-const unsigned int dat_0c033c4c[] = {
-    0x0c0374b8u, 0x0c2d6f84u, 0x0c2d6f24u, 0x0c2d6f38u,
-    0x0c037354u, 0xff000000u, 0x0c023658u, 0x0c033cbeu,
-    0x0c033cd8u, 0x0c034358u,
-};
-
 #pragma section n033d7e
 const unsigned short dat_0c033d7e[] = {
     0x04a0u, 0x0aa0u,
