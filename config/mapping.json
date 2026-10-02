@@ -133660,11 +133660,18 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0cba2c; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c0cba94",
-      "size": 82,
+      "address": "0xc0cba94",
+      "size": 8,
+      "kind": "data",
+      "sha256": "a51cb40c7694c378a4d0312fc564cdc7120d9f977e8f3ae3c4a2b436ef08ccb9",
+      "evidence": "Pointer pool consumed by MOV.L at0x0c0cba0e (0x0c0451f2 at0x0c0cba94) and MOV.L at0x0c0cba1e (0x0c0432ca at0x0c0cba98). Preceding function tail JMP/restore delay slot ends at0x0c0cba66; no fallthrough enters this pool. The prior CFG root at0x0c0cba94 decoded pointers as instructions."
+    },
+    {
+      "address": "0xc0cba9c",
+      "size": 74,
       "kind": "code",
-      "sha256": "39dc5bd1df753001b5f16a73fd468b888cb6ecb236d8683abccd1f5f8704d2f8",
-      "evidence": "CFG walk from 0x0c0cba94; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "bf41587e68536126cc37cf3c28bfafa245bb476756c9713c80b69246d35ded7b",
+      "evidence": "True entry referenced by table cell0x0c247f98. Reviewed prologue, direct BSR at0x0c0cbaa0 to0x0c0cb830, ground/feedback branches, tail callbacks and both returns through0x0c0cbae4; all delay slots included. Preceding8bytes are a separate literal pool."
     },
     {
       "address": "0x0c0cbae6",
