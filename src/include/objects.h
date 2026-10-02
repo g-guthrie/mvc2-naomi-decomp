@@ -76,7 +76,8 @@ struct ActorSub2a4 {
     unsigned char pad[2];
     char b2;
     unsigned char b3;
-    unsigned char pad1[6];
+    unsigned char pad1[4];
+    short s8;
     short s10;
     unsigned char pad2[4];
     float f16, f20;
@@ -167,10 +168,11 @@ struct Actor {
     char b1d6;
     unsigned char pad7f[0x1e1 - 0x1d7];
     unsigned char b1e1;
-    unsigned char pad7f1[0x1e9 - 0x1e2];
+    unsigned char pad7f1[0x1e8 - 0x1e2];
+    unsigned char b1e8;
     unsigned char b1e9, b1ea;
     unsigned char b1eb;
-    unsigned char pad7fb[0x1ed - 0x1ec];
+    unsigned char b1ec;
     unsigned char b1ed;
     unsigned char b1ee;
     unsigned char pad7fc[0x1f2 - 0x1ef];
@@ -220,7 +222,8 @@ struct Actor {
     unsigned char b258;
     unsigned char pad10[0x278 - 0x259];
     unsigned short w278;
-    unsigned char pad10a[0x284 - 0x27a];
+    unsigned char b27a, b27b;
+    unsigned char pad10a[0x284 - 0x27c];
     float f284, f288, f28c;
     unsigned char pad10a2[0x2a4 - 0x290];
     struct ActorSub2a4 sub2a4;
