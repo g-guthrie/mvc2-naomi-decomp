@@ -133611,6 +133611,13 @@
       "evidence": "CFG walk from 0x0c0cb928; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0xc0cb9ee",
+      "size": 62,
+      "kind": "code",
+      "sha256": "4a48c58ac6a7bedb794824075fcf919cc3eea2191d7db663ea2f0c7d3fd2d9e3",
+      "evidence": "Entry pointer at 0x0c247f90 in dispatcher table 0x0c247f8c. Reviewed 62-byte handler: save actor and subrecord argument; call 0x0c02a026; direct BSR to 0x0c0cb862; test byte0x141; on zero increment byte6 and call 0x0c0451f2 then tail JMP to 0x0c0432ca; both return paths and all delay slots reviewed through 0x0c0cba2a. No interior pool."
+    },
+    {
       "address": "0x0c0cba2c",
       "size": 60,
       "kind": "code",
