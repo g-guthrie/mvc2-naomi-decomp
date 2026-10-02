@@ -1,5 +1,3 @@
-/* Six functions and all six literal pools match; func_0c03e6c4 is 207/212
- * bytes and remains a candidate until its two register choices match. */
 #include "objects.h"
 extern void func_0c04bfe0(struct Actor *), func_0c04ac78(struct Actor *),
     func_0c04a730(struct Actor *), func_0c03484c(struct Actor *),
@@ -90,34 +88,35 @@ void func_0c03e56a(struct Actor *a) {
   }
 }
 void func_0c03e6c4(struct Actor *a) {
-  int kind;
+  int value;
   a->b1eb = 2;
-  if (a->s278 >= 0 && (!((short)a->w420 > 0 && a->s278 > 0))) {
-    {
-      short neg = -1;
-      a->s278 = neg;
-    }
-    func_0c034922(a);
-    func_0c1d1622((struct LinkedActorVec3 *)&a->f52, a->b2);
-    if (a->b233 != 1) {
-      kind = a->b207 < 5 ? 1 : 3;
-      dat_0c2d9260.b5 = kind;
-      dat_0c2d9260.b6 = 1;
-    }
-    if (!a->b235 && a->w420 && a->b236) {
-      if (a->b525) {
-        if (func_0c04daae(a, 29, 2))
-          *(char *)&a->b236 = -1;
-        else
-          a->b236 = 0;
-      }
-      if ((char)a->b236 < 0) {
-        a->b1d3 = 0;
-        func_0c0453c4(a, 17);
-        return;
-      }
-    }
+  if ((value = a->s278) >= 0) {
+  if ((short)a->w420 > 0 && value > 0)
+    goto animate;
+  a->s278 = -1;
+  func_0c034922(a);
+  func_0c1d1622((struct LinkedActorVec3 *)&a->f52, a->b2);
+  if (a->b233 != 1) {
+    value = a->b207;
+    value = value < 5 ? 1 : 3;
+    dat_0c2d9260.b5 = value;
+    dat_0c2d9260.b6 = 1;
   }
+  if (a->b235 || !a->w420 || !a->b236)
+    goto animate;
+  if (a->b525) {
+    if (func_0c04daae(a, 29, 2))
+      *(char *)&a->b236 = -1;
+    else
+      *(char *)&a->b236 = 0;
+  }
+  if ((char)a->b236 < 0) {
+    a->b1d3 = 0;
+    func_0c0453c4(a, 17);
+    return;
+  }
+  }
+animate:
   if (func_0c02a026(a) < 0)
     func_0c0453c4(a, 23);
 }
