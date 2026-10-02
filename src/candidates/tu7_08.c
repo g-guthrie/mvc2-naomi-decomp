@@ -1,7 +1,3 @@
-/* The full 312-byte section links at retail. func_0c1026f2 and the 18-byte
- * shared pool match exactly. func_0c102648 matches 162/170 bytes; retail
- * sign-extends b15 twice before the final 0-or-4 check, while SHC compiles
- * this source without those extensions. The w420 condition is zero in retail. */
 struct Obj_tu7_08 {
     unsigned char pad0[28];
     short s28;
@@ -45,7 +41,7 @@ void func_0c102648(struct Obj_tu7_08 *a, struct Ctl_tu7_08 *b)
         b->b14 = 8;
         func_0c02a684(a, 0, a->b37 * 48 + b->b15 + 37, 2);
         b->b15 += b->b9;
-        if (b->b15 == 0 || b->b15 == 4)
+        if (!b->b15 || b->b15 == 4)
             b->b9 = -b->b9;
     }
 }
