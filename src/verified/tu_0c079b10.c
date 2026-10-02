@@ -1,3 +1,4 @@
+/* Exact 0x0c079b10..0x0c079c88: initialize motion and process the mutually exclusive animation-transition and feedback paths. */
 #include "objects.h"
 extern void func_0c0442fa(struct Actor *);
 extern void func_0c0451f2(struct Actor *);
@@ -45,7 +46,7 @@ void func_0c079bd0(struct Actor *a) {
     func_0c02a0c4(a, 1, 9);
     return;
   }
-  if (a->b141 > 0) {
+  else if (a->b141 > 0) {
     zero = 0;
     a->b141 = zero;
     a->b1a1 = 80;

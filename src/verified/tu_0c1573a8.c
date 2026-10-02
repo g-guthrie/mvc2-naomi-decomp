@@ -1,6 +1,4 @@
-/* Candidate: defined null return in func_0c1573a8 branches to
- * 0c1573dc instead of retail epilogue 0c1573e0 (one byte differs).
- * All four remaining routines and four literal pools are exact. */
+/* Exact 0x0c1573a8..0x0c1578a0: the failed-allocation branch preserves the allocator's null result in r0 through the epilogue. The matching C intentionally falls through on that path under bundled SHC 5.0r31; this is compiler-dependent and not portable C. Adding a defined final return introduces a different branch or extra instructions. */
 #include "objects.h"
 extern struct LinkedActor *func_0c0374da(int,int,int);
 extern void (*table_0c250720[])(struct LinkedActor *,struct LinkedActor *);
@@ -25,7 +23,6 @@ struct LinkedActor *func_0c1573a8(struct LinkedActor *owner)
         *(int *)&((struct Actor *)owner)->pad10c[4]=1;
         return a;
     }
-    return a;
 }
 void func_0c1573e6(struct LinkedActor *a)
 {

@@ -1,5 +1,4 @@
-/* The initializer differs only in the register used for its direction store.
- * The following complete motion function and all literal-pool bytes match retail. */
+/* Exact 0x0c0a8958..0x0c0a8ac8: initialize mirrored motion and update its action state. */
 #include "objects.h"
 extern char func_0c02a026(struct Actor *);
 extern int func_0c02850e(struct Actor *);
@@ -23,7 +22,7 @@ void func_0c0a8958(struct Actor *a)
             a->w130 = 0;
             a->f92 = -20.0f;
         } else {
-            a->w130 = 1;
+            goto direction;direction:a->w130 = 1;
             a->f92 = 20.0f;
         }
         a->f104 = 0;
