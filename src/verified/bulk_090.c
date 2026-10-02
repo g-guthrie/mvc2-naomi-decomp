@@ -130,16 +130,6 @@ void (*const table_0c1672b8[])(void) = {
     func_0c251f9c,
 };
 
-#pragma section n167400
-const unsigned int dat_0c167400[] = {
-    0x019e041cu, 0x012c019fu,
-};
-
-#pragma section n16740c
-const unsigned int dat_0c16740c[] = {
-    0x40800000u, 0x0c02a0c4u, 0x0c037d0cu,
-};
-
 #pragma section n167550
 const unsigned int dat_0c167550[] = {
     0x01d22201u, 0x009a0158u, 0x00980094u, 0x00880130u,
