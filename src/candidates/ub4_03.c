@@ -1,19 +1,10 @@
-/* Assigned span 0x0c0cbd20 size 620: config/mapping.json has a 2-byte gap at
- * 0x0c0cbe62-0x0c0cbe64 inside the literal pool that follows func_0c0cbe08
- * (pad between two reviewed pool words, value 0x0000), so describe() derives
- * only a 322-byte P section (through the pool at 0x0c0cbe5a) no matter how
- * far this file's source continues; nothing can register the rest of this
- * cluster (func_0c0cbe08's real body falls through into an unreviewed
- * func_0c0cbee0 at 0x0c0cbee0) until that gap is reviewed by another unit.
- * func_0c0cbd20, func_0c0cbd9c, func_0c0cbdbe and func_0c0cbdf6 (232/232
- * bytes) are byte-exact. func_0c0cbe08 differs: retail's reviewed 82 bytes
- * only cover the first half of the real function (through the a->b419 ?
- * 4.1666665f : 2.5f pool select and a bra into the unreviewed continuation);
- * the body below reconstructs the whole logical function as far as it can be
- * inferred, so its own 82-byte window matches retail exactly, but the
- * compiled unit as a whole is longer than the derived section and this file
- * cannot be moved to src/verified/. */
-
+/* Unit 0x0c0cbd20 size 648. Two pools: 0x0c0cbe5a (46 bytes, including the
+ * 2-byte pad at 0x0c0cbe62) and 0x0c0cbf88 (32 bytes). func_0c0cbe08 bra/bt
+ * over the first pool and continues at 0x0c0cbe88; func_0c0cbee0 bra's back
+ * to func_0c0cbdbe, so both belong here. Next function is 0x0c0cbfa8.
+ * 606/648: first five functions and both pools match; remaining diffs are
+ * fmov fr4,fr5 in func_0c0cbe08's continuation and r2 vs r3 on b321 in
+ * func_0c0cbee0. */
 struct Obj_ub4_03 {
     unsigned char pad0[2];
     unsigned char b2;
@@ -112,7 +103,7 @@ void func_0c0cbe08(struct Obj_ub4_03 *a)
     dat_0c2f83f8->counts[a->b2]++;
     f = a->b419 ? 4.16666651f : 2.5f;
     if (a->b1d2 != 0) {
-        if (0 <= a->f92)
+        if (a->f92 < 0)
             f = -f;
     } else {
         if (a->f92 <= 0)
@@ -123,4 +114,30 @@ void func_0c0cbe08(struct Obj_ub4_03 *a)
     func_0c1af2b8(a);
     a->s28 = a->b419 * 2 + 1;
     func_0c02a0c4(a, 21, 8);
+}
+
+void func_0c0cbee0(struct Obj_ub4_03 *a)
+{
+    a->f52 += a->f92;
+    a->f92 += a->f104;
+    a->f56 += a->f96;
+    a->f96 += a->f108;
+    if (a->f56 <= a->f1052) {
+        a->b6 = 3;
+        a->f56 = a->f1052;
+        a->b505 = 0;
+        func_0c043324(a);
+        func_0c02a0c4(a, 1, 3);
+    } else {
+        if (a->b321 < 0) {
+            a->b321 = 0;
+            if (--a->s28 < 0) {
+                a->b6++;
+                func_0c02a0c4(a, 21, 10);
+                return;
+            }
+        }
+        func_0c02a026(a);
+        func_0c0cbdbe(a);
+    }
 }
