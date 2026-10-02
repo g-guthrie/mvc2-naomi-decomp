@@ -1,8 +1,6 @@
-/* Actor state machine at 0x0c1aa884: six of seven functions and both pools
- * match. func_0c1aa9c4 matches 64/74 bytes; retail keeps a->p18 in r5 and
- * the global byte in r4, while SHC gives this source the reverse registers.
- * The conditional float expression in func_0c1aaa20 yields retail's fr3/fr4
- * allocation and the 548.571411133f pool spelling lands on 0x44092492. */
+/* Actor state machine at 0x0c1aa884. func_0c1aa9c4 keeps a->p18 in r5 by
+ * taking a second parameter (the table and the tail call pass one). The
+ * 548.571411133f pool spelling lands on 0x44092492. */
 struct Vec3_me00 { float x, y, z; };
 struct Blk_me00 {
     unsigned char pad0[0x50];
@@ -49,14 +47,6 @@ struct Obj_me00 {
     float f41c;
 };
 
-struct Parent_me00 {
-    unsigned char b00, b01, b02;
-    unsigned char pad0[0x1d0 - 3];
-    unsigned char b1d0;
-    unsigned char pad1[0x1e9 - 0x1d1];
-    unsigned char b1e9;
-};
-
 struct Glob_me00 { unsigned char pad[0x14]; int l14; };
 
 typedef void (*handler_me00)(struct Obj_me00 *);
@@ -75,7 +65,7 @@ extern void func_0c1abcd4(struct Obj_me00 *a, struct Obj_me00 *b);
 extern char func_0c02a026(struct Obj_me00 *a);
 
 void func_0c1aa8aa(struct Obj_me00 *a);
-void func_0c1aa9c4(struct Obj_me00 *a);
+void func_0c1aa9c4();
 void func_0c1aaa86(struct Obj_me00 *a, struct Obj_me00 *b);
 
 struct Obj_me00 *func_0c1aa884(struct Obj_me00 *a)
@@ -133,11 +123,13 @@ void func_0c1aa8bc(struct Obj_me00 *a)
     func_0c1aa9c4(a);
 }
 
-void func_0c1aa9c4(struct Obj_me00 *a)
+void func_0c1aa9c4(a, b)
+struct Obj_me00 *a;
+struct Obj_me00 *b;
 {
-    struct Parent_me00 *b = (struct Parent_me00 *)a->p18;
     unsigned char m = dat_0c2f833e;
 
+    b = a->p18;
     if (m & (1 << (b->b02 ^ 1)))
         return;
     if (m) {
