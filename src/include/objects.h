@@ -184,7 +184,8 @@ struct Actor {
     unsigned char pad8[0x1fc - 0x1fa];
     unsigned char b1fc;
     unsigned char b1fd;
-    unsigned char pad9[0x201 - 0x1fe];
+    unsigned char b1fe;         /* limb_choice: 0 punch, 1 kick */
+    unsigned char pad9[0x201 - 0x1ff];
     char b201;
     unsigned char b202;
     unsigned char b203;
