@@ -39622,6 +39622,13 @@
       "evidence": "CFG walk from 0x0c05a866; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c05a886",
+      "size": 40,
+      "kind": "code",
+      "sha256": "b89716b5ab157e6da43bdd55a083dc58559971e45889658316a262a139ce5099",
+      "evidence": "CFG walk from 0x0c05a886 through the mid-function pool at 0x0c05a8ae; delay slots included."
+    },
+    {
       "address": "0x0c05a8ae",
       "size": 2,
       "kind": "data",
@@ -39634,6 +39641,13 @@
       "kind": "data",
       "sha256": "2da697d194e9910e3adfdcc4c9198ae357cf8813d4075d406b947ba4b67c88d7",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c05a804; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c05a8b6",
+      "size": 2,
+      "kind": "data",
+      "sha256": "50cff72c8e550546d661ec235431888fb2f9f7bada40c17020d47f6ccc117aae",
+      "evidence": "PC-relative word 0x0202 consumed by 0x0c05a886."
     },
     {
       "address": "0x0c05a8b8",
@@ -39683,6 +39697,13 @@
       "kind": "data",
       "sha256": "c10a620cd672c165ebbef0e3b9f7f5bcfdcb74d2d9f13373ecee0f9327c21212",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c05a866; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c05a8e0",
+      "size": 52,
+      "kind": "code",
+      "sha256": "8551088b73ce8f318e9d1d5d9f728d14c874574a5597850e48167780e0005e37",
+      "evidence": "Continuation of 0x0c05a886 after its mid-function literal pool; delay slots included."
     },
     {
       "address": "0x0c05a914",
@@ -39741,6 +39762,13 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c05a99c; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c05aa2e",
+      "size": 6,
+      "kind": "data",
+      "sha256": "b805b30b3527cb0540b10453091d8896274b69f1e8a956d3ea41ac2c37295599",
+      "evidence": "Unreferenced pad and leftover word inside the 0x0c05a76c unit literal pool."
+    },
+    {
       "address": "0x0c05aa34",
       "size": 4,
       "kind": "data",
@@ -39748,11 +39776,25 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c05a948; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c05aa38",
+      "size": 4,
+      "kind": "data",
+      "sha256": "dee6a2598b077b53e266a305f9a3f50bc2a8225493cfa3c37de8f5e43489b24d",
+      "evidence": "Float literal consumed by 0x0c05a886."
+    },
+    {
       "address": "0x0c05aa3c",
       "size": 6,
-      "kind": "code",
+      "kind": "data",
       "sha256": "27aee8e8c4935869c76cee64ad6600fa620ecb1ccef0386fef8fc45db5979d4b",
-      "evidence": "CFG walk from 0x0c05aa3c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Literal pool of 0x0c05a886; not executable CFG."
+    },
+    {
+      "address": "0x0c05aa42",
+      "size": 2,
+      "kind": "data",
+      "sha256": "8f70197b722fb84a9fc811720295e1e3cb351833852d4db6606694e14128779a",
+      "evidence": "High half of pool pointer 0x0c0429a4 in the 0x0c05a76c unit literal pool."
     },
     {
       "address": "0x0c05aa44",

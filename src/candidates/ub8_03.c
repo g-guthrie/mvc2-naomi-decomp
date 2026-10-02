@@ -1,64 +1,109 @@
-/* Six functions here (0x0c05a914-0x0c05aa28, matching the assignment's 278
- * bytes) share one literal pool, but a genuine reviewed code range sits
- * inside that pool at 0x0c05aa3c (6 bytes, "CFG walk from 0x0c05aa3c" in
- * config/mapping.json) with unreferenced padding around it; the pool itself
- * runs to 0x0c05aa64 (the next unrelated function, whose own pool starts
- * fresh elsewhere) and holds exactly the 9 addresses and 3 shorts these six
- * functions need (e.g. func_0c02a026's pool slot at 0x0c05aa44 is shared by
- * func_0c05a914, func_0c05a99c and func_0c05aa06 alike, so all six are one
- * retail unit). describe() cannot walk through that embedded code range, so
- * the tool's own P section always stops at 342 bytes short of what these six
- * functions actually need; I have no tool that edits config/mapping.json to
- * bridge it. Every function here compiles to the right shape and instruction
- * count; the two spots I could not force to retail's exact register (a
- * scratch-register swap in func_0c05a99c, and r0 vs r3 for the tail jmp in
- * func_0c05a9e8) are noted at each function. Registering as a candidate. */
-
-struct Sub2a4_ub8_03 { unsigned char pad[3]; unsigned char b3; };
-
-struct Obj_ub8_03 {
-    unsigned char pad0[2];
-    unsigned char b2;
-    unsigned char pad1[3];
-    unsigned char b6;
-    unsigned char pad2[0x141 - 7];
-    unsigned char b141;
-    unsigned char pad3[0x19e - 0x142];
-    unsigned char b19e;
-    unsigned char pad4[0x1a1 - 0x19f];
-    unsigned char b1a1;
-    unsigned char pad5[0x1ac - 0x1a2];
-    unsigned short w1ac;
-    unsigned char pad6[0x1c4 - 0x1ae];
-    int i1c4;
-    unsigned char pad7[0x2a4 - 0x1c8];
-    struct Sub2a4_ub8_03 sub2a4;
-};
+/* Unit 0x0c05a76c-0x0c05aa64 (760 bytes, two pools). Every function matches
+ * except func_0c05a99c (66/76): SHC overlaps the spilled &a->sub2a4 (r3) with
+ * an early mov.l of func_0c02a026 into r2, while retail reuses r3 after the
+ * spill. Registering as a candidate. */
+#include "objects.h"
 
 struct Table_ub8_03 { unsigned char pad[124]; short arr[1]; };
 
-extern struct Table_ub8_03 *dat_0c2f83f8;
-extern char func_0c02a026(struct Obj_ub8_03 *);
-extern void func_0c0437b8(struct Obj_ub8_03 *);
-extern void func_0c02a0c4(struct Obj_ub8_03 *, int, int);
-extern void *dat_0c23f9b0[];
-extern void func_0c056bb8(struct Obj_ub8_03 *);
-extern void func_0c0432ca(struct Obj_ub8_03 *);
-extern void func_0c048bb0(struct Obj_ub8_03 *, int);
-extern int func_0c1321b8(struct Obj_ub8_03 *);
+typedef void (*handler_ub8_03)(struct Actor *);
 
-void func_0c05a914(struct Obj_ub8_03 *a)
+extern unsigned char func_0c044e52(struct Actor *);
+extern void func_0c043324(struct Actor *);
+extern void func_0c02a0c4(struct Actor *, int, int);
+extern char func_0c02a026(struct Actor *);
+extern void func_0c02a39a(struct Actor *, int);
+extern void func_0c0437b8(struct Actor *);
+extern handler_ub8_03 table_0c23f954[];
+extern handler_ub8_03 table_0c23f9a4[];
+extern handler_ub8_03 table_0c23f9b0[];
+extern void func_0c056bb8(struct Actor *);
+extern void func_0c0432ca(struct Actor *);
+extern void func_0c048bb0(struct Actor *, int);
+extern void func_0c0429a4(struct Actor *, struct LinkedActorVec3 *, int);
+extern struct Table_ub8_03 *dat_0c2f83f8;
+extern int func_0c1321b8(struct Actor *);
+
+void func_0c05a76c(struct Actor *a)
+{
+    a->f52 += a->f92;
+    a->f92 += a->f104;
+    a->f56 += a->f96;
+    a->f96 += a->f108;
+    if (func_0c044e52(a)) {
+        func_0c043324(a);
+        a->b7 = a->b7 + 1;
+        func_0c02a0c4(a, 15, 34);
+    }
+}
+
+void func_0c05a7d6(struct Actor *a)
+{
+    if (func_0c02a026(a) < 0) {
+        a->b205 = 0;
+        func_0c02a39a(a, 0);
+        func_0c0437b8(a);
+    }
+}
+
+void func_0c05a804(struct Actor *a)
+{
+    a->b1ea = 1;
+    a->b1ed = 2;
+    a->b1f5 = 2;
+    a->b3f8 = 2;
+    a->b328 = 5;
+    table_0c23f954[a->b7](a);
+}
+
+void func_0c05a832(struct Actor *a)
 {
     if (func_0c02a026(a) < 0)
         func_0c0437b8(a);
 }
 
-void func_0c05a936(struct Obj_ub8_03 *a)
+void func_0c05a854(struct Actor *a)
 {
-    ((void (*)(struct Obj_ub8_03 *))dat_0c23f9b0[a->b6])(a);
+    table_0c23f9a4[a->b6](a);
 }
 
-void func_0c05a948(struct Obj_ub8_03 *a)
+void func_0c05a866(struct Actor *a)
+{
+    a->b6 = a->b6 + 1;
+    func_0c056bb8(a);
+    func_0c02a0c4(a, 21, 14);
+}
+
+void func_0c05a886(struct Actor *a)
+{
+    struct LinkedActorVec3 v;
+
+    if (func_0c02a026(a) < 0) {
+        a->b6 = a->b6 + 1;
+        if (!a->b202)
+            a->b202 = 128;
+        else
+            a->b202 = 0;
+        func_0c02a39a(a, 0);
+        func_0c02a0c4(a, 21, 15);
+        v.x = -106.666664124f;
+        v.y = 171.42856f;
+        func_0c0429a4(a, &v, 1);
+    }
+}
+
+void func_0c05a914(struct Actor *a)
+{
+    if (func_0c02a026(a) < 0)
+        func_0c0437b8(a);
+}
+
+void func_0c05a936(struct Actor *a)
+{
+    table_0c23f9b0[a->b6](a);
+}
+
+void func_0c05a948(struct Actor *a)
 {
     a->b6 = a->b6 + 1;
     func_0c056bb8(a);
@@ -67,14 +112,14 @@ void func_0c05a948(struct Obj_ub8_03 *a)
     a->b1a1 = 43;
     a->w1ac = 0;
     a->b19e = 0;
-    a->i1c4 = 0;
+    a->p1c4 = 0;
     dat_0c2f83f8->arr[a->b2]++;
     func_0c02a0c4(a, 21, 9);
 }
 
-void func_0c05a99c(struct Obj_ub8_03 *a)
+void func_0c05a99c(struct Actor *a)
 {
-    struct Sub2a4_ub8_03 *p;
+    struct ActorSub2a4 *p;
 
     p = &a->sub2a4;
     func_0c02a026(a);
@@ -87,9 +132,9 @@ void func_0c05a99c(struct Obj_ub8_03 *a)
     }
 }
 
-void func_0c05a9e8(struct Obj_ub8_03 *a)
+void func_0c05a9e8(struct Actor *a)
 {
-    struct Sub2a4_ub8_03 *p = &a->sub2a4;
+    struct ActorSub2a4 *p = &a->sub2a4;
 
     if (!p->b3)
         func_0c02a026(a);
@@ -99,7 +144,7 @@ void func_0c05a9e8(struct Obj_ub8_03 *a)
     }
 }
 
-void func_0c05aa06(struct Obj_ub8_03 *a)
+void func_0c05aa06(struct Actor *a)
 {
     if (func_0c02a026(a) < 0)
         func_0c0437b8(a);
