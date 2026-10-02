@@ -73,10 +73,13 @@ struct MaskInput {
 /* A child record embedded at offset 0x2a4 in actors that dispatch through the
  * 0x0c24b6a8 handler table. */
 struct ActorSub2a4 {
-    unsigned char pad[3];
+    unsigned char pad[2];
+    char b2;
     unsigned char b3;
     unsigned char pad1[6];
     short s10;
+    unsigned char pad2[4];
+    float f16, f20;
 };
 
 /* The moving object most leaf functions update: a state byte at 4, a timer at
@@ -124,7 +127,9 @@ struct Actor {
     unsigned char pad6b[0x140 - 0x132];
     unsigned char b140;
     char b141;
-    unsigned char pad6c[0x158 - 0x142];
+    unsigned char pad6c[0x14b - 0x142];
+    unsigned char b14b;
+    unsigned char pad6c2[0x158 - 0x14c];
     char b158, b159;
     unsigned char pad7[0x170 - 0x15a];
     struct Hitbox *p170;
@@ -218,14 +223,16 @@ struct Actor {
     float f284, f288, f28c;
     unsigned char pad10a2[0x2a4 - 0x290];
     struct ActorSub2a4 sub2a4;
-    unsigned char pad10b[0x327 - 0x2b0];
+    unsigned char pad10b[0x327 - 0x2bc];
     unsigned char b327;
     unsigned char b328;
     unsigned char pad11[0x340 - 0x329];
     unsigned short w340;
     unsigned char pad11b[0x34e - 0x342];
     unsigned short w34e;
-    unsigned char pad11c[0x3f0 - 0x350];
+    unsigned char pad11c[0x3e4 - 0x350];
+    unsigned short w3e4;
+    unsigned char pad11d[0x3f0 - 0x3e6];
     unsigned char b3f0, b3f1;
     unsigned char pad12[0x3f8 - 0x3f2];
     unsigned char b3f8, b3f9;
@@ -254,7 +261,11 @@ struct ActorVt {
     unsigned char pad3[56 - 52];
     void (*fn38)(struct Actor *);
     void (*fn3c)(struct Actor *);
-    unsigned char pad4[0x60 - 64];
+    unsigned char pad4[68 - 64];
+    void (*fn44)(struct Actor *);
+    void (*fn48)(struct Actor *);
+    void (*fn4c)(struct Actor *);
+    unsigned char pad5[0x60 - 80];
     void (*f60)(struct Actor *);
 };
 
