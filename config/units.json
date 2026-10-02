@@ -39938,18 +39938,6 @@
         "size": 24
       },
       {
-        "section": "Cn05cc16",
-        "kind": "data",
-        "address": "0x0c05cc16",
-        "size": 4
-      },
-      {
-        "section": "Cn05cc20",
-        "kind": "data",
-        "address": "0x0c05cc20",
-        "size": 12
-      },
-      {
         "section": "Cn05ce44",
         "kind": "data",
         "address": "0x0c05ce44",
@@ -40147,8 +40135,6 @@
       "_dat_0c05cabc": "0x0c05cabc",
       "_dat_0c05cac4": "0x0c05cac4",
       "_table_0c05cad4": "0x0c05cad4",
-      "_dat_0c05cc16": "0x0c05cc16",
-      "_dat_0c05cc20": "0x0c05cc20",
       "_table_0c05ce44": "0x0c05ce44",
       "_dat_0c05ce6c": "0x0c05ce6c",
       "_dat_0c05cf8c": "0x0c05cf8c",
@@ -119727,24 +119713,6 @@
         "size": 8
       },
       {
-        "section": "Cn03bc14",
-        "kind": "data",
-        "address": "0x0c05cc14",
-        "size": 2
-      },
-      {
-        "section": "Cn03bc1c",
-        "kind": "data",
-        "address": "0x0c05cc1c",
-        "size": 4
-      },
-      {
-        "section": "Cn03bc2c",
-        "kind": "data",
-        "address": "0x0c05cc2c",
-        "size": 24
-      },
-      {
         "section": "Cn03be2e",
         "kind": "data",
         "address": "0x0c05ce2e",
@@ -120062,12 +120030,6 @@
         "kind": "data",
         "address": "0x0c05eac8",
         "size": 12
-      },
-      {
-        "section": "Cn03dbf4",
-        "kind": "data",
-        "address": "0x0c05ebf4",
-        "size": 52
       },
       {
         "section": "Cn03dd72",
@@ -218540,7 +218502,7 @@
   },
   {
     "id": "tu_0c0314b0",
-    "source": "src/candidates/tu_0c0314b0.c",
+    "source": "src/verified/tu_0c0314b0.c",
     "mode": "verified",
     "sections": [
       {
@@ -219650,6 +219612,70 @@
       "_func_0c043324": "0x0c043324",
       "_func_0c0437b8": "0x0c0437b8",
       "_table_0c241454": "0x0c241454"
+    }
+  },
+  {
+    "id": "u_0c05eae4",
+    "source": "src/candidates/u_0c05eae4.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c05eae4",
+        "size": 324,
+        "interior": [
+          {
+            "address": "0x0c05ebf4",
+            "size": 52,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c05eae4": "0x0c05eae4",
+      "_func_0c05eb74": "0x0c05eb74",
+      "_func_0c05eb8c": "0x0c05eb8c"
+    },
+    "imports": {
+      "_func_0c037d54": "0x0c037d54",
+      "_dat_0c23fd50": "0x0c23fd50",
+      "_func_0c025900": "0x0c025900",
+      "_func_0c1d4610": "0x0c1d4610",
+      "_func_0c048ce6": "0x0c048ce6",
+      "_func_0c02a0c4": "0x0c02a0c4"
+    }
+  },
+  {
+    "id": "u_0c05caf8",
+    "source": "src/candidates/u_0c05caf8.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c05caf8",
+        "size": 332,
+        "interior": [
+          {
+            "address": "0x0c05cc14",
+            "size": 48,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c05caf8": "0x0c05caf8",
+      "_func_0c05cb50": "0x0c05cb50",
+      "_func_0c05cba4": "0x0c05cba4",
+      "_func_0c05cbb6": "0x0c05cbb6"
+    },
+    "imports": {
+      "_func_0c02a026": "0x0c02a026",
+      "_func_0c0437b8": "0x0c0437b8",
+      "_table_0c23fc30": "0x0c23fc30"
     }
   }
 ]
