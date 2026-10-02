@@ -19,7 +19,9 @@ struct MaskObject {
     unsigned char b1a3;         /* sp_move_strength */
     unsigned char pad2[0x1d0 - 0x1a4];
     unsigned char b1d0;         /* unk_01d0, chooses the animation to play */
-    unsigned char pad3[0x1de - 0x1d1];
+    unsigned char pad1d1;
+    unsigned char b1d2;
+    unsigned char pad3[0x1de - 0x1d3];
     char b1de;
     unsigned char pad3b[0x1f2 - 0x1df];
     char b1f2, b1f3;
@@ -34,12 +36,23 @@ struct MaskObject {
     char b27a;
     unsigned char pad6b[0x340 - 0x27b];
     unsigned short w340, w342, w344;
-    unsigned char pad7[0x41c - 0x346];
+    unsigned char pad34a[0x34a - 0x346];
+    unsigned short w34a;
+    unsigned char pad34e[0x34e - 0x34c];
+    unsigned short w34e;
+    unsigned char pad35c[0x35c - 0x350];
+    unsigned char b35c;
+    unsigned char pad7[0x41c - 0x35d];
     float f41c;                 /* compared against y_pos; the ground line */
-    unsigned char pad8[0x4aa - 0x420];
+    unsigned char pad8[0x448 - 0x420];
+    unsigned char b448;
+    unsigned char pad45d[0x45d - 0x449];
+    unsigned char b45d;
+    unsigned char pad4aa[0x4aa - 0x45e];
     unsigned char b4aa, b4ab;
     unsigned short w4ac;
-    unsigned char pad9[0x525 - 0x4ae];
+    unsigned short w4ae;
+    unsigned char pad9[0x525 - 0x4b0];
     unsigned char b525;         /* is_cpu */
 };
 
@@ -47,9 +60,14 @@ struct MaskObject {
 struct MaskInput {
     unsigned char b0;
     char b1;
-    unsigned short w2;
-    unsigned char pad1[2];
+    unsigned char b2;
+    unsigned char b3;
+    unsigned char b4;
+    unsigned char b5;
     unsigned short w6;
+    unsigned short w8;
+    unsigned short w10;
+    unsigned short w12;
 };
 
 /* A child record embedded at offset 0x2a4 in actors that dispatch through the
@@ -92,10 +110,13 @@ struct Actor {
     unsigned char b33;
     unsigned char pad3[18];
     float f52, f56, f60;
-    unsigned char pad4[80 - 64];
+    unsigned char pad4[72 - 64];
+    int l72;
     float f80, f84;
     float f88, f92, f96, f100, f104, f108, f112, f116;
-    unsigned char pad5[0x12c - 120];
+    unsigned char pad5[0x108 - 120];
+    float f0108;
+    unsigned char pad5b[0x12c - 0x10c];
     unsigned char b12c;
     unsigned char pad6[0x130 - 0x12d];
     short w130;
@@ -106,7 +127,8 @@ struct Actor {
     char b158, b159;
     unsigned char pad7[0x170 - 0x15a];
     struct Hitbox *p170;
-    unsigned char pad7aa[0x19c - 0x174];
+    void *p174;
+    unsigned char pad7aa[0x19c - 0x178];
     unsigned char b19c;
     char b19d;
     char b19e;
@@ -126,7 +148,7 @@ struct Actor {
     unsigned char pad7d[0x1b4 - 0x1b0];
     struct Actor *p1b4;
     struct Actor *p1b8;
-    unsigned char pad7da[0x1c0 - 0x1bc];
+    void *p1bc;
     struct HitboxSet *p1c0;
     int p1c4;
     struct Actor *p1c8;
@@ -134,14 +156,21 @@ struct Actor {
     unsigned char b1d0;
     unsigned char b1d1;
     char b1d2;
-    unsigned char pad7f[0x1e9 - 0x1d3];
+    unsigned char b1d3;
+    unsigned char pad7f0[0x1d6 - 0x1d4];
+    char b1d6;
+    unsigned char pad7f[0x1e1 - 0x1d7];
+    unsigned char b1e1;
+    unsigned char pad7f1[0x1e9 - 0x1e2];
     unsigned char b1e9, b1ea;
     unsigned char b1eb;
     unsigned char pad7fb[0x1ed - 0x1ec];
     unsigned char b1ed;
-    unsigned char pad7fc[0x1f2 - 0x1ee];
+    unsigned char b1ee;
+    unsigned char pad7fc[0x1f2 - 0x1ef];
     unsigned char b1f2;
-    unsigned char pad7ff[0x1f5 - 0x1f3];
+    unsigned char pad7ff[0x1f4 - 0x1f3];
+    unsigned char b1f4;
     unsigned char b1f5;
     unsigned char b1f6, b1f7;
     unsigned char pad7ffc[0x1f9 - 0x1f8];
@@ -152,27 +181,49 @@ struct Actor {
     unsigned char pad9[0x201 - 0x1fe];
     char b201;
     unsigned char b202;
-    unsigned char pad9a[0x205 - 0x203];
+    unsigned char b203;
+    unsigned char pad9a[0x205 - 0x204];
     unsigned char b205;
     unsigned char pad9c[0x207 - 0x206];
     unsigned char b207;
-    unsigned char pad9cb[0x20c - 0x208];
+    float f208;
     struct Actor *p20c;
-    unsigned char pad9d[0x23a - 0x210];
+    float f218, f21c;
+    unsigned char pad9d0[0x22e - 0x220];
+    unsigned char b22e;
+    unsigned char pad9d1[0x232 - 0x22f];
+    unsigned char b232;
+    unsigned char b233;
+    unsigned char pad9d[0x235 - 0x234];
+    unsigned char b235;
+    unsigned char pad9d2[0x237 - 0x236];
+    unsigned char b237;
+    unsigned char b238;
+    char b239;
     char b23a;
     unsigned char pad9e[0x248 - 0x23b];
     unsigned char b248;
-    unsigned char pad9f[0x254 - 0x249];
+    unsigned char pad9f[0x24c - 0x249];
+    float f24c, f250;
     unsigned char b254;
     unsigned char b255;
-    unsigned char pad10[0x2a4 - 0x256];
+    unsigned char b256;
+    unsigned char pad10x[0x258 - 0x257];
+    unsigned char b258;
+    unsigned char pad10[0x278 - 0x259];
+    unsigned short w278;
+    unsigned char pad10a[0x284 - 0x27a];
+    float f284, f288, f28c;
+    unsigned char pad10a2[0x2a4 - 0x290];
     struct ActorSub2a4 sub2a4;
     unsigned char pad10b[0x327 - 0x2b0];
     unsigned char b327;
     unsigned char b328;
     unsigned char pad11[0x340 - 0x329];
     unsigned short w340;
-    unsigned char pad11b[0x3f0 - 0x342];
+    unsigned char pad11b[0x34e - 0x342];
+    unsigned short w34e;
+    unsigned char pad11c[0x3f0 - 0x350];
     unsigned char b3f0, b3f1;
     unsigned char pad12[0x3f8 - 0x3f2];
     unsigned char b3f8, b3f9;
@@ -191,9 +242,17 @@ struct Actor {
 };
 
 struct ActorVt {
-    unsigned char pad[24];
+    unsigned char pad[16];
+    void (*fn16)(struct Actor *);
+    unsigned char pad1[24 - 20];
     void (*fn24)(struct Actor *);
-    unsigned char pad2[0x60 - 28];
+    unsigned char pad2[44 - 28];
+    void (*fn2c)(struct Actor *);
+    void (*fn30)(struct Actor *);
+    unsigned char pad3[56 - 52];
+    void (*fn38)(struct Actor *);
+    void (*fn3c)(struct Actor *);
+    unsigned char pad4[0x60 - 64];
     void (*f60)(struct Actor *);
 };
 
