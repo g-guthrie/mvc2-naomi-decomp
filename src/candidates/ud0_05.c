@@ -1,14 +1,8 @@
-/* Unit 0x0c05b474-0x0c05b720: 7 functions. The first 72-byte pool matches
- * exactly with SHC's float spellings; the second pool is still nonexact.
- * Two pairs are near-duplicated with
- * different constants (35/50 vs 36/51). func_0c05b508 and func_0c05b532
- * match exactly; func_0c05b6d4 too. func_0c05b474/func_0c05b616 each differ
- * by one anonymous-register choice (r2 vs r3 rebuilding the a->b141 test
- * address) that no tried rephrasing of the surrounding `if` changed.
- * func_0c05b544 differs by a bf/bf.s (delay-slot) choice after the
- * `a->b141==2` compare and a following r2-vs-r4 register swap for storing 0;
- * func_0c05b6aa inherits the same cascade. Every mismatch found so far is a
- * scratch-register pick, not a structural difference. */
+/* Unit 0x0c05b474-0x0c05b720: 7 functions, 678/684. Both pools match.
+ * Five functions match exactly (including func_0c05b544 after
+ * `a->b141 = 0, func_0c025900(a, 0, 0)`). func_0c05b474 and
+ * func_0c05b616 each differ by one anonymous-register choice (r2 vs r3
+ * on the a->b141 truth test). */
 struct Obj_ud0_05;
 
 struct Vec2_ud0_05 { float x, y, z; };
@@ -112,8 +106,7 @@ void func_0c05b544(struct Obj_ud0_05 *a)
         return;
     }
     if (a->b141 == 1) {
-        a->b141 = 0;
-        func_0c025900(a, 0, 0);
+        a->b141 = 0, func_0c025900(a, 0, 0);
         p = a->p1c8;
         p->p1b4 = a;
         p->b1f6 = 1;
