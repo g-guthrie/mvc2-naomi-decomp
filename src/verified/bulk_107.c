@@ -230,22 +230,6 @@ const unsigned int dat_0c19d824[] = {
     0x012c041cu, 0x0c029fc4u, 0x0c19ee84u, 0x0c258a3cu,
 };
 
-#pragma section n19d906
-const unsigned short dat_0c19d906[] = {
-    0x00dcu, 0x012cu, 0x01a3u, 0x0130u,
-};
-
-#pragma section n19d914
-const unsigned int dat_0c19d914[] = {
-    0x0c1fb7a0u, 0x42aa0000u, 0xc2aa0000u, 0x43250000u,
-    0x0c029e70u,
-};
-
-#pragma section n19d930
-const unsigned int dat_0c19d930[] = {
-    0x0c258a4cu,
-};
-
 #pragma section n19da4a
 const unsigned short dat_0c19da4a[] = {
     0x00dcu, 0x012cu, 0x01a3u, 0x0158u, 0x0108u, 0x01d0u, 0x01e9u, 0x0141u,
