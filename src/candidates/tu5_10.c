@@ -54,9 +54,10 @@ int func_0c1133a8(struct Obj_tu5_10 *a)
     if (!func_0c046e7e(a, dat_0c24c170, a->x384))
         return 0;
     if (a->b1f9 == 2 && a->b1fc == 0) {
-        if (a->b1d4 != 0)
+        char *p = &a->b1d4;
+        if (*p != 0)
             return 0;
-        a->b1d4 = a->b1d4 + 1;
+        *p = *p + 1;
     }
     if (a->p40c->b0 == 0)
         return 0;

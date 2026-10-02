@@ -32,22 +32,10 @@ extern void func_0c048bb0(struct Obj_ub5_01 *, int);
 
 void func_0c088548(struct Obj_ub5_01 *a, struct Obj_ub5_01 *b)
 {
-    {
-        float *p = &a->f92;
-        a->f52 = a->f52 + *p;
-    }
-    {
-        float *p = &a->f104;
-        a->f92 = a->f92 + *p;
-    }
-    {
-        float *p = &a->f96;
-        a->f56 = a->f56 + *p;
-    }
-    {
-        float *p = &a->f108;
-        a->f96 = a->f96 + *p;
-    }
+    a->f52 = a->f52 + *(&a->f92);
+    a->f92 = a->f92 + *(&a->f104);
+    a->f56 = a->f56 + *(&a->f96);
+    a->f96 = a->f96 + *(&a->f108);
     func_0c02a026(a);
     if (a->b331) {
         int r5;

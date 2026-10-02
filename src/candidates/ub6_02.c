@@ -114,15 +114,13 @@ void func_0c0e99da(struct Obj_ub6_02 *a)
         a->f96 = -11.785714149475098f;
         a->s28 = (short)dat_0c249ab0[2];
     }
-    if (a->b1d2)
+    if (!a->b1d2)
         a->f92 = -a->f92;
     a->b1fc = 0;
 }
 
 void func_0c0e9b04(struct Obj_ub6_02 *a)
 {
-    int r5, r6;
-
     if (a->b140) {
         a->b140 = 0;
         if (a->b1e8 == 97)
@@ -134,7 +132,7 @@ void func_0c0e9b04(struct Obj_ub6_02 *a)
     }
     func_0c02a026(a);
     a->s28--;
-    if (a->s28 != 0 && a->f41c > a->f56)
+    if (a->s28 != 0 && a->f56 > a->f41c)
         return;
     a->b6++;
     a->f92 = 0.0f;

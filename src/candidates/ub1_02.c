@@ -70,12 +70,11 @@ void func_0c0a0da0(struct Obj_ub1_02 *a)
     func_0c048bb0(a, 5);
     func_0c0442fa(a);
     {
-        char neg = a->b466;
-        struct Vec4_ub1_02 *t = dat_0c2437c4 + a->b419;
-        a->f92 = neg ? -t->x : t->x;
-        a->f104 = neg ? -t->y : t->y;
-        a->f96 = t->z;
-        a->f108 = t->w;
+        struct Vec4_ub1_02 *t = dat_0c2437c4;
+        a->f92 = a->b466 ? -t[a->b419].x : t[a->b419].x;
+        a->f104 = a->b466 ? -t[a->b419].y : t[a->b419].y;
+        a->f96 = t[a->b419].z;
+        a->f108 = t[a->b419].w;
     }
     if (a->b505 != 2) {
         a->b505 = 0;

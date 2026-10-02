@@ -22,7 +22,7 @@ struct Obj_ub6_07 {
     unsigned char pad5[0x12c - 0x10c];
     unsigned char b12c;
     unsigned char pad6[0x141 - 0x12d];
-    unsigned char b141;
+    signed char b141;
     unsigned char pad7[0x1f9 - 0x142];
     unsigned char b1f9;
 };
@@ -33,7 +33,7 @@ extern handler_ub6_07 dat_0c244e18[];
 extern signed char func_0c02a026(struct Obj_ub6_07 *);
 extern void func_0c02a0c4(struct Obj_ub6_07 *, int, int);
 extern void func_0c0344a0(struct Obj_ub6_07 *, int);
-extern void func_0c1a62b0(struct Obj_ub6_07 *);
+extern void func_0c1a62b0(struct Obj_ub6_07 *, int);
 
 void func_0c0b4630(struct Obj_ub6_07 *a)
 {
@@ -60,9 +60,9 @@ void func_0c0b468e(struct Obj_ub6_07 *a)
     a->b12c = 1;
     func_0c02a0c4(a, 18, 1);
     a->f264 = 0.200000003f;
+    a->f56 = a->f56 + 100.0f;
     a->b1f9 = 2;
-    a->f56 += 100.0f;
-    func_0c1a62b0(a);
+    func_0c1a62b0(a, 4);
 }
 
 void func_0c0b46d4(struct Obj_ub6_07 *a)

@@ -49,6 +49,14 @@ struct Obj_me00 {
     float f41c;
 };
 
+struct Parent_me00 {
+    unsigned char b00, b01, b02;
+    unsigned char pad0[0x1d0 - 3];
+    unsigned char b1d0;
+    unsigned char pad1[0x1e9 - 0x1d1];
+    unsigned char b1e9;
+};
+
 struct Glob_me00 { unsigned char pad[0x14]; int l14; };
 
 typedef void (*handler_me00)(struct Obj_me00 *);
@@ -127,8 +135,8 @@ void func_0c1aa8bc(struct Obj_me00 *a)
 
 void func_0c1aa9c4(struct Obj_me00 *a)
 {
+    struct Parent_me00 *b = (struct Parent_me00 *)a->p18;
     unsigned char m = dat_0c2f833e;
-    struct Obj_me00 *b = a->p18;
 
     if (m & (1 << (b->b02 ^ 1)))
         return;
