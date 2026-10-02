@@ -1,7 +1,4 @@
-/* Three functions sharing the literal pool at 0x0c113448. 285/288 bytes match.
- * func_0c1133a8 differs in one instruction: the load of b1d4 for the zero
- * test goes to r1 where retail uses r3 (0x0c1133d2/0x0c1133d4). Eleven
- * spellings of the test did not move it. */
+/* Three functions sharing the literal pool at 0x0c113448. */
 
 struct Sub_tu5_10 { unsigned char pad[4]; short w4; };
 struct Flag_tu5_10 { char b0; };
@@ -53,12 +50,15 @@ int func_0c1133a8(struct Obj_tu5_10 *a)
 {
     if (!func_0c046e7e(a, dat_0c24c170, a->x384))
         return 0;
-    if (a->b1f9 == 2 && a->b1fc == 0) {
-        char *p = &a->b1d4;
-        if (*p != 0)
+    if (a->b1f9 == 2) {
+        if (a->b1fc != 0)
+            goto skip;
+        if (a->b1d4 != 0)
             return 0;
-        *p = *p + 1;
+        else
+            a->b1d4 = a->b1d4 + 1;
     }
+skip:
     if (a->p40c->b0 == 0)
         return 0;
     a->b5 = 0;
