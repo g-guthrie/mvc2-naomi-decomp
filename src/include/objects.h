@@ -76,7 +76,8 @@ struct ActorSub2a4 {
     unsigned char pad[2];
     char b2;
     unsigned char b3;
-    unsigned char pad1[4];
+    unsigned char b4;
+    unsigned char pad1[3];
     short s8;
     short s10;
     unsigned char pad2[4];
