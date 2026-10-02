@@ -1,17 +1,7 @@
 /* Translation unit at 0x0c0a0da0, four functions. The assigned extent
  * (0x0c0a0da0 size 630) ends at 0x0c0a1016, inside the trailing literal pool;
  * the real extent runs to the next function's prologue at 0x0c0a102c (size
- * 652), so this file is registered with that extent instead.
- * func_0c0a0e5c, func_0c0a0eac and func_0c0a0f9a match byte for byte, as do
- * both interior pools (0x0c0a0ec4 and 0x0c0a100e). func_0c0a0da0 differs: the
- * table lookup `dat_0c2437c4[a->b419]` (a 16-byte-stride float[4] row, negated
- * on the x/y fields when a->b466 is set) gets the same values and instruction
- * count as retail but with r2/r3/r4 permuted to r3/r4/r5 for the index, byte
- * and pointer temporaries; that shifts every following instruction's register
- * choice (never its meaning) through the end of the function, at
- * 0x0c0a0e58. No spelling tried (direct field re-reads, a cached bool, a
- * cached index, reordering the pointer/index/flag reads) reproduced retail's
- * particular r2/r3/r4 assignment there. */
+ * 652). */
 struct Vec4_ub1_02 { float x, y, z, w; };
 struct Table_ub1_02 { unsigned char pad[0x7c]; short w7c[64]; };
 
@@ -35,7 +25,7 @@ struct Obj_ub1_02 {
     unsigned char pad8[0x1a1 - 0x19f];
     unsigned char b417;
     unsigned char pad9[0x1a3 - 0x1a2];
-    unsigned char b419;
+    char b419;
     unsigned char pad10[0x1ac - 0x1a4];
     short s428;
     unsigned char pad11[0x1c4 - 0x1ae];
@@ -71,10 +61,11 @@ void func_0c0a0da0(struct Obj_ub1_02 *a)
     func_0c0442fa(a);
     {
         struct Vec4_ub1_02 *t = dat_0c2437c4;
-        a->f92 = a->b466 ? -t[a->b419].x : t[a->b419].x;
-        a->f104 = a->b466 ? -t[a->b419].y : t[a->b419].y;
-        a->f96 = t[a->b419].z;
-        a->f108 = t[a->b419].w;
+        t += (unsigned char)a->b419;
+        a->f92 = a->b466 ? -t->x : t->x;
+        a->f104 = a->b466 ? -t->y : t->y;
+        a->f96 = t->z;
+        a->f108 = t->w;
     }
     if (a->b505 != 2) {
         a->b505 = 0;
