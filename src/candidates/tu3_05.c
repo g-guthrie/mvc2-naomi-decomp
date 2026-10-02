@@ -1,8 +1,3 @@
-/* Two functions share the pool at 0x0c1e1690. The 244-byte section links at
- * retail; func_0c1e15cc and the 48-byte pool match exactly. The remaining
- * function matches 124/128 bytes. At 0x0c1e1640, retail loads the callee
- * into r1 and dat_0c2d964c->p0 into r2; this source uses r2 and r4.
- * The pool scalar is 0.005f (0x3ba3d70a). */
 struct Obj_tu3_05 {
     unsigned char pad0[4];
     unsigned char b4;
@@ -18,8 +13,7 @@ struct Obj_tu3_05 {
     unsigned char b12c;
 };
 
-struct Inner_tu3_05 { unsigned char pad[0x88]; int l88; int l8c; };
-struct Outer_tu3_05 { struct Inner_tu3_05 *p0; };
+struct Outer_tu3_05 { int *p0; };
 
 extern struct Outer_tu3_05 *dat_0c2d964c;
 extern struct Obj_tu3_05 *func_0c0374da(int, int, int);
@@ -37,7 +31,7 @@ void func_0c1e15cc(void)
     if ((a = func_0c0374da(0, 5, 1)) != 0) {
         a->b12c = 1;
         a->p16 = func_0c1e1610;
-        a->l84 = dat_0c2d964c->p0->l88;
+        a->l84 = dat_0c2d964c->p0[0x22];
         a->l0cc = 0x800;
         func_0c1d91a8(a->l84);
     }
@@ -51,7 +45,7 @@ void func_0c1e1610(struct Obj_tu3_05 *a)
         a->s28 = a->s28 + 1;
         if (a->s28 >= 200)
             a->s28 = 0;
-        func_0c1d8ff8(dat_0c2d964c->p0->l8c, a->l84);
+        func_0c1d8ff8(dat_0c2d964c->p0[0x23], a->l84);
         while (func_0c1d901e() == 0) {
             func_0c1d912a(&x, &y);
             y += (float)a->s28 * 0.005f;
