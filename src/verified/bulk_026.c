@@ -380,16 +380,6 @@ const unsigned short dat_0c07d6be[] = {
     0x0142u,
 };
 
-#pragma section n07d818
-const unsigned short dat_0c07d818[] = {
-    0x01d6u,
-};
-
-#pragma section n07d81c
-const unsigned int dat_0c07d81c[] = {
-    0x01fe03f4u,
-};
-
 #pragma section n07d964
 void (*const table_0c07d964[])(void) = {
     func_0c241958,
