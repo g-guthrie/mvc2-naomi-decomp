@@ -73,6 +73,14 @@ struct ActorSub2a4Extended {
     unsigned short w42;
 };
 
+/* Motion subrecord used by the phase and velocity handlers at 0x0c08a3c0. */
+struct MotionContext8a3 {
+    struct ActorSub2a4 base;
+    unsigned char pad28[8];
+    float vx, vy, target, phase, step;
+    unsigned char pad56[2], flag58;
+};
+
 union ActorParameter4 { int integer; float real; };
 
 struct AnimationFrame8 {
@@ -313,7 +321,9 @@ struct Actor {
     unsigned char pad13c[0x41c - 0x412];
     float f41c;
     unsigned short w420;
-    unsigned char pad14[0x428 - 0x422];
+    unsigned char pad422[2];
+    unsigned short w424;
+    unsigned char pad426[2];
     void *p428;
     unsigned char pad14b[0x446 - 0x42c];
     unsigned char b446, b447;
@@ -339,7 +349,7 @@ struct ActorFlags {
     unsigned char pad68[0x4e-68], b4e, pad4f, b50; unsigned char pad81[0x80-0x51]; char b128;
     signed char b81; unsigned char pad130[2]; signed char b84;
     signed char b85; unsigned char pad134[0x88-0x86]; unsigned char b88; unsigned char pad137[0x8d-0x89], b8d; signed char b8e;
-    unsigned char pad143[5]; void *p94; unsigned char b98,pad99, b9a; unsigned char pad9b[0xa5-0x9b]; signed char b_a5;
+    unsigned char pad143[1]; int i90; void *p94; unsigned char b98,pad99, b9a; unsigned char pad9b[0xa5-0x9b]; signed char b_a5;
 };
 struct Glob_me00 { unsigned char pad[0x14]; int l14; };
 
@@ -553,4 +563,13 @@ struct Obj_tu5_03 {
 
 struct ActorSubLaunchState36 { unsigned char pad[22], b22,b23,b24,b25,b26,b27,b28,b29,b30,b31; struct Actor *target32; };
 struct ActorChildTimerReference { struct ActorChildReference base; short timer; };
+struct Dat_13bb5c {
+    unsigned char pad[0x3b];
+    unsigned char b3b;
+    unsigned short w3c;
+};
+
+/* Byte controls used by callbacks receiving the actor state at 0x2a4. */
+struct ActorSubControlBytes { unsigned char pad0[2]; char b2; unsigned char pad3; char b4; unsigned char pad5[7]; char b12; };
+
 #endif

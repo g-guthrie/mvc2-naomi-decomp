@@ -1,6 +1,4 @@
-/* Candidate: defined null return branches to 0c156372 instead of retail
- * epilogue at 0c156376. Constructor differs by one branch byte; all six
- * remaining routines and three literal pools are exact. */
+/* Exact 0x0c15632c..0x0c156664. Allocation-failure fallthrough intentionally preserves the allocator null result in r0 under bundled SHC; this target-specific source is not portable C. */
 #include "objects.h"
 extern struct LinkedActor *func_0c0374da(int,int,int);
 extern void (*table_0c2506e0[])(struct LinkedActor *);
@@ -34,7 +32,6 @@ struct LinkedActor *func_0c15632c(struct LinkedActor *owner)
         (*global)->short_value=a->p24->sdc.w158;
         return a;
     }
-    return a;
 }
 void func_0c15637e(struct LinkedActor *a)
 {
