@@ -58,18 +58,6 @@ extern void func_0c241f6c(void);
 extern void func_0c241f7c(void);
 extern void func_0c241fb0(void);
 
-#pragma section n07ec00
-void (*const table_0c07ec00[])(void) = {
-    func_0c02a026,
-    func_0c08183c,
-    func_0c0818cc,
-    func_0c241ac4,
-    func_0c0442fa,
-    func_0c0432ca,
-    func_0c048bb0,
-    func_0c02a0c4,
-};
-
 #pragma section n07ed28
 void (*const table_0c07ed28[])(void) = {
     func_0c02a026,
