@@ -79382,6 +79382,13 @@
       "evidence": "CFG walk from 0x0c08a8b6; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c08a8ca",
+      "size": 22,
+      "kind": "code",
+      "sha256": "f6c3aa6762424235b0ba2182d5f4c7a137824980d5288414e8fd49e143fa35d6",
+      "evidence": "Entry is referenced by pointer cell 0x0c2423c4. Reviewed dispatcher: save r14, preserve actor, read state byte6, load callback from table0x0c242560 indexed by state*4, pass actor+0x2a4 in r5, JMP @r3 with restore-r14 delay slot at0x0c08a8de."
+    },
+    {
       "address": "0x0c08a8e0",
       "size": 4,
       "kind": "data",
@@ -79401,6 +79408,13 @@
       "kind": "data",
       "sha256": "a5d1bfc41f7c667e3904d7c6a92f9f157c455971bef761ee6c869cc8ab25194d",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c08a820; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c08a8ec",
+      "size": 4,
+      "kind": "data",
+      "sha256": "d6821e8eee375a3222710e9af591359fbaf2e1b731be64464cdc82a70f54d38b",
+      "evidence": "MOV.W at0x0c08a8d4 consumes word0x02a4 at0x0c08a8ec; the following zero halfword aligns the next longword pool. Dispatcher ends in an indirect JMP with its delay slot before this pool; no fallthrough executes these words."
     },
     {
       "address": "0x0c08a8f0",
@@ -79436,6 +79450,13 @@
       "kind": "data",
       "sha256": "a831f3191f3147255eb0ecf425e9259769aa07966b8fec9d86665e93d5560b49",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c08a8b6; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c08a918",
+      "size": 4,
+      "kind": "data",
+      "sha256": "effc02395762e81aaef48978656730bf1c868a6d74148e880ea2384039ae0544",
+      "evidence": "MOV.L at0x0c08a8d0 consumes pointer0x0c242560 at0x0c08a918. Table entries inspected at0x0c242560/564/568 point to handlers0x0c08a91c/974/adc."
     },
     {
       "address": "0x0c08a91c",
