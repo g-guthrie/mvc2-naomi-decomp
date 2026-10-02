@@ -42,16 +42,6 @@ extern void func_0c24a194(void);
 extern void func_0c24a1d8(void);
 extern void func_0c24a22c(void);
 
-#pragma section n0ef8b0
-const unsigned int dat_0c0ef8b0[] = {
-    0x01a1019eu,
-};
-
-#pragma section n0ef8b8
-const unsigned int dat_0c0ef8b8[] = {
-    0x0c043352u, 0x0c02a026u, 0x0c0437b8u, 0x0c2f83f8u,
-};
-
 #pragma section n0efa1c
 void (*const table_0c0efa1c[])(void) = {
     func_0c0442fa,
