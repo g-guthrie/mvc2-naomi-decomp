@@ -110,16 +110,6 @@ void (*const table_0c0d5e28[])(void) = {
     func_0c03edcc,
 };
 
-#pragma section n0d6070
-const unsigned int dat_0c0d6070[] = {
-    0x013001d2u,
-};
-
-#pragma section n0d6084
-const unsigned int dat_0c0d6084[] = {
-    0x0c1d4610u, 0x0c02a0c4u, 0xc25c0000u, 0x42ebb6dbu,
-};
-
 #pragma section n0d61e4
 void (*const table_0c0d61e4[])(void) = {
     func_0c02a0c4,
