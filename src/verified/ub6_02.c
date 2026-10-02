@@ -1,16 +1,4 @@
-/* Translation unit around 0x0c0e9950: six state-machine style callbacks on a
- * moving actor. 763/768 bytes match: func_0c0e9950, func_0c0e99b2,
- * func_0c0e99c8, func_0c0e99da and func_0c0e9c0c are exact, and all three
- * pools (0x0c0e9a78, 0x0c0e9bb0, 0x0c0e9c40) are exact.
- *
- * The float multipliers must be spelled to the exact retail bits: 10.833333,
- * 6.66666667, -8.5714283, -6.4285712, -11.7857141 (plain spellings land one
- * ULP off). func_0c0e9b04's final dispatch (a->_b1f9/b1e8-97 shared call)
- * is 168/172: retail shares one jsr between the b1f9==2/97 and b1f9!=2/97
- * call-argument paths (bra into the middle of the else block); every C shape
- * tried here either keeps two separate jsr sites (4 extra bytes) or makes
- * SHC's register allocation collapse (a `goto` variant demotes the other
- * functions). Left as a candidate. */
+/* Translation unit at 0x0c0e9950: six state-machine callbacks. 768/768. */
 struct Obj_ub6_02 {
     unsigned char pad0[6];
     unsigned char b6;
