@@ -1,0 +1,54 @@
+#include "objects.h"
+
+struct ActorCounts { unsigned char pad[124]; short counts[100]; };
+extern struct ActorCounts *dat_0c2f83f8;
+extern char func_0c02a026(struct Actor *);
+extern void func_0c02a0c4(struct Actor *, int, int);
+extern unsigned char func_0c044e52(struct Actor *);
+extern void func_0c043324(struct Actor *);
+extern void func_0c0439c4(struct Actor *);
+typedef void (*handler_t)(struct Actor *);
+extern handler_t table_0c24b5a0[];
+
+void func_0c1073f8(struct Actor *a)
+{
+    a->b6++;
+    a->b1f9 = 2;
+    a->f92 = -30.0f;
+    if (a->b1d2)
+        a->f92 = -a->f92;
+    a->f104 = 0.0f;
+    a->f96 = -0.2678571343422f;
+    a->f108 = -0.80357140303f;
+    a->b1a1 = 63;
+    a->w1ac = 0;
+    a->b19e = 0;
+    a->p1c4 = 0;
+    dat_0c2f83f8->counts[a->b2]++;
+    func_0c02a0c4(a, 20, 1);
+}
+
+void func_0c107460(struct Actor *a)
+{
+    func_0c02a026(a);
+    a->f52 += a->f92;
+    a->f92 += a->f104;
+    a->f56 += a->f96;
+    a->f96 += a->f108;
+    if (func_0c044e52(a)) {
+        a->b6++;
+        func_0c02a0c4(a, 20, 2);
+        func_0c043324(a);
+    }
+}
+
+void func_0c1074ce(struct Actor *a)
+{
+    if (func_0c02a026(a) < 0)
+        func_0c0439c4(a);
+}
+
+void func_0c1074f0(struct Actor *a)
+{
+    table_0c24b5a0[a->b6](a);
+}
