@@ -1,10 +1,8 @@
 /* Unit 0x0c0cbd20 size 648. Two pools: 0x0c0cbe5a (46 bytes, including the
  * 2-byte pad at 0x0c0cbe62) and 0x0c0cbf88 (32 bytes). func_0c0cbe08 bra/bt
  * over the first pool and continues at 0x0c0cbe88; func_0c0cbee0 bra's back
- * to func_0c0cbdbe, so both belong here. Next function is 0x0c0cbfa8.
- * 606/648: first five functions and both pools match; remaining diffs are
- * fmov fr4,fr5 in func_0c0cbe08's continuation and r2 vs r3 on b321 in
- * func_0c0cbee0. */
+ * to func_0c0cbdbe. 606/648: first five functions and both pools match.
+ * Remaining: fmov fr4,fr5 in func_0c0cbe08 continuation; r2 vs r3 on b321. */
 struct Obj_ub4_03 {
     unsigned char pad0[2];
     unsigned char b2;
@@ -103,11 +101,10 @@ void func_0c0cbe08(struct Obj_ub4_03 *a)
     dat_0c2f83f8->counts[a->b2]++;
     f = a->b419 ? 4.16666651f : 2.5f;
     if (a->b1d2 != 0) {
-        if (a->f92 < 0)
+        if (a->f92 < 0.0f)
             f = -f;
-    } else {
-        if (a->f92 <= 0)
-            f = -f;
+    } else if (a->f92 <= 0.0f) {
+        f = -f;
     }
     a->f92 += f;
     a->f104 = 0;
