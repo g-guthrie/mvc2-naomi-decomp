@@ -188,18 +188,6 @@ const unsigned short dat_0c0dc6a2[] = {
     0x041cu, 0x01f9u,
 };
 
-#pragma section n0dc800
-void (*const table_0c0dc800[])(void) = {
-    func_0c048bb0,
-    func_0c0442fa,
-    func_0c248c50,
-    func_0c248c54,
-    func_0c0344a0,
-    func_0c02a0c4,
-    func_0c1b1910,
-    func_0c02a026,
-};
-
 #pragma section n0dcb86
 const unsigned short dat_0c0dcb86[] = {
     0x014bu, 0x0141u, 0x01a3u,
