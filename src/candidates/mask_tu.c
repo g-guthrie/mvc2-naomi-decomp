@@ -1,5 +1,7 @@
-/* Four functions sharing the literal pool at 0x0c047b2e. 281/288 bytes match:
- * func_0c047a40 loads the table index into r2 where retail uses r3. */
+/* Four functions sharing the literal pool at 0x0c047b2e. 281/288 bytes match.
+ * func_0c047a40 0x0c047a76: retail mov.b @(r0,r4),r3 / extu.b r3 / table r2;
+ * ours r2/r3 swapped. Predecessor 0x0c0479a6 (and 0x0c047940 / 0x0c047886)
+ * share return-0 at 0x0c047a82, so the real TU starts earlier. */
 #include "objects.h"
 
 extern float dat_0c2d9300;
