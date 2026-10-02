@@ -9696,12 +9696,6 @@
         "size": 4
       },
       {
-        "section": "Cn06ceb0",
-        "kind": "data",
-        "address": "0x0c06ceb0",
-        "size": 8
-      },
-      {
         "section": "Cn06d148",
         "kind": "data",
         "address": "0x0c06d148",
@@ -9839,7 +9833,6 @@
       "_ptr_0c06ca5c": "0x0c06ca5c",
       "_ptr_0c06cb8c": "0x0c06cb8c",
       "_ptr_0c06cba0": "0x0c06cba0",
-      "_table_0c06ceb0": "0x0c06ceb0",
       "_ptr_0c06d148": "0x0c06d148",
       "_ptr_0c06d5f0": "0x0c06d5f0",
       "_table_0c06d7c4": "0x0c06d7c4",
@@ -39622,12 +39615,6 @@
         "size": 12
       },
       {
-        "section": "Cn059c30",
-        "kind": "data",
-        "address": "0x0c059c30",
-        "size": 28
-      },
-      {
         "section": "Cn059d80",
         "kind": "data",
         "address": "0x0c059d80",
@@ -39752,7 +39739,6 @@
       "_dat_0c0597bc": "0x0c0597bc",
       "_dat_0c059930": "0x0c059930",
       "_dat_0c059ad8": "0x0c059ad8",
-      "_table_0c059c30": "0x0c059c30",
       "_table_0c059d80": "0x0c059d80",
       "_dat_0c059ed0": "0x0c059ed0",
       "_dat_0c059ed8": "0x0c059ed8",
@@ -39998,12 +39984,6 @@
         "size": 12
       },
       {
-        "section": "Cn05ccfc",
-        "kind": "data",
-        "address": "0x0c05ccfc",
-        "size": 16
-      },
-      {
         "section": "Cn05ce44",
         "kind": "data",
         "address": "0x0c05ce44",
@@ -40203,7 +40183,6 @@
       "_table_0c05cad4": "0x0c05cad4",
       "_dat_0c05cc16": "0x0c05cc16",
       "_dat_0c05cc20": "0x0c05cc20",
-      "_table_0c05ccfc": "0x0c05ccfc",
       "_table_0c05ce44": "0x0c05ce44",
       "_dat_0c05ce6c": "0x0c05ce6c",
       "_dat_0c05cf8c": "0x0c05cf8c",
@@ -41998,12 +41977,6 @@
         "size": 16
       },
       {
-        "section": "Cn06ce8c",
-        "kind": "data",
-        "address": "0x0c06ce8c",
-        "size": 8
-      },
-      {
         "section": "Cn06cfe4",
         "kind": "data",
         "address": "0x0c06cfe4",
@@ -42180,7 +42153,6 @@
       "_dat_0c06cd16": "0x0c06cd16",
       "_dat_0c06cd20": "0x0c06cd20",
       "_table_0c06cd3c": "0x0c06cd3c",
-      "_dat_0c06ce8c": "0x0c06ce8c",
       "_table_0c06cfe4": "0x0c06cfe4",
       "_dat_0c06d13c": "0x0c06d13c",
       "_dat_0c06d158": "0x0c06d158",
@@ -119871,12 +119843,6 @@
         "size": 24
       },
       {
-        "section": "Cn03bcf6",
-        "kind": "data",
-        "address": "0x0c05ccf6",
-        "size": 4
-      },
-      {
         "section": "Cn03be2e",
         "kind": "data",
         "address": "0x0c05ce2e",
@@ -121686,18 +121652,6 @@
         "kind": "data",
         "address": "0x0c06cd4c",
         "size": 12
-      },
-      {
-        "section": "Cn04be88",
-        "kind": "data",
-        "address": "0x0c06ce88",
-        "size": 4
-      },
-      {
-        "section": "Cn04be94",
-        "kind": "data",
-        "address": "0x0c06ce94",
-        "size": 28
       },
       {
         "section": "Cn04bfd6",
@@ -219435,6 +219389,66 @@
       "_func_0c02a026": "0x0c02a026",
       "_func_0c04337e": "0x0c04337e",
       "_func_0c0437b8": "0x0c0437b8"
+    }
+  },
+  {
+    "id": "u_0c05cc44",
+    "source": "src/candidates/u_0c05cc44.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c05cc44",
+        "size": 200,
+        "interior": [
+          {
+            "address": "0x0c05ccf6",
+            "size": 22,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c05cc44": "0x0c05cc44",
+      "_func_0c05ccd4": "0x0c05ccd4"
+    },
+    "imports": {
+      "_func_0c02a026": "0x0c02a026",
+      "_func_0c043324": "0x0c043324",
+      "_func_0c02a0c4": "0x0c02a0c4",
+      "_func_0c0437b8": "0x0c0437b8"
+    }
+  },
+  {
+    "id": "ua6_cd58",
+    "source": "src/verified/ua6_cd58.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c06cd58",
+        "size": 352,
+        "interior": [
+          {
+            "address": "0x0c06ce88",
+            "size": 48,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c06cd58": "0x0c06cd58",
+      "_func_0c06ce0c": "0x0c06ce0c"
+    },
+    "imports": {
+      "_func_0c02a026": "0x0c02a026",
+      "_func_0c02a0c4": "0x0c02a0c4",
+      "_func_0c1d4610": "0x0c1d4610",
+      "_func_0c043324": "0x0c043324"
     }
   }
 ]
