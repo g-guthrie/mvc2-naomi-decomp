@@ -1,10 +1,6 @@
 #include "objects.h"
 
-struct Dat_13bb5c {
-    unsigned char pad[0x3b];
-    unsigned char b3b;
-    unsigned short w3c;
-};
+
 
 struct Obj_13bb5c {
     unsigned char pad0[4];

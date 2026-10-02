@@ -313,7 +313,9 @@ struct Actor {
     unsigned char pad13c[0x41c - 0x412];
     float f41c;
     unsigned short w420;
-    unsigned char pad14[0x428 - 0x422];
+    unsigned char pad422[2];
+    unsigned short w424;
+    unsigned char pad426[2];
     void *p428;
     unsigned char pad14b[0x446 - 0x42c];
     unsigned char b446, b447;
@@ -339,7 +341,7 @@ struct ActorFlags {
     unsigned char pad68[0x4e-68], b4e, pad4f, b50; unsigned char pad81[0x80-0x51]; char b128;
     signed char b81; unsigned char pad130[2]; signed char b84;
     signed char b85; unsigned char pad134[0x88-0x86]; unsigned char b88; unsigned char pad137[0x8d-0x89], b8d; signed char b8e;
-    unsigned char pad143[5]; void *p94; unsigned char b98,pad99, b9a; unsigned char pad9b[0xa5-0x9b]; signed char b_a5;
+    unsigned char pad143[1]; int i90; void *p94; unsigned char b98,pad99, b9a; unsigned char pad9b[0xa5-0x9b]; signed char b_a5;
 };
 struct Glob_me00 { unsigned char pad[0x14]; int l14; };
 
@@ -553,4 +555,10 @@ struct Obj_tu5_03 {
 
 struct ActorSubLaunchState36 { unsigned char pad[22], b22,b23,b24,b25,b26,b27,b28,b29,b30,b31; struct Actor *target32; };
 struct ActorChildTimerReference { struct ActorChildReference base; short timer; };
+struct Dat_13bb5c {
+    unsigned char pad[0x3b];
+    unsigned char b3b;
+    unsigned short w3c;
+};
+
 #endif
