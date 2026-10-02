@@ -79,15 +79,6 @@ extern void func_0c244c94(void);
 extern void func_0c244cc2(void);
 extern void func_0c244cd2(void);
 
-#pragma section n0aca2c
-void (*const table_0c0aca2c[])(void) = {
-    func_0c02a026,
-    func_0c043324,
-    func_0c02a0c4,
-    func_0c0437b8,
-    func_0c244688,
-};
-
 #pragma section n0accc4
 void (*const ptr_0c0accc4)(void) = func_0c02a026;
 
