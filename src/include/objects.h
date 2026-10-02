@@ -108,7 +108,7 @@ struct Actor {
     struct Hitbox *p170;
     unsigned char pad7aa[0x19c - 0x174];
     unsigned char b19c;
-    unsigned char b19d;
+    char b19d;
     char b19e;
     unsigned char b19f;
     unsigned char b1a0;
