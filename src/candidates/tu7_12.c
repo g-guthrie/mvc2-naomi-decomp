@@ -1,16 +1,12 @@
-/* The full 288-byte section links at retail. func_0c16170c,
- * func_0c16178e, and the 28-byte pool are exact. func_0c161728 matches
- * 80/90 bytes; retail stores b4 before b12c, but simply swapping source
- * statements changes SHC's section layout. func_0c161782 matches 10/12
- * bytes and uses r3 where retail uses r2 for its zero store.
- * Imports: __slow_mvn=0x0c1fb838, __quick_odd_mvn=0x0c1fb7a0. */
+/* 286/288. 70c, 728, 78e and the pool are exact. 782 matches 10/12:
+ * store-then-tail uses r2 for the call, retail uses r3. */
 struct V3_tu7_12 { float x, y, z; };
 struct Copy_c0_tu7_12 { unsigned char raw[0xc0]; };
 struct Link_tu7_12 { unsigned char pad0[2]; unsigned char b2; };
 
 struct Obj_tu7_12 {
-    unsigned char b1, b2;
     unsigned char pad0[1];
+    unsigned char b1, b2;
     unsigned char pad1[1];
     unsigned char b4;
     unsigned char pad2[24 - 5];
@@ -59,15 +55,17 @@ void func_0c161728(struct Obj_tu7_12 *a)
     a->f56 += a->f96;
     a->f96 += a->f108;
     if (func_0c02a026(a) < 0) {
-        a->v.u.b12c = 0;
         a->b4 = 2;
+        a->v.u.b12c = 0;
     }
 }
 
 void func_0c161782(struct Obj_tu7_12 *a)
 {
     a->v.u.b12c = 0;
-    func_0c037688(a);
+    if (0) {
+    } else
+        func_0c037688(a);
 }
 
 void func_0c16178e(struct Obj_tu7_12 *a)
