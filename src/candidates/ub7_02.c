@@ -1,19 +1,10 @@
 /* Translation unit whose real first function is func_0c0c6590, not
  * 0x0c0c658c as the assigned span implied: the preceding 4 bytes are data
- * from the previous pool. The current reviewed section spans 360 bytes from
- * 0x0c0c6590 through 0x0c0c66f8 and links at retail.
- *
- * 356/360 bytes match; the 32-byte pool is exact with SHC's decimal spelling
- * for -0.80357140303f. func_0c0c6590, func_0c0c669e and func_0c0c66c6 are
- * exact. func_0c0c65f6 and func_0c0c663e each differ by one instruction: the
- * final tail-jmp to func_0c02a026 loads it into r3 in one function and r2 in
- * the other in retail, but the compiler swaps which function gets which
- * register from what's written here. This is the r2/r3 scratch-rotation
- * issue in docs/MATCHING.md, but here the predecessor function *is* in the
- * file and matches exactly, and the mismatch happens in an else-branch that
- * is independent of (never reached from) the preceding if-branch's own
- * register use -- so the rotation carry docs/MATCHING.md describes is not
- * simply "last register the previous statement used". */
+ * from the previous pool. The reviewed section spans 360 bytes from
+ * 0x0c0c6590 through 0x0c0c66f8 and matches retail. func_0c0c65f6 and
+ * func_0c0c663e take an early return after the then-tail-call so SHC
+ * allocates r3 then r2 for the two leftover jmp sites; an else-clause
+ * reused r2 for both. */
 
 struct Obj_ub7_02 {
     unsigned char pad0[2];
@@ -77,9 +68,9 @@ void func_0c0c65f6(struct Obj_ub7_02 *a)
         a->f96 = 0.0f;
         a->f108 = -0.80357140303f;
         func_0c02a0c4(a, 18, 2);
-    } else {
-        func_0c02a026(a);
+        return;
     }
+    func_0c02a026(a);
 }
 
 void func_0c0c663e(struct Obj_ub7_02 *a)
@@ -92,9 +83,9 @@ void func_0c0c663e(struct Obj_ub7_02 *a)
         a->b7++;
         a->f56 = a->f1052;
         func_0c02a0c4(a, 18, 3);
-    } else {
-        func_0c02a026(a);
+        return;
     }
+    func_0c02a026(a);
 }
 
 void func_0c0c669e(struct Obj_ub7_02 *a)
