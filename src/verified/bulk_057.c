@@ -310,12 +310,6 @@ const unsigned int dat_0c0ff590[] = {
     0x0c0346dau,
 };
 
-#pragma section n0ff6be
-const unsigned short dat_0c0ff6be[] = {
-    0x0141u, 0x01f9u, 0x041cu, 0xa026u, 0x0c02u, 0x37b8u, 0x0c04u, 0x5555u,
-    0x41d5u, 0x9249u, 0x433cu, 0x3014u, 0x0c04u, 0x46dau, 0x0c03u,
-};
-
 #pragma section n0ff92c
 const unsigned int dat_0c0ff92c[] = {
     0x01d201f9u, 0x041c01a1u,
