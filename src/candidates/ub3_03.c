@@ -16,14 +16,14 @@ struct Obj_ub3_03 {
     float f104;
     float f108;
     unsigned char pad3[307];
-    unsigned char b1a3;
+    char b1a3;
     unsigned char pad4[83];
     unsigned char b1f7;
     unsigned char pad5[1];
     unsigned char b1f9;
     unsigned short w1fa;
     unsigned char pad6[2];
-    unsigned char b1fe;
+    char b1fe;
     unsigned char pad7[541];
     float f41c;
 };
@@ -60,11 +60,11 @@ int func_0c091698(struct Obj_ub3_03 *a)
 
     if (a->b1f9 == 1)
         return 0;
-    if (!(a->w1fa & 0x0c00))
+    if (!(0x0c00 & a->w1fa))
         return 0;
-    if (a->b1a3 == 0)
+    if (!a->b1a3)
         return 0;
-    if (a->b1fe == 0) {
+    if (!a->b1fe) {
         if (a->b1f9 != 2) {
             if ((r = func_0c037d54(a)) != 0)
                 a->b1f7 = 0;

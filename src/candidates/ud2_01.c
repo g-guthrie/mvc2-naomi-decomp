@@ -1,13 +1,3 @@
-/* func_0c1982f4, func_0c19832e and func_0c198344 match exactly (98/98 bytes).
- * func_0c198356 (183/208) and func_0c198426 (59/66) differ only in the
- * compiler's own instruction scheduling around register prefetches for a
- * tail call (dat_0c258350[...]/dat_0c2583f0[...] dispatch): retail loads a
- * pointer-field pool word (a->p20, dat_0c258350's base, and the tail call's
- * args a/23) a few instructions earlier than the same statement order
- * produces here. Reordering the equivalent C statements did not change the
- * schedule, so the source shape is otherwise right; only the compiler's
- * scratch-register scheduling picks a different order. */
-
 struct Vec3_ud2_01 { float x, y, z; };
 
 struct Big_ud2_01 {
@@ -36,7 +26,7 @@ struct S_ud2_01 {
     unsigned short w38;
     unsigned char pad7[0x30 - 0x28];
     unsigned char b48;
-    unsigned char b49;
+    char b49;
     unsigned char pad8[0x34 - 0x32];
     struct Vec3_ud2_01 pos;
     unsigned char pad9[0x50 - 0x40];
@@ -109,10 +99,10 @@ void func_0c198356(struct S_ud2_01 *a, struct S_ud2_01 *b)
     a->vel = b->vel;
     a->b36 = b->b36;
     func_0c044788(b, a);
+    other = a->p20;
     a->b4++;
     a->b36 = 11;
     a->s28 = 40;
-    other = a->p20;
     a->pos = other->pos;
     func_0c0346da(a, 13);
     other->b1f6 = 6;

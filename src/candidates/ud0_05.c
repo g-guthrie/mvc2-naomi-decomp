@@ -28,7 +28,7 @@ struct Obj_ud0_05 {
     unsigned char pad5[0x1c8 - 0x1b8];
     struct Obj_ud0_05 *p1c8;
     unsigned char pad6[0x1f6 - 0x1cc];
-    unsigned char b1f6;
+    char b1f6;
 };
 
 typedef void (*handler_ud0_05)(struct Obj_ud0_05 *);

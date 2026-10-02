@@ -55,7 +55,7 @@ struct Obj_ub6_01 {
 extern void func_0c1d53e4(struct Obj_ub6_01 *);
 extern void func_0c02a0c4(struct Obj_ub6_01 *, int, int);
 extern void func_0c02a026(struct Obj_ub6_01 *);
-extern void func_0c028642(struct Obj_ub6_01 *);
+extern int func_0c028642(struct Obj_ub6_01 *);
 extern void func_0c037688(struct Obj_ub6_01 *);
 
 void func_0c1b5c78(struct Obj_ub6_01 *a, struct Obj_ub6_01 *b)
@@ -91,30 +91,32 @@ void func_0c1b5c78(struct Obj_ub6_01 *a, struct Obj_ub6_01 *b)
 
 void func_0c1b5d26(struct Obj_ub6_01 *a, struct Obj_ub6_01 *b)
 {
-    unsigned char c = 0;
+    unsigned char z = 0;
 
     switch (a->b5) {
     case 0:
         func_0c02a026(a);
-        if (!a->xdc.b141)
+        if (a->xdc.b141 == 0)
             return;
-        a->b5++;
-        a->xdc.b141 = c;
-        /* fall through */
+        a->b5 = a->b5 + 1;
+        a->xdc.b141 = z;
     case 1:
-        if (!b->xdc.b141)
-        a->b5++;
+        if (b->xdc.b141 == 0)
             return;
-        /* fall through */
+        a->b5 = a->b5 + 1;
     case 2:
         func_0c02a026(a);
-        if (!a->xdc.b141)
+        if (a->xdc.b141 == 0)
             return;
         a->pos.x = a->pos.x + a->f92;
-        a->f92 += a->f104;
-        a->pos.y += a->f96;
-        a->f96 += a->f108;
-        func_0c028642(a);
+        a->f92 = a->f92 + a->f104;
+        a->pos.y = a->pos.y + a->f96;
+        a->f96 = a->f96 + a->f108;
+        if (func_0c028642(a) == 0) {
+            a->b4 = 2;
+            a->b5 = z;
+            a->xdc.b12c = z;
+        }
     }
 }
 

@@ -43,8 +43,8 @@ extern char func_0c02a026(struct Obj_ub5_02 *);
 extern void func_0c0437b8(struct Obj_ub5_02 *);
 extern int func_0c0427f2(struct Obj_ub5_02 *);
 extern int func_0c042780(struct P456_ub5_02 *);
-extern void func_0c03edcc(struct Obj_ub5_02 *);
 extern void func_0c03f004(struct Obj_ub5_02 *);
+extern void func_0c03edcc(struct Obj_ub5_02 *);
 
 void func_0c12d81c(struct Obj_ub5_02 *a, struct Obj_ub5_02 *b)
 {

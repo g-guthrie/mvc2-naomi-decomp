@@ -9,8 +9,8 @@ struct Copy_c0_tu7_12 { unsigned char raw[0xc0]; };
 struct Link_tu7_12 { unsigned char pad0[2]; unsigned char b2; };
 
 struct Obj_tu7_12 {
-    unsigned char pad0[1];
     unsigned char b1, b2;
+    unsigned char pad0[1];
     unsigned char pad1[1];
     unsigned char b4;
     unsigned char pad2[24 - 5];
