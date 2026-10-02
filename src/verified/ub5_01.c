@@ -1,11 +1,5 @@
-/* func_0c088548 differs from retail: the four `a->fX = a->fX + *p` address
- * temporaries land in r4 here, retail has them in r1 (mov #imm,r1; add
- * r14,r1, scheduled before r14 is even loaded). Instruction bytes 0x14/128
- * differ (all four address computations plus their fmov @rX loads); the
- * rest of the function, func_0c0885c8 (114/114) and the pool (34/34) match
- * exactly. Tried a persistent pointer, per-statement block scoping and a
- * plain `+=`/`=` member-access form; all four addresses always land in r4,
- * never r1. */
+/* Both functions and the shared 34-byte pool match retail across the
+ * reviewed 276-byte extent. */
 struct Obj_ub5_01 {
     unsigned char pad0[5];
     unsigned char b5;
@@ -32,10 +26,10 @@ extern void func_0c048bb0(struct Obj_ub5_01 *, int);
 
 void func_0c088548(struct Obj_ub5_01 *a, struct Obj_ub5_01 *b)
 {
-    a->f52 = a->f52 + *(&a->f92);
-    a->f92 = a->f92 + *(&a->f104);
-    a->f56 = a->f56 + *(&a->f96);
-    a->f96 = a->f96 + *(&a->f108);
+    a->f52 += a->f92;
+    a->f92 += a->f104;
+    a->f56 += a->f96;
+    a->f96 += a->f108;
     func_0c02a026(a);
     if (a->b331) {
         int r5;
