@@ -183,7 +183,7 @@ struct Actor {
     unsigned char b1f6, b1f7;
     unsigned char pad7ffc[0x1f9 - 0x1f8];
     unsigned char b1f9;
-    unsigned char pad8[0x1fc - 0x1fa];
+    unsigned short w1fa;
     unsigned char b1fc;
     unsigned char b1fd;
     unsigned char b1fe;         /* limb_choice: 0 punch, 1 kick */
@@ -206,7 +206,7 @@ struct Actor {
     unsigned char b233;
     unsigned char pad9d[0x235 - 0x234];
     unsigned char b235;
-    unsigned char pad9d2[0x237 - 0x236];
+    unsigned char b236;
     unsigned char b237;
     unsigned char b238;
     char b239;
