@@ -9,8 +9,7 @@ extern void (*table_0c23bb78[])(struct Actor *);
 void func_0c03ea8c(struct Actor *a) {
   int value;
   a->b1eb = 2;
-  if ((value = a->s278) < 0)
-    goto animate;
+  if ((value = a->s278) >= 0) {
   if (0 < (short)a->w420 && value > 0)
     goto animate;
   a->s278 = -1;
@@ -34,6 +33,7 @@ void func_0c03ea8c(struct Actor *a) {
     a->b1d3 = 0;
     func_0c0453c4(a, 17);
     return;
+  }
   }
 animate:
   if (func_0c02a026(a) < 0)
