@@ -73,6 +73,14 @@ struct ActorSub2a4Extended {
     unsigned short w42;
 };
 
+/* Motion subrecord used by the phase and velocity handlers at 0x0c08a3c0. */
+struct MotionContext8a3 {
+    struct ActorSub2a4 base;
+    unsigned char pad28[8];
+    float vx, vy, target, phase, step;
+    unsigned char pad56[2], flag58;
+};
+
 union ActorParameter4 { int integer; float real; };
 
 struct AnimationFrame8 {
