@@ -21,17 +21,6 @@ void func_0c02f644(struct Actor *p) { p->f60 += p->f100; p->f100 += p->f112; }
 
 struct Obj_0c0476d4 { unsigned char b0; unsigned char pad[7]; unsigned short w8; };
 struct Out_0c0476d4 { unsigned char b0, b1; };
-#pragma section n0476d4
-int func_0c0476d4(int a, struct Obj_0c0476d4 *p, struct Out_0c0476d4 *q, unsigned short mask)
-{
-    if (!(p->w8 & mask)) {
-        return q->b0 = 0;
-    }
-    q->b1 = p->b0;
-    q->b0++;
-    return 0;
-}
-
 #pragma section n146b8a
 int func_0c146b8a(struct Actor *p, float lim)
 {
