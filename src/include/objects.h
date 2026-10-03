@@ -357,8 +357,14 @@ struct Glob_me00 { unsigned char pad[0x14]; int l14; };
 struct Control_0c2fb1f0 { unsigned char pad0[12]; int i12; unsigned char pad16[28]; float f44, f48; float values[8]; unsigned int i84; };
 
 /* Sixty-byte slot records scanned by 0x0c1e6a68 and 0x0c1e6af4.
- * Only the classification and validity words have been reviewed. */
-struct DeviceSlot60 { unsigned char pad0[4]; int type, id; unsigned char rest[48]; };
+ * The guard at 0x0c1e6e36 also reads three signed state words. */
+struct DeviceSlot60 {
+    unsigned char pad0[4]; int type, id;
+    unsigned char pad12[8]; int l20;
+    unsigned char pad24[4]; int l28;
+    unsigned char pad32[12]; int l44;
+    unsigned char pad48[12];
+};
 
 /* Indexed data shared by actor constructors through the root at 0x0c2d964c. */
 union ActorGlobalEntry { void *pointer; int value; };
