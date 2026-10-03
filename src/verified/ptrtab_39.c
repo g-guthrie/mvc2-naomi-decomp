@@ -311,12 +311,6 @@ void (*const ptr_0c1a2c8c)(void) = func_0c258f4c;
 #pragma section n1a2de8
 void (*const ptr_0c1a2de8)(void) = func_0c258f54;
 
-#pragma section n1a2f28
-void (*const ptr_0c1a2f28)(void) = func_0c029fc4;
-
-#pragma section n1a2f38
-void (*const ptr_0c1a2f38)(void) = func_0c258f5c;
-
 #pragma section n1a2f98
 void (*const ptr_0c1a2f98)(void) = func_0c037688;
 
