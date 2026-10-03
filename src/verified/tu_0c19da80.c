@@ -56,6 +56,6 @@ void func_0c19db38(struct LinkedActor *a)
     a->b36 = 0;
     a->f52 = a->p24->f52;
     a->f56 = a->p24->f56;
-    *dat_0c2fb3e8 = a->p24->sdc.w158;
+    *dat_0c2fb3e8 = a->p24->sdc.w158.short_value;
     func_0c029e70(a, 27, a->b33 + 10);
 }

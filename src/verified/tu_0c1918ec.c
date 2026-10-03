@@ -7,7 +7,7 @@ extern void func_0c037688(struct LinkedActor *);
 
 void func_0c1918ec(struct LinkedActor *a, struct LinkedActor *b)
 {
-    if (a->wcc.short_value == b->sdc.w158) {
+    if (a->wcc.short_value == b->sdc.w158.short_value) {
         *(struct LinkedActorVec3 *)&a->f52 = *(struct LinkedActorVec3 *)&b->f52;
         a->f56 += a->f96;
         if (func_0c029fc4(a) >= 0)

@@ -19,7 +19,7 @@ struct LinkedActor *func_0c1745b4(struct LinkedActor *owner)
    a=func_0c0374da(0,1,0);
    a->p16=func_0c17460c;
    a->p24=owner;
-   a->s28=owner->sdc.w158;
+   a->s28=owner->sdc.w158.short_value;
    a->b32=i;
    a->w38=0x3000;
  }
@@ -53,7 +53,7 @@ void func_0c1746b0(struct LinkedActor *a)
  char mode;
  float d;
  a->sdc.b12c=0;
- if(a->s28!=owner->sdc.w158) {a->b4=2;return;}
+ if(a->s28!=owner->sdc.w158.short_value) {a->b4=2;return;}
  { char *mp=(char *)owner+0x150; mode=mp[1]; }
  if(mode<0)return;
  if(a->b34!=(unsigned char)mode) {

@@ -24,7 +24,7 @@ void func_0c16a772(struct LinkedActor *a)
 }
 void func_0c16a802(struct LinkedActor *a)
 {
- a->pad11[0]=66;a->pad11[1]=66;dat_0c2fb3c0->short_value=a->p24->sdc.w158;a->b36=0;
+ a->pad11[0]=66;a->pad11[1]=66;dat_0c2fb3c0->short_value=a->p24->sdc.w158.short_value;a->b36=0;
  a->f52+=A(a->p24)->b1d2?120.0f:-120.0f;func_0c02a0c4(a,23,5);
 }
-void func_0c16a84c(struct LinkedActor *a){dat_0c2fb3c0->short_value=a->p24->sdc.w158;a->b36=0;func_0c02a0c4(a,21,32);}
+void func_0c16a84c(struct LinkedActor *a){dat_0c2fb3c0->short_value=a->p24->sdc.w158.short_value;a->b36=0;func_0c02a0c4(a,21,32);}
