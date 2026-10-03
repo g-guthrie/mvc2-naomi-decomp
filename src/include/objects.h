@@ -575,4 +575,8 @@ struct Dat_13bb5c {
 /* Byte controls used by callbacks receiving the actor state at 0x2a4. */
 struct ActorSubControlBytes { unsigned char pad0[2]; char b2; unsigned char pad3; char b4; unsigned char pad5[7]; char b12; };
 
+/* Direction selection state with two 12-byte actor entries. */
+struct DirectionEntry12 { struct Actor *actor; unsigned char unknown[8]; };
+struct DirectionState { unsigned char unknown0[3],b3,unknown4[20]; struct DirectionEntry12 entry[2]; unsigned char unknown48[14]; signed char direction; };
+
 #endif

@@ -6748,12 +6748,6 @@
         "size": 4
       },
       {
-        "section": "Cn038904",
-        "kind": "data",
-        "address": "0x0c038904",
-        "size": 4
-      },
-      {
         "section": "Cn0390ec",
         "kind": "data",
         "address": "0x0c0390ec",
@@ -6922,7 +6916,6 @@
       "_ptr_0c0382a0": "0x0c0382a0",
       "_table_0c038394": "0x0c038394",
       "_ptr_0c0386c0": "0x0c0386c0",
-      "_ptr_0c038904": "0x0c038904",
       "_ptr_0c0390ec": "0x0c0390ec",
       "_ptr_0c0391ec": "0x0c0391ec",
       "_ptr_0c0395dc": "0x0c0395dc",
@@ -31784,12 +31777,6 @@
         "size": 44
       },
       {
-        "section": "Cn0388e6",
-        "kind": "data",
-        "address": "0x0c0388e6",
-        "size": 30
-      },
-      {
         "section": "Cn0389f6",
         "kind": "data",
         "address": "0x0c0389f6",
@@ -31942,7 +31929,6 @@
       "_dat_0c0386a8": "0x0c0386a8",
       "_dat_0c0386b4": "0x0c0386b4",
       "_dat_0c0387ac": "0x0c0387ac",
-      "_dat_0c0388e6": "0x0c0388e6",
       "_dat_0c0389f6": "0x0c0389f6",
       "_dat_0c038a7e": "0x0c038a7e",
       "_dat_0c038b76": "0x0c038b76",
@@ -214038,36 +214024,6 @@
     }
   },
   {
-    "id": "tu_0c0388a0",
-    "source": "src/candidates/tu_0c0388a0.c",
-    "mode": "candidate",
-    "sections": [
-      {
-        "section": "PN0388a0",
-        "kind": "code",
-        "address": "0x0c0388a0",
-        "size": 10
-      },
-      {
-        "section": "PN0388aa",
-        "kind": "code",
-        "address": "0x0c0388aa",
-        "size": 10
-      },
-      {
-        "section": "PN0388b4",
-        "kind": "code",
-        "address": "0x0c0388b4",
-        "size": 10
-      }
-    ],
-    "exports": {
-      "_func_0c0388a0": "0x0c0388a0",
-      "_func_0c0388aa": "0x0c0388aa",
-      "_func_0c0388b4": "0x0c0388b4"
-    }
-  },
-  {
     "id": "tu_0c0f8e78",
     "source": "src/verified/tu_0c0f8e78.c",
     "mode": "verified",
@@ -228625,6 +228581,39 @@
       "_func_0c1f0f50": "0x0c1f0f50",
       "_func_0c1ecda0": "0x0c1ecda0",
       "_func_0c037354": "0x0c037354"
+    }
+  },
+  {
+    "id": "tu_0c0387d8",
+    "source": "src/verified/tu_0c0387d8.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c0387d8",
+        "size": 304,
+        "interior": [
+          {
+            "address": "0x0c0388e6",
+            "size": 34,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c0387d8": "0x0c0387d8",
+      "_func_0c038814": "0x0c038814",
+      "_func_0c0388a0": "0x0c0388a0",
+      "_func_0c0388aa": "0x0c0388aa",
+      "_func_0c0388b4": "0x0c0388b4",
+      "_func_0c0388be": "0x0c0388be"
+    },
+    "imports": {
+      "_dat_0c2d7088": "0x0c2d7088",
+      "_dat_0c2d6f84": "0x0c2d6f84",
+      "_func_0c1fba00": "0x0c1fba00"
     }
   }
 ]
