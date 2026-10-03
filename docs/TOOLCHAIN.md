@@ -1,5 +1,7 @@
 # Toolchain, verification and credit
 
+For a new local or cloud checkout, start with [Cloud agent setup](CLOUD_AGENTS.md).
+
 ## What is bundled
 
 - `toolchain/hitachi-shc-5.0r31/`: the Hitachi SH C/C++ compiler package. Its
