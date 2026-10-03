@@ -4,13 +4,19 @@ A decompilation of the Sega NAOMI release. C source is compiled with the
 original Hitachi SH C compiler and must reproduce the retail ROM byte for byte.
 
 ```sh
+git clone https://github.com/g-guthrie/mvc2-naomi-decomp.git
+cd mvc2-naomi-decomp
 python3 tools/build.py check
 ```
 
 That one command verifies the ROMs, runs the tests, compiles every registered
 unit with the bundled toolchain, links each at its original address, compares
 the result with retail, and rebuilds the program ROM. Nothing is downloaded and
-nothing needs installing beyond Python 3.10.
+nothing needs installing beyond Python 3.10+ and Git on a supported host.
+Use **Linux x86_64** for cloud agents; the reference ROM archive, exact compiler,
+SDK libraries, and runtime are tracked in Git, not Git LFS or submodules.
+See [Cloud agent setup](docs/CLOUD_AGENTS.md) for a fresh-clone workflow,
+asset checks, and parallel-work rules.
 
 ## Progress
 
@@ -56,6 +62,7 @@ them by hand. The treemap at `build/index.html` comes from the same build.
 
 ## Documents
 
+- [docs/CLOUD_AGENTS.md](docs/CLOUD_AGENTS.md): cloud setup, bundled assets, and safe parallel work.
 - [AGENTS.md](AGENTS.md): how to work on this repository and the rules that apply.
 - [docs/TOOLCHAIN.md](docs/TOOLCHAIN.md): the build pipeline, the unit registry and how credit is counted.
 - [docs/MATCHING.md](docs/MATCHING.md): how to make a function match.
