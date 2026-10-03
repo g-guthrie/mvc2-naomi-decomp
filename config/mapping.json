@@ -361384,6 +361384,13 @@
       "evidence": "CFG walk from 0x0c1df00c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c1df116",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Complete source/CFG review of 0x0c1de70c\u20130x0c1df94c: unreferenced two-byte literal-pool alignment after RTS delay slot at 0x0c1df114 and before PC-consumed data at 0x0c1df118. Bundled compiler emits matching .RES.W 1. No instruction or branch target occupies these bytes."
+    },
+    {
       "address": "0x0c1df118",
       "size": 8,
       "kind": "data",
