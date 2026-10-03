@@ -1,0 +1,64 @@
+STRICT False ['Wrong exported symbol address: _func_0c0f4498', 'Not an exact section match: P']
+[(1028, 921)]
+[('_func_0c0f40e8', 98, 98), ('_func_0c0f414a', 114, 114), ('_func_0c0f41bc', 30, 30), ('_func_0c0f41da', 248, 248), ('_func_0c0f42fa', 18, 18), ('_func_0c0f430c', 72, 72), ('_func_0c0f4354', 40, 40), ('_func_0c0f43b0', 165, 232), ('_func_0c0f4498', 1, 34)]
+0c0f43ee 9064 mov.w 0x000000000c0f44ba,r0         | 9065 mov.w 0x000000000c0f44bc,r0
+0c0f43f8 fffa fmov fr15,@r15                      | f3fc fmov fr15,fr3
+0c0f43fc ffea fmov fr14,@r15                      | f3ec fmov fr14,fr3
+0c0f4408 9058 mov.w 0x000000000c0f44bc,r0         | 9059 mov.w 0x000000000c0f44be,r0
+0c0f4410 9055 mov.w 0x000000000c0f44be,r0         | 9056 mov.w 0x000000000c0f44c0,r0
+0c0f4422 a032 bra 0x000000000c0f448a              | a033 bra 0x000000000c0f448c
+0c0f4426 904b mov.w 0x000000000c0f44c0,r0         | 904c mov.w 0x000000000c0f44c2,r0
+0c0f4428 03ec mov.b @(r0,r14),r3                  | 02ec mov.b @(r0,r14),r2
+0c0f442a 2338 tst r3,r3                           | 2228 tst r2,r2
+0c0f442c 892d bt 0x000000000c0f448a               | 892e bt 0x000000000c0f448c
+0c0f4432 9044 mov.w 0x000000000c0f44be,r0         | 9045 mov.w 0x000000000c0f44c0,r0
+0c0f4454 9031 mov.w 0x000000000c0f44ba,r0         | 9032 mov.w 0x000000000c0f44bc,r0
+0c0f445e fffa fmov fr15,@r15                      | f3fc fmov fr15,fr3
+0c0f4460 ffea fmov fr14,@r15                      | f3ec fmov fr14,fr3
+0c0f4464 f2f8 fmov @r15,fr2                       | ff3a fmov fr3,@r15
+0c0f4466 f3e6 fmov @(r0,r14),fr3                  | f2f8 fmov @r15,fr2
+0c0f4468 e03c mov #60,r0                          | e700 mov #0,r7
+0c0f446a d31d mov.l 0x000000000c0f44e0,r3         | f3e6 fmov @(r0,r14),fr3
+0c0f446c e700 mov #0,r7                           | e03c mov #60,r0
+0c0f446e f230 fadd fr3,fr2                        | d31c mov.l 0x000000000c0f44e0,r3
+0c0f4472 ff2a fmov fr2,@r15                       | f230 fadd fr3,fr2
+0c0f4474 f3e6 fmov @(r0,r14),fr3                  | ff2a fmov fr2,@r15
+0c0f4476 e008 mov #8,r0                           | f3e6 fmov @(r0,r14),fr3
+0c0f4478 ff37 fmov fr3,@(r0,r15)                  | e008 mov #8,r0
+0c0f447a 901e mov.w 0x000000000c0f44ba,r0         | ff37 fmov fr3,@(r0,r15)
+0c0f447c 05ed mov.w @(r0,r14),r5                  | 901e mov.w 0x000000000c0f44bc,r0
+0c0f447e 430b jsr @r3                             | 05ed mov.w @(r0,r14),r5
+0c0f4480 64f3 mov r15,r4                          | 430b jsr @r3
+0c0f4482 d218 mov.l 0x000000000c0f44e4,r2         | 64f3 mov r15,r4
+0c0f4484 e500 mov #0,r5                           | d217 mov.l 0x000000000c0f44e4,r2
+0c0f4486 420b jsr @r2                             | e500 mov #0,r5
+0c0f4488 64e3 mov r14,r4                          | 420b jsr @r2
+0c0f448a 7f0c add #12,r15                         | 64e3 mov r14,r4
+0c0f448c 4f26 lds.l @r15+,pr                      | 7f0c add #12,r15
+0c0f448e fdf9 fmov @r15+,fr13                     | 4f26 lds.l @r15+,pr
+0c0f4490 fef9 fmov @r15+,fr14                     | fdf9 fmov @r15+,fr13
+0c0f4492 fff9 fmov @r15+,fr15                     | fef9 fmov @r15+,fr14
+0c0f4494 000b rts                                 | fff9 fmov @r15+,fr15
+0c0f4496 6ef6 mov.l @r15+,r14                     | 000b rts
+0c0f4498 4f22 sts.l pr,@-r15                      | 6ef6 mov.l @r15+,r14
+0c0f449a 7ffc add #-4,r15                         | 4f22 sts.l pr,@-r15
+0c0f449c d309 mov.l 0x000000000c0f44c4,r3         | 7ffc add #-4,r15
+0c0f449e 430b jsr @r3                             | d309 mov.l 0x000000000c0f44c4,r3
+0c0f44a0 2f42 mov.l r4,@r15                       | 430b jsr @r3
+0c0f44a2 600e exts.b r0,r0                        | 2f42 mov.l r4,@r15
+0c0f44a4 4011 cmp/pz r0                           | 600e exts.b r0,r0
+0c0f44a6 8904 bt 0x000000000c0f44b2               | 4011 cmp/pz r0
+0c0f44a8 64f2 mov.l @r15,r4                       | 8904 bt 0x000000000c0f44b4
+0c0f44aa 7f04 add #4,r15                          | 64f2 mov.l @r15,r4
+0c0f44ac d30e mov.l 0x000000000c0f44e8,r3         | 7f04 add #4,r15
+0c0f44ae 432b jmp @r3                             | d30e mov.l 0x000000000c0f44e8,r3
+0c0f44b0 4f26 lds.l @r15+,pr                      | 432b jmp @r3
+0c0f44b2 7f04 add #4,r15                          | 4f26 lds.l @r15+,pr
+0c0f44b4 4f26 lds.l @r15+,pr                      | 7f04 add #4,r15
+0c0f44b6 000b rts                                 | 4f26 lds.l @r15+,pr
+0c0f44b8 0009 nop                                 | 000b rts
+0c0f44ba 0130 error                               | 0009 nop
+0c0f44bc 0142 stc spc,r1                          | 0130 error
+0c0f44be 01c8 error                               | 0142 stc spc,r1
+0c0f44c0 0141 error                               | 01c8 error
+0c0f44c2 0000 error                               | 0141 error
