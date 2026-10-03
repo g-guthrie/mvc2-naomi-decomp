@@ -413,9 +413,11 @@ struct LinkedActor {
     float f52, f56, f60;
     unsigned char pad7[80 - 64];
     struct LinkedActorVec3 v80;
-    unsigned char pad8[96 - 92];
+    float f92;
     float f96;
-    unsigned char pad9[0x84 - 100];
+    unsigned char pad9a[4];
+    float f104, f108;
+    unsigned char pad9[0x84 - 112];
     void *p84;
     unsigned char pad9b[0xcc - 0x88];
     union LinkedActorWcc wcc;
