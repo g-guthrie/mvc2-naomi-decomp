@@ -18,9 +18,9 @@ void func_0c1e25bc(void)
         a->l84=dat_0c2d964c->p0->entries[5].value;
         a->lcc=0x805;
         a->pos=dat_0c2632f8;
-        a->arr64[0]=(int)(dat_0c263304[0]*65536.0f/360.0f+0.5f)&0xffff;
-        a->l44=(int)(dat_0c263304[1]*65536.0f/360.0f+0.5f)&0xffff;
-        a->l48=(int)(dat_0c263304[2]*65536.0f/360.0f+0.5f)&0xffff;
+        a->angles.array[0]=(int)(dat_0c263304[0]*65536.0f/360.0f+0.5f)&0xffff;
+        a->angles.scalar.l44=(int)(dat_0c263304[1]*65536.0f/360.0f+0.5f)&0xffff;
+        a->angles.scalar.l48=(int)(dat_0c263304[2]*65536.0f/360.0f+0.5f)&0xffff;
         func_0c1e26a8(a);
     }
 }

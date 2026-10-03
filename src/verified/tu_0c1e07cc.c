@@ -6,7 +6,7 @@ extern struct Vec3_tu5_03 dat_0c262638[];
 extern struct Vec3_tu5_03 dat_0c26262c;
 void func_0c1e07cc(struct Obj_tu5_03 *a)
 {
-    a->arr64[0]+=512;
+    a->angles.array[0]+=512;
 }
 void func_0c1e07da(struct Obj_tu5_03 *parent,int n)
 {
@@ -28,7 +28,7 @@ void func_0c1e083e(struct Obj_tu5_03 *a)
     units=65536.0f;
     angle=360.0f;
     half=0.5f;
-    a->l44=(int)((a->w28+90)*units/angle+half)&0xffff;
+    a->angles.scalar.l44=(int)((a->w28+90)*units/angle+half)&0xffff;
     {
         float radius=850.0f;
         a->pos.x=dat_0c26262c.x+func_0c1ec2c0((int)(a->w28*units/angle+half)&0xffff)*radius;

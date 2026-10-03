@@ -44,7 +44,7 @@ void func_0c1d8d58(struct Actor *parent)
   switch((char)parent->b1fd){case 1:a->pos.x=dat_0c2d9260.f140;break;case 2:a->pos.x=dat_0c2d9260.f136;break;}
   a->pos.y=parent->f56+(parent->b13c/2)*parent->f84*2.1428571f;
   a->f120=1.0f;a->f124=1.0f;a->f128=1.0f;
-  a->l44=parent->w130?16384:49153;
+  a->angles.scalar.l44=parent->w130?16384:49153;
   a->i208=3;
  }
 }
@@ -86,7 +86,7 @@ void func_0c1d8f44(struct Vec3_tu5_03 *position,char direction)
  if((a=func_0c0374da(0,7,1))!=0){
   a->b12c=1;a->p16=func_0c1d8df2;a->lcc=1029;a->pos=*position;
   a->f120=1.0f;a->f124=1.0f;a->f128=1.0f;
-  a->l44=direction?16384:49153;a->i208=3;
+  a->angles.scalar.l44=direction?16384:49153;a->i208=3;
  }
 }
 void func_0c1d8faa(struct Vec3_tu5_03 *position,char direction)

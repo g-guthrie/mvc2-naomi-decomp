@@ -17,7 +17,7 @@ void func_0c1d4e64(struct Obj_tu5_03 *a)
  a->l84=(int)((void **)dat_0c2d9650->p0)[170];
  a->f120=dat_0c2615ac[a->w28];a->f124=dat_0c2615ac[a->w28];a->f128=dat_0c2615ac[a->w28];
  a->f80+=0.1363636405f;a->f88+=0.1363636405f;a->f84-=0.0454545469f;
- a->l44=(a->b33?2979:-2979)+a->l44;
+ a->angles.scalar.l44=(a->b33?2979:-2979)+a->angles.scalar.l44;
  a->w30++;
 }
 void func_0c1d4ef6(struct Obj_tu5_03 *a)

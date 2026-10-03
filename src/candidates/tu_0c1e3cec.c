@@ -36,8 +36,8 @@ void func_0c1e3d42(struct Obj_tu5_03 *a)
   a->b4++;func_0c1ce660(&a->pos,1);break;
  case 2:
   func_0c1d975e(a);
-  a->arr64[0]+=(int)(dat_0c2645a4[a->b32][0]*units/degrees+half)&65535;
-  a->l48=a->l48+((int)(dat_0c2645a4[a->b32][1]*units/degrees+half)&65535u);
+  a->angles.array[0]+=(int)(dat_0c2645a4[a->b32][0]*units/degrees+half)&65535;
+  a->angles.scalar.l48=a->angles.scalar.l48+((int)(dat_0c2645a4[a->b32][1]*units/degrees+half)&65535u);
   if(a->pos.x>-250.0f && a->pos.x<250.0f){
    if(a->pos.y>300.0f)break;
    a->pos.y=300.0f;
