@@ -33,26 +33,6 @@ const unsigned short dat_0c12c932[] = {
     0x03f9u, 0x0327u,
 };
 
-#pragma section n10ba1e
-const unsigned short dat_0c12ca1e[] = {
-    0x00ffu, 0x03f0u, 0x01a1u, 0x01f9u, 0x03f8u,
-};
-
-#pragma section n10ba2c
-const unsigned int dat_0c12ca2c[] = {
-    0x0c2f83f8u, 0x41092492u, 0xbf2b6db6u,
-};
-
-#pragma section n10bb76
-const unsigned short dat_0c12cb76[] = {
-    0x01f5u,
-};
-
-#pragma section n10bba0
-const unsigned int dat_0c12cba0[] = {
-    0x0c24dde8u,
-};
-
 #pragma section n10cae8
 const unsigned short dat_0c12dae8[] = {
     0x0141u, 0x041cu, 0x0142u,
