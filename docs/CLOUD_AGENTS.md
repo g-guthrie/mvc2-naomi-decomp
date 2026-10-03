@@ -55,6 +55,15 @@ cloud machine. macOS requires Intel application support (Rosetta on Apple
 Silicon). If a transfer stripped executable permissions, restore them with
 `chmod +x toolchain/wibo/wibo-x86_64 toolchain/wibo/wibo-macos`.
 
+## Unfinished work and historical snapshots
+
+The [active draft workbench](../workbench/active-drafts/README.md) preserves
+selected complete C candidates and their comparison evidence. The
+[source recovery archive](../workbench/source-recovery/README.md) preserves
+77 historical/local worktree snapshots and manual experiments with a hash-checked
+restoration tool. Neither adds verified-code credit. Review each draft's
+provenance, dependencies, and latest whole-unit result before continuing it.
+
 ## Continue the decompilation
 
 After the baseline passes, inspect `build/work_queue.json` or use
