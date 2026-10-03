@@ -103,7 +103,7 @@ struct NaomiClock { unsigned char pad[4]; unsigned char hour, minute; unsigned c
 /* Command view of action storage; preserve the retail timer reads. */
 struct ActorSubByteState { char b0; unsigned char b1; short w2; unsigned char b4,b5; char b6; unsigned char b7; };
 struct ActorInputRecord20 { unsigned short buttons; unsigned char pad[18]; };
-struct ActorSubMotionFlags { unsigned char pad[25], flag25, pad26[2], flag28; };
+struct ActorSubMotionFlags { unsigned char pad[25], flag25, pad26[2], flag28, pad29; short timer30; };
 struct ActorSubCommandPrefix { unsigned char pad[5]; char command; };
 struct ActorCommandState { unsigned char pad0[12]; int flags12; unsigned char pad16[16]; volatile int timer32; };
 struct ActorMotionFixed3 { int x_speed, y_speed, y_acceleration; };
