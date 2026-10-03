@@ -64,6 +64,9 @@ struct ActorSub2a4 {
     unsigned int l24;
 };
 
+/* Signed action outcome at offset56 in an embedded actor state record. */
+struct ActorActionResult56 { struct ActorSub2a4 base; unsigned char pad28[56-sizeof(struct ActorSub2a4)]; char result; };
+
 struct ActorSub2a4Extended {
     struct ActorSub2a4 base;
     unsigned char pad[34 - sizeof(struct ActorSub2a4)];
