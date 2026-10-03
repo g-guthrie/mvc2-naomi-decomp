@@ -378,6 +378,8 @@ struct LinkedActorBlock {
     short w158;
     unsigned char pad2[0xc0 - 0x7e];
 };
+/* Cached frame and signed screen offsets at actor offset 0xcc. */
+struct AttachmentFrameState { short frame, x, y; };
 union LinkedActorWcc {
     short short_value;
     unsigned int dword_value;
