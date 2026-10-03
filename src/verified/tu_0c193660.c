@@ -13,7 +13,7 @@ struct LinkedActor *func_0c193660(struct LinkedActor *parent,unsigned char b32,u
         a->w38=0x0b00;
         a->sdc.b12c=0;
         slot=(short *)((char *)a+0x88);
-        *slot=parent->sdc.w158;
+        *slot=parent->sdc.w158.short_value;
     }
     return a;
 }
@@ -28,7 +28,7 @@ struct LinkedActor *func_0c1936ba(struct LinkedActor *parent,unsigned char b32,u
         a->w38=0x0b00;
         a->sdc.b12c=0;
         slot=(short *)((char *)a+0x88);
-        *slot=parent->sdc.w158;
+        *slot=parent->sdc.w158.short_value;
     }
     return a;
 }

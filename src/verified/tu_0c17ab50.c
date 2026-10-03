@@ -26,7 +26,7 @@ void func_0c17ab50(struct LinkedActor *a,struct LinkedActor *owner)
 void func_0c17ac6a(struct LinkedActor *a,struct LinkedActor *owner)
 {
  struct AttachmentFrameState *state=(struct AttachmentFrameState *)&a->wcc;
- if(owner->sdc.w158!=state->frame){func_0c17af24(a,owner);return;}
+ if(owner->sdc.w158.short_value!=state->frame){func_0c17af24(a,owner);return;}
  a->b36=owner->b36;a->f52=owner->f52;a->f56=owner->f56;
  a->f52+=state->x;a->f56+=state->y;
  if(func_0c02a026(a)<0){a->b4++;func_0c17af16(a,owner);return;}

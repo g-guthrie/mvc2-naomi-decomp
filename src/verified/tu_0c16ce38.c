@@ -28,7 +28,7 @@ struct LinkedActor *func_0c16ce38(struct LinkedActor *parent)
             child->b1 = owner->b1;
             child->b33 = i;
             child->w38 = size;
-            child->wcc.dword_value = (unsigned short)owner->sdc.w158;
+            child->wcc.dword_value = (unsigned short)owner->sdc.w158.short_value;
         }
     } while (--i >= 0);
     return child;

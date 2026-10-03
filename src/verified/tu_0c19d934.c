@@ -9,7 +9,7 @@ void func_0c19d934(struct LinkedActor *a)
  a->v80.x=a->p24->v80.x;a->v80.y=a->p24->v80.y;a->b1a3=a->p24->b1a3;a->b1a4=a->p24->b1a4;
  a->b48=a->p24->b48;a->v80=a->p24->v80;
  a->b36=a->p24->b36;a->b36=0;
- a->f52=a->p24->f52;a->f56=a->p24->f56;*dat_0c2fb3e8=a->p24->sdc.w158;
+ a->f52=a->p24->f52;a->f56=a->p24->f56;*dat_0c2fb3e8=a->p24->sdc.w158.short_value;
  if(a->b33)func_0c0346da(a,75);
  A(a)->f264=0.75f;func_0c029e70(a,27,a->b33+5);
 }

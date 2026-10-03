@@ -360691,6 +360691,13 @@
       "evidence": "CFG walk from 0x0c1dde98; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c1de036",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Reviewed zero alignment word after the RTS/delay-slot end of 0x0c1ddf38 and before the shared pool at 0x0c1de038; emitted naturally by the bundled compiler and confirmed by strict whole 0x0c1ddd68..0x0c1de120 section proof."
+    },
+    {
       "address": "0x0c1de038",
       "size": 4,
       "kind": "data",
@@ -366394,6 +366401,13 @@
       "kind": "data",
       "sha256": "fe34631a1c7e2b1f3053f601a43cf1bf61cf186cdc1e380ee8fc255ec7a99756",
       "evidence": "PC-relative consumer in CFG of 0x0c1e68dc; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c1e6a68",
+      "size": 140,
+      "kind": "code",
+      "sha256": "325b54f67c1abebb9a2a8a0b248f854c7a85093aa2405a344b17285c5d968d8d",
+      "evidence": "Retail instruction review: complete function 0x0c1e6a68, two bounded device-slot scans, all branch targets/delay slots reviewed; shared literals at 0x0c1e6b5c\u20130x0c1e6b6c belong to the paired 0x0c1e6af4 function."
     },
     {
       "address": "0x0c1e6af4",

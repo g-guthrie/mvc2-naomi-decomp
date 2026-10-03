@@ -11,7 +11,7 @@ void func_0c19dbf8(struct LinkedActor *a)
  a->f52=a->p24->f52;a->f56=a->p24->f56;
  if(!a->b5){
   func_0c029fc4(a);
-  if(*dat_0c2fb3e8==a->p24->sdc.w158)goto done;
+  if(*dat_0c2fb3e8==a->p24->sdc.w158.short_value)goto done;
   a->b5++;func_0c029e70(a,27,a->b33+12);return;
  }else if(func_0c029fc4(a)<0){func_0c19ee84(a);return;}
  done:;

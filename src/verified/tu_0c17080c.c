@@ -80,7 +80,7 @@ void func_0c170a30(int cursor,struct LinkedActor *owner)
  struct Rec1708 *r=(struct Rec1708 *)(cursor+0x88);
  cursor=0;do{
   r->x=owner->f52;r->y=owner->f56;
-  r->state=(unsigned short)owner->sdc.w158;
+  r->state=(unsigned short)owner->sdc.w158.short_value;
   r->command=M(owner)->b14b;
   r++;cursor++;
  }while(cursor<4);
@@ -88,15 +88,15 @@ void func_0c170a30(int cursor,struct LinkedActor *owner)
 void func_0c170a7c(struct LinkedActor *a,struct LinkedActor *owner)
 {
  int i,limit;register struct Rec1708 *r=(struct Rec1708 *)((char *)a+0x88);
- a->f52=r->x;a->f56=r->y;a->sdc.w158=r->state;
+ a->f52=r->x;a->f56=r->y;a->sdc.w158.short_value=r->state;
  func_0c02a18c(a,M(a)->b159,M(a)->b158,r->command);
  limit=3;i=0;do{*r=r[1];r++;i++;}while(i<limit);
  if(!a->b32){
-  r->x=owner->f52;r->y=owner->f56;r->state=(unsigned short)owner->sdc.w158;
+  r->x=owner->f52;r->y=owner->f56;r->state=(unsigned short)owner->sdc.w158.short_value;
   r->command=M(owner)->b14b;
  }else{
   struct LinkedActor *source=*(struct LinkedActor **)((char *)a+8);
-  r->x=source->f52;r->y=source->f56;r->state=(unsigned short)source->sdc.w158;
+  r->x=source->f52;r->y=source->f56;r->state=(unsigned short)source->sdc.w158.short_value;
   r->command=M(source)->b14b;
  }
 }

@@ -21,14 +21,14 @@ void func_0c132208(struct LinkedActor *a,struct LinkedActor *owner)
  a->b4++;a->sdc=owner->sdc;a->sdc.b12c=1;a->b2=owner->b2;a->b1=owner->b1;
  a->v80.x=owner->v80.x;a->v80.y=owner->v80.y;a->b1a3=owner->b1a3;a->b1a4=owner->b1a4;a->b48=owner->b48;
  a->v80=owner->v80;a->b36=owner->b36;func_0c1323e0(a,owner);
- a->s28=table_0c24e2d0[owner->b1a3];a->s30=owner->sdc.w158;a->pad11[0]=66;a->pad11[1]=66;func_0c02a0c4(a,20,1);
+ a->s28=table_0c24e2d0[owner->b1a3];a->s30=owner->sdc.w158.short_value;a->pad11[0]=66;a->pad11[1]=66;func_0c02a0c4(a,20,1);
  a->pad11[5]=43;*(unsigned short *)&a->pad12[7]=0;a->pad11[2]=0;*(void **)&a->pad12[31]=(void *)0;dat_0c2f83f8->arr[a->b2]++;
  func_0c1322c4(a,owner);
 }
 void func_0c1322c4(struct LinkedActor *a,struct LinkedActor *owner)
 {
  int zero;
- if(a->s30!=(unsigned short)owner->sdc.w158 || owner->b1d0!=21)goto advance;
+ if(a->s30!=(unsigned short)owner->sdc.w158.short_value || owner->b1d0!=21)goto advance;
  a->b49=-2;func_0c1323e0(a,owner);zero=0;
  if(a->b5){if(func_0c02a026(a)>=0)goto done;a->sdc.b12c=zero;
 advance:a->b4++;}

@@ -20,8 +20,8 @@ void func_0c1d605c(struct Obj_tu5_03 *a)
   int mask;
   a->w28++;
   degrees=360.0f;half=0.5f;scale=65536.0f;mask=65535;
-  a->l44=(int)((a->w28+a->w30)*2*scale/degrees+half)&mask;
- a->l48=(int)((a->w28+a->w30)*3*scale/degrees+half)&mask;
+  a->angles.scalar.l44=(int)((a->w28+a->w30)*2*scale/degrees+half)&mask;
+ a->angles.scalar.l48=(int)((a->w28+a->w30)*3*scale/degrees+half)&mask;
  }
  if(a->p20->b4)func_0c037688(a);
  if(((struct ActorKindView *)a->p20)->kind!=24)func_0c037688(a);
@@ -49,8 +49,8 @@ void func_0c1d61c4(register struct Obj_tu5_03 *a)
   register int mask;
   a->w28++;
   degrees=360.0f;mask=65535;scale=65536.0f;half=0.5f;
-  a->l44=(int)((a->w28+a->w30)*2*scale/degrees+half)&mask;
- a->l48=(int)((a->w28+a->w30)*3*scale/degrees+half)&mask;
+  a->angles.scalar.l44=(int)((a->w28+a->w30)*2*scale/degrees+half)&mask;
+ a->angles.scalar.l48=(int)((a->w28+a->w30)*3*scale/degrees+half)&mask;
   a->f120=func_0c1ec2c0((int)((a->w28%360)*scale/degrees+half)&mask)*half+half;
   a->f124=func_0c1ebd40((int)((a->w28%360)*scale/degrees+half)&mask)*half+half;
  }
