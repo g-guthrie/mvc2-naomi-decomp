@@ -5855,12 +5855,6 @@
         "size": 4
       },
       {
-        "section": "Cn0d6e54",
-        "kind": "data",
-        "address": "0x0c0d6e54",
-        "size": 4
-      },
-      {
         "section": "Cn0fcae8",
         "kind": "data",
         "address": "0x0c0fcae8",
@@ -5895,7 +5889,6 @@
       "_ptr_0c1d7e58": "0x0c1d7e58",
       "_ptr_0c1f072c": "0x0c1f072c",
       "_ptr_0c050fdc": "0x0c050fdc",
-      "_ptr_0c0d6e54": "0x0c0d6e54",
       "_ptr_0c0fcae8": "0x0c0fcae8",
       "_ptr_0c1c8048": "0x0c1c8048"
     },
@@ -12661,24 +12654,6 @@
     "mode": "verified",
     "sections": [
       {
-        "section": "Cn0d6e70",
-        "kind": "data",
-        "address": "0x0c0d6e70",
-        "size": 8
-      },
-      {
-        "section": "Cn0d6fa8",
-        "kind": "data",
-        "address": "0x0c0d6fa8",
-        "size": 28
-      },
-      {
-        "section": "Cn0d70e8",
-        "kind": "data",
-        "address": "0x0c0d70e8",
-        "size": 28
-      },
-      {
         "section": "Cn0d71f8",
         "kind": "data",
         "address": "0x0c0d71f8",
@@ -13010,9 +12985,6 @@
       }
     ],
     "exports": {
-      "_table_0c0d6e70": "0x0c0d6e70",
-      "_table_0c0d6fa8": "0x0c0d6fa8",
-      "_table_0c0d70e8": "0x0c0d70e8",
       "_table_0c0d71f8": "0x0c0d71f8",
       "_ptr_0c0d7938": "0x0c0d7938",
       "_ptr_0c0d7b34": "0x0c0d7b34",
@@ -45414,30 +45386,6 @@
         "size": 12
       },
       {
-        "section": "Cn0d6e4c",
-        "kind": "data",
-        "address": "0x0c0d6e4c",
-        "size": 6
-      },
-      {
-        "section": "Cn0d6e58",
-        "kind": "data",
-        "address": "0x0c0d6e58",
-        "size": 24
-      },
-      {
-        "section": "Cn0d6f98",
-        "kind": "data",
-        "address": "0x0c0d6f98",
-        "size": 16
-      },
-      {
-        "section": "Cn0d70de",
-        "kind": "data",
-        "address": "0x0c0d70de",
-        "size": 8
-      },
-      {
         "section": "Cn0d71ea",
         "kind": "data",
         "address": "0x0c0d71ea",
@@ -45622,10 +45570,6 @@
       "_table_0c0d62dc": "0x0c0d62dc",
       "_dat_0c0d6d4e": "0x0c0d6d4e",
       "_dat_0c0d6d5c": "0x0c0d6d5c",
-      "_dat_0c0d6e4c": "0x0c0d6e4c",
-      "_table_0c0d6e58": "0x0c0d6e58",
-      "_dat_0c0d6f98": "0x0c0d6f98",
-      "_dat_0c0d70de": "0x0c0d70de",
       "_dat_0c0d71ea": "0x0c0d71ea",
       "_dat_0c0d7314": "0x0c0d7314",
       "_dat_0c0d7328": "0x0c0d7328",
@@ -229406,6 +229350,69 @@
       "_dat_0c2f83f8": "0x0c2f83f8",
       "_table_0c248380": "0x0c248380",
       "_table_0c248394": "0x0c248394"
+    }
+  },
+  {
+    "id": "tu_0c0d6d68",
+    "source": "src/verified/tu_0c0d6d68.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c0d6d68",
+        "size": 924,
+        "interior": [
+          {
+            "address": "0x0c0d6e4c",
+            "size": 44,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c0d6f98",
+            "size": 44,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c0d70de",
+            "size": 38,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c0d6d68": "0x0c0d6d68",
+      "_func_0c0d6d84": "0x0c0d6d84",
+      "_func_0c0d6e1a": "0x0c0d6e1a",
+      "_func_0c0d6ea4": "0x0c0d6ea4",
+      "_func_0c0d6eea": "0x0c0d6eea",
+      "_func_0c0d6f48": "0x0c0d6f48",
+      "_func_0c0d6fc4": "0x0c0d6fc4",
+      "_func_0c0d7014": "0x0c0d7014",
+      "_func_0c0d7064": "0x0c0d7064",
+      "_func_0c0d70a4": "0x0c0d70a4"
+    },
+    "imports": {
+      "_dat_0c2488ac": "0x0c2488ac",
+      "_dat_0c248850": "0x0c248850",
+      "_dat_0c24885e": "0x0c24885e",
+      "_dat_0c24886c": "0x0c24886c",
+      "_dat_0c24887c": "0x0c24887c",
+      "_dat_0c24888c": "0x0c24888c",
+      "_dat_0c24889c": "0x0c24889c",
+      "_func_0c0465cc": "0x0c0465cc",
+      "_func_0c046b6c": "0x0c046b6c",
+      "_func_0c0469f4": "0x0c0469f4",
+      "_func_0c046d3c": "0x0c046d3c",
+      "_func_0c047068": "0x0c047068",
+      "_func_0c046e7e": "0x0c046e7e",
+      "_func_0c046dd0": "0x0c046dd0",
+      "_func_0c046d54": "0x0c046d54",
+      "_func_0c045f1c": "0x0c045f1c",
+      "_func_0c0463fc": "0x0c0463fc",
+      "_func_0c047aac": "0x0c047aac",
+      "_func_0c045248": "0x0c045248"
     }
   }
 ]
