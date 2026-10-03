@@ -103,7 +103,7 @@ struct NaomiClock { unsigned char pad[4]; unsigned char hour, minute; unsigned c
 /* Command view of action storage; preserve the retail timer reads. */
 struct ActorSubByteState { char b0; unsigned char b1; short w2; unsigned char b4,b5; char b6; unsigned char b7; };
 struct ActorInputRecord20 { unsigned short buttons; unsigned char pad[18]; };
-struct ActorSubMotionFlags { unsigned char pad[25], flag25, pad26[2], flag28; };
+struct ActorSubMotionFlags { unsigned char pad[25], flag25, pad26[2], flag28, pad29; short timer30; };
 struct ActorSubCommandPrefix { unsigned char pad[5]; char command; };
 struct ActorCommandState { unsigned char pad0[12]; int flags12; unsigned char pad16[16]; volatile int timer32; };
 struct ActorMotionFixed3 { int x_speed, y_speed, y_acceleration; };
@@ -164,7 +164,8 @@ struct Actor {
     unsigned short w132;
     unsigned char pad6b[0x13c - 0x134];
     unsigned char b13c;
-    unsigned char pad6bb[0x140 - 0x13d];
+    unsigned char pad6bb;
+    unsigned char b13e,b13f;
     unsigned char b140;
     char b141;
     char b142;
@@ -185,7 +186,8 @@ struct Actor {
     unsigned char *p168, *p16c;
     struct Rect8_15dc08 *p170;
     unsigned char *p174;
-    unsigned char pad178[0x19d - 0x178];
+    unsigned char pad178[0x19c - 0x178];
+    char b19c;
     char b19d;
     char b19e;
     char b19f;
@@ -363,8 +365,14 @@ struct Glob_me00 { unsigned char pad[0x14]; int l14; };
 struct Control_0c2fb1f0 { unsigned char pad0[12]; int i12; unsigned char pad16[28]; float f44, f48; float values[8]; unsigned int i84; };
 
 /* Sixty-byte slot records scanned by 0x0c1e6a68 and 0x0c1e6af4.
- * Only the classification and validity words have been reviewed. */
-struct DeviceSlot60 { unsigned char pad0[4]; int type, id; unsigned char rest[48]; };
+ * The guard at 0x0c1e6e36 also reads three signed state words. */
+struct DeviceSlot60 {
+    unsigned char pad0[4]; int type, id;
+    unsigned char pad12[8]; int l20;
+    unsigned char pad24[4]; int l28;
+    unsigned char pad32[12]; int l44;
+    unsigned char pad48[12];
+};
 
 /* Indexed data shared by actor constructors through the root at 0x0c2d964c. */
 union ActorGlobalEntry { void *pointer; int value; };

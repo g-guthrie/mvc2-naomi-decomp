@@ -335614,7 +335614,14 @@
       "size": 20,
       "kind": "code",
       "sha256": "326146c9adff2e9a86d0158d798cd6f92ebbfa8dcabe2f3131dcb71dc3dd20f6",
-      "evidence": "CFG walk from 0x0c1bc4b8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Source CFG review from actual entry 0x0c1bc4b8; retail bytes checked. Corrects false entry 0x0c1bc5c4, which is a runtime-helper pointer in the interior pool, and recovers complete allocators 0x0c1bc740/0x0c1bc794. Delay slots and literal reads included."
+    },
+    {
+      "address": "0x0c1bc4cc",
+      "size": 218,
+      "kind": "code",
+      "sha256": "34f76cd944b4478543dfe41d7b1e68d79580d2cde4a2a045a5dbddf7ba746888",
+      "evidence": "Source CFG review from actual entry 0x0c1bc4cc; retail bytes checked. Corrects false entry 0x0c1bc5c4, which is a runtime-helper pointer in the interior pool, and recovers complete allocators 0x0c1bc740/0x0c1bc794. Delay slots and literal reads included."
     },
     {
       "address": "0x0c1bc5a6",
@@ -335622,6 +335629,13 @@
       "kind": "data",
       "sha256": "fa4f9adc56049e6d0cf064608527d107b3a09a12c147e42f22e611c3e4053227",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1bc460; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c1bc5ac",
+      "size": 8,
+      "kind": "data",
+      "sha256": "0dc3ff0f6ac53c2f952377b8e3bd18bf36c05c2263e8c7b0016fee581ac46ecc",
+      "evidence": "Source CFG review from actual entry 0x0c1bc4cc; retail bytes checked. Corrects false entry 0x0c1bc5c4, which is a runtime-helper pointer in the interior pool, and recovers complete allocators 0x0c1bc740/0x0c1bc794. Delay slots and literal reads included."
     },
     {
       "address": "0x0c1bc5b4",
@@ -335635,126 +335649,84 @@
       "size": 4,
       "kind": "data",
       "sha256": "9e3539b658b446dd3e7a489192127c9a87d4443db111e4b564a7339318abe413",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1bc4b8; unreferenced adjacent bytes omitted."
+      "evidence": "Source CFG review from actual entry 0x0c1bc4b8; retail bytes checked. Corrects false entry 0x0c1bc5c4, which is a runtime-helper pointer in the interior pool, and recovers complete allocators 0x0c1bc740/0x0c1bc794. Delay slots and literal reads included."
     },
     {
-      "address": "0x0c1bc5c4",
-      "size": 102,
+      "address": "0x0c1bc5c0",
+      "size": 20,
+      "kind": "data",
+      "sha256": "6ec30de4203babcd7a0aecfe559227d649b411d68c6bab998c32a8aa8f3100d1",
+      "evidence": "Source CFG review from actual entry 0x0c1bc4cc; retail bytes checked. Corrects false entry 0x0c1bc5c4, which is a runtime-helper pointer in the interior pool, and recovers complete allocators 0x0c1bc740/0x0c1bc794. Delay slots and literal reads included."
+    },
+    {
+      "address": "0x0c1bc5d4",
+      "size": 152,
       "kind": "code",
-      "sha256": "0546c1ad72ed013672493d968a57d033ba9c278cb4885f39eed6fb84d0d5ef41",
-      "evidence": "CFG walk from 0x0c1bc5c4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "b63bc1a72943eb6ad6d906b63020f2ee5d5fd4efb3592736c5603272eb81b476",
+      "evidence": "Source CFG review from actual entry 0x0c1bc4cc; retail bytes checked. Corrects false entry 0x0c1bc5c4, which is a runtime-helper pointer in the interior pool, and recovers complete allocators 0x0c1bc740/0x0c1bc794. Delay slots and literal reads included."
     },
     {
       "address": "0x0c1bc66c",
-      "size": 6,
+      "size": 24,
       "kind": "data",
-      "sha256": "2c56c119d9b8e0d5c55fac8b97771873b352fe4c69c965566695e6c20f5481ad",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1bc5c4; unreferenced adjacent bytes omitted."
+      "sha256": "9b6ba8b4d455b563f09340e736c9c9c5867ccb627f861e94cf21b6027fcad458",
+      "evidence": "Source CFG review from actual entry 0x0c1bc4cc; retail bytes checked. Corrects false entry 0x0c1bc5c4, which is a runtime-helper pointer in the interior pool, and recovers complete allocators 0x0c1bc740/0x0c1bc794. Delay slots and literal reads included."
     },
     {
-      "address": "0x0c1bc674",
-      "size": 12,
-      "kind": "data",
-      "sha256": "9f3c130263080b88c9eba9f092f9fc73c0238a42b45189e8b69f4d38b982dcde",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1bc5c4; unreferenced adjacent bytes omitted."
-    },
-    {
-      "address": "0x0c1bc6b0",
-      "size": 2,
-      "kind": "data",
-      "sha256": "0eb5e0fcd44c21b26aa317b858aa7ec372ce2dd42f9b722997ed5ae2444b85a8",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1bc5c4; unreferenced adjacent bytes omitted."
-    },
-    {
-      "address": "0x0c1bc6f8",
-      "size": 28,
+      "address": "0x0c1bc684",
+      "size": 144,
       "kind": "code",
-      "sha256": "574fd79fc627a83149c6816930dc0e71dff809df66de16024c2b8d3ed8d20e34",
-      "evidence": "CFG walk from 0x0c1bc5c4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "e08130a4f14edb7b722390df8583e1930317ceb436d6caf7e428047581282785",
+      "evidence": "Source CFG review from actual entry 0x0c1bc4cc; retail bytes checked. Corrects false entry 0x0c1bc5c4, which is a runtime-helper pointer in the interior pool, and recovers complete allocators 0x0c1bc740/0x0c1bc794. Delay slots and literal reads included."
     },
     {
       "address": "0x0c1bc714",
       "size": 4,
       "kind": "code",
       "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
-      "evidence": "CFG walk from 0x0c1bc714; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Source CFG review from actual entry 0x0c1bc714; retail bytes checked. Corrects false entry 0x0c1bc5c4, which is a runtime-helper pointer in the interior pool, and recovers complete allocators 0x0c1bc740/0x0c1bc794. Delay slots and literal reads included."
     },
     {
       "address": "0x0c1bc718",
       "size": 12,
       "kind": "code",
       "sha256": "8d043c0a12175d65b44a4f046a38c5ddd900bc063f81592202d64b0b92405afb",
-      "evidence": "CFG walk from 0x0c1bc5c4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Source CFG review from actual entry 0x0c1bc4cc; retail bytes checked. Corrects false entry 0x0c1bc5c4, which is a runtime-helper pointer in the interior pool, and recovers complete allocators 0x0c1bc740/0x0c1bc794. Delay slots and literal reads included."
     },
     {
-      "address": "0x0c1bc72a",
-      "size": 2,
+      "address": "0x0c1bc724",
+      "size": 28,
       "kind": "data",
-      "sha256": "f85ad8f0233b99ba122d3b79773c1a1936b3d3b988b9d1b475fd890b4032f3c4",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1bc5c4; unreferenced adjacent bytes omitted."
+      "sha256": "a3880671163712520e07c40520f6a7f18928ae00a814d4d4e74c4b4f211c8b73",
+      "evidence": "Source CFG review from actual entry 0x0c1bc4cc; retail bytes checked. Corrects false entry 0x0c1bc5c4, which is a runtime-helper pointer in the interior pool, and recovers complete allocators 0x0c1bc740/0x0c1bc794. Delay slots and literal reads included."
     },
     {
-      "address": "0x0c1bc73c",
-      "size": 4,
-      "kind": "data",
-      "sha256": "bb8f21711d67bc906a047fcb31fda31099e2ddcfccea4e1b02ace239ead5fe6f",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1bc5c4; unreferenced adjacent bytes omitted."
-    },
-    {
-      "address": "0x0c1bc75c",
-      "size": 2,
-      "kind": "data",
-      "sha256": "43977588226722a6780dc4aa34dc21cb9fa69b4ef969a1e758c89154ff2af054",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1bc5c4; unreferenced adjacent bytes omitted."
-    },
-    {
-      "address": "0x0c1bc782",
-      "size": 18,
+      "address": "0x0c1bc740",
+      "size": 84,
       "kind": "code",
-      "sha256": "b8f8e146d19702d7e3baf309a96e18dfe834869c7271ee93e02ce92d1fda3ced",
-      "evidence": "CFG walk from 0x0c1bc782; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "bc773c0ea2b2e589561032aee08617dc5c2b93c3962cf8e0f4aa329cac0bc501",
+      "evidence": "Source CFG review from actual entry 0x0c1bc740; retail bytes checked. Corrects false entry 0x0c1bc5c4, which is a runtime-helper pointer in the interior pool, and recovers complete allocators 0x0c1bc740/0x0c1bc794. Delay slots and literal reads included."
     },
     {
       "address": "0x0c1bc794",
       "size": 84,
       "kind": "code",
       "sha256": "c1cbe876234112f0d6e78e47f5c7c014867fa7dbaf005d23c57248427f87e7f0",
-      "evidence": "CFG walk from 0x0c1bc794; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Source CFG review from actual entry 0x0c1bc794; retail bytes checked. Corrects false entry 0x0c1bc5c4, which is a runtime-helper pointer in the interior pool, and recovers complete allocators 0x0c1bc740/0x0c1bc794. Delay slots and literal reads included."
     },
     {
       "address": "0x0c1bc7e8",
       "size": 22,
       "kind": "code",
       "sha256": "94656f7362342e6fff72c0fee814df97c8e051058a902be21230c6cc82008a1f",
-      "evidence": "CFG walk from 0x0c1bc7e8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Source CFG review from actual entry 0x0c1bc7e8; retail bytes checked. Corrects false entry 0x0c1bc5c4, which is a runtime-helper pointer in the interior pool, and recovers complete allocators 0x0c1bc740/0x0c1bc794. Delay slots and literal reads included."
     },
     {
       "address": "0x0c1bc7fe",
-      "size": 4,
+      "size": 18,
       "kind": "data",
-      "sha256": "f2971c10cb6de898e29a8dca88c4d214a76f911a8155a365ff0a32048b4a44ab",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1bc794; unreferenced adjacent bytes omitted."
-    },
-    {
-      "address": "0x0c1bc802",
-      "size": 2,
-      "kind": "data",
-      "sha256": "484769a62f4e0466590d0664cf05f427914e6cdaba72145abdf07651bba66698",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1bc782; unreferenced adjacent bytes omitted."
-    },
-    {
-      "address": "0x0c1bc804",
-      "size": 8,
-      "kind": "data",
-      "sha256": "6e49bc622caae13f21c33fc0651c9002c8b5657818994d5253855ade19503e2d",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1bc794; unreferenced adjacent bytes omitted."
-    },
-    {
-      "address": "0x0c1bc80c",
-      "size": 4,
-      "kind": "data",
-      "sha256": "64b2c997d9bf774f75625f01399beb623c7adaa1c759c09af222f8eb21e1ec2d",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1bc7e8; unreferenced adjacent bytes omitted."
+      "sha256": "aa1295c11fec53def2d586ebfa2f849f34d7a29438e32771824d77b1a3b43613",
+      "evidence": "Source review of complete allocators 0x0c1bc740 and 0x0c1bc794 plus dispatcher 0x0c1bc7e8: six-byte halfword literals and three four-byte pointers through 0x0c1bc810; every byte is a consumed literal."
     },
     {
       "address": "0x0c1bc810",
