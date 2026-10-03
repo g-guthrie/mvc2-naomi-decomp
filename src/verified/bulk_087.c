@@ -314,8 +314,3 @@ const unsigned int dat_0c15fd84[] = {
     0x0c251370u, 0x40092492u, 0x412b6db6u,
 };
 
-#pragma section n15fece
-const unsigned short dat_0c15fece[] = {
-    0x1c08u, 0x00dcu, 0x00c0u, 0x012cu, 0x01a3u, 0x019cu, 0x01acu, 0x01d0u,
-};
-
