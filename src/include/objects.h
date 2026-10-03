@@ -64,6 +64,9 @@ struct ActorSub2a4 {
     unsigned int l24;
 };
 
+/* Signed action outcome at offset56 in an embedded actor state record. */
+struct ActorActionResult56 { struct ActorSub2a4 base; unsigned char pad28[56-sizeof(struct ActorSub2a4)]; char result; };
+
 struct ActorSub2a4Extended {
     struct ActorSub2a4 base;
     unsigned char pad[34 - sizeof(struct ActorSub2a4)];
@@ -337,6 +340,9 @@ struct Actor {
     unsigned char pad15b[0x524 - 0x4de];
     char b524;
     unsigned char b525;
+    unsigned char pad526[0x52c-0x526]; char b52c;
+    unsigned char pad52d[0x53f-0x52d]; char b53f;
+    unsigned char pad540[3]; char b543;
 };
 
 /* Global game flags record exposed through the pointer at 0x0c2d6f84. */
@@ -378,6 +384,10 @@ struct LinkedActorBlock {
     short w158;
     unsigned char pad2[0xc0 - 0x7e];
 };
+/* Six-byte follow offset row: signed x/y and two metadata bytes. */
+struct FollowOffset15e2 { short x,y; unsigned char metadata[2]; };
+/* Cached frame and signed screen offsets at actor offset 0xcc. */
+struct AttachmentFrameState { short frame, x, y; };
 union LinkedActorWcc {
     short short_value;
     unsigned int dword_value;
@@ -571,5 +581,9 @@ struct Dat_13bb5c {
 
 /* Byte controls used by callbacks receiving the actor state at 0x2a4. */
 struct ActorSubControlBytes { unsigned char pad0[2]; char b2; unsigned char pad3; char b4; unsigned char pad5[7]; char b12; };
+
+/* Direction selection state with two 12-byte actor entries. */
+struct DirectionEntry12 { struct Actor *actor; unsigned char unknown[8]; };
+struct DirectionState { unsigned char unknown0[3],b3,unknown4[20]; struct DirectionEntry12 entry[2]; unsigned char unknown48[14]; signed char direction; };
 
 #endif

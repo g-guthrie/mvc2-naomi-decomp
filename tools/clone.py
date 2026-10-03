@@ -27,6 +27,25 @@ from twins import shape
 SYMBOL = re.compile(r'\b(func|dat|ptr|table)_(0c[0-9a-f]{6})\b')
 
 
+def function_spans(text):
+    """Find complete definitions, including compact bodies and nested braces."""
+    ignored = re.compile(r'//[^\n]*|/\*.*?\*/|"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'', re.S)
+    masked = ignored.sub(lambda m: re.sub(r'[^\n]', ' ', m.group()), text)
+    signature = re.compile(r'^[^\n;{}]*\b(func_0c[0-9a-f]{6})\s*\([^;{}]*\)\s*\{', re.M)
+    spans, cursor = [], 0
+    while match := signature.search(masked, cursor):
+        depth = 1
+        for end in range(match.end(), len(masked)):
+            depth += (masked[end] == '{') - (masked[end] == '}')
+            if depth == 0:
+                spans.append((match.group(1), match.start(), end + 1))
+                cursor = end + 1
+                break
+        else:
+            break
+    return spans
+
+
 def literal_loads(image, base, lo, hi):
     """(kind, value) for each mov.w, mov.l and mova literal in code order."""
     out = []
@@ -127,14 +146,15 @@ def main():
             continue
         t = twins[0]
         text = open(ROOT / verified[t]).read()
-        m = re.search(rf'^[^\n;]*\bfunc_{t:08x}\s*\([^;{{]*\)\s*\n\{{.*?^\}}', text, re.S | re.M)
-        if not m:
+        definitions = function_spans(text)
+        definition = next((item for item in definitions if item[0] == f'func_{t:08x}'), None)
+        if definition is None:
             notes.append(f'func_{a:08x}: twin func_{t:08x} source not found')
             continue
-        body = m.group(0)
+        _, lo, hi = definition
+        body = text[lo:hi]
         # header: everything before the first function definition in the twin file
-        first = re.search(r'^[^\n;{}]*\bfunc_0c[0-9a-f]{6}\s*\([^;]*\)\s*\n\{', text, re.M)
-        head = text[:first.start()] if first else ''
+        head = text[:definitions[0][1]]
         # substitute pool literals by first-use order
         tl, al = literal_loads(image, base, t, extent(t)), literal_loads(image, base, a, e)
         renames = {}

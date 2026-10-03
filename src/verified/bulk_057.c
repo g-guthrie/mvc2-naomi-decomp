@@ -281,13 +281,6 @@ const unsigned int dat_0c0ff088[] = {
     0x0c02a0c4u, 0x42092492u,
 };
 
-#pragma section n0ff1a2
-const unsigned short dat_0c0ff1a2[] = {
-    0x03f8u, 0x0328u, 0x019eu, 0x01b0u, 0x014bu, 0x0141u, 0x03f9u, 0x01f5u,
-    0x01d2u, 0xa026u, 0x0c02u, 0x5762u, 0x0c02u, 0x37b8u, 0x0c04u, 0x83f8u,
-    0x0c2fu, 0x5555u, 0xbf55u, 0xe24cu, 0x0c16u,
-};
-
 #pragma section n0ff2d6
 const unsigned short dat_0c0ff2d6[] = {
     0x0328u, 0x01f5u, 0x01d2u, 0x0327u,
@@ -299,17 +292,6 @@ const unsigned int dat_0c0ff2e0[] = {
     0x3e555555u, 0x0c02a0c4u,
 };
 
-#pragma section n0ff586
-const unsigned short dat_0c0ff586[] = {
-    0x01f9u, 0x041cu, 0x01a1u, 0x0141u,
-};
-
-#pragma section n0ff590
-const unsigned int dat_0c0ff590[] = {
-    0x0c2f83f8u, 0x0c0442fau, 0x0c0432cau, 0x0c02a0c4u,
-    0x0c0346dau,
-};
-
 #pragma section n0ff92c
 const unsigned int dat_0c0ff92c[] = {
     0x01d201f9u, 0x041c01a1u,
@@ -319,29 +301,6 @@ const unsigned int dat_0c0ff92c[] = {
 const unsigned int dat_0c0ff93c[] = {
     0x0c02a39au, 0xc1f00000u, 0xc11a4924u, 0x0c2f83f8u,
     0x0c02a0c4u, 0x0c02a026u, 0xc2ab6db6u,
-};
-
-#pragma section n0ffa64
-const unsigned short dat_0c0ffa64[] = {
-    0x01fau,
-};
-
-#pragma section n0ffa6e
-const unsigned short dat_0c0ffa6e[] = {
-    0x0800u, 0x0130u, 0x01d2u, 0x01a0u,
-};
-
-#pragma section n0ffa7c
-void (*const table_0c0ffa7c[])(void) = {
-    func_0c037d54,
-    func_0c025900,
-    func_0c048ce6,
-    func_0c24ae0c,
-};
-
-#pragma section n0ffa8c
-const unsigned int dat_0c0ffa8c[] = {
-    0xc2d55555u, 0x436bb6dbu, 0x0c1d4610u, 0x0c02a0c4u,
 };
 
 #pragma section n0ffb7a
@@ -367,17 +326,6 @@ const unsigned int dat_0c0ffcd8[] = {
 #pragma section n0ffcf8
 const unsigned int dat_0c0ffcf8[] = {
     0xc11a4924u, 0xbf892492u,
-};
-
-#pragma section n0ffde0
-const unsigned short dat_0c0ffde0[] = {
-    0x0140u, 0x041cu, 0x01c8u, 0x01b4u, 0x01d2u,
-};
-
-#pragma section n0ffdf0
-const unsigned int dat_0c0ffdf0[] = {
-    0x0c1d1622u, 0x0c03489cu, 0x0c2d9260u, 0x0c025762u,
-    0x40855555u, 0x414db6dbu, 0xbf4db6dbu, 0x0c02a0c4u,
 };
 
 #pragma section n0fff02
