@@ -210,24 +210,6 @@ const unsigned int dat_0c1977ec[] = {
     0x012c02a4u, 0x0c1fb7a0u, 0x0c037688u,
 };
 
-#pragma section n197926
-const unsigned short dat_0c197926[] = {
-    0x00dcu, 0x00c0u, 0x012cu, 0x01a3u, 0x02a4u, 0x01d0u, 0x01e9u, 0x041cu,
-};
-
-#pragma section n197944
-const unsigned int dat_0c197944[] = {
-    0x0c2580fcu, 0x0c1fb838u, 0x0c1fb7a0u, 0x0c02a0c4u,
-    0x0c037688u, 0x0c258108u,
-};
-
-#pragma section n197a6a
-const unsigned short dat_0c197a6a[] = {
-    0x00dcu, 0x00c0u, 0x012cu, 0x01a3u, 0x013cu, 0x0130u, 0x02a4u, 0x01d0u,
-    0x01e9u, 0xb838u, 0x0c1fu, 0xb7a0u, 0x0c1fu, 0x5555u, 0xc0d5u, 0xa0c4u,
-    0x0c02u, 0x8114u, 0x0c25u,
-};
-
 #pragma section n197b7e
 const unsigned short dat_0c197b7e[] = {
     0x0130u, 0x0e02u,
@@ -237,16 +219,6 @@ const unsigned short dat_0c197b7e[] = {
 const unsigned int dat_0c197b84[] = {
     0x0c2f8338u, 0x43200000u, 0xc3200000u, 0x0c0374dau,
     0x0c197836u, 0x41d55555u,
-};
-
-#pragma section n197cae
-const unsigned short dat_0c197cae[] = {
-    0x012cu, 0x0130u,
-};
-
-#pragma section n197cb4
-const unsigned int dat_0c197cb4[] = {
-    0x0c2f8338u, 0x0c028642u, 0x41d55555u, 0x0c037688u,
 };
 
 #pragma section n197de2
@@ -283,40 +255,6 @@ const unsigned int dat_0c198178[] = {
 #pragma section n1982ec
 const unsigned int dat_0c1982ec[] = {
     0x43800000u, 0x41400000u,
-};
-
-#pragma section n1985b6
-const unsigned short dat_0c1985b6[] = {
-    0x012cu,
-};
-
-#pragma section n1985ba
-const unsigned short dat_0c1985ba[] = {
-    0x01efu,
-};
-
-#pragma section n1985c0
-void (*const table_0c1985c0[])(void) = {
-    func_0c02a026,
-    func_0c02a0c4,
-    func_0c0426c2,
-    func_0c042780,
-};
-
-#pragma section n198728
-const unsigned short dat_0c198728[] = {
-    0x0e04u,
-};
-
-#pragma section n198730
-const unsigned int dat_0c198730[] = {
-    0x01d201a3u, 0x0c2f6830u, 0x0c0374dau, 0x0c19832eu,
-};
-
-#pragma section n198748
-const unsigned int dat_0c198748[] = {
-    0x0c1fb7a0u, 0xc292aaaau, 0x4292aaaau, 0x43430000u,
-    0x0c02a0c4u,
 };
 
 #pragma section n198850

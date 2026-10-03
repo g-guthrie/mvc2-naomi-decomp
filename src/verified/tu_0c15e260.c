@@ -1,6 +1,5 @@
-/* Candidate 0x0c15e260..0x0c15e32c: five functions exact; func_0c15e2ca differs by two bytes in the animation call target register. All pools exact. */
+/* Exact 0x0c15e260..0x0c15e32c: follow-offset handlers with one shared completion branch. */
 #include "objects.h"
-struct FollowOffset15e2 { short x,y;unsigned char metadata[2]; };
 extern struct FollowOffset15e2 dat_0c250e80[];
 extern void (*table_0c250f10[])(struct Actor *,struct Actor *);
 extern char func_0c02a026(struct Actor *);
@@ -19,6 +18,6 @@ void func_0c15e2a0(struct Actor *a,struct Actor *owner)
  func_0c02a026(a);
 }
 void func_0c15e2ca(struct Actor *a,struct Actor *owner)
-{if(owner->b4>=2||func_0c02a026(owner)<0){goto finish;finish:a->b4++;a->b12c=0;}}
+{if(owner->b4>=2)goto finish;if(func_0c02a026(owner)>=0)return;finish:a->b4++;a->b12c=0;}
 void func_0c15e302(struct Actor *a){a->b4++;a->b12c=0;}
 void func_0c15e310(struct Actor *a){func_0c037688(a);}
