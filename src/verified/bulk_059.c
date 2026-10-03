@@ -33,23 +33,6 @@ const unsigned int dat_0c104b08[] = {
     0x0c025900u, 0x0c02a0c4u, 0x0c2f83f8u,
 };
 
-#pragma section n104c60
-void (*const table_0c104c60[])(void) = {
-    func_0c0442fa,
-    func_0c0432ca,
-    func_0c02a0c4,
-    func_0c02a026,
-};
-
-#pragma section n104df0
-void (*const table_0c104df0[])(void) = {
-    func_0c02a0c4,
-    func_0c02a026,
-    func_0c0437b8,
-    func_0c24b318,
-    func_0c24b320,
-};
-
 #pragma section n105438
 const unsigned int dat_0c105438[] = {
     0x01d201c8u,
