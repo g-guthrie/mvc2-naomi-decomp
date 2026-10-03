@@ -64,6 +64,13 @@ struct ActorSub2a4 {
     unsigned int l24;
 };
 
+/* Effect controls at actor +0x2a4: indexed bytes overlap the float at +4.
+ * Existing halfword/action views remain unchanged. */
+struct ActorSubEffectParameter { unsigned char flags[4]; float f4; };
+union ActorSubEffectState { unsigned char bytes[8]; struct ActorSubEffectParameter parameter; };
+struct EffectScale4 { float f116, f120, f124, f128; };
+union EffectMotionStep { int integer; float real; };
+
 struct ActorSub2a4Extended {
     struct ActorSub2a4 base;
     int l28;
