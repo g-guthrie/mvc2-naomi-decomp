@@ -66,7 +66,8 @@ struct ActorSub2a4 {
 
 struct ActorSub2a4Extended {
     struct ActorSub2a4 base;
-    unsigned char pad[34 - sizeof(struct ActorSub2a4)];
+    int l28;
+    unsigned char pad[34 - sizeof(struct ActorSub2a4) - sizeof(int)];
     short s34;
     int l36;
     unsigned char b40, pad41;
@@ -390,6 +391,7 @@ struct LinkedActorBlock {
     unsigned char pad2[0xc0 - 0x7e];
 };
 union LinkedActorWcc {
+    struct LinkedActor *pointer_value;
     short short_value;
     unsigned int dword_value;
     int arrcc[1];
