@@ -21,7 +21,7 @@ void func_0c1b3fd0(struct LinkedActor *a, struct LinkedActor *b)
         a->sdc.b12c = 0;
         a->b49 = -1;
     }
-    if ((unsigned short)b->sdc.w158 == a->wcc.dword_value) {
+    if ((unsigned short)b->sdc.w158.short_value == a->wcc.dword_value) {
         if (b->sdc.b141) {
             func_0c02a18c(a, 23, 2, b->sdc.b141 - 1);
             a->f52 = b->f52;

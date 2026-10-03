@@ -14,7 +14,7 @@ struct LinkedActor *func_0c1739b0(struct LinkedActor *owner, short x, short y)
         a->p16=func_0c173ab8;
         a->p24=owner;
         a->w38=0x2f02;
-        a->wcc.dword_value=(unsigned short)owner->sdc.w158;
+        a->wcc.dword_value=(unsigned short)owner->sdc.w158.short_value;
         ((int *)a->pad10)[0]=x;
         ((int *)a->pad10)[1]=y;
     }
@@ -55,7 +55,7 @@ void func_0c173cb2(struct LinkedActor *a)
 {
  struct LinkedActor *p=a->p24;a->sdc.b12c^=1;
  if(--a->s28<0)goto cleanup;
- if(a->wcc.dword_value!=(unsigned short)p->sdc.w158)goto cleanup;
+ if(a->wcc.dword_value!=(unsigned short)p->sdc.w158.short_value)goto cleanup;
  func_0c02a026(a);if(!a->b33&&(func_0c02849a()&7))goto done;goto draw;draw:func_0c037d0c(a);return;
  cleanup:func_0c173d12(a);return;
  done:return;

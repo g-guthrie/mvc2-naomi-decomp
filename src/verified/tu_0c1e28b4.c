@@ -13,7 +13,7 @@ void func_0c1e28b4(struct Obj_tu5_03 *parent)
  if((a=func_0c0374da(0,5,1))!=0){
   a->b12c=1;a->p16=func_0c1e2906;
   a->l84=(*(int (*)[36])dat_0c2d964c->p0)[21];a->pos=dat_0c263370;
-  a->l44=0xe001;a->lcc=0x805;a->p24=parent;
+  a->angles.scalar.l44=0xe001;a->lcc=0x805;a->p24=parent;
  }
 }
 void func_0c1e2906(struct Obj_tu5_03 *a)

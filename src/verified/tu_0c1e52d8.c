@@ -58,7 +58,7 @@ void func_0c1e52d8(register struct Obj_tu5_03 *a)
             value=value+a->w28*0.00100000005f;
             func_0c1d917e(&id,&value);
         }
-        a->l48+=55;
+        a->angles.scalar.l48+=55;
         break;
     }
 }

@@ -352,7 +352,7 @@ struct ActorFlags {
     signed char b24, b25; unsigned char b1a, pad27; int flags;
     int i32; unsigned char pad36[5]; signed char b41,b42; unsigned char pad43[1], b44, pad45[1];
     signed char b46; unsigned char pad47[67-47]; signed char b67;
-    unsigned char pad68[0x4e-68], b4e, pad4f, b50; unsigned char pad81[0x80-0x51]; char b128;
+    unsigned char pad68[71-68]; signed char b47; unsigned char pad72[0x4e-72], b4e, pad4f, b50; unsigned char pad81[0x80-0x51]; char b128;
     signed char b81; unsigned char pad130[2]; signed char b84;
     signed char b85; unsigned char pad134[0x88-0x86]; unsigned char b88; unsigned char pad137[0x8d-0x89], b8d; signed char b8e;
     unsigned char pad143[1]; int i90; void *p94; unsigned char b98,pad99, b9a; unsigned char pad9b[0xa5-0x9b]; signed char b_a5;
@@ -361,6 +361,10 @@ struct Glob_me00 { unsigned char pad[0x14]; int l14; };
 
 /* Scalar control record used by 0x0c033d3e and 0x0c033db8. */
 struct Control_0c2fb1f0 { unsigned char pad0[12]; int i12; unsigned char pad16[28]; float f44, f48; float values[8]; unsigned int i84; };
+
+/* Sixty-byte slot records scanned by 0x0c1e6a68 and 0x0c1e6af4.
+ * Only the classification and validity words have been reviewed. */
+struct DeviceSlot60 { unsigned char pad0[4]; int type, id; unsigned char rest[48]; };
 
 /* Indexed data shared by actor constructors through the root at 0x0c2d964c. */
 union ActorGlobalEntry { void *pointer; int value; };
@@ -373,6 +377,7 @@ struct Tbl_ub3_01 { unsigned char pad[124]; short arr[100]; };
 /* Linked actor variant with pointers at 0x14 and 0x18. The 0xc0-byte block at
  * 0xdc is copied by SHC's runtime helper in the 0x0c19dxxx callbacks. */
 struct LinkedActorVec3 { float x, y, z; };
+union LinkedActorW158 { short short_value; unsigned char bytes[2]; };
 struct LinkedActorBlock {
     unsigned char pad0[0x50];
     unsigned char b12c;
@@ -381,7 +386,7 @@ struct LinkedActorBlock {
     unsigned char pad1b[0x65 - 0x56];
     char b141;
     unsigned char pad1c[0x7c - 0x66];
-    short w158;
+    union LinkedActorW158 w158;
     unsigned char pad2[0xc0 - 0x7e];
 };
 /* Six-byte follow offset row: signed x/y and two metadata bytes. */
@@ -418,9 +423,11 @@ struct LinkedActor {
     float f52, f56, f60;
     unsigned char pad7[80 - 64];
     struct LinkedActorVec3 v80;
-    unsigned char pad8[96 - 92];
+    float f92;
     float f96;
-    unsigned char pad9[0x84 - 100];
+    unsigned char pad9a[4];
+    float f104, f108;
+    unsigned char pad9[0x84 - 112];
     void *p84;
     unsigned char pad9b[0xcc - 0x88];
     union LinkedActorWcc wcc;
@@ -533,6 +540,11 @@ struct MotionGlobal_0c2d9260 {
 
 struct SolHorizontalTarget { unsigned char pad[16]; float x, y; };
 
+/* Three angle words at offsets 64, 68 and 72; scalar aliases retain the
+ * established accesses while the stream constructors use the full array. */
+struct ObjAngleScalars { int first, l44, l48; };
+union ObjAngleWords { int array[3]; struct ObjAngleScalars scalar; };
+
 struct Obj_tu5_03 {
     unsigned char pad0[4];
     unsigned char b4;
@@ -549,9 +561,7 @@ struct Obj_tu5_03 {
     unsigned char pad34,b35;
     unsigned char pad3[52 - 36];
     struct Vec3_tu5_03 pos;
-    int arr64[1];
-    int l44;
-    int l48;
+    union ObjAngleWords angles;
     unsigned char pad5[80 - 76];
     float f80, f84, f88;
     float f92, f96, f100, f104, f108, f112, f116;

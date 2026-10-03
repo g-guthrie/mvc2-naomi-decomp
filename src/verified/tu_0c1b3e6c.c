@@ -20,7 +20,7 @@ struct LinkedActor *func_0c1b3e6c(struct LinkedActor *parent, unsigned char side
         a->f52 = parent->f52;
         a->f56 = parent->f56;
         a->w38 = 0x2900;
-        a->wcc.dword_value = (unsigned short)parent->sdc.w158;
+        a->wcc.dword_value = (unsigned short)parent->sdc.w158.short_value;
     }
     return a;
 }

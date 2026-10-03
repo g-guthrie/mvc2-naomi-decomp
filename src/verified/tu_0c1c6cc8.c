@@ -16,7 +16,7 @@ void func_0c1c6cc8(struct Actor *parent)
  if(q->b32)q->l84=(int)((void **)root->p0)[105];
  else q->l84=(int)((void **)root->p0)[98];
  q->pos=table_0c25e69c[q->b32];
- q->arr64[0]=table_0c25e6b4[q->b32][0];q->l44=table_0c25e6b4[q->b32][1];q->l48=table_0c25e6b4[q->b32][2];
+ q->angles.array[0]=table_0c25e6b4[q->b32][0];q->angles.scalar.l44=table_0c25e6b4[q->b32][1];q->angles.scalar.l48=table_0c25e6b4[q->b32][2];
  q->lcc=0x80f;func_0c1c7194(q);func_0c1c7090(q,0);func_0c034a1c((signed char)q->b32+76);
  }
 }

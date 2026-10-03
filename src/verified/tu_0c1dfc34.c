@@ -10,7 +10,7 @@ void func_0c1dfc34(struct Obj_tu5_03 *a)
  if(++a->w28>=360)a->w28=0;
  {
   float degrees=360.0f;register float half=0.5f;
-  a->arr64[0]=(int)((a->b32?1:-1)*func_0c1ec2c0((int)(a->w28*65536.0/degrees+half)&65535)*917504/degrees+half)&65535;
+  a->angles.array[0]=(int)((a->b32?1:-1)*func_0c1ec2c0((int)(a->w28*65536.0/degrees+half)&65535)*917504/degrees+half)&65535;
  }
 }
 void func_0c1dfcb8(int n)
@@ -20,7 +20,7 @@ void func_0c1dfcb8(int n)
   a->b12c=1;a->p16=func_0c1dfc34;
   a->l84=(*(int (*)[68])&(*(union ActorGlobalEntry (*)[68])dat_0c2d964c->p0)[n*2])[3];
   a->lcc=0x807;a->pos=dat_0c262488[n];
-  a->l44=(int)(dat_0c2624a0[n]*65536.0/360.0+0.5)&65535;
+  a->angles.scalar.l44=(int)(dat_0c2624a0[n]*65536.0/360.0+0.5)&65535;
   a->b32=n;
  }
 }

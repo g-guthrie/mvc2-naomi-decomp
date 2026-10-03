@@ -11,7 +11,7 @@ void func_0c1e023c(int n)
         a->p16=func_0c1e00a8;
         a->l84=(*(int (*)[36])dat_0c2d964c->p0)[n+22];
         a->pos=dat_0c26255c[n];
-        a->l44=(int)(dat_0c262590[n].x*65536.0f/360.0f+0.5f)&0xffff;
+        a->angles.scalar.l44=(int)(dat_0c262590[n].x*65536.0f/360.0f+0.5f)&0xffff;
         a->lcc=0xc0b;
         a->b32=n;
         a->w30=(short)n*270;
