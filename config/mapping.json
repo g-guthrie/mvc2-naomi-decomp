@@ -278882,6 +278882,20 @@
       "evidence": "CFG walk from 0x0c17a4a2; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c17a50a",
+      "size": 22,
+      "kind": "code",
+      "sha256": "bb473a3ce5d22723af05183205d80be258eabac476a3dc879e746ae84f384d80",
+      "evidence": "Constructor callback 0x0c17a50a loaded by MOV.L consumers at 0x0c17a47c and 0x0c17a4cc. Saves R14, indexes table 0x0c2538d0 by unsigned byte32, passes owner pointer at24, JMP with restoring delay slot at 0x0c17a51e."
+    },
+    {
+      "address": "0x0c17a520",
+      "size": 18,
+      "kind": "code",
+      "sha256": "060a0d70ae66d6a9f3d75bf94c84459db52230ed9580414ea887394b4a3b7f68",
+      "evidence": "Table 0x0c2538d0 callback entry points to 0x0c17a520. Indexes table 0x0c2538d8 by unsigned state byte4, JMP at 0x0c17a52e with stack adjustment delay slot at 0x0c17a530."
+    },
+    {
       "address": "0x0c17a532",
       "size": 10,
       "kind": "data",
@@ -278890,10 +278904,17 @@
     },
     {
       "address": "0x0c17a53c",
-      "size": 336,
+      "size": 8,
+      "kind": "data",
+      "sha256": "e5f56cd917c3af4bfcd0ba32087dd18d0000cf118799dbb87b0668fa88ece000",
+      "evidence": "MOV.L consumers at 0x0c17a512 and 0x0c17a522 load callback-table pointers 0x0c2538d0 and 0x0c2538d8; both callers terminate with JMP plus delay slot before the pool. Not executable."
+    },
+    {
+      "address": "0x0c17a544",
+      "size": 328,
       "kind": "code",
-      "sha256": "c5fd791d265dccb87ffe6609d603bc4687bd30c3fe7a29c25e971aa4d69c44df",
-      "evidence": "CFG walk from 0x0c17a53c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "f7bee49d16ec274824aefb293b8e3503d4e2c92f90dde0a1b1c788468febaca8",
+      "evidence": "Actor initializer prologue at 0x0c17a544; local follow routine at 0x0c17a5fc. Reviewed direct branches, tail calls and delay slots through RTS/delay at 0x0c17a68a; literal pool starts at 0x0c17a68c."
     },
     {
       "address": "0x0c17a68c",

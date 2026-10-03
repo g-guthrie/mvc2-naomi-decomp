@@ -1,38 +1,8 @@
 /* Hitachi const data remaining after earlier bulk units. */
 
-#pragma section n0e0904
-const unsigned int dat_0c101904[] = {
-    0x01f9014bu,
-};
-
-#pragma section n0e0914
-const unsigned int dat_0c101914[] = {
-    0x0c24b070u, 0x0c2f83f8u,
-};
-
 #pragma section n0e0a5a
 const unsigned short dat_0c101a5a[] = {
     0x0141u, 0x0080u, 0x01aeu, 0x01a3u, 0x01edu, 0x01b4u,
-};
-
-#pragma section n0e0b9c
-const unsigned short dat_0c101b9c[] = {
-    0x01f9u, 0x041cu, 0x01a1u,
-};
-
-#pragma section n0e0ba4
-const unsigned int dat_0c101ba4[] = {
-    0x0c02a026u, 0x0c02a0c4u, 0x0c0437b8u, 0x0c2f83f8u, 0x0c02a39au, 0x0c0442fau, 0x0c24b088u,
-};
-
-#pragma section n0e0e42
-const unsigned short dat_0c101e42[] = {
-    0x02b2u, 0x01fau, 0x0c00u, 0x01a3u, 0x01feu, 0x01f7u, 0x02a4u,
-};
-
-#pragma section n0e0e74
-const unsigned int dat_0c101e74[] = {
-    0x0c037d54u,
 };
 
 #pragma section n0e12c2
@@ -95,16 +65,6 @@ const unsigned int dat_0c1031dc[] = {
     0xc1892492u, 0xc0092492u,
 };
 
-#pragma section n0e291c
-const unsigned int dat_0c10391c[] = {
-    0x041c01f9u, 0x01a301fcu, 0x014102a4u, 0x0c2f83f8u,
-};
-
-#pragma section n0e2944
-const unsigned int dat_0c103944[] = {
-    0x0c2f6830u,
-};
-
 #pragma section n0e2a50
 const unsigned int dat_0c103a50[] = {
     0x01f502a4u,
@@ -113,17 +73,6 @@ const unsigned int dat_0c103a50[] = {
 #pragma section n0e2a7c
 const unsigned int dat_0c103a7c[] = {
     0x0c24b2b4u,
-};
-
-#pragma section n0e2b92
-const unsigned short dat_0c103b92[] = {
-    0x01f9u, 0x01a3u, 0x01d2u, 0x01acu,
-};
-
-#pragma section n0e2b9c
-const unsigned int dat_0c103b9c[] = {
-    0x0c02a026u, 0x0c0344a0u, 0x42ab6db6u, 0x0c17080cu, 0x0c048bb0u, 0x0c24b18cu, 0x3fd55555u, 0x47800000u,
-    0x40092492u, 0x0c2f83f8u, 0x0c02a0c4u,
 };
 
 #pragma section n0e2cfa
@@ -201,16 +150,5 @@ const unsigned int dat_0c104af0[] = {
 #pragma section n0e3b14
 const unsigned int dat_0c104b14[] = {
     0x0c24b30cu,
-};
-
-#pragma section n0e3c46
-const unsigned short dat_0c104c46[] = {
-    0x0255u, 0x00ffu, 0x03f0u, 0x041cu, 0x01f9u, 0x01a1u, 0x03f8u, 0x0328u,
-    0x03f1u, 0x0141u,
-};
-
-#pragma section n0e3c5c
-const unsigned int dat_0c104c5c[] = {
-    0x0c2f83f8u,
 };
 
