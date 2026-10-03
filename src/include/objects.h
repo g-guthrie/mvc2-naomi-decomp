@@ -378,6 +378,8 @@ struct LinkedActorBlock {
     short w158;
     unsigned char pad2[0xc0 - 0x7e];
 };
+/* Six-byte follow offset row: signed x/y and two metadata bytes. */
+struct FollowOffset15e2 { short x,y; unsigned char metadata[2]; };
 /* Cached frame and signed screen offsets at actor offset 0xcc. */
 struct AttachmentFrameState { short frame, x, y; };
 union LinkedActorWcc {
