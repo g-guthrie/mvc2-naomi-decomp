@@ -225,9 +225,6 @@ void (*const table_0c038394[])(void) = {
 #pragma section n0386c0
 void (*const ptr_0c0386c0)(void) = func_0c1c3854;
 
-#pragma section n038904
-void (*const ptr_0c038904)(void) = func_0c1fba00;
-
 #pragma section n0390ec
 void (*const ptr_0c0390ec)(void) = func_0c23b6e4;
 
