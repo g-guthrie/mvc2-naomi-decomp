@@ -346,7 +346,7 @@ struct ActorFlags {
     signed char b24, b25; unsigned char b1a, pad27; int flags;
     int i32; unsigned char pad36[5]; signed char b41,b42; unsigned char pad43[1], b44, pad45[1];
     signed char b46; unsigned char pad47[67-47]; signed char b67;
-    unsigned char pad68[0x4e-68], b4e, pad4f, b50; unsigned char pad81[0x80-0x51]; char b128;
+    unsigned char pad68[71-68]; signed char b47; unsigned char pad72[0x4e-72], b4e, pad4f, b50; unsigned char pad81[0x80-0x51]; char b128;
     signed char b81; unsigned char pad130[2]; signed char b84;
     signed char b85; unsigned char pad134[0x88-0x86]; unsigned char b88; unsigned char pad137[0x8d-0x89], b8d; signed char b8e;
     unsigned char pad143[1]; int i90; void *p94; unsigned char b98,pad99, b9a; unsigned char pad9b[0xa5-0x9b]; signed char b_a5;
@@ -355,6 +355,10 @@ struct Glob_me00 { unsigned char pad[0x14]; int l14; };
 
 /* Scalar control record used by 0x0c033d3e and 0x0c033db8. */
 struct Control_0c2fb1f0 { unsigned char pad0[12]; int i12; unsigned char pad16[28]; float f44, f48; float values[8]; unsigned int i84; };
+
+/* Sixty-byte slot records scanned by 0x0c1e6a68 and 0x0c1e6af4.
+ * Only the classification and validity words have been reviewed. */
+struct DeviceSlot60 { unsigned char pad0[4]; int type, id; unsigned char rest[48]; };
 
 /* Indexed data shared by actor constructors through the root at 0x0c2d964c. */
 union ActorGlobalEntry { void *pointer; int value; };
