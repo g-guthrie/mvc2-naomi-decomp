@@ -104,15 +104,6 @@ extern void func_0c266e58(void);
 extern void func_0c266e7c(void);
 extern void func_0c266e90(void);
 
-#pragma section n1df5a4
-void (*const ptr_0c1df5a4)(void) = func_0c1fb7a0;
-
-#pragma section n1df5ac
-void (*const ptr_0c1df5ac)(void) = func_0c233298;
-
-#pragma section n1df870
-void (*const ptr_0c1df870)(void) = func_0c1fb5ac;
-
 #pragma section n1e2c10
 void (*const ptr_0c1e2c10)(void) = func_0c0346da;
 
