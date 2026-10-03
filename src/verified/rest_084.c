@@ -30,16 +30,6 @@ const unsigned int dat_0c1bda30[] = {
     0x0c1fb838u,
 };
 
-#pragma section n19cdcc
-const unsigned short dat_0c1bddcc[] = {
-    0x00dcu, 0x00c0u, 0x012cu,
-};
-
-#pragma section n19cdd8
-const unsigned int dat_0c1bddd8[] = {
-    0x0c1fb838u,
-};
-
 #pragma section n19d0cc
 const unsigned int dat_0c1be0cc[] = {
     0x00cc0158u,
