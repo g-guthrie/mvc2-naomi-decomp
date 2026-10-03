@@ -25,22 +25,6 @@ extern void func_0c2580c4(void);
 extern void func_0c258350(void);
 extern void func_0c2583e4(void);
 
-#pragma section n195fda
-const unsigned short dat_0c195fda[] = {
-    0x02a4u, 0x01d2u,
-};
-
-#pragma section n195fe0
-const unsigned int dat_0c195fe0[] = {
-    0x0c02887eu, 0x41092492u, 0x0c257d30u, 0x40092492u,
-    0x3fd55555u,
-};
-
-#pragma section n1960cc
-const unsigned short dat_0c1960cc[] = {
-    0x0130u,
-};
-
 #pragma section n1961e8
 const unsigned short dat_0c1961e8[] = {
     0x0c05u, 0x02a4u, 0x01e9u, 0x01d0u, 0x01b0u,
