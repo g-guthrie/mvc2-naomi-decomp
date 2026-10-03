@@ -67,9 +67,17 @@ struct ActorSub2a4 {
 /* Signed action outcome at offset56 in an embedded actor state record. */
 struct ActorActionResult56 { struct ActorSub2a4 base; unsigned char pad28[56-sizeof(struct ActorSub2a4)]; char result; };
 
+/* Effect controls at actor +0x2a4: indexed bytes overlap the float at +4.
+ * Existing halfword/action views remain unchanged. */
+struct ActorSubEffectParameter { unsigned char flags[4]; float f4; };
+union ActorSubEffectState { unsigned char bytes[8]; struct ActorSubEffectParameter parameter; };
+struct EffectScale4 { float f116, f120, f124, f128; };
+union EffectMotionStep { int integer; float real; };
+
 struct ActorSub2a4Extended {
     struct ActorSub2a4 base;
-    unsigned char pad[34 - sizeof(struct ActorSub2a4)];
+    int l28;
+    unsigned char pad[34 - sizeof(struct ActorSub2a4) - sizeof(int)];
     short s34;
     int l36;
     unsigned char b40, pad41;
@@ -254,7 +262,9 @@ struct Actor {
     unsigned char b211;
     unsigned char pad212[0x218 - 0x212];
     float f218,f21c;
-    unsigned char pad220[0x22e - 0x220];
+    unsigned char pad220[0x229 - 0x220];
+    signed char b229;
+    unsigned char pad22a[0x22e - 0x22a];
     char b22e;
     unsigned char b22f,pad230,b231;
     char b232;
@@ -402,6 +412,7 @@ struct FollowOffset15e2 { short x,y; unsigned char metadata[2]; };
 /* Cached frame and signed screen offsets at actor offset 0xcc. */
 struct AttachmentFrameState { short frame, x, y; };
 union LinkedActorWcc {
+    struct LinkedActor *pointer_value;
     short short_value;
     unsigned int dword_value;
     int arrcc[1];
