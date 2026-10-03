@@ -3,11 +3,11 @@ extern struct LinkedActor *func_0c0374da(int,int,int);
 extern void func_0c176b2c(struct LinkedActor *);
 struct LinkedActor *func_0c1769b0(struct LinkedActor *owner,char mode,char value)
 {
- struct LinkedActor *a;if((a=func_0c0374da(0,1,0))){a->p16=func_0c176b2c;a->p24=owner;a->s28=owner->sdc.w158;a->b32=mode;a->b33=value;a->w38=0x3002;}return a;
+ struct LinkedActor *a;if((a=func_0c0374da(0,1,0))){a->p16=func_0c176b2c;a->p24=owner;a->s28=owner->sdc.w158.short_value;a->b32=mode;a->b33=value;a->w38=0x3002;}return a;
 }
 void func_0c176a00(struct LinkedActor *source)
 {
- struct LinkedActor *a;if((a=func_0c0374da(0,1,0))){a->p16=func_0c176b2c;a->p24=source->p24;a->s28=source->p24->sdc.w158;a->b32=3;a->b33=source->b33;a->b34=source->b34;a->b5=source->b5;a->w38=0x3002;}
+ struct LinkedActor *a;if((a=func_0c0374da(0,1,0))){a->p16=func_0c176b2c;a->p24=source->p24;a->s28=source->p24->sdc.w158.short_value;a->b32=3;a->b33=source->b33;a->b34=source->b34;a->b5=source->b5;a->w38=0x3002;}
 }
 struct LinkedActor *func_0c176a48(struct LinkedActor *owner,struct LinkedActor *source,int value)
 {

@@ -371,6 +371,7 @@ struct Tbl_ub3_01 { unsigned char pad[124]; short arr[100]; };
 /* Linked actor variant with pointers at 0x14 and 0x18. The 0xc0-byte block at
  * 0xdc is copied by SHC's runtime helper in the 0x0c19dxxx callbacks. */
 struct LinkedActorVec3 { float x, y, z; };
+union LinkedActorW158 { short short_value; unsigned char bytes[2]; };
 struct LinkedActorBlock {
     unsigned char pad0[0x50];
     unsigned char b12c;
@@ -379,7 +380,7 @@ struct LinkedActorBlock {
     unsigned char pad1b[0x65 - 0x56];
     char b141;
     unsigned char pad1c[0x7c - 0x66];
-    short w158;
+    union LinkedActorW158 w158;
     unsigned char pad2[0xc0 - 0x7e];
 };
 union LinkedActorWcc {

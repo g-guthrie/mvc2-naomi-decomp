@@ -29,7 +29,7 @@ struct LinkedActor *func_0c15632c(struct LinkedActor *owner)
         a->sdc.w130=a->p24->sdc.w130;
         a->b7=a->p24->b1a3;
         *global=&a->wcc;
-        (*global)->short_value=a->p24->sdc.w158;
+        (*global)->short_value=a->p24->sdc.w158.short_value;
         return a;
     }
 }
