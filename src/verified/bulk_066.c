@@ -233,60 +233,6 @@ void (*const table_0c11d804[])(void) = {
     func_0c0346da,
 };
 
-#pragma section n11e620
-void (*const table_0c11e620[])(void) = {
-    func_0c1d4610,
-    func_0c02a684,
-    func_0c1bfa20,
-    func_0c02a0c4,
-    func_0c24d104,
-    func_0c24d110,
-    func_0c02a026,
-    func_0c1bac7c,
-};
-
-#pragma section n11e77a
-const unsigned short dat_0c11e77a[] = {
-    0x0141u, 0x01c8u,
-};
-
-#pragma section n11e780
-const unsigned short dat_0c11e780[] = {
-    0x01a1u,
-};
-
-#pragma section n11e78c
-const unsigned int dat_0c11e78c[] = {
-    0x0c02a39au, 0x0c2d6f84u,
-};
-
-#pragma section n11e8d6
-const unsigned short dat_0c11e8d6[] = {
-    0x01c8u,
-};
-
-#pragma section n11e8e0
-const unsigned short dat_0c11e8e0[] = {
-    0x02a4u,
-};
-
-#pragma section n11e8e4
-const unsigned int dat_0c11e8e4[] = {
-    0x0c2d6f84u, 0x0c02a39au,
-};
-
-#pragma section n11e8ec
-void (*const table_0c11e8ec[])(void) = {
-    func_0c24d12c,
-    func_0c02a026,
-    func_0c025900,
-    func_0c1bac7c,
-    func_0c02a0c4,
-    func_0c0438de,
-    func_0c24d138,
-    func_0c03edcc,
-};
-
 #pragma section n11eac6
 const unsigned short dat_0c11eac6[] = {
     0x0428u, 0xd234u, 0x0c24u,
