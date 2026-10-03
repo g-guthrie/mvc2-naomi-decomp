@@ -164,7 +164,8 @@ struct Actor {
     unsigned short w132;
     unsigned char pad6b[0x13c - 0x134];
     unsigned char b13c;
-    unsigned char pad6bb[0x140 - 0x13d];
+    unsigned char pad6bb;
+    unsigned char b13e,b13f;
     unsigned char b140;
     char b141;
     char b142;
@@ -185,7 +186,8 @@ struct Actor {
     unsigned char *p168, *p16c;
     struct Rect8_15dc08 *p170;
     unsigned char *p174;
-    unsigned char pad178[0x19d - 0x178];
+    unsigned char pad178[0x19c - 0x178];
+    char b19c;
     char b19d;
     char b19e;
     char b19f;
