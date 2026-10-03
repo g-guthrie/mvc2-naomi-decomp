@@ -123349,6 +123349,13 @@
       "evidence": "CFG walk from 0x0c0bf672; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c0bf694",
+      "size": 112,
+      "kind": "code",
+      "sha256": "1eb7904c8e7fa82e495fb8b352610704e81fe180e57156eb4d552a9d16ccade2",
+      "evidence": "Reviewed initializer and update handler: BF at 0c0bf69e enters update at 0c0bf6e6; BT at 0c0bf6f0 skips the inline pool to epilogue 0c0bf730. Tail JMPs at 0c0bf6e2 and 0c0bf700 include their delay slots. All PC-relative consumers target the following literal pool."
+    },
+    {
       "address": "0x0c0bf704",
       "size": 2,
       "kind": "data",
@@ -123361,6 +123368,13 @@
       "kind": "data",
       "sha256": "884a6b51b6f13f9328271713853aa00c98ca2bb46c69c613708b6d0f91108f4b",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c0bf70a",
+      "size": 2,
+      "kind": "data",
+      "sha256": "a5d1bfc41f7c667e3904d7c6a92f9f157c455971bef761ee6c869cc8ab25194d",
+      "evidence": "MOV.W at 0c0bf6d6 loads offset 0x041c; follows the other halfword literals and precedes the aligned pointer/float pool."
     },
     {
       "address": "0x0c0bf70c",
@@ -123391,11 +123405,25 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0bf672; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c0bf728",
+      "size": 4,
+      "kind": "data",
+      "sha256": "ea1368ce459c3e23727cd8dc86ca2a01777a16640c51cb9991965945a68e5b2e",
+      "evidence": "MOV.L at 0c0bf6bc loads pointer-variable address 0x0c2f83f8. Update control flow skips this pool via BT at 0c0bf6f0."
+    },
+    {
       "address": "0x0c0bf72c",
       "size": 4,
-      "kind": "code",
+      "kind": "data",
       "sha256": "4e4ed8451849ead49f7d0a5d64cb0113db93185e49a656350d25923e0ffbf322",
-      "evidence": "CFG walk from 0x0c0bf72c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "MOV.L at 0c0bf6f2 loads function address 0x0c02a39a. These bytes are a call-target literal, not a BRA instruction; BT at 0c0bf6f0 skips the pool to 0c0bf730."
+    },
+    {
+      "address": "0x0c0bf730",
+      "size": 6,
+      "kind": "code",
+      "sha256": "2e6595aaaaa71054e0ec9c59412a996adc0c5dd608991e0523e7a88d9426ed64",
+      "evidence": "Epilogue reached by BT at 0c0bf6f0: restore PR, RTS at 0c0bf732 with r14 restore in delay slot at 0c0bf734. Next function begins at 0c0bf736."
     },
     {
       "address": "0x0c0bf736",
@@ -125554,6 +125582,27 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0c1c66; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c0c1f1c",
+      "size": 128,
+      "kind": "code",
+      "sha256": "5d77a2d0ecaed10f1d4a2798f4f52b03908791d8fa16931cce76aa47862b7ebf",
+      "evidence": "Reviewed initializer: direct tail fallthrough to 0c0c1f9c after restoring its frame; all JSRs include delay slots. PC-relative offsets, constants and pointers lie at 0c0c2068..0c0c208c."
+    },
+    {
+      "address": "0x0c0c1f9c",
+      "size": 74,
+      "kind": "code",
+      "sha256": "f530a8d5af9e46740c80181182b94ccf34374b6ed6278576632cda41bc82c022",
+      "evidence": "Reviewed event handler: BSR at 0c0c1fa0 calls motion helper 0c0c201a; BT at 0c0c1fb0 selects the RTS epilogue at 0c0c1fe0, otherwise the handler tail-calls 0c15cff0. Delay slots included; literals remain in the following pool."
+    },
+    {
+      "address": "0x0c0c1fe6",
+      "size": 52,
+      "kind": "code",
+      "sha256": "a025b0b78132567c9007dd7fd86fadd762c907606f1f1ec9c3ccfecc28048732",
+      "evidence": "Reviewed motion/animation handler: BSR at 0c0c1fea calls 0c0c201a; BT at 0c0c1ffe selects RTS epilogue 0c0c2014, otherwise clears motion and tail-calls 0c0438de. Delay slots included."
+    },
+    {
       "address": "0x0c0c201a",
       "size": 78,
       "kind": "code",
@@ -125575,6 +125624,13 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0c201a; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c0c206e",
+      "size": 14,
+      "kind": "data",
+      "sha256": "d88f5f64cf679311d56016767366aff0bd2049eb85cb471627a7643b69960ad0",
+      "evidence": "Alignment word at 0c0c206e is zero; MOV.L consumers at 0c0c1f24 and 0c0c1f2e load call pointers 0c0442fa and 0c02a39a, and MOVA at 0c0c1f36 reads float 8.0 at 0c0c2078. Preceding RTS and following dispatcher bound this pool."
+    },
+    {
       "address": "0x0c0c207c",
       "size": 4,
       "kind": "data",
@@ -125582,11 +125638,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
-      "address": "0x0c0c209e",
+      "address": "0x0c0c2080",
       "size": 28,
+      "kind": "data",
+      "sha256": "8ace8ce5435ef9fde8886ad2caef9c6fffe60775cab5cab27d52d868b9821853",
+      "evidence": "Reviewed PC-relative pool: MOV.L consumers at 0c0c1f46, 0c0c1f6c, 0c0c1f90, 0c0c1fa4, 0c0c1fb6, 0c0c1fc0 and 0c0c1fc6 load call/global/table pointers from 0c0c2080 through 0c0c2098."
+    },
+    {
+      "address": "0x0c0c209c",
+      "size": 12,
+      "kind": "data",
+      "sha256": "264fd968eacc28b1ce72187e747ad852f57c49deedbd9aec3183c08f97bec9cf",
+      "evidence": "MOV.L at 0c0c1fcc, 0c0c1fd6 and 0c0c2008 load call pointers 0c1a9cf0, 0c15cff0 and 0c0438de. The prior CFG root at 0c0c209e was the high half of a pointer, not an instruction entry."
+    },
+    {
+      "address": "0x0c0c20a8",
+      "size": 18,
       "kind": "code",
-      "sha256": "1c318afd4582486c7d9c48cb231cfb8373a062e926497143290d6423ae52911c",
-      "evidence": "CFG walk from 0x0c0c209e; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "21821aecdcbec6ef1d5a807f0e8a1fc405204d3eb287462c8f6cbbace1355839",
+      "evidence": "Reviewed following dispatcher: load state byte at offset 6, zero-extend and index table 0c2469ec, tail JMP at 0c0c20b6 with stack-pop delay at 0c0c20b8. Entry follows the previous unit literal pool."
     },
     {
       "address": "0x0c0c20ba",
