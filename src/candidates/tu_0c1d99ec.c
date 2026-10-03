@@ -21,8 +21,8 @@ void func_0c1d9a56(struct Obj_tu5_03 *a)
  else {
   a->b12c=a->p20->b12c;
   switch(a->b32) {
-  case 0:a->l48-=256;break;
-  case 1:a->l48=a->l48+256;break;
+  case 0:a->angles.scalar.l48-=256;break;
+  case 1:a->angles.scalar.l48=a->angles.scalar.l48+256;break;
   }
  }
 }

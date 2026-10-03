@@ -25,7 +25,7 @@ void func_0c1d0322(struct Obj_tu5_03 *parent)
   a->b12c=1;a->p16=func_0c1d02f0;
   a->l84=(int)((void **)dat_0c2d9650->p0)[23];
   a->pos=parent->pos;
-  a->l48=5461;
+  a->angles.scalar.l48=5461;
   ((struct ScaleView *)a)->scale=dat_0c260e08;
   a->lcc=409;
  }
@@ -72,7 +72,7 @@ void func_0c1d04cc(struct Obj_tu5_03 *parent,int layer)
   a->b12c=1;a->p16=func_0c1d049a;
   a->l84=(int)((void **)dat_0c2d9650->p0)[23];
   a->pos=parent->pos;
-  a->l48=5461;
+  a->angles.scalar.l48=5461;
   ((struct ScaleView *)a)->scale=dat_0c260e08;
   a->lcc=409;
  }

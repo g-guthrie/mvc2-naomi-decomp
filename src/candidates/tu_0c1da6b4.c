@@ -49,7 +49,7 @@ void func_0c1da87c(int kind)
   a->b12c=1;a->p16=func_0c1da6b4;
   a->l84=(int)((void **)dat_0c2d964c->p0)[kind*2+8];
   a->pos=dat_0c26214c;
-  a->l44=56617;a->lcc=2053;a->b32=kind;
+  a->angles.scalar.l44=56617;a->lcc=2053;a->b32=kind;
  }
 }
 void func_0c1da8d8(void)

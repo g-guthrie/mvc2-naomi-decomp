@@ -530,6 +530,11 @@ struct MotionGlobal_0c2d9260 {
 
 struct SolHorizontalTarget { unsigned char pad[16]; float x, y; };
 
+/* Three angle words at offsets 64, 68 and 72; scalar aliases retain the
+ * established accesses while the stream constructors use the full array. */
+struct ObjAngleScalars { int first, l44, l48; };
+union ObjAngleWords { int array[3]; struct ObjAngleScalars scalar; };
+
 struct Obj_tu5_03 {
     unsigned char pad0[4];
     unsigned char b4;
@@ -546,9 +551,7 @@ struct Obj_tu5_03 {
     unsigned char pad34,b35;
     unsigned char pad3[52 - 36];
     struct Vec3_tu5_03 pos;
-    int arr64[1];
-    int l44;
-    int l48;
+    union ObjAngleWords angles;
     unsigned char pad5[80 - 76];
     float f80, f84, f88;
     float f92, f96, f100, f104, f108, f112, f116;

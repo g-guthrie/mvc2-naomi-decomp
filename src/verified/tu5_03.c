@@ -57,7 +57,7 @@ void func_0c1d0b36(struct Vec3_tu5_03 *v)
 
 void func_0c1d0b98(struct Obj_tu5_03 *a)
 {
-    a->l48 += 0x333;
+    a->angles.scalar.l48 += 0x333;
     a->w28++;
     switch (a->b4) {
     case 0:
