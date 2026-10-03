@@ -337,6 +337,9 @@ struct Actor {
     unsigned char pad15b[0x524 - 0x4de];
     char b524;
     unsigned char b525;
+    unsigned char pad526[0x52c-0x526]; char b52c;
+    unsigned char pad52d[0x53f-0x52d]; char b53f;
+    unsigned char pad540[3]; char b543;
 };
 
 /* Global game flags record exposed through the pointer at 0x0c2d6f84. */
