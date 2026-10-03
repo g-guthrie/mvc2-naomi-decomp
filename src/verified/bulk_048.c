@@ -339,17 +339,6 @@ void (*const table_0c0d9d5c[])(void) = {
     func_0c04b02a,
 };
 
-#pragma section n0d9eb0
-const unsigned int dat_0c0d9eb0[] = {
-    0x041c0141u,
-};
-
-#pragma section n0d9eb8
-const unsigned int dat_0c0d9eb8[] = {
-    0x0c02a026u, 0x43ab6db6u, 0x0c0344a0u, 0x0c02a0c4u,
-    0x0c03489cu,
-};
-
 #pragma section n0da0be
 const unsigned short dat_0c0da0be[] = {
     0x0428u, 0x01f9u, 0x01fcu, 0x01d4u, 0x01e9u, 0x040cu, 0x00ccu, 0x0364u,
