@@ -1,0 +1,1 @@
+Terminal local check passed at code commit 6a90f69. All 92 tests, Hitachi relocation smoke, full main image and program ROM passed. This proof predates any cloud integration; final combined CI is required.

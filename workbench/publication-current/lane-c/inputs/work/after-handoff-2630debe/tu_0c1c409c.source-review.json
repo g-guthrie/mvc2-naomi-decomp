@@ -1,0 +1,22 @@
+{
+  "status": "complete nine-function C draft; whole inexact; unregistered; zero credit",
+  "hashes": {
+    "work/after-handoff-2630debe/tu_0c1c409c.c": "af37b5a66f859a839bcdffd26053df5c8b605e276eec086e7de6694506acc4e1",
+    "work/after-handoff-2630debe/tu_0c1c409c.whole.json": "10aa15a7fdbaee848f223770439d0f5776606a2c74c38282df2084e7788065ee",
+    "work/after-handoff-2630debe/tu_0c1c409c.current-proof.json": "3f116f516145b4be0e66381d7e18a00ff46c90a8851d45b39950b8a91c1bce1f",
+    "work/after-handoff-2630debe/tu_0c1c409c.boundary-review.json": "1879430a6f1d60c8d738d8481a7638f1b180f77f200d2c5f4170b760d1a003a7",
+    "work/after-handoff-2630debe/model_1c409c.h": "ad9b27971bc3df002da4bbd749f6d7e2f8f9203a0b9fca221eaa37ecd1534ad6",
+    "work/tu_0c1c409c.retail.txt": "846ae6bbdbe4d0c49d9333396a8c2d17c879c4df5f5a6345b955a287f34662b0"
+  },
+  "proof_result": "107/504 whole, linked516; first-proof pre signed-sound correction312/504 linked508 retained historical only",
+  "semantic_correction": "native table MOV.B gives signed R4 passed to sound; EXTU.B into R3 is solely zero test. Current C unsigned byte test then signed char call preserves high-byte behavior, despite larger compiled output.",
+  "private_model": "existing LinkedActor unknown100 exposed as float f100; existing ActorFlags unknown0x8b exposed signed b8b. No layout size change, no canonical edit. Existing LinkedActor wd4.integer/id8 used for copied parameter words.",
+  "native_review": [
+    "selector&15 copied to unsigned byte32; selector bit128 triggers immediate cleanup",
+    "allocator failure leaves callback untouched",
+    "guard026a86 success returns; false initializes and invokes second dispatcher same frame",
+    "float velocity preserves (-z + target)/12 including +0.0f; signed short timers decrement and test <=0",
+    "phase byte5 dispatch explicitly unsigned; byte0x8b to4294 is signed native load",
+    "true native init/update fallthroughs modeled as full procedure calls, no fake labels or stubs"
+  ]
+}

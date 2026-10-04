@@ -1,0 +1,11 @@
+diff --git a/src/include/objects.h b/src/include/objects.h
+index 81eec29..1837cd9 100644
+--- a/src/include/objects.h
++++ b/src/include/objects.h
+@@ -625,3 +625,6 @@ struct SelectionFlags59e8 {
+ };
+ 
+ #endif
++
++/* Three observed state bits at bits 24..26 of actor word 0x414. */
++struct ActorStateMask414 { unsigned int reserved_low:24, state:3, reserved_high:5; };

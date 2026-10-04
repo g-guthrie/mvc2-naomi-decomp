@@ -1,0 +1,33 @@
+P 0x0c0a1308 356 bytes: 330/356 equal, linked 356 at 0x0c0a1308
+  _func_0c0a1308 0x0c0a1308 106 bytes: 106/106 equal
+  _func_0c0a1372 0x0c0a1372 194 bytes: 168/194 equal
+  pool 0x0c0a1434 56 bytes: 56/56 equal
+    0c0a1378  retail 9361  mov.w 0x000000000c0a143e,r3      ours 9361  mov.w 0x000000000c0a143e,r3
+    0c0a137a  retail 6e43  mov r4,r14                       ours 6e43  mov r4,r14
+  ! 0c0a137c  retail 33ec  add r14,r3                       ours d235  mov.l 0x000000000c0a1454,r2
+  ! 0c0a137e  retail 2f32  mov.l r3,@r15                    ours 33ec  add r14,r3
+  ! 0c0a1380  retail d334  mov.l 0x000000000c0a1454,r3      ours 2f32  mov.l r3,@r15
+  ! 0c0a1382  retail 430b  jsr @r3                          ours 420b  jsr @r2
+    0c0a1384  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+    0c0a1386  retail 905b  mov.w 0x000000000c0a1440,r0      ours 905b  mov.w 0x000000000c0a1440,r0
+    ...
+    0c0a1390  retail e200  mov #0,r2                        ours e200  mov #0,r2
+    0c0a1392  retail 65f3  mov r15,r5                       ours 65f3  mov r15,r5
+  ! 0c0a1394  retail 7504  add #4,r5                        ours d332  mov.l 0x000000000c0a1460,r3
+    0c0a1396  retail 0e24  mov.b r2,@(r0,r14)               ours 0e24  mov.b r2,@(r0,r14)
+    0c0a1398  retail c72f  mova 0x000000000c0a1458,r0       ours c72f  mova 0x000000000c0a1458,r0
+    0c0a139a  retail f308  fmov @r0,fr3                     ours f308  fmov @r0,fr3
+    0c0a139c  retail e004  mov #4,r0                        ours e004  mov #4,r0
+  ! 0c0a139e  retail ff37  fmov fr3,@(r0,r15)               ours 7504  add #4,r5
+  ! 0c0a13a0  retail c72e  mova 0x000000000c0a145c,r0       ours ff37  fmov fr3,@(r0,r15)
+  ! 0c0a13a2  retail f308  fmov @r0,fr3                     ours c72e  mova 0x000000000c0a145c,r0
+  ! 0c0a13a4  retail e008  mov #8,r0                        ours f308  fmov @r0,fr3
+  ! 0c0a13a6  retail ff37  fmov fr3,@(r0,r15)               ours e008  mov #8,r0
+  ! 0c0a13a8  retail 63f2  mov.l @r15,r3                    ours ff37  fmov fr3,@(r0,r15)
+  ! 0c0a13aa  retail 6231  mov.w @r3,r2                     ours 66f2  mov.l @r15,r6
+  ! 0c0a13ac  retail d32c  mov.l 0x000000000c0a1460,r3      ours 6661  mov.w @r6,r6
+  ! 0c0a13ae  retail 2228  tst r2,r2                        ours 2668  tst r6,r6
+    0c0a13b0  retail 0629  movt r6                          ours 0629  movt r6
+    0c0a13b2  retail 430b  jsr @r3                          ours 430b  jsr @r3
+PROBLEM Not an exact section match: P
+DIFFERS

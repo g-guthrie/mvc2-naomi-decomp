@@ -1,0 +1,12 @@
+P 0x0c0a8800 344 bytes: 342/344 equal, linked 344 at 0x0c0a8800
+  _func_0c0a8800 0x0c0a8800 178 bytes: 176/178 equal
+  _func_0c0a88b2 0x0c0a88b2 112 bytes: 112/112 equal
+  pool 0x0c0a8922 54 bytes: 54/54 equal
+    0c0a8854  retail f108  fmov @r0,fr1                     ours f108  fmov @r0,fr1
+    0c0a8856  retail 9066  mov.w 0x000000000c0a8926,r0      ours 9066  mov.w 0x000000000c0a8926,r0
+  ! 0c0a8858  retail e300  mov #0,r3                        ours e200  mov #0,r2
+  ! 0c0a885a  retail 0e35  mov.w r3,@(r0,r14)               ours 0e25  mov.w r2,@(r0,r14)
+    0c0a885c  retail e034  mov #52,r0                       ours e034  mov #52,r0
+    0c0a885e  retail f2e6  fmov @(r0,r14),fr2               ours f2e6  fmov @(r0,r14),fr2
+PROBLEM Not an exact section match: P
+DIFFERS

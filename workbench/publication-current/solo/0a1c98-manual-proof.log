@@ -1,0 +1,27 @@
+P 0x0c0a1c98 324 bytes: 318/324 equal, linked 324 at 0x0c0a1c98
+  _func_0c0a1c98 0x0c0a1c98 268 bytes: 262/268 equal
+  pool 0x0c0a1da4 56 bytes: 56/56 equal
+    0c0a1cbe  retail 0dee  mov.l @(r0,r14),r13              ours 0dee  mov.l @(r0,r14),r13
+    0c0a1cc0  retail c73b  mova 0x000000000c0a1db0,r0       ours c73b  mova 0x000000000c0a1db0,r0
+  ! 0c0a1cc2  retail fe08  fmov @r0,fr14                    ours ff08  fmov @r0,fr15
+    0c0a1cc4  retail 85ee  mov.w @(28,r14),r0               ours 85ee  mov.w @(28,r14),r0
+    0c0a1cc6  retail 880a  cmp/eq #10,r0                    ours 880a  cmp/eq #10,r0
+    0c0a1cc8  retail 8f15  bf.s 0x000000000c0a1cf6          ours 8f15  bf.s 0x000000000c0a1cf6
+  ! 0c0a1cca  retail ff8d  fldi0 fr15                       ours fe8d  fldi0 fr14
+    0c0a1ccc  retail e004  mov #4,r0                        ours e004  mov #4,r0
+    0c0a1cce  retail d339  mov.l 0x000000000c0a1db4,r3      ours d339  mov.l 0x000000000c0a1db4,r3
+    0c0a1cd0  retail 65f3  mov r15,r5                       ours 65f3  mov r15,r5
+    0c0a1cd2  retail e60a  mov #10,r6                       ours e60a  mov #10,r6
+  ! 0c0a1cd4  retail fffa  fmov fr15,@r15                   ours ffea  fmov fr14,@r15
+  ! 0c0a1cd6  retail ffe7  fmov fr14,@(r0,r15)              ours fff7  fmov fr15,@(r0,r15)
+    0c0a1cd8  retail 430b  jsr @r3                          ours 430b  jsr @r3
+    0c0a1cda  retail 64d3  mov r13,r4                       ours 64d3  mov r13,r4
+    ...
+    0c0a1d00  retail 65f3  mov r15,r5                       ours 65f3  mov r15,r5
+    0c0a1d02  retail e610  mov #16,r6                       ours e610  mov #16,r6
+  ! 0c0a1d04  retail fffa  fmov fr15,@r15                   ours ffea  fmov fr14,@r15
+  ! 0c0a1d06  retail ffe7  fmov fr14,@(r0,r15)              ours fff7  fmov fr15,@(r0,r15)
+    0c0a1d08  retail 430b  jsr @r3                          ours 430b  jsr @r3
+    0c0a1d0a  retail 64d3  mov r13,r4                       ours 64d3  mov r13,r4
+PROBLEM Not an exact section match: P
+DIFFERS

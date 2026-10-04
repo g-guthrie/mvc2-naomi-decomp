@@ -1,0 +1,39 @@
+{
+  "start": "0x0c1b1910",
+  "size": 984,
+  "status": "complete C, inexact whole linked section, unregistered, zero credit",
+  "source": "work/tu_0c1b1910.sol.c",
+  "boundary_review": "work/tu_0c1b1910.boundary-review.json",
+  "actual_function_entries": [
+    "0x0c1b1910",
+    "0x0c1b1982",
+    "0x0c1b19c6",
+    "0x0c1b1a34",
+    "0x0c1b1a74",
+    "0x0c1b1b66",
+    "0x0c1b1ba4"
+  ],
+  "proof": "work/tu_0c1b1910-record-proof.json",
+  "linked_bytes": 996,
+  "model_sha256": "2448932132ce1d416b850d33c69048c33fd1ee48bdefe391f2af3f3af6ef3c1f",
+  "source_sha256": "fc5900236633904b81d65a9ac68fb70e71bfb667b6b11a706ab92784dc252231",
+  "compiler_recipes": "No forced registers, extra compiler options, explicit compiler runtime calls, literal/type/ABI permutation loops, padding accesses or assembly.",
+  "native_listing": "work/tu_0c1b1910.retail.txt",
+  "mapping_review": {
+    "0x0c1b1a34": {
+      "size": 42,
+      "kind": "code",
+      "basis": "Full dispatcher body: load state and parent, conditional free or table dispatch, delay slots reviewed"
+    },
+    "0x0c1b1a6c": {
+      "size": 4,
+      "kind": "data",
+      "basis": "Free routine pointer read by 0x0c1b1a44"
+    },
+    "0x0c1b1a70": {
+      "size": 4,
+      "kind": "data",
+      "basis": "Table pointer read by 0x0c1b1a52; previously falsely walked as branch"
+    }
+  }
+}

@@ -1,0 +1,2 @@
+Split Actor pad10b0b into unsigned char pad10b0b[0x277 - 0x25e]; unsigned char b277;
+Layout stays 0x25e..0x278, 26 bytes total. Retail MOV.B uses byte277 in display-lifecycle three opposing actor checks. No registered source currently references pad10b0b. Apply only after baseline terminal success.

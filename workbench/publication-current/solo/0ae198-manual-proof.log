@@ -1,0 +1,31 @@
+P 0x0c0ae198 700 bytes: 696/700 equal, linked 700 at 0x0c0ae198
+  _func_0c0ae198 0x0c0ae198 94 bytes: 94/94 equal
+  _func_0c0ae1f6 0x0c0ae1f6 80 bytes: 80/80 equal
+  _func_0c0ae246 0x0c0ae246 18 bytes: 18/18 equal
+  _func_0c0ae258 0x0c0ae258 108 bytes: 108/108 equal
+  _func_0c0ae2ee 0x0c0ae2ee 126 bytes: 126/126 equal
+  _func_0c0ae36c 0x0c0ae36c 50 bytes: 50/50 equal
+  _func_0c0ae39e 0x0c0ae39e 18 bytes: 18/18 equal
+  _func_0c0ae3b0 0x0c0ae3b0 44 bytes: 44/44 equal
+  _func_0c0ae3dc 0x0c0ae3dc 32 bytes: 32/32 equal
+  _func_0c0ae3fc 0x0c0ae3fc 18 bytes: 18/18 equal
+  _func_0c0ae40e 0x0c0ae40e 28 bytes: 28/28 equal
+  pool 0x0c0ae2a6 42 bytes: 38/42 equal
+  pool 0x0c0ae42a 42 bytes: 42/42 equal
+    0c0ae2b0  retail a0c4  bra 0x000000000c0ae43c           ours a0c4  bra 0x000000000c0ae43c
+    0c0ae2b2  retail 0c02  stc sr,r12                       ours 0c02  stc sr,r12
+  ! 0c0ae2b4  retail 5555  mov.l @(20,r5),r5                ours 5554  mov.l @(16,r5),r5
+    0c0ae2b6  retail bf55  bsr 0x000000000c0ae164           ours bf55  bsr 0x000000000c0ae164
+  ! 0c0ae2b8  retail 5555  mov.l @(20,r5),r5                ours 5554  mov.l @(16,r5),r5
+    0c0ae2ba  retail 3f55  dmulu.l r5,r15                   ours 3f55  dmulu.l r5,r15
+    0c0ae2bc  retail 37b8  sub r11,r7                       ours 37b8  sub r11,r7
+    ...
+    0c0ae2c0  retail 4810  dt r8                            ours 4810  dt r8
+    0c0ae2c2  retail 0c24  mov.b r2,@(r0,r12)               ours 0c24  mov.b r2,@(r0,r12)
+  ! 0c0ae2c4  retail 5555  mov.l @(20,r5),r5                ours 5554  mov.l @(16,r5),r5
+    0c0ae2c6  retail c105  mov.w r0,@(10,gbr)               ours c105  mov.w r0,@(10,gbr)
+  ! 0c0ae2c8  retail 5555  mov.l @(20,r5),r5                ours 5554  mov.l @(16,r5),r5
+    0c0ae2ca  retail 4105  rotr r1                          ours 4105  rotr r1
+    0c0ae2cc  retail 0000  error                            ours 0000  error
+PROBLEM Not an exact section match: P
+DIFFERS

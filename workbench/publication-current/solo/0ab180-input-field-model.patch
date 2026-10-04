@@ -1,0 +1,11 @@
+diff --git a/src/include/objects.h b/src/include/objects.h
+index 81eec29..9588a00 100644
+--- a/src/include/objects.h
++++ b/src/include/objects.h
+@@ -625,3 +625,6 @@ struct SelectionFlags59e8 {
+ };
+ 
+ #endif
++
++/* Input flag word observed by the boundary-action handlers. */
++struct ActorInputButtons4e0 { unsigned char pad[0x4e0]; unsigned short buttons; };

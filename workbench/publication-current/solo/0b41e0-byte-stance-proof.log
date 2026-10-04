@@ -1,0 +1,39 @@
+P 0x0c0b41e0 1104 bytes: 1100/1104 equal, linked 1104 at 0x0c0b41e0
+  _func_0c0b41e0 0x0c0b41e0 212 bytes: 210/212 equal
+  _func_0c0b42b4 0x0c0b42b4 18 bytes: 18/18 equal
+  _func_0c0b42c6 0x0c0b42c6 110 bytes: 110/110 equal
+  _func_0c0b4370 0x0c0b4370 108 bytes: 108/108 equal
+  _func_0c0b43dc 0x0c0b43dc 100 bytes: 100/100 equal
+  _func_0c0b4440 0x0c0b4440 18 bytes: 18/18 equal
+  _func_0c0b4452 0x0c0b4452 66 bytes: 66/66 equal
+  _func_0c0b44ba 0x0c0b44ba 134 bytes: 134/134 equal
+  _func_0c0b4540 0x0c0b4540 108 bytes: 108/108 equal
+  _func_0c0b45ac 0x0c0b45ac 18 bytes: 18/18 equal
+  _func_0c0b45be 0x0c0b45be 30 bytes: 30/30 equal
+  _func_0c0b45dc 0x0c0b45dc 18 bytes: 18/18 equal
+  _func_0c0b45ee 0x0c0b45ee 20 bytes: 20/20 equal
+  pool 0x0c0b4304 60 bytes: 60/60 equal
+  pool 0x0c0b4482 38 bytes: 37/38 equal
+  pool 0x0c0b4602 46 bytes: 45/46 equal
+    0c0b4202  retail ed00  mov #0,r13                       ours ed00  mov #0,r13
+    0c0b4204  retail 907f  mov.w 0x000000000c0b4306,r0      ours 907f  mov.w 0x000000000c0b4306,r0
+  ! 0c0b4206  retail e135  mov #53,r1                       ours e435  mov #53,r4
+    0c0b4208  retail d342  mov.l 0x000000000c0b4314,r3      ours d342  mov.l 0x000000000c0b4314,r3
+    0c0b420a  retail e514  mov #20,r5                       ours e514  mov #20,r5
+  ! 0c0b420c  retail 0e14  mov.b r1,@(r0,r14)               ours 0e44  mov.b r4,@(r0,r14)
+    0c0b420e  retail 7058  add #88,r0                       ours 7058  add #88,r0
+    0c0b4210  retail 0ed4  mov.b r13,@(r0,r14)              ours 0ed4  mov.b r13,@(r0,r14)
+    ...
+    0c0b44a0  retail 4df4  error                            ours 4df4  error
+    0c0b44a2  retail 0c24  mov.b r2,@(r0,r12)               ours 0c24  mov.b r2,@(r0,r12)
+  ! 0c0b44a4  retail aaaa  bra 0x000000000c0b39fc           ours aaa9  bra 0x000000000c0b39fa
+    0c0b44a6  retail c112  mov.w r0,@(36,gbr)               ours c112  mov.w r0,@(36,gbr)
+    0c0b44a8  retail c757  mova 0x000000000c0b4608,r0       ours c757  mova 0x000000000c0b4608,r0
+    ...
+    0c0b4604  retail 0158  error                            ours 0158  error
+    0c0b4606  retail 0000  error                            ours 0000  error
+  ! 0c0b4608  retail aaaa  bra 0x000000000c0b3b60           ours aaa9  bra 0x000000000c0b3b5e
+    0c0b460a  retail 4112  sts.l macl,@-r1                  ours 4112  sts.l macl,@-r1
+    0c0b460c  retail a026  bra 0x000000000c0b465c           ours a026  bra 0x000000000c0b465c
+PROBLEM Not an exact section match: P
+DIFFERS

@@ -1,0 +1,128 @@
+{
+  "unit": {
+    "id": "sol_post_1d330c",
+    "source": "work/after-handoff-2630debe/tu_0c1d330c.c",
+    "model_header": "work/after-handoff-2630debe/model_1d330c.h",
+    "model_header_name": "model_1d330c.h",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": 203240204,
+        "size": 744,
+        "interior": [
+          {
+            "address": 203240506,
+            "size": 38,
+            "kind": "data"
+          },
+          {
+            "address": 203240710,
+            "size": 10,
+            "kind": "data"
+          },
+          {
+            "address": 203240938,
+            "size": 10,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c1d330c": 203240204,
+      "_func_0c1d357a": 203240826
+    },
+    "imports": {
+      "_dat_0c2f8338": 204440376,
+      "_func_0c1ec190": 203342224,
+      "_func_0c1d3172": 203239794,
+      "_func_0c1d2ff6": 203239414,
+      "_func_0c1d2e60": 203239008,
+      "_func_0c1d2c1c": 203238428,
+      "__modls": 203404716,
+      "__quick_odd_mvn": 203405216
+    },
+    "options": "game"
+  },
+  "proof": {
+    "exact": false,
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": 203240204,
+        "size": 744,
+        "interior": [
+          {
+            "address": 203240506,
+            "size": 38,
+            "kind": "data"
+          },
+          {
+            "address": 203240710,
+            "size": 10,
+            "kind": "data"
+          },
+          {
+            "address": 203240938,
+            "size": 10,
+            "kind": "data"
+          }
+        ],
+        "linked_size": 764,
+        "linked_address": 203240204,
+        "equal_bytes": 118,
+        "exact": false
+      }
+    ],
+    "functions": [
+      {
+        "symbol": "_func_0c1d330c",
+        "address": 203240204,
+        "size": 574,
+        "equal_bytes": 81,
+        "exact": false
+      },
+      {
+        "symbol": "_func_0c1d357a",
+        "address": 203240826,
+        "size": 112,
+        "equal_bytes": 11,
+        "exact": false
+      }
+    ],
+    "pools": [
+      {
+        "address": 203240506,
+        "size": 38,
+        "kind": "data",
+        "equal_bytes": 26,
+        "exact": false
+      },
+      {
+        "address": 203240710,
+        "size": 10,
+        "kind": "data",
+        "equal_bytes": 0,
+        "exact": false
+      },
+      {
+        "address": 203240938,
+        "size": 10,
+        "kind": "data",
+        "equal_bytes": 0,
+        "exact": false
+      }
+    ],
+    "function_bytes": 0,
+    "pool_bytes": 0,
+    "problems": [
+      "Wrong exported symbol address: _func_0c1d357a",
+      "Not an exact section match: P",
+      "Linked image contains extra or missing initialized bytes",
+      "Linked image contains extra or missing memory bytes"
+    ]
+  }
+}

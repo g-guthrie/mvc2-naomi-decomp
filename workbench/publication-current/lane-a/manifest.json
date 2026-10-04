@@ -1,0 +1,1183 @@
+{
+  "schema_version": 2,
+  "status": "IMMUTABLE_PUBLICATION_CUTOFF_READY",
+  "created_utc": "2026-10-04 03:20:50 UTC",
+  "lane": "A",
+  "handoff_recipients": [
+    {
+      "role": "local integrator and sole publisher for this snapshot",
+      "thread_id": "01a0fd64-ef87-77d3-91c4-cb4f3b931ba7"
+    },
+    {
+      "role": "coordinator",
+      "thread_id": "01a0fe71-9f79-72d1-b7d2-87e693e508a1"
+    }
+  ],
+  "publication_serialization": {
+    "sole_publisher_thread_id": "01a0fd64-ef87-77d3-91c4-cb4f3b931ba7",
+    "other_main_pushes_allowed_until_publisher_finishes": false,
+    "mandatory_CI": true,
+    "CI_owner": "local integrator",
+    "lane_pushed": false,
+    "standing_goal_or_future_push_cadence_cancelled_or_paused": false,
+    "later_research_must_use_separate_scratch": true
+  },
+  "publication_base": "dc92de9819f0f2ab4b0d27a6160a1247296a40ac",
+  "observed_remote_main_tip": "dc92de9819f0f2ab4b0d27a6160a1247296a40ac",
+  "observed_remote_main_ref": "refs/heads/main",
+  "local_cutoff": {
+    "checkout": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02",
+    "branch": "agent/luna-a-post-2f779d4",
+    "full_commit": "00499cb484c1e1cff2ee5369226c24d289963d5e",
+    "parent": "2f779d416d72ebea9906833943c05b79c42bc9c1",
+    "dirty_status": "M README.md\n?? work/",
+    "dirty_readme_sha256": "18e2063a282dffb3181efb5c5f2ce359f52b747747abc7bccdd0a86c7f29caf5",
+    "dirty_work_preserved": true,
+    "tracked_source_input_fingerprint_matches_full_check": true,
+    "input_fingerprint": "763d373393757c121e797d637a150d02fed5e247ced65de5d04f1928dec6c700"
+  },
+  "local_integrator_snapshot": {
+    "checkout": "/Users/gguthrie/Projects/mvc2-naomi-consolidate-oct02-ci",
+    "branch": "codex/consolidate-oct02-ci",
+    "head": "6a90f69a2409f124c4f5492d82c76fa4b944e385",
+    "already_integrated_lane_commit": "d253cfc95eed2990922c9946aa048b642d05bc3d"
+  },
+  "exact_progress_since_publication_base": [
+    {
+      "source_commit": "00499cb484c1e1cff2ee5369226c24d289963d5e",
+      "source_checkout": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02",
+      "source_branch": "agent/luna-a-post-2f779d4",
+      "integrated_commit": "d253cfc95eed2990922c9946aa048b642d05bc3d",
+      "already_integrated": true,
+      "new_commits_still_to_integrate": [],
+      "unit": "tu_0c0cbfa8",
+      "span": [
+        "0x0c0cbfa8",
+        "0x0c0cc8f8"
+      ],
+      "native_function_count": 25,
+      "whole_bytes": 2384,
+      "equal_bytes": 2384,
+      "executable_gain_since_base": 2086,
+      "pool_bytes": 298,
+      "count_once": true,
+      "header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_sha256": "5e875765f5ae6fba45613184fab0a535e94913e6d4f39c7e8c6f5132cd8d60ed",
+      "full_check": {
+        "session": 30461,
+        "exit_code": 0,
+        "repository_checks": 92,
+        "checks_duration_seconds": 8.776,
+        "hitachi_relocation": "PASS",
+        "main_image_bytes": 2424832,
+        "main_sha256": "b443b12af140ea0b3fae95e8795fe6f7673ae8ac00d886062f78766d1ac8070c",
+        "program_rom_bytes": 4194304,
+        "program_sha256": "9a25fe94f28b8937d9a764d2fbfb9283c85aefe9c816ce147a73a2ae590285b2",
+        "identity": "PASS original main and full program ROM byte-identical",
+        "input_sha256": "763d373393757c121e797d637a150d02fed5e247ced65de5d04f1928dec6c700",
+        "post_commit_input_fingerprint_rechecked": true
+      },
+      "immutable_ready_manifest": "/Users/gguthrie/Documents/Codex/2026-10-02/ther/work/mvc2-luna-a-ready-00499cb.json",
+      "independent_integration_base_delta": "exact/integration-base-code-delta.json"
+    }
+  ],
+  "exact_not_yet_integrated_commits": [],
+  "unique_new_complete_unregistered_primary_units": 1,
+  "complete_unregistered_primary_drafts": [
+    {
+      "unit": "tu_0c0993f8",
+      "source": "drafts/0993f8/primary/tu_0c0993f8.c",
+      "source_sha256": "b1bc4771bf112196ea9b43935246f276c0f3ecc229a3183470903989b6d97261",
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "private_header_or_header_patch": null,
+      "span": [
+        "0x0c0993f8",
+        "0x0c099e24"
+      ],
+      "functions": 23,
+      "executable_bytes_in_span": 2242,
+      "pools": 9,
+      "pool_bytes": 362,
+      "whole_bytes": 2604,
+      "linked_bytes": 2604,
+      "equal_bytes": 2412,
+      "whole_exact": false,
+      "exact_functions": 18,
+      "exact_pools": 8,
+      "registered": false,
+      "credit": 0,
+      "whole_proof": "drafts/0993f8/primary/tu_0c0993f8-whole-proof.json",
+      "unit_metadata": "drafts/0993f8/primary/tu_0c0993f8-unit.json",
+      "standard_comparison_log": "drafts/0993f8/primary/tu_0c0993f8-standard-final.log",
+      "proof_origin": {
+        "private_structured_proof_source": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.exact-float-spellings.c",
+        "source_sha256": "5e0e3b3c577754f06dc2800f0bb26fbf85fa4472054dc9ea56a5e4771d477bd3",
+        "final_source_comment_only_difference": true,
+        "final_source_standard_match_log": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-standard-final.log",
+        "standard_match_exit_code": 1,
+        "standard_match_result": "2412/2604 equal, linked 2604; DIFFERS"
+      },
+      "proposed_publication_path": "workbench/publication-current/lane-a/tu_0c0993f8.c",
+      "blocker": "Retail strength dispatch tests 2 before 0 and 1 in 099B92 and 099C58. Flat switches sort 0,1,2; reviewed nested/conditional forms add reloads or named-local copies. This shifts 099C20/099C58 exports and 099C06 pool. No exact whole-unit match."
+    }
+  ],
+  "complete_research_variant_count": 26,
+  "research_variants_are_not_additional_units_or_credit": true,
+  "rejected_fresh_review": {
+    "manifest": "drafts/0993f8/fresh-review/manifest.json",
+    "equal_bytes": 2013,
+    "expected_bytes": 2604,
+    "linked_bytes": 2608,
+    "exact": false,
+    "credit": 0,
+    "decision": "Rejected; original 2412/2604 primary retained."
+  },
+  "already_published_unregistered_primaries_at_base": [
+    {
+      "unit": "tu_0c0e9110",
+      "path": "workbench/publication-oct04/lane-a/tu_0c0e9110.c",
+      "base": "dc92de9819f0f2ab4b0d27a6160a1247296a40ac",
+      "source_sha256": "afa8363682cf50fd78759f578b28ad1af679221cb824fdfe3cb5ca198ae18278",
+      "equal_bytes": 1393,
+      "target_bytes": 1500,
+      "linked_bytes": 1500,
+      "credited_code_delta": 0,
+      "already_published_at_base": true
+    },
+    {
+      "unit": "tu_0c0ec984",
+      "path": "workbench/publication-oct04/lane-a/tu_0c0ec984.c",
+      "base": "dc92de9819f0f2ab4b0d27a6160a1247296a40ac",
+      "source_sha256": "d4aa55768b65abdd86b663d1a525a7549b304f2939da18b5cf90a4e0136d8133",
+      "equal_bytes": 1791,
+      "target_bytes": 1796,
+      "linked_bytes": 1796,
+      "credited_code_delta": 0,
+      "already_published_at_base": true
+    },
+    {
+      "unit": "tu_0c08b154",
+      "path": "workbench/publication-oct04/lane-a/tu_0c08b154.c",
+      "base": "dc92de9819f0f2ab4b0d27a6160a1247296a40ac",
+      "source_sha256": "0168796422ee467615de5cdd406262094eccc9dea240c44f9f5a0efcb3a541de",
+      "equal_bytes": 1402,
+      "target_bytes": 2312,
+      "linked_bytes": 2316,
+      "credited_code_delta": 0,
+      "already_published_at_base": true
+    }
+  ],
+  "previous_cutoff_manifests": [
+    {
+      "manifest": "/Users/gguthrie/Documents/Codex/2026-10-02/ther/work/mvc2-luna-a-complete-partials-manifest.json",
+      "sha256": "cd87c2d9d1eb52025806fe4a9174a4b2bc0436d9c1cc84c08512315aa2801d9e",
+      "snapshot_manifest": "previous-cutoffs/mvc2-luna-a-complete-partials-manifest.json",
+      "status": "Preserved earlier cutoff. Do not count earlier exact work or duplicate published primary drafts again."
+    },
+    {
+      "manifest": "/Users/gguthrie/Documents/Codex/2026-10-02/ther/work/mvc2-luna-a-post-4456-complete-partials.json",
+      "sha256": "5561fab12ae30657587ed99d9955e36910cc27e638ffe4c0cfd862fee4b17595",
+      "snapshot_manifest": "previous-cutoffs/mvc2-luna-a-post-4456-complete-partials.json",
+      "status": "Preserved earlier cutoff. Do not count earlier exact work or duplicate published primary drafts again."
+    },
+    {
+      "manifest": "/Users/gguthrie/Documents/Codex/2026-10-02/ther/work/mvc2-luna-a-post-2f779d4-publication-handoff.json",
+      "sha256": "c08d5f57767f7a8c54ebebcefe40c5ee2ee9853713c6755a0b83a18fb7270857",
+      "snapshot_manifest": "previous-cutoffs/mvc2-luna-a-post-2f779d4-publication-handoff.json",
+      "status": "Preserved earlier cutoff. Do not count earlier exact work or duplicate published primary drafts again."
+    }
+  ],
+  "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+  "source_or_compiler_or_mapping_or_runtime_or_verifier_changes_since_exact_commit": false,
+  "full_gate_repeated_for_freeze": false,
+  "snapshot_directory": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z",
+  "publication_files": [
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/exact/committed/config/units.json",
+      "relative_path": "exact/committed/config/units.json",
+      "category": "EXACT_COMMITTED_INPUT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/config/units.json",
+      "sha256": "aacf7f65d346cae3a0d3aa5e003598a5695ad038b00d63cfe03af17035aae650",
+      "bytes": 5432213
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/exact/committed/src/verified/bulk_045.c",
+      "relative_path": "exact/committed/src/verified/bulk_045.c",
+      "category": "EXACT_COMMITTED_INPUT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/src/verified/bulk_045.c",
+      "sha256": "6ab169b5bf509f8f7f5bba5165c23b15ca514b9ea4b7042b83521213812aadf0",
+      "bytes": 8675
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/exact/committed/src/verified/ptrtab_15.c",
+      "relative_path": "exact/committed/src/verified/ptrtab_15.c",
+      "category": "EXACT_COMMITTED_INPUT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/src/verified/ptrtab_15.c",
+      "sha256": "0a8725649dbc77aa28ad5f7bed597c04b621c0adc512ad618e436c51416bebda",
+      "bytes": 9233
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/exact/committed/src/verified/rest_039.c",
+      "relative_path": "exact/committed/src/verified/rest_039.c",
+      "category": "EXACT_COMMITTED_INPUT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/src/verified/rest_039.c",
+      "sha256": "4082bfe9423b9aac9a72ffe3a98d36d2532c2d7e87ff9c09010a139454ef15b3",
+      "bytes": 5314
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/exact/committed/src/verified/tu_0c0cbfa8.c",
+      "relative_path": "exact/committed/src/verified/tu_0c0cbfa8.c",
+      "category": "EXACT_COMMITTED_INPUT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/src/verified/tu_0c0cbfa8.c",
+      "sha256": "5e875765f5ae6fba45613184fab0a535e94913e6d4f39c7e8c6f5132cd8d60ed",
+      "bytes": 5599
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/exact/evidence/lane-a-0cbfa8-full-check.log",
+      "relative_path": "exact/evidence/lane-a-0cbfa8-full-check.log",
+      "category": "EXACT_CHECKED_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/build/lane-a-0cbfa8-full-check.log",
+      "sha256": "cf335c3276979e1a9884fd5728834460e5e2416421d51b8b4697bed5ec72e419",
+      "bytes": 28524
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/exact/evidence/0cbfa8-full-proof.json",
+      "relative_path": "exact/evidence/0cbfa8-full-proof.json",
+      "category": "EXACT_CHECKED_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/0cbfa8-full-proof.json",
+      "sha256": "c0adccf3568ae6b59588f2d57821c3d7a90fe1e1fa8f792e5e6782988aac2cdd",
+      "bytes": 10670246
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/exact/evidence/0cbfa8-checked-unit-proof.json",
+      "relative_path": "exact/evidence/0cbfa8-checked-unit-proof.json",
+      "category": "EXACT_CHECKED_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/0cbfa8-checked-unit-proof.json",
+      "sha256": "5effe8150fc999411011d2458cd9e6a89f1736f02659269f20e2be9ccf3d85a4",
+      "bytes": 8035
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/exact/evidence/0cbfa8-independent-code-delta.json",
+      "relative_path": "exact/evidence/0cbfa8-independent-code-delta.json",
+      "category": "EXACT_CHECKED_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/0cbfa8-independent-code-delta.json",
+      "sha256": "a42b389f34fbd81f337c329d949c376ce5d7ff4be54b1863536bb598d7e34e0d",
+      "bytes": 304
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/exact/evidence/tu_0c0cbfa8-standard-register.log",
+      "relative_path": "exact/evidence/tu_0c0cbfa8-standard-register.log",
+      "category": "EXACT_CHECKED_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0cbfa8-standard-register.log",
+      "sha256": "3097969055b89f9fce853b98a39474f9d67f24a15b0bff57baa7517ca3a460e7",
+      "bytes": 2404
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/exact/evidence/0cbfa8-incoming-review.json",
+      "relative_path": "exact/evidence/0cbfa8-incoming-review.json",
+      "category": "EXACT_CHECKED_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/0cbfa8-incoming-review.json",
+      "sha256": "06c4fcb1f8f1cb8f1f775fdbb2f91b1e827c7d7a549c755f0941ef27ac303508",
+      "bytes": 3619
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/exact/evidence/0cbfa8-span-review.json",
+      "relative_path": "exact/evidence/0cbfa8-span-review.json",
+      "category": "EXACT_CHECKED_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/0cbfa8-span-review.json",
+      "sha256": "7df6f6cc30e0e10528c5ab1f93a97e0cacdebe699364a08e3bfff63be7bb7dea",
+      "bytes": 38813
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/exact/ready-00499cb.json",
+      "relative_path": "exact/ready-00499cb.json",
+      "category": "PRIOR_IMMUTABLE_CHECKED_HANDOFF",
+      "origin": "/Users/gguthrie/Documents/Codex/2026-10-02/ther/work/mvc2-luna-a-ready-00499cb.json",
+      "sha256": "8cd89a77ff154ce7bb73a98560ad991db88a7fba52fa4e8d83e90c8b9dc92896",
+      "bytes": 4745
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/exact/integration-base-code-delta.json",
+      "relative_path": "exact/integration-base-code-delta.json",
+      "category": "INDEPENDENT_CODE_DELTA",
+      "origin": "fresh read-only integration/base registry comparison",
+      "sha256": "02559b26a045c4f0a03738162567974879c34a7df79517cdbf2ade6b66665420",
+      "bytes": 1045
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/primary/0993f8-closure-review.json",
+      "relative_path": "drafts/0993f8/primary/0993f8-closure-review.json",
+      "category": "UNREGISTERED_PRIMARY_DRAFT_AND_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-0993f8-integration-reviewed/0993f8-closure-review.json",
+      "sha256": "502ebbbfba73ad99b3eb07dda9b126b9b94c9cee796b6562c70a367628e3a196",
+      "bytes": 57893
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/primary/0993f8-retail.txt",
+      "relative_path": "drafts/0993f8/primary/0993f8-retail.txt",
+      "category": "UNREGISTERED_PRIMARY_DRAFT_AND_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-0993f8-integration-reviewed/0993f8-retail.txt",
+      "sha256": "3ef8ae93ca66d3307bf7802113f2e12a7be8fe61b9829bc093d13a2bc6e06b85",
+      "bytes": 40482
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/primary/integration-review.json",
+      "relative_path": "drafts/0993f8/primary/integration-review.json",
+      "category": "UNREGISTERED_PRIMARY_DRAFT_AND_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-0993f8-integration-reviewed/integration-review.json",
+      "sha256": "891c56526dca596494fc8d4c12f0eb53094ad3ebf3b11765347085c99ae8a242",
+      "bytes": 4234
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/primary/manifest.json",
+      "relative_path": "drafts/0993f8/primary/manifest.json",
+      "category": "UNREGISTERED_PRIMARY_DRAFT_AND_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-0993f8-integration-reviewed/manifest.json",
+      "sha256": "893497b541c32ed30fae48d5d3bc46b90d9e19104e2baaf1e79e6499f1c3a79f",
+      "bytes": 5969
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/primary/trial-summary.json",
+      "relative_path": "drafts/0993f8/primary/trial-summary.json",
+      "category": "UNREGISTERED_PRIMARY_DRAFT_AND_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-0993f8-integration-reviewed/trial-summary.json",
+      "sha256": "ce41167beb31a9b162aefa49c5c93ba445300887e509073cd19e8d0d7719b565",
+      "bytes": 8409
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/primary/tu_0c0993f8-exact-float-spellings.log",
+      "relative_path": "drafts/0993f8/primary/tu_0c0993f8-exact-float-spellings.log",
+      "category": "UNREGISTERED_PRIMARY_DRAFT_AND_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-0993f8-integration-reviewed/tu_0c0993f8-exact-float-spellings.log",
+      "sha256": "51d683c0380d7a5b6cf571dbce08d3633c8d6783fe9fdadc390c8f705ebb092b",
+      "bytes": 9497
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/primary/tu_0c0993f8-standard-final.log",
+      "relative_path": "drafts/0993f8/primary/tu_0c0993f8-standard-final.log",
+      "category": "UNREGISTERED_PRIMARY_DRAFT_AND_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-0993f8-integration-reviewed/tu_0c0993f8-standard-final.log",
+      "sha256": "10a0c06b13818c710f916b0ff6d696fa0173f33357607646743602857f0fdd12",
+      "bytes": 14437
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/primary/tu_0c0993f8-unit.json",
+      "relative_path": "drafts/0993f8/primary/tu_0c0993f8-unit.json",
+      "category": "UNREGISTERED_PRIMARY_DRAFT_AND_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-0993f8-integration-reviewed/tu_0c0993f8-unit.json",
+      "sha256": "4092e6ba348179d51572d50ee132fc7f16b3fc947fe39516a20360f52ca792ab",
+      "bytes": 3151
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/primary/tu_0c0993f8-whole-proof.json",
+      "relative_path": "drafts/0993f8/primary/tu_0c0993f8-whole-proof.json",
+      "category": "UNREGISTERED_PRIMARY_DRAFT_AND_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-0993f8-integration-reviewed/tu_0c0993f8-whole-proof.json",
+      "sha256": "ec11333edfd82989ca8f7c6594449b2362a048e5e26da2375658e508afc41f71",
+      "bytes": 5763
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/primary/tu_0c0993f8.c",
+      "relative_path": "drafts/0993f8/primary/tu_0c0993f8.c",
+      "category": "UNREGISTERED_PRIMARY_DRAFT_AND_EVIDENCE",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-0993f8-integration-reviewed/tu_0c0993f8.c",
+      "sha256": "b1bc4771bf112196ea9b43935246f276c0f3ecc229a3183470903989b6d97261",
+      "bytes": 8664
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/fresh-review/manifest.json",
+      "relative_path": "drafts/0993f8/fresh-review/manifest.json",
+      "category": "REJECTED_FRESH_REVIEW_NO_CREDIT",
+      "origin": "/Users/gguthrie/Documents/Codex/2026-10-02/ther/work/mvc2-luna-a-0993f8-fresh-dispatch-review.json",
+      "sha256": "443e3ceac57f742d6fd959aa858cf72491e9efc12a59bf46b06a88aba3cdaeff",
+      "bytes": 6120
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/fresh-review/0993f8-fresh-early-exit-input.json",
+      "relative_path": "drafts/0993f8/fresh-review/0993f8-fresh-early-exit-input.json",
+      "category": "REJECTED_FRESH_REVIEW_NO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/0993f8-fresh-early-exit-input.json",
+      "sha256": "04300851cda51e7547323fae31cb4ccaee0a969be688e02b6c66f3e838b27d55",
+      "bytes": 3032
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/fresh-review/0993f8-fresh-dispatch-siblings.json",
+      "relative_path": "drafts/0993f8/fresh-review/0993f8-fresh-dispatch-siblings.json",
+      "category": "REJECTED_FRESH_REVIEW_NO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/0993f8-fresh-dispatch-siblings.json",
+      "sha256": "b0bb4d8fdc94e49f19fdae873190ac2fa009546fbf5852f0d3d96a745ec232ae",
+      "bytes": 6552
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/fresh-review/tu_0c0993f8.fresh-early-exit.c",
+      "relative_path": "drafts/0993f8/fresh-review/tu_0c0993f8.fresh-early-exit.c",
+      "category": "REJECTED_FRESH_REVIEW_NO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.fresh-early-exit.c",
+      "sha256": "256d4c66acd9898838bad1430d9979efb4f816a58565a120bd7beaf79e923be1",
+      "bytes": 8468
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/fresh-review/tu_0c0993f8.fresh-early-exit-unit.json",
+      "relative_path": "drafts/0993f8/fresh-review/tu_0c0993f8.fresh-early-exit-unit.json",
+      "category": "REJECTED_FRESH_REVIEW_NO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.fresh-early-exit-unit.json",
+      "sha256": "8cde2a7e6d2fe095995102f0a832d97db4b61147686bcc7614133707845e597d",
+      "bytes": 3168
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/fresh-review/tu_0c0993f8.fresh-early-exit-whole-proof.json",
+      "relative_path": "drafts/0993f8/fresh-review/tu_0c0993f8.fresh-early-exit-whole-proof.json",
+      "category": "REJECTED_FRESH_REVIEW_NO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.fresh-early-exit-whole-proof.json",
+      "sha256": "0d4043f9b678056dda269cbf5eb5dd925cce538014f715133dce3c182b821388",
+      "bytes": 6166
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/drafts/0993f8/fresh-review/tu_0c0993f8-fresh-early-exit.log",
+      "relative_path": "drafts/0993f8/fresh-review/tu_0c0993f8-fresh-early-exit.log",
+      "category": "REJECTED_FRESH_REVIEW_NO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-fresh-early-exit.log",
+      "sha256": "d4e1bde0ecdb18546bbf6bc345a9efc38da442ee79bf8ba5bbf0916651e59665",
+      "bytes": 26184
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.assigned-switch.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.assigned-switch.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.assigned-switch.c",
+      "origin_sha256": "e3b1b89814f4d91d518aeef7102da5eb8acb32a01f1a790fbd39469bcb8284e7",
+      "sha256": "52fb4ce4777f0004e4df9b040b0c59c7d84c938f4a52c3cdea5053e764d80b08",
+      "bytes": 8716,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.biased-strength.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.biased-strength.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.biased-strength.c",
+      "origin_sha256": "e09bac055e30842edd578e427a6e8dc9f9de1c80c3277d1726d36adfe1f1da29",
+      "sha256": "242400249b82b8058a3da422e66f674575ca1ffb4ee88c23ff60d2e573cb50c1",
+      "bytes": 8620,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.byte-state.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.byte-state.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.byte-state.c",
+      "origin_sha256": "c012ece57fa62662ec201e6f0e75e742793b3c665279c561a83a45d8f872faaf",
+      "sha256": "a41baf11f02cbd2825ed1585b6bab27026148e8e3c830eb2d95d8291255e675b",
+      "bytes": 8294,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.byte-strength.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.byte-strength.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.byte-strength.c",
+      "origin_sha256": "30db96a985995e9fe35e3546bed7705c0929e14f24e0a695b9d78a00aa4e984b",
+      "sha256": "2038f523c41053d85b807fb2daeb445ebc704606e6026fc02e3de346b9ec00a0",
+      "bytes": 8734,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.char-strength-result.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.char-strength-result.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.char-strength-result.c",
+      "origin_sha256": "1024e8765396078235cb9335fef1ff3c18ac739364b0774e862701850b22e1de",
+      "sha256": "77f9633d6e387181cba757427434f04e1b396763b1a587e9243ab0d949583ef8",
+      "bytes": 8811,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.const-strength-read.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.const-strength-read.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.const-strength-read.c",
+      "origin_sha256": "4754a474224eb14a4efd6e675f7884182d284484d18631fc6ece59e103952450",
+      "sha256": "a4d16f9d3e0814c026607d7ab9bf9325183ea99422dc9d96a6d333be84d3e897",
+      "bytes": 8766,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.direct-strength.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.direct-strength.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.direct-strength.c",
+      "origin_sha256": "53cb1c9873c339d4a470f45f1b1ea56cef07305ef0100d49e064c1013a990c20",
+      "sha256": "ccfa491702d36c6dc7b8bd90a4779ec777b9c1c01eb94f5488518b7dcd29993d",
+      "bytes": 8668,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.exact-float-spellings.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.exact-float-spellings.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.exact-float-spellings.c",
+      "origin_sha256": "5e0e3b3c577754f06dc2800f0bb26fbf85fa4472054dc9ea56a5e4771d477bd3",
+      "sha256": "e18b722a5b2f77368f1e325ca8852cd9abe8feb2a296b1c254ff293791ce301d",
+      "bytes": 8545,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.explicit-mode.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.explicit-mode.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.explicit-mode.c",
+      "origin_sha256": "b3027edf12edf2843fc176ab0ef181cfb7f3afcfd920b59a5b135e7d7e2494be",
+      "sha256": "1c8aa7a519a486ae7602eee6e829853fc27ea0097aba598abcbcd5c78a261cce",
+      "bytes": 8415,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.first.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.first.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.first.c",
+      "origin_sha256": "a846f20b0eef280851d944ecff3cd0da9f3aa97a53c071974b6f1bf2c42345b0",
+      "sha256": "a15ddfbb857a3ed42ace69f66224cf74045f0d0a8a80c195077a22a9261bd3e0",
+      "bytes": 8336,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.fresh-early-exit.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.fresh-early-exit.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.fresh-early-exit.c",
+      "origin_sha256": "256d4c66acd9898838bad1430d9979efb4f816a58565a120bd7beaf79e923be1",
+      "sha256": "c80783e741a505167e08ea50cefd9c6d0bac050f33c75464bd515731bbac3557",
+      "bytes": 8630,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.grouped-first.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.grouped-first.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.grouped-first.c",
+      "origin_sha256": "83d65d780ab3b039494db2ba7d7a0ddab43daa6134b3b1f08b79079593f8d7c8",
+      "sha256": "34c087b420e294459b2a82db58b2df430bf2d698b4000195889646f9a137eb24",
+      "bytes": 8525,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.native-nested-direct.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.native-nested-direct.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.native-nested-direct.c",
+      "origin_sha256": "e74354cefe5ddd3fdf535ba762621b6bddf18a58f95e48916780d19685371c28",
+      "sha256": "6dea4abb7fd1d228664e8b6c013b739188c80725bf91e4b72761679d14acc7eb",
+      "bytes": 8670,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.native-strength-flow.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.native-strength-flow.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.native-strength-flow.c",
+      "origin_sha256": "d7526a3e7659c26a725a8226d7299a9e4003bd24be762f4be8755c07f94b61c0",
+      "sha256": "6322b300fd4099639bccc7e67590690e131f98721345ada654058f70901c6284",
+      "bytes": 8714,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.nested-switch.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.nested-switch.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.nested-switch.c",
+      "origin_sha256": "522e4bd4409efb5b770e48676e26473b52d1a90f4026e6ac94762e44d546c114",
+      "sha256": "b373833b4258b3ff893bc39680f7dbbfeb231cbd05277377ecf3cb2001e3b1b3",
+      "bytes": 8716,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.positive-input.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.positive-input.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.positive-input.c",
+      "origin_sha256": "18fc996d8ee841679b219eb3a8ef4edaef36acdcc3c5466a9666c2e9947d7f8b",
+      "sha256": "a43ab9b0cd74d18e9424c39f7dc5499f25af74c6471e19e97c5d34e77e69b506",
+      "bytes": 8525,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.record-pointer.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.record-pointer.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.record-pointer.c",
+      "origin_sha256": "66e299d22853b223087682c5a84fd3b24bf8f3273d2de5710f6764a29581042f",
+      "sha256": "bb8f8967e5888234f541351df084875358d2f3a369691d2c47df9337575584a4",
+      "bytes": 8529,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.register-strength.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.register-strength.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.register-strength.c",
+      "origin_sha256": "c13076450e1a018524c886574d41728dc6f8125cf7caea6cce302a59b47f5a2a",
+      "sha256": "7d18c238878773ca506b42f4c365d785002df94fd777fe25f2a64480f11eeab8",
+      "bytes": 8752,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.reused-strength-result.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.reused-strength-result.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.reused-strength-result.c",
+      "origin_sha256": "67d8b2e9b81a81c8d9c29281bcfea955185fcd6950b8281d31cdd84c1ccf1323",
+      "sha256": "253b42ec78039ea437d98f5a489f766ef873dc2ad618584c41d43e6a1684518b",
+      "bytes": 8749,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.separate-cases.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.separate-cases.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.separate-cases.c",
+      "origin_sha256": "b48e28c53bb84114a1a73056059f6550af4d124c7347dde108b94f8f9166f32f",
+      "sha256": "0e81297e8b1f900d18d2eb6f9d2454c88930288ce98b3a01c2ecc459c2954962",
+      "bytes": 8615,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.strength-if.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.strength-if.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.strength-if.c",
+      "origin_sha256": "ec5115ef833cb28d62e224d7546f688d2e05f3b6c46c3d43fdb749d68c87b747",
+      "sha256": "c5d0dc2f9727944017141482fb683817b1a16548a8e01b7e1c2937964c861d18",
+      "bytes": 8525,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.typed-state.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.typed-state.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.typed-state.c",
+      "origin_sha256": "04fca3f96764f18d3d6b4ae53c9085d15462764fbb7309240d1ff24b1f4ccb50",
+      "sha256": "1d41c67330801b4b8b49c114e8289e288640e6a37ac0afb431f0aeb3d896e9e5",
+      "bytes": 8401,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0993f8/tu_0c0993f8.unsigned-switch.c",
+      "relative_path": "research-variants/tu_0c0993f8/tu_0c0993f8.unsigned-switch.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.unsigned-switch.c",
+      "origin_sha256": "4a3bcf5a4a2c2051792ba0459fda19e02543917f3f4514acd33d962556600cdc",
+      "sha256": "549c2b478f600b62003c379e3647b3f06eab92ad3169d4277e16e4a6800949f5",
+      "bytes": 8554,
+      "function_count": 23,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0993f8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0cbfa8/tu_0c0cbfa8.byte-selector.c",
+      "relative_path": "research-variants/tu_0c0cbfa8/tu_0c0cbfa8.byte-selector.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0cbfa8.byte-selector.c",
+      "origin_sha256": "8b8b21d977ea388fddae75f5431fc3db33fcc2286035496ff5b1f2fde6b90b1e",
+      "sha256": "f6999179d1d2a4933129cb84f229b867bb5dd164c5a40eb7ded819b7ee0de155",
+      "bytes": 5719,
+      "function_count": 25,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0cbfa8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0cbfa8/tu_0c0cbfa8.first.c",
+      "relative_path": "research-variants/tu_0c0cbfa8/tu_0c0cbfa8.first.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0cbfa8.first.c",
+      "origin_sha256": "6b567d39f967a041652f8e9326ddfeeb43071bfa13cf766daaae20eb4520fc18",
+      "sha256": "189420791d9e175d837e8e022e770f88df8727cd3a5b492e18302afc88c2c3eb",
+      "bytes": 5691,
+      "function_count": 25,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0cbfa8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-variants/tu_0c0cbfa8/tu_0c0cbfa8.float-lifetime.c",
+      "relative_path": "research-variants/tu_0c0cbfa8/tu_0c0cbfa8.float-lifetime.c",
+      "category": "COMPLETE_EXPERIMENTAL_C_VARIANT_ZERO_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0cbfa8.float-lifetime.c",
+      "origin_sha256": "44f3d3b4d386cea0910c10df4adc423905b0f2ed756b9cdb670a906fb7904155",
+      "sha256": "323e2b4afe6b69c553705311d6692c8520f68073dce499cbd1960d5ef89f58a1",
+      "bytes": 5739,
+      "function_count": 25,
+      "shared_header_sha256": "b71dfece423af129d9f51c44e9cec3e2873dfded4b2163eb6081dde4f82ef799",
+      "source_comment_banner_added_only": true,
+      "primary_unit": "tu_0c0cbfa8",
+      "registered_as_variant": false,
+      "credited_executable_bytes": 0
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-assigned-switch.log",
+      "relative_path": "research-evidence/tu_0c0993f8-assigned-switch.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-assigned-switch.log",
+      "sha256": "3109cf217a793c8e78d3d21c8b88bb2346e74c301fbb988ffcee2a2975c4c5a0",
+      "bytes": 23335
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-biased-strength.log",
+      "relative_path": "research-evidence/tu_0c0993f8-biased-strength.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-biased-strength.log",
+      "sha256": "569cdd9a5d3ed9a3b8da25512613fa19f6ec7baeb1b11c2c4c55398e6e640a81",
+      "bytes": 26174
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-byte-strength.log",
+      "relative_path": "research-evidence/tu_0c0993f8-byte-strength.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-byte-strength.log",
+      "sha256": "18732ddce8912cb64fb3bd0a673043c537fb111b28c23128ba6ac3ae04bf3851",
+      "bytes": 26548
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-char-strength-result.log",
+      "relative_path": "research-evidence/tu_0c0993f8-char-strength-result.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-char-strength-result.log",
+      "sha256": "a07eae2bb83d6f255524a4dcbcca50f34e46cf8c35dc7bebb0b174afb6c1f029",
+      "bytes": 26548
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-const-strength-read.log",
+      "relative_path": "research-evidence/tu_0c0993f8-const-strength-read.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-const-strength-read.log",
+      "sha256": "52ec69b9a2dafa846f7ee8f8a14399b9acce536c1a90295d603f40d190050f59",
+      "bytes": 23083
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-direct-strength.log",
+      "relative_path": "research-evidence/tu_0c0993f8-direct-strength.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-direct-strength.log",
+      "sha256": "52ec69b9a2dafa846f7ee8f8a14399b9acce536c1a90295d603f40d190050f59",
+      "bytes": 23083
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-exact-float-spellings.log",
+      "relative_path": "research-evidence/tu_0c0993f8-exact-float-spellings.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-exact-float-spellings.log",
+      "sha256": "51d683c0380d7a5b6cf571dbce08d3633c8d6783fe9fdadc390c8f705ebb092b",
+      "bytes": 9497
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-explicit-mode.log",
+      "relative_path": "research-evidence/tu_0c0993f8-explicit-mode.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-explicit-mode.log",
+      "sha256": "9121a097ac15bf1c73211c284b8b3be31b2eea868a2d56435b9c3299f9cac6f6",
+      "bytes": 94503
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-first.log",
+      "relative_path": "research-evidence/tu_0c0993f8-first.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-first.log",
+      "sha256": "601a14d7898d05d6630899500f3237f2e06daea58efbcee73ebbf056f4fe3735",
+      "bytes": 107389
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-fixed-span.log",
+      "relative_path": "research-evidence/tu_0c0993f8-fixed-span.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-fixed-span.log",
+      "sha256": "39cb4d8690cae0cb201e87d1e793236753b18ffac9f262f7d4134764a1dc6930",
+      "bytes": 104734
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-fresh-early-exit.log",
+      "relative_path": "research-evidence/tu_0c0993f8-fresh-early-exit.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-fresh-early-exit.log",
+      "sha256": "d4e1bde0ecdb18546bbf6bc345a9efc38da442ee79bf8ba5bbf0916651e59665",
+      "bytes": 26184
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-grouped-first.log",
+      "relative_path": "research-evidence/tu_0c0993f8-grouped-first.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-grouped-first.log",
+      "sha256": "810d2443794198533a297c570bfa9033fce3c06320ffeb4f919b259fb0b1eb62",
+      "bytes": 25396
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-native-nested-direct.log",
+      "relative_path": "research-evidence/tu_0c0993f8-native-nested-direct.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-native-nested-direct.log",
+      "sha256": "52ec69b9a2dafa846f7ee8f8a14399b9acce536c1a90295d603f40d190050f59",
+      "bytes": 23083
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-native-strength-flow.log",
+      "relative_path": "research-evidence/tu_0c0993f8-native-strength-flow.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-native-strength-flow.log",
+      "sha256": "a19962ef1c30d1a4575315fde5c6717abd936d57d354dd4c389ae921cae27346",
+      "bytes": 23335
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-nested-switch.log",
+      "relative_path": "research-evidence/tu_0c0993f8-nested-switch.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-nested-switch.log",
+      "sha256": "3109cf217a793c8e78d3d21c8b88bb2346e74c301fbb988ffcee2a2975c4c5a0",
+      "bytes": 23335
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-positive-input.log",
+      "relative_path": "research-evidence/tu_0c0993f8-positive-input.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-positive-input.log",
+      "sha256": "53ed8871b59f649ea86cbd4951e939f1af22253a0b87487fce3f567715e8c199",
+      "bytes": 9845
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-record-pointer.log",
+      "relative_path": "research-evidence/tu_0c0993f8-record-pointer.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-record-pointer.log",
+      "sha256": "210a500fef192d886c21b77d60350f8e0e1eb901e9be0265f84774369f900c39",
+      "bytes": 60582
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-register-strength.log",
+      "relative_path": "research-evidence/tu_0c0993f8-register-strength.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-register-strength.log",
+      "sha256": "3109cf217a793c8e78d3d21c8b88bb2346e74c301fbb988ffcee2a2975c4c5a0",
+      "bytes": 23335
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-reused-strength-result.log",
+      "relative_path": "research-evidence/tu_0c0993f8-reused-strength-result.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-reused-strength-result.log",
+      "sha256": "3109cf217a793c8e78d3d21c8b88bb2346e74c301fbb988ffcee2a2975c4c5a0",
+      "bytes": 23335
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-separate-cases.log",
+      "relative_path": "research-evidence/tu_0c0993f8-separate-cases.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-separate-cases.log",
+      "sha256": "66ad1a6e8348e33ccc0b6fb7bbcb6cce81b1d99987c5dd32b9ec3c68ebd6d652",
+      "bytes": 27777
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-standard-final.log",
+      "relative_path": "research-evidence/tu_0c0993f8-standard-final.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-standard-final.log",
+      "sha256": "10a0c06b13818c710f916b0ff6d696fa0173f33357607646743602857f0fdd12",
+      "bytes": 14437
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-state-byte.log",
+      "relative_path": "research-evidence/tu_0c0993f8-state-byte.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-state-byte.log",
+      "sha256": "a05803339c4eb23fce1662b53651ec441b9de23d41b9faaaffaa3be83b1948a8",
+      "bytes": 104728
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-strength-order.log",
+      "relative_path": "research-evidence/tu_0c0993f8-strength-order.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-strength-order.log",
+      "sha256": "ae1bdd8747568d90e8d70e53977bbfd4919738ceaf972562065695f0aee7951e",
+      "bytes": 26755
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-typed-state.log",
+      "relative_path": "research-evidence/tu_0c0993f8-typed-state.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-typed-state.log",
+      "sha256": "49a798e13a2ce20b6cb9f2147dc0646b506add96697266a2f5d0646be0f3e40c",
+      "bytes": 104118
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-unsigned-switch.log",
+      "relative_path": "research-evidence/tu_0c0993f8-unsigned-switch.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-unsigned-switch.log",
+      "sha256": "b8b536b701e2337737d13641c48fee44183409df20149acc4641fb44724453d5",
+      "bytes": 26126
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-unit.json",
+      "relative_path": "research-evidence/tu_0c0993f8-unit.json",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-unit.json",
+      "sha256": "4092e6ba348179d51572d50ee132fc7f16b3fc947fe39516a20360f52ca792ab",
+      "bytes": 3151
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8-whole-proof.json",
+      "relative_path": "research-evidence/tu_0c0993f8-whole-proof.json",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-whole-proof.json",
+      "sha256": "ec11333edfd82989ca8f7c6594449b2362a048e5e26da2375658e508afc41f71",
+      "bytes": 5763
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8.fresh-early-exit-unit.json",
+      "relative_path": "research-evidence/tu_0c0993f8.fresh-early-exit-unit.json",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.fresh-early-exit-unit.json",
+      "sha256": "8cde2a7e6d2fe095995102f0a832d97db4b61147686bcc7614133707845e597d",
+      "bytes": 3168
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0993f8.fresh-early-exit-whole-proof.json",
+      "relative_path": "research-evidence/tu_0c0993f8.fresh-early-exit-whole-proof.json",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.fresh-early-exit-whole-proof.json",
+      "sha256": "0d4043f9b678056dda269cbf5eb5dd925cce538014f715133dce3c182b821388",
+      "bytes": 6166
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/0993f8-closure-review.json",
+      "relative_path": "research-evidence/0993f8-closure-review.json",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/0993f8-closure-review.json",
+      "sha256": "502ebbbfba73ad99b3eb07dda9b126b9b94c9cee796b6562c70a367628e3a196",
+      "bytes": 57893
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/0993f8-fresh-dispatch-review-complete.json",
+      "relative_path": "research-evidence/0993f8-fresh-dispatch-review-complete.json",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/0993f8-fresh-dispatch-review-complete.json",
+      "sha256": "443e3ceac57f742d6fd959aa858cf72491e9efc12a59bf46b06a88aba3cdaeff",
+      "bytes": 6120
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/0993f8-fresh-dispatch-siblings.json",
+      "relative_path": "research-evidence/0993f8-fresh-dispatch-siblings.json",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/0993f8-fresh-dispatch-siblings.json",
+      "sha256": "b0bb4d8fdc94e49f19fdae873190ac2fa009546fbf5852f0d3d96a745ec232ae",
+      "bytes": 6552
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/0993f8-fresh-early-exit-input.json",
+      "relative_path": "research-evidence/0993f8-fresh-early-exit-input.json",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/0993f8-fresh-early-exit-input.json",
+      "sha256": "04300851cda51e7547323fae31cb4ccaee0a969be688e02b6c66f3e838b27d55",
+      "bytes": 3032
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0cbfa8-byte-selector.log",
+      "relative_path": "research-evidence/tu_0c0cbfa8-byte-selector.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0cbfa8-byte-selector.log",
+      "sha256": "1656458763b7bae2bb9f3b2bb41f837ffd91668e86436c46b6458065a7b780c5",
+      "bytes": 30650
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0cbfa8-first.log",
+      "relative_path": "research-evidence/tu_0c0cbfa8-first.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0cbfa8-first.log",
+      "sha256": "65e09d4be7cf5fdd3ae4c405e14575dbb87a3dcb01615890a0a72adf3c082bf7",
+      "bytes": 31850
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0cbfa8-float-lifetime.log",
+      "relative_path": "research-evidence/tu_0c0cbfa8-float-lifetime.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0cbfa8-float-lifetime.log",
+      "sha256": "c011bfa240716da64374afcfb10496ee6bca462e2ee34dcd1046e09ff773377a",
+      "bytes": 25693
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0cbfa8-shared-mask.log",
+      "relative_path": "research-evidence/tu_0c0cbfa8-shared-mask.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0cbfa8-shared-mask.log",
+      "sha256": "73d985cbd4eb41ed107e685b5d3ee80f337e55a8f15bea06a4acc42a12365b5c",
+      "bytes": 726
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0cbfa8-standard-register.log",
+      "relative_path": "research-evidence/tu_0c0cbfa8-standard-register.log",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0cbfa8-standard-register.log",
+      "sha256": "3097969055b89f9fce853b98a39474f9d67f24a15b0bff57baa7517ca3a460e7",
+      "bytes": 2404
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0cbfa8-unit.json",
+      "relative_path": "research-evidence/tu_0c0cbfa8-unit.json",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0cbfa8-unit.json",
+      "sha256": "db85acddee339ca4a2a5e73db302bf417739c1449bf6d2d146a16e26f2c45f54",
+      "bytes": 2336
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/research-evidence/tu_0c0cbfa8-whole-proof.json",
+      "relative_path": "research-evidence/tu_0c0cbfa8-whole-proof.json",
+      "category": "RESEARCH_EVIDENCE_NOT_NEW_UNITS_OR_CREDIT",
+      "origin": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0cbfa8-whole-proof.json",
+      "sha256": "4aedd054ab1d67160cee8cb5085dfc9141db334f187dde923093e5b6fd1250e3",
+      "bytes": 5441
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/previous-cutoffs/mvc2-luna-a-complete-partials-manifest.json",
+      "relative_path": "previous-cutoffs/mvc2-luna-a-complete-partials-manifest.json",
+      "category": "PRESERVED_EARLIER_PUBLICATION_MANIFEST_REFERENCE",
+      "origin": "/Users/gguthrie/Documents/Codex/2026-10-02/ther/work/mvc2-luna-a-complete-partials-manifest.json",
+      "sha256": "cd87c2d9d1eb52025806fe4a9174a4b2bc0436d9c1cc84c08512315aa2801d9e",
+      "bytes": 189476
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/previous-cutoffs/mvc2-luna-a-post-4456-complete-partials.json",
+      "relative_path": "previous-cutoffs/mvc2-luna-a-post-4456-complete-partials.json",
+      "category": "PRESERVED_EARLIER_PUBLICATION_MANIFEST_REFERENCE",
+      "origin": "/Users/gguthrie/Documents/Codex/2026-10-02/ther/work/mvc2-luna-a-post-4456-complete-partials.json",
+      "sha256": "5561fab12ae30657587ed99d9955e36910cc27e638ffe4c0cfd862fee4b17595",
+      "bytes": 6214
+    },
+    {
+      "path": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-publication-cutoff-20261004T032050Z/previous-cutoffs/mvc2-luna-a-post-2f779d4-publication-handoff.json",
+      "relative_path": "previous-cutoffs/mvc2-luna-a-post-2f779d4-publication-handoff.json",
+      "category": "PRESERVED_EARLIER_PUBLICATION_MANIFEST_REFERENCE",
+      "origin": "/Users/gguthrie/Documents/Codex/2026-10-02/ther/work/mvc2-luna-a-post-2f779d4-publication-handoff.json",
+      "sha256": "c08d5f57767f7a8c54ebebcefe40c5ee2ee9853713c6755a0b83a18fb7270857",
+      "bytes": 11098
+    }
+  ],
+  "exclusions": [
+    "Generated compiler assembly listing and ROM/SDK/compiler binary assets are not added by this lane payload.",
+    "Earlier exact commits and earlier published primaries are references only; do not duplicate their credit."
+  ],
+  "publication_scope_note": "This fixes one publication snapshot only. It does not cancel, pause or reset the active decompilation goal or standing future push cadence. Any later research must use separate scratch and leave this directory and cutoff unchanged."
+}

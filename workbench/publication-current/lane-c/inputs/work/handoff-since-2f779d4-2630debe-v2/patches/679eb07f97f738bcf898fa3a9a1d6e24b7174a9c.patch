@@ -1,0 +1,128 @@
+commit 679eb07f97f738bcf898fa3a9a1d6e24b7174a9c
+Author:     Greer Guthrie <gguthrie@gguthrie.local>
+AuthorDate: Sat Oct 3 18:15:44 2026 -0500
+Commit:     Greer Guthrie <gguthrie@gguthrie.local>
+CommitDate: Sat Oct 3 18:15:44 2026 -0500
+
+    Model observed actor and selection fields with compatible users
+
+diff --git a/src/candidates/tu_0c1739b0.c b/src/candidates/tu_0c1739b0.c
+index 25c184b..8f648bd 100644
+--- a/src/candidates/tu_0c1739b0.c
++++ b/src/candidates/tu_0c1739b0.c
+@@ -15,8 +15,8 @@ struct LinkedActor *func_0c1739b0(struct LinkedActor *owner, short x, short y)
+         a->p24=owner;
+         a->w38=0x2f02;
+         a->wcc.dword_value=(unsigned short)owner->sdc.w158.short_value;
+-        ((int *)a->pad10)[0]=x;
+-        ((int *)a->pad10)[1]=y;
++        a->id0=x;
++        a->wd4.integer=y;
+     }
+     return a;
+ }
+@@ -26,9 +26,9 @@ struct LinkedActor *func_0c173a04(struct LinkedActor *owner)
+     struct LinkedActor *a;
+     for(i=0;i<8;i++) {
+         short *entry=&table_0c252ac0[func_0c02849a() & 7][0];
+-        if((a=func_0c1739b0(owner,0,0)) != 0) {a->b33=0;a->b32=i;((int *)a->pad10)[2]=entry[0];}
+-        if((a=func_0c1739b0(owner,entry[3],entry[4])) != 0) {a->b33=1;a->b32=i;((int *)a->pad10)[2]=entry[1];}
+-        if((a=func_0c1739b0(owner,entry[3]+entry[5],entry[4]+entry[6])) != 0) {a->b33=1;a->b32=i;((int *)a->pad10)[2]=entry[2];}
++        if((a=func_0c1739b0(owner,0,0)) != 0) {a->b33=0;a->b32=i;a->id8=entry[0];}
++        if((a=func_0c1739b0(owner,entry[3],entry[4])) != 0) {a->b33=1;a->b32=i;a->id8=entry[1];}
++        if((a=func_0c1739b0(owner,entry[3]+entry[5],entry[4]+entry[6])) != 0) {a->b33=1;a->b32=i;a->id8=entry[2];}
+     }
+     return a;
+ }
+diff --git a/src/include/objects.h b/src/include/objects.h
+index 91576f8..4c5ed5b 100644
+--- a/src/include/objects.h
++++ b/src/include/objects.h
+@@ -259,7 +259,8 @@ struct Actor {
+     float f218,f21c;
+     unsigned char pad220[0x229 - 0x220];
+     signed char b229;
+-    unsigned char pad22a[0x22e - 0x22a];
++    char b22a;
++    unsigned char pad22b[0x22e - 0x22b];
+     char b22e;
+     unsigned char b22f,pad230,b231;
+     char b232;
+@@ -347,8 +348,13 @@ struct Actor {
+     unsigned char pad15b[0x524 - 0x4de];
+     char b524;
+     unsigned char b525;
++    unsigned char pad526[0x52c - 0x526];
++    char b52c;
+ };
+ 
++/* Character pointer slots indexed at native stride 0x5a4 through 0x0c2d70a0. */
++struct CharacterSlot5a4 { struct Actor *actor; unsigned char pad4[0x5a4 - 4]; };
++
+ /* Global game flags record exposed through the pointer at 0x0c2d6f84. */
+ struct ActorFlags {
+     unsigned char b0, b1; signed char b2, b3, b4, b5, b6; unsigned char b7;
+@@ -358,7 +364,7 @@ struct ActorFlags {
+     signed char b46; unsigned char pad47[67-47]; signed char b67;
+     unsigned char pad68[71-68]; signed char b47; unsigned char pad72[0x4e-72], b4e, pad4f, b50; unsigned char pad81[0x80-0x51]; char b128;
+     signed char b81; unsigned char pad130[2]; signed char b84;
+-    signed char b85; unsigned char pad134[0x88-0x86]; unsigned char b88; unsigned char pad137[0x8d-0x89], b8d; signed char b8e;
++    signed char b85; unsigned char pad134[0x88-0x86]; unsigned char b88; signed char b89; unsigned char pad138[0x8d-0x8a], b8d; signed char b8e;
+     unsigned char pad143[1]; int i90; void *p94; unsigned char b98,pad99, b9a; unsigned char pad9b[0xa5-0x9b]; signed char b_a5;
+ };
+ struct Glob_me00 { unsigned char pad[0x14]; int l14; };
+@@ -384,6 +390,12 @@ struct ActorGlobalRoot { struct ActorGlobalTable *p0; };
+ /* Halfword counters stored after a 124-byte header at 0x0c2f83f8. */
+ struct Tbl_ub3_01 { unsigned char pad[124]; short arr[100]; };
+ 
++/* Six-byte effect offsets at 0x0c259254: two signed coordinates, layer and animation. */
++struct ActorEffectOffset6 { short x,y; unsigned char layer; signed char animation; };
++
++/* Four-byte state record rooted at the named enabled byte at 0x12c. */
++struct LinkedActorControl4 { unsigned char enabled; signed char mode; short counter; };
++
+ /* Linked actor variant with pointers at 0x14 and 0x18. The 0xc0-byte block at
+  * 0xdc is copied by SHC's runtime helper in the 0x0c19dxxx callbacks. */
+ struct LinkedActorVec3 { float x, y, z; };
+@@ -399,6 +411,7 @@ struct LinkedActorBlock {
+     union LinkedActorW158 w158;
+     unsigned char pad2[0xc0 - 0x7e];
+ };
++union LinkedActorWd4 { struct Actor *pointer_value; int integer; };
+ union LinkedActorWcc {
+     struct LinkedActor *pointer_value;
+     short short_value;
+@@ -438,7 +451,9 @@ struct LinkedActor {
+     void *p84;
+     unsigned char pad9b[0xcc - 0x88];
+     union LinkedActorWcc wcc;
+-    unsigned char pad10[0xdc - 0xd0];
++    int id0;
++    union LinkedActorWd4 wd4;
++    int id8;
+     struct LinkedActorBlock sdc;
+     unsigned char pad11[0x1a3 - 0x19c];
+     unsigned char b1a3, b1a4;
+@@ -603,7 +618,8 @@ struct ActorSubControlBytes { unsigned char pad0[2]; char b2; unsigned char pad3
+  * the icon callbacks use signed selections at 48 and the two mask pairs at 60. */
+ struct SelectionFlags59e8 {
+     unsigned char state[2], flags[2];
+-    unsigned char pad4[48 - 4];
++    signed char column[2], row[2];
++    unsigned char pad8[48 - 8];
+     signed char choice[2];
+     unsigned char pad50[60 - 50];
+     unsigned int masks[2][2];
+diff --git a/src/verified/tu_0c1769b0.c b/src/verified/tu_0c1769b0.c
+index 4d21615..2ceed04 100644
+--- a/src/verified/tu_0c1769b0.c
++++ b/src/verified/tu_0c1769b0.c
+@@ -11,7 +11,7 @@ void func_0c176a00(struct LinkedActor *source)
+ }
+ struct LinkedActor *func_0c176a48(struct LinkedActor *owner,struct LinkedActor *source,int value)
+ {
+- struct LinkedActor *a;if((a=func_0c0374da(0,1,1))){a->p16=func_0c176b2c;a->b32=5;a->p24=owner;a->p20=source;a->wcc.dword_value=(unsigned int)source->p24;((int *)a->pad10)[0]=value;a->w38=0x3002;}return a;
++ struct LinkedActor *a;if((a=func_0c0374da(0,1,1))){a->p16=func_0c176b2c;a->b32=5;a->p24=owner;a->p20=source;a->wcc.dword_value=(unsigned int)source->p24;a->id0=value;a->w38=0x3002;}return a;
+ }
+ struct LinkedActor *func_0c176a90(struct LinkedActor *owner)
+ {

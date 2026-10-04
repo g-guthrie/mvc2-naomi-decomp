@@ -1,0 +1,24 @@
+P 0x0c09c740 552 bytes: 548/552 equal, linked 552 at 0x0c09c740
+  _func_0c09c740 0x0c09c740 152 bytes: 152/152 equal
+  _func_0c09c7d8 0x0c09c7d8 50 bytes: 50/50 equal
+  _func_0c09c80a 0x0c09c80a 50 bytes: 50/50 equal
+  _func_0c09c85c 0x0c09c85c 134 bytes: 134/134 equal
+  _func_0c09c8e2 0x0c09c8e2 86 bytes: 82/86 equal
+  _func_0c09c938 0x0c09c938 18 bytes: 18/18 equal
+  pool 0x0c09c83c 32 bytes: 32/32 equal
+  pool 0x0c09c94a 30 bytes: 30/30 equal
+    0c09c8fe  retail 432b  jmp @r3                          ours 432b  jmp @r3
+    0c09c900  retail 6ef6  mov.l @r15+,r14                  ours 6ef6  mov.l @r15+,r14
+  ! 0c09c902  retail d315  mov.l 0x000000000c09c958,r3      ours d215  mov.l 0x000000000c09c958,r2
+  ! 0c09c904  retail 430b  jsr @r3                          ours 420b  jsr @r2
+    0c09c906  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+    0c09c908  retail 600e  exts.b r0,r0                     ours 600e  exts.b r0,r0
+    0c09c90a  retail 4011  cmp/pz r0                        ours 4011  cmp/pz r0
+    0c09c90c  retail 8911  bt 0x000000000c09c932            ours 8911  bt 0x000000000c09c932
+  ! 0c09c90e  retail d313  mov.l 0x000000000c09c95c,r3      ours d213  mov.l 0x000000000c09c95c,r2
+    0c09c910  retail e500  mov #0,r5                        ours e500  mov #0,r5
+  ! 0c09c912  retail 430b  jsr @r3                          ours 420b  jsr @r2
+    0c09c914  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+    0c09c916  retail e05c  mov #92,r0                       ours e05c  mov #92,r0
+PROBLEM Not an exact section match: P
+DIFFERS

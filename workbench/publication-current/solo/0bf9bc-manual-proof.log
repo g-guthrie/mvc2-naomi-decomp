@@ -1,0 +1,45 @@
+P 0x0c0bf9bc 360 bytes: 349/360 equal, linked 360 at 0x0c0bf9bc
+  _func_0c0bf9bc 0x0c0bf9bc 114 bytes: 114/114 equal
+  _func_0c0bfa2e 0x0c0bfa2e 172 bytes: 162/172 equal
+  _func_0c0bfada 0x0c0bfada 28 bytes: 28/28 equal
+  pool 0x0c0bfaf6 46 bytes: 45/46 equal
+    0c0bfa30  retail 4f22  sts.l pr,@-r15                   ours 4f22  sts.l pr,@-r15
+    0c0bfa32  retail 7ff4  add #-12,r15                     ours 7ff4  add #-12,r15
+  ! 0c0bfa34  retail f48d  fldi0 fr4                        ours f58d  fldi0 fr5
+    0c0bfa36  retail e068  mov #104,r0                      ours e068  mov #104,r0
+  ! 0c0bfa38  retail f54c  fmov fr4,fr5                     ours f45c  fmov fr5,fr4
+    0c0bfa3a  retail 6e43  mov r4,r14                       ours 6e43  mov r4,r14
+  ! 0c0bfa3c  retail fe57  fmov fr5,@(r0,r14)               ours fe47  fmov fr4,@(r0,r14)
+    0c0bfa3e  retail e060  mov #96,r0                       ours e060  mov #96,r0
+  ! 0c0bfa40  retail fe57  fmov fr5,@(r0,r14)               ours fe47  fmov fr4,@(r0,r14)
+    0c0bfa42  retail c734  mova 0x000000000c0bfb14,r0       ours c734  mova 0x000000000c0bfb14,r0
+    0c0bfa44  retail f308  fmov @r0,fr3                     ours f308  fmov @r0,fr3
+    ...
+    0c0bfa5a  retail c72f  mova 0x000000000c0bfb18,r0       ours c72f  mova 0x000000000c0bfb18,r0
+    0c0bfa5c  retail a002  bra 0x000000000c0bfa64           ours a002  bra 0x000000000c0bfa64
+  ! 0c0bfa5e  retail f508  fmov @r0,fr5                     ours f408  fmov @r0,fr4
+    0c0bfa60  retail c72e  mova 0x000000000c0bfb1c,r0       ours c72e  mova 0x000000000c0bfb1c,r0
+  ! 0c0bfa62  retail f508  fmov @r0,fr5                     ours f408  fmov @r0,fr4
+    0c0bfa64  retail 904b  mov.w 0x000000000c0bfafe,r0      ours 904b  mov.w 0x000000000c0bfafe,r0
+    0c0bfa66  retail 02ec  mov.b @(r0,r14),r2               ours 02ec  mov.b @(r0,r14),r2
+    0c0bfa68  retail 2228  tst r2,r2                        ours 2228  tst r2,r2
+    0c0bfa6a  retail 8900  bt 0x000000000c0bfa6e            ours 8900  bt 0x000000000c0bfa6e
+  ! 0c0bfa6c  retail f54d  fneg fr5                         ours f44d  fneg fr4
+    0c0bfa6e  retail e05c  mov #92,r0                       ours e05c  mov #92,r0
+  ! 0c0bfa70  retail fe57  fmov fr5,@(r0,r14)               ours fe47  fmov fr4,@(r0,r14)
+    0c0bfa72  retail e022  mov #34,r0                       ours e022  mov #34,r0
+    0c0bfa74  retail 00ec  mov.b @(r0,r14),r0               ours 00ec  mov.b @(r0,r14),r0
+    ...
+    0c0bfab8  retail ff37  fmov fr3,@(r0,r15)               ours ff37  fmov fr3,@(r0,r15)
+    0c0bfaba  retail e008  mov #8,r0                        ours e008  mov #8,r0
+  ! 0c0bfabc  retail ff47  fmov fr4,@(r0,r15)               ours ff57  fmov fr5,@(r0,r15)
+    0c0bfabe  retail 430b  jsr @r3                          ours 430b  jsr @r3
+    0c0bfac0  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+    ...
+    0c0bfb00  retail 01ea  error                            ours 01ea  error
+    0c0bfb02  retail 0000  error                            ours 0000  error
+  ! 0c0bfb04  retail aaaa  bra 0x000000000c0bf05c           ours aaa9  bra 0x000000000c0bf05a
+    0c0bfb06  retail 413a  ldc r1,sgr                       ours 413a  ldc r1,sgr
+    0c0bfb08  retail 9249  mov.w 0x000000000c0bfb9e,r2      ours 9249  mov.w 0x000000000c0bfb9e,r2
+PROBLEM Not an exact section match: P
+DIFFERS

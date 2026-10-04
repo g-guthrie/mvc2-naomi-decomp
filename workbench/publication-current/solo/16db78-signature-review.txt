@@ -1,0 +1,37 @@
+Original ROM bytes. Decoding alone does not establish code boundaries.
+0c16db78  4f22  sts.l pr,@-r15
+0c16db7a  7ff8  add #-8,r15
+0c16db7c  e601  mov #1,r6
+0c16db7e  d356  mov.l 0x000000000c16dcd8,r3 ; literal at 0x0c16dcd8 = 0x0c0374da
+0c16db80  2f42  mov.l r4,@r15
+0c16db82  1f51  mov.l r5,@(4,r15)
+0c16db84  6563  mov r6,r5
+0c16db86  430b  jsr @r3
+0c16db88  e400  mov #0,r4
+0c16db8a  2008  tst r0,r0
+0c16db8c  8d0a  bt.s 0x000000000c16dba4
+0c16db8e  6403  mov r0,r4
+0c16db90  9398  mov.w 0x000000000c16dcc4,r3 ; literal at 0x0c16dcc4 = 0x2b00
+0c16db92  e026  mov #38,r0
+0c16db94  0435  mov.w r3,@(r0,r4)
+0c16db96  e020  mov #32,r0
+0c16db98  52f1  mov.l @(4,r15),r2
+0c16db9a  d350  mov.l 0x000000000c16dcdc,r3 ; literal at 0x0c16dcdc = 0x0c16dbac
+0c16db9c  0424  mov.b r2,@(r0,r4)
+0c16db9e  1434  mov.l r3,@(16,r4)
+0c16dba0  62f2  mov.l @r15,r2
+0c16dba2  1426  mov.l r2,@(24,r4)
+0c16dba4  7f08  add #8,r15
+0c16dba6  4f26  lds.l @r15+,pr
+0c16dba8  000b  rts
+0c16dbaa  6043  mov r4,r0
+0c16dbac  2fe6  mov.l r14,@-r15
+0c16dbae  6e43  mov r4,r14
+0c16dbb0  84e4  mov.b @(4,r14),r0
+0c16dbb2  d14b  mov.l 0x000000000c16dce0,r1 ; literal at 0x0c16dce0 = 0x0c252570
+0c16dbb4  600c  extu.b r0,r0
+0c16dbb6  55e6  mov.l @(24,r14),r5
+0c16dbb8  4008  shll2 r0
+0c16dbba  031e  mov.l @(r0,r1),r3
+0c16dbbc  432b  jmp @r3
+0c16dbbe  6ef6  mov.l @r15+,r14

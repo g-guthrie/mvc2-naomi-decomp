@@ -1,0 +1,14 @@
+diff --git a/src/include/objects.h b/src/include/objects.h
+index e9a8200..26d7dab 100644
+--- a/src/include/objects.h
++++ b/src/include/objects.h
+@@ -74,6 +74,9 @@ union ActorSubEffectState { unsigned char bytes[8]; struct ActorSubEffectParamet
+ struct EffectScale4 { float f116, f120, f124, f128; };
+ union EffectMotionStep { int integer; float real; };
+ 
++/* Charge-controller view at actor+0x2a4; byte5 is the signed counter. */
++struct ActorChargeState { unsigned char pad0[5]; signed char charge5; unsigned char triggered6; };
++
+ struct ActorSub2a4Extended {
+     struct ActorSub2a4 base;
+     int l28;

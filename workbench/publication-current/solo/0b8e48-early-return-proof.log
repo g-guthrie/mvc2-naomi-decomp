@@ -1,0 +1,29 @@
+P 0x0c0b8e48 308 bytes: 304/308 equal, linked 308 at 0x0c0b8e48
+  _func_0c0b8e48 0x0c0b8e48 52 bytes: 48/52 equal
+  _func_0c0b8e7c 0x0c0b8e7c 40 bytes: 40/40 equal
+  _func_0c0b8ea4 0x0c0b8ea4 40 bytes: 40/40 equal
+  _func_0c0b8ecc 0x0c0b8ecc 40 bytes: 40/40 equal
+  _func_0c0b8ef4 0x0c0b8ef4 40 bytes: 40/40 equal
+  _func_0c0b8f1c 0x0c0b8f1c 46 bytes: 46/46 equal
+  _func_0c0b8f4a 0x0c0b8f4a 18 bytes: 18/18 equal
+  pool 0x0c0b8f5c 32 bytes: 32/32 equal
+    0c0b8e48  retail 9088  mov.w 0x000000000c0b8f5c,r0      ours 9088  mov.w 0x000000000c0b8f5c,r0
+  ! 0c0b8e4a  retail e201  mov #1,r2                        ours e301  mov #1,r3
+    0c0b8e4c  retail d145  mov.l 0x000000000c0b8f64,r1      ours d145  mov.l 0x000000000c0b8f64,r1
+  ! 0c0b8e4e  retail 0424  mov.b r2,@(r0,r4)                ours 0434  mov.b r3,@(r0,r4)
+    0c0b8e50  retail 415a  lds r1,fpul                      ours 415a  lds r1,fpul
+    0c0b8e52  retail 9084  mov.w 0x000000000c0b8f5e,r0      ours 9084  mov.w 0x000000000c0b8f5e,r0
+    ...
+    0c0b8e62  retail 8446  mov.b @(6,r4),r0                 ours 8446  mov.b @(6,r4),r0
+    0c0b8e64  retail e300  mov #0,r3                        ours e300  mov #0,r3
+  ! 0c0b8e66  retail f29d  fldi1 fr2                        ours f39d  fldi1 fr3
+    0c0b8e68  retail 7001  add #1,r0                        ours 7001  add #1,r0
+    0c0b8e6a  retail 8046  mov.b r0,@(6,r4)                 ours 8046  mov.b r0,@(6,r4)
+    ...
+    0c0b8e6e  retail 0434  mov.b r3,@(r0,r4)                ours 0434  mov.b r3,@(r0,r4)
+    0c0b8e70  retail 70dc  add #-36,r0                      ours 70dc  add #-36,r0
+  ! 0c0b8e72  retail f427  fmov fr2,@(r0,r4)                ours f437  fmov fr3,@(r0,r4)
+    0c0b8e74  retail e014  mov #20,r0                       ours e014  mov #20,r0
+    0c0b8e76  retail 814e  mov.w r0,@(28,r4)                ours 814e  mov.w r0,@(28,r4)
+PROBLEM Not an exact section match: P
+DIFFERS

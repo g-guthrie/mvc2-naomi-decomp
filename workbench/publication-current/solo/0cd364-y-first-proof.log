@@ -1,0 +1,24 @@
+P 0x0c0cd364 308 bytes: 298/308 equal, linked 308 at 0x0c0cd364
+  _func_0c0cd364 0x0c0cd364 90 bytes: 88/90 equal
+  _func_0c0cd3be 0x0c0cd3be 120 bytes: 120/120 equal
+  _func_0c0cd436 0x0c0cd436 34 bytes: 34/34 equal
+  _func_0c0cd458 0x0c0cd458 18 bytes: 18/18 equal
+  pool 0x0c0cd46a 46 bytes: 38/46 equal
+    0c0cd39e  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+    0c0cd3a0  retail 4f26  lds.l @r15+,pr                   ours 4f26  lds.l @r15+,pr
+  ! 0c0cd3a2  retail f4ec  fmov fr14,fr4                    ours f5ec  fmov fr14,fr5
+    0c0cd3a4  retail e500  mov #0,r5                        ours e500  mov #0,r5
+  ! 0c0cd3a6  retail f5fc  fmov fr15,fr5                    ours f4fc  fmov fr15,fr4
+    0c0cd3a8  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+    0c0cd3aa  retail fef9  fmov @r15+,fr14                  ours fef9  fmov @r15+,fr14
+    ...
+    0c0cd474  retail a026  bra 0x000000000c0cd4c4           ours a026  bra 0x000000000c0cd4c4
+    0c0cd476  retail 0c02  stc sr,r12                       ours 0c02  stc sr,r12
+  ! 0c0cd478  retail 0000  error                            ours 2492  mov.l r9,@r4
+  ! 0c0cd47a  retail 4343  stc.l spc,@-r3                   ours 42e3  stc.l r6_bank,@-r2
+  ! 0c0cd47c  retail 2492  mov.l r9,@r4                     ours 0000  error
+  ! 0c0cd47e  retail 42e3  stc.l r6_bank,@-r2               ours 4343  stc.l spc,@-r3
+    0c0cd480  retail ede8  mov #-24,r13                     ours ede8  mov #-24,r13
+    0c0cd482  retail 0c1a  sts macl,r12                     ours 0c1a  sts macl,r12
+PROBLEM Not an exact section match: P
+DIFFERS

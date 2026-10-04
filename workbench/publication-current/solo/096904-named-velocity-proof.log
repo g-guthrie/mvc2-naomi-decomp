@@ -1,0 +1,20 @@
+P 0x0c096904 276 bytes: 263/276 equal, linked 276 at 0x0c096904
+  _func_0c096904 0x0c096904 72 bytes: 72/72 equal
+  _func_0c09694c 0x0c09694c 164 bytes: 151/164 equal
+  pool 0x0c0969f0 40 bytes: 40/40 equal
+    0c096988  retail f318  fmov @r1,fr3                     ours f318  fmov @r1,fr3
+    0c09698a  retail f230  fadd fr3,fr2                     ours f230  fadd fr3,fr2
+  ! 0c09698c  retail f32c  fmov fr2,fr3                     ours f38d  fldi0 fr3
+  ! 0c09698e  retail fe27  fmov fr2,@(r0,r14)               ours f42c  fmov fr2,fr4
+  ! 0c096990  retail f28d  fldi0 fr2                        ours f434  fcmp/eq fr3,fr4
+  ! 0c096992  retail f324  fcmp/eq fr2,fr3                  ours 8d0f  bt.s 0x000000000c0969b4
+  ! 0c096994  retail 890e  bt 0x000000000c0969b4            ours fe27  fmov fr2,@(r0,r14)
+    0c096996  retail 902d  mov.w 0x000000000c0969f4,r0      ours 902d  mov.w 0x000000000c0969f4,r0
+  ! 0c096998  retail f3e6  fmov @(r0,r14),fr3               ours f2e6  fmov @(r0,r14),fr2
+    0c09699a  retail e038  mov #56,r0                       ours e038  mov #56,r0
+  ! 0c09699c  retail f2e6  fmov @(r0,r14),fr2               ours f1e6  fmov @(r0,r14),fr1
+  ! 0c09699e  retail f325  fcmp/gt fr2,fr3                  ours f215  fcmp/gt fr1,fr2
+    0c0969a0  retail 8b08  bf 0x000000000c0969b4            ours 8b08  bf 0x000000000c0969b4
+    0c0969a2  retail 9027  mov.w 0x000000000c0969f4,r0      ours 9027  mov.w 0x000000000c0969f4,r0
+PROBLEM Not an exact section match: P
+DIFFERS

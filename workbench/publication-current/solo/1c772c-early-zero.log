@@ -1,0 +1,42 @@
+STRICT False ['Not an exact section match: P']
+[(296, 233)]
+[('_func_0c1c772c', 97, 122), ('_func_0c1c77a6', 22, 22), ('_func_0c1c77bc', 18, 18), ('_func_0c1c77ce', 39, 40), ('_func_0c1c77f6', 6, 6), ('_func_0c1c77fc', 14, 40)]
+0c1c7744 906e mov.w 0x000000000c1c7824,r0         | 906d mov.w 0x000000000c1c7822,r0
+0c1c7746 e201 mov #1,r2                           | e301 mov #1,r3
+0c1c7748 d33a mov.l 0x000000000c1c7834,r3         | d23a mov.l 0x000000000c1c7834,r2
+0c1c774a 0e24 mov.b r2,@(r0,r14)                  | 0e34 mov.b r3,@(r0,r14)
+0c1c774e 926a mov.w 0x000000000c1c7826,r2         | 9369 mov.w 0x000000000c1c7824,r3
+0c1c7750 1e34 mov.l r3,@(16,r14)                  | d139 mov.l 0x000000000c1c7838,r1
+0c1c7752 32dc add r13,r2                          | 33dc add r13,r3
+0c1c7754 d138 mov.l 0x000000000c1c7838,r1         | 1e24 mov.l r2,@(16,r14)
+0c1c7756 f48d fldi0 fr4                           | 0e36 mov.l r3,@(r0,r14)
+0c1c7758 1ed6 mov.l r13,@(24,r14)                 | e021 mov #33,r0
+0c1c775a 0e26 mov.l r2,@(r0,r14)                  | f48d fldi0 fr4
+0c1c775c e021 mov #33,r0                          | 1ed6 mov.l r13,@(24,r14)
+0c1c7762 03dc mov.b @(r0,r13),r3                  | 63d0 mov.b @r13,r3
+0c1c7772 9059 mov.w 0x000000000c1c7828,r0         | 9058 mov.w 0x000000000c1c7826,r0
+0c1c777a 9056 mov.w 0x000000000c1c782a,r0         | 9055 mov.w 0x000000000c1c7828,r0
+0c1c7794 904b mov.w 0x000000000c1c782e,r0         | 904a mov.w 0x000000000c1c782c,r0
+0c1c7796 9249 mov.w 0x000000000c1c782c,r2         | 9248 mov.w 0x000000000c1c782a,r2
+0c1c77e6 901d mov.w 0x000000000c1c7824,r0         | 901c mov.w 0x000000000c1c7822,r0
+0c1c77fc 9012 mov.w 0x000000000c1c7824,r0         | 9011 mov.w 0x000000000c1c7822,r0
+0c1c7808 8b07 bf 0x000000000c1c781a               | 8902 bt 0x000000000c1c7810
+0c1c780a 900b mov.w 0x000000000c1c7824,r0         | d011 mov.l 0x000000000c1c7850,r0
+0c1c780c 034c mov.b @(r0,r4),r3                   | 402b jmp @r0
+0c1c780e 2338 tst r3,r3                           | 0009 nop
+0c1c7810 8b06 bf 0x000000000c1c7820               | 9007 mov.w 0x000000000c1c7822,r0
+0c1c7812 8444 mov.b @(4,r4),r0                    | 024c mov.b @(r0,r4),r2
+0c1c7814 7001 add #1,r0                           | 2228 tst r2,r2
+0c1c7816 a003 bra 0x000000000c1c7820              | 8b02 bf 0x000000000c1c781e
+0c1c7818 8044 mov.b r0,@(4,r4)                    | 8444 mov.b @(4,r4),r0
+0c1c781a d20d mov.l 0x000000000c1c7850,r2         | 7001 add #1,r0
+0c1c781c 422b jmp @r2                             | 8044 mov.b r0,@(4,r4)
+0c1c781e 0009 nop                                 | 000b rts
+0c1c7820 000b rts                                 | 0009 nop
+0c1c7822 0009 nop                                 | 012c mov.b @(r0,r2),r1
+0c1c7824 012c mov.b @(r0,r2),r1                   | 0088 error
+0c1c7826 0088 error                               | 01e4 mov.b r14,@(r0,r1)
+0c1c7828 01e4 mov.b r14,@(r0,r1)                  | 0084 mov.b r8,@(r0,r0)
+0c1c782a 0084 mov.b r8,@(r0,r0)                   | 0805 mov.w r0,@(r0,r8)
+0c1c782c 0805 mov.w r0,@(r0,r8)                   | 00cc mov.b @(r0,r12),r0
+0c1c782e 00cc mov.b @(r0,r12),r0                  | 0000 error

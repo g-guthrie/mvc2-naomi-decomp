@@ -1,0 +1,21 @@
+P 0x0c0cd364 308 bytes: 304/308 equal, linked 308 at 0x0c0cd364
+  _func_0c0cd364 0x0c0cd364 90 bytes: 86/90 equal
+  _func_0c0cd3be 0x0c0cd3be 120 bytes: 120/120 equal
+  _func_0c0cd436 0x0c0cd436 34 bytes: 34/34 equal
+  _func_0c0cd458 0x0c0cd458 18 bytes: 18/18 equal
+  pool 0x0c0cd46a 46 bytes: 46/46 equal
+    0c0cd392  retail 80e6  mov.b r0,@(6,r14)                ours 80e6  mov.b r0,@(6,r14)
+    0c0cd394  retail c738  mova 0x000000000c0cd478,r0       ours c738  mova 0x000000000c0cd478,r0
+  ! 0c0cd396  retail fe08  fmov @r0,fr14                    ours ff08  fmov @r0,fr15
+    0c0cd398  retail c738  mova 0x000000000c0cd47c,r0       ours c738  mova 0x000000000c0cd47c,r0
+  ! 0c0cd39a  retail ff08  fmov @r0,fr15                    ours fe08  fmov @r0,fr14
+    0c0cd39c  retail 430b  jsr @r3                          ours 430b  jsr @r3
+    0c0cd39e  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+    0c0cd3a0  retail 4f26  lds.l @r15+,pr                   ours 4f26  lds.l @r15+,pr
+  ! 0c0cd3a2  retail f4ec  fmov fr14,fr4                    ours f5ec  fmov fr14,fr5
+    0c0cd3a4  retail e500  mov #0,r5                        ours e500  mov #0,r5
+  ! 0c0cd3a6  retail f5fc  fmov fr15,fr5                    ours f4fc  fmov fr15,fr4
+    0c0cd3a8  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+    0c0cd3aa  retail fef9  fmov @r15+,fr14                  ours fef9  fmov @r15+,fr14
+PROBLEM Not an exact section match: P
+DIFFERS

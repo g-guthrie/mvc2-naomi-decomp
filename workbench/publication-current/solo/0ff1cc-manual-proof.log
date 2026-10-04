@@ -1,0 +1,18 @@
+P 0x0c0ff1cc 624 bytes: 618/624 equal, linked 624 at 0x0c0ff1cc
+  _func_0c0ff1cc 0x0c0ff1cc 120 bytes: 120/120 equal
+  _func_0c0ff244 0x0c0ff244 108 bytes: 108/108 equal
+  _func_0c0ff2b0 0x0c0ff2b0 316 bytes: 310/316 equal
+  _func_0c0ff40e 0x0c0ff40e 18 bytes: 18/18 equal
+  pool 0x0c0ff2d6 34 bytes: 34/34 equal
+  pool 0x0c0ff420 28 bytes: 28/28 equal
+    0c0ff3a0  retail 4d0b  jsr @r13                         ours 4d0b  jsr @r13
+    0c0ff3a2  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+  ! 0c0ff3a4  retail 903d  mov.w 0x000000000c0ff422,r0      ours e038  mov #56,r0
+    0c0ff3a6  retail f3e6  fmov @(r0,r14),fr3               ours f3e6  fmov @(r0,r14),fr3
+  ! 0c0ff3a8  retail e038  mov #56,r0                       ours 903b  mov.w 0x000000000c0ff422,r0
+    0c0ff3aa  retail f2e6  fmov @(r0,r14),fr2               ours f2e6  fmov @(r0,r14),fr2
+  ! 0c0ff3ac  retail f325  fcmp/gt fr2,fr3                  ours f235  fcmp/gt fr3,fr2
+    0c0ff3ae  retail 8b29  bf 0x000000000c0ff404            ours 8b29  bf 0x000000000c0ff404
+    0c0ff3b0  retail 84e7  mov.b @(7,r14),r0                ours 84e7  mov.b @(7,r14),r0
+PROBLEM Not an exact section match: P
+DIFFERS

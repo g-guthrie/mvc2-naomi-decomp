@@ -1,0 +1,16 @@
+STRICT False ['Not an exact section match: P']
+[(296, 275)]
+[('_func_0c1c772c', 103, 122), ('_func_0c1c77a6', 22, 22), ('_func_0c1c77bc', 18, 18), ('_func_0c1c77ce', 40, 40), ('_func_0c1c77f6', 6, 6), ('_func_0c1c77fc', 38, 40)]
+0c1c7746 e201 mov #1,r2                           | e301 mov #1,r3
+0c1c7748 d33a mov.l 0x000000000c1c7834,r3         | d23a mov.l 0x000000000c1c7834,r2
+0c1c774a 0e24 mov.b r2,@(r0,r14)                  | 0e34 mov.b r3,@(r0,r14)
+0c1c774e 926a mov.w 0x000000000c1c7826,r2         | 936a mov.w 0x000000000c1c7826,r3
+0c1c7750 1e34 mov.l r3,@(16,r14)                  | d139 mov.l 0x000000000c1c7838,r1
+0c1c7752 32dc add r13,r2                          | 33dc add r13,r3
+0c1c7754 d138 mov.l 0x000000000c1c7838,r1         | 1e24 mov.l r2,@(16,r14)
+0c1c7756 f48d fldi0 fr4                           | 0e36 mov.l r3,@(r0,r14)
+0c1c7758 1ed6 mov.l r13,@(24,r14)                 | e021 mov #33,r0
+0c1c775a 0e26 mov.l r2,@(r0,r14)                  | f48d fldi0 fr4
+0c1c775c e021 mov #33,r0                          | 1ed6 mov.l r13,@(24,r14)
+0c1c7762 03dc mov.b @(r0,r13),r3                  | 63d0 mov.b @r13,r3
+0c1c7816 a003 bra 0x000000000c1c7820              | 000b rts

@@ -1,0 +1,12 @@
+P 0x0c0b6158 232 bytes: 229/232 equal, linked 232 at 0x0c0b6158
+  _func_0c0b6158 0x0c0b6158 176 bytes: 173/176 equal
+  _func_0c0b6208 0x0c0b6208 18 bytes: 18/18 equal
+  pool 0x0c0b621a 38 bytes: 38/38 equal
+    0c0b6172  retail e400  mov #0,r4                        ours e400  mov #0,r4
+    0c0b6174  retail 9052  mov.w 0x000000000c0b621c,r0      ours 9052  mov.w 0x000000000c0b621c,r0
+  ! 0c0b6176  retail 01ed  mov.w @(r0,r14),r1               ours 02ed  mov.w @(r0,r14),r2
+  ! 0c0b6178  retail 2118  tst r1,r1                        ours 2228  tst r2,r2
+    0c0b617a  retail 8d01  bt.s 0x000000000c0b6180          ours 8d01  bt.s 0x000000000c0b6180
+    0c0b617c  retail e034  mov #52,r0                       ours e034  mov #52,r0
+PROBLEM Not an exact section match: P
+DIFFERS

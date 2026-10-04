@@ -1,0 +1,32 @@
+{
+  "review": "One native-backed completeness and earliest extent review",
+  "baseline_source_sha256": "4a38996dcd8fd4a0cea5d54fd6425f5aee7e4838332ce7dd54d3d37cc5498d73",
+  "source_changed": false,
+  "baseline_frozen": "/Users/gguthrie/Documents/Codex/2026-10-02/ther/work/mvc2-luna-b/work/granted-09de28/review-baseline",
+  "source_functions": 28,
+  "entry_coverage": "All28true entries have nonempty ordinary-C bodies; pool/switch continuations are represented inside those bodies. No omitted whole function identified.",
+  "earliest_extent_difference": {
+    "function": "0x0c09dec8",
+    "native_start": "0x0c09dec8",
+    "candidate_start": "0x0c09dec8",
+    "native_code_size": 66,
+    "candidate_code_size": 62,
+    "next_native_entry": "0x0c09df28",
+    "next_candidate_entry": "0x0c09df24",
+    "native_load": "DECC word offset intoR4; DED0 ADD R14,R4; DED2 MOV.W @R4,R3",
+    "candidate_load": "MOV.W offset intoR0; MOV.W @(R0,R14),R3",
+    "native_behavior": "Signed action halfword greater-than-zero rejects command; then command matcher and required resource test; failure0/successb258=5+return1",
+    "source_behavior": "All these branches and effects are present. Pointer-address lowering is a codegen difference, not a missing condition or state write."
+  },
+  "other_review_findings": [
+    "DF9C native sequential event-dependent calls all retained; event51 dead compare has no authored effect.",
+    "E282 terminal native compare has no live successor use; no volatile/artificial flag retention added.",
+    "E69C specialcase2 mode ordering correction retained: preserve old mode through special animation call, then clear.",
+    "EF2E case2 low-nibble decrement and other routes high-nibble decrement preserved; no homogenization."
+  ],
+  "remaining_issue": "Only first4bytes of total296byte shortening concretely attributed in this review; remaining292bytes and byte-level allocation/scheduling differences remain unresolved. No complete equality claim.",
+  "new_compile": false,
+  "registered": false,
+  "credit": 0,
+  "request": "Next fresh disjoint grant after complete candidate/proof and bounded review preserved."
+}

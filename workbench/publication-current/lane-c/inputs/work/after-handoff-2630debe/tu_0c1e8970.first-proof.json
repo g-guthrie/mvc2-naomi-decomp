@@ -1,0 +1,96 @@
+{
+  "unit": {
+    "id": "sol_gap_1e8970",
+    "source": "work/after-handoff-2630debe/tu_0c1e8970.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": 203327856,
+        "size": 492,
+        "interior": [
+          {
+            "address": 203328326,
+            "size": 22,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c1e8970": 203327856,
+      "_func_0c1e8a10": 203328016,
+      "_func_0c1e8ab0": 203328176
+    },
+    "imports": {
+      "_dat_0c3543b8": 204817336,
+      "_func_0c2082e0": 203457248,
+      "_func_0c208a20": 203459104
+    },
+    "options": "game"
+  },
+  "proof": {
+    "exact": false,
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": 203327856,
+        "size": 492,
+        "interior": [
+          {
+            "address": 203328326,
+            "size": 22,
+            "kind": "data"
+          }
+        ],
+        "linked_size": 472,
+        "linked_address": 203327856,
+        "equal_bytes": 0,
+        "exact": false
+      }
+    ],
+    "functions": [
+      {
+        "symbol": "_func_0c1e8970",
+        "address": 203327856,
+        "size": 160,
+        "equal_bytes": 146,
+        "exact": false
+      },
+      {
+        "symbol": "_func_0c1e8a10",
+        "address": 203328016,
+        "size": 160,
+        "equal_bytes": 20,
+        "exact": false
+      },
+      {
+        "symbol": "_func_0c1e8ab0",
+        "address": 203328176,
+        "size": 150,
+        "equal_bytes": 19,
+        "exact": false
+      }
+    ],
+    "pools": [
+      {
+        "address": 203328326,
+        "size": 22,
+        "kind": "data",
+        "equal_bytes": 0,
+        "exact": false
+      }
+    ],
+    "function_bytes": 0,
+    "pool_bytes": 0,
+    "problems": [
+      "Wrong exported symbol address: _func_0c1e8a10",
+      "Wrong exported symbol address: _func_0c1e8ab0",
+      "Not an exact section match: P",
+      "Linked image contains extra or missing initialized bytes",
+      "Linked image contains extra or missing memory bytes"
+    ]
+  }
+}

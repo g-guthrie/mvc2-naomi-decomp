@@ -1,0 +1,117 @@
+/* Assembled by tools/clone.py from verified twins. */
+#include "objects.h"
+extern void func_0c044df4(struct Actor *),func_0c0437b8(struct Actor *),func_0c0438de(struct Actor *),func_0c0421f4(struct Actor *),func_0c0420f8(struct Actor *),func_0c042018(struct Actor *),func_0c0421b8(struct Actor *),func_0c044f1c(struct Actor *);
+extern char func_0c02a026(struct Actor *);
+extern unsigned char func_0c044e52(struct Actor *);
+extern struct Tbl_ub3_01 *dat_0c2f83f8;
+extern void func_0c02a0c4(struct Actor *,int,int);
+extern void (*table_0c2403c4[])(struct Actor *);
+void func_0c065432(struct Actor *),func_0c065454(struct Actor *),func_0c0654a0(struct Actor *),func_0c0654d8(struct Actor *),func_0c065526(struct Actor *),func_0c065568(struct Actor *),func_0c06571c(struct Actor *);
+struct Rec_ub3_05 { unsigned char pad[28]; int l28; };
+struct Obj_ub3_05 {
+    unsigned char pad0[5];
+    unsigned char b5;
+    unsigned char b6;
+    unsigned char b7;
+    unsigned char pad1[20];
+    short s28;
+    unsigned char pad2[2];
+    unsigned char b32;
+    unsigned char pad3[19];
+    float f52;
+    float f56;
+    unsigned char pad4[32];
+    float f92;
+    float f96;
+    unsigned char pad5[4];
+    float f104;
+    float f108;
+    unsigned char pad6[209];
+    unsigned char b141;
+    unsigned char pad7[144];
+    unsigned char b1d2;
+    unsigned char pad8[36];
+    unsigned char b1f7;
+    unsigned char pad9[10];
+    unsigned char b202;
+};
+typedef void (*handler_ub3_05)(struct Obj_ub3_05 *);
+extern char func_0c02a026(struct Obj_ub3_05 *);
+extern int func_0c037d54(struct Obj_ub3_05 *);
+extern void func_0c044450(struct Obj_ub3_05 *, int);
+extern void func_0c02a0c4(struct Obj_ub3_05 *, int, int);
+extern void func_0c0438de(struct Obj_ub3_05 *);
+extern struct Rec_ub3_05 *dat_0c2d6f84;
+extern handler_ub3_05 table_0c23f68c[];
+extern handler_ub3_05 table_0c23f694[];
+extern handler_ub3_05 table_0c23f69c[];
+extern handler_ub3_05 table_0c23f6a4[];
+extern handler_ub3_05 table_0c23f6ac[];
+extern int func_0c03916c(struct Obj_ub3_05 *);
+extern void func_0c0437b8(struct Actor *),func_0c042018(struct Actor *),func_0c0421b8(struct Actor *),func_0c044f1c(struct Actor *),func_0c0346da(struct Actor *,int),func_0c1d2a56(struct LinkedActorVec3 *,int);
+extern unsigned char func_0c044e52(struct Actor *),func_0c044846(struct Actor *);
+extern short dat_0c23b9d0[],dat_0c23ba08[];
+extern void (*table_0c244804[])(struct Actor *);
+extern int func_0c043c66(struct Actor *);
+extern unsigned char func_0c043a10(struct Actor *),func_0c046030(struct Actor *),func_0c0464c4(struct Actor *);
+extern void func_0c0453c4(struct Actor *,int),func_0c02a0c4(struct Actor *,int,int);
+extern unsigned char func_0c043d3a(struct Actor *),func_0c044ae4(struct Actor *);
+void func_0c03b37a(struct Actor *);
+struct Byte1ff {
+    unsigned char pad[0x1ff];
+    unsigned char b1ff;
+};
+extern void func_0c044cbc(struct Actor *);
+extern void func_0c048bb0(struct Actor *, int);
+extern void func_0c02a0c4(struct Actor *, int, int);
+extern void func_0c0346da(struct Actor *, int);
+extern void func_0c043352(struct Actor *);
+extern void func_0c044df4(struct Actor *);
+extern void func_0c0437b8(struct Actor *);
+extern void func_0c172474(struct Actor *, int, int);
+extern void (*table_0c24b550[])(struct Actor *);
+extern void (*table_0c24b55c[])(struct Actor *);
+
+/* func_0c0add1c: no verified twin. Ghidra draft:
+*/
+void func_0c0add1c(void) { }
+
+/* func_0c0ade44: no verified twin. Ghidra draft:
+*/
+void func_0c0ade44(void) { }
+
+void func_0c0adee4(struct Actor *a){func_0c0421f4(a);func_0c0420f8(a);func_0c065526(a);}
+
+void func_0c0adf3c(struct Obj_ub3_05 *a)
+{
+    if (func_0c02a026(a) < 0)
+        func_0c0438de(a);
+}
+
+/* func_0c0adf90: no verified twin. Ghidra draft:
+*/
+void func_0c0adf90(void) { }
+
+/* func_0c0ae008: no verified twin. Ghidra draft:
+*/
+void func_0c0ae008(void) { }
+
+/* func_0c0ae05c: no verified twin. Ghidra draft:
+*/
+void func_0c0ae05c(void) { }
+
+void func_0c0ae106(struct Actor *a){table_0c244804[a->b6](a);}
+
+void func_0c0ae118(struct Actor *a)
+{
+    func_0c02a026(a);
+    if (a->b141 == 0) {
+        a->b6 = a->b6 + 1;
+        a->f92 = 0;
+        a->f96 = 0;
+        a->f104 = 0;
+        a->f108 = 0;
+        a->f92 = a->b1d2 ? -13.33333302f : 13.33333302f;
+        a->s28 = 16;
+    }
+}

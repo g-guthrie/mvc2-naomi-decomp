@@ -1,0 +1,35 @@
+commit 0fe0369e5ddfe6b60e7a9ce8aee73872e98872e0
+Author:     Greer Guthrie <gguthrie@gguthrie.local>
+AuthorDate: Sat Oct 3 18:43:40 2026 -0500
+Commit:     Greer Guthrie <gguthrie@gguthrie.local>
+CommitDate: Sat Oct 3 18:43:40 2026 -0500
+
+    Model numeric HUD glyphs and source fields from native code
+
+diff --git a/src/include/objects.h b/src/include/objects.h
+index 4c5ed5b..96d01a5 100644
+--- a/src/include/objects.h
++++ b/src/include/objects.h
+@@ -625,4 +625,22 @@ struct SelectionFlags59e8 {
+     unsigned int masks[2][2];
+ };
+ 
++/* Numeric HUD actor tail observed by 0x0c1c45d4..0x0c1c46aa.
++ * The generic Actor uses a pointer at 0x1c8; this variant uses numeric words. */
++struct NumericHudActor {
++    unsigned char unknown0[0x19c];
++    signed char glyphs[10];
++    unsigned char unknown1a6[0x1c8 - 0x1a6];
++    unsigned int leading, value;
++};
++/* Numeric HUD source at 0x0c2f8338. The reset at 0x0c02aeb4 clears
++ * 192 bytes; the indexed views occupy the storage between observed fields
++ * and the reset extent, without asserting a logical number of counters. */
++struct NumericHudSource {
++    unsigned char unknown0[16]; unsigned short seconds;
++    unsigned char unknown12[62 - 18]; signed char selector;
++    unsigned char unknown3f[120 - 63]; short counts[18];
++    signed char counts8[192 - 156];
++};
++
+ #endif

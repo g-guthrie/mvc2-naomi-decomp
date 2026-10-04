@@ -1,0 +1,19 @@
+#include "objects.h"
+extern struct Tbl_ub3_01 *dat_0c2f83f8;
+extern short dat_0c2f891a;
+extern void func_0c037688(struct Actor *);
+void func_0c1c2550(struct Actor *a)
+{
+ struct Actor *owner=(struct Actor *)((struct LinkedActor *)a)->p24;
+ struct Tbl_ub3_01 *table;
+ if((char)a->b7!=(char)owner->b411)goto cleanup;
+ if(!(a->b7=owner->b411)||owner->b0)goto cleanup;
+ a->b12c=0;
+ table=dat_0c2f83f8;
+ if(table->teams[owner->b2^1][0]->b277)return;
+ if(table->teams[owner->b2^1][1]->b277)return;
+ if(table->teams[owner->b2^1][2]->b277)return;
+ if(dat_0c2f891a>=0)a->b12c=1;
+ if(--a->s30>0)return;
+ cleanup:a->b12c=0;func_0c037688(a);
+}

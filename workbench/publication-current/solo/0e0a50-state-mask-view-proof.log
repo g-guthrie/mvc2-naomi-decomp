@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/gguthrie/Projects/mvc2-naomi-consolidate-oct02-ci/build/prove-reviewed-unit.py", line 20, in <module>
+    flags=load(d.ROOT/'config/compiler.json')['sets']['game'];elf,link=d.compile_unit(u,w,flags);d.resolve_imports(u,w,u['id']);elf,link=d.compile_unit(u,w,flags);p,_=compare(u,elf,link,rom[off:off+n],base)
+                                                                                                 ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/gguthrie/Projects/mvc2-naomi-consolidate-oct02-ci/tools/diff_unit.py", line 108, in resolve_imports
+    raise ValueError(f'Unknown import {symbol}: pass --import {symbol}=ADDRESS')
+ValueError: Unknown import __bfxlu: pass --import __bfxlu=ADDRESS

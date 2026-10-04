@@ -1,0 +1,25 @@
+{
+  "start": "0x0c1b1050",
+  "size": 232,
+  "actual_function_entries": [
+    "0x0c1b1050",
+    "0x0c1b1092",
+    "0x0c1b10e0",
+    "0x0c1b1108"
+  ],
+  "status": "independent whole four-function section exact; not registered yet while mapping gate active",
+  "boundary_review": "work/tu_0c1b1050.boundary-review.json",
+  "native_listing": "work/tu_0c1b1050.retail.txt",
+  "callback_table_native": "0x0c25ad80 first entry 0x0c1b1108; no entry at interior 0x0c1b10f8",
+  "source": "work/tu_0c1b1050.sol.c",
+  "source_sha256": "d094c8ac3cf658d71bbeea998552222e2fded38c8fb20d34a93fd8468a0ef8a7",
+  "model_sha256": "2448932132ce1d416b850d33c69048c33fd1ee48bdefe391f2af3f3af6ef3c1f",
+  "whole_proof": "work/tu_0c1b1050-standalone-proof.json",
+  "official_proof": "work/tu_0c1b1050-official-proof.log",
+  "code_bytes": 202,
+  "pool_bytes": 30,
+  "incoming": "Only direct calls to full entry 0x0c1b1092 from 0x0c1b152e and 0x0c1b15b8; no crossing branches or literal loads",
+  "outgoing": "No direct branch/call/literal dependency outside section; allocator and callback-table imports are normal external native references",
+  "caller_status": "Complete caller at 0x0c1b148c is inexact and unregistered; neither it nor a fragment of it is credited",
+  "method": "Reuse established conditional allocation convention from verified allocator source; no registers, types, ABI, literals or opcode permutations"
+}

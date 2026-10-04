@@ -1,0 +1,44 @@
+P 0x0c0d9c40 328 bytes: 317/328 equal, linked 328 at 0x0c0d9c40
+  _func_0c0d9c40 0x0c0d9c40 30 bytes: 30/30 equal
+  _func_0c0d9c5e 0x0c0d9c5e 84 bytes: 82/84 equal
+  _func_0c0d9cb2 0x0c0d9cb2 162 bytes: 154/162 equal
+  pool 0x0c0d9d54 52 bytes: 51/52 equal
+    0c0d9ca0  retail 6ef6  mov.l @r15+,r14                  ours 6ef6  mov.l @r15+,r14
+    0c0d9ca2  retail 4f26  lds.l @r15+,pr                   ours 4f26  lds.l @r15+,pr
+  ! 0c0d9ca4  retail d331  mov.l 0x000000000c0d9d6c,r3      ours d231  mov.l 0x000000000c0d9d6c,r2
+    0c0d9ca6  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+  ! 0c0d9ca8  retail 432b  jmp @r3                          ours 422b  jmp @r2
+    0c0d9caa  retail 6ef6  mov.l @r15+,r14                  ours 6ef6  mov.l @r15+,r14
+    0c0d9cac  retail 4f26  lds.l @r15+,pr                   ours 4f26  lds.l @r15+,pr
+    ...
+    0c0d9ccc  retail e200  mov #0,r2                        ours e200  mov #0,r2
+    0c0d9cce  retail 0e24  mov.b r2,@(r0,r14)               ours 0e24  mov.b r2,@(r0,r14)
+  ! 0c0d9cd0  retail e323  mov #35,r3                       ours e223  mov #35,r2
+    0c0d9cd2  retail 9041  mov.w 0x000000000c0d9d58,r0      ours 9041  mov.w 0x000000000c0d9d58,r0
+  ! 0c0d9cd4  retail 04ee  mov.l @(r0,r14),r4               ours 03ee  mov.l @(r0,r14),r3
+    0c0d9cd6  retail 70d9  add #-39,r0                      ours 70d9  add #-39,r0
+  ! 0c0d9cd8  retail 0434  mov.b r3,@(r0,r4)                ours 0324  mov.b r2,@(r0,r3)
+    0c0d9cda  retail d325  mov.l 0x000000000c0d9d70,r3      ours d325  mov.l 0x000000000c0d9d70,r3
+    0c0d9cdc  retail 430b  jsr @r3                          ours 430b  jsr @r3
+    ...
+    0c0d9d12  retail 000b  rts                              ours 000b  rts
+    0c0d9d14  retail 6ef6  mov.l @r15+,r14                  ours 6ef6  mov.l @r15+,r14
+  ! 0c0d9d16  retail 03ec  mov.b @(r0,r14),r3               ours 02ec  mov.b @(r0,r14),r2
+  ! 0c0d9d18  retail 4315  cmp/pl r3                        ours 4215  cmp/pl r2
+    0c0d9d1a  retail 8b17  bf 0x000000000c0d9d4c            ours 8b17  bf 0x000000000c0d9d4c
+    0c0d9d1c  retail e200  mov #0,r2                        ours e200  mov #0,r2
+    ...
+    0c0d9d42  retail 000b  rts                              ours 000b  rts
+    0c0d9d44  retail 6ef6  mov.l @r15+,r14                  ours 6ef6  mov.l @r15+,r14
+  ! 0c0d9d46  retail d209  mov.l 0x000000000c0d9d6c,r2      ours d309  mov.l 0x000000000c0d9d6c,r3
+  ! 0c0d9d48  retail 420b  jsr @r2                          ours 430b  jsr @r3
+    0c0d9d4a  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+    0c0d9d4c  retail 7f0c  add #12,r15                      ours 7f0c  add #12,r15
+    ...
+    0c0d9d70  retail b02a  bsr 0x000000000c0d9dc8           ours b02a  bsr 0x000000000c0d9dc8
+    0c0d9d72  retail 0c04  mov.b r0,@(r0,r12)               ours 0c04  mov.b r0,@(r0,r12)
+  ! 0c0d9d74  retail 5555  mov.l @(20,r5),r5                ours 5554  mov.l @(16,r5),r5
+    0c0d9d76  retail c255  mov.l r0,@(340,gbr)              ours c255  mov.l r0,@(340,gbr)
+    0c0d9d78  retail 2492  mov.l r9,@r4                     ours 2492  mov.l r9,@r4
+PROBLEM Not an exact section match: P
+DIFFERS
