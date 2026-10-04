@@ -120,9 +120,6 @@ void (*const ptr_0c207340)(void) = func_0c216680;
 #pragma section n207380
 void (*const ptr_0c207380)(void) = func_0c216680;
 
-#pragma section n209a20
-void (*const ptr_0c209a20)(void) = func_0c216420;
-
 #pragma section n20b6f0
 void (*const ptr_0c20b6f0)(void) = func_0c21b6f2;
 

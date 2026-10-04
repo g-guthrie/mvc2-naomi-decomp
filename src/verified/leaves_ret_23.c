@@ -9,9 +9,3 @@ int func_0c1f2a52(void) { return -2; }
 #pragma section n1f4498
 int func_0c1f4498(void) { return -2; }
 
-#pragma section n205382
-int func_0c205382(void) { return -2; }
-
-#pragma section n2053ac
-int func_0c2053ac(void) { return -2; }
-

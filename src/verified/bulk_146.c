@@ -1,44 +1,5 @@
 /* Hitachi const data and symbolic pointer tables. */
 
-#pragma section n21b8e4
-const unsigned int dat_0c21b8e4[] = {
-    0x07f00000u, 0x46590000u, 0xa05f78bcu, 0x0c269a78u,
-};
-
-#pragma section n21ba46
-const unsigned short dat_0c21ba46[] = {
-    0xff30u, 0x00fcu,
-};
-
-#pragma section n21bbc0
-const unsigned short dat_0c21bbc0[] = {
-    0x0080u, 0x01ffu, 0x0200u, 0xff01u, 0x0148u,
-};
-
-#pragma section n21bbcc
-const unsigned int dat_0c21bbcc[] = {
-    0x0c3aa2fcu, 0x0c211700u, 0x0c211f64u, 0x0c1fb400u,
-    0x0c3aa300u, 0x0c21b962u, 0x0c238ad0u, 0x0c2116c0u,
-};
-
-#pragma section n21bce2
-const unsigned short dat_0c21bce2[] = {
-    0xff30u, 0x00fcu, 0x00fbu, 0xff01u, 0x0148u, 0x1a28u, 0x0c21u, 0x1de0u,
-    0x0c21u, 0x1780u, 0x0c21u, 0x16c0u, 0x0c21u, 0x0000u, 0xffffu, 0xb8f4u,
-    0x0c21u, 0xb962u, 0x0c21u, 0xa300u, 0x0c3au,
-};
-
-#pragma section n21be08
-const unsigned int dat_0c21be08[] = {
-    0xff3000fcu, 0x0c238ad0u, 0x0c2116c0u, 0x0c1fb400u,
-    0x0c211aa8u, 0x0c211b28u,
-};
-
-#pragma section n21bf26
-const unsigned short dat_0c21bf26[] = {
-    0x00fcu, 0x00fbu, 0xff40u, 0xff01u, 0x0200u,
-};
-
 #pragma section n21c000
 const unsigned int dat_0c21c000[] = {
     0x0fc80fc4u, 0x0c3b394cu, 0x0c3b4a48u, 0xa0000000u,
