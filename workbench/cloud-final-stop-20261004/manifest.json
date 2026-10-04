@@ -1,0 +1,53 @@
+{
+  "status": "STOPPED explicit human request; no automatic resumption",
+  "checked_commit": "cd420acc2e13beb22a262d8e3f6e420d376a834b",
+  "base_main": "a3a498b0c3eb200416e3fcd54ee47d787ec129b3",
+  "input_sha256": "f312cf6d50b8a3ae983a7b51e35883c019222d47aa41a1682ceb504202bef2a8",
+  "full_gate": "PASS 92 tests, relocation, full main and program ROM",
+  "header_sha256": "052af9f923cee01755b8d3ce322c38b998ca6df4f63b902dc3a40784d9d85a99",
+  "net_code_since_base": 540,
+  "net_data_since_base": 139,
+  "checked_code": 506880,
+  "reviewed_code": 1750382,
+  "new_since_ba8253": {
+    "code": 108,
+    "data": 0,
+    "units": [
+      {
+        "id": "tu_0c2006f0",
+        "start": "0x0c2006f0",
+        "end": "0x0c200710",
+        "code": 32
+      },
+      {
+        "id": "tu_0c200710",
+        "start": "0x0c200710",
+        "end": "0x0c20075c",
+        "code": 76
+      }
+    ]
+  },
+  "provenance": {
+    "SDK_library_net": 196,
+    "ordinary_C_net": 344,
+    "wrapper_32_restoration": "Previously excluded volatile version replaced ordinary C; not an additional 32 on top of current totals."
+  },
+  "commits": [
+    "cd420acc2e13beb22a262d8e3f6e420d376a834b Match complete SDK consumer count-skip unit",
+    "9a26c36927e6ca0e8d1d043bbc0d6bf7233fb6fc Reconstruct SDK byte consumer with read-before-update ordering",
+    "09ecda30619dc1a4d3267cdab2f5b1b2a757cae1 Match complete SDK queue completion callback in ordinary C",
+    "5c61792a362ab36f351e2de04d0f9eb3dd9d1f9e Remove unnecessary volatile formals from SDK command wrapper",
+    "a458f59d9b429770ae3de96f9b182b5bbbfe671f Match complete SDK packed-command wrapper at 0c224f60",
+    "10292826f7f57ca73aed6aa0bfde9fc27d91faf7 Match complete SDK byte-order converter at 0c2047fc",
+    "ac81ed2a57e5ca13d68ee8b25feb53ed2c4b39d7 Match complete bundled SDK kmInitDevice module",
+    "a0963a4162ad50793feeeee7393789ec94d0dcc2 Match complete SDK initialization wrapper at 0c1f01e0"
+  ],
+  "drafts": "All scratch complete/incomplete C/proofs and failed variants archived; ZERO credit unless registered and full-gated. Historical proofs retain historical source/header bindings. Last 52-byte marker draft not compiled or registered. Existing source/header changes committed; no map patches. Prior sealed refs untouched.",
+  "checkout": "/workspace/mvc2-naomi-decomp",
+  "files": {
+    "goal-journal.md": "9ecf145b3dd21172c51d27e219e7e228a21d62238e4f9791d135de856236f0a3",
+    "all-sdk-research-and-historical-proofs.tar.gz": "1f05ab06774ee77985dafcbc20ffa9a83ef11949c47d378d737f2ddc2cd7ac11",
+    "full-check.log": "bf127dd52c3f9a6a3d515edb8b2f73afafc3040489270e8cd1e6340ee7ec0e20",
+    "full-proof.json": "bf4ad3dbda84d1c5663a45492fa8f20e95f2229c58470096973b099f3433398f"
+  }
+}
