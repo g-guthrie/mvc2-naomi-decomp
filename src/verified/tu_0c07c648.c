@@ -1,7 +1,7 @@
 #include "objects.h"
 
-typedef void (*ActorHandler)(struct Actor *);
-extern ActorHandler table_0c241754[];
+typedef struct Actor *(*ActorFactory)(struct Actor *);
+extern ActorFactory table_0c241754[];
 extern char func_0c02a026(struct Actor *);
 extern void func_0c0437b8(struct Actor *);
 extern void func_0c02a39a(struct Actor *, int);
@@ -31,9 +31,9 @@ void func_0c07c648(struct Actor *a)
 }
 
 #pragma noregsave(func_0c07c6ae)
-int func_0c07c6ae(struct Actor *a)
+struct Actor *func_0c07c6ae(struct Actor *a)
 {
-    return ((int (*)(struct Actor *))table_0c241754[a->b1f9])(a);
+    return table_0c241754[a->b1f9](a);
 }
 
 struct Actor *func_0c07c6c6(struct Actor *a)
@@ -56,7 +56,7 @@ struct Actor *func_0c07c6c6(struct Actor *a)
     return 0;
 }
 
-int func_0c07c73e(void)
+struct Actor *func_0c07c73e(struct Actor *a)
 {
     return 0;
 }
