@@ -170,6 +170,35 @@
           "evidence": "Native call 0c03a820 with actor in R4 at delay slot 0c03a822, followed by EXTU.B R0,R0 at 0c03a824. Target literal at 0c03a8c4. Exact caller src/verified/tu_0c03a810.c."
         }
       ]
+    },
+    {
+      "source": "src/verified/tu_0c07c648.c",
+      "prototypes": [
+        {
+          "address": "0x0c241754",
+          "declaration": "extern struct Actor *(*table_0c241754[])(struct Actor *);",
+          "evidence": "Native table entries are 0c07c6c6 (returns allocated actor or null) and 0c07c73e (returns zero). Dispatcher 0c07c6ae supplies the actor in R4 and forwards R0; corrected pointer-return wrapper and null callback retain complete exact bytes."
+        }
+      ]
+    },
+    {
+      "source": "src/verified/tu_0c06c938.c",
+      "members": [
+        {
+          "type": "struct ActorSub2a4",
+          "member": "b6",
+          "offset": "0x6",
+          "size": 1,
+          "evidence": "0c06c9ba decrements the byte at subrecord+6 and tests its signed byte result; explicit signed conversion preserves the complete native body without changing shared unsigned storage."
+        }
+      ],
+      "prototypes": [
+        {
+          "address": "0x0c240974",
+          "declaration": "extern struct Actor *(*table_0c240974[])(struct Actor *);",
+          "evidence": "Native table entries are 0c06c9f2 (returns allocated actor or null) and 0c06ca98 (returns zero). Dispatcher 0c06c9da supplies actor in R4 and forwards R0. Pointer callback signatures preserve complete exact section bytes."
+        }
+      ]
     }
   ]
 }
