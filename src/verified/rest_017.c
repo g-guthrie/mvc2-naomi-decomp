@@ -60,16 +60,6 @@ const unsigned short dat_0c07c4ba[] = {
     0x0c02u, 0xd8e0u, 0x0c13u,
 };
 
-#pragma section n05b742
-const unsigned short dat_0c07c742[] = {
-    0x0140u, 0x0141u, 0x01f9u, 0x01fau, 0x0c00u, 0x01feu, 0x01a3u, 0x01f7u,
-};
-
-#pragma section n05b754
-const unsigned int dat_0c07c754[] = {
-    0x0c02a026u, 0x0c0437b8u, 0x0c02a39au, 0x4292aaaau, 0x42cdb6dbu,
-};
-
 #pragma section n05b8e6
 const unsigned short dat_0c07c8e6[] = {
     0x01c8u, 0x0414u, 0x01a0u, 0x5900u, 0x0c02u, 0x0000u, 0x0400u, 0x4924u,
