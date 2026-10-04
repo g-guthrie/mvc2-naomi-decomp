@@ -1,0 +1,132 @@
+          .IMPORT     _dat_0c2d6f84
+          .IMPORT     _dat_0c2d6f88
+          .IMPORT     _dat_0c2d6f24
+          .IMPORT     _dat_0c28401c
+          .IMPORT     _dat_0c284018
+          .IMPORT     _func_0c0215f6
+          .IMPORT     _func_0c028154
+          .IMPORT     _func_0c0221d8
+          .IMPORT     _func_0c022354
+          .IMPORT     _func_0c02a894
+          .IMPORT     _func_0c1e9b20
+          .IMPORT     _func_0c1eae80
+          .IMPORT     _func_0c023060
+          .IMPORT     _func_0c02156c
+          .IMPORT     _func_0c02c3e2
+          .IMPORT     _func_0c022526
+          .IMPORT     _func_0c021c9c
+          .IMPORT     _func_0c0223d4
+          .IMPORT     _func_0c034288
+          .IMPORT     _func_0c02ab2c
+          .IMPORT     _func_0c1e68dc
+          .IMPORT     _func_0c02c39a
+          .IMPORT     _func_0c02c4a2
+          .IMPORT     _func_0c0271de
+          .EXPORT     _func_0c028394
+          .SECTION    P,CODE,ALIGN=4
+_func_0c028394:                  ; function: func_0c028394
+                                 ; frame size=0
+          STS         FPSCR,R3
+          MOV         #-4,R2
+          MOV.L       L268+4,R0  ; _dat_0c2d6f84
+          MOV.L       L268,R1    ; _dat_0c2d6f88
+          AND         R2,R3
+          LDS         R3,FPSCR
+          MOV.L       L268+8,R3  ; _func_0c0215f6
+          MOV.L       R1,@R0
+          JSR         @R3
+          MOV         #0,R4
+          MOV.L       L268+12,R2 ; _func_0c028154
+          JSR         @R2
+          NOP
+          MOV.L       L268+16,R3 ; _func_0c0221d8
+          JSR         @R3
+          NOP
+          MOV.L       L268+20,R2 ; _func_0c022354
+          JSR         @R2
+          NOP
+          MOV.L       L268+24,R3 ; _func_0c02a894
+          JSR         @R3
+          NOP
+          MOV.L       L268+28,R4 ; _dat_0c2d6f24
+          MOV         #0,R14
+          MOV.L       L268+36,R8 ; _func_0c1eae80
+          MOV.L       L268+40,R13; _func_0c02156c
+          MOV         R4,R10
+          MOV.L       L268+44,R9 ; _func_0c023060
+          MOV         R4,R11
+          MOV.L       L268+32,R12; _func_0c1e9b20
+          ADD         #20,R10
+L267:                             
+          JSR         @R12
+          NOP
+          JSR         @R8
+          NOP
+          JSR         @R13
+          MOV         R11,R4
+          JSR         @R13
+          MOV         R10,R4
+          MOV.L       L268+48,R3 ; _func_0c02c3e2
+          JSR         @R3
+          NOP
+          MOV.L       L268+52,R2 ; _func_0c022526
+          JSR         @R2
+          NOP
+          MOV.L       L268+56,R3 ; _func_0c021c9c
+          JSR         @R3
+          NOP
+          MOV.L       L268+60,R2 ; _func_0c0223d4
+          JSR         @R2
+          NOP
+          MOV.L       L268+64,R3 ; _func_0c034288
+          JSR         @R3
+          NOP
+          MOV.L       L268+68,R2 ; _dat_0c28401c
+          MOV.L       L268+72,R3 ; _dat_0c284018
+          MOV.L       L268+76,R1 ; _func_0c02ab2c
+          MOV.L       R14,@R2
+          JSR         @R1
+          MOV.L       R14,@R3
+          MOV.L       L268+80,R2 ; _func_0c1e68dc
+          JSR         @R2
+          NOP
+          MOV.L       L268+84,R1 ; _func_0c02c39a
+          JSR         @R1
+          NOP
+          MOV.L       L268+88,R2 ; _func_0c02c4a2
+          JSR         @R2
+          NOP
+          MOV.L       L268+92,R1 ; _func_0c0271de
+          JSR         @R1
+          NOP
+          JSR         @R9
+          NOP
+          BRA         L267
+          NOP
+L268:                             
+          .DATA.L     _dat_0c2d6f88
+          .DATA.L     _dat_0c2d6f84
+          .DATA.L     _func_0c0215f6
+          .DATA.L     _func_0c028154
+          .DATA.L     _func_0c0221d8
+          .DATA.L     _func_0c022354
+          .DATA.L     _func_0c02a894
+          .DATA.L     _dat_0c2d6f24
+          .DATA.L     _func_0c1e9b20
+          .DATA.L     _func_0c1eae80
+          .DATA.L     _func_0c02156c
+          .DATA.L     _func_0c023060
+          .DATA.L     _func_0c02c3e2
+          .DATA.L     _func_0c022526
+          .DATA.L     _func_0c021c9c
+          .DATA.L     _func_0c0223d4
+          .DATA.L     _func_0c034288
+          .DATA.L     _dat_0c28401c
+          .DATA.L     _dat_0c284018
+          .DATA.L     _func_0c02ab2c
+          .DATA.L     _func_0c1e68dc
+          .DATA.L     _func_0c02c39a
+          .DATA.L     _func_0c02c4a2
+          .DATA.L     _func_0c0271de
+          .END
+
