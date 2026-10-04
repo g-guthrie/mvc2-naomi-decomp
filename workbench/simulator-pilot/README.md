@@ -17,7 +17,7 @@ Outputs, extracted reference bytes, compiled variants, and jobs stay under
 
 ## What it establishes
 
-The same 87 cases run against retail, reconstructed C, and deliberately broken C:
+The same cases run against retail, reconstructed C, and deliberately broken C:
 
 - Two device-slot scans: disabled state, empty/full devices, every individual
   slot, blocking sentinel IDs, mixed supported/unsupported types (66 cases).
@@ -25,15 +25,18 @@ The same 87 cases run against retail, reconstructed C, and deliberately broken C
   and different 80/75-byte extents (18 cases).
 - History display: all ten callback positions, register and stack arguments,
   varied history values, and the final status callback (3 cases).
+- Recovered `0c12f9d4` callback: inline global flags, countdown boundaries,
+  cleanup writes, and indexed dispatch (20 cases).
 
-The recorded baseline passes all 87 cases on both retail and C. All 372 native
-instruction bytes in the five exercised functions execute across those cases.
-Each of the three source mutations compiles and causes an expectation failure:
-reversed enable guard, shortened checksum, or wrong display coordinate. They
-fail 52, 10, and 3 cases respectively. A compile error or unsupported instruction
+The suite now has 107 cases and six exercised functions. Its initial three-unit
+baseline passed 87 cases and covered 372 native instruction bytes; the recovered
+callback adds 20 passing cases and all 98 of its instruction bytes.
+Each source mutation compiles and causes an expectation failure:
+reversed enable guard, shortened checksum, wrong display coordinate, or early
+countdown termination. They fail 52, 10, 3, and 2 cases respectively. A compile error or unsupported instruction
 is not accepted as evidence that a mutation was detected.
 
-This baseline took about 14 seconds locally, including compilation and 261 test
+The initial three-unit baseline took about 14 seconds locally, including compilation and 261 test
 executions. It does not measure an overall decompilation speedup. The current
 candidates are behaviorally consistent on these cases but remain byte-inexact.
 The practical result is to focus their remaining work on code generation rather
@@ -61,4 +64,6 @@ Coverage is not proof of all possible behaviors, all branch combinations, or
 hardware equivalence. These integer-only routines avoid unverified FPU modes,
 interrupts, and device behavior. Callback targets are mocked. The byte comparer,
 compiler option sets, registration rules, and progress accounting are unchanged.
-No simulator pass earns exact-C credit.
+No simulator pass earns exact-C credit. Use `--unit ud2_04` (or another unit ID)
+to run only an affected unit during recovery. The new callback is tested without
+executing the float-using neighbors in its containing unit.
