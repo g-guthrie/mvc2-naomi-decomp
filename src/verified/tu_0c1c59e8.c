@@ -1,6 +1,5 @@
 /* Exact 0x0c1c59e8..0x0c1c5a38: terminate an effect when its selection flag and state agree. */
 #include "objects.h"
-struct SelectionFlags59e8 { unsigned char state[2], flags[2]; };
 extern struct SelectionFlags59e8 dat_0c2fb158;
 extern void func_0c037688(struct Actor *);
 void func_0c1c59e8(struct Actor *a)

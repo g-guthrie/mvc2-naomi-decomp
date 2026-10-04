@@ -67,7 +67,7 @@ def preflight():
         raise ValueError("Python 3.10+ is required. Run with a newer python3 interpreter.")
     runtime = runner()[0]
     if not Path(runtime).is_file():
-        raise ValueError("Bundled wibo is missing. Use a complete git clone of this private repository.")
+        raise ValueError("Bundled wibo is missing. Use a complete git clone of this repository.")
     if platform.system() == "Darwin":
         try:
             result = subprocess.run(["/usr/bin/arch", "-x86_64", "/usr/bin/true"],

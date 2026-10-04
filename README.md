@@ -4,24 +4,30 @@ A decompilation of the Sega NAOMI release. C source is compiled with the
 original Hitachi SH C compiler and must reproduce the retail ROM byte for byte.
 
 ```sh
+git clone https://github.com/g-guthrie/mvc2-naomi-decomp.git
+cd mvc2-naomi-decomp
 python3 tools/build.py check
 ```
 
 That one command verifies the ROMs, runs the tests, compiles every registered
 unit with the bundled toolchain, links each at its original address, compares
 the result with retail, and rebuilds the program ROM. Nothing is downloaded and
-nothing needs installing beyond Python 3.10.
+nothing needs installing beyond Python 3.10+ and Git on a supported host.
+Use **Linux x86_64** for cloud agents; the reference ROM archive, exact compiler,
+SDK libraries, and runtime are tracked in Git, not Git LFS or submodules.
+See [Cloud agent setup](docs/CLOUD_AGENTS.md) for a fresh-clone workflow,
+asset checks, and parallel-work rules.
 
 ## Progress
 
 <!-- progress:start -->
 | Track | Progress | Bytes |
 | --- | --- | ---: |
-| Map | `█████████████████████████████░░░` **91.716%** | 2,223,956 / 2,424,832 |
-| Code | `████████░░░░░░░░░░░░░░░░░░░░░░░░` **27.567%** | 482,536 / 1,750,382 |
-| Data | `█████████████████████████████░░░` **93.615%** | 443,334 / 473,574 |
-| [Decomp](config/units.json) | `████████████░░░░░░░░░░░░░░░░░░░░` **38.183%** | 925,870 / 2,424,832 |
-| Verified C source | `██████████░░░░░░░░░░░░░░░░░░░░░░` **31.344%** | 760,032 / 2,424,832 |
+| Map | `█████████████████████████████░░░` **91.716%** | 2,223,958 / 2,424,832 |
+| Code | `█████████░░░░░░░░░░░░░░░░░░░░░░░` **28.715%** | 502,614 / 1,750,382 |
+| Data | `█████████████████████████████░░░` **93.627%** | 443,394 / 473,576 |
+| [Decomp](config/units.json) | `████████████░░░░░░░░░░░░░░░░░░░░` **39.013%** | 946,008 / 2,424,832 |
+| Verified C source | `██████████░░░░░░░░░░░░░░░░░░░░░░` **32.174%** | 780,170 / 2,424,832 |
 | Prebuilt SDK modules | `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` **5.268%** | 127,730 / 2,424,832 |
 | Candidate fragments | `░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` **1.572%** | 38,108 / 2,424,832 |
 <!-- progress:end -->
@@ -56,6 +62,7 @@ them by hand. The treemap at `build/index.html` comes from the same build.
 
 ## Documents
 
+- [docs/CLOUD_AGENTS.md](docs/CLOUD_AGENTS.md): cloud setup, bundled assets, and safe parallel work.
 - [AGENTS.md](AGENTS.md): how to work on this repository and the rules that apply.
 - [docs/TOOLCHAIN.md](docs/TOOLCHAIN.md): the build pipeline, the unit registry and how credit is counted.
 - [docs/MATCHING.md](docs/MATCHING.md): how to make a function match.
