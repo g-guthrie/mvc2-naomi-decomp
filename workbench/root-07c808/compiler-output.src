@@ -1,0 +1,123 @@
+          .IMPORT     _func_0c025900
+          .IMPORT     _func_0c1d4610
+          .IMPORT     _func_0c048ce6
+          .IMPORT     _func_0c02a0c4
+          .IMPORT     _func_0c192b38
+          .EXPORT     _func_0c07c808
+          .SECTION    P,CODE,ALIGN=4
+_func_0c07c808:                  ; function: func_0c07c808
+                                 ; frame size=20
+          MOV.L       R14,@-R15
+          STS.L       PR,@-R15
+          ADD         #-12,R15
+          MOV.L       L245+8,R3  ; _func_0c025900
+          MOV         #6,R6
+          MOV         R4,R14
+          JSR         @R3
+          MOV         R6,R5
+          MOV.W       L245+2,R0  ; H'01C8
+          MOV.W       L245,R3    ; H'0418
+          MOV.L       @(R0,R14),R2
+          MOV.L       L245+12,R1 ; H'04000000
+          ADD         R3,R2
+          MOV.L       @R2,R2
+          TST         R1,R2
+          BT          L241
+          MOV.W       L245+2,R0  ; H'01C8
+          MOV.L       @(R0,R14),R2
+          MOVA        L245+16,R0
+          FMOV.S      @R0,FR3
+          MOV         #56,R0
+          FMOV.S      FR3,@(R0,R2)
+L241:                             
+          MOV.W       L245+2,R0  ; H'01C8
+          MOV.W       L245+4,R4  ; H'0414
+          MOV.L       @(R0,R14),R3
+          MOV.L       L245+20,R2 ; H'10000000
+          ADD         R4,R3
+          MOV.L       @R3,R1
+          TST         R2,R1
+          BT          L242
+          MOV.L       @(R0,R14),R3
+          MOVA        L245+24,R0
+          FMOV.S      @R0,FR3
+          MOV         #56,R0
+          FMOV.S      FR3,@(R0,R3)
+L242:                             
+          MOV.W       L245+2,R0  ; H'01C8
+          MOV.L       L245+28,R2 ; H'20000000
+          MOV.L       @(R0,R14),R3
+          ADD         R4,R3
+          MOV.L       @R3,R1
+          TST         R2,R1
+          BT          L243
+          MOV.L       @(R0,R14),R3
+          MOVA        L245+32,R0
+          FMOV.S      @R0,FR3
+          MOV         #56,R0
+          FMOV.S      FR3,@(R0,R3)
+L243:                             
+          MOV.W       L245+2,R0  ; H'01C8
+          MOV.L       @(R0,R14),R3
+          ADD         R3,R4
+          MOV.L       L245+36,R3 ; H'00400000
+          MOV.L       @R4,R2
+          TST         R3,R2
+          BT          L244
+          MOV.L       @(R0,R14),R2
+          MOVA        L245+40,R0
+          FMOV.S      @R0,FR3
+          MOV         #56,R0
+          FMOV.S      FR3,@(R0,R2)
+L244:                             
+          MOVA        L245+44,R0
+          MOV.L       L245+52,R3 ; _func_0c1d4610
+          FMOV.S      @R0,FR3
+          MOVA        L245+48,R0
+          MOV         R15,R5
+          FMOV.S      FR3,@R15
+          FMOV.S      @R0,FR3
+          MOV         #4,R0
+          FMOV.S      FR3,@(R0,R15)
+          JSR         @R3
+          MOV         R14,R4
+          MOV.W       L245+6,R0  ; H'01A0
+          MOV         #10,R2
+          MOV.L       L245+56,R3 ; _func_0c048ce6
+          MOV.B       R2,@(R0,R14)
+          JSR         @R3
+          MOV         R14,R4
+          MOV.L       L245+60,R2 ; _func_0c02a0c4
+          MOV         #15,R5
+          MOV         #0,R6
+          JSR         @R2
+          MOV         R14,R4
+          MOV.L       L245+64,R3 ; _func_0c192b38
+          JSR         @R3
+          MOV         R14,R4
+          ADD         #12,R15
+          LDS.L       @R15+,PR
+          RTS
+          MOV.L       @R15+,R14
+L245:                             
+          .DATA.W     H'0418
+          .DATA.W     H'01C8
+          .DATA.W     H'0414
+          .DATA.W     H'01A0
+          .DATA.L     _func_0c025900
+          .DATA.L     H'04000000
+          .DATA.L     H'42F44924
+          .DATA.L     H'10000000
+          .DATA.L     H'41CDB6DB
+          .DATA.L     H'20000000
+          .DATA.L     H'425EDB6D
+          .DATA.L     H'00400000
+          .DATA.L     H'41F00000
+          .DATA.L     H'C2960000
+          .DATA.L     H'432B6DB6
+          .DATA.L     _func_0c1d4610
+          .DATA.L     _func_0c048ce6
+          .DATA.L     _func_0c02a0c4
+          .DATA.L     _func_0c192b38
+          .END
+
