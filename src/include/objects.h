@@ -653,4 +653,12 @@ struct SdkCompletionPacket {
     int pending;
 };
 
+/* SDK consumer state at native offsets0/4/8/12. */
+struct SdkByteConsumer {
+    int input_count;
+    int output_count;
+    unsigned char *output;
+    const unsigned char *input;
+};
+
 #endif
