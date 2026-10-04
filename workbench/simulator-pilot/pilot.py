@@ -7,7 +7,7 @@ from core import load, number, verify_rom, elf_segments, link_map, sha, verify_t
 from build import compile_unit
 BASE = 0x0c000000
 HERE = Path(__file__).resolve().parent
-UNITS = ['tu_0c1e6a68', 'tu_0c1e8358', 'tu_0c035160']
+UNITS = ['tu_0c1e6a68', 'tu_0c1e8358', 'tu_0c035160', 'ud2_04']
 
 def cases_for(uid):
     cases=[]
@@ -37,6 +37,19 @@ def cases_for(uid):
                 add(name+f'_bank{n}','0c1e8358',[n],init,[ret(sum(data)&255)])
             start=0x2fc048;init=[[8,start+i,b] for i,b in enumerate(data)]+[[8,start+80,71]]
             add(name+'_short','0c1e8376',[],init,[ret(sum(data[:75])&255)])
+    elif uid=='ud2_04':
+        actor=0x700000
+        for flag in [0,1]:
+            for mode in [0,5]:
+                for timer in [-1,0,1,2,3]:
+                    init=[[8,0x2f8338,mode],[8,0x2f833b,flag],[8,actor+6,7],[8,actor+32,2],[32,actor+0x2c4,timer],[32,0x24e178+8,0x710000]]
+                    def write(offset,value,size=8):return dict(kind='write',address=actor+offset,value=value,size=size)
+                    ex=[write(0x3f8,2),write(0x328,5)]
+                    if not flag and mode!=5:ex.append(write(0x2c4,timer-1,32))
+                    if flag or mode==5 or timer-1<=0:
+                        ex += [write(0x3f9,0),write(0x3f8,0),write(0x327,0),write(0x328,0),write(6,8),dict(kind='call',symbol='_func_0c02a0c4',arguments=[actor,22,11])]
+                    else:ex.append(dict(kind='call',symbol='_func_pilot_callback',arguments=[actor]))
+                    add(f'countdown_{flag}_{mode}_{timer}','0c12f9d4',[actor],init,ex)
     else:
         for values in [list(range(11)),[0xffffffff-i for i in range(11)],[0x80000000,0x7fffffff,0,1,2,3,4,5,6,7,8]]:
             init=[[32,0x2fb248+84+i*4,v] for i,v in enumerate(values)]
@@ -47,7 +60,7 @@ def cases_for(uid):
 
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--simulator',type=Path,required=True);ap.add_argument('--php',default='php');ap.add_argument('--out',type=Path,default=ROOT/'build/simulator-pilot');args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--simulator',type=Path,required=True);ap.add_argument('--unit',choices=UNITS,action='append');ap.add_argument('--php',default='php');ap.add_argument('--out',type=Path,default=ROOT/'build/simulator-pilot');args=ap.parse_args()
     args.out=args.out.resolve();args.out.mkdir(parents=True,exist_ok=True)
     verify_tools()
     pilot_hash=sha(Path(__file__).read_bytes());adapter_hash=sha((HERE/'run.php').read_bytes())
@@ -58,7 +71,7 @@ def main():
     target=load(ROOT/'config/target.json');rom=verify_rom(target);off=number(target['main']['rom_offset']);main_image=rom[off:off+number(target['main']['size'])];main_base=number(target['main']['address'])
     units={u['id']:u for u in load(ROOT/'config/units.json')}
     results={};start=time.monotonic();all_valid=True
-    for uid in UNITS:
+    for uid in (args.unit or UNITS):
         u=units[uid];assert len(u['sections'])==1 and u['sections'][0]['section']=='P'
         part=u['sections'][0];address=number(part['address']);length=part['size'];original=bytearray(main_image[address-main_base:address-main_base+length]);patches=[]
         allowed={number(a) for a in u.get('imports',{}).values()}|{number(a) for a in u['exports'].values()}
@@ -74,7 +87,7 @@ def main():
         for p in patches:struct.pack_into('<I',restored,int(p['site'],16)-address,int(p['original'],16))
         assert restored==main_image[address-main_base:address-main_base+length]
         source=(ROOT/u['source']).read_text()
-        mutation={'tu_0c1e6a68':('if(!dat_0c2d6f84->b47)return -1;','if(dat_0c2d6f84->b47)return -1;'),'tu_0c1e8358':('limit=80','limit=79'),'tu_0c035160':('row-i','row+i')}[uid]
+        mutation={'tu_0c1e6a68':('if(!dat_0c2d6f84->b47)return -1;','if(dat_0c2d6f84->b47)return -1;'),'tu_0c1e8358':('limit=80','limit=79'),'tu_0c035160':('row-i','row+i'),'ud2_04':('0x2c4)) <= 0','0x2c4)) <= 2')}[uid]
         assert mutation[0] in source
         variants={};symbols={**{k:number(v)-BASE for k,v in u.get('imports',{}).items()},**{k:number(v)-BASE for k,v in u['exports'].items()}}
         image=bytearray(address-BASE+len(original));image[address-BASE:]=original
@@ -92,6 +105,7 @@ def main():
         unit_result={'byte_comparison':{'equal_bytes':sum(a==b for a,b in zip(variants['retail'][0][address-BASE:],variants['candidate'][0][address-BASE:])),'native_size':length,'candidate_size':len(variants['candidate'][0])-(address-BASE)},'native_sha256':sha(restored),'source_sha256':sha(source.encode()),'rebased_native_pointer_words':patches,'cases':len(cases_for(uid)),'variants':{}}
         for label,(image,sym) in variants.items():
             image_path=args.out/(uid+'-'+label+'.bin');image_path.write_bytes(image)
+            if uid=='ud2_04':sym={**sym,'_func_pilot_callback':0x710000}
             job={'image':str(image_path.resolve()),'symbols':sym,'entries':{k:v for k,v in sym.items() if k in u['exports']},'cases':cases_for(uid)}
             job_path=args.out/(uid+'-'+label+'.json');job_path.write_text(json.dumps(job))
             run=subprocess.run([args.php,str(HERE/'run.php'),str(simulator),str(job_path)],capture_output=True,text=True,timeout=120)
@@ -101,8 +115,8 @@ def main():
             for row in rows:
                 if not row['passed']:
                     print(' ',row['case'],row['error'][:220],flush=True);break
-        expected_size={'tu_0c1e6a68':244,'tu_0c1e8358':52,'tu_0c035160':76}[uid]
-        expected=set(range(address-BASE,address-BASE+expected_size))
+        expected_start,expected_size={'tu_0c1e6a68':(address,244),'tu_0c1e8358':(address,52),'tu_0c035160':(address,76),'ud2_04':(0x0c12f9d4,98)}[uid]
+        expected=set(range(expected_start-BASE,expected_start-BASE+expected_size))
         covered=set().union(*(set(r.get('executed_bytes',[])) for r in unit_result['variants']['retail']))
         unit_result['native_instruction_coverage']={'covered_bytes':len(expected&covered),'expected_bytes':expected_size,'missing_addresses':[hex(x+BASE) for x in sorted(expected-covered)]}
         for rows in unit_result['variants'].values():

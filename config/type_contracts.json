@@ -48,6 +48,29 @@
           "evidence": "Exact source src/verified/tu_0c03a810.c uses the mask word at actor+0x340."
         }
       ]
+    },
+    {
+      "source": "src/candidates/ud2_04.c",
+      "members": [
+        {
+          "type": "struct Actor",
+          "member": "sub2a4",
+          "offset": "0x2a4",
+          "evidence": "0c12f9ae loads 0x2a4; 0c12f9b4 adds actor base and 0c12f9b6 adds 32 for timer reference."
+        },
+        {
+          "type": "struct Dat_13bb5c",
+          "member": "pad[3]",
+          "offset": "0x3",
+          "evidence": "0c12f9e2 loads the address 0c2f8338; 0c12f9e6 reads byte 3 directly."
+        }
+      ],
+      "prototypes": [
+        {
+          "declaration": "extern struct Dat_13bb5c dat_0c2f8338;",
+          "evidence": "Native 0c12f9e2/0c12f9e6 accesses inline data without an intervening pointer dereference."
+        }
+      ]
     }
   ]
 }
