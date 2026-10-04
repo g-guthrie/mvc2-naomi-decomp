@@ -17,12 +17,12 @@ void func_0c1d99ec(struct Obj_tu5_03 *parent,int n)
 }
 void func_0c1d9a56(struct Obj_tu5_03 *a)
 {
- if(a->p20->b4==1)func_0c037688(a);
- else {
+ if(a->p20->b4==1){func_0c037688(a);return;}
+ {
   a->b12c=a->p20->b12c;
   switch(a->b32) {
   case 0:a->angles.scalar.l48-=256;break;
-  case 1:a->angles.scalar.l48=a->angles.scalar.l48+256;break;
+  case 1:a->angles.array[2]+=256;break;
   }
  }
 }
