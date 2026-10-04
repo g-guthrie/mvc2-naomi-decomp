@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/Users/gguthrie/Projects/mvc2-naomi-consolidate-oct02-ci/build/prove-reviewed-unit.py", line 20, in <module>
+    flags=load(d.ROOT/'config/compiler.json')['sets']['game'];elf,link=d.compile_unit(u,w,flags);d.resolve_imports(u,w,u['id']);elf,link=d.compile_unit(u,w,flags);p,_=compare(u,elf,link,rom[off:off+n],base)
+                                                                       ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/gguthrie/Projects/mvc2-naomi-consolidate-oct02-ci/tools/build.py", line 76, in compile_unit
+    run('shc.exe', [stem + '.c', *options, '-code=asmcode', '-object=' + stem + '.src'])
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gguthrie/Projects/mvc2-naomi-consolidate-oct02-ci/tools/build.py", line 44, in run
+    raise ValueError(f'{stem}: {exe} failed; see build/work/{stem}.log\n{output}')
+ValueError: diff: shc.exe failed; see build/work/diff.log
+SH SERIES C/C++ Compiler Ver. 5.0(Release31)
+Copyright (C) 1992,1998 Hitachi,Ltd.,Hitachi Software Engineering Co.,Ltd.
+Licensed Material of Hitachi,Ltd.,Hitachi Software Engineering Co.,Ltd.
+
+*** Analyzing Source Program (p) ***
+*** Analyzing Source Program (f) ***
+***     Generating Code (t)      ***
+diff.c(123) : 2102 (E) Illegal type combination
+diff.c(123) : 2500 (E) Illegal token "L"
+diff.c(123) : 2500 (E) Illegal token "{"
+Object not created
+

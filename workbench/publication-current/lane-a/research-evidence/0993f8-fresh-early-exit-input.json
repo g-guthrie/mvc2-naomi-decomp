@@ -1,0 +1,46 @@
+{
+  "primary_source": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.c",
+  "primary_sha256": "b1bc4771bf112196ea9b43935246f276c0f3ecc229a3183470903989b6d97261",
+  "fresh_source": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.fresh-early-exit.c",
+  "fresh_source_sha256": "256d4c66acd9898838bad1430d9979efb4f816a58565a120bd7beaf79e923be1",
+  "frozen_artifacts": {
+    "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-unit.json": "4092e6ba348179d51572d50ee132fc7f16b3fc947fe39516a20360f52ca792ab",
+    "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-whole-proof.json": "ec11333edfd82989ca8f7c6594449b2362a048e5e26da2375658e508afc41f71",
+    "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-standard-final.log": "10a0c06b13818c710f916b0ff6d696fa0173f33357607646743602857f0fdd12",
+    "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-0993f8-integration-reviewed/manifest.json": "893497b541c32ed30fae48d5d3bc46b90d9e19104e2baaf1e79e6499f1c3a79f",
+    "/Users/gguthrie/Documents/Codex/2026-10-02/the-user-explicitly-requests-you-as/outputs/0993f8-complete-unverified-draft-reviewed.zip": "1b22a8a06348deacc3eb31ffc0bcde5952af74c96ffbaf1f8a5509e1d632aa87"
+  },
+  "retail_semantics": {
+    "strength_2": "One animation call; negative outcome cleans up immediately, nonnegative outcome applies the signed float event and finishes.",
+    "strength_0_or_1": "One shared animation call; negative outcome cleans up.",
+    "other_strengths": "Return without animation call or event write."
+  },
+  "new_hypothesis": "Use switch with strength 2 finishing by early return and strengths 0/1 breaking out to one ordinary animation check, as supported by recent verified early-exit bodies. No repeated switch/local-register variant.",
+  "siblings": [
+    {
+      "source": "/Users/gguthrie/Projects/mvc2-naomi-consolidate-oct02-ci/src/verified/tu_0c0c69ec.c",
+      "sha256": "6e74f50bf6ef03f9010381cd139081fee1e3fe800dfc2f80778289fe40ee8a29",
+      "functions": [
+        "func_0c0c6a0a",
+        "func_0c0c7066"
+      ],
+      "applicability": "Early cleanup/alternate behavior returns before the remaining handler."
+    },
+    {
+      "source": "/Users/gguthrie/Projects/mvc2-naomi-consolidate-oct02-ci/src/verified/tu_0c0cb298.c",
+      "sha256": "ef8d41425c06f199ead92f443c914d05ea2e807dba80b4c24fe47b58779661f6",
+      "functions": [
+        "func_0c0cb7be"
+      ],
+      "applicability": "Negative animation result cleans up and returns before event processing."
+    },
+    {
+      "source": "/Users/gguthrie/Projects/mvc2-naomi-consolidate-oct02-ci/src/verified/tu_0c0daec4.c",
+      "sha256": "0af9500c327dbdcadb65c101985be38911f8eae43f460f45fa77587c2dedb6f9",
+      "functions": [
+        "func_0c0dafc8"
+      ],
+      "applicability": "An alternate handler completes through an early return before the default branch."
+    }
+  ]
+}

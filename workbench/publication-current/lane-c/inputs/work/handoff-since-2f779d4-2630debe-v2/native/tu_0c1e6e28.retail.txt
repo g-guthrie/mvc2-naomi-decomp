@@ -1,0 +1,99 @@
+Original ROM bytes. Decoding alone does not establish code boundaries.
+0c1e6e28  0009  nop
+0c1e6e2a  7f04  add #4,r15
+0c1e6e2c  6bf6  mov.l @r15+,r11
+0c1e6e2e  6cf6  mov.l @r15+,r12
+0c1e6e30  6df6  mov.l @r15+,r13
+0c1e6e32  000b  rts
+0c1e6e34  6ef6  mov.l @r15+,r14
+0c1e6e36  2fe6  mov.l r14,@-r15
+0c1e6e38  7ffc  add #-4,r15
+0c1e6e3a  d22a  mov.l 0x000000000c1e6ee4,r2 ; literal at 0x0c1e6ee4 = 0x0c2d6f84
+0c1e6e3c  e047  mov #71,r0
+0c1e6e3e  d628  mov.l 0x000000000c1e6ee0,r6 ; literal at 0x0c1e6ee0 = 0x0c312834
+0c1e6e40  6322  mov.l @r2,r3
+0c1e6e42  013c  mov.b @(r0,r3),r1
+0c1e6e44  2118  tst r1,r1
+0c1e6e46  890b  bt 0x000000000c1e6e60
+0c1e6e48  9548  mov.w 0x000000000c1e6edc,r5 ; literal at 0x0c1e6edc = 0x01e0
+0c1e6e4a  6463  mov r6,r4
+0c1e6e4c  356c  add r6,r5
+0c1e6e4e  3452  cmp/hs r5,r4
+0c1e6e50  890d  bt 0x000000000c1e6e6e
+0c1e6e52  5041  mov.l @(4,r4),r0
+0c1e6e54  8812  cmp/eq #18,r0
+0c1e6e56  8b07  bf 0x000000000c1e6e68
+0c1e6e58  5242  mov.l @(8,r4),r2
+0c1e6e5a  d323  mov.l 0x000000000c1e6ee8,r3 ; literal at 0x0c1e6ee8 = 0xffff0000
+0c1e6e5c  3230  cmp/eq r3,r2
+0c1e6e5e  8b03  bf 0x000000000c1e6e68
+0c1e6e60  e0ff  mov #-1,r0
+0c1e6e62  7f04  add #4,r15
+0c1e6e64  000b  rts
+0c1e6e66  6ef6  mov.l @r15+,r14
+0c1e6e68  743c  add #60,r4
+0c1e6e6a  3452  cmp/hs r5,r4
+0c1e6e6c  8bf1  bf 0x000000000c1e6e52
+0c1e6e6e  e400  mov #0,r4
+0c1e6e70  6743  mov r4,r7
+0c1e6e72  a02b  bra 0x000000000c1e6ecc
+0c1e6e74  6543  mov r4,r5
+0c1e6e76  ee3c  mov #60,r14
+0c1e6e78  05e7  mul.l r14,r5
+0c1e6e7a  041a  sts macl,r4
+0c1e6e7c  346c  add r6,r4
+0c1e6e7e  2f42  mov.l r4,@r15
+0c1e6e80  5041  mov.l @(4,r4),r0
+0c1e6e82  8812  cmp/eq #18,r0
+0c1e6e84  8d04  bt.s 0x000000000c1e6e90
+0c1e6e86  6103  mov r0,r1
+0c1e6e88  6013  mov r1,r0
+0c1e6e8a  0009  nop
+0c1e6e8c  8801  cmp/eq #1,r0
+0c1e6e8e  8b1c  bf 0x000000000c1e6eca
+0c1e6e90  5045  mov.l @(20,r4),r0
+0c1e6e92  8802  cmp/eq #2,r0
+0c1e6e94  8b08  bf 0x000000000c1e6ea8
+0c1e6e96  5047  mov.l @(28,r4),r0
+0c1e6e98  8802  cmp/eq #2,r0
+0c1e6e9a  8912  bt 0x000000000c1e6ec2
+0c1e6e9c  534b  mov.l @(44,r4),r3
+0c1e6e9e  ee06  mov #6,r14
+0c1e6ea0  33e3  cmp/ge r14,r3
+0c1e6ea2  8b12  bf 0x000000000c1e6eca
+0c1e6ea4  a00d  bra 0x000000000c1e6ec2
+0c1e6ea6  0009  nop
+0c1e6ea8  5047  mov.l @(28,r4),r0
+0c1e6eaa  8802  cmp/eq #2,r0
+0c1e6eac  8b05  bf 0x000000000c1e6eba
+0c1e6eae  524b  mov.l @(44,r4),r2
+0c1e6eb0  ee05  mov #5,r14
+0c1e6eb2  32e3  cmp/ge r14,r2
+0c1e6eb4  8b09  bf 0x000000000c1e6eca
+0c1e6eb6  a004  bra 0x000000000c1e6ec2
+0c1e6eb8  0009  nop
+0c1e6eba  524b  mov.l @(44,r4),r2
+0c1e6ebc  ee0b  mov #11,r14
+0c1e6ebe  32e3  cmp/ge r14,r2
+0c1e6ec0  8b03  bf 0x000000000c1e6eca
+0c1e6ec2  e401  mov #1,r4
+0c1e6ec4  6243  mov r4,r2
+0c1e6ec6  425c  shad r5,r2
+0c1e6ec8  272b  or r2,r7
+0c1e6eca  7501  add #1,r5
+0c1e6ecc  e408  mov #8,r4
+0c1e6ece  3543  cmp/ge r4,r5
+0c1e6ed0  8bd1  bf 0x000000000c1e6e76
+0c1e6ed2  6073  mov r7,r0
+0c1e6ed4  0009  nop
+0c1e6ed6  7f04  add #4,r15
+0c1e6ed8  000b  rts
+0c1e6eda  6ef6  mov.l @r15+,r14
+0c1e6edc  01e0  error
+0c1e6ede  0000  error
+0c1e6ee0  2834  mov.b r3,@-r8
+0c1e6ee2  0c31  error
+0c1e6ee4  6f84  mov.b @r8+,r15
+0c1e6ee6  0c2d  mov.w @(r0,r2),r12
+0c1e6ee8  0000  error
+0c1e6eea  ffff  error

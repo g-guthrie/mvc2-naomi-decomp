@@ -1,0 +1,28 @@
+P 0x0c0ff95c 320 bytes: 304/320 equal, linked 320 at 0x0c0ff95c
+  _func_0c0ff95c 0x0c0ff95c 128 bytes: 112/128 equal
+  _func_0c0ff9dc 0x0c0ff9dc 42 bytes: 42/42 equal
+  _func_0c0ffa06 0x0c0ffa06 90 bytes: 90/90 equal
+  pool 0x0c0ffa60 60 bytes: 60/60 equal
+    0c0ff9a6  retail 420b  jsr @r2                          ours 420b  jsr @r2
+    0c0ff9a8  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+  ! 0c0ff9aa  retail 2008  tst r0,r0                        ours 6403  mov r0,r4
+  ! 0c0ff9ac  retail 8d11  bt.s 0x000000000c0ff9d2          ours 2448  tst r4,r4
+  ! 0c0ff9ae  retail 6403  mov r0,r4                        ours 8910  bt 0x000000000c0ff9d2
+    0c0ff9b0  retail 905c  mov.w 0x000000000c0ffa6c,r0      ours 905c  mov.w 0x000000000c0ffa6c,r0
+    0c0ff9b2  retail e201  mov #1,r2                        ours e201  mov #1,r2
+    ...
+    0c0ff9bc  retail 2118  tst r1,r1                        ours 2118  tst r1,r1
+    0c0ff9be  retail 8b08  bf 0x000000000c0ff9d2            ours 8b08  bf 0x000000000c0ff9d2
+  ! 0c0ff9c0  retail d22e  mov.l 0x000000000c0ffa7c,r2      ours d32e  mov.l 0x000000000c0ffa7c,r3
+  ! 0c0ff9c2  retail 420b  jsr @r2                          ours 430b  jsr @r3
+    0c0ff9c4  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+  ! 0c0ff9c6  retail 2008  tst r0,r0                        ours 6403  mov r0,r4
+  ! 0c0ff9c8  retail 8d03  bt.s 0x000000000c0ff9d2          ours 2448  tst r4,r4
+  ! 0c0ff9ca  retail 6403  mov r0,r4                        ours 8902  bt 0x000000000c0ff9d2
+    0c0ff9cc  retail 904e  mov.w 0x000000000c0ffa6c,r0      ours 904e  mov.w 0x000000000c0ffa6c,r0
+  ! 0c0ff9ce  retail e200  mov #0,r2                        ours e300  mov #0,r3
+  ! 0c0ff9d0  retail 0e24  mov.b r2,@(r0,r14)               ours 0e34  mov.b r3,@(r0,r14)
+    0c0ff9d2  retail 6043  mov r4,r0                        ours 6043  mov r4,r0
+    0c0ff9d4  retail 0009  nop                              ours 0009  nop
+PROBLEM Not an exact section match: P
+DIFFERS

@@ -1,0 +1,24 @@
+{
+  "start": "0xc0a70f0",
+  "end": "0xc0a83f8",
+  "sections": {
+    "code": 4206,
+    "data": 666
+  },
+  "external_direct_branches": [],
+  "functions": 38,
+  "false_entries": [
+    "0c0a71f0",
+    "0c0a7918",
+    "0c0a7970",
+    "0c0a7c10",
+    "0c0a7d3c",
+    "0c0a7e6c",
+    "0c0a7fcc",
+    "0c0a81c8",
+    "0c0a82ec"
+  ],
+  "unconsumed_test": "77d6 mode==6 branches converge with no observable effect; documented without dummy C check",
+  "contradictory_guard": "77d6 preserves mode!=7 OR mode!=12 (retail compares the same normalized cached byte)",
+  "double_statistics": "830c performs two resets/increments for any nonzero b14b, and fresh b14b reads precede each tag test"
+}

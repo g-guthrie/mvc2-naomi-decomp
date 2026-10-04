@@ -1,0 +1,70 @@
+{
+  "start": "0x0c1c4294",
+  "size": 1312,
+  "status": "complete eleven-function C; inexact whole comparison, unregistered, zero credit",
+  "native_listing": "work/tu_0c1c4294.retail.txt",
+  "boundary_review": "work/tu_0c1c4294.boundary-review.json",
+  "actual_function_entries": [
+    "0x0c1c4294",
+    "0x0c1c43ee",
+    "0x0c1c4464",
+    "0x0c1c4476",
+    "0x0c1c44a0",
+    "0x0c1c44dc",
+    "0x0c1c4524",
+    "0x0c1c45b2",
+    "0x0c1c45d4",
+    "0x0c1c465a",
+    "0x0c1c46aa"
+  ],
+  "native_formats": {
+    "0x0c22ff0c": "%1x",
+    "0x0c22ff10": "%08x",
+    "0x0c22ff18": "%8x",
+    "0x0c22ff1c": "%3d",
+    "0x0c22ff20": "%02d"
+  },
+  "records": [
+    {
+      "address": "actor + 0x19c",
+      "meaning": "formatted nine glyphs with terminator at maximum extent",
+      "minimum_bytes": 10
+    },
+    {
+      "address": "actor + 0x1c8",
+      "meaning": "unsigned hexadecimal leading digit clamped to 9",
+      "bytes": 4
+    },
+    {
+      "address": "actor + 0x1cc",
+      "meaning": "unsigned hexadecimal word, decimal value or time seconds according to handler",
+      "bytes": 4
+    },
+    {
+      "address": "0x0c2f8338",
+      "fields": {
+        "0x10": "unsigned short seconds",
+        "0x3e": "signed byte selector",
+        "0x78": "signed short array selected by selector",
+        "0x9c": "signed byte array selected by selector"
+      }
+    }
+  ],
+  "callback_tables": {
+    "0x0c25dae4": [
+      "0x0c1c4476",
+      "0x0c1c44a0",
+      "0x0c1c45b2",
+      "0x0c1c45b2"
+    ],
+    "0x0c25daf4": [
+      "0x0c1c44dc",
+      "0x0c1c4524"
+    ]
+  },
+  "model_requirement": "Preserve existing generic Actor pointer at 0x1c8 and legacy padding users. A numeric HUD variant must represent actual unsigned words and ten-byte text buffer. Never invent padding arithmetic or alter field widths to force matching.",
+  "source": "work/tu_0c1c4294.sol.c",
+  "proof": "work/tu_0c1c4294-assignment-proof.json",
+  "linked_bytes": 1316,
+  "reset_native": "work/numeric-hud-reset.retail.txt"
+}

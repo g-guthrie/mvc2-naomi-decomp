@@ -1,0 +1,88 @@
+{
+  "status": "ONE_FRESH_REVIEW_COMPLETE_NO_IMPROVEMENT_NEXT_GRANT_REQUESTED",
+  "integration_checkout": "/Users/gguthrie/Projects/mvc2-naomi-consolidate-oct02-ci",
+  "integration_head": "6a90f69a2409f124c4f5492d82c76fa4b944e385",
+  "review_scope": "Only the two dispatches in previously granted [0x0c0993f8,0x0c099e24), one fresh early-exit hypothesis; no new range claimed.",
+  "retail_pattern": "retail cmp/eq #2; bt; cmp/eq #0; bt; cmp/eq #1; bt, entirely within reviewed code",
+  "retail_pattern_occurrences": 33,
+  "occurrences_with_verified_owner": 0,
+  "recent_siblings_reviewed": [
+    {
+      "source": "/Users/gguthrie/Projects/mvc2-naomi-consolidate-oct02-ci/src/verified/tu_0c0c69ec.c",
+      "sha256": "6e74f50bf6ef03f9010381cd139081fee1e3fe800dfc2f80778289fe40ee8a29",
+      "functions": [
+        "func_0c0c6a0a",
+        "func_0c0c7066"
+      ],
+      "applicability": "Early cleanup/alternate behavior returns before the remaining handler."
+    },
+    {
+      "source": "/Users/gguthrie/Projects/mvc2-naomi-consolidate-oct02-ci/src/verified/tu_0c0cb298.c",
+      "sha256": "ef8d41425c06f199ead92f443c914d05ea2e807dba80b4c24fe47b58779661f6",
+      "functions": [
+        "func_0c0cb7be"
+      ],
+      "applicability": "Negative animation result cleans up and returns before event processing."
+    },
+    {
+      "source": "/Users/gguthrie/Projects/mvc2-naomi-consolidate-oct02-ci/src/verified/tu_0c0daec4.c",
+      "sha256": "0af9500c327dbdcadb65c101985be38911f8eae43f460f45fa77587c2dedb6f9",
+      "functions": [
+        "func_0c0dafc8"
+      ],
+      "applicability": "An alternate handler completes through an early return before the default branch."
+    }
+  ],
+  "applicability_limit": "Recent siblings establish negative-animation and alternate-handler early exits. Their cached mode comparisons use nonzero constants and do not establish the 2,0,1 zero-comparison dispatch; no repeated switch or local-register variants were run.",
+  "new_trial": {
+    "source": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.fresh-early-exit.c",
+    "source_sha256": "256d4c66acd9898838bad1430d9979efb4f816a58565a120bd7beaf79e923be1",
+    "hypothesis": "Use switch with strength 2 finishing by early return and strengths 0/1 breaking out to one ordinary animation check, as supported by recent verified early-exit bodies. No repeated switch/local-register variant.",
+    "equal_bytes": 2013,
+    "whole_expected_bytes": 2604,
+    "linked_bytes": 2608,
+    "exit_code": 1,
+    "decision": "REJECTED; less equal code and incorrect whole extent. Preserve trial privately, do not register or credit."
+  },
+  "retained_primary": {
+    "source": "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.c",
+    "sha256": "b1bc4771bf112196ea9b43935246f276c0f3ecc229a3183470903989b6d97261",
+    "native_functions_complete": 23,
+    "code_bytes": 2242,
+    "pool_count": 9,
+    "pool_bytes": 362,
+    "whole_size": 2604,
+    "equal_bytes": 2412,
+    "linked_size": 2604,
+    "exact_functions": 18,
+    "exact_pools": 8,
+    "whole_exact": false,
+    "credit": 0,
+    "immutable_manifest": "/Users/gguthrie/Documents/Codex/2026-10-02/ther/work/mvc2-luna-a-0993f8-integration-reviewed-partial.json"
+  },
+  "frozen_artifacts_verified_unchanged": {
+    "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-unit.json": "4092e6ba348179d51572d50ee132fc7f16b3fc947fe39516a20360f52ca792ab",
+    "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-whole-proof.json": "ec11333edfd82989ca8f7c6594449b2362a048e5e26da2375658e508afc41f71",
+    "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-standard-final.log": "10a0c06b13818c710f916b0ff6d696fa0173f33357607646743602857f0fdd12",
+    "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/lane-a-0993f8-integration-reviewed/manifest.json": "893497b541c32ed30fae48d5d3bc46b90d9e19104e2baaf1e79e6499f1c3a79f",
+    "/Users/gguthrie/Documents/Codex/2026-10-02/the-user-explicitly-requests-you-as/outputs/0993f8-complete-unverified-draft-reviewed.zip": "1b22a8a06348deacc3eb31ffc0bcde5952af74c96ffbaf1f8a5509e1d632aa87"
+  },
+  "evidence": {
+    "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/0993f8-fresh-early-exit-input.json": "04300851cda51e7547323fae31cb4ccaee0a969be688e02b6c66f3e838b27d55",
+    "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/0993f8-fresh-dispatch-siblings.json": "b0bb4d8fdc94e49f19fdae873190ac2fa009546fbf5852f0d3d96a745ec232ae",
+    "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.fresh-early-exit.c": "256d4c66acd9898838bad1430d9979efb4f816a58565a120bd7beaf79e923be1",
+    "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.fresh-early-exit-unit.json": "8cde2a7e6d2fe095995102f0a832d97db4b61147686bcc7614133707845e597d",
+    "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8.fresh-early-exit-whole-proof.json": "0d4043f9b678056dda269cbf5eb5dd925cce538014f715133dce3c182b821388",
+    "/Users/gguthrie/Projects/mvc2-worktrees/luna-a-oct02/work/luna-a-handoff/tu_0c0993f8-fresh-early-exit.log": "d4e1bde0ecdb18546bbf6bc345a9efc38da442ee79bf8ba5bbf0916651e59665"
+  },
+  "next_request": "Assign ONE fresh, specific, native-entry and dependency-closed range excluded from the root and other active grants. No self-selected claim. Reopen these two dispatches only with new material evidence.",
+  "concrete_blocker": "Retail compares strength 2, then 0 and 1, keeping the selector solely in R0; the preserved flat switch sorts 0,1,2 and shifts the 099C20/099C58 exports and 099C06 pool. Previously rejected nested or conditional forms introduce a reload/local copy; the new sibling-backed early-exit form also fails and is four bytes too long.",
+  "registration": false,
+  "new_exact_credit": 0,
+  "full_gate_run": false,
+  "new_commits": [],
+  "push": false,
+  "root_edits": false,
+  "children": false,
+  "active_processes": []
+}

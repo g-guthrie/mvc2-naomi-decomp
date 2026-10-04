@@ -1,0 +1,22 @@
+diff --git a/src/include/objects.h b/src/include/objects.h
+index 96d01a5..33fd6b7 100644
+--- a/src/include/objects.h
++++ b/src/include/objects.h
+@@ -355,6 +355,17 @@ struct Actor {
+ /* Character pointer slots indexed at native stride 0x5a4 through 0x0c2d70a0. */
+ struct CharacterSlot5a4 { struct Actor *actor; unsigned char pad4[0x5a4 - 4]; };
+ 
++/* Character state records rooted at 0x0c2d7088, indexed at stride 0x5a4.
++ * The actor-pointer view at 0x0c2d70a0 addresses p18. The mask at 0x414
++ * and signed selector at 0x52c are read by 0x0c1c35d6 and 0x0c1c927a. */
++struct CharacterState5a4 {
++    unsigned char unknown0, b1;
++    unsigned char unknown2[0x18 - 2]; struct Actor *p18;
++    unsigned char unknown1c[0x414 - 0x1c]; unsigned int flags414;
++    unsigned char unknown418[0x52c - 0x418]; signed char selector52c;
++    unsigned char unknown52d[0x5a4 - 0x52d];
++};
++
+ /* Global game flags record exposed through the pointer at 0x0c2d6f84. */
+ struct ActorFlags {
+     unsigned char b0, b1; signed char b2, b3, b4, b5, b6; unsigned char b7;

@@ -1,0 +1,11 @@
+P 0x0c09b87c 304 bytes: 303/304 equal, linked 304 at 0x0c09b87c
+  _func_0c09b87c 0x0c09b87c 120 bytes: 120/120 equal
+  _func_0c09b8f4 0x0c09b8f4 132 bytes: 132/132 equal
+  pool 0x0c09b978 52 bytes: 51/52 equal
+    0c09b990  retail 5555  mov.l @(20,r5),r5                ours 5555  mov.l @(20,r5),r5
+    0c09b992  retail 422d  shld r2,r2                       ours 422d  shld r2,r2
+  ! 0c09b994  retail db6d  mov.l 0x000000000c09bb4c,r11     ours db6c  mov.l 0x000000000c09bb48,r11
+    0c09b996  retail 4322  sts.l pr,@-r3                    ours 4322  sts.l pr,@-r3
+    0c09b998  retail 29a4  mov.b r10,@-r9                   ours 29a4  mov.b r10,@-r9
+PROBLEM Not an exact section match: P
+DIFFERS

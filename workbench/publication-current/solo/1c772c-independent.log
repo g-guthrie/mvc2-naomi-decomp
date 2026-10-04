@@ -1,0 +1,35 @@
+P 0x0c1c772c 296 bytes: 275/296 equal, linked 296 at 0x0c1c772c
+  _func_0c1c772c 0x0c1c772c 122 bytes: 103/122 equal
+  _func_0c1c77a6 0x0c1c77a6 22 bytes: 22/22 equal
+  _func_0c1c77bc 0x0c1c77bc 18 bytes: 18/18 equal
+  _func_0c1c77ce 0x0c1c77ce 40 bytes: 40/40 equal
+  _func_0c1c77f6 0x0c1c77f6 6 bytes: 6/6 equal
+  _func_0c1c77fc 0x0c1c77fc 40 bytes: 38/40 equal
+  pool 0x0c1c7824 48 bytes: 48/48 equal
+    0c1c7742  retail 6e03  mov r0,r14                       ours 6e03  mov r0,r14
+    0c1c7744  retail 906e  mov.w 0x000000000c1c7824,r0      ours 906e  mov.w 0x000000000c1c7824,r0
+  ! 0c1c7746  retail e201  mov #1,r2                        ours e301  mov #1,r3
+  ! 0c1c7748  retail d33a  mov.l 0x000000000c1c7834,r3      ours d23a  mov.l 0x000000000c1c7834,r2
+  ! 0c1c774a  retail 0e24  mov.b r2,@(r0,r14)               ours 0e34  mov.b r3,@(r0,r14)
+    0c1c774c  retail 709c  add #-100,r0                     ours 709c  add #-100,r0
+  ! 0c1c774e  retail 926a  mov.w 0x000000000c1c7826,r2      ours 936a  mov.w 0x000000000c1c7826,r3
+  ! 0c1c7750  retail 1e34  mov.l r3,@(16,r14)               ours d139  mov.l 0x000000000c1c7838,r1
+  ! 0c1c7752  retail 32dc  add r13,r2                       ours 33dc  add r13,r3
+  ! 0c1c7754  retail d138  mov.l 0x000000000c1c7838,r1      ours 1e24  mov.l r2,@(16,r14)
+  ! 0c1c7756  retail f48d  fldi0 fr4                        ours 0e36  mov.l r3,@(r0,r14)
+  ! 0c1c7758  retail 1ed6  mov.l r13,@(24,r14)              ours e021  mov #33,r0
+  ! 0c1c775a  retail 0e26  mov.l r2,@(r0,r14)               ours f48d  fldi0 fr4
+  ! 0c1c775c  retail e021  mov #33,r0                       ours 1ed6  mov.l r13,@(24,r14)
+    0c1c775e  retail 03dc  mov.b @(r0,r13),r3               ours 03dc  mov.b @(r0,r13),r3
+    0c1c7760  retail 0e34  mov.b r3,@(r0,r14)               ours 0e34  mov.b r3,@(r0,r14)
+  ! 0c1c7762  retail 03dc  mov.b @(r0,r13),r3               ours 63d0  mov.b @r13,r3
+    0c1c7764  retail d035  mov.l 0x000000000c1c783c,r0      ours d035  mov.l 0x000000000c1c783c,r0
+    0c1c7766  retail 633c  extu.b r3,r3                     ours 633c  extu.b r3,r3
+    ...
+    0c1c7812  retail 8444  mov.b @(4,r4),r0                 ours 8444  mov.b @(4,r4),r0
+    0c1c7814  retail 7001  add #1,r0                        ours 7001  add #1,r0
+  ! 0c1c7816  retail a003  bra 0x000000000c1c7820           ours 000b  rts
+    0c1c7818  retail 8044  mov.b r0,@(4,r4)                 ours 8044  mov.b r0,@(4,r4)
+    0c1c781a  retail d20d  mov.l 0x000000000c1c7850,r2      ours d20d  mov.l 0x000000000c1c7850,r2
+PROBLEM Not an exact section match: P
+DIFFERS

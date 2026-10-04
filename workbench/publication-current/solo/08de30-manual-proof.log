@@ -1,0 +1,46 @@
+P 0x0c08de30 284 bytes: 250/284 equal, linked 288 at 0x0c08de30
+  _func_0c08de30 0x0c08de30 242 bytes: 213/242 equal
+  pool 0x0c08df22 42 bytes: 37/42 equal
+    0c08dec8  retail 8801  cmp/eq #1,r0                     ours 8801  cmp/eq #1,r0
+    0c08deca  retail 8904  bt 0x000000000c08ded6            ours 8904  bt 0x000000000c08ded6
+  ! 0c08decc  retail a007  bra 0x000000000c08dede           ours a006  bra 0x000000000c08dedc
+    0c08dece  retail 0009  nop                              ours 0009  nop
+    0c08ded0  retail c71a  mova 0x000000000c08df3c,r0       ours c71a  mova 0x000000000c08df3c,r0
+  ! 0c08ded2  retail a005  bra 0x000000000c08dee0           ours a004  bra 0x000000000c08dede
+    0c08ded4  retail f308  fmov @r0,fr3                     ours f308  fmov @r0,fr3
+    0c08ded6  retail c71a  mova 0x000000000c08df40,r0       ours c71a  mova 0x000000000c08df40,r0
+  ! 0c08ded8  retail f308  fmov @r0,fr3                     ours a001  bra 0x000000000c08dede
+  ! 0c08deda  retail a001  bra 0x000000000c08dee0           ours f308  fmov @r0,fr3
+  ! 0c08dedc  retail 0009  nop                              ours f38d  fldi0 fr3
+  ! 0c08dede  retail f38d  fldi0 fr3                        ours e05c  mov #92,r0
+  ! 0c08dee0  retail e05c  mov #92,r0                       ours fe37  fmov fr3,@(r0,r14)
+  ! 0c08dee2  retail fe37  fmov fr3,@(r0,r14)               ours 9022  mov.w 0x000000000c08df2a,r0
+  ! 0c08dee4  retail 9021  mov.w 0x000000000c08df2a,r0      ours 02ec  mov.b @(r0,r14),r2
+  ! 0c08dee6  retail 03ec  mov.b @(r0,r14),r3               ours 2228  tst r2,r2
+  ! 0c08dee8  retail 2338  tst r3,r3                        ours 8906  bt 0x000000000c08def8
+  ! 0c08deea  retail 8905  bt 0x000000000c08def8            ours d116  mov.l 0x000000000c08df44,r1
+    0c08deec  retail e05c  mov #92,r0                       ours e05c  mov #92,r0
+  ! 0c08deee  retail f39d  fldi1 fr3                        ours f2e6  fmov @(r0,r14),fr2
+  ! 0c08def0  retail f2e6  fmov @(r0,r14),fr2               ours 415a  lds r1,fpul
+  ! 0c08def2  retail f34d  fneg fr3                         ours f30d  fsts fpul,fr3
+    0c08def4  retail f232  fmul fr3,fr2                     ours f232  fmul fr3,fr2
+    0c08def6  retail fe27  fmov fr2,@(r0,r14)               ours fe27  fmov fr2,@(r0,r14)
+  ! 0c08def8  retail c712  mova 0x000000000c08df44,r0       ours c713  mova 0x000000000c08df48,r0
+    0c08defa  retail f308  fmov @r0,fr3                     ours f308  fmov @r0,fr3
+    0c08defc  retail e060  mov #96,r0                       ours e060  mov #96,r0
+    0c08defe  retail e400  mov #0,r4                        ours e400  mov #0,r4
+    0c08df00  retail fe37  fmov fr3,@(r0,r14)               ours fe37  fmov fr3,@(r0,r14)
+  ! 0c08df02  retail c711  mova 0x000000000c08df48,r0       ours c712  mova 0x000000000c08df4c,r0
+    0c08df04  retail f308  fmov @r0,fr3                     ours f308  fmov @r0,fr3
+    0c08df06  retail e06c  mov #108,r0                      ours e06c  mov #108,r0
+    ...
+    0c08df40  retail 5555  mov.l @(20,r5),r5                ours 5555  mov.l @(20,r5),r5
+    0c08df42  retail c055  mov.b r0,@(85,gbr)               ours c055  mov.b r0,@(85,gbr)
+  ! 0c08df44  retail 2492  mov.l r9,@r4                     ours 0000  error
+  ! 0c08df46  retail 4189  error                            ours bf80  bsr 0x000000000c08de4a
+    0c08df48  retail 2492  mov.l r9,@r4                     ours 2492  mov.l r9,@r4
+  ! 0c08df4a  retail bf89  bsr 0x000000000c08de60           ours 4189  error
+PROBLEM Not an exact section match: P
+PROBLEM Linked image contains extra or missing initialized bytes
+PROBLEM Linked image contains extra or missing memory bytes
+DIFFERS

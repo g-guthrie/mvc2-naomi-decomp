@@ -1,0 +1,191 @@
+Original ROM bytes. Decoding alone does not establish code boundaries.
+0c09a95c  4f22  sts.l pr,@-r15
+0c09a95e  7ffc  add #-4,r15
+0c09a960  d352  mov.l 0x000000000c09aaac,r3 ; literal at 0x0c09aaac = 0x0c02a026
+0c09a962  430b  jsr @r3
+0c09a964  2f42  mov.l r4,@r15
+0c09a966  600e  exts.b r0,r0
+0c09a968  4011  cmp/pz r0
+0c09a96a  8904  bt 0x000000000c09a976
+0c09a96c  64f2  mov.l @r15,r4
+0c09a96e  7f04  add #4,r15
+0c09a970  d34f  mov.l 0x000000000c09aab0,r3 ; literal at 0x0c09aab0 = 0x0c0437b8
+0c09a972  432b  jmp @r3
+0c09a974  4f26  lds.l @r15+,pr
+0c09a976  7f04  add #4,r15
+0c09a978  4f26  lds.l @r15+,pr
+0c09a97a  000b  rts
+0c09a97c  0009  nop
+0c09a97e  2fe6  mov.l r14,@-r15
+0c09a980  6e43  mov r4,r14
+0c09a982  84e6  mov.b @(6,r14),r0
+0c09a984  d14b  mov.l 0x000000000c09aab4,r1 ; literal at 0x0c09aab4 = 0x0c243510
+0c09a986  600c  extu.b r0,r0
+0c09a988  9587  mov.w 0x000000000c09aa9a,r5 ; literal at 0x0c09aa9a = 0x02a4
+0c09a98a  4008  shll2 r0
+0c09a98c  031e  mov.l @(r0,r1),r3
+0c09a98e  35ec  add r14,r5
+0c09a990  432b  jmp @r3
+0c09a992  6ef6  mov.l @r15+,r14
+0c09a994  2fe6  mov.l r14,@-r15
+0c09a996  6e43  mov r4,r14
+0c09a998  2fd6  mov.l r13,@-r15
+0c09a99a  4f22  sts.l pr,@-r15
+0c09a99c  84e6  mov.b @(6,r14),r0
+0c09a99e  7001  add #1,r0
+0c09a9a0  80e6  mov.b r0,@(6,r14)
+0c09a9a2  907b  mov.w 0x000000000c09aa9c,r0 ; literal at 0x0c09aa9c = 0x01a3
+0c09a9a4  03ec  mov.b @(r0,r14),r3
+0c09a9a6  2338  tst r3,r3
+0c09a9a8  8d04  bt.s 0x000000000c09a9b4
+0c09a9aa  ed00  mov #0,r13
+0c09a9ac  9077  mov.w 0x000000000c09aa9e,r0 ; literal at 0x0c09aa9e = 0x01a1
+0c09a9ae  e346  mov #70,r3
+0c09a9b0  a003  bra 0x000000000c09a9ba
+0c09a9b2  0e34  mov.b r3,@(r0,r14)
+0c09a9b4  9073  mov.w 0x000000000c09aa9e,r0 ; literal at 0x0c09aa9e = 0x01a1
+0c09a9b6  e232  mov #50,r2
+0c09a9b8  0e24  mov.b r2,@(r0,r14)
+0c09a9ba  9071  mov.w 0x000000000c09aaa0,r0 ; literal at 0x0c09aaa0 = 0x01ac
+0c09a9bc  e505  mov #5,r5
+0c09a9be  d33e  mov.l 0x000000000c09aab8,r3 ; literal at 0x0c09aab8 = 0x0c2f83f8
+0c09a9c0  0ed5  mov.w r13,@(r0,r14)
+0c09a9c2  70f2  add #-14,r0
+0c09a9c4  0ed4  mov.b r13,@(r0,r14)
+0c09a9c6  7026  add #38,r0
+0c09a9c8  0ed6  mov.l r13,@(r0,r14)
+0c09a9ca  84e2  mov.b @(2,r14),r0
+0c09a9cc  6232  mov.l @r3,r2
+0c09a9ce  600c  extu.b r0,r0
+0c09a9d0  d33a  mov.l 0x000000000c09aabc,r3 ; literal at 0x0c09aabc = 0x0c048bb0
+0c09a9d2  4000  shll r0
+0c09a9d4  727c  add #124,r2
+0c09a9d6  012d  mov.w @(r0,r2),r1
+0c09a9d8  7101  add #1,r1
+0c09a9da  0215  mov.w r1,@(r0,r2)
+0c09a9dc  430b  jsr @r3
+0c09a9de  64e3  mov r14,r4
+0c09a9e0  d237  mov.l 0x000000000c09aac0,r2 ; literal at 0x0c09aac0 = 0x0c0442fa
+0c09a9e2  420b  jsr @r2
+0c09a9e4  64e3  mov r14,r4
+0c09a9e6  905c  mov.w 0x000000000c09aaa2,r0 ; literal at 0x0c09aaa2 = 0x041c
+0c09a9e8  f48d  fldi0 fr4
+0c09a9ea  f3e6  fmov @(r0,r14),fr3
+0c09a9ec  e038  mov #56,r0
+0c09a9ee  d335  mov.l 0x000000000c09aac4,r3 ; literal at 0x0c09aac4 = 0x0c0432ca
+0c09a9f0  fe37  fmov fr3,@(r0,r14)
+0c09a9f2  9057  mov.w 0x000000000c09aaa4,r0 ; literal at 0x0c09aaa4 = 0x01f9
+0c09a9f4  0ed4  mov.b r13,@(r0,r14)
+0c09a9f6  e05c  mov #92,r0
+0c09a9f8  fe47  fmov fr4,@(r0,r14)
+0c09a9fa  e060  mov #96,r0
+0c09a9fc  fe47  fmov fr4,@(r0,r14)
+0c09a9fe  e068  mov #104,r0
+0c09aa00  fe47  fmov fr4,@(r0,r14)
+0c09aa02  e06c  mov #108,r0
+0c09aa04  fe47  fmov fr4,@(r0,r14)
+0c09aa06  430b  jsr @r3
+0c09aa08  64e3  mov r14,r4
+0c09aa0a  d22f  mov.l 0x000000000c09aac8,r2 ; literal at 0x0c09aac8 = 0x0c02a39a
+0c09aa0c  e500  mov #0,r5
+0c09aa0e  420b  jsr @r2
+0c09aa10  64e3  mov r14,r4
+0c09aa12  4f26  lds.l @r15+,pr
+0c09aa14  d32d  mov.l 0x000000000c09aacc,r3 ; literal at 0x0c09aacc = 0x0c02a0c4
+0c09aa16  e605  mov #5,r6
+0c09aa18  e515  mov #21,r5
+0c09aa1a  64e3  mov r14,r4
+0c09aa1c  6df6  mov.l @r15+,r13
+0c09aa1e  432b  jmp @r3
+0c09aa20  6ef6  mov.l @r15+,r14
+0c09aa22  2fe6  mov.l r14,@-r15
+0c09aa24  4f22  sts.l pr,@-r15
+0c09aa26  d321  mov.l 0x000000000c09aaac,r3 ; literal at 0x0c09aaac = 0x0c02a026
+0c09aa28  430b  jsr @r3
+0c09aa2a  6e43  mov r4,r14
+0c09aa2c  600e  exts.b r0,r0
+0c09aa2e  4011  cmp/pz r0
+0c09aa30  8b19  bf 0x000000000c09aa66
+0c09aa32  9038  mov.w 0x000000000c09aaa6,r0 ; literal at 0x0c09aaa6 = 0x0141
+0c09aa34  03ec  mov.b @(r0,r14),r3
+0c09aa36  2338  tst r3,r3
+0c09aa38  8923  bt 0x000000000c09aa82
+0c09aa3a  e300  mov #0,r3
+0c09aa3c  0e34  mov.b r3,@(r0,r14)
+0c09aa3e  7062  add #98,r0
+0c09aa40  02ec  mov.b @(r0,r14),r2
+0c09aa42  2228  tst r2,r2
+0c09aa44  8d02  bt.s 0x000000000c09aa4c
+0c09aa46  64e3  mov r14,r4
+0c09aa48  a001  bra 0x000000000c09aa4e
+0c09aa4a  e502  mov #2,r5
+0c09aa4c  e500  mov #0,r5
+0c09aa4e  d320  mov.l 0x000000000c09aad0,r3 ; literal at 0x0c09aad0 = 0x0c1476d0
+0c09aa50  430b  jsr @r3
+0c09aa52  0009  nop
+0c09aa54  9028  mov.w 0x000000000c09aaa8,r0 ; literal at 0x0c09aaa8 = 0x027b
+0c09aa56  e200  mov #0,r2
+0c09aa58  e310  mov #16,r3
+0c09aa5a  0e24  mov.b r2,@(r0,r14)
+0c09aa5c  70ff  add #-1,r0
+0c09aa5e  0e34  mov.b r3,@(r0,r14)
+0c09aa60  4f26  lds.l @r15+,pr
+0c09aa62  000b  rts
+0c09aa64  6ef6  mov.l @r15+,r14
+0c09aa66  e05c  mov #92,r0
+0c09aa68  f48d  fldi0 fr4
+0c09aa6a  fe47  fmov fr4,@(r0,r14)
+0c09aa6c  e060  mov #96,r0
+0c09aa6e  fe47  fmov fr4,@(r0,r14)
+0c09aa70  e068  mov #104,r0
+0c09aa72  fe47  fmov fr4,@(r0,r14)
+0c09aa74  e06c  mov #108,r0
+0c09aa76  d30e  mov.l 0x000000000c09aab0,r3 ; literal at 0x0c09aab0 = 0x0c0437b8
+0c09aa78  64e3  mov r14,r4
+0c09aa7a  fe47  fmov fr4,@(r0,r14)
+0c09aa7c  4f26  lds.l @r15+,pr
+0c09aa7e  432b  jmp @r3
+0c09aa80  6ef6  mov.l @r15+,r14
+0c09aa82  4f26  lds.l @r15+,pr
+0c09aa84  000b  rts
+0c09aa86  6ef6  mov.l @r15+,r14
+0c09aa88  6343  mov r4,r3
+0c09aa8a  d112  mov.l 0x000000000c09aad4,r1 ; literal at 0x0c09aad4 = 0x0c243518
+0c09aa8c  2f46  mov.l r4,@-r15
+0c09aa8e  8436  mov.b @(6,r3),r0
+0c09aa90  600c  extu.b r0,r0
+0c09aa92  4008  shll2 r0
+0c09aa94  031e  mov.l @(r0,r1),r3
+0c09aa96  432b  jmp @r3
+0c09aa98  7f04  add #4,r15
+0c09aa9a  02a4  mov.b r10,@(r0,r2)
+0c09aa9c  01a3  ocbp @r1
+0c09aa9e  01a1  error
+0c09aaa0  01ac  mov.b @(r0,r10),r1
+0c09aaa2  041c  mov.b @(r0,r1),r4
+0c09aaa4  01f9  error
+0c09aaa6  0141  error
+0c09aaa8  027b  error
+0c09aaaa  0000  error
+0c09aaac  a026  bra 0x000000000c09aafc
+0c09aaae  0c02  stc sr,r12
+0c09aab0  37b8  sub r11,r7
+0c09aab2  0c04  mov.b r0,@(r0,r12)
+0c09aab4  3510  cmp/eq r1,r5
+0c09aab6  0c24  mov.b r2,@(r0,r12)
+0c09aab8  83f8  error
+0c09aaba  0c2f  mac.l @r2+,@r12+
+0c09aabc  8bb0  bf 0x000000000c09aa20
+0c09aabe  0c04  mov.b r0,@(r0,r12)
+0c09aac0  42fa  ldc r2,dbr
+0c09aac2  0c04  mov.b r0,@(r0,r12)
+0c09aac4  32ca  subc r12,r2
+0c09aac6  0c04  mov.b r0,@(r0,r12)
+0c09aac8  a39a  bra 0x000000000c09b200
+0c09aaca  0c02  stc sr,r12
+0c09aacc  a0c4  bra 0x000000000c09ac58
+0c09aace  0c02  stc sr,r12
+0c09aad0  76d0  add #-48,r6
+0c09aad2  0c14  mov.b r1,@(r0,r12)
+0c09aad4  3518  sub r1,r5
+0c09aad6  0c24  mov.b r2,@(r0,r12)

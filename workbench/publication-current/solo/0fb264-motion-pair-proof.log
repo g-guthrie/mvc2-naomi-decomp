@@ -1,0 +1,22 @@
+P 0x0c0fb264 396 bytes: 388/396 equal, linked 396 at 0x0c0fb264
+  _func_0c0fb264 0x0c0fb264 80 bytes: 80/80 equal
+  _func_0c0fb2b4 0x0c0fb2b4 164 bytes: 164/164 equal
+  _func_0c0fb358 0x0c0fb358 98 bytes: 92/98 equal
+  pool 0x0c0fb3ba 54 bytes: 52/54 equal
+    0c0fb38c  retail f230  fadd fr3,fr2                     ours f230  fadd fr3,fr2
+    0c0fb38e  retail f427  fmov fr2,@(r0,r4)                ours f427  fmov fr2,@(r0,r4)
+  ! 0c0fb390  retail 9014  mov.w 0x000000000c0fb3bc,r0      ours e038  mov #56,r0
+    0c0fb392  retail f346  fmov @(r0,r4),fr3                ours f346  fmov @(r0,r4),fr3
+  ! 0c0fb394  retail e038  mov #56,r0                       ours 9012  mov.w 0x000000000c0fb3bc,r0
+    0c0fb396  retail f246  fmov @(r0,r4),fr2                ours f246  fmov @(r0,r4),fr2
+  ! 0c0fb398  retail f235  fcmp/gt fr3,fr2                  ours f325  fcmp/gt fr2,fr3
+    0c0fb39a  retail 890c  bt 0x000000000c0fb3b6            ours 890c  bt 0x000000000c0fb3b6
+    0c0fb39c  retail 8445  mov.b @(5,r4),r0                 ours 8445  mov.b @(5,r4),r0
+    ...
+    0c0fb3c4  retail 8338  error                            ours 8338  error
+    0c0fb3c6  retail 0c2f  mac.l @r2+,@r12+                 ours 0c2f  mac.l @r2+,@r12+
+  ! 0c0fb3c8  retail 6db6  mov.l @r11+,r13                  ours b66d  bsr 0x000000000c0fc0a6
+    0c0fb3ca  retail c1ab  mov.w r0,@(342,gbr)              ours c1ab  mov.w r0,@(342,gbr)
+    0c0fb3cc  retail 5555  mov.l @(20,r5),r5                ours 5555  mov.l @(20,r5),r5
+PROBLEM Not an exact section match: P
+DIFFERS

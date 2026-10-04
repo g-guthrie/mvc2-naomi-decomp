@@ -1,0 +1,34 @@
+P 0x0c0d6d68 924 bytes: 917/924 equal, linked 924 at 0x0c0d6d68
+  _func_0c0d6d68 0x0c0d6d68 28 bytes: 28/28 equal
+  _func_0c0d6d84 0x0c0d6d84 150 bytes: 150/150 equal
+  _func_0c0d6e1a 0x0c0d6e1a 94 bytes: 92/94 equal
+  _func_0c0d6ea4 0x0c0d6ea4 70 bytes: 70/70 equal
+  _func_0c0d6eea 0x0c0d6eea 94 bytes: 89/94 equal
+  _func_0c0d6f48 0x0c0d6f48 80 bytes: 80/80 equal
+  _func_0c0d6fc4 0x0c0d6fc4 80 bytes: 80/80 equal
+  _func_0c0d7014 0x0c0d7014 80 bytes: 80/80 equal
+  _func_0c0d7064 0x0c0d7064 64 bytes: 64/64 equal
+  _func_0c0d70a4 0x0c0d70a4 58 bytes: 58/58 equal
+  pool 0x0c0d6e4c 44 bytes: 44/44 equal
+  pool 0x0c0d6f98 44 bytes: 44/44 equal
+  pool 0x0c0d70de 38 bytes: 38/38 equal
+    0c0d6e36  retail 2008  tst r0,r0                        ours 2008  tst r0,r0
+    0c0d6e38  retail 8903  bt 0x000000000c0d6e42            ours 8903  bt 0x000000000c0d6e42
+  ! 0c0d6e3a  retail 62f2  mov.l @r15,r2                    ours 63f2  mov.l @r15,r3
+  ! 0c0d6e3c  retail 8422  mov.b @(2,r2),r0                 ours 8432  mov.b @(2,r3),r0
+    0c0d6e3e  retail 2008  tst r0,r0                        ours 2008  tst r0,r0
+    0c0d6e40  retail 891a  bt 0x000000000c0d6e78            ours 891a  bt 0x000000000c0d6e78
+    ...
+    0c0d6efe  retail 890c  bt 0x000000000c0d6f1a            ours 890c  bt 0x000000000c0d6f1a
+    0c0d6f00  retail 954d  mov.w 0x000000000c0d6f9e,r5      ours 954d  mov.w 0x000000000c0d6f9e,r5
+  ! 0c0d6f02  retail d229  mov.l 0x000000000c0d6fa8,r2      ours d329  mov.l 0x000000000c0d6fa8,r3
+    0c0d6f04  retail 35ec  add r14,r5                       ours 35ec  add r14,r5
+  ! 0c0d6f06  retail 420b  jsr @r2                          ours 430b  jsr @r3
+    0c0d6f08  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+    0c0d6f0a  retail 9049  mov.w 0x000000000c0d6fa0,r0      ours 9049  mov.w 0x000000000c0d6fa0,r0
+  ! 0c0d6f0c  retail 03ec  mov.b @(r0,r14),r3               ours 02ec  mov.b @(r0,r14),r2
+  ! 0c0d6f0e  retail 2338  tst r3,r3                        ours 2228  tst r2,r2
+    0c0d6f10  retail 8907  bt 0x000000000c0d6f22            ours 8907  bt 0x000000000c0d6f22
+    0c0d6f12  retail 9046  mov.w 0x000000000c0d6fa2,r0      ours 9046  mov.w 0x000000000c0d6fa2,r0
+PROBLEM Not an exact section match: P
+DIFFERS

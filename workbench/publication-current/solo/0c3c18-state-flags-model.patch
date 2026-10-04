@@ -1,0 +1,11 @@
+diff --git a/src/include/objects.h b/src/include/objects.h
+index 81eec29..9595dac 100644
+--- a/src/include/objects.h
++++ b/src/include/objects.h
+@@ -625,3 +625,6 @@ struct SelectionFlags59e8 {
+ };
+ 
+ #endif
++
++/* Byte flags at offsets 7 through 9 of the action state record. */
++struct ActorSubFlags10 { unsigned char pad[7]; char b7; unsigned char b8,b9; };

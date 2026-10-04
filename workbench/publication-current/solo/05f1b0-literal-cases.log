@@ -1,0 +1,61 @@
+STRICT False ['Wrong exported symbol address: _func_0c05f25a', 'Not an exact section match: P', 'Linked image contains extra or missing initialized bytes', 'Linked image contains extra or missing memory bytes']
+[(236, 0)]
+[('_func_0c05f1b0', 12, 14), ('_func_0c05f1be', 44, 48), ('_func_0c05f1ee', 44, 48), ('_func_0c05f21e', 36, 60), ('_func_0c05f25a', 3, 60)]
+0c05f1b0 906a mov.w 0x000000000c05f288,r0         | 906b mov.w 0x000000000c05f28a,r0
+0c05f1b6 d336 mov.l 0x000000000c05f290,r3         | d337 mov.l 0x000000000c05f294,r3
+0c05f1c6 9060 mov.w 0x000000000c05f28a,r0         | 9061 mov.w 0x000000000c05f28c,r0
+0c05f1dc 9056 mov.w 0x000000000c05f28c,r0         | 9057 mov.w 0x000000000c05f28e,r0
+0c05f1e4 9052 mov.w 0x000000000c05f28c,r0         | 9053 mov.w 0x000000000c05f28e,r0
+0c05f1e8 d22a mov.l 0x000000000c05f294,r2         | d22b mov.l 0x000000000c05f298,r2
+0c05f1f6 9048 mov.w 0x000000000c05f28a,r0         | 9049 mov.w 0x000000000c05f28c,r0
+0c05f20c 903e mov.w 0x000000000c05f28c,r0         | 903f mov.w 0x000000000c05f28e,r0
+0c05f214 903a mov.w 0x000000000c05f28c,r0         | 903b mov.w 0x000000000c05f28e,r0
+0c05f218 d21e mov.l 0x000000000c05f294,r2         | d21f mov.l 0x000000000c05f298,r2
+0c05f22a 902e mov.w 0x000000000c05f28a,r0         | 902f mov.w 0x000000000c05f28c,r0
+0c05f23a 8907 bt 0x000000000c05f24c               | 8904 bt 0x000000000c05f246
+0c05f23c a00a bra 0x000000000c05f254              | a007 bra 0x000000000c05f24e
+0c05f240 9024 mov.w 0x000000000c05f28c,r0         | 9025 mov.w 0x000000000c05f28e,r0
+0c05f242 a005 bra 0x000000000c05f250              | a002 bra 0x000000000c05f24a
+0c05f246 9021 mov.w 0x000000000c05f28c,r0         | 9022 mov.w 0x000000000c05f28e,r0
+0c05f248 a002 bra 0x000000000c05f250              | 0454 mov.b r5,@(r0,r4)
+0c05f24a 0454 mov.b r5,@(r0,r4)                   | 9021 mov.w 0x000000000c05f290,r0
+0c05f24c 901e mov.w 0x000000000c05f28c,r0         | 0464 mov.b r6,@(r0,r4)
+0c05f24e 0454 mov.b r5,@(r0,r4)                   | d212 mov.l 0x000000000c05f298,r2
+0c05f250 901d mov.w 0x000000000c05f28e,r0         | 422b jmp @r2
+0c05f252 0464 mov.b r6,@(r0,r4)                   | e515 mov #21,r5
+0c05f254 d20f mov.l 0x000000000c05f294,r2         | e600 mov #0,r6
+0c05f256 422b jmp @r2                             | 6063 mov r6,r0
+0c05f258 e515 mov #21,r5                          | 0009 nop
+0c05f25a e500 mov #0,r5                           | 8045 mov.b r0,@(5,r4)
+0c05f25c 6053 mov r5,r0                           | 8047 mov.b r0,@(7,r4)
+0c05f25e 0009 nop                                 | 8046 mov.b r0,@(6,r4)
+0c05f260 8045 mov.b r0,@(5,r4)                    | 9014 mov.w 0x000000000c05f28c,r0
+0c05f262 8047 mov.b r0,@(7,r4)                    | 004c mov.b @(r0,r4),r0
+0c05f264 8046 mov.b r0,@(6,r4)                    | 8800 cmp/eq #0,r0
+0c05f266 9010 mov.w 0x000000000c05f28a,r0         | 8d09 bt.s 0x000000000c05f27c
+0c05f268 004c mov.b @(r0,r4),r0                   | e501 mov #1,r5
+0c05f26a 8800 cmp/eq #0,r0                        | 8801 cmp/eq #1,r0
+0c05f26c 8d06 bt.s 0x000000000c05f27c             | 8903 bt 0x000000000c05f276
+0c05f26e e601 mov #1,r6                           | 8802 cmp/eq #2,r0
+0c05f270 8801 cmp/eq #1,r0                        | 8904 bt 0x000000000c05f27c
+0c05f272 8906 bt 0x000000000c05f282               | a007 bra 0x000000000c05f284
+0c05f274 8802 cmp/eq #2,r0                        | 0009 nop
+0c05f276 890f bt 0x000000000c05f298               | 900a mov.w 0x000000000c05f28e,r0
+0c05f278 a012 bra 0x000000000c05f2a0              | a002 bra 0x000000000c05f280
+0c05f27a 0009 nop                                 | 0464 mov.b r6,@(r0,r4)
+0c05f27c 9006 mov.w 0x000000000c05f28c,r0         | 9007 mov.w 0x000000000c05f28e,r0
+0c05f27e a00d bra 0x000000000c05f29c              | 0454 mov.b r5,@(r0,r4)
+0c05f280 0464 mov.b r6,@(r0,r4)                   | 9006 mov.w 0x000000000c05f290,r0
+0c05f282 9003 mov.w 0x000000000c05f28c,r0         | 0454 mov.b r5,@(r0,r4)
+0c05f284 a00a bra 0x000000000c05f29c              | d204 mov.l 0x000000000c05f298,r2
+0c05f286 0454 mov.b r5,@(r0,r4)                   | 422b jmp @r2
+0c05f288 01c8 error                               | e515 mov #21,r5
+0c05f28a 04c9 error                               | 01c8 error
+0c05f28c 01e9 error                               | 04c9 error
+0c05f28e 01a3 ocbp @r1                            | 01e9 error
+0c05f290 edcc mov #-52,r13                        | 01a3 ocbp @r1
+0c05f292 0c03 bsrf r12                            | 0000 error
+0c05f294 5248 mov.l @(32,r4),r2                   | edcc mov #-52,r13
+0c05f296 0c04 mov.b r0,@(r0,r12)                  | 0c03 bsrf r12
+0c05f298 9005 mov.w 0x000000000c05f2a6,r0         | 5248 mov.l @(32,r4),r2
+0c05f29a 0464 mov.b r6,@(r0,r4)                   | 0c04 mov.b r0,@(r0,r12)

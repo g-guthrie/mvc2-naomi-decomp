@@ -1,0 +1,140 @@
+P 0x0c0f85b8 272 bytes: 45/272 equal, linked 280 at 0x0c0f85b8
+  _func_0c0f85b8 0x0c0f85b8 238 bytes: 45/238 equal
+  pool 0x0c0f86a6 34 bytes: 0/34 equal
+  ! 0c0f85b8  retail 9075  mov.w 0x000000000c0f86a6,r0      ours 907c  mov.w 0x000000000c0f86b4,r0
+    0c0f85ba  retail 2fe6  mov.l r14,@-r15                  ours 2fe6  mov.l r14,@-r15
+    0c0f85bc  retail 6e43  mov r4,r14                       ours 6e43  mov r4,r14
+    ...
+    0c0f85c6  retail 8d0c  bt.s 0x000000000c0f85e2          ours 8d0c  bt.s 0x000000000c0f85e2
+    0c0f85c8  retail ed00  mov #0,r13                       ours ed00  mov #0,r13
+  ! 0c0f85ca  retail 906d  mov.w 0x000000000c0f86a8,r0      ours 9074  mov.w 0x000000000c0f86b6,r0
+  ! 0c0f85cc  retail 926d  mov.w 0x000000000c0f86aa,r2      ours 9274  mov.w 0x000000000c0f86b8,r2
+    0c0f85ce  retail 03ed  mov.w @(r0,r14),r3               ours 03ed  mov.w @(r0,r14),r3
+    0c0f85d0  retail 633d  extu.w r3,r3                     ours 633d  extu.w r3,r3
+    0c0f85d2  retail 3320  cmp/eq r2,r3                     ours 3320  cmp/eq r2,r3
+    0c0f85d4  retail 8905  bt 0x000000000c0f85e2            ours 8905  bt 0x000000000c0f85e2
+  ! 0c0f85d6  retail 9066  mov.w 0x000000000c0f86a6,r0      ours 906d  mov.w 0x000000000c0f86b4,r0
+    0c0f85d8  retail e500  mov #0,r5                        ours e500  mov #0,r5
+  ! 0c0f85da  retail d339  mov.l 0x000000000c0f86c0,r3      ours d33b  mov.l 0x000000000c0f86c8,r3
+    0c0f85dc  retail 0ed4  mov.b r13,@(r0,r14)              ours 0ed4  mov.b r13,@(r0,r14)
+    0c0f85de  retail 430b  jsr @r3                          ours 430b  jsr @r3
+    0c0f85e0  retail 64e3  mov r14,r4                       ours 64e3  mov r14,r4
+  ! 0c0f85e2  retail 9063  mov.w 0x000000000c0f86ac,r0      ours 9367  mov.w 0x000000000c0f86b4,r3
+    0c0f85e4  retail e202  mov #2,r2                        ours e202  mov #2,r2
+  ! 0c0f85e6  retail 0e25  mov.w r2,@(r0,r14)               ours 9068  mov.w 0x000000000c0f86ba,r0
+  ! 0c0f85e8  retail 9061  mov.w 0x000000000c0f86ae,r0      ours 33ec  add r14,r3
+  ! 0c0f85ea  retail 03ec  mov.b @(r0,r14),r3               ours 0e25  mov.w r2,@(r0,r14)
+  ! 0c0f85ec  retail 2338  tst r3,r3                        ours 8434  mov.b @(4,r3),r0
+  ! 0c0f85ee  retail 8b0f  bf 0x000000000c0f8610            ours 2008  tst r0,r0
+  ! 0c0f85f0  retail 905e  mov.w 0x000000000c0f86b0,r0      ours 8b0f  bf 0x000000000c0f8612
+  ! 0c0f85f2  retail 03ec  mov.b @(r0,r14),r3               ours 925f  mov.w 0x000000000c0f86b4,r2
+  ! 0c0f85f4  retail 2338  tst r3,r3                        ours 32ec  add r14,r2
+  ! 0c0f85f6  retail 8952  bt 0x000000000c0f869e            ours 8425  mov.b @(5,r2),r0
+  ! 0c0f85f8  retail 9059  mov.w 0x000000000c0f86ae,r0      ours 2008  tst r0,r0
+  ! 0c0f85fa  retail 9454  mov.w 0x000000000c0f86a6,r4      ours 8957  bt 0x000000000c0f86ac
+  ! 0c0f85fc  retail 03ec  mov.b @(r0,r14),r3               ours 935a  mov.w 0x000000000c0f86b4,r3
+  ! 0c0f85fe  retail 34ec  add r14,r4                       ours 33ec  add r14,r3
+  ! 0c0f8600  retail 7301  add #1,r3                        ours 8434  mov.b @(4,r3),r0
+  ! 0c0f8602  retail 0e34  mov.b r3,@(r0,r14)               ours 7001  add #1,r0
+  ! 0c0f8604  retail 9055  mov.w 0x000000000c0f86b2,r0      ours 8034  mov.b r0,@(4,r3)
+  ! 0c0f8606  retail 0ed4  mov.b r13,@(r0,r14)              ours 9059  mov.w 0x000000000c0f86bc,r0
+  ! 0c0f8608  retail 60d3  mov r13,r0                       ours 0ed4  mov.b r13,@(r0,r14)
+  ! 0c0f860a  retail 0009  nop                              ours 9058  mov.w 0x000000000c0f86be,r0
+  ! 0c0f860c  retail 8046  mov.b r0,@(6,r4)                 ours 0ed4  mov.b r13,@(r0,r14)
+  ! 0c0f860e  retail 8047  mov.b r0,@(7,r4)                 ours 7001  add #1,r0
+  ! 0c0f8610  retail 904d  mov.w 0x000000000c0f86ae,r0      ours 0ed4  mov.b r13,@(r0,r14)
+  ! 0c0f8612  retail 03ec  mov.b @(r0,r14),r3               ours 934f  mov.w 0x000000000c0f86b4,r3
+  ! 0c0f8614  retail 2338  tst r3,r3                        ours 33ec  add r14,r3
+  ! 0c0f8616  retail 8942  bt 0x000000000c0f869e            ours 8434  mov.b @(4,r3),r0
+  ! 0c0f8618  retail 904c  mov.w 0x000000000c0f86b4,r0      ours 2008  tst r0,r0
+  ! 0c0f861a  retail 03ed  mov.w @(r0,r14),r3               ours 8947  bt 0x000000000c0f86ac
+  ! 0c0f861c  retail 2338  tst r3,r3                        ours 9050  mov.w 0x000000000c0f86c0,r0
+  ! 0c0f861e  retail 890c  bt 0x000000000c0f863a            ours 02ed  mov.w @(r0,r14),r2
+  ! 0c0f8620  retail 9046  mov.w 0x000000000c0f86b0,r0      ours 2228  tst r2,r2
+  ! 0c0f8622  retail 02ec  mov.b @(r0,r14),r2               ours 890d  bt 0x000000000c0f8640
+  ! 0c0f8624  retail 2228  tst r2,r2                        ours 9246  mov.w 0x000000000c0f86b4,r2
+  ! 0c0f8626  retail 8b17  bf 0x000000000c0f8658            ours 32ec  add r14,r2
+  ! 0c0f8628  retail 9045  mov.w 0x000000000c0f86b6,r0      ours 8425  mov.b @(5,r2),r0
+  ! 0c0f862a  retail 02ec  mov.b @(r0,r14),r2               ours 2008  tst r0,r0
+  ! 0c0f862c  retail 2228  tst r2,r2                        ours 8b19  bf 0x000000000c0f8662
+  ! 0c0f862e  retail 8b04  bf 0x000000000c0f863a            ours 9046  mov.w 0x000000000c0f86be,r0
+  ! 0c0f8630  retail 9042  mov.w 0x000000000c0f86b8,r0      ours 03ec  mov.b @(r0,r14),r3
+  ! 0c0f8632  retail 00ec  mov.b @(r0,r14),r0               ours 2338  tst r3,r3
+  ! 0c0f8634  retail 600c  extu.b r0,r0                     ours 8b04  bf 0x000000000c0f8640
+  ! 0c0f8636  retail c8e0  tst #-32,r0                      ours 9044  mov.w 0x000000000c0f86c2,r0
+  ! 0c0f8638  retail 8b0e  bf 0x000000000c0f8658            ours 00ec  mov.b @(r0,r14),r0
+  ! 0c0f863a  retail 9434  mov.w 0x000000000c0f86a6,r4      ours 600c  extu.b r0,r0
+  ! 0c0f863c  retail 34ec  add r14,r4                       ours c8e0  tst #-32,r0
+  ! 0c0f863e  retail 60d3  mov r13,r0                       ours 8b10  bf 0x000000000c0f8662
+  ! 0c0f8640  retail 0009  nop                              ours 9338  mov.w 0x000000000c0f86b4,r3
+  ! 0c0f8642  retail 8045  mov.b r0,@(5,r4)                 ours 33ec  add r14,r3
+  ! 0c0f8644  retail e500  mov #0,r5                        ours 60d3  mov r13,r0
+  ! 0c0f8646  retail 8044  mov.b r0,@(4,r4)                 ours 0009  nop
+  ! 0c0f8648  retail 64e3  mov r14,r4                       ours 8035  mov.b r0,@(5,r3)
+  ! 0c0f864a  retail 9036  mov.w 0x000000000c0f86ba,r0      ours 64e3  mov r14,r4
+  ! 0c0f864c  retail d31c  mov.l 0x000000000c0f86c0,r3      ours 9332  mov.w 0x000000000c0f86b4,r3
+  ! 0c0f864e  retail 0ed4  mov.b r13,@(r0,r14)              ours e500  mov #0,r5
+  ! 0c0f8650  retail 4f26  lds.l @r15+,pr                   ours 33ec  add r14,r3
+  ! 0c0f8652  retail 6df6  mov.l @r15+,r13                  ours 8034  mov.b r0,@(4,r3)
+  ! 0c0f8654  retail 432b  jmp @r3                          ours 9036  mov.w 0x000000000c0f86c4,r0
+  ! 0c0f8656  retail 6ef6  mov.l @r15+,r14                  ours d31c  mov.l 0x000000000c0f86c8,r3
+  ! 0c0f8658  retail 902b  mov.w 0x000000000c0f86b2,r0      ours 0ed4  mov.b r13,@(r0,r14)
+  ! 0c0f865a  retail 02ec  mov.b @(r0,r14),r2               ours 4f26  lds.l @r15+,pr
+  ! 0c0f865c  retail 2228  tst r2,r2                        ours 6df6  mov.l @r15+,r13
+  ! 0c0f865e  retail 8904  bt 0x000000000c0f866a            ours 432b  jmp @r3
+  ! 0c0f8660  retail 902b  mov.w 0x000000000c0f86ba,r0      ours 6ef6  mov.l @r15+,r14
+  ! 0c0f8662  retail e3ff  mov #-1,r3                       ours 902b  mov.w 0x000000000c0f86bc,r0
+  ! 0c0f8664  retail 0ed4  mov.b r13,@(r0,r14)              ours 02ec  mov.b @(r0,r14),r2
+  ! 0c0f8666  retail 9026  mov.w 0x000000000c0f86b6,r0      ours 2228  tst r2,r2
+  ! 0c0f8668  retail 0e34  mov.b r3,@(r0,r14)               ours 8904  bt 0x000000000c0f8674
+  ! 0c0f866a  retail 9027  mov.w 0x000000000c0f86bc,r0      ours 902b  mov.w 0x000000000c0f86c4,r0
+  ! 0c0f866c  retail e701  mov #1,r7                        ours e3ff  mov #-1,r3
+  ! 0c0f866e  retail e500  mov #0,r5                        ours 0ed4  mov.b r13,@(r0,r14)
+  ! 0c0f8670  retail 64e3  mov r14,r4                       ours 9025  mov.w 0x000000000c0f86be,r0
+  ! 0c0f8672  retail 03ec  mov.b @(r0,r14),r3               ours 0e34  mov.b r3,@(r0,r14)
+  ! 0c0f8674  retail 7301  add #1,r3                        ours 9027  mov.w 0x000000000c0f86c6,r0
+  ! 0c0f8676  retail 0e34  mov.b r3,@(r0,r14)               ours 64e3  mov r14,r4
+  ! 0c0f8678  retail e307  mov #7,r3                        ours e701  mov #1,r7
+  ! 0c0f867a  retail 02ec  mov.b @(r0,r14),r2               ours 03ec  mov.b @(r0,r14),r3
+  ! 0c0f867c  retail 2239  and r3,r2                        ours e500  mov #0,r5
+  ! 0c0f867e  retail 0e24  mov.b r2,@(r0,r14)               ours 7301  add #1,r3
+  ! 0c0f8680  retail 06ec  mov.b @(r0,r14),r6               ours 0e34  mov.b r3,@(r0,r14)
+  ! 0c0f8682  retail e025  mov #37,r0                       ours e307  mov #7,r3
+    0c0f8684  retail 02ec  mov.b @(r0,r14),r2               ours 02ec  mov.b @(r0,r14),r2
+  ! 0c0f8686  retail 4f26  lds.l @r15+,pr                   ours 2239  and r3,r2
+  ! 0c0f8688  retail 622c  extu.b r2,r2                     ours 0e24  mov.b r2,@(r0,r14)
+  ! 0c0f868a  retail 6123  mov r2,r1                        ours 62e3  mov r14,r2
+  ! 0c0f868c  retail 4208  shll2 r2                         ours 7219  add #25,r2
+  ! 0c0f868e  retail 321c  add r1,r2                        ours 06ec  mov.b @(r0,r14),r6
+  ! 0c0f8690  retail 6df6  mov.l @r15+,r13                  ours 6120  mov.b @r2,r1
+  ! 0c0f8692  retail 4200  shll r2                          ours 4f26  lds.l @r15+,pr
+  ! 0c0f8694  retail 362c  add r2,r6                        ours 611c  extu.b r1,r1
+  ! 0c0f8696  retail d20b  mov.l 0x000000000c0f86c4,r2      ours 6213  mov r1,r2
+  ! 0c0f8698  retail 7602  add #2,r6                        ours 4108  shll2 r1
+  ! 0c0f869a  retail 422b  jmp @r2                          ours 312c  add r2,r1
+  ! 0c0f869c  retail 6ef6  mov.l @r15+,r14                  ours 6df6  mov.l @r15+,r13
+  ! 0c0f869e  retail 4f26  lds.l @r15+,pr                   ours 4100  shll r1
+  ! 0c0f86a0  retail 6df6  mov.l @r15+,r13                  ours 666c  extu.b r6,r6
+  ! 0c0f86a2  retail 000b  rts                              ours 361c  add r1,r6
+  ! 0c0f86a4  retail 6ef6  mov.l @r15+,r14                  ours d109  mov.l 0x000000000c0f86cc,r1
+  ! 0c0f86a6  retail 02a4  mov.b r10,@(r0,r2)               ours 7602  add #2,r6
+  ! 0c0f86a8  retail 0158  error                            ours 412b  jmp @r1
+  ! 0c0f86aa  retail 1600  mov.l r0,@(0,r6)                 ours 6ef6  mov.l @r15+,r14
+  ! 0c0f86ac  retail 03e4  mov.b r14,@(r0,r3)               ours 4f26  lds.l @r15+,pr
+  ! 0c0f86ae  retail 02a8  error                            ours 6df6  mov.l @r15+,r13
+  ! 0c0f86b0  retail 02a9  error                            ours 000b  rts
+  ! 0c0f86b2  retail 019e  mov.l @(r0,r9),r1                ours 6ef6  mov.l @r15+,r14
+  ! 0c0f86b4  retail 0420  error                            ours 02a4  mov.b r10,@(r0,r2)
+  ! 0c0f86b6  retail 02aa  error                            ours 0158  error
+  ! 0c0f86b8  retail 014a  error                            ours 1600  mov.l r0,@(0,r6)
+  ! 0c0f86ba  retail 0205  mov.w r0,@(r0,r2)                ours 03e4  mov.b r14,@(r0,r3)
+  ! 0c0f86bc  retail 02ab  error                            ours 019e  mov.l @(r0,r9),r1
+  ! 0c0f86be  retail 0000  error                            ours 02aa  error
+  ! 0c0f86c0  retail a39a  bra 0x000000000c0f8df8           ours 0420  error
+  ! 0c0f86c2  retail 0c02  stc sr,r12                       ours 014a  error
+  ! 0c0f86c4  retail a684  bra 0x000000000c0f93d0           ours 0205  mov.w r0,@(r0,r2)
+  ! 0c0f86c6  retail 0c02  stc sr,r12                       ours 02ab  error
+PROBLEM Not an exact section match: P
+PROBLEM Linked image contains extra or missing initialized bytes
+PROBLEM Linked image contains extra or missing memory bytes
+DIFFERS

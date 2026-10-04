@@ -1,0 +1,19 @@
+P 0x0c0aea74 312 bytes: 306/312 equal, linked 556 at 0x0c0aea74
+  _func_0c0aea74 0x0c0aea74 42 bytes: 42/42 equal
+  _func_0c0aea9e 0x0c0aea9e 18 bytes: 18/18 equal
+  _func_0c0aeab0 0x0c0aeab0 204 bytes: 198/204 equal
+  pool 0x0c0aeb7c 48 bytes: 48/48 equal
+    0c0aeac0  retail 84e7  mov.b @(7,r14),r0                ours 84e7  mov.b @(7,r14),r0
+    0c0aeac2  retail db33  mov.l 0x000000000c0aeb90,r11     ours db33  mov.l 0x000000000c0aeb90,r11
+  ! 0c0aeac4  retail e503  mov #3,r5                        ours ec02  mov #2,r12
+    0c0aeac6  retail 600c  extu.b r0,r0                     ours 600c  extu.b r0,r0
+    0c0aeac8  retail ff8d  fldi0 fr15                       ours ff8d  fldi0 fr15
+    0c0aeaca  retail 8800  cmp/eq #0,r0                     ours 8800  cmp/eq #0,r0
+  ! 0c0aeacc  retail e405  mov #5,r4                        ours e503  mov #3,r5
+  ! 0c0aeace  retail ec02  mov #2,r12                       ours e405  mov #5,r4
+    0c0aead0  retail 8d0c  bt.s 0x000000000c0aeaec          ours 8d0c  bt.s 0x000000000c0aeaec
+    0c0aead2  retail ed00  mov #0,r13                       ours ed00  mov #0,r13
+PROBLEM Not an exact section match: P
+PROBLEM Linked image contains extra or missing initialized bytes
+PROBLEM Linked image contains extra or missing memory bytes
+DIFFERS

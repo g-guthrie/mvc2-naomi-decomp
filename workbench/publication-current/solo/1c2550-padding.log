@@ -1,0 +1,76 @@
+STRICT False ['Not an exact section match: P', 'Linked image contains extra or missing initialized bytes', 'Linked image contains extra or missing memory bytes']
+[(180, 0)]
+[('_func_0c1c2550', 44, 170)]
+0c1c2550 9353 mov.w 0x000000000c1c25fa,r3         | 934e mov.w 0x000000000c1c25f0,r3
+0c1c255c 8b46 bf 0x000000000c1c25ec               | 8b41 bf 0x000000000c1c25e2
+0c1c255e 904c mov.w 0x000000000c1c25fa,r0         | 9047 mov.w 0x000000000c1c25f0,r0
+0c1c2564 600c extu.b r0,r0                        | 8447 mov.b @(7,r4),r0
+0c1c2568 8940 bt 0x000000000c1c25ec               | 893b bt 0x000000000c1c25e2
+0c1c256e 8b3d bf 0x000000000c1c25ec               | 8b38 bf 0x000000000c1c25e2
+0c1c2570 9044 mov.w 0x000000000c1c25fc,r0         | 903f mov.w 0x000000000c1c25f2,r0
+0c1c2576 d322 mov.l 0x000000000c1c2600,r3         | d320 mov.l 0x000000000c1c25f8,r3
+0c1c2582 6163 mov r6,r1                           | 6203 mov r0,r2
+0c1c2584 6203 mov r0,r2                           | 4000 shll r0
+0c1c2586 4000 shll r0                             | 302c add r2,r0
+0c1c2588 302c add r2,r0                           | 4008 shll2 r0
+0c1c258a 7118 add #24,r1                          | 7618 add #24,r6
+0c1c258c 4008 shll2 r0                            | 016e mov.l @(r0,r6),r1
+0c1c258e 021e mov.l @(r0,r1),r2                   | 9031 mov.w 0x000000000c1c25f4,r0
+0c1c2590 9035 mov.w 0x000000000c1c25fe,r0         | 021c mov.b @(r0,r1),r2
+0c1c2592 012c mov.b @(r0,r2),r1                   | 2228 tst r2,r2
+0c1c2594 2118 tst r1,r1                           | 8b2a bf 0x000000000c1c25ec
+0c1c2596 8b2e bf 0x000000000c1c25f6               | 8452 mov.b @(2,r5),r0
+0c1c2598 8452 mov.b @(2,r5),r0                    | 600c extu.b r0,r0
+0c1c259a 6263 mov r6,r2                           | 207a xor r7,r0
+0c1c259c 7218 add #24,r2                          | 6303 mov r0,r3
+0c1c259e 600c extu.b r0,r0                        | 4000 shll r0
+0c1c25a0 207a xor r7,r0                           | 303c add r3,r0
+0c1c25a2 6303 mov r0,r3                           | 4008 shll2 r0
+0c1c25a4 4000 shll r0                             | 306c add r6,r0
+0c1c25a6 303c add r3,r0                           | 5201 mov.l @(4,r0),r2
+0c1c25a8 4008 shll2 r0                            | 9024 mov.w 0x000000000c1c25f4,r0
+0c1c25aa 302c add r2,r0                           | 032c mov.b @(r0,r2),r3
+0c1c25ac 5301 mov.l @(4,r0),r3                    | 2338 tst r3,r3
+0c1c25ae 9026 mov.w 0x000000000c1c25fe,r0         | 8b1d bf 0x000000000c1c25ec
+0c1c25b0 023c mov.b @(r0,r3),r2                   | 8452 mov.b @(2,r5),r0
+0c1c25b2 2228 tst r2,r2                           | 600c extu.b r0,r0
+0c1c25b4 8b1f bf 0x000000000c1c25f6               | 207a xor r7,r0
+0c1c25b6 8452 mov.b @(2,r5),r0                    | 6303 mov r0,r3
+0c1c25b8 6263 mov r6,r2                           | 4000 shll r0
+0c1c25ba 7218 add #24,r2                          | 303c add r3,r0
+0c1c25bc 600c extu.b r0,r0                        | 4008 shll2 r0
+0c1c25be 207a xor r7,r0                           | 360c add r0,r6
+0c1c25c0 6303 mov r0,r3                           | 9018 mov.w 0x000000000c1c25f4,r0
+0c1c25c2 4000 shll r0                             | 5262 mov.l @(8,r6),r2
+0c1c25c4 303c add r3,r0                           | 032c mov.b @(r0,r2),r3
+0c1c25c6 4008 shll2 r0                            | 2338 tst r3,r3
+0c1c25c8 302c add r2,r0                           | 8b10 bf 0x000000000c1c25ec
+0c1c25ca 5302 mov.l @(8,r0),r3                    | d10c mov.l 0x000000000c1c25fc,r1
+0c1c25cc 9017 mov.w 0x000000000c1c25fe,r0         | 6311 mov.w @r1,r3
+0c1c25ce 023c mov.b @(r0,r3),r2                   | 4311 cmp/pz r3
+0c1c25d0 2228 tst r2,r2                           | 8b01 bf 0x000000000c1c25d6
+0c1c25d2 8b10 bf 0x000000000c1c25f6               | 900e mov.w 0x000000000c1c25f2,r0
+0c1c25d4 d10b mov.l 0x000000000c1c2604,r1         | 0474 mov.b r7,@(r0,r4)
+0c1c25d6 6211 mov.w @r1,r2                        | 854f mov.w @(30,r4),r0
+0c1c25d8 4211 cmp/pz r2                           | 70ff add #-1,r0
+0c1c25da 8b01 bf 0x000000000c1c25e0               | 814f mov.w r0,@(30,r4)
+0c1c25dc 900e mov.w 0x000000000c1c25fc,r0         | 600f exts.w r0,r0
+0c1c25de 0474 mov.b r7,@(r0,r4)                   | 4015 cmp/pl r0
+0c1c25e0 854f mov.w @(30,r4),r0                   | 8904 bt 0x000000000c1c25ec
+0c1c25e2 70ff add #-1,r0                          | d307 mov.l 0x000000000c1c2600,r3
+0c1c25e4 814f mov.w r0,@(30,r4)                   | e200 mov #0,r2
+0c1c25e6 600f exts.w r0,r0                        | 9004 mov.w 0x000000000c1c25f2,r0
+0c1c25e8 4015 cmp/pl r0                           | 432b jmp @r3
+0c1c25ea 8904 bt 0x000000000c1c25f6               | 0424 mov.b r2,@(r0,r4)
+0c1c25ec d306 mov.l 0x000000000c1c2608,r3         | 000b rts
+0c1c25ee e200 mov #0,r2                           | 0009 nop
+0c1c25f0 9004 mov.w 0x000000000c1c25fc,r0         | 0411 error
+0c1c25f2 432b jmp @r3                             | 012c mov.b @(r0,r2),r1
+0c1c25f4 0424 mov.b r2,@(r0,r4)                   | 0277 mul.l r7,r2
+0c1c25f6 000b rts                                 | 0000 error
+0c1c25f8 0009 nop                                 | 83f8 error
+0c1c25fa 0411 error                               | 0c2f mac.l @r2+,@r12+
+0c1c25fc 012c mov.b @(r0,r2),r1                   | 891a bt 0x000000000c1c2634
+0c1c25fe 0277 mul.l r7,r2                         | 0c2f mac.l @r2+,@r12+
+0c1c2600 83f8 error                               | 7688 add #-120,r6
+0c1c2602 0c2f mac.l @r2+,@r12+                    | 0c03 bsrf r12

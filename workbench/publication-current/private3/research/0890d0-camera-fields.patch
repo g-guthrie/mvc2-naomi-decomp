@@ -1,0 +1,11 @@
+--- a/src/include/objects.h
++++ b/src/include/objects.h
+@@ -554,7 +554,7 @@
+     unsigned char pad7[12 - 7];
+     float f12;
+     unsigned char pad16[0x88 - 16];
+-    float f88, f8c;
++    float f88, f8c, f90, f94;
+ };
+ 
+ struct SolHorizontalTarget { unsigned char pad[16]; float x, y; };

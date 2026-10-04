@@ -1,0 +1,208 @@
+commit 2630debe712b8d4d47ed199fbf83a320531b4800
+Author:     Greer Guthrie <gguthrie@gguthrie.local>
+AuthorDate: Sat Oct 3 19:32:21 2026 -0500
+Commit:     Greer Guthrie <gguthrie@gguthrie.local>
+CommitDate: Sat Oct 3 19:32:21 2026 -0500
+
+    Match whole effect allocator and dispatch unit at 1b1050
+---
+ config/units.json          | 67 +++++++++++++++++++++++-----------------------
+ src/verified/bulk_114.c    | 10 -------
+ src/verified/ptrtab_42.c   |  9 -------
+ src/verified/rest_082.c    |  5 ----
+ src/verified/tu_0c1b1050.c | 18 +++++++++++++
+ 5 files changed, 51 insertions(+), 58 deletions(-)
+
+diff --git a/config/units.json b/config/units.json
+index 3037fdb..2477dcf 100644
+--- a/config/units.json
++++ b/config/units.json
+@@ -24690,18 +24690,6 @@
+         "address": "0x0c1b1048",
+         "size": 4
+       },
+-      {
+-        "section": "Cn1b1120",
+-        "kind": "data",
+-        "address": "0x0c1b1120",
+-        "size": 8
+-      },
+-      {
+-        "section": "Cn1b1130",
+-        "kind": "data",
+-        "address": "0x0c1b1130",
+-        "size": 4
+-      },
+       {
+         "section": "Cn1b16f0",
+         "kind": "data",
+@@ -24977,8 +24965,6 @@
+       "_table_0c1b0d58": "0x0c1b0d58",
+       "_table_0c1b0f48": "0x0c1b0f48",
+       "_ptr_0c1b1048": "0x0c1b1048",
+-      "_table_0c1b1120": "0x0c1b1120",
+-      "_ptr_0c1b1130": "0x0c1b1130",
+       "_ptr_0c1b16f0": "0x0c1b16f0",
+       "_table_0c1b16fc": "0x0c1b16fc",
+       "_table_0c1b1b90": "0x0c1b1b90",
+@@ -73372,18 +73358,6 @@
+         "address": "0x0c1b0d48",
+         "size": 12
+       },
+-      {
+-        "section": "Cn1b111a",
+-        "kind": "data",
+-        "address": "0x0c1b111a",
+-        "size": 6
+-      },
+-      {
+-        "section": "Cn1b1128",
+-        "kind": "data",
+-        "address": "0x0c1b1128",
+-        "size": 8
+-      },
+       {
+         "section": "Cn1b16e6",
+         "kind": "data",
+@@ -73509,8 +73483,6 @@
+       "_dat_0c1b0b2e": "0x0c1b0b2e",
+       "_dat_0c1b0c42": "0x0c1b0c42",
+       "_dat_0c1b0d48": "0x0c1b0d48",
+-      "_dat_0c1b111a": "0x0c1b111a",
+-      "_dat_0c1b1128": "0x0c1b1128",
+       "_dat_0c1b16e6": "0x0c1b16e6",
+       "_dat_0c1b1814": "0x0c1b1814",
+       "_dat_0c1b1824": "0x0c1b1824",
+@@ -126837,12 +126809,6 @@
+         "address": "0x0c1b0f2c",
+         "size": 28
+       },
+-      {
+-        "section": "Cn190134",
+-        "kind": "data",
+-        "address": "0x0c1b1134",
+-        "size": 4
+-      },
+       {
+         "section": "Cn190218",
+         "kind": "data",
+@@ -228990,5 +228956,38 @@
+       "_table_0c259d44": "0x0c259d44",
+       "_table_0c259d4c": "0x0c259d4c"
+     }
++  },
++  {
++    "id": "tu_0c1b1050",
++    "source": "src/verified/tu_0c1b1050.c",
++    "mode": "verified",
++    "sections": [
++      {
++        "section": "P",
++        "kind": "code",
++        "address": "0x0c1b1050",
++        "size": 232,
++        "interior": [
++          {
++            "address": "0x0c1b111a",
++            "size": 30,
++            "kind": "data"
++          }
++        ]
++      }
++    ],
++    "exports": {
++      "_func_0c1b1050": "0x0c1b1050",
++      "_func_0c1b1092": "0x0c1b1092",
++      "_func_0c1b10e0": "0x0c1b10e0",
++      "_func_0c1b1108": "0x0c1b1108"
++    },
++    "imports": {
++      "_func_0c0374da": "0x0c0374da",
++      "_dat_0c2fb424": "0x0c2fb424",
++      "_dat_0c2fb420": "0x0c2fb420",
++      "_dat_0c25ad80": "0x0c25ad80",
++      "_dat_0c25ad94": "0x0c25ad94"
++    }
+   }
+ ]
+diff --git a/src/verified/bulk_114.c b/src/verified/bulk_114.c
+index 41e02d6..4ea7828 100644
+--- a/src/verified/bulk_114.c
++++ b/src/verified/bulk_114.c
+@@ -184,16 +184,6 @@ const unsigned int dat_0c1b0d48[] = {
+     0x041c00ccu, 0x02f00411u, 0x012c0141u,
+ };
+ 
+-#pragma section n1b111a
+-const unsigned short dat_0c1b111a[] = {
+-    0x2000u, 0x02a4u, 0x00ccu,
+-};
+-
+-#pragma section n1b1128
+-const unsigned int dat_0c1b1128[] = {
+-    0x0c2fb424u, 0x0c2fb420u,
+-};
+-
+ #pragma section n1b16e6
+ const unsigned short dat_0c1b16e6[] = {
+     0x01a3u,
+diff --git a/src/verified/ptrtab_42.c b/src/verified/ptrtab_42.c
+index 95eff27..dcc3638 100644
+--- a/src/verified/ptrtab_42.c
++++ b/src/verified/ptrtab_42.c
+@@ -59,15 +59,6 @@ void (*const table_0c1b0f48[])(void) = {
+ #pragma section n1b1048
+ void (*const ptr_0c1b1048)(void) = func_0c037688;
+ 
+-#pragma section n1b1120
+-void (*const table_0c1b1120[])(void) = {
+-    func_0c0374da,
+-    func_0c1b10e0,
+-};
+-
+-#pragma section n1b1130
+-void (*const ptr_0c1b1130)(void) = func_0c25ad80;
+-
+ #pragma section n1b16f0
+ void (*const ptr_0c1b16f0)(void) = func_0c029e70;
+ 
+diff --git a/src/verified/rest_082.c b/src/verified/rest_082.c
+index a9fba47..7b671b5 100644
+--- a/src/verified/rest_082.c
++++ b/src/verified/rest_082.c
+@@ -30,11 +30,6 @@ const unsigned int dat_0c1b0f2c[] = {
+     0x0c029e70u, 0x0c02849au, 0x4f800000u, 0x3fd55555u, 0x40092492u, 0x0c25aba0u, 0xbe092492u,
+ };
+ 
+-#pragma section n190134
+-const unsigned int dat_0c1b1134[] = {
+-    0x0c25ad94u,
+-};
+-
+ #pragma section n190218
+ const unsigned short dat_0c1b1218[] = {
+     0x00dcu, 0x012cu, 0x01a3u, 0x0158u, 0x0141u,
+diff --git a/src/verified/tu_0c1b1050.c b/src/verified/tu_0c1b1050.c
+new file mode 100644
+index 0000000..e659c97
+--- /dev/null
++++ b/src/verified/tu_0c1b1050.c
+@@ -0,0 +1,18 @@
++#include "objects.h"
++extern struct LinkedActor *func_0c0374da(int,int,int);
++extern struct ActorSub2a4 *dat_0c2fb424;
++extern union LinkedActorWcc *dat_0c2fb420;
++extern void (*dat_0c25ad80[])(struct LinkedActor *),(*dat_0c25ad94[])(struct LinkedActor *);
++void func_0c1b10e0(struct LinkedActor *);
++struct LinkedActor *func_0c1b1050(struct LinkedActor *parent,unsigned char mode,unsigned char phase)
++{
++ struct LinkedActor *a;
++ if((a=func_0c0374da(0,3,0))!=0){a->p16=func_0c1b10e0;a->p24=parent;a->b32=mode;a->b33=phase;((struct MeActor *)a)->w26=0x2000;}return a;
++}
++struct LinkedActor *func_0c1b1092(struct LinkedActor *owner,unsigned char mode,unsigned char phase)
++{
++ struct LinkedActor *a;
++ if((a=func_0c0374da(0,3,0))!=0){a->p16=func_0c1b10e0;a->p24=owner->p24;a->p20=owner;a->b32=mode;a->b33=phase;((struct MeActor *)a)->w26=0x2000;}return a;
++}
++void func_0c1b10e0(struct LinkedActor *a){dat_0c2fb424=&((struct Actor *)a->p24)->sub2a4;dat_0c2fb420=&a->wcc;dat_0c25ad80[a->b32](a);}
++void func_0c1b1108(struct LinkedActor *a){dat_0c25ad94[a->b4](a);}

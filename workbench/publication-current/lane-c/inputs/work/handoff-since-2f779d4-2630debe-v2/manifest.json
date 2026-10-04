@@ -1,0 +1,1821 @@
+{
+  "checkout": "/Users/gguthrie/Documents/Codex/2026-10-02/ther/work/mvc2-luna-c",
+  "cutoff": "published 2f779d4",
+  "head": "2630debe712b8d4d47ed199fbf83a320531b4800",
+  "exact_new_commits": [
+    {
+      "sha": "2630debe712b8d4d47ed199fbf83a320531b4800",
+      "span": "0x0c1b1050..0x0c1b1138",
+      "bytes": 232,
+      "functions": 4,
+      "new_executable_c_bytes": 202,
+      "new_data_bytes": 0,
+      "status": "already integrated by sole integrator; do not count twice",
+      "full_gate": "work/sol-1b1050-full-check.log",
+      "acceptance": "work/1b1050-final-acceptance.json",
+      "immutable_bundle": "work/ready-1b1050-2630debe",
+      "header_dependency": "None of the optional model changes are required."
+    }
+  ],
+  "research_models": "679eb07 and 0fe0369 are full-gated zero-credit shared models. The 11-line uncommitted CharacterState5a4 addition is native-backed but has no full gate; preserve it as a research patch only. This frozen header must not replace canonical objects.h.",
+  "mapping_commit": {
+    "sha": "7a0a3cd2d3a403e4116eee43c12c80422c6960ed",
+    "status": "full-gated native mapping corrections, zero new C credit",
+    "new_reviewed_bytes": 46,
+    "classification_code_delta": 34,
+    "classification_data_delta": 12
+  },
+  "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+  "drafts": [
+    {
+      "name": "1a72d4",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1a72d4.sol.c",
+      "source_sha256": "8f8857a3e94fffa3bf7a8332496a739216c8c941ff85dbf6cc8901168c9ba019",
+      "original_source": "work/tu_0c1a72d4.sol.c",
+      "original_source_sha256": "8bb71b2873edd5f3bc7b92627dda1cacaa09efc5c1b8ac24f16b2e72f0308bd7",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1a72d4.json",
+      "unit_sha256": "d189207dcf428aada46830843ef951856358ecf690a2c25957f590ecb4834e00",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203059924,
+          "size": 1116,
+          "interior": [
+            {
+              "address": 203060254,
+              "size": 42,
+              "kind": "data"
+            },
+            {
+              "address": 203060594,
+              "size": 42,
+              "kind": "data"
+            },
+            {
+              "address": 203060984,
+              "size": 56,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1a72d4": 203059924,
+        "_func_0c1a7302": 203059970,
+        "_func_0c1a7330": 203060016,
+        "_func_0c1a7372": 203060082,
+        "_func_0c1a7384": 203060100,
+        "_func_0c1a7482": 203060354,
+        "_func_0c1a7498": 203060376,
+        "_func_0c1a7546": 203060550,
+        "_func_0c1a75c2": 203060674,
+        "_func_0c1a769e": 203060894
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1a72d4",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1a72d4-whole-proof.json",
+        "proof_sha256": "996a1bc3bdb95c8c8b94aba51884faadf53a273940fa453dfa72e04f999c2d62",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1a72d4-whole-proof.log",
+        "log_sha256": "3ebe05e512052498f9c7e70459fc1649e6975fb5935978bcb02ff95db51aac40",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 605,
+            "size": 1116,
+            "linked_size": 1120
+          }
+        ],
+        "problems": [
+          "Wrong exported symbol address: _func_0c1a7546",
+          "Wrong exported symbol address: _func_0c1a75c2",
+          "Wrong exported symbol address: _func_0c1a769e",
+          "Not an exact section match: P",
+          "Linked image contains extra or missing initialized bytes",
+          "Linked image contains extra or missing memory bytes"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1a72d4.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1a72d4.boundary-review.json"
+      ]
+    },
+    {
+      "name": "1a9e8c",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1a9e8c.sol.c",
+      "source_sha256": "cbbd8b7139b4db5be36dfdfbc75e146fcd128338a5b03365a03c07e831ae413c",
+      "original_source": "work/tu_0c1a9e8c.sol.c",
+      "original_source_sha256": "5b120892f8f6cd1fdbb5ce0616d3e40f0aaa5b6b7220db50709a2c72d4e774e5",
+      "source_change": "Include filename binds frozen shared header. Four nested parent mode/counter reads mechanically migrated to the native Control4 view; addresses and widths unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1a9e8c.json",
+      "unit_sha256": "b8f99ce2c72d4a043589357751941cb98492eb7824281914f52fb7bc24e33662",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203071116,
+          "size": 1160,
+          "interior": [
+            {
+              "address": 203071378,
+              "size": 18,
+              "kind": "data"
+            },
+            {
+              "address": 203071652,
+              "size": 12,
+              "kind": "data"
+            },
+            {
+              "address": 203071968,
+              "size": 32,
+              "kind": "data"
+            },
+            {
+              "address": 203072258,
+              "size": 18,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1a9e8c": 203071116,
+        "_func_0c1a9ec2": 203071170,
+        "_func_0c1a9eee": 203071214,
+        "_func_0c1a9f34": 203071284,
+        "_func_0c1a9f80": 203071360,
+        "_func_0c1a9fa4": 203071396,
+        "_func_0c1a9fb4": 203071412,
+        "_func_0c1aa00a": 203071498,
+        "_func_0c1aa050": 203071568,
+        "_func_0c1aa092": 203071634,
+        "_func_0c1aa0b0": 203071664,
+        "_func_0c1aa0ea": 203071722,
+        "_func_0c1aa12a": 203071786,
+        "_func_0c1aa162": 203071842,
+        "_func_0c1aa200": 203072000,
+        "_func_0c1aa232": 203072050,
+        "_func_0c1aa260": 203072096,
+        "_func_0c1aa26e": 203072110,
+        "_func_0c1aa274": 203072116,
+        "_func_0c1aa2bc": 203072188
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1a9e8c",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1a9e8c-whole-proof.json",
+        "proof_sha256": "adf84bbd708da0e463501a0491b735f37b8200152fd459073e48914d39a51170",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1a9e8c-whole-proof.log",
+        "log_sha256": "7f037834c3f72edfc1d8e6372da04480abd7908dae2920844ce1999ecc6e4ce5",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 0,
+            "size": 1160,
+            "linked_size": 1152
+          }
+        ],
+        "problems": [
+          "Wrong exported symbol address: _func_0c1aa00a",
+          "Wrong exported symbol address: _func_0c1aa050",
+          "Wrong exported symbol address: _func_0c1aa092",
+          "Wrong exported symbol address: _func_0c1aa0b0",
+          "Wrong exported symbol address: _func_0c1aa0ea",
+          "Wrong exported symbol address: _func_0c1aa12a",
+          "Wrong exported symbol address: _func_0c1aa162",
+          "Wrong exported symbol address: _func_0c1aa200",
+          "Wrong exported symbol address: _func_0c1aa232",
+          "Wrong exported symbol address: _func_0c1aa260",
+          "Wrong exported symbol address: _func_0c1aa26e",
+          "Wrong exported symbol address: _func_0c1aa274",
+          "Wrong exported symbol address: _func_0c1aa2bc",
+          "Not an exact section match: P",
+          "Linked image contains extra or missing initialized bytes",
+          "Linked image contains extra or missing memory bytes"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1a9e8c.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1a9e8c.boundary-review.json"
+      ]
+    },
+    {
+      "name": "1b644c",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1b644c.sol.c",
+      "source_sha256": "a8dfaf7c750bc7454315496ee390f9f2b7609b42207b9f06c5ec82015670a691",
+      "original_source": "work/tu_0c1b644c.sol.c",
+      "original_source_sha256": "f96584f2643af47bc1d3b58b9fac23a819a5631e1f572460b49283a189335036",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1b644c.json",
+      "unit_sha256": "61765eeed10dde361c5c920cf96534d6cee5943622317b89bb0efbe7cfeb89a2",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203121740,
+          "size": 1436,
+          "interior": [
+            {
+              "address": 203122042,
+              "size": 30,
+              "kind": "data"
+            },
+            {
+              "address": 203122226,
+              "size": 30,
+              "kind": "data"
+            },
+            {
+              "address": 203122576,
+              "size": 36,
+              "kind": "data"
+            },
+            {
+              "address": 203122822,
+              "size": 30,
+              "kind": "data"
+            },
+            {
+              "address": 203123144,
+              "size": 32,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1b644c": 203121740,
+        "_func_0c1b648c": 203121804,
+        "_func_0c1b64ce": 203121870,
+        "_func_0c1b6650": 203122256,
+        "_func_0c1b68a4": 203122852
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1b644c",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1b644c-whole-proof.json",
+        "proof_sha256": "17d51e5376b1327e26ce8a7e2d07a5045b1a40d464c2ddc9aba2d5c01248a044",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1b644c-whole-proof.log",
+        "log_sha256": "5c59c7e24564afbb6cd938c0071abda4d07d78a6f111c21db15e0308a04af709",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 0,
+            "size": 1436,
+            "linked_size": 1428
+          }
+        ],
+        "problems": [
+          "Wrong exported symbol address: _func_0c1b6650",
+          "Not an exact section match: P",
+          "Linked image contains extra or missing initialized bytes",
+          "Linked image contains extra or missing memory bytes"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b644c.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b644c.boundary-review.json"
+      ]
+    },
+    {
+      "name": "1b8c4c",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1b8c4c.sol.c",
+      "source_sha256": "2f6d4a38b4058e8a937d7fc62e0ff9693064102b6bb480b6409fc9047f3dbc85",
+      "original_source": "work/tu_0c1b8c4c.sol.c",
+      "original_source_sha256": "6d81593593b0a5228cef1fdd17df1be3a0727f304550dcdd73eedd3b6af666e4",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1b8c4c.json",
+      "unit_sha256": "5d45e990808a7245dacd072271b1cd5e0d8c622fb122b2d330e4f531bd66e5a6",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203131980,
+          "size": 1428,
+          "interior": [
+            {
+              "address": 203132258,
+              "size": 54,
+              "kind": "data"
+            },
+            {
+              "address": 203132486,
+              "size": 38,
+              "kind": "data"
+            },
+            {
+              "address": 203132754,
+              "size": 30,
+              "kind": "data"
+            },
+            {
+              "address": 203132944,
+              "size": 24,
+              "kind": "data"
+            },
+            {
+              "address": 203133158,
+              "size": 30,
+              "kind": "data"
+            },
+            {
+              "address": 203133386,
+              "size": 22,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1b8c4c": 203131980,
+        "_func_0c1b8cac": 203132076,
+        "_func_0c1b8cc0": 203132096,
+        "_func_0c1b8d24": 203132196,
+        "_func_0c1b8d36": 203132214,
+        "_func_0c1b8e6c": 203132524,
+        "_func_0c1b8f10": 203132688,
+        "_func_0c1b8f3e": 203132734,
+        "_func_0c1b8f70": 203132784,
+        "_func_0c1b9028": 203132968,
+        "_func_0c1b91b6": 203133366,
+        "_func_0c1b91c4": 203133380
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1b8c4c",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1b8c4c-whole-proof.json",
+        "proof_sha256": "39d57d58364b2b1c4941ac8081d16075fe3c45b177b530bd08235748043a03b5",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1b8c4c-whole-proof.log",
+        "log_sha256": "3e25fb86c132cabcc21b516970abaa560cc3400a5636affd1cd6b935b94cf3c1",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 108,
+            "size": 1428,
+            "linked_size": 1444
+          }
+        ],
+        "problems": [
+          "Wrong exported symbol address: _func_0c1b8cac",
+          "Wrong exported symbol address: _func_0c1b8cc0",
+          "Wrong exported symbol address: _func_0c1b8d24",
+          "Wrong exported symbol address: _func_0c1b8d36",
+          "Wrong exported symbol address: _func_0c1b8e6c",
+          "Wrong exported symbol address: _func_0c1b8f10",
+          "Wrong exported symbol address: _func_0c1b8f3e",
+          "Wrong exported symbol address: _func_0c1b8f70",
+          "Wrong exported symbol address: _func_0c1b9028",
+          "Wrong exported symbol address: _func_0c1b91b6",
+          "Wrong exported symbol address: _func_0c1b91c4",
+          "Not an exact section match: P",
+          "Linked image contains extra or missing initialized bytes",
+          "Linked image contains extra or missing memory bytes"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b8c4c.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b8c4c.boundary-review.json",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b8c4c.source-review.json"
+      ]
+    },
+    {
+      "name": "1bb1d0",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1bb1d0.sol.c",
+      "source_sha256": "0ae289c0c97bef40cf15f3f9f4b8b74cb810bf1e515dd3ceb25987c6256a9a97",
+      "original_source": "work/tu_0c1bb1d0.sol.c",
+      "original_source_sha256": "fadce4e57f4ed39f06ceded3de4c3e0fbe13191aeb8419a07f072602992f3266",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1bb1d0.json",
+      "unit_sha256": "60e9bf261e5576c20b2228fc5d0a75b32897a56722a435b543b52014a7b001e4",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203141584,
+          "size": 1336,
+          "interior": [
+            {
+              "address": 203141922,
+              "size": 42,
+              "kind": "data"
+            },
+            {
+              "address": 203142276,
+              "size": 12,
+              "kind": "data"
+            },
+            {
+              "address": 203142516,
+              "size": 28,
+              "kind": "data"
+            },
+            {
+              "address": 203142874,
+              "size": 46,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1bb1d0": 203141584,
+        "_func_0c1bb224": 203141668,
+        "_func_0c1bb236": 203141686,
+        "_func_0c1bb2ae": 203141806,
+        "_func_0c1bb2e6": 203141862,
+        "_func_0c1bb34c": 203141964,
+        "_func_0c1bb386": 203142022,
+        "_func_0c1bb39a": 203142042,
+        "_func_0c1bb3d0": 203142096,
+        "_func_0c1bb46c": 203142252,
+        "_func_0c1bb4ae": 203142318,
+        "_func_0c1bb4fc": 203142396,
+        "_func_0c1bb548": 203142472,
+        "_func_0c1bb590": 203142544,
+        "_func_0c1bb5ee": 203142638,
+        "_func_0c1bb640": 203142720,
+        "_func_0c1bb676": 203142774,
+        "_func_0c1bb688": 203142792
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1bb1d0",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1bb1d0-whole-proof.json",
+        "proof_sha256": "067841c49028a361c0d31cd3e151a79e8ffd179420f38f07ed15ec898fc9bca1",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1bb1d0-whole-proof.log",
+        "log_sha256": "d39218860e3455777c992fab5c1aac81c994b6b0606e155490c676a39e24fc1c",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 635,
+            "size": 1336,
+            "linked_size": 1340
+          }
+        ],
+        "problems": [
+          "Wrong exported symbol address: _func_0c1bb46c",
+          "Wrong exported symbol address: _func_0c1bb4ae",
+          "Wrong exported symbol address: _func_0c1bb4fc",
+          "Wrong exported symbol address: _func_0c1bb548",
+          "Wrong exported symbol address: _func_0c1bb640",
+          "Wrong exported symbol address: _func_0c1bb676",
+          "Wrong exported symbol address: _func_0c1bb688",
+          "Not an exact section match: P",
+          "Linked image contains extra or missing initialized bytes",
+          "Linked image contains extra or missing memory bytes"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1bb1d0.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1bb1d0.boundary-review.json",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1bb1d0.source-review.json"
+      ]
+    },
+    {
+      "name": "1c5480",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1c5480.sol.c",
+      "source_sha256": "1f4002e86600ded13341f3ff0f7cb2d3369ff8f09a74cf2c7844ba9f2391b6e3",
+      "original_source": "work/tu_0c1c5480.sol.c",
+      "original_source_sha256": "82d6866d3c2c46a1c6a8bb376d8b043e45a098dfe8a102731f15586650187fb5",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1c5480.json",
+      "unit_sha256": "557ed6bddf7e76fefb720713e25f638fcbeb5fd6c3716293915e6125c9d0ab16",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203183232,
+          "size": 1016,
+          "interior": [
+            {
+              "address": 203183560,
+              "size": 60,
+              "kind": "data"
+            },
+            {
+              "address": 203183910,
+              "size": 86,
+              "kind": "data"
+            },
+            {
+              "address": 203184232,
+              "size": 16,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1c5480": 203183232,
+        "_func_0c1c553c": 203183420,
+        "_func_0c1c554e": 203183438,
+        "_func_0c1c559a": 203183514,
+        "_func_0c1c5640": 203183680,
+        "_func_0c1c567e": 203183742,
+        "_func_0c1c5682": 203183746,
+        "_func_0c1c5688": 203183752,
+        "_func_0c1c56d8": 203183832,
+        "_func_0c1c57b4": 203184052,
+        "_func_0c1c57e8": 203184104,
+        "_func_0c1c5848": 203184200
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": "func_0c1c567e is a true empty four-byte native callback, not an unfinished stub.",
+      "frozen_proof": {
+        "name": "1c5480",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1c5480-whole-proof.json",
+        "proof_sha256": "e709d657fd60eb93ac54024547bb5a0668155a4dd75f4dad4d46315e8820d648",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1c5480-whole-proof.log",
+        "log_sha256": "e0b34cbea0259e0ebaf67588b27643da2de1cfd3ae473aae1f4edcef75d5b10a",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 845,
+            "size": 1016,
+            "linked_size": 1016
+          }
+        ],
+        "problems": [
+          "Wrong exported symbol address: _func_0c1c567e",
+          "Wrong exported symbol address: _func_0c1c5682",
+          "Wrong exported symbol address: _func_0c1c5688",
+          "Wrong exported symbol address: _func_0c1c56d8",
+          "Not an exact section match: P"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1c5480.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1c5480.boundary-review.json",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1c5480.source-review.json"
+      ]
+    },
+    {
+      "name": "1c7ac4",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1c7ac4.sol.c",
+      "source_sha256": "9b7d45424607eddc6a799e35609cd34e5c30de8bb7c1c0b35ee3309a1ddc5f90",
+      "original_source": "work/tu_0c1c7ac4.sol.c",
+      "original_source_sha256": "885df80fade5ba041c4e50a13e965dff7e282066c054ab582b6b3887144e9654",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1c7ac4.json",
+      "unit_sha256": "fd2b20bbe97dec37e73e37f47c38f87d6f566d5b68fad1fc6d77f8343f3a0164",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203193028,
+          "size": 776,
+          "interior": [
+            {
+              "address": 203193322,
+              "size": 46,
+              "kind": "data"
+            },
+            {
+              "address": 203193620,
+              "size": 24,
+              "kind": "data"
+            },
+            {
+              "address": 203193772,
+              "size": 32,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1c7ac4": 203193028,
+        "_func_0c1c7b6a": 203193194,
+        "_func_0c1c7b7e": 203193214,
+        "_func_0c1c7b86": 203193222,
+        "_func_0c1c7bd4": 203193300,
+        "_func_0c1c7c3e": 203193406,
+        "_func_0c1c7c46": 203193414,
+        "_func_0c1c7c50": 203193424,
+        "_func_0c1c7c64": 203193444,
+        "_func_0c1c7cb4": 203193524,
+        "_func_0c1c7d2c": 203193644
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1c7ac4",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1c7ac4-whole-proof.json",
+        "proof_sha256": "9178a8ce5fb19b4515dd1f0eebee1e2e9b19c4cb6f26d45c3f8f38f4a290d8ba",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1c7ac4-whole-proof.log",
+        "log_sha256": "eb5fee4a3a6deba9409067d952f4e20643c558ac5d635c1ac566f33d74fb750a",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 742,
+            "size": 776,
+            "linked_size": 776
+          }
+        ],
+        "problems": [
+          "Not an exact section match: P"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1c7ac4.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1c7ac4.boundary-review.json",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1c7ac4.source-review.json"
+      ]
+    },
+    {
+      "name": "1c4294",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1c4294.sol.c",
+      "source_sha256": "2ba0e579cb65d50aa1ca3ae765d88b74b6c55b28e29eee3925af4618cad5a2a4",
+      "original_source": "work/tu_0c1c4294.sol.c",
+      "original_source_sha256": "158c2d48cd921739c5c1261ddaf16f8deb1044a4bf5e451a9658581c2b91cd73",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1c4294.json",
+      "unit_sha256": "9409964e6035ee913c8bbbfa683fd3377e1d52d487dc01133fd0f451301f8c7a",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203178644,
+          "size": 1312,
+          "interior": [
+            {
+              "address": 203178824,
+              "size": 36,
+              "kind": "data"
+            },
+            {
+              "address": 203179186,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203179190,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203179194,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203179196,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203179200,
+              "size": 16,
+              "kind": "data"
+            },
+            {
+              "address": 203179216,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203179220,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203179454,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203179458,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203179460,
+              "size": 16,
+              "kind": "data"
+            },
+            {
+              "address": 203179764,
+              "size": 6,
+              "kind": "data"
+            },
+            {
+              "address": 203179770,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203179774,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203179776,
+              "size": 16,
+              "kind": "data"
+            },
+            {
+              "address": 203179792,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203179796,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203179938,
+              "size": 18,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1c4294": 203178644,
+        "_func_0c1c43ee": 203178990,
+        "_func_0c1c4464": 203179108,
+        "_func_0c1c4476": 203179126,
+        "_func_0c1c44a0": 203179168,
+        "_func_0c1c44dc": 203179228,
+        "_func_0c1c4524": 203179300,
+        "_func_0c1c45b2": 203179442,
+        "_func_0c1c45d4": 203179476,
+        "_func_0c1c465a": 203179610,
+        "_func_0c1c46aa": 203179690
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1c4294",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1c4294-whole-proof.json",
+        "proof_sha256": "ded861426ef44f642f7e61b91415a62d8700cb62b2d32a783e4f0a3d23e63f9e",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1c4294-whole-proof.log",
+        "log_sha256": "07cc4cc89f62b8fd78778f52026e9c1e0f3a96482d3c84e30c465f5b847c369b",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 74,
+            "size": 1312,
+            "linked_size": 1316
+          }
+        ],
+        "problems": [
+          "Wrong exported symbol address: _func_0c1c43ee",
+          "Wrong exported symbol address: _func_0c1c4464",
+          "Wrong exported symbol address: _func_0c1c4476",
+          "Wrong exported symbol address: _func_0c1c44a0",
+          "Wrong exported symbol address: _func_0c1c44dc",
+          "Wrong exported symbol address: _func_0c1c4524",
+          "Wrong exported symbol address: _func_0c1c45b2",
+          "Wrong exported symbol address: _func_0c1c45d4",
+          "Wrong exported symbol address: _func_0c1c465a",
+          "Wrong exported symbol address: _func_0c1c46aa",
+          "Not an exact section match: P",
+          "Linked image contains extra or missing initialized bytes",
+          "Linked image contains extra or missing memory bytes"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1c4294.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1c4294.boundary-review.json",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1c4294.source-review.json"
+      ]
+    },
+    {
+      "name": "1bc230",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1bc230.sol.c",
+      "source_sha256": "6da4e8c0d096f87daf5a9020f9b4397d9de96914cb403b8a190189781bc9c28e",
+      "original_source": "work/tu_0c1bc230.sol.c",
+      "original_source_sha256": "2ddaaa65d91f627cb2046e1119675b41f047409733d33ed0141101cf3231a36a",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1bc230.json",
+      "unit_sha256": "9ea4b6c5966613a4ee47d586aaa19aeac8626131df270b6aef0d80d53bf006ae",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203145776,
+          "size": 268,
+          "interior": [
+            {
+              "address": 203146018,
+              "size": 22,
+              "kind": "data"
+            },
+            {
+              "address": 203146040,
+              "size": 4,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1bc230": 203145776,
+        "_func_0c1bc2a0": 203145888
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1bc230",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1bc230-whole-proof.json",
+        "proof_sha256": "4b9eb6339535876a46c8b863369d18fb6e9d1590ac4aebe87c07794cdd65a1f6",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1bc230-whole-proof.log",
+        "log_sha256": "c650eb10aec558c43a70a843bde87afb4088ddb61b133c4d45c3ff6b452d1be4",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 61,
+            "size": 268,
+            "linked_size": 268
+          }
+        ],
+        "problems": [
+          "Not an exact section match: P"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1bc230.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1bc230.boundary-review.json",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1bc230.source-review.json"
+      ]
+    },
+    {
+      "name": "1b1910",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1b1910.sol.c",
+      "source_sha256": "4020a22a357470fa649e77fd4a45caed21b357204678da31ea3698ebccc12835",
+      "original_source": "work/tu_0c1b1910.sol.c",
+      "original_source_sha256": "fc5900236633904b81d65a9ac68fb70e71bfb667b6b11a706ab92784dc252231",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1b1910.json",
+      "unit_sha256": "9e4e1396796d62116cc3ea07aa85e5731bf0884c0f9acef464b70ee3699a81ff",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203102480,
+          "size": 984,
+          "interior": [
+            {
+              "address": 203102814,
+              "size": 14,
+              "kind": "data"
+            },
+            {
+              "address": 203102828,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203103098,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203103102,
+              "size": 12,
+              "kind": "data"
+            },
+            {
+              "address": 203103114,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203103116,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203103120,
+              "size": 12,
+              "kind": "data"
+            },
+            {
+              "address": 203103132,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203103426,
+              "size": 38,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1b1910": 203102480,
+        "_func_0c1b1982": 203102594,
+        "_func_0c1b19c6": 203102662,
+        "_func_0c1b1a34": 203102772,
+        "_func_0c1b1a74": 203102836,
+        "_func_0c1b1b66": 203103078,
+        "_func_0c1b1ba4": 203103140
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1b1910",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1b1910-whole-proof.json",
+        "proof_sha256": "a1ad38f3be4aa7d94bd2196f0dcb5412cd345110282eadaef35ed36073fd3e9b",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1b1910-whole-proof.log",
+        "log_sha256": "dc29ca93d78efb87a762b735154f12d3bd63d70e09633f3a4ec5a6d2834716d3",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 418,
+            "size": 984,
+            "linked_size": 996
+          }
+        ],
+        "problems": [
+          "Wrong exported symbol address: _func_0c1b1a74",
+          "Wrong exported symbol address: _func_0c1b1b66",
+          "Not an exact section match: P",
+          "Linked image contains extra or missing initialized bytes",
+          "Linked image contains extra or missing memory bytes"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b1910.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b1910.boundary-review.json",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b1910.source-review.json"
+      ]
+    },
+    {
+      "name": "1b2a40",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1b2a40.sol.c",
+      "source_sha256": "ca81960592fd81c3a22fb4e9f5a8a16f8b82fda437fa640b60387c4f25cd30af",
+      "original_source": "work/tu_0c1b2a40.sol.c",
+      "original_source_sha256": "63557d1589f9bcd7e1a899d24518a6421c4f211e6ffc6a4574fcdfb65b65ac8c",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1b2a40.json",
+      "unit_sha256": "45f31d03f12fe2f185becc1470eab3ace92fed7ed29e490c24a64da3e83f829f",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203106880,
+          "size": 976,
+          "interior": [
+            {
+              "address": 203107172,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203107174,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203107176,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203107180,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203107184,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203107186,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203107188,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203107196,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203107204,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203107208,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203107212,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203107220,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203107546,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203107548,
+              "size": 6,
+              "kind": "data"
+            },
+            {
+              "address": 203107554,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203107556,
+              "size": 16,
+              "kind": "data"
+            },
+            {
+              "address": 203107572,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203107576,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203107580,
+              "size": 12,
+              "kind": "data"
+            },
+            {
+              "address": 203107816,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203107818,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203107820,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203107822,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203107824,
+              "size": 12,
+              "kind": "data"
+            },
+            {
+              "address": 203107836,
+              "size": 16,
+              "kind": "data"
+            },
+            {
+              "address": 203107852,
+              "size": 4,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1b2a40": 203106880,
+        "_func_0c1b2a74": 203106932,
+        "_func_0c1b2a94": 203106964,
+        "_func_0c1b2aa6": 203106982,
+        "_func_0c1b2b36": 203107126,
+        "_func_0c1b2c36": 203107382,
+        "_func_0c1b2c48": 203107400,
+        "_func_0c1b2d3c": 203107644,
+        "_func_0c1b2dd8": 203107800,
+        "_func_0c1b2de2": 203107810
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1b2a40",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1b2a40-whole-proof.json",
+        "proof_sha256": "bc76c4ee2089f5a523b9033f7766a738ef68133c83e16dc9686070e92acba235",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1b2a40-whole-proof.log",
+        "log_sha256": "cae8db03f51c8e4ea1933acfbd5465ea06cb9539b3490b85b7b39fc76f40772d",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 0,
+            "size": 976,
+            "linked_size": 968
+          }
+        ],
+        "problems": [
+          "Wrong exported symbol address: _func_0c1b2c36",
+          "Wrong exported symbol address: _func_0c1b2c48",
+          "Wrong exported symbol address: _func_0c1b2d3c",
+          "Wrong exported symbol address: _func_0c1b2dd8",
+          "Wrong exported symbol address: _func_0c1b2de2",
+          "Not an exact section match: P",
+          "Linked image contains extra or missing initialized bytes",
+          "Linked image contains extra or missing memory bytes"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b2a40.boundary-review.json",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b2a40.source-review.json",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b2a3c.retail.txt"
+      ]
+    },
+    {
+      "name": "1bc0ac",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1bc0ac.sol.c",
+      "source_sha256": "c4a9fe1443fd0c234951e25ee8fc0939aa57efa134bb94c47690eaa789914740",
+      "original_source": "work/tu_0c1bc0ac.sol.c",
+      "original_source_sha256": "88ada1ab9f8fe040050ecde49a19a649c7e79cca6ec6d558fef94163731ad4f8",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1bc0ac.json",
+      "unit_sha256": "1028f579b27c94032a886f97fd92a9409876c10d7823f775c224bea1c44f4ebc",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203145388,
+          "size": 388,
+          "interior": [
+            {
+              "address": 203145718,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203145720,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203145722,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203145724,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203145726,
+              "size": 6,
+              "kind": "data"
+            },
+            {
+              "address": 203145732,
+              "size": 24,
+              "kind": "data"
+            },
+            {
+              "address": 203145756,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203145760,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203145764,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203145768,
+              "size": 8,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1bc0ac": 203145388,
+        "_func_0c1bc15e": 203145566,
+        "_func_0c1bc17c": 203145596
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1bc0ac",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1bc0ac-whole-proof.json",
+        "proof_sha256": "bfba33c663a22f89cabeedb325eba04aaf8b1cf4c55627d028f05ca13dfce48b",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1bc0ac-whole-proof.log",
+        "log_sha256": "0f22ef0485d97fbb44c23330840e55fd18e4abff112ace07d01de9b049b7b7ec",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 112,
+            "size": 388,
+            "linked_size": 388
+          }
+        ],
+        "problems": [
+          "Wrong exported symbol address: _func_0c1bc15e",
+          "Wrong exported symbol address: _func_0c1bc17c",
+          "Not an exact section match: P"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1bc0ac.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1bc0ac.boundary-review.json"
+      ]
+    },
+    {
+      "name": "1bbe90",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1bbe90.sol.c",
+      "source_sha256": "99cb7e3b0f3aae8444bfbb8fd339027d469ed5650929ce37d18ca5731dc4a238",
+      "original_source": "work/tu_0c1bbe90.sol.c",
+      "original_source_sha256": "ea35a1eca2fd6b552fac6fc5db8dd5f70cc3d558024d2afe713c6e0c86dff89b",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1bbe90.json",
+      "unit_sha256": "efc151ff3b9dd5be360e8499ace729515ab6dd2a1d34b2430c4a1b900b958d20",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203144848,
+          "size": 540,
+          "interior": [
+            {
+              "address": 203145106,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203145108,
+              "size": 6,
+              "kind": "data"
+            },
+            {
+              "address": 203145114,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203145116,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203145124,
+              "size": 12,
+              "kind": "data"
+            },
+            {
+              "address": 203145360,
+              "size": 6,
+              "kind": "data"
+            },
+            {
+              "address": 203145366,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203145368,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203145376,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203145384,
+              "size": 4,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1bbe90": 203144848,
+        "_func_0c1bbfcc": 203145164,
+        "_func_0c1bc070": 203145328,
+        "_func_0c1bc07e": 203145342
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1bbe90",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1bbe90-whole-proof.json",
+        "proof_sha256": "71f77f87d390f498a083b6d1fdb23474a494c5659f7d68bb27ca6812450a49b4",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1bbe90-whole-proof.log",
+        "log_sha256": "02f6a0d6edca45a30610cb5ad6b37379d20f9d410a7f7b7022c84809919fd6ae",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 13,
+            "size": 540,
+            "linked_size": 552
+          }
+        ],
+        "problems": [
+          "Wrong exported symbol address: _func_0c1bbfcc",
+          "Wrong exported symbol address: _func_0c1bc070",
+          "Wrong exported symbol address: _func_0c1bc07e",
+          "Not an exact section match: P",
+          "Linked image contains extra or missing initialized bytes",
+          "Linked image contains extra or missing memory bytes"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1bbe90.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1bbe90.boundary-review.json"
+      ]
+    },
+    {
+      "name": "1b1050-148c",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1b1050-148c.sol.c",
+      "source_sha256": "67d1921fb73375041f423bebd805e971d25d4794c086d979bfb508c8957cb62e",
+      "original_source": "work/tu_0c1b1050-148c.sol.c",
+      "original_source_sha256": "4bcbc2b8a0fb76df1e6caaed0b2db7ec4895a2c4c8616435972e3ec7f549de15",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1b1050-148c.json",
+      "unit_sha256": "e2aa60e9f26df2d90638731d8c191e50c3448dae0366f7372a4d9faec27bc932",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "Pu1050",
+          "kind": "code",
+          "address": 203100240,
+          "size": 232,
+          "interior": [
+            {
+              "address": 203100442,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203100444,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203100448,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203100456,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203100464,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203100468,
+              "size": 4,
+              "kind": "data"
+            }
+          ]
+        },
+        {
+          "section": "Pu148c",
+          "kind": "code",
+          "address": 203101324,
+          "size": 276,
+          "interior": [
+            {
+              "address": 203101560,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203101562,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203101564,
+              "size": 36,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1b1050": 203100240,
+        "_func_0c1b1092": 203100306,
+        "_func_0c1b10e0": 203100384,
+        "_func_0c1b1108": 203100424,
+        "_func_0c1b148c": 203101324
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": true,
+      "overlap_note": "The 232-byte helper section is already integrated via 2630debe. Do not count it again or register this inexact linked draft over the exact owner.",
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1b1050-148c",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1b1050-148c-whole-proof.json",
+        "proof_sha256": "3321399089c50ad965a50859f49f1a8c910ecb3cad4fd7398797c34380741e90",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1b1050-148c-whole-proof.log",
+        "log_sha256": "981a74f3f37b92c0060056da5b631a33639fa5d223e17fa44b8b62d081ce634d",
+        "sections": [
+          {
+            "section": "Pu1050",
+            "equal_bytes": 232,
+            "size": 232,
+            "linked_size": 232
+          },
+          {
+            "section": "Pu148c",
+            "equal_bytes": 30,
+            "size": 276,
+            "linked_size": 284
+          }
+        ],
+        "problems": [
+          "Not an exact section match: Pu148c",
+          "Linked image contains extra or missing initialized bytes",
+          "Linked image contains extra or missing memory bytes"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b1050.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b144c.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b1050.boundary-review.json",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1b148c.boundary-review.json"
+      ]
+    },
+    {
+      "name": "1e6e36",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1e6e36.sol.c",
+      "source_sha256": "eb0967844f73e56c670407d79a94aa038a37b13c2744822c8f615d86d0cf083f",
+      "original_source": "work/tu_0c1e6e36.sol.c",
+      "original_source_sha256": "477cc1c1229f06a721ff7308359c92db33534c3676fc2397296b6b209f0aa937",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1e6e36.json",
+      "unit_sha256": "051730992ec209af402ca1180fe93f9e225e869d36316d25e07c87ca2ab174e6",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203320886,
+          "size": 182,
+          "interior": [
+            {
+              "address": 203321052,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203321056,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203321064,
+              "size": 4,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1e6e36": 203320886
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1e6e36",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1e6e36-whole-proof.json",
+        "proof_sha256": "a3e52b28f5f0c3cb7b5e7930bd21101768474e0583b13fcc9fa2f318d7f6890f",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1e6e36-whole-proof.log",
+        "log_sha256": "edbcb4036fa953d5f2e038c56a9d1b2e0371fe20b480d34cc9eba90f57d6feae",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 14,
+            "size": 182,
+            "linked_size": 184
+          }
+        ],
+        "problems": [
+          "Not an exact section match: P",
+          "Linked image contains extra or missing initialized bytes",
+          "Linked image contains extra or missing memory bytes"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1e6e36.boundary-review.json",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1e6e28.retail.txt"
+      ]
+    },
+    {
+      "name": "1c75a0",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1c75a0.sol.c",
+      "source_sha256": "4cc41b0b45fa4d9938ca78d1821a49be260166d623c395a4dde3ac21767ab763",
+      "original_source": "work/tu_0c1c75a0.sol.c",
+      "original_source_sha256": "9ef1750942f6f84d89c381f1c49dcdc067f1f7200e037a50b4aa292f77aef83f",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1c75a0.json",
+      "unit_sha256": "7232be12278cdcfeb15f7d8f8e25460f1fd6035942503d225e449681fddae47d",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203191712,
+          "size": 284,
+          "interior": [
+            {
+              "address": 203191968,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203191970,
+              "size": 2,
+              "kind": "data"
+            },
+            {
+              "address": 203191972,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203191980,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203191988,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203191992,
+              "size": 4,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1c75a0": 203191712,
+        "_func_0c1c75ec": 203191788,
+        "_func_0c1c766a": 203191914,
+        "_func_0c1c7682": 203191938
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1c75a0",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1c75a0-whole-proof.json",
+        "proof_sha256": "89ea6c01ae10dc5a11630976f4f1cbbc026f9fbcd496b727e5f472e0b54cd3bc",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1c75a0-whole-proof.log",
+        "log_sha256": "3cedb6e6a1d2aa07fab7064cb0f38d38bf11b8d933a3d7d7e48c6f63804be843",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 168,
+            "size": 284,
+            "linked_size": 284
+          }
+        ],
+        "problems": [
+          "Wrong exported symbol address: _func_0c1c766a",
+          "Wrong exported symbol address: _func_0c1c7682",
+          "Not an exact section match: P"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1c75a0.boundary-review.json",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1c7590.retail.txt"
+      ]
+    },
+    {
+      "name": "1c9210",
+      "source": "work/handoff-since-2f779d4-2630debe-v2/sources/tu_0c1c9210.sol.c",
+      "source_sha256": "291993d0a60e8f4a252b5fe34fecf5578162975b3da806e4542c3d9e81dbe3b8",
+      "original_source": "work/tu_0c1c9210.sol.c",
+      "original_source_sha256": "f592f835f44684d58fbb37e07d52651e634270f51effc5aab91e69fc86cb1a0d",
+      "source_change": "Only include filename changed to bind the frozen full shared-header snapshot; function bodies unchanged.",
+      "unit": "work/handoff-since-2f779d4-2630debe-v2/units/tu_0c1c9210.json",
+      "unit_sha256": "d01e4443306c6a0c817534b2f91d51119d1e16e901b89a8b1f45821df8fccfe6",
+      "required_header": "selector_model.h",
+      "header_sha256": "005b767a357ace3c9d4bb72d2d79b278011fba0af27796508cb3c66ba7de09a3",
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203198992,
+          "size": 356,
+          "interior": [
+            {
+              "address": 203199296,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203199300,
+              "size": 8,
+              "kind": "data"
+            },
+            {
+              "address": 203199308,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203199312,
+              "size": 24,
+              "kind": "data"
+            },
+            {
+              "address": 203199336,
+              "size": 4,
+              "kind": "data"
+            },
+            {
+              "address": 203199340,
+              "size": 8,
+              "kind": "data"
+            }
+          ]
+        }
+      ],
+      "exports": {
+        "_func_0c1c9210": 203198992,
+        "_func_0c1c927a": 203199098,
+        "_func_0c1c9318": 203199256
+      },
+      "credit": 0,
+      "status": "complete frozen C with fresh whole proof; unregistered, zero credit",
+      "already_verified_code_overlap": false,
+      "overlap_note": null,
+      "real_empty_callback_note": null,
+      "frozen_proof": {
+        "name": "1c9210",
+        "status": "INEXACT",
+        "proof": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1c9210-whole-proof.json",
+        "proof_sha256": "437633dbe27b505db02d4d87a213b47bf0f77ec480333eeba919628921807416",
+        "log": "work/handoff-since-2f779d4-2630debe-v2/proofs/tu_0c1c9210-whole-proof.log",
+        "log_sha256": "c66320b0366f135a77af117fbb80df2d5206008186d16c9d6243189253cd8e91",
+        "sections": [
+          {
+            "section": "P",
+            "equal_bytes": 0,
+            "size": 356,
+            "linked_size": 352
+          }
+        ],
+        "problems": [
+          "Wrong exported symbol address: _func_0c1c9318",
+          "Not an exact section match: P",
+          "Linked image contains extra or missing initialized bytes",
+          "Linked image contains extra or missing memory bytes"
+        ],
+        "credit": 0
+      },
+      "native_evidence": [
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1c9210.retail.txt",
+        "work/handoff-since-2f779d4-2630debe-v2/native/tu_0c1c9210.boundary-review.json"
+      ]
+    }
+  ],
+  "rules": "All drafts are complete bodies with whole native extents; no clone stubs included. Every inexact draft has zero credit. Do not register fragments, overlap an exact owner, or modify frozen canonical header.",
+  "proof_status": "PASS all frozen sources/header hashes unchanged; all whole comparisons complete",
+  "fixed_snapshot_status": "SEALED: 17 fresh whole comparisons completed, frozen source/unit/header hashes unchanged, all drafts INEXACT and zero credit",
+  "manifest_note": "Version 1 is preserved as a rejected snapshot because four chained Control4 reads used removed member names. Version 2 repairs only those reads in its frozen source copy, preserves original source hashes, and reproves all 17 units. Exact helper 2630debe was already integrated and is not counted again."
+}

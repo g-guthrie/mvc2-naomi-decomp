@@ -1,0 +1,37 @@
+{
+  "start": "0x0c1b2a40",
+  "size": 976,
+  "status": "complete C, inexact whole linked section, unregistered, zero credit",
+  "source": "work/tu_0c1b2a40.sol.c",
+  "boundary_review": "work/tu_0c1b2a40.boundary-review.json",
+  "actual_function_entries": [
+    "0x0c1b2a40",
+    "0x0c1b2a74",
+    "0x0c1b2a94",
+    "0x0c1b2aa6",
+    "0x0c1b2b36",
+    "0x0c1b2c36",
+    "0x0c1b2c48",
+    "0x0c1b2d3c",
+    "0x0c1b2dd8",
+    "0x0c1b2de2"
+  ],
+  "proof": "work/tu_0c1b2a40-first-proof.json",
+  "linked_bytes": 968,
+  "model_sha256": "2448932132ce1d416b850d33c69048c33fd1ee48bdefe391f2af3f3af6ef3c1f",
+  "source_sha256": "63557d1589f9bcd7e1a899d24518a6421c4f211e6ffc6a4574fcdfb65b65ac8c",
+  "compiler_recipes": "No forced registers, extra compiler options, explicit compiler runtime calls, literal/type/ABI permutation loops, padding accesses or assembly.",
+  "native_listing": "work/tu_0c1b2a3c.retail.txt",
+  "mapping_review": {
+    "0x0c1b2a3c": {
+      "size": 4,
+      "kind": "data",
+      "basis": "Free routine pointer read by preceding reviewed 0x0c1b2a14"
+    },
+    "0x0c1b2a40": {
+      "size": 52,
+      "kind": "code",
+      "basis": "Complete allocator constructor with proper native prologue"
+    }
+  }
+}

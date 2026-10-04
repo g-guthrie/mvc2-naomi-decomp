@@ -1,0 +1,173 @@
+          .IMPORT     _dat_0c24abec
+          .IMPORT     _func_0c1b4f20
+          .IMPORT     _func_0c1b5070
+          .IMPORT     _func_0c02a026
+          .IMPORT     _func_0c02a0c4
+          .EXPORT     _func_0c0fdd18
+          .SECTION    P,CODE,ALIGN=4
+_func_0c0fdd18:                  ; function: func_0c0fdd18
+                                 ; frame size=8
+          MOV.W       L261,R0    ; H'01F5
+          MOV         #2,R3
+          MOV.L       R14,@-R15
+          MOV         R4,R14
+          STS.L       PR,@-R15
+          MOV.B       R3,@(R0,R14)
+          MOV.W       L261+2,R0  ; H'0141
+          MOV.B       @(R0,R14),R2
+          TST         R2,R2
+          BT          L253
+          MOV         #0,R2
+          MOV.L       L261+10,R4 ; _dat_0c24abec
+          MOV.B       R2,@(R0,R14)
+          ADD         #98,R0
+          MOV.B       @(R0,R14),R3
+          MOV         #92,R0
+          EXTU.B      R3,R3
+          SHLL2       R3
+          SHLL        R3
+          ADD         R4,R3
+          FMOV.S      @R3,FR3
+          FMOV.S      FR3,@(R0,R14)
+          MOV.W       L261+4,R0  ; H'01A3
+          MOV.B       @(R0,R14),R3
+          MOV         #4,R0
+          EXTU.B      R3,R3
+          SHLL2       R3
+          SHLL        R3
+          ADD         R3,R4
+          FMOV.S      @(R0,R4),FR3
+          MOV         #104,R0
+          FMOV.S      FR3,@(R0,R14)
+          MOV.W       L261+6,R0  ; H'01D2
+          MOV.B       @(R0,R14),R3
+          TST         R3,R3
+          BT/S        L254
+          MOV         R14,R4
+          MOV         #92,R0
+          FMOV.S      @(R0,R14),FR3
+          FNEG        FR3
+          FMOV.S      FR3,@(R0,R14)
+          MOV         #104,R0
+          FMOV.S      @(R0,R14),FR3
+          FNEG        FR3
+          FMOV.S      FR3,@(R0,R14)
+L254:                             
+          MOV.L       L261+14,R3 ; _func_0c1b4f20
+          JSR         @R3
+          NOP
+          MOV.L       L261+18,R2 ; _func_0c1b5070
+          MOV         #1,R5
+          MOV         #0,R6
+          JSR         @R2
+          MOV         R14,R4
+          MOV.L       L261+18,R3 ; _func_0c1b5070
+          MOV         #1,R6
+          MOV         R6,R5
+          JSR         @R3
+          MOV         R14,R4
+L253:                             
+          MOV.W       L261+8,R0  ; H'019E
+          MOV.B       @(R0,R14),R4
+          TST         R4,R4
+          BT          L255
+          EXTS.B      R4,R4
+          MOV         #1,R5
+          TST         R5,R4
+          BT          L255
+          MOV         R5,R0
+          NOP
+          MOV.W       R0,@(28,R14)
+L255:                             
+          MOV.L       L261+22,R3 ; _func_0c02a026
+          JSR         @R3
+          MOV         R14,R4
+          MOV.W       @(28,R14),R0
+          ADD         #-1,R0
+          MOV.W       R0,@(28,R14)
+          EXTS.W      R0,R0
+          TST         R0,R0
+          BF          L257
+          MOVA        L261+26,R0
+          FMOV.S      @R0,FR4
+          MOV         #0,R3
+          MOV.B       @(6,R14),R0
+          ADD         #1,R0
+          MOV.B       R0,@(6,R14)
+          MOV.W       L261,R0    ; H'01F5
+          MOV.B       R3,@(R0,R14)
+          ADD         #-87,R0
+          MOV.B       @(R0,R14),R4
+          TST         R4,R4
+          BT          L258
+          EXTS.B      R4,R0
+          TST         #1,R0
+          BF          L258
+          MOVA        L261+30,R0
+          FMOV.S      @R0,FR3
+          MOV         #92,R0
+          FMOV.S      FR3,@(R0,R14)
+          MOV         #104,R0
+          FMOV.S      FR4,@(R0,R14)
+          BRA         L259
+          MOV         #3,R6
+L258:                             
+          MOVA        L261+34,R0
+          FMOV.S      @R0,FR3
+          MOV         #92,R0
+          MOV         #4,R6
+          FMOV.S      FR3,@(R0,R14)
+          MOV         #104,R0
+          FMOV.S      FR4,@(R0,R14)
+L259:                             
+          MOV.W       L261+6,R0  ; H'01D2
+          MOV.B       @(R0,R14),R3
+          TST         R3,R3
+          BT/S        L260
+          MOV         #21,R5
+          MOV         #92,R0
+          FMOV.S      @(R0,R14),FR3
+          FNEG        FR3
+          FMOV.S      FR3,@(R0,R14)
+          MOV         #104,R0
+          FMOV.S      @(R0,R14),FR3
+          FNEG        FR3
+          FMOV.S      FR3,@(R0,R14)
+L260:                             
+          MOV.L       L261+38,R3 ; _func_0c02a0c4
+          JSR         @R3
+          MOV         R14,R4
+L257:                             
+          MOV         #92,R1
+          ADD         R14,R1
+          MOV         #52,R0
+          FMOV.S      @R1,FR3
+          FMOV.S      @(R0,R14),FR2
+          MOV         #104,R1
+          ADD         R14,R1
+          FADD        FR3,FR2
+          FMOV.S      FR2,@(R0,R14)
+          MOV         #92,R0
+          FMOV.S      @(R0,R14),FR2
+          FMOV.S      @R1,FR3
+          FADD        FR3,FR2
+          FMOV.S      FR2,@(R0,R14)
+          LDS.L       @R15+,PR
+          RTS
+          MOV.L       @R15+,R14
+L261:                             
+          .DATA.W     H'01F5
+          .DATA.W     H'0141
+          .DATA.W     H'01A3
+          .DATA.W     H'01D2
+          .DATA.W     H'019E
+          .DATA.L     _dat_0c24abec
+          .DATA.L     _func_0c1b4f20
+          .DATA.L     _func_0c1b5070
+          .DATA.L     _func_0c02a026
+          .DATA.L     H'3E555555
+          .DATA.L     H'C1055555
+          .DATA.L     H'C0A00000
+          .DATA.L     _func_0c02a0c4
+          .END
+

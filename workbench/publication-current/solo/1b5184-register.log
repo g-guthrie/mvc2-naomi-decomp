@@ -1,0 +1,35 @@
+P 0x0c1b5184 232 bytes: 208/232 equal, linked 232 at 0x0c1b5184
+  _func_0c1b5184 0x0c1b5184 196 bytes: 172/196 equal
+  _func_0c1b5248 0x0c1b5248 6 bytes: 6/6 equal
+  pool 0x0c1b524e 30 bytes: 30/30 equal
+    0c1b51dc  retail e00c  mov #12,r0                       ours e00c  mov #12,r0
+    0c1b51de  retail 9039  mov.w 0x000000000c1b5254,r0      ours 9039  mov.w 0x000000000c1b5254,r0
+  ! 0c1b51e0  retail 02ec  mov.b @(r0,r14),r2               ours 00ec  mov.b @(r0,r14),r0
+  ! 0c1b51e2  retail 2228  tst r2,r2                        ours 2008  tst r0,r0
+    0c1b51e4  retail 892c  bt 0x000000000c1b5240            ours 892c  bt 0x000000000c1b5240
+    0c1b51e6  retail 84e5  mov.b @(5,r14),r0                ours 84e5  mov.b @(5,r14),r0
+    ...
+    0c1b5208  retail 84e5  mov.b @(5,r14),r0                ours 84e5  mov.b @(5,r14),r0
+    0c1b520a  retail e517  mov #23,r5                       ours e517  mov #23,r5
+  ! 0c1b520c  retail 64e3  mov r14,r4                       ours d215  mov.l 0x000000000c1b5264,r2
+  ! 0c1b520e  retail 7001  add #1,r0                        ours 64e3  mov r14,r4
+  ! 0c1b5210  retail 80e5  mov.b r0,@(5,r14)                ours 7001  add #1,r0
+  ! 0c1b5212  retail e020  mov #32,r0                       ours 80e5  mov.b r0,@(5,r14)
+  ! 0c1b5214  retail 06ec  mov.b @(r0,r14),r6               ours e020  mov #32,r0
+  ! 0c1b5216  retail 4f26  lds.l @r15+,pr                   ours 06ec  mov.b @(r0,r14),r6
+  ! 0c1b5218  retail 6363  mov r6,r3                        ours 4f26  lds.l @r15+,pr
+  ! 0c1b521a  retail 4600  shll r6                          ours 6363  mov r6,r3
+  ! 0c1b521c  retail 363c  add r3,r6                        ours 4600  shll r6
+  ! 0c1b521e  retail d311  mov.l 0x000000000c1b5264,r3      ours 363c  add r3,r6
+    0c1b5220  retail 6df6  mov.l @r15+,r13                  ours 6df6  mov.l @r15+,r13
+    0c1b5222  retail 760e  add #14,r6                       ours 760e  add #14,r6
+  ! 0c1b5224  retail 432b  jmp @r3                          ours 422b  jmp @r2
+    0c1b5226  retail 6ef6  mov.l @r15+,r14                  ours 6ef6  mov.l @r15+,r14
+    0c1b5228  retail d30d  mov.l 0x000000000c1b5260,r3      ours d30d  mov.l 0x000000000c1b5260,r3
+PROBLEM Not an exact section match: P
+DIFFERS
+RELEASED ptrtab_42 Cn1b5264 to tu_0c1b5184
+RELEASED rest_082 Cn19424e to tu_0c1b5184
+RELEASED rest_082 Cn19425c to tu_0c1b5184
+RELEASED rest_082 Cn194268 to tu_0c1b5184
+REGISTERED tu_0c1b5184 as candidate (1677 units)
