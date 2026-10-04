@@ -199,6 +199,32 @@
           "evidence": "Native table entries are 0c06c9f2 (returns allocated actor or null) and 0c06ca98 (returns zero). Dispatcher 0c06c9da supplies actor in R4 and forwards R0. Pointer callback signatures preserve complete exact section bytes."
         }
       ]
+    },
+    {
+      "source": "src/verified/tu_0c05429c.c",
+      "members": [
+        {
+          "type": "struct Actor",
+          "member": "b3f0",
+          "offset": "0x3f0",
+          "size": 1,
+          "evidence": "0542be..0542c8 writes adjacent byte controls at 3f0 and 3f1."
+        },
+        {
+          "type": "struct Actor",
+          "member": "b328",
+          "offset": "0x328",
+          "size": 1,
+          "evidence": "054348 and corresponding middle handlers load literal 0328 then store one byte."
+        }
+      ],
+      "prototypes": [
+        {
+          "address": "0x0c23f424",
+          "declaration": "extern struct Actor *(*table_0c23f424[])(struct Actor *);",
+          "evidence": "Native entries are 05482a (allocated actor or null) and 0548a2 (zero). Dispatcher 054812 passes actor in R4 and forwards nullable actor in R0; pointer signatures preserve complete exact section."
+        }
+      ]
     }
   ]
 }

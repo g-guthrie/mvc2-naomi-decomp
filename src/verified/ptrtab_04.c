@@ -88,12 +88,6 @@ void (*const ptr_0c054120)(void) = func_0c02a026;
 #pragma section n054130
 void (*const ptr_0c054130)(void) = func_0c0451f2;
 
-#pragma section n05467c
-void (*const table_0c05467c[])(void) = {
-    func_0c02a0c4,
-    func_0c043324,
-};
-
 #pragma section n055134
 void (*const ptr_0c055134)(void) = func_0c23f5f0;
 
