@@ -156,6 +156,13 @@ def release_pools(unit, units):
 
 
 def register(unit, exact):
+    # Existing byte equality remains mandatory for verified units. Boundary
+    # admission also prevents a newly registered fragment from posing as C.
+    if any(s['kind'] == 'code' for s in unit['sections']):
+        from boundaries import BoundaryIndex
+        boundary = BoundaryIndex.current().unit(unit)
+        if boundary['issues']:
+            raise ValueError('Candidate boundary review failed: ' + json.dumps(boundary['issues']))
     unit = hexed(unit)
     unit['mode'] = 'verified' if exact else 'candidate'
     if unit['source'].startswith('src/verified/') and not exact:
@@ -197,6 +204,8 @@ def evaluate(path, imports=None, options=None):
         if len(unit['imports']) != before:
             elf, link = compile_unit(unit, work, flags)
         proof, _ = compare(unit, elf, link, main_image, base)
+        from diagnose import diagnose
+        proof['diagnosis'] = diagnose(unit, proof, elf, main_image, base)
     finally:
         shutil.rmtree(work, ignore_errors=True)
     return proof, unit

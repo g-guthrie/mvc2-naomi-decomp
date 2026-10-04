@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """One Hitachi build path, from checked-in C to address-verified ROM bytes."""
 import argparse
+import fcntl
+import time
 import json
 import os
 from pathlib import Path
@@ -82,7 +84,7 @@ def compile_unit(unit, work, flags):
     lines = [f'INPUT {stem}.obj'] + link_lines(unit, stem)
     (work / (stem + '.lnk')).write_text('\n'.join(lines) + '\n')
     run('lnk.exe', ['-subcommand=' + stem + '.lnk'])
-    run('shc.exe', [stem + '.c', *options, '-code=asmcode', '-object=' + stem + '.src'])
+    (work / (stem + '.src')).write_text(assembly)
     return (work / (stem + '.elf')).read_bytes(), (work / (stem + '.map')).read_text(errors='replace')
 
 
@@ -103,7 +105,9 @@ def smoke(work, flags):
     print('PASS Hitachi code, data, BSS, imported and local pointer relocation', flush=True)
 
 
-def build(selected=None):
+def build(selected=None, *, clean=False, jobs=None):
+    started = time.monotonic()
+    initial_inputs = input_fingerprint()
     metadata = verify_tools()
     target, units = load(ROOT / 'config/target.json'), load(ROOT / 'config/units.json')
     validate_units(units, target)
@@ -117,10 +121,10 @@ def build(selected=None):
     work = output / 'work'
     if work.exists():
         shutil.rmtree(work)
-    shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work)
-    for library in sorted((ROOT / 'toolchain/naomi-sdk/lib').glob('*.lib')):
-        shutil.copyfile(library, work / library.name)
-    smoke(work, flags)
+    from build_cache import ArtifactCache, prepare_work, shared_inputs
+    prepare_work(ROOT, work / 'smoke')
+    smoke(work / 'smoke', flags)
+    cache = ArtifactCache(ROOT, shared_inputs(ROOT), clean=clean)
     if selected:
         units = [u for u in units if u['id'] == selected]
         if not units:
@@ -129,15 +133,24 @@ def build(selected=None):
     failed = []
     matched_units = matched_sections = matched_bytes = 0
     from concurrent.futures import ThreadPoolExecutor
-    with ThreadPoolExecutor(max_workers=os.cpu_count() or 2) as pool:
-        compiled = list(pool.map(lambda unit: compile_unit(unit, work, flags), units))
-    for unit, (elf, link) in zip(units, compiled):
+    jobs = jobs or min(4, os.cpu_count() or 1)
+    with ThreadPoolExecutor(max_workers=jobs) as pool:
+        compiled = list(pool.map(lambda unit: cache.compile(unit, work / unit['id'], compile_unit), units))
+    cache_hits = sum(hit for _, _, hit in compiled)
+    print(f'BUILD compiled={len(compiled)-cache_hits} cache_hits={cache_hits} jobs={jobs}', flush=True)
+    from boundaries import BoundaryIndex
+    from diagnose import diagnose
+    boundary_index = BoundaryIndex.current()
+    for unit, (elf, link, hit) in zip(units, compiled):
         try:
             proof, segments = compare(unit, elf, link, main, base)
         except ValueError as error:
             raise ValueError(f"{unit['id']}: {error}") from error
         credited = unit['mode'] == 'verified' and proof['exact']
         row = {**unit, **proof, 'credited': credited, 'elf_sha256': sha(elf)}
+        if not credited and any(s['kind'] == 'code' for s in unit['sections']):
+            row['boundaries'] = boundary_index.unit(unit)
+            row['diagnosis'] = diagnose(unit, proof, elf, main, base)
         rows.append(row)
         if unit['mode'] == 'verified' and not proof['exact']:
             failed.append(unit['id'])
@@ -155,6 +168,8 @@ def build(selected=None):
             details += f"; {exact}/{len(proof['functions'])} functions match, {proof['function_bytes']} bytes; pools {proof['pool_bytes']} bytes"
         if selected or not credited:
             print(f"{'MATCH' if credited else 'CANDIDATE' if unit['mode'] == 'candidate' else 'FAIL'} {unit['id']} — {details}", flush=True)
+    if input_fingerprint() != initial_inputs:
+        raise ValueError('Build inputs changed while compiling; no proof published')
     if selected:
         (output / 'unit-proof.json').write_text(json.dumps(rows[0], indent=2) + '\n')
         if failed:
@@ -170,12 +185,15 @@ def build(selected=None):
     if failed:
         raise ValueError('Verified unit mismatch: ' + ', '.join(failed))
     mapping = review(main, base, verified=rows)
-    proof = {'schema_version': 1, 'input_sha256': input_fingerprint(), 'toolchain': metadata,
+    proof = {'schema_version': 1, 'input_sha256': initial_inputs, 'toolchain': metadata,
+             'performance': {'compiled_units': len(compiled)-cache_hits, 'cached_units': cache_hits, 'jobs': jobs, 'elapsed_seconds': round(time.monotonic()-started, 3)},
              'main_size': size, 'main_address': base, 'main_sha256': sha(rebuilt),
              'program_sha256': sha(merged), 'rom_members_verified': len(target['roms']),
              'units': rows,
              'mapping': {k:v for k,v in mapping.items() if k != 'ranges'},
              'scope': 'Main image source progress only. Untranslated reference bytes preserve the remainder of the image.'}
+    from feasibility import inventory
+    proof['feasibility'] = inventory(main, base, [(r['address'], r['size'], r['kind']) for r in mapping['ranges']], rows)
     (output / 'main.bin').write_bytes(rebuilt)
     (output / target['program_rom']).write_bytes(merged)
     (output / 'mapping.json').write_text(json.dumps(mapping, indent=2) + '\n')
@@ -189,16 +207,28 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', nargs='?', default='check', choices=['check', 'unit'])
     parser.add_argument('unit', nargs='?')
+    parser.add_argument('--clean', action='store_true', help='recompile all selected units without reading the cache')
+    parser.add_argument('--jobs', type=int, default=None, help='bounded vendor-tool concurrency (default: up to 4)')
     args = parser.parse_args()
+    if args.jobs is not None and args.jobs < 1:
+        parser.error('--jobs must be positive')
     if args.command == 'unit' and not args.unit:
         parser.error('unit requires an id from config/units.json')
-    if args.command == 'check':
-        # A failed new check must not leave previous successful proof.
-        (ROOT / 'build' / 'proof.json').unlink(missing_ok=True)
-    preflight()
-    if args.command == 'check':
-        subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-v'], cwd=ROOT, check=True)
-    build(args.unit if args.command == 'unit' else None)
+    (ROOT / 'build').mkdir(exist_ok=True)
+    # Only one command may own build outputs/proofs, including selected checks.
+    with (ROOT / 'build/check.lock').open('a') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        check_inputs = input_fingerprint()
+        if args.command == 'check':
+            (ROOT / 'build/proof.json').unlink(missing_ok=True)
+        preflight()
+        if args.command == 'check':
+            subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-v'], cwd=ROOT, check=True)
+            from type_contracts import check_all
+            print('TYPE CONTRACTS ' + json.dumps(check_all()), flush=True)
+        if input_fingerprint() != check_inputs:
+            raise ValueError('Inputs changed during preflight/tests; rerun on a stable tree')
+        build(args.unit if args.command == 'unit' else None, clean=args.clean, jobs=args.jobs)
 
 
 if __name__ == '__main__':

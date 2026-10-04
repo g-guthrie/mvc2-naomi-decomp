@@ -133,6 +133,13 @@ def main():
         for st, n in full_twin_spans(image, base, ranges, starts, extent, groups, verified):
             print(f'0x{st:08x} {n}')
         return 0
+    from boundaries import BoundaryIndex
+    proposed_entries = [s for s in starts if start <= s < start + size]
+    audit = BoundaryIndex(image, base, ranges).audit(
+        [{'kind': 'code', 'address': start, 'size': size}], proposed_entries)
+    if audit['issues']:
+        import json
+        raise ValueError('Resolve native boundaries before cloning: ' + json.dumps(audit['issues']))
     headers, bodies, notes = [], [], []
     seen_headers = set()
     for a in [s for s in starts if start <= s < start + size]:

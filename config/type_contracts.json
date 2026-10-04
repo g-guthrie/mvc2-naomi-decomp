@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "scope": "Evidence-backed assertions only; unlisted layouts/signatures are not established by this file.",
+  "contracts": [
+    {
+      "source": "src/candidates/ud2_12.c",
+      "members": [
+        {
+          "type": "struct S_ud2_12",
+          "member": "b141",
+          "offset": "0x141",
+          "evidence": "0c0d6ae8 literal at 0c0d6bc2"
+        },
+        {
+          "type": "struct S_ud2_12",
+          "member": "b1a3",
+          "offset": "0x1a3",
+          "evidence": "0c0d6b76 literal at 0c0d6bc8"
+        },
+        {
+          "type": "struct S_ud2_12",
+          "member": "b1e9",
+          "offset": "0x1e9",
+          "evidence": "0c0d6b14 literal at 0c0d6bc6"
+        },
+        {
+          "type": "struct S_ud2_12",
+          "member": "b4c9",
+          "offset": "0x4c9",
+          "evidence": "0c0d6b02 literal at 0c0d6bc4"
+        }
+      ],
+      "prototypes": [
+        {
+          "address": "0x0c044e52",
+          "declaration": "extern unsigned char func_0c044e52(struct S_ud2_12 *);",
+          "evidence": "JSR 0c0d6a66 then EXTU.B R0,R0 at 0c0d6a6a; complete calling function now 110/110 bytes."
+        }
+      ]
+    },
+    {
+      "source": "src/include/objects.h",
+      "members": [
+        {
+          "type": "struct MaskObject",
+          "member": "w340",
+          "offset": "0x340",
+          "evidence": "Exact source src/verified/tu_0c03a810.c uses the mask word at actor+0x340."
+        }
+      ]
+    }
+  ]
+}

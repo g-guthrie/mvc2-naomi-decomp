@@ -72,6 +72,8 @@ def work_queue(proof):
             kind = 'partial_functions'
         else:
             kind = 'investigate'
+        if unit.get('boundaries', {}).get('issues'):
+            kind = 'review_boundaries'
         rows.append({'id': unit['id'], 'source': unit.get('source'), 'kind': kind,
                      'address': min(part['address'] for part in sections),
                      'equal_bytes': equal, 'expected_bytes': expected,
@@ -79,8 +81,11 @@ def work_queue(proof):
                      'exact_functions': sum(bool(f['exact']) for f in unit['functions']),
                      'total_functions': len(unit['functions']),
                      'credited_bytes': unit['function_bytes'] + unit['pool_bytes'],
-                     'problems': unit['problems']})
-    priority = {'near_match': 0, 'review_extent': 1, 'partial_functions': 2, 'investigate': 3}
+                     'problems': unit['problems'],
+                     'diagnosis': unit.get('diagnosis'), 'boundaries': unit.get('boundaries'),
+                     'next_action': 'Repair boundaries before source search' if kind == 'review_boundaries'
+                                    else (unit.get('diagnosis') or {}).get('action', 'Inspect native semantics')})
+    priority = {'near_match': 0, 'review_extent': 1, 'partial_functions': 2, 'investigate': 3, 'review_boundaries': 4}
     rows.sort(key=lambda row: (priority[row['kind']], row['expected_bytes'] - row['equal_bytes'],
                                -row['credited_bytes'], row['address']))
     return {'input_sha256': proof['input_sha256'], 'candidates': rows}
