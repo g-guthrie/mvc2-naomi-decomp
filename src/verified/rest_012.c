@@ -152,8 +152,3 @@ const unsigned short dat_0c06e4ae[] = {
     0x0c2fu, 0xa0c4u, 0x0c02u, 0x46dau, 0x0c03u,
 };
 
-#pragma section n04d5f2
-const unsigned short dat_0c06e5f2[] = {
-    0x01feu, 0x01a1u, 0x01acu, 0x01ffu,
-};
-
