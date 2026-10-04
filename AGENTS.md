@@ -19,7 +19,7 @@ disassembly instead.
 
 ## Loop
 
-1. Run `python3 tools/recovery.py plan` against the current successful proof.
+1. Run `python3 tools/recovery.py plan --owners current-thread` against the current successful proof.
    Pick from `build/recovery_plan.json`: it ranks candidates and untouched
    reviewed spans by potential new code and disclosed effort estimates. Review
    callback/type/family evidence before spending a spelling budget.
@@ -76,9 +76,9 @@ proof is the same byte comparison every other unit passes.
 Run it again after adding a library, or after a unit frees a range it was
 blocked on. `SKIP` lines say which of the two applies.
 
-Assign independent whole-unit spans with explicit source ownership to parallel
-workers; one integrator alone changes shared headers and the registry.
-Several agents may run isolated comparisons at once: `diff_unit.py` uses a private work
+This recovery run is single-agent at the user's request. Do not spawn or restart
+subagents unless the user explicitly reauthorizes them. Keep unit ownership and
+batch integration in the current chat. `diff_unit.py` uses a private work
 directory and locks the registry. Full builds use isolated unit directories,
 bounded `--jobs`, cached artifacts and an output lock. Keep source inputs stable.
 Use `--clean` for independent clean-build evidence; CI always does so. See
