@@ -34316,18 +34316,32 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c05482a; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c0549b8",
-      "size": 4,
-      "kind": "data",
-      "sha256": "f0d0f0277e9ccce3dfd4d3767c4a4ee61fb59bc58c067084c8715263fb1d1482",
-      "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+      "address": "0x0c0548c0",
+      "size": 98,
+      "kind": "code",
+      "sha256": "b979f4e6be267d04dfad38210c77ee2cb56299f03e41c24481f3db1a3bb068a8",
+      "evidence": "Native entry 0548c0 through RTS/delay slot at 054920; all local branches target 05491a within this function. PC pools start 0549ac."
     },
     {
-      "address": "0x0c0549c0",
-      "size": 10,
+      "address": "0x0c054922",
+      "size": 24,
       "kind": "code",
-      "sha256": "e89e84076ff34c39865df7d1af62e5efd22f130dbb07db4c8c4be1598ab2552b",
-      "evidence": "CFG walk from 0x0c0549c0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "76ded91e76b302a047fa6db7cd664ddfb8344aaf9258c7cd8f78411099d502ca",
+      "evidence": "Native state dispatcher 054922 through JMP/delay slot at 054938; indexed indirect target uses table 23f434."
+    },
+    {
+      "address": "0x0c05493a",
+      "size": 114,
+      "kind": "code",
+      "sha256": "0e6c4017a37c8f9e4212f15fbf7832c65b08433ff6da4d605ce736bd10dce555",
+      "evidence": "Native direction-toggle/setup entry 05493a through RTS/delay slot at 0549aa. Reviewed stores, calls and stack lifetime; following words are PC pools."
+    },
+    {
+      "address": "0x0c0549ac",
+      "size": 52,
+      "kind": "data",
+      "sha256": "dcdd3dc8719acd9a41fc013bd9a559e49955c426f6743ed58d7f70fb513ed870",
+      "evidence": "All words are consumed as PC-relative literals by 0548c0, 054922 or 05493a: field offsets, float constants and absolute function/table pointers. 0549c0 is loaded at 0548fe as pointer 037d54, not executed; replaces false CFG-walk code classification."
     },
     {
       "address": "0x0c0549e0",
