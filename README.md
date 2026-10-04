@@ -24,12 +24,12 @@ asset checks, and parallel-work rules.
 | Track | Progress | Bytes |
 | --- | --- | ---: |
 | Map | `█████████████████████████████░░░` **91.737%** | 2,224,480 / 2,424,832 |
-| Code | `█████████░░░░░░░░░░░░░░░░░░░░░░░` **29.353%** | 513,902 / 1,750,746 |
-| Data | `█████████████████████████████░░░` **93.635%** | 443,581 / 473,734 |
-| [Decomp](config/units.json) | `████████████░░░░░░░░░░░░░░░░░░░░` **39.487%** | 957,483 / 2,424,832 |
-| Verified C source | `██████████░░░░░░░░░░░░░░░░░░░░░░` **32.634%** | 791,322 / 2,424,832 |
+| Code | `█████████░░░░░░░░░░░░░░░░░░░░░░░` **29.401%** | 514,736 / 1,750,746 |
+| Data | `█████████████████████████████░░░` **93.651%** | 443,655 / 473,734 |
+| [Decomp](config/units.json) | `████████████░░░░░░░░░░░░░░░░░░░░` **39.524%** | 958,391 / 2,424,832 |
+| Verified C source | `██████████░░░░░░░░░░░░░░░░░░░░░░` **32.691%** | 792,704 / 2,424,832 |
 | Prebuilt SDK modules | `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` **5.288%** | 128,215 / 2,424,832 |
-| Candidate fragments | `░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` **1.565%** | 37,946 / 2,424,832 |
+| Candidate fragments | `░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` **1.545%** | 37,472 / 2,424,832 |
 <!-- progress:end -->
 
 - **Map**: bytes of the main image reviewed as code or data (`config/mapping.json`).
@@ -68,3 +68,7 @@ them by hand. The treemap at `build/index.html` comes from the same build.
 - [docs/MATCHING.md](docs/MATCHING.md): how to make a function match.
 
 [![Hitachi build](https://github.com/g-guthrie/mvc2-naomi-decomp/actions/workflows/build.yml/badge.svg)](https://github.com/g-guthrie/mvc2-naomi-decomp/actions/workflows/build.yml)
+
+## Final stopped handoff
+
+Decompilation stopped on 2026-10-04 at the user’s request. The project remains incomplete. [Final handoff](docs/FINAL_HANDOFF.md) documents validation and the [source/history recovery release](https://github.com/g-guthrie/mvc2-naomi-decomp/releases/tag/final-stop-2026-10-04), including unverified research.

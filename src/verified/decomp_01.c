@@ -3,9 +3,6 @@
 #pragma section n11819c
 void func_0c13919c(unsigned char *p) { if (--*(short *)(p + 28) == 0) p[5]++; }
 
-#pragma section n173832
-void func_0c194832(unsigned char *p) { if (--*(short *)(p + 28) == 0) p[5]++; }
-
 #pragma section n17b904
 int func_0c19c904(short a, short b) { if (a & (1 << b)) return 1; return 0; }
 
