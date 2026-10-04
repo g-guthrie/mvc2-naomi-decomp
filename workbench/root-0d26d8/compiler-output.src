@@ -1,0 +1,50 @@
+          .IMPORT     _func_0c045248
+          .EXPORT     _func_0c0d26d8
+          .SECTION    P,CODE,ALIGN=4
+_func_0c0d26d8:                  ; function: func_0c0d26d8
+                                 ; frame size=0
+          MOV         #0,R5
+          MOV         R5,R0
+          NOP
+          MOV.B       R0,@(5,R4)
+          MOV.B       R0,@(7,R4)
+          MOV.B       R0,@(6,R4)
+          MOV.W       L247,R0    ; H'04C9
+          MOV.B       @(R0,R4),R0
+          CMP/EQ      #0,R0
+          BT          L240
+          CMP/EQ      #1,R0
+          BT          L241
+          CMP/EQ      #2,R0
+          BT          L242
+          BRA         L239
+          NOP
+L240:                            ; case label 
+          MOV.W       L247+2,R0  ; H'01E9
+          MOV         #6,R3
+          BRA         L238
+          MOV.B       R3,@(R0,R4)
+L241:                            ; case label 
+          MOV.W       L247+2,R0  ; H'01E9
+          MOV         #5,R1
+          BRA         L238
+          MOV.B       R1,@(R0,R4)
+L242:                            ; case label 
+          MOV.W       L247+2,R0  ; H'01E9
+          MOV         #4,R2
+          MOV.B       R2,@(R0,R4)
+L238:                            ; label: common
+          MOV.W       L247+4,R0  ; H'01A3
+          MOV         #1,R3
+          MOV.B       R3,@(R0,R4)
+L239:                            ; label: done
+          MOV.L       L247+6,R3  ; _func_0c045248
+          JMP         @R3
+          MOV         #21,R5
+L247:                             
+          .DATA.W     H'04C9
+          .DATA.W     H'01E9
+          .DATA.W     H'01A3
+          .DATA.L     _func_0c045248
+          .END
+
