@@ -1,5 +1,4 @@
-/* Four functions and the pool match. The allocation loop at 0c1b2e44
- * differs in temporary registers and placement of its final word store. */
+/* Complete 0x0c1b2e10..0x0c1b2f84 group. */
 #include "objects.h"
 extern struct LinkedActor *func_0c0374da(int,int,int);
 extern int *dat_0c2fb42c;
@@ -17,9 +16,15 @@ struct LinkedActor *func_0c1b2e44(struct LinkedActor *p)
 {
  unsigned char i;
  struct LinkedActor *q;
- for(i=0;i<4;i++){
-  if((q=func_0c0374da(0,3,0))==0)break;
-  q->p16=func_0c1b2ed0;q->p24=p;q->b32=14;q->b33=i;q->w38=0x2600;
+ for (i = 0; i < 4;) {
+  if ((q = func_0c0374da(0,3,0)) != 0) {
+   q->p16 = func_0c1b2ed0;
+   q->p24 = p;
+   q->b32 = 14;
+   q->b33 = i;
+   i++;
+   q->w38 = 0x2600;
+  } else break;
  }
  return q;
 }
