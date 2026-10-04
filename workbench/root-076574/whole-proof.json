@@ -1,0 +1,88 @@
+{
+  "unit": {
+    "id": "diff",
+    "source": "build/tu_0c076574.root.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": 201811316,
+        "size": 272,
+        "interior": [
+          {
+            "address": 201811550,
+            "size": 38,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c076574": 201811316,
+      "_func_0c0765e4": 201811428
+    },
+    "imports": {
+      "_func_0c046e7e": 201617022,
+      "_func_0c047aac": 201620140,
+      "_func_0c045248": 201609800,
+      "_dat_0c2412f0": 203690736,
+      "_dat_0c241300": 203690752
+    }
+  },
+  "proof": {
+    "exact": false,
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": 201811316,
+        "size": 272,
+        "interior": [
+          {
+            "address": 201811550,
+            "size": 38,
+            "kind": "data"
+          }
+        ],
+        "linked_size": 276,
+        "linked_address": 201811316,
+        "equal_bytes": 25,
+        "exact": false
+      }
+    ],
+    "functions": [
+      {
+        "symbol": "_func_0c076574",
+        "address": 201811316,
+        "size": 112,
+        "equal_bytes": 15,
+        "exact": false
+      },
+      {
+        "symbol": "_func_0c0765e4",
+        "address": 201811428,
+        "size": 122,
+        "equal_bytes": 1,
+        "exact": false
+      }
+    ],
+    "pools": [
+      {
+        "address": 201811550,
+        "size": 38,
+        "kind": "data",
+        "equal_bytes": 9,
+        "exact": false
+      }
+    ],
+    "function_bytes": 0,
+    "pool_bytes": 0,
+    "problems": [
+      "Wrong exported symbol address: _func_0c0765e4",
+      "Not an exact section match: P",
+      "Linked image contains extra or missing initialized bytes",
+      "Linked image contains extra or missing memory bytes"
+    ]
+  }
+}
