@@ -80,14 +80,6 @@ const unsigned int dat_0c2685c8[] = {
     0x00000000u,
 };
 
-#pragma section n269880
-void (*const table_0c269880[])(void) = {
-    func_0c20a120,
-    func_0c20a260,
-    func_0c20a3c0,
-    func_0c20a472,
-};
-
 #pragma section n269a48
 const unsigned short dat_0c269a48[] = {
     0x0000u,

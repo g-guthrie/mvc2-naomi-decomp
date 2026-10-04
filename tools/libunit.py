@@ -18,6 +18,7 @@ from pathlib import Path
 import re
 import shutil
 import subprocess
+import tempfile
 from concurrent.futures import ThreadPoolExecutor
 import sys
 
@@ -167,12 +168,12 @@ def place(work, lib, module, symbols, stem, main, base, table=None):
                 mask[i:i + 4] = b'\0\0\0\0'
         runs = [(m.end() - m.start(), m.start()) for m in re.finditer(rb'\xff+', bytes(mask))]
         fixed = size - mask.count(0)
-        if not runs or max(runs)[0] < 8 or fixed < 16:
-            unplaced.append((section, size, 'too little fixed content to place'))
-            continue
-        length, offset = max(runs)
-        anchor = ours[offset:offset + min(length, 48)]
-        hits, position = [], main.find(anchor, LIBRARY_START - base)
+        searchable = bool(runs) and max(runs)[0] >= 8 and fixed >= 16
+        hits, position = [], -1
+        if searchable:
+            length, offset = max(runs)
+            anchor = ours[offset:offset + min(length, 48)]
+            position = main.find(anchor, LIBRARY_START - base)
         while position != -1:
             candidate = position - offset
             if 0 <= candidate and candidate + size <= len(main) and \
@@ -193,13 +194,66 @@ def place(work, lib, module, symbols, stem, main, base, table=None):
                     hits = [candidate]
                     break
         if len(hits) != 1:
-            unplaced.append((section, size, 'not in the image' if not hits else f'{len(hits)} possible addresses'))
+            reason = ('too little fixed content to place' if not searchable and not hits else
+                      'not in the image' if not hits else f'{len(hits)} possible addresses')
+            unplaced.append((section, size, reason))
             continue
         parts.append({'section': section, 'kind': 'code' if attribute == 'CODE' else 'data',
                       'address': hits[0], 'size': size, 'link_start': start,
                       'exports': {s: hits[0] + (a - start) for s, a in map_symbols.items() if start <= a < start + size},
                       'relocated': [i for i in range(0, size, 4) if mask[i] == 0]})
+    parts, unplaced = infer_internal_sections(parts, unplaced, module, images, main, base)
     return parts, bss_parts, unplaced, alone
+
+
+def infer_internal_sections(parts, unplaced, module, images, main, base):
+    """Place low-entropy sections using relocations from already placed sections.
+
+    This supplies candidates only. Fixed bytes must agree here, and solve plus
+    the normal full linked-byte comparison still decide whether a module matches.
+    """
+    parts, unplaced = list(parts), list(unplaced)
+    segments_a, (rows, symbols), placements_a = images['a']
+    segments_b, _, placements_b = images['b']
+    changed = True
+    while changed:
+        changed = False
+        for item in list(unplaced):
+            section, size, _reason = item
+            row = next((r for r in rows if r[0] == section and r[1] == module), None)
+            if row is None:
+                continue
+            _, _, start, size, attribute = row
+            hints, evidence = set(), []
+            for source in parts:
+                content = memory_bytes(segments_a, source['link_start'], source['size'])
+                for offset in source['relocated']:
+                    pointer = int.from_bytes(content[offset:offset+4], 'little')
+                    if start <= pointer < start + size:
+                        location = source['address'] - base + offset
+                        real = int.from_bytes(main[location:location+4], 'little')
+                        hints.add(real - (pointer - start))
+                        evidence.append({'source': hexed(source['address'] + offset),
+                                         'section_offset': pointer - start, 'retail_pointer': hexed(real)})
+            if len(hints) != 1:
+                continue
+            address = hints.pop()
+            if not base <= address or address + size > base + len(main):
+                continue
+            ours = memory_bytes(segments_a, start, size)
+            other = memory_bytes(segments_b, start + placements_b[section] - placements_a[section], size)
+            relocated = [i for i in range(0, size, 4) if ours[i:i+4] != other[i:i+4]]
+            moving = {i + j for i in relocated for j in range(min(4, size-i))}
+            retail = main[address-base:address-base+size]
+            if any(ours[i] != retail[i] for i in range(size) if i not in moving):
+                continue
+            parts.append({'section': section, 'kind': 'code' if attribute == 'CODE' else 'data',
+                          'address': address, 'size': size, 'link_start': start,
+                          'exports': {s: address + a - start for s, a in symbols.items() if start <= a < start+size},
+                          'relocated': relocated, 'placement_evidence': evidence})
+            unplaced.remove(item)
+            changed = True
+    return parts, unplaced
 
 
 def solve(work, lib, module, parts, bss_parts, main, base):
@@ -356,12 +410,23 @@ def register(new_units, main, base):
     return added
 
 
+def defer_bss(module, bss_parts, known, previous):
+    """Retry only when the BSS symbol evidence changed; stop at a fixed point."""
+    knowledge = tuple((symbol, known.get(symbol)) for part in bss_parts
+                      for symbol in sorted(part['symbols']))
+    if previous.get(module) == knowledge:
+        return False
+    previous[module] = knowledge
+    return True
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('library', help='a .lib below toolchain/naomi-sdk/lib/')
     parser.add_argument('--register', action='store_true', help='append exact modules to config/units.json as verified library units')
     parser.add_argument('--module', help='only this module')
     parser.add_argument('--jobs', type=int, default=os.cpu_count() or 4, help='parallel placement jobs')
+    parser.add_argument('--output', help='write exact unit descriptors and skipped reasons as JSON')
     args = parser.parse_args()
     library = Path(args.library)
     if library.is_absolute():
@@ -379,10 +444,10 @@ def main():
             table.setdefault(symbol, number(address))
     spans = registry_intervals(units)
     sizes = {unit['id']: len(unit['sections']) for unit in units}
-    work = ROOT / 'build' / 'libwork'
-    if work.exists():
-        shutil.rmtree(work)
-    shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work)
+    (ROOT / 'build').mkdir(exist_ok=True)
+    workspace = tempfile.TemporaryDirectory(prefix='libwork-', dir=ROOT / 'build')
+    work = Path(workspace.name)
+    shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work, dirs_exist_ok=True)
     shutil.copyfile(ROOT / library, work / library.name)
     modules = library_modules(work, library.name)
     if args.module:
@@ -412,7 +477,8 @@ def main():
     print(f'{library.name}: {len(modules)} modules, {len(placements)} placed in the image', flush=True)
 
     stem = ident(library.stem[3:] if library.stem.startswith('lib') else library.stem)
-    proven, known, queue, retry = [], {}, list(placements), []
+    proven, known, queue, retry = [], dict(table), list(placements), []
+    deferred_bss = {}
     while queue:
         module, parts, bss_parts, unplaced, alone = queue.pop(0)
         if unplaced:
@@ -439,7 +505,7 @@ def main():
             # Another module may import this one's bss symbols and so reveal where
             # the section sits. Come back to it once the rest of the library is done.
             entry = (module, parts, bss_parts, unplaced, alone)
-            if entry not in retry:
+            if defer_bss(module, bss_parts, known, deferred_bss):
                 retry.append(entry)
                 if not queue:
                     queue, retry = retry, []
@@ -459,6 +525,9 @@ def main():
                 + [{'section': p['section'], 'kind': 'bss', 'address': hexed(solved['bss'][p['section']]), 'size': p['size']} for p in bss_parts],
                 'imports': {s: hexed(v) for s, v in sorted(solved['imports'].items())},
                 'exports': {s: hexed(v) for s, v in sorted(exports.items(), key=lambda kv: kv[1])}}
+        evidence = {p['section']: p['placement_evidence'] for p in parts if p.get('placement_evidence')}
+        if evidence:
+            unit['placement_evidence'] = evidence
         try:
             elf, map_text = compile_unit(unit, work, None)
             proof, _ = compare(unit, elf, map_text, main_image, base)
@@ -468,6 +537,7 @@ def main():
         if proof['exact']:
             proven.append(unit)
             known.update(solved['imports'])
+            known.update(exports)
             spans += [(p['address'], p['address'] + p['size'], unit['id'], False, False) for p in parts]
             print(f"EXACT {unit['id']} {sum(p['size'] for p in parts)} bytes at {hexed(parts[0]['address'])}", flush=True)
         else:
@@ -478,9 +548,12 @@ def main():
         print(f'SKIP {module}: {why}')
     total = sum(number(p['size']) for u in proven for p in u['sections'] if p['kind'] != 'bss')
     print(f'{len(proven)} modules exact, {total:,} bytes; {len(skipped)} skipped')
+    if args.output:
+        Path(args.output).write_text(json.dumps({'library': str(library), 'units': proven, 'skipped': skipped}, indent=2) + '\n')
     if args.register and proven:
         added = register(proven, main_image, base)
         print(f'REGISTERED {len(added)} library units')
+    workspace.cleanup()
 
 
 if __name__ == '__main__':

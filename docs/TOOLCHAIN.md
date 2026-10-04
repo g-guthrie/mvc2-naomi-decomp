@@ -107,10 +107,21 @@ names a `library` and a `module` in place of a `source`, and takes no `options`:
 
 The build extracts that one module into a private library, links it at the
 declared addresses against a reference object that names only its exports, and
-compares the result with retail exactly as it compares a compiled unit. Because
-the module is the compiler's own output, a library unit carries no `interior`
-and makes no claim about which of its bytes are instructions: the reviewed
-mapping keeps its own classification of them, and the decoder test ignores them.
+compares the result with retail exactly as it compares a compiled unit. That
+byte proof alone does not identify which bytes are instructions. The reviewed
+mapping retains its classification. A separate native review can add `interior`
+data annotations to exclude literal pools, alignment and unreachable material
+from executable credit. The entire section, including those bytes, must still
+match; the annotations do not modify the object or relax verification.
+
+The matcher also uses observed internal relocations to locate sections with too
+little distinctive content for a byte search. All section-base observations
+must agree, fixed bytes must match, and the ordinary complete link comparison
+remains the acceptance test. Existing export addresses are tried even for very
+short sections. BSS searches retain known registry symbols and stop retrying
+when no relevant evidence changes. Each invocation uses private temporary files.
+`--output FILE.json` saves the exact descriptors and skipped reasons for review;
+the reported total is initialized bytes, not executable-code progress.
 
 ## Verification
 

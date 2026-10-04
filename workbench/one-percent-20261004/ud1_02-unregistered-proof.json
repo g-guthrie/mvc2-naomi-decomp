@@ -1,0 +1,152 @@
+{
+  "unit": {
+    "id": "diff",
+    "source": "workbench/one-percent-20261004/ud1_02-unregistered.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": 203072276,
+        "size": 388,
+        "interior": [
+          {
+            "address": 203072614,
+            "size": 50,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c1aa314": 203072276,
+      "_func_0c1aa342": 203072322,
+      "_func_0c1aa354": 203072340,
+      "_func_0c1aa3e2": 203072482,
+      "_func_0c1aa426": 203072550,
+      "_func_0c1aa434": 203072564,
+      "_func_0c1aa43a": 203072570
+    },
+    "imports": {
+      "_dat_0c2599d0": 203790800,
+      "_func_0c0374da": 201553114,
+      "_func_0c029e70": 201498224,
+      "_func_0c037688": 201553544,
+      "__slow_mvn": 203405368,
+      "__quick_odd_mvn": 203405216
+    },
+    "options": "game"
+  },
+  "proof": {
+    "exact": false,
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": 203072276,
+        "size": 388,
+        "interior": [
+          {
+            "address": 203072614,
+            "size": 50,
+            "kind": "data"
+          }
+        ],
+        "linked_size": 388,
+        "linked_address": 203072276,
+        "equal_bytes": 386,
+        "exact": false
+      }
+    ],
+    "functions": [
+      {
+        "symbol": "_func_0c1aa314",
+        "address": 203072276,
+        "size": 46,
+        "equal_bytes": 46,
+        "exact": true
+      },
+      {
+        "symbol": "_func_0c1aa342",
+        "address": 203072322,
+        "size": 18,
+        "equal_bytes": 18,
+        "exact": true
+      },
+      {
+        "symbol": "_func_0c1aa354",
+        "address": 203072340,
+        "size": 142,
+        "equal_bytes": 140,
+        "exact": false
+      },
+      {
+        "symbol": "_func_0c1aa3e2",
+        "address": 203072482,
+        "size": 68,
+        "equal_bytes": 68,
+        "exact": true
+      },
+      {
+        "symbol": "_func_0c1aa426",
+        "address": 203072550,
+        "size": 14,
+        "equal_bytes": 14,
+        "exact": true
+      },
+      {
+        "symbol": "_func_0c1aa434",
+        "address": 203072564,
+        "size": 6,
+        "equal_bytes": 6,
+        "exact": true
+      },
+      {
+        "symbol": "_func_0c1aa43a",
+        "address": 203072570,
+        "size": 44,
+        "equal_bytes": 44,
+        "exact": true
+      }
+    ],
+    "pools": [
+      {
+        "address": 203072614,
+        "size": 50,
+        "kind": "data",
+        "equal_bytes": 50,
+        "exact": true
+      }
+    ],
+    "function_bytes": 196,
+    "pool_bytes": 50,
+    "problems": [
+      "Not an exact section match: P"
+    ],
+    "diagnosis": {
+      "category": "register_choice",
+      "word_counts": {
+        "register_choice": 2
+      },
+      "first_differences": [
+        {
+          "address": "0xc1aa35c",
+          "category": "register_choice",
+          "retail": "8591",
+          "actual": "8592"
+        },
+        {
+          "address": "0xc1aa35e",
+          "category": "register_choice",
+          "retail": "8492",
+          "actual": "8491"
+        }
+      ],
+      "action": "Check real predecessors, switch structure and live ranges."
+    }
+  },
+  "source_sha256": "af81a10ccab866fdc0a35925cde0e29caafdfa7b6327c370df1e4b47dc17d4c1",
+  "header_sha256": "ef6cb84562d60f917078722b5c84a961d3d728c4cdeabebaa3da9b5827774459",
+  "input_sha256": "44d8fc19e9e4856d60b16439b0ca73f9f0763cb41830d4b8e938c28e4c3c80c5",
+  "credit": 0
+}

@@ -168,31 +168,6 @@ const unsigned short dat_0c20479c[] = {
     0x0080u,
 };
 
-#pragma section n2054f6
-const unsigned short dat_0c2054f6[] = {
-    0xff0fu, 0x6358u, 0x0c3au, 0x6354u, 0x0c3au, 0x6344u, 0x0c3au, 0x6348u,
-    0x0c3au, 0x634cu, 0x0c3au, 0x6350u, 0x0c3au, 0xbb68u, 0x0c20u, 0xc1b2u,
-    0x0c20u, 0x5534u, 0x0c20u, 0x8194u, 0x0c23u, 0x25e0u, 0x0c21u, 0x9820u,
-    0x0c26u,
-};
-
-#pragma section n20578c
-const unsigned int dat_0c20578c[] = {
-    0x0c269820u, 0x0c3a6354u, 0x0c205682u, 0x0c2056beu,
-    0x0c20bca6u, 0x0c3a6348u, 0x0c3a6344u, 0x0c20c5d0u,
-    0x0c3a6358u, 0x0c3a634cu, 0x0c20bf54u, 0x0c3a6350u,
-};
-
-#pragma section n205ac0
-void (*const table_0c205ac0[])(void) = {
-    func_0c20d0c0,
-    func_0c20d336,
-    func_0c20d1d2,
-    func_0c20d47e,
-    func_0c20c050,
-    func_0c20c060,
-};
-
 #pragma section n2064f2
 const unsigned short dat_0c2064f2[] = {
     0x0800u,

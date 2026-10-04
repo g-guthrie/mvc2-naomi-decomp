@@ -280,12 +280,12 @@ const unsigned short dat_0c23885e[] = {
 #pragma section n217540
 const unsigned char dat_0c238542[2] = { 0, 0 };
 
-#pragma section n2177cc
-const unsigned char dat_0c2387cc[] = {
-    0x30u, 0x0au, 0x00u, 0x00u, 0x01u, 0x00u, 0x00u, 0x00u,
-};
-
 #pragma section n2174da
 const unsigned char dat_0c2384da[] = {
     0x00u, 0x00u,
+};
+
+#pragma section n2177cc
+const unsigned char dat_0c2387cc[] = {
+    0x30u, 0x0au, 0x00u, 0x00u,
 };
