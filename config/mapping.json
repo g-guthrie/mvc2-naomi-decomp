@@ -299007,6 +299007,13 @@
       "evidence": "CFG walk from 0x0c193966; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0xc19397a",
+      "size": 172,
+      "kind": "code",
+      "sha256": "420997e27e1113de657a9805d8a06117c582cc3e48bdac4733cac1b6e3a8c232",
+      "evidence": "Reviewed motion setup using three signed-short row fields, scalar float arithmetic, facing adjustment and animation tail call; no embedded pools."
+    },
+    {
       "address": "0x0c193a26",
       "size": 48,
       "kind": "code",
@@ -299049,11 +299056,18 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
-      "address": "0x0c193a74",
-      "size": 80,
+      "address": "0xc193a74",
+      "size": 12,
+      "kind": "data",
+      "sha256": "9a56c4e03df0df2c59c618a8de88420135bbea2e68b2c76d5058b1685c65722a",
+      "evidence": "Reviewed motion-row pointer and two float coefficients read by 0c19397a; no control-flow entry."
+    },
+    {
+      "address": "0xc193a80",
+      "size": 68,
       "kind": "code",
-      "sha256": "5ea94294830cf53300472dfe2a512d63166147d2e75166e867c397f4ec113394",
-      "evidence": "CFG walk from 0x0c193a74; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "f61359e0b906d7f7b72cc0829a56ada7203787d1704cd036a0df7631ec4d32e8",
+      "evidence": "Reviewed continuation of 0c193a26 after its shared pool: animation selection and child allocation, reaching the common epilogue at 0c193aea."
     },
     {
       "address": "0x0c193ac4",
@@ -299075,6 +299089,13 @@
       "kind": "code",
       "sha256": "83e46596a63383c09d473836d7eb100e784bd292fc1011b563148ca17cd7cd91",
       "evidence": "CFG walk from 0x0c193af2; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0xc193b0e",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Reviewed empty handler: RTS followed by NOP delay slot."
     },
     {
       "address": "0x0c193b12",
