@@ -2923,29 +2923,6 @@
     "options": "library"
   },
   {
-    "id": "ptrs_05",
-    "source": "src/verified/ptrs_05.c",
-    "mode": "verified",
-    "sections": [
-      {
-        "section": "Cn207538",
-        "kind": "data",
-        "address": "0x0c207538",
-        "size": 4
-      }
-    ],
-    "exports": {
-      "_ptr_0c207538": "0x0c207538"
-    },
-    "imports": {
-      "_func_0c20740e": "0x0c20740e",
-      "_func_0c20f678": "0x0c20f678",
-      "_func_0c216c40": "0x0c216c40",
-      "_func_0c21b998": "0x0c21b998"
-    },
-    "options": "library"
-  },
-  {
     "id": "ptrs_06",
     "source": "src/verified/ptrs_06.c",
     "mode": "verified",
@@ -6018,23 +5995,6 @@
     "exports": {
       "_func_0c13c7fc": "0x0c13c7fc"
     }
-  },
-  {
-    "id": "sixbyte_word_p1",
-    "source": "src/verified/sixbyte_word_p1.c",
-    "mode": "verified",
-    "sections": [
-      {
-        "section": "Pn207412",
-        "kind": "code",
-        "address": "0x0c207412",
-        "size": 6
-      }
-    ],
-    "exports": {
-      "_func_0c207412": "0x0c207412"
-    },
-    "options": "library"
   },
   {
     "id": "idx_byte_s4",
@@ -26545,12 +26505,6 @@
         "size": 4
       },
       {
-        "section": "Cn207460",
-        "kind": "data",
-        "address": "0x0c207460",
-        "size": 4
-      },
-      {
         "section": "Cn209a20",
         "kind": "data",
         "address": "0x0c209a20",
@@ -26639,7 +26593,6 @@
       "_ptr_0c207300": "0x0c207300",
       "_ptr_0c207340": "0x0c207340",
       "_ptr_0c207380": "0x0c207380",
-      "_ptr_0c207460": "0x0c207460",
       "_ptr_0c209a20": "0x0c209a20",
       "_ptr_0c20b6f0": "0x0c20b6f0",
       "_ptr_0c211720": "0x0c211720",
@@ -77749,12 +77702,6 @@
         "size": 8
       },
       {
-        "section": "Cn207464",
-        "kind": "data",
-        "address": "0x0c207464",
-        "size": 28
-      },
-      {
         "section": "Cn208400",
         "kind": "data",
         "address": "0x0c208400",
@@ -77884,7 +77831,6 @@
     "exports": {
       "_dat_0c207200": "0x0c207200",
       "_dat_0c207280": "0x0c207280",
-      "_dat_0c207464": "0x0c207464",
       "_dat_0c208400": "0x0c208400",
       "_dat_0c208410": "0x0c208410",
       "_dat_0c2084e0": "0x0c2084e0",
@@ -121194,18 +121140,6 @@
         "size": 4
       },
       {
-        "section": "Cn1e6520",
-        "kind": "data",
-        "address": "0x0c207520",
-        "size": 24
-      },
-      {
-        "section": "Cn1e653c",
-        "kind": "data",
-        "address": "0x0c20753c",
-        "size": 48
-      },
-      {
         "section": "Cn1e93a0",
         "kind": "data",
         "address": "0x0c20a3a0",
@@ -124318,12 +124252,6 @@
         "kind": "data",
         "address": "0x0c2073e6",
         "size": 26
-      },
-      {
-        "section": "Cn1e656c",
-        "kind": "data",
-        "address": "0x0c20756c",
-        "size": 20
       },
       {
         "section": "Cn1e72d2",
@@ -139386,25 +139314,13 @@
         "section": "Cn2174da",
         "kind": "data",
         "address": "0x0c2384da",
-        "size": 4
-      },
-      {
-        "section": "Cn217526",
-        "kind": "data",
-        "address": "0x0c238526",
-        "size": 6
-      },
-      {
-        "section": "Cn217536",
-        "kind": "data",
-        "address": "0x0c238536",
-        "size": 4
+        "size": 2
       },
       {
         "section": "Cn217540",
         "kind": "data",
-        "address": "0x0c238540",
-        "size": 4
+        "address": "0x0c238542",
+        "size": 2
       },
       {
         "section": "Cn2175f6",
@@ -180569,12 +180485,6 @@
         "size": 4
       },
       {
-        "section": "Pn20740e",
-        "kind": "code",
-        "address": "0x0c20740e",
-        "size": 4
-      },
-      {
         "section": "Pn20a53a",
         "kind": "code",
         "address": "0x0c20a53a",
@@ -180583,7 +180493,6 @@
     ],
     "exports": {
       "_func_0c1f0032": "0x0c1f0032",
-      "_func_0c20740e": "0x0c20740e",
       "_func_0c20a53a": "0x0c20a53a"
     }
   },
@@ -229343,5 +229252,55 @@
       "_dat_0c33f948": "0x0c33f948"
     },
     "options": "library"
+  },
+  {
+    "id": "lib_kamui2_kmInitDevice_km2device_lib_",
+    "library": "toolchain/naomi-sdk/lib/libkamui2.lib",
+    "module": "kmInitDevice_km2device_lib_",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "PSG",
+        "kind": "code",
+        "address": "0xc207400",
+        "size": 384,
+        "interior": [
+          {
+            "address": "0x0c20744a",
+            "size": 54,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c207504",
+            "size": 124,
+            "kind": "data"
+          }
+        ]
+      },
+      {
+        "section": "CSG",
+        "kind": "data",
+        "address": "0xc2384dc",
+        "size": 101
+      }
+    ],
+    "imports": {
+      "_kmyRequestCallback": "0xc2166c0",
+      "_kmiExtension": "0xc3a636c",
+      "_kmyInitializeDriver": "0xc217d84",
+      "_kmyInitializeCallback": "0xc2152b8",
+      "_kmyRegisterCallback": "0xc216680",
+      "_kmyRegisterPALEXTCallback": "0xc216078",
+      "_kmyInitializeHardware": "0xc217ee0",
+      "_kmyInitializeFog": "0xc217c38",
+      "_kmyInitializeInterrupt": "0xc2155c2",
+      "_kmyConnectInterrupt": "0xc213620",
+      "_kmyInitDMADevice": "0xc215160",
+      "_kmyEnableInterrupt": "0xc213e80",
+      "_kmyInitializeTA": "0xc2182de"
+    },
+    "exports": {
+      "_kmInitDevice": "0xc207420"
+    }
   }
 ]
