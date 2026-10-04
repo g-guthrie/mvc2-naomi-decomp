@@ -1,0 +1,39 @@
+Original ROM bytes. Decoding alone does not establish code boundaries.
+0c0d26d8  e500  mov #0,r5
+0c0d26da  6053  mov r5,r0
+0c0d26dc  0009  nop
+0c0d26de  8045  mov.b r0,@(5,r4)
+0c0d26e0  8047  mov.b r0,@(7,r4)
+0c0d26e2  8046  mov.b r0,@(6,r4)
+0c0d26e4  9019  mov.w 0x000000000c0d271a,r0 ; literal at 0x0c0d271a = 0x04c9
+0c0d26e6  004c  mov.b @(r0,r4),r0
+0c0d26e8  8800  cmp/eq #0,r0
+0c0d26ea  8905  bt 0x000000000c0d26f8
+0c0d26ec  8801  cmp/eq #1,r0
+0c0d26ee  8907  bt 0x000000000c0d2700
+0c0d26f0  8802  cmp/eq #2,r0
+0c0d26f2  8909  bt 0x000000000c0d2708
+0c0d26f4  a00e  bra 0x000000000c0d2714
+0c0d26f6  0009  nop
+0c0d26f8  9010  mov.w 0x000000000c0d271c,r0 ; literal at 0x0c0d271c = 0x01e9
+0c0d26fa  e306  mov #6,r3
+0c0d26fc  a007  bra 0x000000000c0d270e
+0c0d26fe  0434  mov.b r3,@(r0,r4)
+0c0d2700  900c  mov.w 0x000000000c0d271c,r0 ; literal at 0x0c0d271c = 0x01e9
+0c0d2702  e105  mov #5,r1
+0c0d2704  a003  bra 0x000000000c0d270e
+0c0d2706  0414  mov.b r1,@(r0,r4)
+0c0d2708  9008  mov.w 0x000000000c0d271c,r0 ; literal at 0x0c0d271c = 0x01e9
+0c0d270a  e304  mov #4,r3
+0c0d270c  0434  mov.b r3,@(r0,r4)
+0c0d270e  9006  mov.w 0x000000000c0d271e,r0 ; literal at 0x0c0d271e = 0x01a3
+0c0d2710  e201  mov #1,r2
+0c0d2712  0424  mov.b r2,@(r0,r4)
+0c0d2714  d202  mov.l 0x000000000c0d2720,r2 ; literal at 0x0c0d2720 = 0x0c045248
+0c0d2716  422b  jmp @r2
+0c0d2718  e515  mov #21,r5
+0c0d271a  04c9  error
+0c0d271c  01e9  error
+0c0d271e  01a3  ocbp @r1
+0c0d2720  5248  mov.l @(32,r4),r2
+0c0d2722  0c04  mov.b r0,@(r0,r12)
