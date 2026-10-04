@@ -1,10 +1,10 @@
 {
-  "description": "SHC runtime routines at retail addresses. __modlu and __divls are proven by the verified sh4nlfzn SDK modules. Copy helpers and __modls are proven by verified caller literal pools; __quick_mvn shares the observed 12-byte copy target with __quick_odd_mvn. __quick_evn_mvn is proven by the verified __q_fmvn module export.",
+  "description": "Canonical SHC runtime addresses from exact linked sh4nlfzn SDK exports where available. __quick_mvn is the aligned word copier at 0c1fb838; __slow_mvn is the byte copier at 0c1fb8f8. Existing unit-specific imports retain caller-proven addresses, including legacy aliases that require source-alignment review; do not propagate those aliases into new units. __modls remains established by native caller literal pools.",
   "__quick_odd_mvn": "0x0c1fb7a0",
-  "__slow_mvn": "0x0c1fb838",
+  "__slow_mvn": "0x0c1fb8f8",
   "__modls": "0x0c1fb5ac",
   "__modlu": "0x0c1fb674",
-  "__quick_mvn": "0x0c1fb7a0",
+  "__quick_mvn": "0x0c1fb838",
   "__divls": "0x0c1fb400",
   "__quick_evn_mvn": "0x0c1fb794"
 }
