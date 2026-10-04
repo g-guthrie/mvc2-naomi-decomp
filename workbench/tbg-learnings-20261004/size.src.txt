@@ -1,0 +1,66 @@
+          .IMPORT     _consume
+          .IMPORT     __slow_mvn
+          .EXPORT     _decimals
+          .EXPORT     _literal_once
+          .EXPORT     _literal_twice
+          .EXPORT     _mutable_table
+          .EXPORT     _fixed_table
+          .EXPORT     _two
+          .EXPORT     _zero_buffer
+          .SECTION    P,CODE,ALIGN=4
+_two:                            ; function: two
+                                 ; frame size=0
+          MOVA        L252+2,R0
+          RTS
+          FMOV.S      @R0,FR0
+_zero_buffer:                    ; function: zero_buffer
+                                 ; frame size=36
+                                 ; used runtime library name:
+                                 ; __slow_mvn
+          STS.L       PR,@-R15
+          ADD         #-32,R15
+          MOV.L       L252+10,R3 ; __slow_mvn
+          MOV         R15,R1
+          MOV.L       L252+6,R2  ; L246
+          JSR         @R3
+          MOV         #32,R0
+          MOV.L       L252+14,R1 ; _consume
+          JSR         @R1
+          MOV         R15,R4
+          ADD         #32,R15
+          LDS.L       @R15+,PR
+          RTS
+          NOP
+L252:                             
+          .RES.W      1
+          .DATA.L     H'40000000
+          .DATA.L     L246
+          .DATA.L     __slow_mvn
+          .DATA.L     _consume
+          .SECTION    C,DATA,ALIGN=8
+_decimals:                       ; static: decimals
+          .DATA.L     H'40433333,H'40433334
+_literal_once:                   ; static: literal_once
+          .SDATA      "abc"
+          .DATA.B     H'00
+L236:
+          .SDATA      "def"
+          .DATA.B     H'00
+_literal_twice:                  ; static: literal_twice
+          .SDATA      "def"
+          .DATA.B     H'00
+_fixed_table:                    ; static: fixed_table
+          .DATA.L     L241
+L246:
+          .DATA.B     H'00
+          .DATAB.B    31,0
+L239:
+          .SDATA      "ghi"
+          .DATA.B     H'00
+L241:
+          .SDATA      "jkl"
+          .DATA.B     H'00
+          .SECTION    D,DATA,ALIGN=8
+_mutable_table:                  ; static: mutable_table
+          .DATA.L     L239
+          .END

@@ -215,3 +215,9 @@ differences; read what it changed afterwards.
   different instruction sequences, so none is a match for the retail sites.
 - Three shared constants held in r7, r4 and r13 across one function
   (`func_0c16fc14`); SHC keeps at most two in registers.
+
+## Cross-project compiler evidence
+
+See [TBG learnings](TBG_LEARNINGS.md) before investigating constant-section,
+prototype, alias, or write-order mismatches. It distinguishes locally reproduced
+SHC behavior from external hypotheses and records isolated flag experiments.
