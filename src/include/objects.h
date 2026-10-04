@@ -627,4 +627,25 @@ struct SelectionFlags59e8 {
     unsigned int masks[2][2];
 };
 
+/* SDK completion queue: 32-byte entries and packet callback state. */
+struct SdkCompletionEntry {
+    char pad[0x14];
+    int completion;
+    char tail[8];
+};
+struct SdkCompletionControl {
+    struct SdkCompletionEntry *entries;
+    char pad[0xe8];
+    int counters[1];
+};
+struct SdkCompletionPacket {
+    int index;
+    char pad[0x18];
+    void (*callback)(void *);
+    void *context;
+    char pad2[8];
+    int state;
+    int pending;
+};
+
 #endif
