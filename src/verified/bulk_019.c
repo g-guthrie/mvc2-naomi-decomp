@@ -193,12 +193,6 @@ void (*const table_0c061344[])(void) = {
     func_0c0442fa,
 };
 
-#pragma section n061464
-const unsigned int dat_0c061464[] = {
-    0x3cd55555u, 0xbcd55555u, 0x40f00000u, 0xbecdb6dbu,
-    0x0c02a0c4u,
-};
-
 #pragma section n0615ac
 void (*const table_0c0615ac[])(void) = {
     func_0c02a026,
