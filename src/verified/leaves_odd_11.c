@@ -12,9 +12,6 @@ void func_0c19319a(void) {}
 #pragma section n19341a
 void func_0c19341a(void) {}
 
-#pragma section n193b0e
-void func_0c193b0e(void) {}
-
 #pragma section n19a81e
 void func_0c19a81e(void) {}
 
