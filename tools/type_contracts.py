@@ -24,6 +24,12 @@ def contract_source(root, contract):
             raise ValueError('Member contract needs native/source evidence')
         expression = f'(unsigned long)&((({item["type"]} *)0)->{item["member"]})'
         offsets.append(expression)
+        if "size" in item:
+            offsets.append(f'sizeof((({item["type"]} *)0)->{item["member"]})')
+    for item in contract.get("sizes", []):
+        if not item.get("evidence"):
+            raise ValueError("Size contract needs native/source evidence")
+        offsets.append(f'sizeof({item["type"]})')
     for item in contract.get('prototypes', []):
         if not item.get('evidence'):
             raise ValueError('Prototype contract needs call-site evidence')
@@ -50,7 +56,7 @@ def check(contract, root=ROOT):
         if result.returncode:
             raise ValueError(contract['source'] + ': target type contract failed\n' +
                              (result.stdout + result.stderr).decode(errors='replace'))
-        if contract.get('members'):
+        if contract.get('members') or contract.get('sizes'):
             commands = [
                 ('asmsh.exe', ['contract.src', '-cpu=sh4', '-endian=little', '-object=contract.obj']),
                 ('lnk.exe', ['-subcommand=contract.lnk']),
@@ -59,15 +65,23 @@ def check(contract, root=ROOT):
             for exe, args in commands:
                 subprocess.run(runner(root) + [str(work / exe), *args], cwd=work,
                                capture_output=True, timeout=120, check=True)
-            members = contract['members']
-            data = memory_bytes(elf_segments((work / 'contract.elf').read_bytes()), 0x1000, 4 * len(members))
-            actual = struct.unpack('<' + 'I' * len(members), data)
-            for item, offset in zip(members, actual):
-                expected = int(item['offset'], 0) if isinstance(item['offset'], str) else item['offset']
-                if offset != expected:
-                    raise ValueError(f"{contract['source']}: target type contract failed: {item['type']}.{item['member']} = {offset:#x}, expected {expected:#x}")
+            assertions = []
+            for item in contract.get('members', []):
+                name = f"{item['type']}.{item['member']}"
+                assertions.append((name, item['offset']))
+                if 'size' in item:
+                    assertions.append((f'sizeof({name})', item['size']))
+            assertions.extend((f"sizeof({item['type']})", item['size'])
+                              for item in contract.get('sizes', []))
+            data = memory_bytes(elf_segments((work / 'contract.elf').read_bytes()), 0x1000, 4 * len(assertions))
+            actual = struct.unpack('<' + 'I' * len(assertions), data)
+            for (name, expected), value in zip(assertions, actual):
+                expected = int(expected, 0) if isinstance(expected, str) else expected
+                if value != expected:
+                    raise ValueError(f"{contract['source']}: target type contract failed: {name} = {value:#x}, expected {expected:#x}")
     return {'source': contract['source'], 'members': len(contract.get('members', [])),
-            'prototypes': len(contract.get('prototypes', [])), 'status': 'PASS'}
+            'prototypes': len(contract.get('prototypes', [])),
+            'sizes': len(contract.get('sizes', [])), 'status': 'PASS'}
 
 
 def check_all(source=None):

@@ -2,6 +2,7 @@
 """Reproduce the switch discovery against retail; never register anything."""
 import hashlib
 import json
+import re
 from pathlib import Path
 import shutil
 import sys
@@ -15,6 +16,59 @@ from build import compile_unit
 
 SOURCE = ROOT / 'tests/fixtures/compiler_patterns/ud2_12_recovered.c'
 TARGETS = {'_func_0c0d6afa', '_func_0c0d6b1e'}
+
+
+CATALOG = SOURCE.with_name('verified_sources.json')
+
+
+def source_family_hits(spec, units=None, root=ROOT):
+    """Cheap source-backed propagation leads, usable by the work queue."""
+    units = units if units is not None else core.load(root / 'config/units.json')
+    query = re.compile(spec['family_query'])
+    hits = []
+    for unit in units:
+        source = unit.get('source')
+        if not source or source == spec['source'] or unit.get('mode') != 'candidate':
+            continue
+        for line, text in enumerate((root / source).read_text().splitlines(), 1):
+            if query.search(text):
+                hits.append({'unit': unit['id'], 'source': source, 'line': line,
+                             'evidence': text.strip()})
+    return hits
+
+
+def verified_source_corpus():
+    """Recompile authoritative whole sources and local spelling controls.
+
+    No copied fixtures, modified verified files, source admission or credit.
+    Controls test compiler shape, not semantic correctness of untested C.
+    """
+    result, positives = [], {}
+    units = core.load(ROOT / 'config/units.json')
+    for spec in core.load(CATALOG):
+        source = ROOT / spec['source']
+        text = source.read_text()
+        if spec['source'] not in positives:
+            proof, unit = diff_unit.evaluate(spec['source'])
+            assert proof['exact'], (spec['source'], proof)
+            positives[spec['source']] = (proof, unit)
+        proof, unit = positives[spec['source']]
+        assert text.count(spec['replace']) == 1, spec['id']
+        with tempfile.TemporaryDirectory(prefix='pattern-control-', dir=ROOT / 'build') as directory:
+            path = Path(directory) / source.name
+            path.write_text(text.replace(spec['replace'], spec['with']))
+            control, _ = diff_unit.evaluate(str(path.relative_to(ROOT)), imports=unit['imports'], options=unit['options'])
+        rows = [f for f in control['functions'] if f['symbol'] == spec['symbol']]
+        assert len(rows) == 1 and not rows[0]['exact'] and not control['exact'], (spec['id'], rows)
+        result.append({
+            'id': spec['id'], 'source': spec['source'], 'symbol': spec['symbol'],
+            'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
+            'observation': spec['observation'], 'whole_unit_exact': proof['exact'],
+            'sections': proof['sections'], 'negative_control': rows[0],
+            'family_scope': spec['family_scope'], 'candidate_source_leads': source_family_hits(spec, units),
+        })
+    return {'patterns': result, 'input_sha256': core.input_fingerprint(),
+            'options': core.load(ROOT / 'config/compiler.json')['sets']['game'], 'credit': 0}
 
 
 def main():
@@ -75,4 +129,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    if sys.argv[1:] == ['--verified-sources']:
+        print(json.dumps(verified_source_corpus(), indent=2))
+    else:
+        main()

@@ -5,6 +5,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tools'))
 from core import load, number, verify_rom, elf_segments, link_map, sha, verify_tools
 from build import compile_unit
+from behavioral_evidence import fingerprint, REVISION
 BASE = 0x0c000000
 HERE = Path(__file__).resolve().parent
 UNITS = ['tu_0c1e6a68', 'tu_0c1e8358', 'tu_0c035160', 'ud2_04']
@@ -60,7 +61,8 @@ def cases_for(uid):
 
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--simulator',type=Path,required=True);ap.add_argument('--unit',choices=UNITS,action='append');ap.add_argument('--php',default='php');ap.add_argument('--out',type=Path,default=ROOT/'build/simulator-pilot');args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--simulator',type=Path,required=True);ap.add_argument('--unit',choices=UNITS,action='append');ap.add_argument('--case', action='append', help='Exact case name; repeat to select several (requires --unit)');ap.add_argument('--php',default='php');ap.add_argument('--out',type=Path,default=ROOT/'build/simulator-pilot');args=ap.parse_args()
+    if args.case and (not args.unit or len(args.unit) != 1):ap.error('--case requires exactly one --unit')
     args.out=args.out.resolve();args.out.mkdir(parents=True,exist_ok=True)
     verify_tools()
     pilot_hash=sha(Path(__file__).read_bytes());adapter_hash=sha((HERE/'run.php').read_bytes())
@@ -72,7 +74,12 @@ def main():
     units={u['id']:u for u in load(ROOT/'config/units.json')}
     results={};start=time.monotonic();all_valid=True
     for uid in (args.unit or UNITS):
-        u=units[uid];assert len(u['sections'])==1 and u['sections'][0]['section']=='P'
+        u=units[uid];selected_cases=cases_for(uid)
+        if args.case:
+            selected_cases=[case for case in selected_cases if case['name'] in args.case]
+            if {case['name'] for case in selected_cases} != set(args.case):ap.error('unknown case name')
+        inputs=fingerprint(u,selected_cases)
+        assert len(u['sections'])==1 and u['sections'][0]['section']=='P'
         part=u['sections'][0];address=number(part['address']);length=part['size'];original=bytearray(main_image[address-main_base:address-main_base+length]);patches=[]
         allowed={number(a) for a in u.get('imports',{}).values()}|{number(a) for a in u['exports'].values()}
         for interior in part.get('interior',[]):
@@ -102,11 +109,11 @@ def main():
                 p=sections['P'];from core import memory_bytes
                 data=memory_bytes(segments,p['address'],p['size']);image=bytearray(p['address']+len(data));image[p['address']:]=data
                 variants[label]=(bytes(image),{**unit['imports'],**exports})
-        unit_result={'byte_comparison':{'equal_bytes':sum(a==b for a,b in zip(variants['retail'][0][address-BASE:],variants['candidate'][0][address-BASE:])),'native_size':length,'candidate_size':len(variants['candidate'][0])-(address-BASE)},'native_sha256':sha(restored),'source_sha256':sha(source.encode()),'rebased_native_pointer_words':patches,'cases':len(cases_for(uid)),'variants':{}}
+        unit_result={'byte_comparison':{'equal_bytes':sum(a==b for a,b in zip(variants['retail'][0][address-BASE:],variants['candidate'][0][address-BASE:])),'native_size':length,'candidate_size':len(variants['candidate'][0])-(address-BASE)},'native_sha256':sha(restored),'source_sha256':sha(source.encode()),'rebased_native_pointer_words':patches,'cases':len(selected_cases),'case_names':[case['name'] for case in selected_cases],'inputs':inputs,'simulator_path':str(simulator),'simulator_revision':revision,'variants':{}}
         for label,(image,sym) in variants.items():
             image_path=args.out/(uid+'-'+label+'.bin');image_path.write_bytes(image)
             if uid=='ud2_04':sym={**sym,'_func_pilot_callback':0x710000}
-            job={'image':str(image_path.resolve()),'symbols':sym,'entries':{k:v for k,v in sym.items() if k in u['exports']},'cases':cases_for(uid)}
+            job={'image':str(image_path.resolve()),'symbols':sym,'entries':{k:v for k,v in sym.items() if k in u['exports']},'cases':selected_cases}
             job_path=args.out/(uid+'-'+label+'.json');job_path.write_text(json.dumps(job))
             run=subprocess.run([args.php,str(HERE/'run.php'),str(simulator),str(job_path)],capture_output=True,text=True,timeout=120)
             if run.returncode:raise RuntimeError(run.stdout+run.stderr)
@@ -124,10 +131,19 @@ def main():
         original_ok=all(r['passed'] for r in unit_result['variants']['retail'])
         candidate_ok=all(r['passed'] for r in unit_result['variants']['candidate'])
         discriminates=any(not r['passed'] and 'ExpectationException' in r['error'] for r in unit_result['variants']['mutant'])
-        all_valid &= original_ok and candidate_ok and discriminates and expected<=covered
+        all_valid &= original_ok and candidate_ok and discriminates and (bool(args.case) or expected<=covered)
+        unit_result['mutation_control']=discriminates
+        if fingerprint(u,selected_cases)!=inputs:raise ValueError('Behavioral inputs changed during execution')
         results[uid]=unit_result
     if sha(Path(__file__).read_bytes())!=pilot_hash or sha((HERE/'run.php').read_bytes())!=adapter_hash:raise ValueError('Pilot inputs changed during execution')
     result={'simulator_revision':revision,'main_sha256':sha(main_image),'compiler_options':load(ROOT/'config/compiler.json')['sets']['game'],'adapter_sha256':adapter_hash,'pilot_sha256':pilot_hash,'elapsed_seconds':time.monotonic()-start,'passed':bool(all_valid),'units':results,'acceptance':'Behavioral evidence only; exact-byte gate unchanged.'}
+    # Retain independent unit results; their own fingerprints still decide freshness.
+    previous=args.out/'results.json'
+    if args.unit and previous.exists():
+        old=load(previous).get('units',{})
+        result['units']={**old,**results}
+    result['selected_units']=list(results)
+    result['passed_scope']='selected units and cases only'
     (args.out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
     return 0 if all_valid else 1
 if __name__=='__main__':sys.exit(main())

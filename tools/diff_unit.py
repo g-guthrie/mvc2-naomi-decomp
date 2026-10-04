@@ -22,6 +22,7 @@ else needs --import SYMBOL=ADDRESS.
 as candidate otherwise. A file under src/verified/ must be exact.
 """
 import argparse
+import copy
 import fcntl
 import json
 import os
@@ -180,7 +181,7 @@ def register(unit, exact):
     print(f"REGISTERED {unit['id']} as {unit['mode']} ({len(units)} units)")
 
 
-def evaluate(path, imports=None, options=None):
+def evaluate(path, imports=None, options=None, descriptor=None):
     """Compile a C file below src/ and compare it: (proof, unit). No output."""
     target = load(ROOT / 'config/target.json')
     program = verify_rom(target)
@@ -189,9 +190,17 @@ def evaluate(path, imports=None, options=None):
     sets = load(ROOT / 'config/compiler.json')['sets']
     units = {u['id']: u for u in load(ROOT / 'config/units.json')}
     known = next((u for u in units.values() if u.get('source') == path), {})
-    unit = describe(path, mapping_ranges(), {**{k: number(v) for k, v in known.get('imports', {}).items()}, **(imports or {})})
-    unit['id'] = known.get('id', 'diff')
-    unit['options'] = options or known.get('options', 'game')
+    if descriptor is None:
+        unit = describe(path, mapping_ranges(), {**{k: number(v) for k, v in known.get('imports', {}).items()}, **(imports or {})})
+        unit['id'] = known.get('id', 'diff')
+        unit['options'] = options or known.get('options', 'game')
+    else:
+        # Isolated spelling trials retain the admitted extent and exports.
+        # Full byte comparison remains mandatory; no result is registered here.
+        unit = copy.deepcopy(descriptor)
+        unit['source'] = path
+        unit['imports'] = {**unit.get('imports', {}), **(imports or {})}
+        unit['options'] = options or unit.get('options', 'game')
     flags = sets[unit['options']]
     work = ROOT / 'build' / f'work-diff-{os.getpid()}'
     if work.exists():

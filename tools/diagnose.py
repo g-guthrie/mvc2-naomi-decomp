@@ -68,10 +68,12 @@ def main():
     from diff_unit import evaluate
     from boundaries import BoundaryIndex
     from type_contracts import check_all
+    from behavioral_evidence import status as behavioral_status
     proof, unit = evaluate(args.source, options=args.options)
     print(json.dumps({'exact': proof['exact'], 'diagnosis': proof.get('diagnosis'),
                       'boundaries': BoundaryIndex.current().unit(unit),
-                      'type_contracts': check_all(args.source)}, indent=2))
+                      'type_contracts': check_all(args.source),
+                      'behavioral_evidence': behavioral_status(unit)}, indent=2))
 
 
 if __name__ == '__main__':
