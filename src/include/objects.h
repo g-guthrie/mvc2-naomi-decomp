@@ -645,4 +645,12 @@ struct SdkCompletionPacket {
     int pending;
 };
 
+/* SDK byte consumer: native SH-4 field offsets 0, 4, 8, 12. */
+struct SdkByteConsumer {
+    int input_count;
+    int output_count;
+    unsigned char *output;
+    const unsigned char *input;
+};
+
 #endif
