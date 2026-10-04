@@ -1,0 +1,80 @@
+{
+  "scope": "Unregistered draft diagnostic; zero coverage credit",
+  "source_sha256": "32153dea2a387c6f0f00f0d071536a3e4d2352f6726bee4b4e7954504a47f38a",
+  "shared_header_sha256": "08b782e75c5310754a5605d417d0c45faabaa0b9bc9fd7bddcb9e6a370ce857c",
+  "unit": {
+    "id": "unverified_lane_c_1e6e36",
+    "source": "workbench/active-drafts/lane-c/tu_0c1e6e36.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": 203320886,
+        "size": 182,
+        "interior": [
+          {
+            "address": 203321052,
+            "size": 16,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c1e6e36": 203320886
+    },
+    "imports": {
+      "_dat_0c2d6f84": 204304260,
+      "_dat_0c312834": 204548148
+    },
+    "options": "game"
+  },
+  "proof": {
+    "exact": false,
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": 203320886,
+        "size": 182,
+        "interior": [
+          {
+            "address": 203321052,
+            "size": 16,
+            "kind": "data"
+          }
+        ],
+        "linked_size": 188,
+        "linked_address": 203320886,
+        "equal_bytes": 9,
+        "exact": false
+      }
+    ],
+    "functions": [
+      {
+        "symbol": "_func_0c1e6e36",
+        "address": 203320886,
+        "size": 166,
+        "equal_bytes": 8,
+        "exact": false
+      }
+    ],
+    "pools": [
+      {
+        "address": 203321052,
+        "size": 16,
+        "kind": "data",
+        "equal_bytes": 1,
+        "exact": false
+      }
+    ],
+    "function_bytes": 0,
+    "pool_bytes": 0,
+    "problems": [
+      "Not an exact section match: P",
+      "Linked image contains extra or missing initialized bytes",
+      "Linked image contains extra or missing memory bytes"
+    ]
+  }
+}

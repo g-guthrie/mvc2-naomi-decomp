@@ -67,9 +67,17 @@ struct ActorSub2a4 {
 /* Signed action outcome at offset56 in an embedded actor state record. */
 struct ActorActionResult56 { struct ActorSub2a4 base; unsigned char pad28[56-sizeof(struct ActorSub2a4)]; char result; };
 
+/* Effect controls at actor +0x2a4: indexed bytes overlap the float at +4.
+ * Existing halfword/action views remain unchanged. */
+struct ActorSubEffectParameter { unsigned char flags[4]; float f4; };
+union ActorSubEffectState { unsigned char bytes[8]; struct ActorSubEffectParameter parameter; };
+struct EffectScale4 { float f116, f120, f124, f128; };
+union EffectMotionStep { int integer; float real; };
+
 struct ActorSub2a4Extended {
     struct ActorSub2a4 base;
-    unsigned char pad[34 - sizeof(struct ActorSub2a4)];
+    int l28;
+    unsigned char pad[34 - sizeof(struct ActorSub2a4) - sizeof(int)];
     short s34;
     int l36;
     unsigned char b40, pad41;
@@ -254,7 +262,9 @@ struct Actor {
     unsigned char b211;
     unsigned char pad212[0x218 - 0x212];
     float f218,f21c;
-    unsigned char pad220[0x22e - 0x220];
+    unsigned char pad220[0x229 - 0x220];
+    signed char b229;
+    unsigned char pad22a[0x22e - 0x22a];
     char b22e;
     unsigned char b22f,pad230,b231;
     char b232;
@@ -402,6 +412,7 @@ struct FollowOffset15e2 { short x,y; unsigned char metadata[2]; };
 /* Cached frame and signed screen offsets at actor offset 0xcc. */
 struct AttachmentFrameState { short frame, x, y; };
 union LinkedActorWcc {
+    struct LinkedActor *pointer_value;
     short short_value;
     unsigned int dword_value;
     int arrcc[1];
@@ -603,5 +614,14 @@ struct ActorSubControlBytes { unsigned char pad0[2]; char b2; unsigned char pad3
 /* Direction selection state with two 12-byte actor entries. */
 struct DirectionEntry12 { struct Actor *actor; unsigned char unknown[8]; };
 struct DirectionState { unsigned char unknown0[3],b3,unknown4[20]; struct DirectionEntry12 entry[2]; unsigned char unknown48[14]; signed char direction; };
+/* Selection status at 0x0c2fb158. Preserve the original state/flag prefix;
+ * the icon callbacks use signed selections at 48 and the two mask pairs at 60. */
+struct SelectionFlags59e8 {
+    unsigned char state[2], flags[2];
+    unsigned char pad4[48 - 4];
+    signed char choice[2];
+    unsigned char pad50[60 - 50];
+    unsigned int masks[2][2];
+};
 
 #endif

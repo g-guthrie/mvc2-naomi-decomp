@@ -1,0 +1,112 @@
+P 1393/1500 equal, linked 1500
+_func_0c0e9110 61/64
+_func_0c0e9150 18/18
+_func_0c0e9162 348/362
+_func_0c0e9324 351/406
+_func_0c0e94e6 19/20
+_func_0c0e94fa 14/14
+_func_0c0e9508 128/130
+_func_0c0e95be 34/34
+_func_0c0e95e0 34/34
+_func_0c0e9602 34/34
+_func_0c0e9624 20/20
+_func_0c0e9638 58/58
+_func_0c0e9672 94/94
+pool 0c0e91f4 40/40
+pool 0c0e92f4 38/48
+pool 0c0e9410 36/44
+pool 0c0e9570 38/52
+pool 0c0e96d0 28/28
+0c0e9134 retail 02ec mov.b @(r0,r14),r2               ours 03ec mov.b @(r0,r14),r3
+0c0e9136 retail 2228 tst r2,r2                        ours 2338 tst r3,r3
+0c0e9260 retail e23e mov #62,r2                       ours e43e mov #62,r4
+0c0e9264 retail e302 mov #2,r3                        ours e202 mov #2,r2
+0c0e9266 retail e20e mov #14,r2                       ours e40e mov #14,r4
+0c0e9268 retail 0e34 mov.b r3,@(r0,r14)               ours 0e24 mov.b r2,@(r0,r14)
+0c0e926a retail 7049 add #73,r0                       ours 9046 mov.w 0x000000000c0e92fa,r0
+0c0e926e retail 0e24 mov.b r2,@(r0,r14)               ours 0e44 mov.b r4,@(r0,r14)
+0c0e9274 retail 9041 mov.w 0x000000000c0e92fa,r0      ours 9042 mov.w 0x000000000c0e92fc,r0
+0c0e9276 retail 9241 mov.w 0x000000000c0e92fc,r2      ours 9242 mov.w 0x000000000c0e92fe,r2
+0c0e928a retail 9038 mov.w 0x000000000c0e92fe,r0      ours 9039 mov.w 0x000000000c0e9300,r0
+0c0e92aa retail 9029 mov.w 0x000000000c0e9300,r0      ours 902a mov.w 0x000000000c0e9302,r0
+0c0e92ae retail 9028 mov.w 0x000000000c0e9302,r0      ours 9029 mov.w 0x000000000c0e9304,r0
+0c0e92d8 retail 9014 mov.w 0x000000000c0e9304,r0      ours 9015 mov.w 0x000000000c0e9306,r0
+0c0e92e0 retail 9010 mov.w 0x000000000c0e9304,r0      ours 9011 mov.w 0x000000000c0e9306,r0
+0c0e92fa retail 01fa stc dbr,r1                       ours 01a1 error
+0c0e92fc retail 1000 mov.l r0,@(0,r0)                 ours 01fa stc dbr,r1
+0c0e92fe retail 01e8 error                            ours 1000 mov.l r0,@(0,r0)
+0c0e9300 retail 01a7 mul.l r10,r1                     ours 01e8 error
+0c0e9302 retail 01ac mov.b @(r0,r10),r1               ours 01a7 mul.l r10,r1
+0c0e9304 retail 01d6 mov.l r13,@(r0,r1)               ours 01ac mov.b @(r0,r10),r1
+0c0e9306 retail 0000 error                            ours 01d6 mov.l r13,@(r0,r1)
+0c0e9338 retail dd3b mov.l 0x000000000c0e9428,r13     ours da3b mov.l 0x000000000c0e9428,r10
+0c0e933c retail 9b68 mov.w 0x000000000c0e9410,r11     ours d938 mov.l 0x000000000c0e9420,r9
+0c0e933e retail d938 mov.l 0x000000000c0e9420,r9      ours 9b67 mov.w 0x000000000c0e9410,r11
+0c0e9342 retail da38 mov.l 0x000000000c0e9424,r10     ours dc38 mov.l 0x000000000c0e9424,r12
+0c0e9346 retail ec00 mov #0,r12                       ours ed00 mov #0,r13
+0c0e9356 retail f4d6 fmov @(r0,r13),fr4               ours f4a6 fmov @(r0,r10),fr4
+0c0e9368 retail e33f mov #63,r3                       ours e43f mov #63,r4
+0c0e936c retail e30f mov #15,r3                       ours e40f mov #15,r4
+0c0e936e retail 0ec4 mov.b r12,@(r0,r14)              ours 0ed4 mov.b r13,@(r0,r14)
+0c0e9370 retail 7049 add #73,r0                       ours 9051 mov.w 0x000000000c0e9416,r0
+0c0e9374 retail 0e34 mov.b r3,@(r0,r14)               ours 0e44 mov.b r4,@(r0,r14)
+0c0e9376 retail 4a0b jsr @r10                         ours 4c0b jsr @r12
+0c0e937a retail 904c mov.w 0x000000000c0e9416,r0      ours 904d mov.w 0x000000000c0e9418,r0
+0c0e9396 retail 903f mov.w 0x000000000c0e9418,r0      ours 9040 mov.w 0x000000000c0e941a,r0
+0c0e939e retail 903c mov.w 0x000000000c0e941a,r0      ours 903d mov.w 0x000000000c0e941c,r0
+0c0e93a6 retail 9038 mov.w 0x000000000c0e941a,r0      ours 9039 mov.w 0x000000000c0e941c,r0
+0c0e93ac retail 9036 mov.w 0x000000000c0e941c,r0      ours 9037 mov.w 0x000000000c0e941e,r0
+0c0e93b0 retail 0ec4 mov.b r12,@(r0,r14)              ours 0ed4 mov.b r13,@(r0,r14)
+0c0e93b2 retail 7d40 add #64,r13                      ours 7a40 add #64,r10
+0c0e93b4 retail f4d8 fmov @r13,fr4                    ours f4a8 fmov @r10,fr4
+0c0e93c6 retail e240 mov #64,r2                       ours e440 mov #64,r4
+0c0e93ca retail e301 mov #1,r3                        ours e201 mov #1,r2
+0c0e93cc retail e210 mov #16,r2                       ours e410 mov #16,r4
+0c0e93ce retail 0e34 mov.b r3,@(r0,r14)               ours 0e24 mov.b r2,@(r0,r14)
+0c0e93d0 retail 7049 add #73,r0                       ours 9021 mov.w 0x000000000c0e9416,r0
+0c0e93d4 retail 0e24 mov.b r2,@(r0,r14)               ours 0e44 mov.b r4,@(r0,r14)
+0c0e93d6 retail 4a0b jsr @r10                         ours 4c0b jsr @r12
+0c0e93da retail 901c mov.w 0x000000000c0e9416,r0      ours 901d mov.w 0x000000000c0e9418,r0
+0c0e93f6 retail 900f mov.w 0x000000000c0e9418,r0      ours 9010 mov.w 0x000000000c0e941a,r0
+0c0e93fe retail 900c mov.w 0x000000000c0e941a,r0      ours 900d mov.w 0x000000000c0e941c,r0
+0c0e9406 retail 9008 mov.w 0x000000000c0e941a,r0      ours 9009 mov.w 0x000000000c0e941c,r0
+0c0e9416 retail 01fa stc dbr,r1                       ours 01a1 error
+0c0e9418 retail 01fc mov.b @(r0,r15),r1               ours 01fa stc dbr,r1
+0c0e941a retail 03f4 mov.b r15,@(r0,r3)               ours 01fc mov.b @(r0,r15),r1
+0c0e941c retail 01a7 mul.l r10,r1                     ours 03f4 mov.b r15,@(r0,r3)
+0c0e941e retail 0000 error                            ours 01a7 mul.l r10,r1
+0c0e943c retail 7d44 add #68,r13                      ours 7a44 add #68,r10
+0c0e943e retail f4d8 fmov @r13,fr4                    ours f4a8 fmov @r10,fr4
+0c0e9450 retail e341 mov #65,r3                       ours e441 mov #65,r4
+0c0e9456 retail e311 mov #17,r3                       ours e411 mov #17,r4
+0c0e945a retail 7049 add #73,r0                       ours 908a mov.w 0x000000000c0e9572,r0
+0c0e945e retail 0e34 mov.b r3,@(r0,r14)               ours 0e44 mov.b r4,@(r0,r14)
+0c0e9460 retail 4a0b jsr @r10                         ours 4c0b jsr @r12
+0c0e9464 retail 9085 mov.w 0x000000000c0e9572,r0      ours 9086 mov.w 0x000000000c0e9574,r0
+0c0e9478 retail 907c mov.w 0x000000000c0e9574,r0      ours 907d mov.w 0x000000000c0e9576,r0
+0c0e9480 retail 9079 mov.w 0x000000000c0e9576,r0      ours 907a mov.w 0x000000000c0e9578,r0
+0c0e9488 retail 9076 mov.w 0x000000000c0e9578,r0      ours 9077 mov.w 0x000000000c0e957a,r0
+0c0e9490 retail 9072 mov.w 0x000000000c0e9578,r0      ours 9073 mov.w 0x000000000c0e957a,r0
+0c0e9498 retail 906f mov.w 0x000000000c0e957a,r0      ours 9070 mov.w 0x000000000c0e957c,r0
+0c0e949c retail 906e mov.w 0x000000000c0e957c,r0      ours 906f mov.w 0x000000000c0e957e,r0
+0c0e94a2 retail 0ec5 mov.w r12,@(r0,r14)              ours 0ed5 mov.w r13,@(r0,r14)
+0c0e94a6 retail 0ec4 mov.b r12,@(r0,r14)              ours 0ed4 mov.b r13,@(r0,r14)
+0c0e94aa retail 0ec6 mov.l r12,@(r0,r14)              ours 0ed6 mov.l r13,@(r0,r14)
+0c0e94c6 retail 905a mov.w 0x000000000c0e957e,r0      ours 905b mov.w 0x000000000c0e9580,r0
+0c0e94ce retail 9056 mov.w 0x000000000c0e957e,r0      ours 9057 mov.w 0x000000000c0e9580,r0
+0c0e94e6 retail 904b mov.w 0x000000000c0e9580,r0      ours 904c mov.w 0x000000000c0e9582,r0
+0c0e954c retail 9019 mov.w 0x000000000c0e9582,r0      ours 901a mov.w 0x000000000c0e9584,r0
+0c0e9556 retail 9015 mov.w 0x000000000c0e9584,r0      ours 9016 mov.w 0x000000000c0e9586,r0
+0c0e9572 retail 01fa stc dbr,r1                       ours 01a1 error
+0c0e9574 retail 01e8 error                            ours 01fa stc dbr,r1
+0c0e9576 retail 01fc mov.b @(r0,r15),r1               ours 01e8 error
+0c0e9578 retail 03f4 mov.b r15,@(r0,r3)               ours 01fc mov.b @(r0,r15),r1
+0c0e957a retail 01a7 mul.l r10,r1                     ours 03f4 mov.b r15,@(r0,r3)
+0c0e957c retail 01ac mov.b @(r0,r10),r1               ours 01a7 mul.l r10,r1
+0c0e957e retail 01d6 mov.l r13,@(r0,r1)               ours 01ac mov.b @(r0,r10),r1
+0c0e9580 retail 01ff mac.l @r15+,@r1+                 ours 01d6 mov.l r13,@(r0,r1)
+0c0e9582 retail 01fe mov.l @(r0,r15),r1               ours 01ff mac.l @r15+,@r1+
+0c0e9584 retail 01f9 error                            ours 01fe mov.l @(r0,r15),r1
+0c0e9586 retail 0000 error                            ours 01f9 error
+PROBLEM Not an exact section match: P
+DIFFERS

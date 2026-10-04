@@ -1,0 +1,1 @@
+Immutable cloud publication cutoff. Full check and selected registered-unit proofs are included. Three existing scratch drafts are preserved separately with zero credit; their diagnostics bind source and shared-header hashes. SDK additions: none. Main publication is reserved for the local integrator.

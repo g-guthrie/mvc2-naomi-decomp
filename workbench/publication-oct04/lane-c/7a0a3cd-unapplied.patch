@@ -1,0 +1,73 @@
+From 7a0a3cd2d3a403e4116eee43c12c80422c6960ed Mon Sep 17 00:00:00 2001
+From: Greer Guthrie <gguthrie@gguthrie.local>
+Date: Sat, 3 Oct 2026 19:07:46 -0500
+Subject: [PATCH] Correct native dispatcher and literal boundaries near 1b1a34
+
+---
+ config/mapping.json | 31 ++++++++++++++++++++++++++-----
+ 1 file changed, 26 insertions(+), 5 deletions(-)
+
+diff --git a/config/mapping.json b/config/mapping.json
+index 7b89423..7091f73 100644
+--- a/config/mapping.json
++++ b/config/mapping.json
+@@ -325536,6 +325536,13 @@
+       "sha256": "f28b657f518999f3409691642f126cc2e186cf935b1a92399d6a382031dbd9a6",
+       "evidence": "CFG walk from 0x0c1b19c6; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+     },
++    {
++      "address": "0x0c1b1a34",
++      "size": 42,
++      "kind": "code",
++      "sha256": "521d6724a085fda53921c1ce656866937c245c077bf7a3f63f41cb71c23ef9d2",
++      "evidence": "Full native dispatcher at 0x0c1b1a34 reviewed: state/parent load, conditional free through 0x0c1b1a6c, callback-table dispatch through 0x0c1b1a70, both JMP delay slots; RTS is not required for this tail-call dispatcher."
++    },
+     {
+       "address": "0x0c1b1a5e",
+       "size": 14,
+@@ -325543,12 +325550,19 @@
+       "sha256": "5da9cee84ad4f955ba4376c439fb82c6b4b8accccbe72f329eaa1f96ae9eef6c",
+       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1b1910; unreferenced adjacent bytes omitted."
+     },
++    {
++      "address": "0x0c1b1a6c",
++      "size": 4,
++      "kind": "data",
++      "sha256": "bb8f21711d67bc906a047fcb31fda31099e2ddcfccea4e1b02ace239ead5fe6f",
++      "evidence": "Native MOV.L at 0x0c1b1a44 loads this 0x0c037688 free-routine pointer in the reviewed dispatcher at 0x0c1b1a34."
++    },
+     {
+       "address": "0x0c1b1a70",
+       "size": 4,
+-      "kind": "code",
++      "kind": "data",
+       "sha256": "a26373afc0f981178efd1aaa63dfdb288a039f628cc2df723032eb2fa4b60f98",
+-      "evidence": "CFG walk from 0x0c1b1a70; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
++      "evidence": "Native MOV.L at 0x0c1b1a52 loads this 0x0c25ae20 callback-table pointer; reviewed dispatcher 0x0c1b1a34 ends at 0x0c1b1a5e. This word is a literal, not a branch."
+     },
+     {
+       "address": "0x0c1b1a74",
+@@ -326224,10 +326238,17 @@
+     },
+     {
+       "address": "0x0c1b2a3c",
+-      "size": 56,
++      "size": 4,
++      "kind": "data",
++      "sha256": "bb8f21711d67bc906a047fcb31fda31099e2ddcfccea4e1b02ace239ead5fe6f",
++      "evidence": "Native MOV.L at 0x0c1b2a14 loads this 0x0c037688 free-routine pointer; preceding JMP/NO P terminates the callback. The next allocator starts at 0x0c1b2a40."
++    },
++    {
++      "address": "0x0c1b2a40",
++      "size": 52,
+       "kind": "code",
+-      "sha256": "493b3bf23ae0d3f977423921531415bc93464c057afdaa958791682bd51fcf44",
+-      "evidence": "CFG walk from 0x0c1b2a3c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
++      "sha256": "a52273d2f81b5b6b6b7ec79cde9c07d941e264b373e2f92f445591c7e8922b8d",
++      "evidence": "Full native allocator at 0x0c1b2a40 reviewed through RTS/delay slot at 0x0c1b2a72; calls, failure path and literal consumers reviewed."
+     },
+     {
+       "address": "0x0c1b2a74",
+-- 
+2.39.5 (Apple Git-154)
+

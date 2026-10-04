@@ -1,0 +1,93 @@
+{
+  "scope": "Unregistered draft diagnostic; zero coverage credit",
+  "source_sha256": "728894b2fb38e6a9b9064b23ac83b6e741f474f299f5edf0819743f01feb1c8b",
+  "shared_header_sha256": "08b782e75c5310754a5605d417d0c45faabaa0b9bc9fd7bddcb9e6a370ce857c",
+  "unit": {
+    "id": "tu_0c16fc14",
+    "source": "workbench/active-drafts/lane-b/tu_0c16fc14.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": 202832916,
+        "size": 388,
+        "interior": [
+          {
+            "address": 202833238,
+            "size": 66,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c16fc14": 202832916,
+      "_func_0c16fd44": 202833220
+    },
+    "imports": {
+      "_dat_0c2f83f8": 204440568,
+      "_dat_0c252670": 203761264,
+      "_table_0c252784": 203761540,
+      "_func_0c037d0c": 201555212,
+      "_func_0c02a0c4": 201498820,
+      "__slow_mvn": 203405368,
+      "__quick_odd_mvn": 203405216
+    }
+  },
+  "proof": {
+    "exact": false,
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": 202832916,
+        "size": 388,
+        "interior": [
+          {
+            "address": 202833238,
+            "size": 66,
+            "kind": "data"
+          }
+        ],
+        "linked_size": 384,
+        "linked_address": 202832916,
+        "equal_bytes": 0,
+        "exact": false
+      }
+    ],
+    "functions": [
+      {
+        "symbol": "_func_0c16fc14",
+        "address": 202832916,
+        "size": 304,
+        "equal_bytes": 7,
+        "exact": false
+      },
+      {
+        "symbol": "_func_0c16fd44",
+        "address": 202833220,
+        "size": 18,
+        "equal_bytes": 0,
+        "exact": false
+      }
+    ],
+    "pools": [
+      {
+        "address": 202833238,
+        "size": 66,
+        "kind": "data",
+        "equal_bytes": 0,
+        "exact": false
+      }
+    ],
+    "function_bytes": 0,
+    "pool_bytes": 0,
+    "problems": [
+      "Wrong exported symbol address: _func_0c16fd44",
+      "Not an exact section match: P",
+      "Linked image contains extra or missing initialized bytes",
+      "Linked image contains extra or missing memory bytes"
+    ]
+  }
+}

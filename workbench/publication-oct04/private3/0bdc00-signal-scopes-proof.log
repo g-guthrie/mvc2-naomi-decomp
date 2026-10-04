@@ -1,0 +1,17 @@
+STRICT False ['Not an exact section match: P']
+[(1692, 1671)]
+[('_func_0c0bdc00', 64, 64), ('_func_0c0bdc40', 18, 18), ('_func_0c0bdc52', 300, 300), ('_func_0c0bddb8', 84, 84), ('_func_0c0bde0c', 16, 16), ('_func_0c0bde1c', 38, 38), ('_func_0c0bde74', 221, 240), ('_func_0c0bdf64', 18, 18), ('_func_0c0bdf76', 236, 236), ('_func_0c0be082', 220, 222), ('_func_0c0be19c', 34, 34), ('_func_0c0be1be', 22, 22), ('_func_0c0be1d4', 142, 142)]
+0c0bdeea 03ec mov.b @(r0,r14),r3                  | 01ec mov.b @(r0,r14),r1
+0c0bdeee 4321 shar r3                             | 4121 shar r1
+0c0bdef0 73ff add #-1,r3                          | 71ff add #-1,r1
+0c0bdef2 4308 shll2 r3                            | 4108 shll2 r1
+0c0bdef4 013e mov.l @(r0,r3),r1                   | 031e mov.l @(r0,r1),r3
+0c0bdef8 d329 mov.l 0x000000000c0bdfa0,r3         | 0e34 mov.b r3,@(r0,r14)
+0c0bdefa 0e14 mov.b r1,@(r0,r14)                  | 700b add #11,r0
+0c0bdefc 700b add #11,r0                          | 0e45 mov.w r4,@(r0,r14)
+0c0bdefe 0e45 mov.w r4,@(r0,r14)                  | 70f2 add #-14,r0
+0c0bdf00 70f2 add #-14,r0                         | 0e44 mov.b r4,@(r0,r14)
+0c0bdf02 0e44 mov.b r4,@(r0,r14)                  | 7026 add #38,r0
+0c0bdf04 7026 add #38,r0                          | d326 mov.l 0x000000000c0bdfa0,r3
+0c0be0b0 02ec mov.b @(r0,r14),r2                  | 03ec mov.b @(r0,r14),r3
+0c0be0b2 4211 cmp/pz r2                           | 4311 cmp/pz r3
