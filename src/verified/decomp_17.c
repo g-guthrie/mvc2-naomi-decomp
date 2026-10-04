@@ -1,24 +1,16 @@
 #include "objects.h"
 
-struct PairTimer {
-    unsigned short w0;
-    unsigned short w2;
-    unsigned char pad[12];
-    unsigned short w16;
-    unsigned short w18;
-};
-
 #pragma section n02156c
-void func_0c02156c(struct PairTimer *p) {
+void func_0c02156c(struct ActorInputRecord20 *p) {
     unsigned short z;
     z = 0;
     p->w16 = z;
-    if (p->w2 == p->w0) {
+    if (p->w2 == p->buttons) {
         p->w18 = p->w18 + 1;
         if (p->w18 > 30) {
             if (p->w18 > 35) {
                 p->w18 = 30;
-                p->w16 = p->w0;
+                p->w16 = p->buttons;
             }
         }
     } else {
