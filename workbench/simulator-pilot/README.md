@@ -39,8 +39,8 @@ is not accepted as evidence that a mutation was detected.
 The initial three-unit baseline took about 14 seconds locally, including compilation and 261 test
 executions. It does not measure an overall decompilation speedup. The current
 candidates are behaviorally consistent on these cases but remain byte-inexact.
-The practical result is to focus their remaining work on code generation rather
-than continue guessing their behavior. Stop using the pilot on a unit once it
+For the tested paths, a current paired pass supports investigating code generation.
+Untested paths remain unknown; this does not establish whole-unit behavioral equivalence. Stop using the pilot on a unit once it
 is exact; add cases only for a concrete unresolved behavior.
 
 ## Reference integrity and limits
@@ -67,3 +67,30 @@ compiler option sets, registration rules, and progress accounting are unchanged.
 No simulator pass earns exact-C credit. Use `--unit ud2_04` (or another unit ID)
 to run only an affected unit during recovery. The new callback is tested without
 executing the float-using neighbors in its containing unit.
+
+## Selective recovery and freshness
+
+Use an individual unit for a new semantic question, or repeat `--case` to select
+exact case names shown in the report:
+
+```sh
+python3 workbench/simulator-pilot/pilot.py --simulator build/sh4objtest --unit ud2_04 --case countdown_0_0_2 --php php
+python3 tools/diagnose.py src/candidates/ud2_04.c
+```
+
+A selected case run need not cover the full function, but still needs a passing
+retail/candidate pair and an expectation failure from the deliberate mutant.
+A selected case that does not expose that bug produces unknown evidence rather
+than a behavioral pass. Whole-unit runs retain the full instruction-coverage
+check. Case selection overwrites that unit's evidence with the narrower scope;
+other units' records are retained and checked independently for freshness.
+
+`tools/behavioral_evidence.py` exposes read-only `status(unit, report_path=None,
+root=ROOT, report=None)` for diagnosis and work selection. It compares current
+source, all compiler-visible headers, unit descriptor, case definitions, compiler
+binaries/options, runner, compilation code, native program, and pilot/adapter
+hashes. It also checks the recorded simulator checkout is still clean at the
+reviewed revision. Missing, stale, unsupported, or ineffective mutation-control
+results remain unknown. A current failure points to behavior; a current pass
+only supports code-generation work on its named tested paths. Evidence does not
+become an exact-byte gate and exact units do not require simulator execution.

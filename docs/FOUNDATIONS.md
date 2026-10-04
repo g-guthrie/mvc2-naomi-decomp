@@ -40,9 +40,10 @@ It does not establish every function boundary or ABI assumption.
 numeric target values, and checks them. Redeclarations catch incompatible
 prototypes. Host ABI assumptions and guesses from field names are not used.
 
-Initial coverage is explicit: four repaired `ud2_12` offsets, its unsigned-byte
-return declaration, and the shared mask-word offset. Unlisted types remain
-unvalidated. Add contracts as native evidence establishes more facts.
+Coverage is explicit in `config/type_contracts.json`, now including native-backed
+member widths and record sizes as well as offsets and prototypes.
+`tools/shared_facts.py` lists evidence and consumers. Unlisted types remain
+unvalidated; textual consumers and callback hints still require native review.
 
 The repaired candidate remains inexact. Its continuation at `0c0d6ae8` is no
 longer an exported function. Four tail-call register bytes still prevent a whole
@@ -73,3 +74,10 @@ integration checkpoints. Keep disjoint research moving while integration runs.
 Track actual checked additions, compilation time and idle time; an active goal
 label is not evidence of execution. Do not restart stopped workers or schedules
 without a new user instruction.
+
+## Recovery planning
+
+[The recovery workflow](RECOVERY.md) connects ranked untouched spans and
+candidates, persistent bounded experiment history, source-family patterns,
+current scoped behavioral evidence, and disjoint integration batches.
+These affect work selection only; exact admission and byte accounting are unchanged.

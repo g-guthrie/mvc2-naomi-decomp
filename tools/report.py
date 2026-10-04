@@ -77,6 +77,8 @@ def work_queue(proof):
         rows.append({'id': unit['id'], 'source': unit.get('source'), 'kind': kind,
                      'address': min(part['address'] for part in sections),
                      'equal_bytes': equal, 'expected_bytes': expected,
+                     'new_code_bytes': max(0, sum(p['size'] - sum(i['size'] for i in p.get('interior',[]) if i['kind'] != 'code') for p in sections if p['kind']=='code') - unit.get('function_bytes',0)),
+                     'c_completion_bytes': sum(p['size'] - sum(i['size'] for i in p.get('interior',[]) if i['kind'] != 'code') for p in sections if p['kind']=='code'),
                      'linked_sizes': [part['linked_size'] for part in sections],
                      'exact_functions': sum(bool(f['exact']) for f in unit['functions']),
                      'total_functions': len(unit['functions']),
@@ -85,9 +87,8 @@ def work_queue(proof):
                      'diagnosis': unit.get('diagnosis'), 'boundaries': unit.get('boundaries'),
                      'next_action': 'Repair boundaries before source search' if kind == 'review_boundaries'
                                     else (unit.get('diagnosis') or {}).get('action', 'Inspect native semantics')})
-    priority = {'near_match': 0, 'review_extent': 1, 'partial_functions': 2, 'investigate': 3, 'review_boundaries': 4}
-    rows.sort(key=lambda row: (priority[row['kind']], row['expected_bytes'] - row['equal_bytes'],
-                               -row['credited_bytes'], row['address']))
+    from recovery import prioritize
+    prioritize(rows)
     return {'input_sha256': proof['input_sha256'], 'candidates': rows}
 
 

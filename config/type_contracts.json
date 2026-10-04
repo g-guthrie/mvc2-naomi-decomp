@@ -46,6 +46,95 @@
           "member": "w340",
           "offset": "0x340",
           "evidence": "Exact source src/verified/tu_0c03a810.c uses the mask word at actor+0x340."
+        },
+        {
+          "type": "struct Actor",
+          "member": "b6",
+          "offset": "0x6",
+          "size": 1,
+          "evidence": "Exact C src/verified/tu_0c09328c.c, func_0c09328c: native float motion loads/stores and landing-state byte; compare complete registered unit with diff_unit.py. Native: 0c0932da/0c0932e6 MOV.B at +6."
+        },
+        {
+          "type": "struct Actor",
+          "member": "f52",
+          "offset": "0x34",
+          "size": 4,
+          "evidence": "Exact C src/verified/tu_0c09328c.c, func_0c09328c: native float motion loads/stores and landing-state byte; compare complete registered unit with diff_unit.py. Native: 0c09329a MOV #52; 0c09329e/0c0932a6 FMOV."
+        },
+        {
+          "type": "struct Actor",
+          "member": "f56",
+          "offset": "0x38",
+          "size": 4,
+          "evidence": "Exact C src/verified/tu_0c09328c.c, func_0c09328c: native float motion loads/stores and landing-state byte; compare complete registered unit with diff_unit.py. Native: 0c0932b6 MOV #56; 0c0932b8/0c0932c2 FMOV."
+        },
+        {
+          "type": "struct Actor",
+          "member": "f92",
+          "offset": "0x5c",
+          "size": 4,
+          "evidence": "Exact C src/verified/tu_0c09328c.c, func_0c09328c: native float motion loads/stores and landing-state byte; compare complete registered unit with diff_unit.py. Native: 0c093296 MOV #92; 0c09329c FMOV."
+        },
+        {
+          "type": "struct Actor",
+          "member": "f96",
+          "offset": "0x60",
+          "size": 4,
+          "evidence": "Exact C src/verified/tu_0c09328c.c, func_0c09328c: native float motion loads/stores and landing-state byte; compare complete registered unit with diff_unit.py. Native: 0c0932ae MOV #96; 0c0932ba FMOV."
+        },
+        {
+          "type": "struct Actor",
+          "member": "f104",
+          "offset": "0x68",
+          "size": 4,
+          "evidence": "Exact C src/verified/tu_0c09328c.c, func_0c09328c: native float motion loads/stores and landing-state byte; compare complete registered unit with diff_unit.py. Native: 0c0932a0 MOV #104; 0c0932ac FMOV."
+        },
+        {
+          "type": "struct Actor",
+          "member": "f108",
+          "offset": "0x6c",
+          "size": 4,
+          "evidence": "Exact C src/verified/tu_0c09328c.c, func_0c09328c: native float motion loads/stores and landing-state byte; compare complete registered unit with diff_unit.py. Native: 0c0932bc MOV #108; 0c0932c8 FMOV."
+        },
+        {
+          "type": "struct Actor",
+          "member": "f41c",
+          "offset": "0x41c",
+          "size": 4,
+          "evidence": "Exact C src/verified/tu_0c09328c.c, func_0c09328c: native float motion loads/stores and landing-state byte; compare complete registered unit with diff_unit.py. Native: 0c0932d2 literal 0c0933de = 0x041c; 0c0932d4 FMOV."
+        },
+        {
+          "type": "struct ActorVec2",
+          "member": "x",
+          "offset": 0,
+          "size": 4,
+          "evidence": "Exact C src/verified/tu_0c17d79c.c, func_0c17d79c: float pair at dat_0c253dac indexed by owner->b1a3; x/y occupy consecutive four-byte words. Native: 0c17d7dc/0c17d7de multiply index by 8; 0c17d7d8/0c17d7e2 load y at +4, 0c17d800 loads x at +0."
+        },
+        {
+          "type": "struct ActorVec2",
+          "member": "y",
+          "offset": 4,
+          "size": 4,
+          "evidence": "Exact C src/verified/tu_0c17d79c.c, func_0c17d79c: float pair at dat_0c253dac indexed by owner->b1a3; x/y occupy consecutive four-byte words. Native: 0c17d7dc/0c17d7de multiply index by 8; 0c17d7d8/0c17d7e2 load y at +4, 0c17d800 loads x at +0."
+        },
+        {
+          "type": "struct ActorInputRecord20",
+          "member": "buttons",
+          "offset": 0,
+          "size": 2,
+          "evidence": "Exact C src/verified/tu_0c09328c.c, func_0c093406: halfword button read from dat_0c2d6f24 plus actor index times 20. Native: 0c093432/0c093434/0c093438 multiply index by 20; 0c09343c MOV.W then 0c09343e EXTU.W."
+        }
+      ],
+      "sizes": [
+        {
+          "type": "struct ActorVec2",
+          "size": 8,
+          "evidence": "Exact C src/verified/tu_0c17d79c.c, func_0c17d79c: indexed pair stride 8. Native 0c17d7dc SHLL2 then 0c17d7de SHLL."
+        },
+        {
+          "type": "struct ActorInputRecord20",
+          "size": 20,
+          "evidence": "Exact C src/verified/tu_0c09328c.c, func_0c093406: indexed controller stride 20. Native 0c093432 SHLL2, 0c093434 ADD original index, 0c093438 SHLL2."
         }
       ]
     },
@@ -69,6 +158,16 @@
         {
           "declaration": "extern struct Dat_13bb5c dat_0c2f8338;",
           "evidence": "Native 0c12f9e2/0c12f9e6 accesses inline data without an intervening pointer dereference."
+        }
+      ]
+    },
+    {
+      "source": "src/verified/tu_0c03a810.c",
+      "prototypes": [
+        {
+          "address": "0x0c043a10",
+          "declaration": "extern unsigned char func_0c043a10(struct Actor *);",
+          "evidence": "Native call 0c03a820 with actor in R4 at delay slot 0c03a822, followed by EXTU.B R0,R0 at 0c03a824. Target literal at 0c03a8c4. Exact caller src/verified/tu_0c03a810.c."
         }
       ]
     }

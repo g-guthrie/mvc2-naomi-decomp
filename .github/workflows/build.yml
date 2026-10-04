@@ -18,6 +18,8 @@ jobs:
           python-version: '3.12'
       - name: Verify ROMs and build with bundled Hitachi
         run: python3 tools/build.py check --clean --jobs 2
+      - name: Generate evidence-backed recovery plan
+        run: python3 tools/recovery.py plan
       - uses: actions/upload-artifact@v6
         with:
           name: hitachi-evidence
@@ -31,6 +33,7 @@ jobs:
             build/work/**/*.lnk
             build/progress.json
             build/work_queue.json
+            build/recovery_plan.json
             build/progress.svg
             build/active.svg
             build/index.html
