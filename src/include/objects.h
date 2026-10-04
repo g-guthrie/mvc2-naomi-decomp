@@ -396,6 +396,9 @@ struct Tbl_ub3_01 { unsigned char pad[124]; short arr[100]; };
  * 0xdc is copied by SHC's runtime helper in the 0x0c19dxxx callbacks. */
 struct LinkedActorVec3 { float x, y, z; };
 union LinkedActorW158 { short short_value; unsigned char bytes[2]; };
+/* Actual four-byte control prefix at linked actor offset 0x12c.
+ * Keep the legacy raw block view for existing verified consumers. */
+struct LinkedActorPrefix12c { unsigned char b12c; signed char b12d; short w12e; };
 struct LinkedActorBlock {
     unsigned char pad0[0x50];
     unsigned char b12c;
