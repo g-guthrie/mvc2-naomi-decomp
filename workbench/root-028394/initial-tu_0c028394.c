@@ -14,10 +14,7 @@ void func_0c028394(void)
     void (*poll)(void *);
     void *first,*second;
     int zero;
-    unsigned int fpscr;
-    fpscr=_builtin_get_fpscr();
-    fpscr &=~3U;
-    _builtin_set_fpscr(fpscr);
+    _builtin_set_fpscr(_builtin_get_fpscr()&~3U);
     dat_0c2d6f84=&dat_0c2d6f88;
     func_0c0215f6(0);
     func_0c028154();func_0c0221d8();func_0c022354();func_0c02a894();

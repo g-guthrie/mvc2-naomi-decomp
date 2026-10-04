@@ -26,84 +26,84 @@
           .SECTION    P,CODE,ALIGN=4
 _func_0c028394:                  ; function: func_0c028394
                                  ; frame size=0
-          STS         FPSCR,R4
-          MOV         #-4,R3
-          MOV.L       L269+4,R1  ; _dat_0c2d6f84
-          MOV.L       L269,R2    ; _dat_0c2d6f88
-          AND         R3,R4
-          MOV.L       L269+8,R3  ; _func_0c0215f6
-          LDS         R4,FPSCR
-          MOV.L       R2,@R1
+          STS         FPSCR,R3
+          MOV         #-4,R2
+          MOV.L       L268+4,R0  ; _dat_0c2d6f84
+          MOV.L       L268,R1    ; _dat_0c2d6f88
+          AND         R2,R3
+          LDS         R3,FPSCR
+          MOV.L       L268+8,R3  ; _func_0c0215f6
+          MOV.L       R1,@R0
           JSR         @R3
           MOV         #0,R4
-          MOV.L       L269+12,R2 ; _func_0c028154
+          MOV.L       L268+12,R2 ; _func_0c028154
           JSR         @R2
           NOP
-          MOV.L       L269+16,R3 ; _func_0c0221d8
+          MOV.L       L268+16,R3 ; _func_0c0221d8
           JSR         @R3
           NOP
-          MOV.L       L269+20,R2 ; _func_0c022354
+          MOV.L       L268+20,R2 ; _func_0c022354
           JSR         @R2
           NOP
-          MOV.L       L269+24,R3 ; _func_0c02a894
+          MOV.L       L268+24,R3 ; _func_0c02a894
           JSR         @R3
           NOP
-          MOV.L       L269+28,R4 ; _dat_0c2d6f24
+          MOV.L       L268+28,R4 ; _dat_0c2d6f24
           MOV         #0,R14
-          MOV.L       L269+36,R12; _func_0c1eae80
-          MOV.L       L269+40,R13; _func_0c02156c
+          MOV.L       L268+36,R8 ; _func_0c1eae80
+          MOV.L       L268+40,R13; _func_0c02156c
           MOV         R4,R10
-          MOV.L       L269+44,R9 ; _func_0c023060
+          MOV.L       L268+44,R9 ; _func_0c023060
           MOV         R4,R11
-          MOV.L       L269+32,R8 ; _func_0c1e9b20
+          MOV.L       L268+32,R12; _func_0c1e9b20
           ADD         #20,R10
-L268:                             
-          JSR         @R8
-          NOP
+L267:                             
           JSR         @R12
+          NOP
+          JSR         @R8
           NOP
           JSR         @R13
           MOV         R11,R4
           JSR         @R13
           MOV         R10,R4
-          MOV.L       L269+48,R3 ; _func_0c02c3e2
+          MOV.L       L268+48,R3 ; _func_0c02c3e2
           JSR         @R3
           NOP
-          MOV.L       L269+52,R2 ; _func_0c022526
+          MOV.L       L268+52,R2 ; _func_0c022526
           JSR         @R2
           NOP
-          MOV.L       L269+56,R3 ; _func_0c021c9c
+          MOV.L       L268+56,R3 ; _func_0c021c9c
           JSR         @R3
           NOP
-          MOV.L       L269+60,R2 ; _func_0c0223d4
+          MOV.L       L268+60,R2 ; _func_0c0223d4
           JSR         @R2
           NOP
-          MOV.L       L269+64,R3 ; _func_0c034288
+          MOV.L       L268+64,R3 ; _func_0c034288
           JSR         @R3
           NOP
-          MOV.L       L269+68,R2 ; _dat_0c28401c
-          MOV.L       L269+72,R3 ; _dat_0c284018
-          MOV.L       L269+76,R1 ; _func_0c02ab2c
+          MOV.L       L268+68,R2 ; _dat_0c28401c
+          MOV.L       L268+72,R3 ; _dat_0c284018
+          MOV.L       L268+76,R1 ; _func_0c02ab2c
           MOV.L       R14,@R2
           JSR         @R1
           MOV.L       R14,@R3
-          MOV.L       L269+80,R2 ; _func_0c1e68dc
+          MOV.L       L268+80,R2 ; _func_0c1e68dc
           JSR         @R2
           NOP
-          MOV.L       L269+84,R1 ; _func_0c02c39a
+          MOV.L       L268+84,R1 ; _func_0c02c39a
           JSR         @R1
           NOP
-          MOV.L       L269+88,R2 ; _func_0c02c4a2
+          MOV.L       L268+88,R2 ; _func_0c02c4a2
           JSR         @R2
           NOP
-          MOV.L       L269+92,R1 ; _func_0c0271de
+          MOV.L       L268+92,R1 ; _func_0c0271de
           JSR         @R1
           NOP
           JSR         @R9
           NOP
-          BRA         L268
+          BRA         L267
           NOP
-L269:                             
+L268:                             
           .DATA.L     _dat_0c2d6f88
           .DATA.L     _dat_0c2d6f84
           .DATA.L     _func_0c0215f6
