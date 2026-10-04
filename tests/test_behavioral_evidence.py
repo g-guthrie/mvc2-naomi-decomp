@@ -17,7 +17,7 @@ class BehavioralEvidenceTests(unittest.TestCase):
         self.unit = {'id': 'test', 'source': 'src/test.c', 'sections': [{'address': 123, 'size': 2}]}
         self.cases = [{'name': 'boundary', 'entry': '_func_test', 'arguments': [1]}]
         files = ['src/test.c', 'src/include/types.h', 'tools/build.py', 'tools/core.py',
-                 'tools/behavioral_evidence.py', 'workbench/simulator-pilot/pilot.py',
+                 'tools/behavioral_evidence.py', 'tools/diff_unit.py', 'workbench/simulator-pilot/pilot.py',
                  'workbench/simulator-pilot/run.php', 'toolchain/hitachi-shc-5.0r31/shc.exe',
                  'toolchain/hitachi-shc-5.0r31.json', 'toolchain/runner', 'config/compiler.json']
         for name in files:
@@ -53,6 +53,22 @@ class BehavioralEvidenceTests(unittest.TestCase):
                 path.write_bytes(original)
         self.unit['sections'][0]['size'] = 4
         self.assertEqual(self.read_status()['status'], 'unknown')
+    def test_equivalent_registered_and_evaluated_descriptors(self):
+        registered = copy.deepcopy(self.unit)
+        registered['sections'][0]['address'] = '0x0000007b'
+        registered['sections'][0]['interior'] = [{'address': '0x0000007c', 'size': 1}]
+        registered['exports'] = {'_func_test': '0x0000007b'}
+        evaluated = copy.deepcopy(registered)
+        evaluated['sections'][0]['address'] = 123
+        evaluated['sections'][0]['interior'][0]['address'] = 124
+        evaluated['exports']['_func_test'] = 123
+        evaluated['imports'] = {}
+        evaluated['options'] = 'game'
+        expected = fingerprint(registered, self.cases, self.root)
+        self.assertEqual(expected, fingerprint(evaluated, self.cases, self.root))
+        evaluated['sections'][0]['size'] = 4
+        self.assertNotEqual(expected, fingerprint(evaluated, self.cases, self.root))
+
     def test_stale_cases(self):
         self.cases[0]['arguments'] = [2]
         self.assertEqual(self.read_status()['status'], 'unknown')

@@ -13,9 +13,11 @@ def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
 
 def fingerprint(unit, cases, root=ROOT):
+    from diff_unit import hexed
+    descriptor = hexed({'exports': {}, 'imports': {}, **unit})
     root = Path(root)
     paths = [root / unit['source'], root / 'config/compiler.json', root / 'config/target.json',
-             root / 'tools/build.py', root / 'tools/core.py', root / 'tools/behavioral_evidence.py',
+             root / 'tools/build.py', root / 'tools/core.py', root / 'tools/diff_unit.py', root / 'tools/behavioral_evidence.py',
              root / 'workbench/simulator-pilot/pilot.py', root / 'workbench/simulator-pilot/run.php']
     paths += sorted((root / 'src/include').glob('*.h'))
     paths += sorted(p for p in (root / 'toolchain/hitachi-shc-5.0r31').iterdir() if p.is_file())
@@ -25,7 +27,7 @@ def fingerprint(unit, cases, root=ROOT):
     target = load(root / 'config/target.json')
     with zipfile.ZipFile(root / target['archive']) as archive:
         image = archive.read(target['program_rom'])
-    return {'files': files, 'unit': digest(unit), 'cases': digest(cases),
+    return {'files': files, 'unit': digest(descriptor), 'cases': digest(cases),
             'native_program': hashlib.sha256(image).hexdigest()}
 
 def current_cases(unit_id, names, root=ROOT):
