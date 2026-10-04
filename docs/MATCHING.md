@@ -221,3 +221,9 @@ differences; read what it changed afterwards.
 See [TBG learnings](TBG_LEARNINGS.md) before investigating constant-section,
 prototype, alias, or write-order mismatches. It distinguishes locally reproduced
 SHC behavior from external hypotheses and records isolated flag experiments.
+
+For a concrete behavioral ambiguity in nonmatching integer C, the optional
+[paired-execution pilot](../workbench/simulator-pilot/README.md) can distinguish
+wrong behavior from a code-generation mismatch on tested paths. Its original
+code oracle, coverage and deliberate mutants are required controls. Use it
+selectively; it neither replaces the byte gate nor adds decompilation credit.
