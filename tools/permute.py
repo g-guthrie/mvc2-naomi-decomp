@@ -69,7 +69,7 @@ def bounded_search(path, unit, initial, *, budget=10, seconds=1200, rounds=6, fa
     """Compile private copies. An exception or interruption never dirties source."""
     failed = set() if failed is None else set(failed)
     original = path.read_text();best_text=original
-    best=sum(p['equal_bytes'] for p in initial['sections']);exact=initial['exact']
+    best=sum(p['equal_bytes'] for p in initial['sections']);baseline_score=best;exact=initial['exact']
     compiled=errors=skipped=round_count=0;started=time.monotonic();seen=set()
     with tempfile.TemporaryDirectory(prefix='spelling-',dir=root/'build') as directory:
         trial=Path(directory)/path.name
@@ -90,7 +90,7 @@ def bounded_search(path, unit, initial, *, budget=10, seconds=1200, rounds=6, fa
                     # Compiler/tool failures are not permanent negative evidence.
                     errors+=1;continue
                 equal=sum(p['equal_bytes'] for p in proof['sections'])
-                if not proof['exact'] and equal<=best:failed.add(key)
+                if not proof['exact'] and equal<=baseline_score:failed.add(key)
                 if equal>best or proof['exact']:
                     best,exact,best_text=equal,proof['exact'],text;improved=True
                     print(f'  {name}: {best} equal bytes'+(' EXACT' if exact else ''),flush=True)

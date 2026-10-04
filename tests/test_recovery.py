@@ -88,6 +88,25 @@ class RecoveryTests(unittest.TestCase):
             self.assertEqual(retry['compiled'],1);self.assertEqual(retry['score'],2)
             self.assertEqual(search_outcome({'exact':False,'score':1,'compiled':10,'errors':10},1),'inconclusive')
 
+    def test_later_round_failure_does_not_hide_bridge_after_transient_error(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);(root/'build').mkdir();path=root/'unit.c';path.write_text('original')
+            initial={'exact':False,'sections':[{'equal_bytes':1}]}
+            def candidates(text):
+                return iter([('best','best'),('bridge','bridge')]) if text=='original' else iter([('bridge','bridge')])
+            def evaluate(p,descriptor):
+                value=3 if Path(p).read_text()=='best' else 2
+                return {'exact':False,'sections':[{'equal_bytes':value}]},descriptor
+            with patch('permute.variants',side_effect=candidates):
+                result=bounded_search(path,{'id':'u'},initial,evaluator=evaluate,root=root)
+            self.assertEqual(result['failed'],[])
+            def transient(p,descriptor):
+                if Path(p).read_text()=='best':raise ValueError('temporary compiler failure')
+                return evaluate(p,descriptor)
+            with patch('permute.variants',side_effect=candidates):
+                retry=bounded_search(path,{'id':'u'},initial,failed=result['failed'],evaluator=transient,root=root)
+            self.assertEqual(retry['score'],2)
+
     def test_concurrent_edit_is_preserved(self):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td);(root/'build').mkdir();path=root/'unit.c';path.write_text('original')
