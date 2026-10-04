@@ -65,7 +65,10 @@ def span_evidence(image, base, ranges, units, start, size):
                                          'target': f'0x{target:08x}',
                                          'crossed_pools': crossed,
                                          'external': not start <= target < end})
-    return {'pools': pool_rows, 'dependencies': dependencies}
+    from boundaries import BoundaryIndex
+    audit = BoundaryIndex(image, base, ranges).audit(
+        [{'kind': 'code', 'address': start, 'size': size}], [start])
+    return {'pools': pool_rows, 'dependencies': dependencies, 'boundary_audit': audit}
 
 
 def spans(image, base, ranges, owned):
@@ -150,7 +153,11 @@ def spans(image, base, ranges, owned):
         if ranges[j - 1][2] == 'data' and not incoming_literal and not incoming_branch:
             result.append((start, end - start))
         i = j
-    return [(s, n) for s, n in result if not any(o_lo < s + n and o_hi > s for o_lo, o_hi in owned)]
+    from boundaries import BoundaryIndex
+    index = BoundaryIndex(image, base, ranges)
+    return [(s, n) for s, n in result
+            if not any(o_lo < s + n and o_hi > s for o_lo, o_hi in owned)
+            and not index.audit([{'kind': 'code', 'address': s, 'size': n}], [s])['issues']]
 
 
 def main():

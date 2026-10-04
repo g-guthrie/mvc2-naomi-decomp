@@ -17,18 +17,18 @@ jobs:
         with:
           python-version: '3.12'
       - name: Verify ROMs and build with bundled Hitachi
-        run: python3 tools/build.py check
+        run: python3 tools/build.py check --clean --jobs 2
       - uses: actions/upload-artifact@v6
         with:
           name: hitachi-evidence
           path: |
             build/proof.json
             build/mapping.json
-            build/work/*.elf
-            build/work/*.map
-            build/work/*.src
-            build/work/*.log
-            build/work/*.lnk
+            build/work/**/*.elf
+            build/work/**/*.map
+            build/work/**/*.src
+            build/work/**/*.log
+            build/work/**/*.lnk
             build/progress.json
             build/work_queue.json
             build/progress.svg

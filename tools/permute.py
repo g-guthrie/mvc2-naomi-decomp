@@ -14,6 +14,7 @@ import argparse
 import re
 import shutil
 import sys
+import hashlib
 
 from core import ROOT
 from diff_unit import evaluate
@@ -66,18 +67,34 @@ def main():
     parser.add_argument('--budget', type=int, default=400, help='most variants compiled in total')
     args = parser.parse_args()
     path = ROOT / args.path
+    from boundaries import BoundaryIndex
+    from type_contracts import check_all
+    initial, unit = evaluate(args.path)
+    boundary = BoundaryIndex.current().unit(unit)
+    if boundary['issues']:
+        parser.error('Resolve candidate boundaries first: ' + repr(boundary['issues'][:8]))
+    check_all(args.path)
+    print('DIAGNOSIS ' + repr(initial.get('diagnosis')), flush=True)
+    if initial.get('diagnosis', {}).get('category') == 'layout_or_signature':
+        args.budget = min(args.budget, 12)
+        print('Extent/signature mismatch: limiting spelling search to 12 probes; review native structure first.', flush=True)
     backup = path.with_suffix('.c.orig')
     shutil.copyfile(path, backup)
     best_text = path.read_text()
     best, exact = score(args.path)
     print(f'start {best} equal bytes', flush=True)
     compiled = 0
+    seen = {hashlib.sha256(best_text.encode()).digest()}
     try:
         for round_ in range(args.rounds):
             if exact:
                 break
             improved = None
             for name, text in variants(best_text):
+                key = hashlib.sha256(text.encode()).digest()
+                if key in seen:
+                    continue
+                seen.add(key)
                 if compiled >= args.budget:
                     break
                 path.write_text(text)

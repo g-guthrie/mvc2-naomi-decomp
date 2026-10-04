@@ -1,0 +1,155 @@
+{
+  "source_sha256": "acdb0eea50368da20f73f597d8fe30244b5e5fc950ebf564c8b80056489b451a",
+  "input_sha256": "f58bb3ca93bb21a985da9224ce327f4a857dcfd01f3f25a989589d4c2aae0a63",
+  "options": [
+    "-cpu=sh4",
+    "-endian=little",
+    "-optimize=1",
+    "-division=cpu",
+    "-fpu=single",
+    "-pic=0",
+    "-macsave=0",
+    "-string=const",
+    "-comment=nonest",
+    "-extra=a=400"
+  ],
+  "retail_proof": {
+    "exact": false,
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": 202205540,
+        "size": 620,
+        "interior": [
+          {
+            "address": 202205874,
+            "size": 54,
+            "kind": "data"
+          },
+          {
+            "address": 202206146,
+            "size": 14,
+            "kind": "data"
+          }
+        ],
+        "linked_size": 620,
+        "linked_address": 202205540,
+        "equal_bytes": 616,
+        "exact": false
+      }
+    ],
+    "functions": [
+      {
+        "symbol": "_func_0c0d6964",
+        "address": 202205540,
+        "size": 50,
+        "equal_bytes": 50,
+        "exact": true
+      },
+      {
+        "symbol": "_func_0c0d6996",
+        "address": 202205590,
+        "size": 18,
+        "equal_bytes": 18,
+        "exact": true
+      },
+      {
+        "symbol": "_func_0c0d69a8",
+        "address": 202205608,
+        "size": 122,
+        "equal_bytes": 122,
+        "exact": true
+      },
+      {
+        "symbol": "_func_0c0d6a22",
+        "address": 202205730,
+        "size": 110,
+        "equal_bytes": 110,
+        "exact": true
+      },
+      {
+        "symbol": "_func_0c0d6a90",
+        "address": 202205840,
+        "size": 52,
+        "equal_bytes": 52,
+        "exact": true
+      },
+      {
+        "symbol": "_func_0c0d6afa",
+        "address": 202205946,
+        "size": 36,
+        "equal_bytes": 36,
+        "exact": true
+      },
+      {
+        "symbol": "_func_0c0d6b1e",
+        "address": 202205982,
+        "size": 36,
+        "equal_bytes": 36,
+        "exact": true
+      },
+      {
+        "symbol": "_func_0c0d6b42",
+        "address": 202206018,
+        "size": 64,
+        "equal_bytes": 62,
+        "exact": false
+      },
+      {
+        "symbol": "_func_0c0d6b82",
+        "address": 202206082,
+        "size": 64,
+        "equal_bytes": 62,
+        "exact": false
+      }
+    ],
+    "pools": [
+      {
+        "address": 202205874,
+        "size": 54,
+        "kind": "data",
+        "equal_bytes": 54,
+        "exact": true
+      },
+      {
+        "address": 202206146,
+        "size": 14,
+        "kind": "data",
+        "equal_bytes": 14,
+        "exact": true
+      }
+    ],
+    "function_bytes": 424,
+    "pool_bytes": 68,
+    "problems": [
+      "Not an exact section match: P"
+    ]
+  },
+  "grouped_case_negative_control": [
+    {
+      "symbol": "_func_0c0d6afa",
+      "address": 202205946,
+      "size": 36,
+      "equal_bytes": 3,
+      "exact": false
+    },
+    {
+      "symbol": "_func_0c0d6b1e",
+      "address": 202205982,
+      "size": 36,
+      "equal_bytes": 0,
+      "exact": false
+    }
+  ],
+  "float_context": {
+    "source_sha256": "e34ad346f9e1097606674b8c9fa0369fd47d06cbf2cf050c3c54398390717e81",
+    "retail_start": "0x0c10f1e8",
+    "retail_end_exclusive": "0x0c10f1fc",
+    "matching_bytes": 20,
+    "bytes_hex": "9df440f45ce0e6f343f337fe68e0e6f243f227fe",
+    "literal_control_differs": true,
+    "scope": "Ten-instruction block only; no complete retail function match or registration."
+  },
+  "credit": 0
+}

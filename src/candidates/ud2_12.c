@@ -1,14 +1,7 @@
-/* func_0c0d6964 and func_0c0d6996 match exactly (50/50, 18/18).
- * func_0c0d69a8 is very close (119/122; its remaining diffs are pool
- * addresses shifted by the functions after it, from the shared-tail /
- * duplicate-function shapes at func_0c0d6a90 onward that this session could
- * not get right within its attempt budget). func_0c0d6a90/func_0c0d6ae8 look
- * like a goto-into-a-following-function shared-epilogue idiom (the true
- * branch of the leading cmp/pz jumps directly into what mapping treats as
- * the next function's body); func_0c0d6afa/b1e/b42/b82 are four short,
- * pairwise-identical leaf functions selecting a state byte by
- * a->b4c9 in {0,1,2}, written here with `||` chains that did not reproduce
- * retail's cmp/bt chain. */
+/* Candidate: complete 620-byte extent remains INEXACT (616/620).
+ * Recovered repeated-case switch pattern is exact in func_0c0d6afa/b1e.
+ * The final two tail calls still select r3 instead of retail r2.
+ * See docs/MATCHING.md; offsets and return type are checked by config/type_contracts.json. No registration or new decompilation credit. */
 
 struct S_ud2_12 {
     unsigned char pad0[2];
@@ -22,7 +15,7 @@ struct S_ud2_12 {
     float f92, f96;
     unsigned char pad5[0x68 - 0x64];
     float f104, f108;
-    unsigned char pad6[0x141 - 0x6c];
+    unsigned char pad6[0x141 - 0x70];
     unsigned char b141;
     unsigned char pad6b[0x19e - 0x142];
     unsigned char b19e;
@@ -52,11 +45,10 @@ extern void (*dat_0c2487ec[])(struct S_ud2_12 *);
 extern void func_0c02a39a(struct S_ud2_12 *, int);
 extern struct Table2f83f8_ud2_12 *dat_0c2f83f8;
 extern void func_0c02a0c4(struct S_ud2_12 *, int, int);
-extern int func_0c044e52(struct S_ud2_12 *);
+extern unsigned char func_0c044e52(struct S_ud2_12 *);
 extern void func_0c043324(struct S_ud2_12 *);
 extern void func_0c0439c4(struct S_ud2_12 *);
 extern void func_0c045248(struct S_ud2_12 *, int);
-extern void func_0c0d6ae8(struct S_ud2_12 *);
 
 void func_0c0d6964(struct S_ud2_12 *a)
 {
@@ -112,14 +104,7 @@ void func_0c0d6a90(struct S_ud2_12 *a)
     if (func_0c02a026(a) < 0) {
         func_0c02a39a(a, 0);
         func_0c0439c4(a);
-        return;
-    }
-    func_0c0d6ae8(a);
-}
-
-void func_0c0d6ae8(struct S_ud2_12 *a)
-{
-    if (a->b141 != 0)
+    } else if (a->b141)
         a->b141 = 0;
 }
 
@@ -128,8 +113,7 @@ void func_0c0d6afa(struct S_ud2_12 *a)
     a->b5 = 0;
     a->b7 = 0;
     a->b6 = 0;
-    if (a->b4c9 == 0 || a->b4c9 == 1 || a->b4c9 == 2)
-        a->b1e9 = 8;
+    switch((signed char)a->b4c9){case 0:a->b1e9=8;break;case 1:a->b1e9=8;break;case 2:a->b1e9=8;break;}
     func_0c045248(a, 29);
 }
 
@@ -138,8 +122,7 @@ void func_0c0d6b1e(struct S_ud2_12 *a)
     a->b5 = 0;
     a->b7 = 0;
     a->b6 = 0;
-    if (a->b4c9 == 0 || a->b4c9 == 1 || a->b4c9 == 2)
-        a->b1e9 = 8;
+    switch((signed char)a->b4c9){case 0:a->b1e9=8;break;case 1:a->b1e9=8;break;case 2:a->b1e9=8;break;}
     func_0c045248(a, 29);
 }
 
@@ -148,12 +131,14 @@ void func_0c0d6b42(struct S_ud2_12 *a)
     a->b5 = 0;
     a->b7 = 0;
     a->b6 = 0;
-    switch (a->b4c9) {
+    switch ((signed char)a->b4c9) {
     case 0: a->b1e9 = 0; break;
     case 1: a->b1e9 = 2; break;
-    case 2: a->b1e9 = 3; break;
+    default: goto finished;
+    case 2: a->b1e9 = 3;
     }
     a->b1a3 = 1;
+finished:;
     func_0c045248(a, 21);
 }
 
@@ -162,11 +147,13 @@ void func_0c0d6b82(struct S_ud2_12 *a)
     a->b5 = 0;
     a->b7 = 0;
     a->b6 = 0;
-    switch (a->b4c9) {
+    switch ((signed char)a->b4c9) {
     case 0: a->b1e9 = 0; break;
-    case 1: a->b1e9 = 2; break;
-    case 2: a->b1e9 = 3; break;
+    case 1: a->b1e9 = 3; break;
+    default: goto finished;
+    case 2: a->b1e9 = 2;
     }
     a->b1a3 = 1;
+finished:;
     func_0c045248(a, 21);
 }

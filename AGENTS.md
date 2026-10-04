@@ -7,7 +7,7 @@ disagrees with this one, this one wins.
 ## Start
 
 ```sh
-python3 tools/build.py check                      # must pass before you begin
+python3 tools/build.py check                      # must pass before you begin; cache hits are reverified
 python3 tools/ghidra_draft.py --ghidra DIR        # once per clone, optional
 ```
 
@@ -32,6 +32,10 @@ disassembly instead.
 3. Iterate with `python3 tools/diff_unit.py <file>` until every function
    matches. `tools/permute.py <file>` searches the mechanical spellings for
    you; `tools/float_literal.py 0xBITS` gives an exact float spelling.
+   Run `python3 tools/diagnose.py <file>` before broad searches. Resolve blocked
+   boundaries and known type-contract failures first. Add native-supported
+   layout/prototype assertions to `config/type_contracts.json` as facts are
+   recovered; unlisted types are not validated.
 4. Register with `python3 tools/diff_unit.py <file> --register <id>`: verified
    when exact, under `src/verified/`; candidate otherwise, under
    `src/candidates/`, with a comment at the top saying what differs. Units
@@ -65,8 +69,10 @@ Run it again after adding a library, or after a unit frees a range it was
 blocked on. `SKIP` lines say which of the two applies.
 
 Several agents may run the loop at once: `diff_unit.py` uses a private work
-directory and locks the registry. Only `tools/build.py` needs the tree to
-itself, so run the check when no other agent is registering.
+directory and locks the registry. Full builds use isolated unit directories,
+bounded `--jobs`, cached artifacts and an output lock. Keep source inputs stable.
+Use `--clean` for independent clean-build evidence; CI always does so. See
+`docs/FOUNDATIONS.md` for cache scope, admission checks and remaining limits.
 
 ## Rules
 

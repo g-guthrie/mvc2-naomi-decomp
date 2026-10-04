@@ -124,12 +124,13 @@ at once; only `tools/build.py` needs the tree to itself.
 | `extu.w` before a mask test on a word field | the field is `unsigned short` |
 | a field address computed early and dereferenced later | `unsigned char *p = &b->field;` then `*p`, not a second `b->field` |
 | a call after an early-return block with the target register off by one | try `else if` in place of the sibling `if`, or the reverse |
+| `cmp/eq #0; bt.s; ...; cmp/eq #1; bt; cmp/eq #2; bf` into one store | separate `switch` cases with repeated bodies, allowing SHC to merge the tails; signed-byte input avoids `extu.b`. Grouped labels and `||` do not reproduce this shape. See the linked retail proof in `workbench/compiler-patterns-20261004/`. |
 | `mov r14,r3; add #64,r3; mov.l @r3` next to `@(r0,Rn)` accesses | a one-element array member, `int arr64[1]`, used as `arr64[0]` |
 | index computed before the pointer chain | pointer-to-array member: `(*g->p0)[a->b32 + 110]` |
 | `mov.l @r5+,r3` on consecutive ints | a walked pointer: `int *p = tbl[i]; x = *p++;` |
 | `lds r1,fpul; fsts fpul,fr3` for a float constant | the field is a struct member; a `float[]` element gives `mova; fmov @r0` |
 | `mova C; fmov; ...; mova -C; fmov` with no `bra` | `x = C; if (cond) x = -C;` |
-| `fldi1 frN; fadd frN,frN` for 2.0 | not produced yet by any spelling; open |
+| `fldi1 frN; fadd frN,frN` for 2.0 | an inlined helper returning `1.0f`, followed by doubling its result in place, produces the pair with unchanged flags; one 20-byte retail block matches. This is an experimental source recipe, not proof of original helper provenance or a complete-unit match. See `workbench/compiler-patterns-20261004/`. |
 | `r1 = dst; r2 = src; r0 = size; jsr` | struct assignment `a->s = b->s` with a member of that size; the routine name follows the struct's alignment. Never call the routine by hand |
 | `r1 = dividend; r0 = divisor; jsr __modls` | `%` |
 | `sts.l macl` around a multiply | any code; that is `-macsave=1`, and the game set has `-macsave=0` |
@@ -197,12 +198,15 @@ differences; read what it changed afterwards.
 
 ## Open questions
 
-- `if (a->b == 0 || a->b == 1 || a->b == 2) a->t = N;` in retail is a chain
-  of `cmp/eq #k; bt store`; the `||` spelling does not reproduce it. Seen at
-  three sites.
+- The previously open three-case comparison chain is now reproduced by
+  repeated switch bodies, as described above. Two real functions match
+  36/36 bytes in a linked comparison; their encompassing 620-byte unit still
+  has four unmatched tail-call register bytes and is not fully verified.
 
-- 2.0f materialised as `fldi1; fadd` at 106 retail sites, never from a pool.
-  No known C spelling produces that exact constant sequence. A small probe with
+- 2.0f materialised as `fldi1; fadd` was historically counted at 106 retail sites.
+  The pair is now reproducible through inline-result accumulation, with one
+  surrounding ten-instruction retail block matching exactly. Application to
+  complete source units and original source provenance remain open. Earlier probes with
   the bundled SHC and the full `game` options gave a pool load for each of
   `return 2.0f`, `return 1.0f + 1.0f`, and a local initialized to `1.0f`
   then added to itself. `return x + 1.0f` emits `fldi1; fadd`, but adds a
