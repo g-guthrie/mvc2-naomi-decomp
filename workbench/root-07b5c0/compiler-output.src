@@ -1,0 +1,165 @@
+          .IMPORT     _func_0c0421f4
+          .IMPORT     _func_0c0420f8
+          .IMPORT     _func_0c042018
+          .IMPORT     _func_0c0421b8
+          .IMPORT     _func_0c044f1c
+          .IMPORT     _func_0c0438de
+          .IMPORT     _func_0c044e52
+          .IMPORT     _func_0c02a026
+          .IMPORT     _func_0c13c814
+          .EXPORT     _func_0c07b5d6
+          .EXPORT     _func_0c07b618
+          .EXPORT     _func_0c07b684
+          .EXPORT     _func_0c07b5c0
+          .SECTION    P,CODE,ALIGN=4
+_func_0c07b5c0:                  ; function: func_0c07b5c0
+                                 ; frame size=8
+          MOV.L       R14,@-R15
+          STS.L       PR,@-R15
+          MOV.L       L274+12,R3 ; _func_0c0421f4
+          JSR         @R3
+          MOV         R4,R14
+          MOV.L       L274+16,R2 ; _func_0c0420f8
+          JSR         @R2
+          MOV         R14,R4
+          LDS.L       @R15+,PR
+          MOV         R14,R4
+          MOV.L       @R15+,R14
+_func_0c07b5d6:                  ; function: func_0c07b5d6
+                                 ; frame size=8
+          MOV.L       R14,@-R15
+          STS.L       PR,@-R15
+          MOV.L       L274+20,R3 ; _func_0c042018
+          JSR         @R3
+          MOV         R4,R14
+          MOV.L       L274+24,R2 ; _func_0c0421b8
+          JSR         @R2
+          MOV         R14,R4
+          MOV.W       L274,R0    ; H'01FE
+          MOV.B       @(R0,R14),R0
+          EXTU.B      R0,R0
+          CMP/EQ      #1,R0
+          BF          L261
+          BSR         _func_0c07b684
+          MOV         R14,R4
+          BRA         L262
+          NOP
+L261:                             
+          BSR         _func_0c07b618
+          MOV         R14,R4
+L262:                             
+          MOV.L       L274+28,R3 ; _func_0c044e52
+          JSR         @R3
+          MOV         R14,R4
+          EXTU.B      R0,R0
+          TST         R0,R0
+          BT          L263
+          LDS.L       @R15+,PR
+          MOV.L       L274+32,R3 ; _func_0c044f1c
+          MOV         R14,R4
+          JMP         @R3
+          MOV.L       @R15+,R14
+L263:                             
+          LDS.L       @R15+,PR
+          RTS
+          MOV.L       @R15+,R14
+_func_0c07b618:                  ; function: func_0c07b618
+                                 ; frame size=8
+          MOV.L       R14,@-R15
+          MOV         R4,R14
+          MOV.W       L274+2,R4  ; H'02A4
+          STS.L       PR,@-R15
+          ADD         R14,R4
+          MOV.B       @R4,R3
+          TST         R3,R3
+          BT          L264
+          MOV.W       L274+4,R0  ; H'01EC
+          MOV         #1,R3
+          MOV.B       R3,@(R0,R14)
+L264:                             
+          MOV.W       L274+6,R0  ; H'01E8
+          MOV.B       @(R0,R14),R4
+          EXTU.B      R4,R0
+          CMP/EQ      #2,R0
+          BF/S        L265
+          MOV         R0,R4
+          MOV.L       L274+36,R2 ; _func_0c02a026
+          JSR         @R2
+          MOV         R14,R4
+          EXTS.B      R0,R0
+          CMP/PZ      R0
+          BF          L255
+          MOV.W       L274+8,R0  ; H'0141
+          MOV.B       @(R0,R14),R3
+          TST         R3,R3
+          BT          L272
+          MOV         #0,R3
+          MOV         R14,R4
+          MOV.B       R3,@(R0,R14)
+          MOV         #6,R5
+          LDS.L       @R15+,PR
+          MOV.L       L274+40,R3 ; _func_0c13c814
+          JMP         @R3
+          MOV.L       @R15+,R14
+L265:                             
+          TST         R4,R4
+          BT          L270
+          MOV         R4,R0
+          NOP
+          CMP/EQ      #1,R0
+          BF          L272
+L270:                             
+          MOV.L       L274+36,R3 ; _func_0c02a026
+          JSR         @R3
+          MOV         R14,R4
+          EXTS.B      R0,R0
+          CMP/PZ      R0
+          BT          L272
+L255:                            ; label: finish
+          LDS.L       @R15+,PR
+          MOV.L       L274+44,R2 ; _func_0c0438de
+          MOV         R14,R4
+          JMP         @R2
+          MOV.L       @R15+,R14
+L272:                             
+          LDS.L       @R15+,PR
+          RTS
+          MOV.L       @R15+,R14
+_func_0c07b684:                  ; function: func_0c07b684
+                                 ; frame size=8
+          STS.L       PR,@-R15
+          ADD         #-4,R15
+          MOV.L       L274+36,R3 ; _func_0c02a026
+          JSR         @R3
+          MOV.L       R4,@R15
+          EXTS.B      R0,R0
+          CMP/PZ      R0
+          BT          L273
+          MOV.L       @R15,R4
+          ADD         #4,R15
+          MOV.L       L274+44,R3 ; _func_0c0438de
+          JMP         @R3
+          LDS.L       @R15+,PR
+L273:                             
+          ADD         #4,R15
+          LDS.L       @R15+,PR
+          RTS
+          NOP
+L274:                             
+          .DATA.W     H'01FE
+          .DATA.W     H'02A4
+          .DATA.W     H'01EC
+          .DATA.W     H'01E8
+          .DATA.W     H'0141
+          .RES.W      1
+          .DATA.L     _func_0c0421f4
+          .DATA.L     _func_0c0420f8
+          .DATA.L     _func_0c042018
+          .DATA.L     _func_0c0421b8
+          .DATA.L     _func_0c044e52
+          .DATA.L     _func_0c044f1c
+          .DATA.L     _func_0c02a026
+          .DATA.L     _func_0c13c814
+          .DATA.L     _func_0c0438de
+          .END
+
