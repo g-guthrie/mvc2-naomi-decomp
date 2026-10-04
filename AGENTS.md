@@ -29,6 +29,8 @@ disassembly instead.
    disassembly (`tools/inspect_rom.py`); `tools/twins.py START SIZE` shows
    what the clone was built from.
    [docs/MATCHING.md](docs/MATCHING.md) says how to shape the C.
+   Its linked TBG findings cover compiler/data-layout and decompiler traps;
+   distinguish locally reproduced facts from external hypotheses.
 3. Iterate with `python3 tools/diff_unit.py <file>` until every function
    matches. `tools/permute.py <file>` searches the mechanical spellings for
    you; `tools/float_literal.py 0xBITS` gives an exact float spelling.
