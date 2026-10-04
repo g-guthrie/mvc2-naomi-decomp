@@ -23,8 +23,8 @@ void func_0c028394(void)
     func_0c028154();func_0c0221d8();func_0c022354();func_0c02a894();
     first=dat_0c2d6f24;second=dat_0c2d6f24+20;
     zero=0;
-    sync=func_0c1eae80;begin=func_0c1e9b20;
-    finish=func_0c023060;poll=func_0c02156c;
+    begin=func_0c1e9b20;sync=func_0c1eae80;
+    poll=func_0c02156c;finish=func_0c023060;
     for(;;){
         begin();sync();poll(first);poll(second);
         func_0c02c3e2();func_0c022526();func_0c021c9c();func_0c0223d4();func_0c034288();
