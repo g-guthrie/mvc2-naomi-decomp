@@ -3,9 +3,6 @@
 #pragma section n0520a6
 void func_0c0520a6(void) {}
 
-#pragma section n0548a2
-int func_0c0548a2(void) { return 0; }
-
 #pragma section n05c08e
 void func_0c05c08e(void) {}
 
