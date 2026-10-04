@@ -1,0 +1,182 @@
+{
+  "head": "a458f59d9b429770ae3de96f9b182b5bbbfe671f",
+  "branch": "cloud/sdk-research-20261004",
+  "published_base": "a3a498b0c3eb200416e3fcd54ee47d787ec129b3",
+  "input_sha256": "50a2ae598c0dfa9a76f69521b51f7d954a856b55c4a3606aa09a5abbd327969a",
+  "net_new_executable": 310,
+  "units": [
+    {
+      "commit": "a0963a4162ad50793feeeee7393789ec94d0dcc2",
+      "unit_id": "tu_0c1f01e0",
+      "net_new_executable": 52,
+      "gross_credit": {
+        "code": 52,
+        "data": 32
+      },
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203358688,
+          "size": 84,
+          "interior": [
+            {
+              "address": "0x0c1f0214",
+              "size": 32,
+              "kind": "data"
+            }
+          ],
+          "linked_size": 84,
+          "linked_address": 203358688,
+          "equal_bytes": 84,
+          "exact": true
+        }
+      ],
+      "elf_sha256": "724102a72ec17edea298a40593f71dc39692beb1f7b8667ae438243338e16a68",
+      "input_path": "src/verified/tu_0c1f01e0.c",
+      "input_sha256": "eb6e996549c0c0986b9a3ea972a6dfc9e172db32d7eccc563a039aa0b6a21e75",
+      "log_file": "mvc2-sdk-wrapper-full-check.log"
+    },
+    {
+      "commit": "ac81ed2a57e5ca13d68ee8b25feb53ed2c4b39d7",
+      "unit_id": "lib_kamui2_kmInitDevice_km2device_lib_",
+      "net_new_executable": 196,
+      "gross_credit": {
+        "code": 206,
+        "data": 279
+      },
+      "sections": [
+        {
+          "section": "PSG",
+          "kind": "code",
+          "address": 203453440,
+          "size": 384,
+          "interior": [
+            {
+              "address": "0x0c20744a",
+              "size": 54,
+              "kind": "data"
+            },
+            {
+              "address": "0x0c207504",
+              "size": 124,
+              "kind": "data"
+            }
+          ],
+          "linked_size": 384,
+          "linked_address": 203453440,
+          "equal_bytes": 384,
+          "exact": true
+        },
+        {
+          "section": "CSG",
+          "kind": "data",
+          "address": 203654364,
+          "size": 101,
+          "linked_size": 101,
+          "linked_address": 203654364,
+          "equal_bytes": 101,
+          "exact": true
+        }
+      ],
+      "elf_sha256": "44626a70cd38e41f61df39ca2fe511836c9a9e63bb89630633f58721cd934219",
+      "input_path": "toolchain/naomi-sdk/lib/libkamui2.lib",
+      "input_sha256": "17f2706f26573048a2933e8554fc491c1c70bd7086e720124e22eb032451339d",
+      "log_file": "mvc2-sdk-initdevice-full-check.log"
+    },
+    {
+      "commit": "10292826f7f57ca73aed6aa0bfde9fc27d91faf7",
+      "unit_id": "tu_0c2047fc",
+      "net_new_executable": 30,
+      "gross_credit": {
+        "code": 30,
+        "data": 0
+      },
+      "sections": [
+        {
+          "section": "Pn2047fc",
+          "kind": "code",
+          "address": 203442172,
+          "size": 30,
+          "linked_size": 30,
+          "linked_address": 203442172,
+          "equal_bytes": 30,
+          "exact": true
+        }
+      ],
+      "elf_sha256": "cb87b9f2ce43ba05a5dd02e516f4c3eaca38a082448d509b57f8b7dbe0751403",
+      "input_path": "src/verified/tu_0c2047fc.c",
+      "input_sha256": "0b3e352dd33e16be99426cbdaf5476ed6eba7a9bbe79e237abf665cee234110d",
+      "log_file": "mvc2-sdk-converter-full-check.log"
+    },
+    {
+      "commit": "a458f59d9b429770ae3de96f9b182b5bbbfe671f",
+      "unit_id": "tu_0c224f60",
+      "net_new_executable": 32,
+      "gross_credit": {
+        "code": 32,
+        "data": 4
+      },
+      "sections": [
+        {
+          "section": "P",
+          "kind": "code",
+          "address": 203575136,
+          "size": 36,
+          "interior": [
+            {
+              "address": "0x0c224f80",
+              "size": 4,
+              "kind": "data"
+            }
+          ],
+          "linked_size": 36,
+          "linked_address": 203575136,
+          "equal_bytes": 36,
+          "exact": true
+        }
+      ],
+      "elf_sha256": "ccb6040ea37a9a40e51ca28edc9574dea93baf04d5c4772248064e7cc5cedcb6",
+      "input_path": "src/verified/tu_0c224f60.c",
+      "input_sha256": "f44ee39264e2fc14dc031e1862f5dc1e87216006f8cc5ecea2c6b390940822d6",
+      "log_file": "mvc2-sdk-packedcommand-exclusive-full-check.log"
+    }
+  ],
+  "metrics": {
+    "code": {
+      "matched_bytes": 506650,
+      "known_bytes": 1750382,
+      "possible_total_bytes": 1951118,
+      "lower_bound_percent": 25.967163441678053
+    },
+    "data": {
+      "matched_bytes": 443535,
+      "known_bytes": 473714,
+      "possible_total_bytes": 674450,
+      "lower_bound_percent": 65.76247312625102
+    },
+    "map": {
+      "matched_bytes": 2224096,
+      "known_bytes": 2424832
+    },
+    "decomp": {
+      "matched_bytes": 950185,
+      "known_bytes": 2424832
+    },
+    "provenance": {
+      "c_source": {
+        "code": 368422,
+        "data": 415602
+      },
+      "sdk_modules": {
+        "code": 108258,
+        "data": 19957
+      },
+      "candidate_fragments": {
+        "code": 29970,
+        "data": 7976
+      }
+    }
+  },
+  "publication": "Local immutable snapshot; commits are not yet remotely fetchable. No main push. Existing sealed handoff remains unchanged."
+}

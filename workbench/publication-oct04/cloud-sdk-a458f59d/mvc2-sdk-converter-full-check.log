@@ -1,0 +1,241 @@
+HOST Linux x86_64 — bundled wibo-x86_64
+test_two_aligned_noop_links_at_retail_address (test_align2.Align2Tests.test_two_aligned_noop_links_at_retail_address) ... ok
+test_ab50_jmp_delay_slot_is_code_and_pool_starts_after_existing_word (test_boot_init_map.BootInitMappingTests.test_ab50_jmp_delay_slot_is_code_and_pool_starts_after_existing_word) ... ok
+test_boot_init_code_excludes_pool_and_includes_loop_delay_slot (test_boot_init_map.BootInitMappingTests.test_boot_init_code_excludes_pool_and_includes_loop_delay_slot) ... ok
+test_copy_loop_word_literal_and_its_pad_are_separate_ranges (test_boot_init_map.BootInitMappingTests.test_copy_loop_word_literal_and_its_pad_are_separate_ranges) ... ok
+test_leaf_rts_delay_slot_is_inside_reviewed_code (test_boot_init_map.BootInitMappingTests.test_leaf_rts_delay_slot_is_inside_reviewed_code) ... ok
+test_mask_apply_pool_is_data_and_bra_delay_is_code (test_boot_init_map.BootInitMappingTests.test_mask_apply_pool_is_data_and_bra_delay_is_code) ... ok
+test_wait_loop_pool_does_not_absorb_unreferenced_words (test_boot_init_map.BootInitMappingTests.test_wait_loop_pool_does_not_absorb_unreferenced_words) ... ok
+test_braces_in_comments_and_literals_do_not_truncate_definition (test_clone.CloneHeaderTests.test_braces_in_comments_and_literals_do_not_truncate_definition) ... ok
+test_compact_definition_skips_prototype_and_keeps_nested_body (test_clone.CloneHeaderTests.test_compact_definition_skips_prototype_and_keeps_nested_body) ... ok
+test_nested_declaration_stays_whole (test_clone.CloneHeaderTests.test_nested_declaration_stays_whole) ... ok
+test_one_line_struct_does_not_swallow_following_extern (test_clone.CloneHeaderTests.test_one_line_struct_does_not_swallow_following_extern) ... ok
+test_new_verified_source_is_added_to_mapping (test_core.CurrentMappingTests.test_new_verified_source_is_added_to_mapping) ... ok
+test_decoder_distinguishes_return_from_literal (test_core.InspectionTests.test_decoder_distinguishes_return_from_literal) ... ok
+test_literal_address_includes_pc_alignment (test_core.InspectionTests.test_literal_address_includes_pc_alignment) ... ok
+test_mapping_preserves_unknown_and_rejects_overlap (test_core.InspectionTests.test_mapping_preserves_unknown_and_rejects_overlap) ... ok
+test_unsupported_host_has_actionable_fallback (test_core.InspectionTests.test_unsupported_host_has_actionable_fallback) ... ok
+test_candidate_without_matching_functions_has_no_progress_credit (test_core.ProofTests.test_candidate_without_matching_functions_has_no_progress_credit) ... ok
+test_changed_byte_fails (test_core.ProofTests.test_changed_byte_fails) ... ok
+test_every_source_unit_is_registered (test_core.ProofTests.test_every_source_unit_is_registered) ... ok
+test_exact_linked_code (test_core.ProofTests.test_exact_linked_code) ... ok
+test_identical_bytes_at_wrong_address_fail (test_core.ProofTests.test_identical_bytes_at_wrong_address_fail) ... ok
+test_map_and_elf_cannot_hide_extra_bytes (test_core.ProofTests.test_map_and_elf_cannot_hide_extra_bytes) ... ok
+test_matching_prefix_with_extra_bytes_fails (test_core.ProofTests.test_matching_prefix_with_extra_bytes_fails) ... ok
+test_missing_export_fails (test_core.ProofTests.test_missing_export_fails) ... ok
+test_overlapping_references_fail (test_core.ProofTests.test_overlapping_references_fail) ... ok
+test_progress_provenance_sums_to_credited_bytes (test_core.ProofTests.test_progress_provenance_sums_to_credited_bytes) ... ok
+test_relocatable_object_is_not_proof (test_core.ProofTests.test_relocatable_object_is_not_proof) ... ok
+test_treemap_area_and_bounds (test_core.ProofTests.test_treemap_area_and_bounds) ... ok
+test_unknown_bytes_stay_in_lower_bound (test_core.ProofTests.test_unknown_bytes_stay_in_lower_bound) ... ok
+test_verified_literal_pool_counts_as_data (test_core.ProofTests.test_verified_literal_pool_counts_as_data) ... ok
+test_work_queue_separates_near_match_from_wrong_extent (test_core.ProofTests.test_work_queue_separates_near_match_from_wrong_extent) ... ok
+test_ci_only_writes_generated_readme_progress (test_core.RepositoryStateTests.test_ci_only_writes_generated_readme_progress) ... ok
+test_progress_bar_is_deterministic (test_core.RepositoryStateTests.test_progress_bar_is_deterministic) ... ok
+test_readme_has_generated_progress_without_task_queue (test_core.RepositoryStateTests.test_readme_has_generated_progress_without_task_queue) ... ok
+test_backward_bra_past_entry_is_tail_not_same_function (test_flow_map.FlowMapTests.test_backward_bra_past_entry_is_tail_not_same_function) ... ok
+test_boot_init_jsr_r11_survives_intervening_other_jsrs (test_flow_map.FlowMapTests.test_boot_init_jsr_r11_survives_intervening_other_jsrs) ... ok
+test_boot_init_splits_pool_and_keeps_loop_delay_slot (test_flow_map.FlowMapTests.test_boot_init_splits_pool_and_keeps_loop_delay_slot) ... ok
+test_braf_and_shll2_follows_case_slots (test_flow_map.FlowMapTests.test_braf_and_shll2_follows_case_slots) ... ok
+test_braf_mova_word_table_is_data_and_cases_are_code (test_flow_map.FlowMapTests.test_braf_mova_word_table_is_data_and_cases_are_code) ... ok
+test_callback_cell_from_mov_l_then_jsr_is_data (test_flow_map.FlowMapTests.test_callback_cell_from_mov_l_then_jsr_is_data) ... ok
+test_code_after_tail_jump_is_a_function_start (test_flow_map.FlowMapTests.test_code_after_tail_jump_is_a_function_start) ... ok
+test_indexed_jmp_table_is_data_and_seeds_in_image_pointers (test_flow_map.FlowMapTests.test_indexed_jmp_table_is_data_and_seeds_in_image_pointers) ... ok
+test_jsr_lookback_recovers_pointer_across_straight_line_stores (test_flow_map.FlowMapTests.test_jsr_lookback_recovers_pointer_across_straight_line_stores) ... ok
+test_jump_table_words_are_not_kept_as_code (test_flow_map.FlowMapTests.test_jump_table_words_are_not_kept_as_code) ... ok
+test_leaf_includes_rts_delay_and_stops (test_flow_map.FlowMapTests.test_leaf_includes_rts_delay_and_stops) ... ok
+test_ledger_records_braf_word_table_as_data (test_flow_map.FlowMapTests.test_ledger_records_braf_word_table_as_data) ... ok
+test_ledger_records_callback_cell (test_flow_map.FlowMapTests.test_ledger_records_callback_cell) ... ok
+test_ledger_records_indexed_jump_table_as_data (test_flow_map.FlowMapTests.test_ledger_records_indexed_jump_table_as_data) ... ok
+test_pcrel_loaded_prologs_are_reviewed_code (test_flow_map.FlowMapTests.test_pcrel_loaded_prologs_are_reviewed_code) ... ok
+test_declared_interior_data_is_not_part_of_the_last_function (test_function_credit.FunctionCreditTests.test_declared_interior_data_is_not_part_of_the_last_function) ... ok
+test_each_function_is_judged_on_its_own_bytes (test_function_credit.FunctionCreditTests.test_each_function_is_judged_on_its_own_bytes) ... ok
+test_function_continues_after_an_interior_pool (test_function_credit.FunctionCreditTests.test_function_continues_after_an_interior_pool) ... ok
+test_matching_instructions_with_wrong_literal_are_not_credited (test_function_credit.FunctionCreditTests.test_matching_instructions_with_wrong_literal_are_not_credited) ... ok
+test_misplaced_section_credits_nothing (test_function_credit.FunctionCreditTests.test_misplaced_section_credits_nothing) ... ok
+test_report_counts_candidate_functions_and_verified_units (test_function_credit.FunctionCreditTests.test_report_counts_candidate_functions_and_verified_units) ... ok
+test_identity_leaves_match_retail (test_leaves_id.LeavesIdTests.test_identity_leaves_match_retail) ... ok
+test_a_library_unit_compiles_nothing (test_library_units.LibraryUnitTests.test_a_library_unit_compiles_nothing) ... ok
+test_a_library_unit_names_a_module_and_its_exports (test_library_units.LibraryUnitTests.test_a_library_unit_names_a_module_and_its_exports) ... ok
+test_a_library_unit_validates (test_library_units.LibraryUnitTests.test_a_library_unit_validates) ... ok
+test_library_units_do_not_overlap_each_other (test_library_units.LibraryUnitTests.test_library_units_do_not_overlap_each_other) ... ok
+test_registered_library_units_name_a_checked_in_library_and_module (test_library_units.LibraryUnitTests.test_registered_library_units_name_a_checked_in_library_and_module) ... ok
+test_the_library_comes_from_the_checked_in_sdk (test_library_units.LibraryUnitTests.test_the_library_comes_from_the_checked_in_sdk) ... ok
+test_ranges_are_sorted_non_overlapping_hashed_and_evidenced (test_mapping_ledger.MappingLedgerTests.test_ranges_are_sorted_non_overlapping_hashed_and_evidenced) ... ok
+test_review_accepts_ledger (test_mapping_ledger.MappingLedgerTests.test_review_accepts_ledger) ... ok
+test_sampled_delay_slots_and_pool_kinds (test_mapping_ledger.MappingLedgerTests.test_sampled_delay_slots_and_pool_kinds) ... ok
+test_verified_source_classifies_unknown_literal_pool_as_data (test_mapping_ledger.MappingLedgerTests.test_verified_source_classifies_unknown_literal_pool_as_data) ... ok
+test_compile_unit_has_no_instruction_rewriters (test_no_asm_rewrite.NoAsmRewriteTests.test_compile_unit_has_no_instruction_rewriters) ... ok
+test_units_do_not_request_instruction_rewrites (test_no_asm_rewrite.NoAsmRewriteTests.test_units_do_not_request_instruction_rewrites) ... ok
+test_decoder_accepts_every_compiler_verified_word (test_nonexecutable.NonExecutableTests.test_decoder_accepts_every_compiler_verified_word)
+The elimination only holds if a valid instruction never reads as error. ... ok
+test_every_proposed_word_is_undecodable (test_nonexecutable.NonExecutableTests.test_every_proposed_word_is_undecodable) ... ok
+test_proposals_do_not_touch_reviewed_bytes (test_nonexecutable.NonExecutableTests.test_proposals_do_not_touch_reviewed_bytes) ... ok
+test_every_cluster_is_code_then_its_own_pool (test_pool_clusters.PoolClusterTests.test_every_cluster_is_code_then_its_own_pool) ... ok
+test_pc_relative_targets (test_pool_clusters.PoolClusterTests.test_pc_relative_targets) ... ok
+test_recovers_the_mask_tu_span (test_pool_clusters.PoolClusterTests.test_recovers_the_mask_tu_span)
+src/candidates/mask_tu.c is four functions sharing the 0x0c047b2e pool. ... ok
+test_a_declaration_does_not_excuse_an_undeclared_conflict (test_unit_interior.UnitInteriorTests.test_a_declaration_does_not_excuse_an_undeclared_conflict) ... ok
+test_declared_pool_lets_the_section_own_the_whole_range (test_unit_interior.UnitInteriorTests.test_declared_pool_lets_the_section_own_the_whole_range) ... ok
+test_interior_must_lie_inside_its_section (test_unit_interior.UnitInteriorTests.test_interior_must_lie_inside_its_section) ... ok
+test_pool_inside_a_code_section_conflicts_without_a_declaration (test_unit_interior.UnitInteriorTests.test_pool_inside_a_code_section_conflicts_without_a_declaration) ... ok
+test_branch_into_later_code_invalidates_start_after_gap (test_unit_spans.UnitSpanTests.test_branch_into_later_code_invalidates_start_after_gap) ... ok
+test_earlier_code_reading_later_pool_invalidates_start_after_gap (test_unit_spans.UnitSpanTests.test_earlier_code_reading_later_pool_invalidates_start_after_gap) ... ok
+test_evidence_identifies_literal_pool_owner_and_crossing (test_unit_spans.UnitSpanTests.test_evidence_identifies_literal_pool_owner_and_crossing) ... ok
+test_literal_load_crosses_earlier_pool_boundary (test_unit_spans.UnitSpanTests.test_literal_load_crosses_earlier_pool_boundary) ... ok
+test_long_branch_crosses_pool_boundary (test_unit_spans.UnitSpanTests.test_long_branch_crosses_pool_boundary) ... ok
+test_owned_pool_excludes_proposal (test_unit_spans.UnitSpanTests.test_owned_pool_excludes_proposal) ... ok
+test_previously_registered_data_pool_can_be_released (test_unit_spans.UnitSpanTests.test_previously_registered_data_pool_can_be_released) ... ok
+test_unreviewed_gap_does_not_hide_later_unit (test_unit_spans.UnitSpanTests.test_unreviewed_gap_does_not_hide_later_unit) ... ok
+test_no_reviewed_code_range_holds_an_undecodable_word (test_walk_rejection.LedgerCodeIsDecodableTests.test_no_reviewed_code_range_holds_an_undecodable_word)
+Every even address in a code range is an instruction boundary. ... ok
+test_branch_pairs_with_stc_delay_slots_stay_code (test_walk_rejection.PointerTableTests.test_branch_pairs_with_stc_delay_slots_stay_code) ... ok
+test_in_image_pointer_runs_are_not_code (test_walk_rejection.PointerTableTests.test_in_image_pointer_runs_are_not_code) ... ok
+test_accepted_walk_has_no_undecodable_word (test_walk_rejection.WalkRejectionTests.test_accepted_walk_has_no_undecodable_word) ... ok
+test_filler_is_not_accepted_as_code (test_walk_rejection.WalkRejectionTests.test_filler_is_not_accepted_as_code) ... ok
+test_proposals_do_not_overlap_each_other (test_walk_rejection.WalkRejectionTests.test_proposals_do_not_overlap_each_other) ... ok
+
+----------------------------------------------------------------------
+Ran 92 tests in 15.646s
+
+OK
+PASS Hitachi code, data, BSS, imported and local pointer relocation
+CANDIDATE tu3_01 — P: 390/412 equal bytes, linked size 416; 0/2 functions match, 0 bytes; pools 0 bytes
+CANDIDATE tu4_08 — P: 215/344 equal bytes, linked size 348; 0/3 functions match, 0 bytes; pools 0 bytes
+CANDIDATE tu6_09 — P: 284/348 equal bytes, linked size 360; 0/3 functions match, 0 bytes; pools 0 bytes
+CANDIDATE tu6_05 — P: 272/272 equal bytes, linked size 960; 0/2 functions match, 0 bytes; pools 0 bytes
+CANDIDATE tu7_02 — P: 237/290 equal bytes, linked size 364; 0/4 functions match, 0 bytes; pools 0 bytes
+CANDIDATE tu7_12 — P: 286/288 equal bytes, linked size 288; 3/4 functions match, 248 bytes; pools 28 bytes
+CANDIDATE tu2_02 — P: 148/206 equal bytes, linked size 216; 0/4 functions match, 0 bytes; pools 0 bytes
+CANDIDATE tu2_03 — P: 212/242 equal bytes, linked size 244; 0/2 functions match, 0 bytes; pools 0 bytes
+CANDIDATE tu2_10 — P: 343/352 equal bytes, linked size 352; 2/4 functions match, 144 bytes; pools 52 bytes
+CANDIDATE tu1_01 — P: 296/306 equal bytes, linked size 340; 0/2 functions match, 0 bytes; pools 0 bytes
+CANDIDATE tu5_06 — P: 172/316 equal bytes, linked size 396; 0/3 functions match, 0 bytes; pools 0 bytes
+CANDIDATE ub6_01 — P: 174/222 equal bytes, linked size 436; 0/2 functions match, 0 bytes; pools 0 bytes
+CANDIDATE ub5_02 — P: 378/380 equal bytes, linked size 380; 5/6 functions match, 156 bytes; pools 66 bytes
+CANDIDATE ub3_03 — P: 309/312 equal bytes, linked size 312; 1/2 functions match, 144 bytes; pools 32 bytes
+CANDIDATE ub8_03 — P: 258/282 equal bytes, linked size 320; 0/6 functions match, 0 bytes; pools 0 bytes
+CANDIDATE ub4_03 — P: 322/322 equal bytes, linked size 464; 0/5 functions match, 0 bytes; pools 0 bytes
+CANDIDATE func_0c17323c — P: 1304/1580 equal bytes, linked size 1580; 5/7 functions match, 252 bytes; pools 104 bytes
+CANDIDATE uc1_01 — P: 324/570 equal bytes, linked size 580; 0/8 functions match, 0 bytes; pools 0 bytes
+CANDIDATE uc0_05 — P: 219/372 equal bytes, linked size 376; 0/7 functions match, 0 bytes; pools 0 bytes
+CANDIDATE uc1_04 — P: 0/288 equal bytes, linked size 284; 0/2 functions match, 0 bytes; pools 0 bytes
+CANDIDATE ud0_05 — P: 605/684 equal bytes, linked size 684; 3/7 functions match, 78 bytes; pools 58 bytes
+CANDIDATE func_0c1713d8 — P: 781/844 equal bytes, linked size 844; 5/6 functions match, 222 bytes; pools 58 bytes
+CANDIDATE ud1_01 — P: 0/384 equal bytes, linked size 380; 0/5 functions match, 0 bytes; pools 0 bytes
+CANDIDATE ud1_02 — P: 0/388 equal bytes, linked size 384; 0/7 functions match, 0 bytes; pools 0 bytes
+CANDIDATE ud2_02 — P: 126/240 equal bytes, linked size 332; 0/2 functions match, 0 bytes; pools 0 bytes
+CANDIDATE ud2_04 — P: 0/616 equal bytes, linked size 612; 0/4 functions match, 0 bytes; pools 0 bytes
+CANDIDATE func_0c170b20 — P: 1575/1640 equal bytes, linked size 1640; 17/18 functions match, 1268 bytes; pools 138 bytes
+CANDIDATE ud2_11 — P: 318/380 equal bytes, linked size 384; 0/4 functions match, 0 bytes; pools 0 bytes
+CANDIDATE ud2_12 — P: 313/620 equal bytes, linked size 660; 0/10 functions match, 0 bytes; pools 0 bytes
+CANDIDATE tu_0c1cd2c0 — P: 105/112 equal bytes, linked size 112; 1/2 functions match, 24 bytes; pools 18 bytes
+CANDIDATE tu_0c0ad088 — P: 364/368 equal bytes, linked size 368; 3/4 functions match, 250 bytes; pools 56 bytes
+CANDIDATE tu_0c054e74 — P: 300/308 equal bytes, linked size 308; 2/4 functions match, 140 bytes; pools 44 bytes
+CANDIDATE tu_0c02a6f8 — P: 223/232 equal bytes, linked size 232; 1/2 functions match, 118 bytes; pools 8 bytes
+CANDIDATE tu_0c033a50 — P: 323/328 equal bytes, linked size 328; 2/3 functions match, 170 bytes; pools 70 bytes
+CANDIDATE tu_0c0a0c44 — P: 317/348 equal bytes, linked size 348; 2/3 functions match, 178 bytes; pools 42 bytes
+CANDIDATE tu_0c035160 — P: 186/204 equal bytes, linked size 204; 3/4 functions match, 104 bytes; pools 24 bytes
+CANDIDATE tu_0c02781c — P: 238/316 equal bytes, linked size 316; 1/4 functions match, 68 bytes; pools 0 bytes
+CANDIDATE tu_0c0a2d9c — P: 81/84 equal bytes, linked size 84; 1/2 functions match, 28 bytes; pools 14 bytes
+CANDIDATE tu_0c0a3a14 — P: 777/1128 equal bytes, linked size 1128; 3/14 functions match, 304 bytes; pools 64 bytes
+CANDIDATE tu_0c0a346c — P: 794/1448 equal bytes, linked size 1448; 3/8 functions match, 512 bytes; pools 76 bytes
+CANDIDATE tu_0c0a4788 — P: 899/1328 equal bytes, linked size 1328; 8/10 functions match, 618 bytes; pools 90 bytes
+CANDIDATE tu_0c0a6030 — P: 325/924 equal bytes, linked size 924; 2/7 functions match, 88 bytes; pools 40 bytes
+CANDIDATE tu_0c1e1ef4 — P: 510/580 equal bytes, linked size 580; 4/5 functions match, 230 bytes; pools 82 bytes
+CANDIDATE tu_0c1d8ff8 — P: 157/640 equal bytes, linked size 640; 2/13 functions match, 84 bytes; pools 40 bytes
+CANDIDATE tu_0c0a6f1c — P: 432/468 equal bytes, linked size 468; 6/8 functions match, 278 bytes; pools 60 bytes
+CANDIDATE tu_0c0a8800 — P: 342/344 equal bytes, linked size 344; 1/2 functions match, 112 bytes; pools 54 bytes
+CANDIDATE tu_0c0a8d48 — P: 960/964 equal bytes, linked size 964; 5/6 functions match, 576 bytes; pools 156 bytes
+CANDIDATE tu_0c0a960c — P: 672/676 equal bytes, linked size 676; 3/5 functions match, 314 bytes; pools 114 bytes
+CANDIDATE tu_0c0b11e8 — P: 187/292 equal bytes, linked size 292; 5/6 functions match, 124 bytes; pools 36 bytes
+CANDIDATE tu_0c0b130c — P: 2355/2380 equal bytes, linked size 2380, C: 16/16 equal bytes, linked size 16; 19/21 functions match, 1628 bytes; pools 204 bytes
+CANDIDATE tu_0c0b3620 — P: 276/284 equal bytes, linked size 284; 4/5 functions match, 194 bytes; pools 44 bytes
+CANDIDATE tu_0c0b3088 — P: 288/300 equal bytes, linked size 300; 1/5 functions match, 50 bytes; pools 30 bytes
+CANDIDATE tu_0c1e0310 — P: 883/912 equal bytes, linked size 912; 3/4 functions match, 312 bytes; pools 120 bytes
+CANDIDATE tu_0c1e0f7c — P: 308/312 equal bytes, linked size 312; 1/2 functions match, 86 bytes; pools 60 bytes
+CANDIDATE tu_0c1e3cec — P: 697/708 equal bytes, linked size 708; 2/3 functions match, 172 bytes; pools 114 bytes
+CANDIDATE tu_0c1e6fb4 — P: 590/596 equal bytes, linked size 596; 1/2 functions match, 188 bytes; pools 138 bytes
+CANDIDATE tu_0c1e5730 — P: 271/304 equal bytes, linked size 304; 2/3 functions match, 98 bytes; pools 46 bytes
+CANDIDATE tu_0c1e8358 — P: 56/60 equal bytes, linked size 60; 1/2 functions match, 22 bytes; pools 8 bytes
+CANDIDATE tu_0c1e5860 — P: 468/636 equal bytes, linked size 636; 1/2 functions match, 94 bytes; pools 54 bytes
+CANDIDATE tu_0c1e48d0 — P: 899/956 equal bytes, linked size 956; 5/6 functions match, 630 bytes; pools 128 bytes
+CANDIDATE tu_0c046ed8 — P: 1206/3208 equal bytes, linked size 3208; 5/36 functions match, 420 bytes; pools 128 bytes
+CANDIDATE tu_0c1e2138 — P: 1135/1156 equal bytes, linked size 1156; 8/9 functions match, 810 bytes; pools 216 bytes
+CANDIDATE tu_0c1d99ec — P: 205/212 equal bytes, linked size 212; 1/2 functions match, 106 bytes; pools 40 bytes
+CANDIDATE tu_0c04ba18 — PN04ba18: 128/192 equal bytes, linked size 192; 2/3 functions match, 68 bytes; pools 28 bytes
+CANDIDATE tu_0c1d4e18 — P: 513/516 equal bytes, linked size 516; 4/5 functions match, 298 bytes; pools 72 bytes
+CANDIDATE tu_0c1da6b4 — P: 600/612 equal bytes, linked size 612; 2/3 functions match, 120 bytes; pools 104 bytes
+CANDIDATE tu_0c1d7fc4 — PN1d7fc4: 22/26 equal bytes, linked size 26; 0/1 functions match, 0 bytes; pools 0 bytes
+CANDIDATE tu_0c1d89a8 — PN1d89a8: 29/42 equal bytes, linked size 42; 0/1 functions match, 0 bytes; pools 0 bytes
+CANDIDATE tu_0c02f662 — PN02f662: 25/28 equal bytes, linked size 28; 0/1 functions match, 0 bytes; pools 0 bytes
+CANDIDATE tu_0c09b5b8 — P: 705/708 equal bytes, linked size 708; 4/5 functions match, 330 bytes; pools 82 bytes
+CANDIDATE tu_0c058e68 — P: 621/624 equal bytes, linked size 624; 3/4 functions match, 336 bytes; pools 88 bytes
+CANDIDATE tu_0c05a3b4 — P: 621/628 equal bytes, linked size 628; 3/4 functions match, 476 bytes; pools 90 bytes
+CANDIDATE tu_0c085088 — P: 669/676 equal bytes, linked size 676; 3/4 functions match, 360 bytes; pools 102 bytes
+CANDIDATE tu_0c06d288 — P: 341/344 equal bytes, linked size 344; 1/2 functions match, 140 bytes; pools 54 bytes
+CANDIDATE tu_0c09a6e4 — P: 615/632 equal bytes, linked size 632; 6/7 functions match, 420 bytes; pools 76 bytes
+CANDIDATE tu_0c0756b0 — P: 326/332 equal bytes, linked size 332; 2/3 functions match, 136 bytes; pools 52 bytes
+CANDIDATE tu_0c0567e8 — P: 294/296 equal bytes, linked size 296; 1/2 functions match, 18 bytes; pools 52 bytes
+CANDIDATE tu_0c0a0404 — P: 1823/2112 equal bytes, linked size 2112; 33/36 functions match, 1522 bytes; pools 200 bytes
+CANDIDATE tu_0c06ceb8 — P: 681/684 equal bytes, linked size 684; 5/6 functions match, 444 bytes; pools 90 bytes
+CANDIDATE tu_0c088764 — P: 587/600 equal bytes, linked size 600; 4/5 functions match, 374 bytes; pools 92 bytes
+CANDIDATE tu_0c084b14 — P: 445/692 equal bytes, linked size 692; 3/7 functions match, 276 bytes; pools 28 bytes
+CANDIDATE tu_0c08e940 — P: 479/504 equal bytes, linked size 504; 6/8 functions match, 266 bytes; pools 50 bytes
+CANDIDATE tu_0c05898c — P: 630/648 equal bytes, linked size 648; 3/5 functions match, 164 bytes; pools 110 bytes
+CANDIDATE tu_0c072474 — P: 443/464 equal bytes, linked size 464; 3/4 functions match, 158 bytes; pools 86 bytes
+CANDIDATE tu_0c0a1864 — P: 618/656 equal bytes, linked size 656; 2/4 functions match, 120 bytes; pools 120 bytes
+CANDIDATE tu_0c1d4b54 — P: 693/708 equal bytes, linked size 708; 1/6 functions match, 44 bytes; pools 76 bytes
+CANDIDATE tu_0c08ffc0 — P: 1335/1340 equal bytes, linked size 1340; 10/11 functions match, 1088 bytes; pools 192 bytes
+CANDIDATE tu_0c057dd8 — P: 584/724 equal bytes, linked size 724; 5/6 functions match, 360 bytes; pools 44 bytes
+CANDIDATE tu_0c03c308 — P: 362/364 equal bytes, linked size 364; 3/4 functions match, 122 bytes; pools 52 bytes
+CANDIDATE tu_0c06b2d4 — P: 1010/1060 equal bytes, linked size 1060; 12/13 functions match, 770 bytes; pools 160 bytes
+CANDIDATE tu_0c04f8b0 — P: 510/528 equal bytes, linked size 528; 2/4 functions match, 170 bytes; pools 62 bytes
+CANDIDATE tu_0c0757fc — P: 378/380 equal bytes, linked size 380; 5/6 functions match, 156 bytes; pools 66 bytes
+CANDIDATE tu_0c063ed0 — P: 374/384 equal bytes, linked size 384; 2/3 functions match, 76 bytes; pools 60 bytes
+CANDIDATE tu_0c0873c4 — P: 1278/1284 equal bytes, linked size 1284; 13/15 functions match, 846 bytes; pools 174 bytes
+CANDIDATE tu_0c1d5d20 — P: 131/164 equal bytes, linked size 164; 1/2 functions match, 4 bytes; pools 24 bytes
+CANDIDATE tu_0c0ebae8 — P: 372/388 equal bytes, linked size 388; 3/4 functions match, 222 bytes; pools 70 bytes
+CANDIDATE tu_0c1b2e10 — P: 360/372 equal bytes, linked size 372; 4/5 functions match, 244 bytes; pools 40 bytes
+CANDIDATE tu_0c03c738 — P: 274/276 equal bytes, linked size 276; 2/3 functions match, 34 bytes; pools 50 bytes
+CANDIDATE tu_0c0e8350 — P: 236/256 equal bytes, linked size 256; 3/4 functions match, 172 bytes; pools 22 bytes
+CANDIDATE tu_0c0edd04 — P: 642/660 equal bytes, linked size 660; 9/10 functions match, 390 bytes; pools 108 bytes
+CANDIDATE tu_0c0f9750 — P: 730/736 equal bytes, linked size 736; 9/10 functions match, 488 bytes; pools 92 bytes
+CANDIDATE tu_0c1036f4 — P: 242/244 equal bytes, linked size 244; 2/3 functions match, 38 bytes; pools 36 bytes
+CANDIDATE tu_0c1035b0 — P: 320/324 equal bytes, linked size 324; 4/5 functions match, 164 bytes; pools 46 bytes
+CANDIDATE tu_0c0eeb8c — P: 626/640 equal bytes, linked size 640; 4/5 functions match, 284 bytes; pools 98 bytes
+CANDIDATE tu_0c1124ec — P: 215/320 equal bytes, linked size 320; 2/3 functions match, 52 bytes; pools 44 bytes
+CANDIDATE tu_0c13b79c — P: 557/560 equal bytes, linked size 560; 4/5 functions match, 192 bytes; pools 76 bytes
+CANDIDATE tu_0c13bbc4 — P: 743/760 equal bytes, linked size 760; 6/8 functions match, 346 bytes; pools 104 bytes
+CANDIDATE tu_0c162e0c — P: 712/720 equal bytes, linked size 720; 4/5 functions match, 400 bytes; pools 76 bytes
+CANDIDATE tu_0c159ae0 — P: 578/580 equal bytes, linked size 580; 5/6 functions match, 272 bytes; pools 82 bytes
+CANDIDATE tu_0c1739b0 — P: 896/904 equal bytes, linked size 904; 6/7 functions match, 390 bytes; pools 112 bytes
+CANDIDATE tu_0c157968 — P: 1120/1124 equal bytes, linked size 1124; 9/11 functions match, 540 bytes; pools 158 bytes
+CANDIDATE tu_0c16ea14 — P: 416/536 equal bytes, linked size 536; 1/3 functions match, 78 bytes; pools 68 bytes
+CANDIDATE tu_0c16ec2c — P: 280/288 equal bytes, linked size 288; 1/2 functions match, 60 bytes; pools 48 bytes
+CANDIDATE tu_0c178bd4 — P: 473/680 equal bytes, linked size 680; 5/6 functions match, 246 bytes; pools 82 bytes
+CANDIDATE tu_0c171724 — P: 496/720 equal bytes, linked size 720; 2/8 functions match, 74 bytes; pools 28 bytes
+CANDIDATE tu_0c1728a8 — P: 1129/1184 equal bytes, linked size 1184; 7/8 functions match, 630 bytes; pools 160 bytes
+CANDIDATE tu_0c173868 — P: 324/328 equal bytes, linked size 328; 5/6 functions match, 212 bytes; pools 48 bytes
+CANDIDATE tu_0c173f00 — P: 869/876 equal bytes, linked size 876; 6/7 functions match, 526 bytes; pools 132 bytes
+CANDIDATE tu_0c17426c — P: 838/840 equal bytes, linked size 840; 7/8 functions match, 644 bytes; pools 104 bytes
+CANDIDATE tu_0c174824 — P: 191/392 equal bytes, linked size 392; 2/4 functions match, 82 bytes; pools 60 bytes
+CANDIDATE tu_0c12d4ac — P: 232/236 equal bytes, linked size 236; 3/4 functions match, 158 bytes; pools 12 bytes
+CANDIDATE tu_0c1819b4 — P: 185/192 equal bytes, linked size 192; 1/2 functions match, 20 bytes; pools 28 bytes
+CANDIDATE tu_0c1935a8 — P: 182/184 equal bytes, linked size 184; 2/3 functions match, 44 bytes; pools 18 bytes
+CANDIDATE tu_0c1df94c — P: 177/196 equal bytes, linked size 196; 2/3 functions match, 70 bytes; pools 30 bytes
+CANDIDATE tu_0c1c683c — P: 185/208 equal bytes, linked size 208; 2/3 functions match, 66 bytes; pools 30 bytes
+CANDIDATE tu_0c0397ec — P: 251/316 equal bytes, linked size 316; 3/4 functions match, 156 bytes; pools 0 bytes
+CANDIDATE tu_0c1b5184 — P: 208/232 equal bytes, linked size 232; 1/2 functions match, 6 bytes; pools 30 bytes
+CANDIDATE tu_0c18c76c — P: 226/244 equal bytes, linked size 244; 2/4 functions match, 48 bytes; pools 20 bytes
+CANDIDATE tu_0c0b6158 — P: 229/232 equal bytes, linked size 232; 1/2 functions match, 18 bytes; pools 38 bytes
+CANDIDATE tu_0c1c772c — P: 275/296 equal bytes, linked size 296; 4/6 functions match, 86 bytes; pools 48 bytes
+CANDIDATE tu_0c08fa58 — P: 284/288 equal bytes, linked size 288; 5/6 functions match, 174 bytes; pools 40 bytes
+CANDIDATE tu_0c093ac8 — P: 324/328 equal bytes, linked size 328; 3/4 functions match, 184 bytes; pools 56 bytes
+CANDIDATE tu_0c06cbac — P: 344/428 equal bytes, linked size 428; 3/4 functions match, 160 bytes; pools 68 bytes
+CANDIDATE tu_0c08a66c — P: 684/688 equal bytes, linked size 688; 9/10 functions match, 466 bytes; pools 98 bytes
+CANDIDATE tu_0c072cb8 — P: 288/292 equal bytes, linked size 292; 3/4 functions match, 192 bytes; pools 24 bytes
+CANDIDATE tu_0c072ddc — P: 262/268 equal bytes, linked size 268; 2/3 functions match, 38 bytes; pools 36 bytes
+CANDIDATE tu_0c1e6a68 — P: 165/260 equal bytes, linked size 260; 0/2 functions match, 0 bytes; pools 16 bytes
+MATCH 1817 verified config units, 25007 source ranges, 912,207 bytes; 37,946 more bytes of matched functions and pools in candidate units
+PASS full main (2,424,832 bytes) and program ROM (4,194,304 bytes) match; original remainder is not decompilation credit.
