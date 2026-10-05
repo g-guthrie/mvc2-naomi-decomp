@@ -161,7 +161,8 @@ class RepositoryStateTests(unittest.TestCase):
         readme = (ROOT / 'README.md').read_text()
         self.assertNotIn('build/NEXT.md', readme)
         self.assertNotIn('Next candidate', readme)
-        self.assertIn('| Code |', readme)
+        self.assertIn('| Matched reviewed code |', readme)
+        self.assertIn('| Verified C executable code (lower bound) |', readme)
         self.assertIn('| Data |', readme)
         self.assertIn('| Map |', readme)
 
