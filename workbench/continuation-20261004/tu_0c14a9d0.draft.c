@@ -108,6 +108,7 @@ void func_0c14ab96(struct LinkedActor *a)
 void func_0c14ac3c(struct LinkedActor *a)
 {
     float stopped,unit,scale;
+    short *duration;
     a->sdc.b12c=1;
     a->f52=a->p24->f52;
     a->f56=a->p24->f56;
@@ -116,12 +117,14 @@ void func_0c14ac3c(struct LinkedActor *a)
     a->pad11[1]=66;
     ((struct Actor *)a)->b1a1=54;
     ((struct Actor *)a)->w1ac=0;
-    ((struct Actor *)a)->p1c4=((struct Actor *)a)->b19e=0;
+    ((struct Actor *)a)->b19e=0;
+    *(void **)&((struct Actor *)a)->p1c4=(void *)0;
     dat_0c2f83f8->arr[a->b2]++;
+    duration=dat_0c24ff88;
     stopped=0.0f;
     a->f104=stopped;
     a->f108=stopped;
-    a->s28=dat_0c24ff88[0];
+    a->s28=*duration;
     a->s30=1;
     a->f56+=180.0f;
     ((struct Actor *)a)->f264=0.300000012f;
@@ -170,7 +173,7 @@ void func_0c14ad36(struct LinkedActor *a)
 
 void func_0c14adac(struct LinkedActor *a)
 {
-    float *offset=dat_0c24ff8c;
+    float *offset;
     unsigned char index;
     float stopped;
     a->sdc.b12c=1;
@@ -178,6 +181,7 @@ void func_0c14adac(struct LinkedActor *a)
     a->f52=a->p24->f52;
     a->f56=a->p24->f56;
     a->f60=a->p24->f60;
+    offset=dat_0c24ff8c;
     offset+=(unsigned char)a->b33*2;
     a->f52+=a->p24->sdc.w130?offset[0]:-offset[0];
     a->f56+=offset[1];
@@ -193,13 +197,14 @@ void func_0c14adac(struct LinkedActor *a)
 
 void func_0c14ae42(struct LinkedActor *a)
 {
+    float *offset=dat_0c24ffcc;
     float stopped;
     a->sdc.b12c=1;
     a->b36=0;
     a->f52=a->p20->f52;
     a->f56=a->p20->f56;
     a->f60=a->p20->f60;
-    a->f52+=dat_0c24ffcc[a->b35];
+    a->f52+=offset[a->b35];
     stopped=0.0f;
     a->f104=stopped;
     a->f108=stopped;
@@ -207,7 +212,7 @@ void func_0c14ae42(struct LinkedActor *a)
 }
 void func_0c14ae90(struct LinkedActor *a)
 {
-    float *offset=dat_0c24ffac;
+    float *offset;
     unsigned char index;
     float stopped;
     a->sdc.b12c=1;
@@ -215,6 +220,7 @@ void func_0c14ae90(struct LinkedActor *a)
     a->f52=a->p24->f52;
     a->f56=a->p24->f56;
     a->f60=a->p24->f60;
+    offset=dat_0c24ffac;
     offset+=(unsigned char)a->b33*2;
     a->f52+=a->p24->sdc.w130?offset[0]:-offset[0];
     a->f56+=offset[1];
@@ -230,10 +236,11 @@ void func_0c14ae90(struct LinkedActor *a)
 
 void func_0c14af3c(struct LinkedActor *a)
 {
+    float *offset=dat_0c24ffcc;
     float stopped;
     a->sdc.b12c=1; a->b36=0;
     a->f52=a->p20->f52; a->f56=a->p20->f56; a->f60=a->p20->f60;
-    a->f56+=dat_0c24ffcc[a->b35];
+    a->f56+=offset[a->b35];
     stopped=0.0f; a->f104=stopped; a->f108=stopped;
     func_0c02a0c4(a,23,6);
 }
@@ -241,12 +248,12 @@ void func_0c14af8a(struct LinkedActor *a)
 {
     float stopped;
     a->sdc.b12c=1; a->b36=0;
-    a->f52+=a->sdc.w130?63.333332f:-63.333332f;
+    a->f52+=a->sdc.w130?63.33333333f:-63.33333333f;
     stopped=0.0f; a->f104=stopped; a->f108=stopped;
-    a->v80.x=0.01f; a->f96=0.38f; a->f108=-0.02f;
+    a->v80.y=0.01f; a->f96=0.38f; a->f108=-0.02f;
     ((struct Actor *)a)->f264=1.0f; a->s28=5;
     a->f92=a->sdc.w130?1.66666663f:-1.66666663f;
-    a->f104=a->sdc.w130?-0.026041666f:0.026041666f;
+    a->f104=a->sdc.w130?-0.02604166667f:0.02604166667f;
     func_0c14ab1c(a,8,a->b35); a->b35++;
     a->pad11[0]=66; a->pad11[1]=66; ((struct Actor *)a)->b1a1=62;
     ((struct Actor *)a)->w1ac=0; ((struct Actor *)a)->b19e=0; ((struct Actor *)a)->p1c4=0;
@@ -314,14 +321,14 @@ void func_0c14b1e8(struct Actor *a,struct Actor *parent)
     a->i72+=0x4000;
     if(a->i72==0xf000) a->i72=0;
     a->f80/=1.66666663f;
-    a->f84/=2.14285707f;
+    a->f84/=2.1428571f;
     a->f108+=a->f104;
     a->f80+=a->f108;
     a->f84+=a->f108;
     a->f264+=a->f104;
-    if(a->f80>1.44f) {
-        a->f80=1.44f;
-        a->f84=1.12000012f;
+    if(a->f80>1.4400001f) {
+        a->f80=1.4400001f;
+        a->f84=1.120000124f;
     }
     if(a->f264>1.0f) a->f264=1.0f;
     if(!a->s28--) {
@@ -345,7 +352,7 @@ void func_0c14b1e8(struct Actor *a,struct Actor *parent)
 void func_0c14b33a(struct LinkedActor *a)
 {
     func_0c02a026((struct Actor *)a);
-    a->v80.x/=1.66666663f; a->v80.y/=2.14285707f;
+    a->v80.x/=1.66666663f; a->v80.y/=2.1428571f;
     a->v80.x+=a->f108; a->v80.y-=a->f104;
     if(!(a->v80.y>0.0046666665003f)) {
         a->v80.y=0.0046666665003f;

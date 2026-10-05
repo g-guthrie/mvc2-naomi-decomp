@@ -3,9 +3,9 @@
 extern short dat_0c2f6830;
 extern struct LinkedActor *func_0c0374da(int,int,int);
 void func_0c133d16(struct LinkedActor *);
-struct LinkedActor *func_0c133b88(struct LinkedActor *parent);
+int func_0c133b88(struct LinkedActor *parent);
 
-struct LinkedActor *func_0c133c06(struct LinkedActor *source);
+int func_0c133c06(struct LinkedActor *source);
 struct LinkedActor *func_0c133c8a(struct LinkedActor *source);
 
 struct LinkedActor *func_0c133cd8(struct LinkedActor *source);
@@ -69,7 +69,7 @@ void func_0c134824(struct Actor *a,struct Actor *parent);
 void func_0c13490c(struct LinkedActor *a,struct LinkedActor *parent);
 void func_0c134952(struct LinkedActor *a,struct LinkedActor *parent);
 
-struct LinkedActor *func_0c133b88(struct LinkedActor *parent)
+int func_0c133b88(struct LinkedActor *parent)
 {
     struct LinkedActor *first,*second;
     if(dat_0c2f6830<2) return 0;
@@ -82,10 +82,9 @@ struct LinkedActor *func_0c133b88(struct LinkedActor *parent)
         second->b1=parent->b1; second->b32=1; second->b33=0; second->w38=0x301;
         first->p20=second;
     }
-    return second;
 }
 
-struct LinkedActor *func_0c133c06(struct LinkedActor *source)
+int func_0c133c06(struct LinkedActor *source)
 {
     struct LinkedActor *first,*second;
     if(dat_0c2f6830<2) return 0;
@@ -98,13 +97,12 @@ struct LinkedActor *func_0c133c06(struct LinkedActor *source)
         second->b1=source->b1; second->b32=4; second->b33=0; second->w38=0x301;
         source->p20=second;
     }
-    return second;
 }
 
 struct LinkedActor *func_0c133c8a(struct LinkedActor *source)
 {
-    struct LinkedActor *child=func_0c0374da((int)source,1,2);
-    if(child) {
+    struct LinkedActor *child;
+    if((child=func_0c0374da((int)source,1,2))) {
         child->p16=func_0c133d16; child->p24=source->p24; child->p20=source;
         child->b1=source->b1; child->b32=2; child->b33=0; child->w38=0x301;
     }
@@ -113,8 +111,8 @@ struct LinkedActor *func_0c133c8a(struct LinkedActor *source)
 
 struct LinkedActor *func_0c133cd8(struct LinkedActor *source)
 {
-    struct LinkedActor *child=func_0c0374da((int)source,1,2);
-    if(child) {
+    struct LinkedActor *child;
+    if((child=func_0c0374da((int)source,1,2))) {
         child->p16=func_0c133d16; child->p24=source->p24; child->p20=source;
         child->b1=source->b1; child->b32=5; child->b33=0; child->w38=0x301;
     }
@@ -130,13 +128,14 @@ void func_0c133d16(struct LinkedActor *a)
 
 void func_0c133d32(struct Actor *a,struct Actor *parent)
 {
+    short *frame=(short *)&a->f136;
     *(unsigned int *)&a->b13c=0x30305040;
     a->b19c=66; a->b19d=0; a->b1a1=69;
     a->w1ac=0; a->b19e=0; a->p1c4=0;
     dat_0c2f83f8->arr[a->b2]++;
-    a->f92=146.66665649f; a->f96=100.71427917f;
+    a->f92=146.66666f; a->f96=100.71428f;
     if(!a->w130) a->f92=-a->f92;
-    *(short *)&a->f136=*(short *)&((struct Actor *)parent)->b158;
+    *frame=*(short *)&((struct Actor *)parent)->b158;
     a->b159=22; a->b158=29;
     func_0c02a0c4((struct LinkedActor *)a,a->b159,a->b158);
     a->b140=0; ((struct LinkedActor *)a)->b49=-4;
@@ -146,14 +145,15 @@ void func_0c133d32(struct Actor *a,struct Actor *parent)
 void func_0c133dfc(struct Actor *a,struct Actor *parent)
 {
     struct Actor *source=(struct Actor *)a->p20;
+    short *frame=(short *)&a->f136;
     *(unsigned int *)&a->b13c=0x20202020;
     a->b19c=66; a->b19d=0;
     a->b1a1=69;
     a->w1ac=0; a->b19e=0; a->p1c4=0;
     dat_0c2f83f8->arr[a->b2]++;
-    a->f92=133.33332825f; a->f104=80.0f;
+    a->f92=133.33333f; a->f104=80.0f;
     if(!a->w130) { a->f92=-a->f92; a->f104=-a->f104; }
-    *(short *)&a->f136=*(short *)&((struct Actor *)parent)->b158;
+    *frame=*(short *)&((struct Actor *)parent)->b158;
     a->b159=22; a->b158=31;
     func_0c02a18c((struct LinkedActor *)a,a->b159,a->b158,source->b141);
     ((struct LinkedActor *)a)->b49=-4;
@@ -162,6 +162,7 @@ void func_0c133dfc(struct Actor *a,struct Actor *parent)
 
 void func_0c133ea6(struct Actor *a,struct Actor *parent)
 {
+    short *frame=(short *)&a->f136;
     struct Actor *source=(struct Actor *)a->p20;
     *(unsigned int *)&a->b13c=0x20203030;
     a->b19c=66; a->b19d=0;
@@ -170,7 +171,7 @@ void func_0c133ea6(struct Actor *a,struct Actor *parent)
     dat_0c2f83f8->arr[a->b2]++;
     a->f92=160.0f; a->f104=105.0f;
     if(!a->w130) { a->f92=-a->f92; a->f104=-a->f104; }
-    *(short *)&a->f136=*(short *)&((struct Actor *)parent)->b158;
+    *frame=*(short *)&((struct Actor *)parent)->b158;
     a->b159=22; a->b158=30;
     func_0c02a18c((struct LinkedActor *)a,a->b159,a->b158,source->b141);
     ((struct LinkedActor *)a)->b49=-4;
@@ -179,13 +180,14 @@ void func_0c133ea6(struct Actor *a,struct Actor *parent)
 
 void func_0c133f80(struct Actor *a,struct Actor *parent)
 {
+    short *frame=(short *)&a->f136;
     *(unsigned int *)&a->b13c=0x30305040;
     a->b19c=66; a->b19d=0; a->b1a1=71;
     a->w1ac=0; a->b19e=0; a->p1c4=0;
     dat_0c2f83f8->arr[a->b2]++;
-    a->f92=83.333328247f; a->f96=0.0f;
+    a->f92=83.33333f; a->f96=0.0f;
     if(!a->w130) a->f92=-a->f92;
-    *(short *)&a->f136=*(short *)&((struct Actor *)parent)->b158;
+    *frame=*(short *)&((struct Actor *)parent)->b158;
     a->b159=22; a->b158=35;
     func_0c02a0c4((struct LinkedActor *)a,a->b159,a->b158);
     a->b140=0; ((struct LinkedActor *)a)->b49=-6;
@@ -195,14 +197,15 @@ void func_0c133f80(struct Actor *a,struct Actor *parent)
 void func_0c13401c(struct Actor *a,struct Actor *parent)
 {
     struct Actor *source=(struct Actor *)a->p20;
+    short *frame=(short *)&a->f136;
     *(unsigned int *)&a->b13c=0x20202020;
     a->b19c=66; a->b19d=0;
     a->b1a1=71;
     a->w1ac=0; a->b19e=0; a->p1c4=0;
     dat_0c2f83f8->arr[a->b2]++;
-    a->f92=133.33332825f; a->f104=80.0f;
+    a->f92=133.33333f; a->f104=80.0f;
     if(!a->w130) { a->f92=-a->f92; a->f104=-a->f104; }
-    *(short *)&a->f136=*(short *)&((struct Actor *)parent)->b158;
+    *frame=*(short *)&((struct Actor *)parent)->b158;
     a->b159=22; a->b158=37;
     func_0c02a18c((struct LinkedActor *)a,a->b159,a->b158,source->b141);
     ((struct LinkedActor *)a)->b49=-6;
@@ -212,6 +215,7 @@ void func_0c13401c(struct Actor *a,struct Actor *parent)
 void func_0c1340f4(struct Actor *a,struct Actor *parent)
 {
     struct Actor *source=(struct Actor *)a->p20;
+    short *frame=(short *)&a->f136;
     *(unsigned int *)&a->b13c=0x20203030;
     a->b19c=66; a->b19d=0;
     a->b1a1=71;
@@ -219,7 +223,7 @@ void func_0c1340f4(struct Actor *a,struct Actor *parent)
     dat_0c2f83f8->arr[a->b2]++;
     a->f92=160.0f; a->f104=105.0f;
     if(!a->w130) { a->f92=-a->f92; a->f104=-a->f104; }
-    *(short *)&a->f136=*(short *)&((struct Actor *)parent)->b158;
+    *frame=*(short *)&((struct Actor *)parent)->b158;
     a->b159=22; a->b158=36;
     func_0c02a18c((struct LinkedActor *)a,a->b159,a->b158,source->b141);
     ((struct LinkedActor *)a)->b49=-6;
@@ -240,7 +244,8 @@ void func_0c13419e(struct LinkedActor *a,struct LinkedActor *parent)
 
 void func_0c13420c(struct Actor *a,struct Actor *parent)
 {
-    if(*(short *)&a->f136!=*(short *)&((struct Actor *)parent)->b158) {
+    short *frame=(short *)&a->f136;
+    if(*(short *)&parent->b158!=*frame) {
         a->b5++; a->b159=22; a->b158=32;
         func_0c02a0c4((struct LinkedActor *)a,a->b159,a->b158);
         return;
@@ -256,7 +261,7 @@ void func_0c13420c(struct Actor *a,struct Actor *parent)
             dat_0c2f83f8->arr[a->b2]++;
             child=func_0c133c8a((struct LinkedActor *)a);
             if(child) {
-                ((struct LinkedActor *)a)->p20->p20=child;
+                { struct LinkedActor *link=((struct LinkedActor *)a)->p20; link->p20=child; }
                 ((struct LinkedActor *)a)->p20=child;
             }
         }
@@ -279,27 +284,31 @@ void func_0c134346(struct LinkedActor *a,struct LinkedActor *parent)
 
 void func_0c134358(struct Actor *a,struct Actor *parent)
 {
+    short *frame=(short *)&a->f136;
     struct LinkedActor *source=((struct LinkedActor *)a)->p20;
-    if(*(short *)&a->f136!=*(short *)&((struct Actor *)parent)->b158) {
+    if(*(short *)&parent->b158!=*frame) {
         a->b5++; a->b159=22; a->b158=34;
         func_0c02a0c4((struct LinkedActor *)a,a->b159,a->b158);
         return;
     }
-    if(source->b4>=2) { a->b4++; a->b12c=0; return; }
-    a->f52=source->f52+(source->b32?a->f104:a->f92);
+    if(source->b4>=2) goto close;
+    a->f52=source->f52+(source->b32==0?a->f92:a->f104);
     a->f56=source->f56;
     if(!(dat_0c2f8338.w3c&(1<<dat_0c2f8338.b3b))) {
         a->b159=22; a->b158=31;
         func_0c02a18c((struct LinkedActor *)a,a->b159,a->b158,((struct Actor *)source)->b141);
-        if(!func_0c028642((struct LinkedActor *)a)) { a->b4++; a->b12c=0; }
-        else func_0c037d0c((struct LinkedActor *)a);
+        if(!func_0c028642((struct LinkedActor *)a)) goto close;
+        func_0c037d0c((struct LinkedActor *)a);
     }
+    return;
+close:
+    a->b4++; a->b12c=0;
 }
 
 void func_0c134440(struct LinkedActor *a,struct LinkedActor *parent)
 {
     struct LinkedActor *source=a->p20;
-    a->f52=source->f52+(source->b32?a->f104:a->f92);
+    a->f52=source->f52+(source->b32==0?a->f92:a->f104);
     a->f56=source->f56;
     if(func_0c02a026((struct Actor *)a)<0) { a->b4++; a->sdc.b12c=0; }
 }
@@ -311,27 +320,32 @@ void func_0c134484(struct LinkedActor *a,struct LinkedActor *parent)
 
 void func_0c134496(struct Actor *a,struct Actor *parent)
 {
+    float *offset;
     struct LinkedActor *source=((struct LinkedActor *)a)->p20;
     if(*(short *)&a->f136!=*(short *)&((struct Actor *)parent)->b158) {
         a->b5++; a->b159=22; a->b158=33;
         func_0c02a0c4((struct LinkedActor *)a,a->b159,a->b158);
         return;
     }
-    if(source->b4>=2) { a->b4++; a->b12c=0; return; }
-    a->f52=source->f52+(source->b32?a->f104:a->f92);
+    if(source->b4>=2) goto close;
+    if(source->b32==0) offset=&a->f92; else offset=&a->f104;
+    a->f52=source->f52+*offset;
     a->f56=source->f56;
     if(!(dat_0c2f8338.w3c&(1<<dat_0c2f8338.b3b))) {
         a->b159=22; a->b158=30;
         func_0c02a18c((struct LinkedActor *)a,a->b159,a->b158,((struct Actor *)source)->b141);
-        if(!func_0c028642((struct LinkedActor *)a)) { a->b4++; a->b12c=0; }
-        else func_0c037d0c((struct LinkedActor *)a);
+        if(!func_0c028642((struct LinkedActor *)a)) goto close;
+        func_0c037d0c((struct LinkedActor *)a);
     }
+    return;
+close:
+    a->b4++; a->b12c=0;
 }
 
 void func_0c13457c(struct LinkedActor *a,struct LinkedActor *parent)
 {
     struct LinkedActor *source=a->p20;
-    a->f52=source->f52+(source->b32?a->f104:a->f92);
+    a->f52=source->f52+(source->b32==0?a->f92:a->f104);
     a->f56=source->f56;
     if(func_0c02a026((struct Actor *)a)<0) { a->b4++; a->sdc.b12c=0; }
 }
@@ -357,7 +371,7 @@ void func_0c1345d2(struct Actor *a,struct Actor *parent)
             a->b140=0;
             child=func_0c133cd8((struct LinkedActor *)a);
             if(child) {
-                source->p20->p20=child;
+                { struct LinkedActor *link=source->p20; link->p20=child; }
                 source->p20=child;
             }
         }
@@ -380,21 +394,25 @@ void func_0c1346d6(struct LinkedActor *a,struct LinkedActor *parent)
 
 void func_0c1346e8(struct Actor *a,struct Actor *parent)
 {
+    short *frame=(short *)&a->f136;
     struct LinkedActor *source=((struct LinkedActor *)a)->p20;
-    if(*(short *)&a->f136!=*(short *)&((struct Actor *)parent)->b158) {
+    if(*(short *)&parent->b158!=*frame) {
         a->b5++; a->b159=22; a->b158=40;
         func_0c02a0c4((struct LinkedActor *)a,a->b159,a->b158);
         return;
     }
-    if(source->b4>=2) { a->b4++; a->b12c=0; return; }
+    if(source->b4>=2) goto close;
     a->f52=source->f52+(source->b32==3?a->f92:a->f104);
     a->f56=source->f56;
     if(!(dat_0c2f8338.w3c&(1<<dat_0c2f8338.b3b))) {
         a->b159=22; a->b158=37;
         func_0c02a18c((struct LinkedActor *)a,a->b159,a->b158,((struct Actor *)source)->b141);
-        if(!func_0c028642((struct LinkedActor *)a)) { a->b4++; a->b12c=0; }
-        else func_0c037d0c((struct LinkedActor *)a);
+        if(!func_0c028642((struct LinkedActor *)a)) goto close;
+        func_0c037d0c((struct LinkedActor *)a);
     }
+    return;
+close:
+    a->b4++; a->b12c=0;
 }
 
 void func_0c1347cc(struct LinkedActor *a,struct LinkedActor *parent)
@@ -410,21 +428,26 @@ void func_0c134812(struct LinkedActor *a,struct LinkedActor *parent)
 
 void func_0c134824(struct Actor *a,struct Actor *parent)
 {
+    float *offset;
     struct LinkedActor *source=((struct LinkedActor *)a)->p20;
     if(*(short *)&a->f136!=*(short *)&((struct Actor *)parent)->b158) {
         a->b5++; a->b159=22; a->b158=39;
         func_0c02a0c4((struct LinkedActor *)a,a->b159,a->b158);
         return;
     }
-    if(source->b4>=2) { a->b4++; a->b12c=0; return; }
-    a->f52=source->f52+(source->b32==3?a->f92:a->f104);
+    if(source->b4>=2) goto close;
+    if(source->b32==3) offset=&a->f92; else offset=&a->f104;
+    a->f52=source->f52+*offset;
     a->f56=source->f56;
     if(!(dat_0c2f8338.w3c&(1<<dat_0c2f8338.b3b))) {
         a->b159=22; a->b158=36;
         func_0c02a18c((struct LinkedActor *)a,a->b159,a->b158,((struct Actor *)source)->b141);
-        if(!func_0c028642((struct LinkedActor *)a)) { a->b4++; a->b12c=0; }
-        else func_0c037d0c((struct LinkedActor *)a);
+        if(!func_0c028642((struct LinkedActor *)a)) goto close;
+        func_0c037d0c((struct LinkedActor *)a);
     }
+    return;
+close:
+    a->b4++; a->b12c=0;
 }
 
 void func_0c13490c(struct LinkedActor *a,struct LinkedActor *parent)
