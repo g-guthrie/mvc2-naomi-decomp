@@ -1,6 +1,6 @@
-# Final stopped handoff — 2026-10-04
+# Historical recovery handoff — 2026-10-04
 
-The decompilation effort is stopped at the user's request. The project is incomplete. No workers or recurring decompilation monitor should resume without a new request.
+This records the stopped checkpoint from earlier on October 4. The user subsequently requested continuation; development is active. These figures and test counts describe that historical snapshot, not current main. See the generated README progress table and current CI for current status.
 
 The final source tree contains the whole-exact work accepted through the final build. Eight existing Grok units were independently recompiled without source variants and accepted; the first six added 2,046 executable bytes, and two further complete candidate units were promoted only after whole-section proofs. Other Grok material is retained as research, including sources that require a different header or contain `noregsave` pragmas. Existing registered code is counted once when a larger exact section replaces it. The checked cloud SDK consumer functions and final effect updater are included after independent whole-section proofs.
 

@@ -234,9 +234,10 @@ def publish(proof):
     block = ('<!-- progress:start -->\n'
              '| Track | Progress | Bytes |\n'
              '| --- | --- | ---: |\n'
-             + row('Map', 'map') + row('Code', 'code') + row('Data', 'data')
+             + row('Map', 'map') + row('Matched reviewed code', 'code') + row('Data', 'data')
              + row('[Decomp](config/units.json)', 'decomp')
-             + origin_row('Verified C source', 'c_source')
+             + (f"| Verified C executable code (lower bound) | `{progress_bar(m['provenance']['c_source']['code'], m['code']['possible_total_bytes'])}` **{100 * m['provenance']['c_source']['code'] / max(1, m['code']['possible_total_bytes']):.3f}%** | {m['provenance']['c_source']['code']:,} / {m['code']['possible_total_bytes']:,} |\n")
+             + origin_row('Verified C code + data', 'c_source')
              + origin_row('Prebuilt SDK modules', 'sdk_modules')
              + origin_row('Candidate fragments', 'candidate_fragments')
              + '<!-- progress:end -->')
