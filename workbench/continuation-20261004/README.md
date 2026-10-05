@@ -1,3 +1,8 @@
 # Continuation drafts — 2026-10-04
 
-Unverified C research, excluded from the unit registry and all decompilation credit. The 38-function 0c14a9d0 family currently matches 3,313/3,848 bytes. The 33-function 0c133b88 family compiles but remains 64 bytes larger than its 3,624-byte native span. Function types and boundaries still require admission review. Journals include rejected experiments and corrections; the C files are the retained drafts.
+Unverified C research, excluded from the unit registry and all decompilation credit.
+
+- `tu_0c14a9d0.draft.c`: 38 translated functions; complete span 3,664/3,848 bytes equal, all exported function addresses align. Remaining work includes register allocation and instruction ordering.
+- `tu_0c133b88.draft.c`: 33 translated functions; complete span 3,096/3,624 bytes equal and correct total size; six exported function addresses still differ. The paired constructors return zero on the resource guard and fall through otherwise; their fallthrough return value must not be consumed.
+
+Both compile with the fixed bundled game options. Native runtime bindings, literal pools, incoming branches, callbacks, and type contracts require complete registration review before either unit can earn credit. Journals include rejected experiments and corrected field/float interpretations; the C files are the retained drafts, not verified source.
