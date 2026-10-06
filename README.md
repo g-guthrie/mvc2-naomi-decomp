@@ -75,6 +75,6 @@ them by hand. The treemap at `build/index.html` comes from the same build.
 
 Decompilation is active and incomplete. Only whole-section exact C enters the verified registry. Compiling drafts and matching ROM rebuilds do not establish complete decompilation: untranslated regions still use original bytes.
 
-The October 6 checkpoint adds 13 whole-section matches and **4,108 executable C bytes** since the previous publication. Verified executable C is **19.797%** (386,044 / 1,949,986 potential code bytes). These additions cover actor attachments, motion and completion callbacks, selection resources, interpolation, and resource/angle construction.
+The latest October 6 source update adds **1,798 verified executable C bytes** across four whole-section matches since the earlier checkpoint. Verified executable C is **19.890%** (387,842 / 1,949,960 potential code bytes). The additions cover resource construction, interpolation, rotating UV callbacks, and timed matrix placement. Shared animation-cursor alignment and canonical copy-runtime imports are also corrected; near matches and continuation drafts remain uncredited.
 
 [Unverified continuation drafts](workbench/continuation-20261004) are preserved separately and receive no verified credit. The combined image coverage above includes data, SDK objects, and candidate fragments; it is not the percentage translated into verified executable C. The [October 4 recovery handoff](docs/FINAL_HANDOFF.md) and archived releases are historical checkpoints. Development is active and runs in this single-agent checkout.
