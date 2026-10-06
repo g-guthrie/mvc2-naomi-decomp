@@ -24,11 +24,11 @@ asset checks, and parallel-work rules.
 | Track | Progress | Bytes |
 | --- | --- | ---: |
 | Map | `█████████████████████████████░░░` **91.856%** | 2,227,342 / 2,424,832 |
-| Matched reviewed code | `█████████░░░░░░░░░░░░░░░░░░░░░░░` **30.533%** | 535,082 / 1,752,496 |
-| Data | `██████████████████████████████░░` **93.753%** | 445,181 / 474,846 |
-| [Decomp](config/units.json) | `████████████░░░░░░░░░░░░░░░░░░░░` **40.426%** | 980,263 / 2,424,832 |
-| Verified C executable code (lower bound) | `██████░░░░░░░░░░░░░░░░░░░░░░░░░░` **19.784%** | 385,778 / 1,949,986 |
-| Verified C code + data | `██████████░░░░░░░░░░░░░░░░░░░░░░` **33.019%** | 800,648 / 2,424,832 |
+| Matched reviewed code | `█████████░░░░░░░░░░░░░░░░░░░░░░░` **30.548%** | 535,348 / 1,752,496 |
+| Data | `██████████████████████████████░░` **93.753%** | 445,183 / 474,846 |
+| [Decomp](config/units.json) | `████████████░░░░░░░░░░░░░░░░░░░░` **40.437%** | 980,531 / 2,424,832 |
+| Verified C executable code (lower bound) | `██████░░░░░░░░░░░░░░░░░░░░░░░░░░` **19.797%** | 386,044 / 1,949,986 |
+| Verified C code + data | `██████████░░░░░░░░░░░░░░░░░░░░░░` **33.030%** | 800,916 / 2,424,832 |
 | Prebuilt SDK modules | `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` **5.840%** | 141,609 / 2,424,832 |
 | Candidate fragments | `░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` **1.567%** | 38,006 / 2,424,832 |
 <!-- progress:end -->
@@ -75,4 +75,6 @@ them by hand. The treemap at `build/index.html` comes from the same build.
 
 Decompilation is active and incomplete. Only whole-section exact C enters the verified registry. Compiling drafts and matching ROM rebuilds do not establish complete decompilation: untranslated regions still use original bytes.
 
-The latest verified addition is the six-function paired actor attachment family at `0x0c1aede8`, adding 424 executable C bytes. The approach-and-brake callback at `0x0c1b1fb0` remains an unverified candidate (487/492 bytes equal) and earns no verified C credit. [Unverified continuation drafts](workbench/continuation-20261004) are preserved separately and receive no credit. The [October 4 recovery handoff](docs/FINAL_HANDOFF.md) and its release are historical checkpoints, not the current project status.
+The October 6 checkpoint adds 13 whole-section matches and **4,108 executable C bytes** since the previous publication. Verified executable C is **19.797%** (386,044 / 1,949,986 potential code bytes). These additions cover actor attachments, motion and completion callbacks, selection resources, interpolation, and resource/angle construction.
+
+[Unverified continuation drafts](workbench/continuation-20261004) are preserved separately and receive no verified credit. The combined image coverage above includes data, SDK objects, and candidate fragments; it is not the percentage translated into verified executable C. The [October 4 recovery handoff](docs/FINAL_HANDOFF.md) and archived releases are historical checkpoints. Development is active and runs in this single-agent checkout.
