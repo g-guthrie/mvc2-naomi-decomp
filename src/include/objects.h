@@ -345,7 +345,9 @@ struct Actor {
     unsigned short w424;
     unsigned char pad426[2];
     void *p428;
-    unsigned char pad14b[0x446 - 0x42c];
+    unsigned char pad14b[0x440 - 0x42c];
+    unsigned char b440, b441; /* Current and previous operand state. */
+    unsigned char pad442[0x446 - 0x442];
     unsigned char b446, b447;
     signed char b448;
     unsigned char pad449[0x45d - 0x449],b45d,pad45e[0x495 - 0x45e];

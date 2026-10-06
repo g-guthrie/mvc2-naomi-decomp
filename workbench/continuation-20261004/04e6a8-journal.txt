@@ -1,0 +1,12 @@
+Native operand family0c04e6a8..0c04e880,472bytes. Five C bodies translated. Initial496bytes; shared Actor padding and load-local alternatives do not reduce size. Native nested cleanup tests reduce496->492bytes. Current needs20-byte reduction and exact comparison. Mapping conditional-entry review outstanding. No credit.
+Single adjacent-field pointer reduces492->484bytes,101/472equal. Postincrement identical; retain simpler state[1]=state[0]. Pool shifts still prevent first body exact.
+Native signed Actor flag at0x495 named in shared header. Removes20bytes of pointer-address machinery; current464vs472. Header full-check session17995 running, log/tmp/naomi-b495-check.log. No pad45e C consumers found.
+Inline short-return big-endian read preserves conversion boundary and produces468bytes vs472native (previous464). Still unverified; retain for native cast-sequence inspection. Shared header build17995 remains active.
+Mode if/else order0,5,2 compiles464bytes versus retained468; not accepted. Shared cursor goto and unsigned inline word variants452bytes. Size alone is not matching evidence; next compare code at linked addresses and review cast helper against native SHLL16/SHLR16 sequence.
+Inline helper local unsigned-word returns464 total; signed short local returns480 total. Retain468 draft; conversion boundary affects instructions but neither variant establishes native match.
+Explicit unsigned shift-pair inline helper with shared cursor468bytes, decoder85/214 bytes at expected position versus19 prior. Preserved shift-word variant for further comparison; no credit or full match.
+Native unsigned narrowing before SHLL16/SHLR16 represented in inline helper. Whole size now472,269/472equal. Retain narrow-shift-word. Earlier468-byte drafts not close matches; size alone insufficient.
+Nested cleanup conditions with shared finalreturn improve269->276/472; equivalent for stable nonvolatile b495 and no calls before test. Preserved native bit meanings; still not exact.
+Native signed immediate -128 for flag highbit uses |=-128 instead of positive128, same stored byte, improves286->290/472.
+Current named-fields/narrow-shift/signedmask source290/472. Value-argument inline helper288/472 rejected. Register variants254/261/264, pointer cache268 and delayedoperand484bytes rejected. Native state copy10/10 and thunk6/6 exact; cleanup/decoder remain unfinished.
+Shared cleanup-success label297equal but476linked; retains extra4bytes, not accepted over290/472. Current best remains named-state/signed-mask with nested cleanup.

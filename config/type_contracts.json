@@ -129,6 +129,18 @@
           "member": "b495",
           "offset": "0x495",
           "evidence": "Native signed byte loads at 0c04e7ee and 0c04e82e; literal 0c04e878 contains 0x0495. Sign test and bit 1/4 tests in 0c04e78e..0c04e874."
+        },
+        {
+          "type": "struct Actor",
+          "member": "b440",
+          "offset": "0x440",
+          "evidence": "0c04e6a8 loads byte at literal0x440, increments offset and stores at0x441; decoder0c04e6ea writes current byte at0x440."
+        },
+        {
+          "type": "struct Actor",
+          "member": "b441",
+          "offset": "0x441",
+          "evidence": "0c04e6a8 loads byte at literal0x440, increments offset and stores at0x441; decoder0c04e6ea writes current byte at0x440."
         }
       ],
       "sizes": [
