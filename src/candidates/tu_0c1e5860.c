@@ -46,7 +46,7 @@ void func_0c1e58be(register struct Obj_tu5_03 *a)
  a->w30+=10;
  func_0c1d8ff8((*(int (*)[68])dat_0c2d964c->p0)[48],a->l84);
  {
- register float degrees=360.0f,half=0.5f,drift=0.0049999999f;
+ register float half=0.5f,degrees=360.0f,drift=0.0049999999f;
  while(func_0c1d901e()==0){
   func_0c1d9100(point);
   if(point[1]>0.0f){
