@@ -22,7 +22,7 @@ extern struct EffectScale4 dat_0c25c71c[];
 extern struct Obj_tu5_03 *dat_0c2fb470[];
 extern void func_0c1c2394(struct Obj_tu5_03 *),func_0c1c2438(struct Obj_tu5_03 *),func_0c1c2460(struct Obj_tu5_03 *),func_0c1c24ac(struct Obj_tu5_03 *);
 extern unsigned char dat_0c25c854[],dat_0c25c85a[];
-extern struct Vec3_tu5_03 dat_0c25c48c[],dat_0c25c4d4[],dat_0c25c4ec[2][3];
+extern struct Vec3_tu5_03 dat_0c25c48c[],dat_0c25c4d4[],dat_0c25c4ec[][3];
 extern unsigned int dat_0c25c33c[][4];
 extern int dat_0c25c4bc[];
 extern struct EffectScale4 dat_0c25c6ec;
@@ -132,7 +132,8 @@ void func_0c1c1cdc(struct Obj_tu5_03 *parent){
 }
 void func_0c1c1d3a(struct Actor *actor,short *counter,int colour){
  struct Obj_tu5_03 *a;
- if(*counter && (a=func_0c0374da(0,11,1))){
+ if(!*counter)return;
+ if((a=func_0c0374da(0,11,1))){
  a->b12c=1;a->p16=func_0c1c24ac;a->l84=((int *)dat_0c2d9654->p0)[dat_0c25c862[actor->b2]];
  a->pos=dat_0c25c594[actor->b2];*(struct Vec3_tu5_03 *)&a->f80=dat_0c25c540;
  a->pad0[2]=actor->b2;a->p24=(struct Obj_tu5_03 *)actor;a->lcc=0x10c11;
