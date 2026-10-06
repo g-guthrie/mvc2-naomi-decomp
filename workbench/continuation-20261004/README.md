@@ -49,3 +49,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1b7200.draft.c`: three translated attachment callbacks, 347/352 equal bytes; initializer, dispatcher, and pools exact. Five call/flag-register bytes remain in update0x0c1b7200. Requires `__slow_mvn=0x0c1fb838`; no verified credit.
 
 - `tu_0c1bd744.draft.c`: palette-cycle attachment initialization/update/cleanup translated. Links356 bytes against352 native;164 native-position bytes equal. Signed subrecord countdowns and opponent/global gating preserved. Owner/subrecord register allocation and instruction scheduling remain unresolved. Requires `__slow_mvn=0x0c1fb838`; no verified credit.
+
+- `tu_0c1b4f20.draft.c`: owner-state attachment constructor/update translated,333/336 equal bytes; constructor and pools exact. Three owner-flag test register bytes remain at0x0c1b500e/0x0c1b5010. Requires `__slow_mvn=0x0c1fb838`; no verified credit.
