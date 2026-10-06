@@ -75,3 +75,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1c2710.draft.c`: complete slot-transition, scaling, and visibility callback translated. Full descriptor covers388 native bytes and both pools; current linked386 bytes,327/336 instruction bytes equal. Vector-copy setup and final flag registers differ; final two padding bytes absent. Do not shorten the span for credit. No verified credit.
 
 - `tu_0c1c21d8.draft.c`: pulsing-scale and parent-copy callbacks translated.338/368 bytes equal;372 linked bytes. Parent-copy body exact; native divisor-one-plus-one sequence, table-copy ordering, and float-register lifetimes remain unresolved. No verified credit.
+
+- `tu_0c1c3c00.draft.c`: roster-member indicator allocation and dispatch translated. Links388 bytes against392 native; native mask-test lowering and saved-register layout unresolved. Preserves one/three-member selection, roster refresh calls, per-member mask checks, and success-only slot counting. No verified credit.
