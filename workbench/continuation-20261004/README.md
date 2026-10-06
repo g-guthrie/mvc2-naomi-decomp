@@ -30,3 +30,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1b61b8.draft.c`: complete owner-follow/visibility callback, 301/304 equal bytes with exact pools. Three facing-test register bytes remain at 0x0c1b6262/0x0c1b6264. Uses shared ActorFlags for the visibility bit; requires `__slow_mvn=0x0c1fb838`. No verified credit.
 
 - `tu_0c1b62e8.draft.c`: translated frame-driven placement callback; 360 linked bytes against the native 356, with 249 equal bytes at native addresses. Recovered shared 20-byte effect row: signed enable, unsigned frame, two scales, and two offsets; nine rows per variant. Final clear and register scheduling remain unresolved. Requires `__slow_mvn=0x0c1fb838`; no verified credit.
+
+- `tu_0c1b6e04.draft.c`: translated parent initialization and sixteen-child allocation loop, including owner failure notification. Links 328 bytes against 320 native; 191 native-position bytes equal. Byte-store addressing and constant scheduling remain unresolved. Requires `__slow_mvn=0x0c1fb838`; no verified credit.
