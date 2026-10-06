@@ -183,6 +183,26 @@
           "offset": 16,
           "evidence": "0c1b63d8/0c1b63da float load from table 0c25b134.",
           "size": 4
+        },
+        {
+          "type": "struct Actor",
+          "member": "p154",
+          "offset": "0x154",
+          "size": 4,
+          "evidence": "Verified func_0c029e70 assigns and advances the animation-frame pointer at actor+0x154."
+        },
+        {
+          "type": "struct LinkedActor",
+          "member": "sdc",
+          "offset": "0xdc",
+          "evidence": "Native 192-byte actor animation-block copies start at actor+0xdc, including verified tu_0c1b605c and tu_0c19dd70."
+        },
+        {
+          "type": "struct LinkedActorBlock",
+          "member": "p154",
+          "offset": "0x78",
+          "size": 4,
+          "evidence": "Same animation pointer as Actor.p154: 0x154 minus block base0xdc equals0x78. A real pointer field gives the block the alignment used by native word copies."
         }
       ],
       "sizes": [
@@ -200,6 +220,11 @@
           "type": "struct EffectFramePlacement20",
           "size": 20,
           "evidence": "0c1b639c..0c1b63aa multiplies frame index by20; variant stride180 at0c1b639a holds nine rows."
+        },
+        {
+          "type": "struct LinkedActorBlock",
+          "size": "0xc0",
+          "evidence": "Native actor animation-block assignments copy0xc0 bytes; the recovered pointer replaces padding without changing the block extent."
         }
       ]
     },

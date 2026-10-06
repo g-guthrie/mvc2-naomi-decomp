@@ -145,6 +145,20 @@ An `extern short *dat_0cXXXXXX;` is a pointer variable and costs a load; an
 `extern short dat_0cXXXXXX[];` is the array itself. Retail's `mov.l @dat,rN`
 before the index means the pointer; its absence means the array.
 
+### Preserve the alignment of copied records
+
+`LinkedActorBlock` includes the animation-frame pointer at actor offset `0x154`
+(block offset `0x78`). Treating that pointer as padding made the block appear
+only two-byte aligned and selected `__slow_mvn` for its 192-byte assignments.
+The recovered pointer gives it four-byte alignment, so SHC selects
+`__quick_mvn`, matching the retail copier at `0x0c1fb838` without an import
+alias. The block remains `0xc0` bytes; target layout contracts check the pointer
+and block offsets and size.
+
+A unit can also copy unaligned byte tables through `__slow_mvn` at
+`0x0c1fb8f8`. Keep those imports distinct. Redirecting every copy in such a
+unit to the word copier does not describe the native operations.
+
 ### A compound assignment is not its expanded form
 
 `x ^= 1` and `x = x ^ 1` compile differently when `x` is a struct member at an

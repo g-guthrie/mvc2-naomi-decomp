@@ -1,7 +1,7 @@
 /* Unverified 304-byte owner-follow callback: 301 equal bytes, three facing-test register bytes remain. */
 #include "objects.h"
 extern struct ActorFlags *dat_0c2d6f84;
-extern void func_0c029e70(struct LinkedActor *,int,int),func_0c0344a0(struct LinkedActor *,int),func_0c037688(struct LinkedActor *);
+extern void func_0c029e70(struct Actor *,unsigned char,unsigned char),func_0c0344a0(struct LinkedActor *,int),func_0c037688(struct LinkedActor *);
 extern char func_0c029fc4(struct LinkedActor *);
 void func_0c1b61b8(struct LinkedActor *a,struct LinkedActor *owner)
 {
@@ -12,7 +12,7 @@ void func_0c1b61b8(struct LinkedActor *a,struct LinkedActor *owner)
  a->v80.x=owner->v80.x;a->v80.y=owner->v80.y;
  a->b1a3=owner->b1a3;a->b1a4=owner->b1a4;
  a->b48=owner->b48;a->v80=owner->v80;a->b36=owner->b36;
- a->f52=owner->f52;a->b49=-4;func_0c029e70(a,27,5);func_0c0344a0(a,33);
+ a->f52=owner->f52;a->b49=-4;func_0c029e70((struct Actor *)a,27,5);func_0c0344a0(a,33);
  }
  a->b36=owner->b36;
  if((unsigned char)owner->b5!=1 || !((struct Actor *)owner)->b140){func_0c037688(a);return;}
