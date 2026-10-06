@@ -346436,56 +346436,49 @@
       "size": 70,
       "kind": "code",
       "sha256": "28cbce49b21af4cc91d77872b63e4b4835c105e3bd6ef9038e54f5b27cff1b6b",
-      "evidence": "CFG walk from 0x0c1c9d58; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Dispatch callback from constructor 0xc1c9c0c; scale test/update and tail JMP through 0xc25ec68 with restored R14 in its delay slot."
+    },
+    {
+      "address": "0x0c1c9d9e",
+      "size": 150,
+      "kind": "code",
+      "sha256": "da880efcdb32360d230f1eb2c0c1eac99593589bddcc8ba6913ca9d0a1590fa8",
+      "evidence": "First pointer at 0xc25ec68; rotation increment and UV loop; RTS at 0xc1c9e30 with restore delay slot."
+    },
+    {
+      "address": "0x0c1c9e34",
+      "size": 88,
+      "kind": "code",
+      "sha256": "eee39644c031f281f737d94ec06014fa833b599b4c6fed89656cda036d7e172e",
+      "evidence": "Second pointer at 0xc25ec68; rotation decrement and UV setup; BRA at 0xc1c9e88 skips the inline literal pool to 0xc1c9ee0."
     },
     {
       "address": "0x0c1c9e8c",
-      "size": 4,
+      "size": 48,
       "kind": "data",
-      "sha256": "11d12ef02a2f9ed5d1993c966db7c96c2869868b566331c01999ee62bf5bbf16",
-      "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+      "sha256": "f109dad84d162953e7e7ccc3cef6801cf51816d896079821c6730d0258b08770",
+      "evidence": "Shared word/pointer/float pool, including two-byte alignment at 0xc1c9e92; consumed by MOV.W, MOV.L and MOVA in preceding callbacks. The prior entry at 0xc1c9eac was a literal, not code."
     },
     {
-      "address": "0x0c1c9e94",
-      "size": 16,
-      "kind": "data",
-      "sha256": "a65c0e1a57506055b1fd976841535ce31f744ded224826f3774d6e7c8033b68d",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1c9d58; unreferenced adjacent bytes omitted."
-    },
-    {
-      "address": "0x0c1c9eac",
-      "size": 78,
+      "address": "0x0c1c9ebc",
+      "size": 62,
       "kind": "code",
-      "sha256": "931808dd1c7b73c7648c19c342767f80f8e2ba37648f7ff41e57333ae44b6f32",
-      "evidence": "CFG walk from 0x0c1c9eac; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "e2113220f67a0696323b4514eac2e0968d04712a167a005fc39212e786f5b311",
+      "evidence": "UV loop body reached by BT 0xc1c9ee6 and loop test reached by BRA 0xc1c9e88; RTS 0xc1c9ef6 and restore delay slot."
     },
     {
-      "address": "0x0c1c9f0c",
-      "size": 2,
-      "kind": "data",
-      "sha256": "7d052f5532a838c63ef2549fb6c28ea4bebf0acf7e7bd493aa1195a30e79dd3f",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1c9eac; unreferenced adjacent bytes omitted."
-    },
-    {
-      "address": "0x0c1c9fac",
-      "size": 2,
-      "kind": "data",
-      "sha256": "f06c293ad8226b0314e49714e0bebfaf1d49e1bdc12c7dd77fc8348cd7e7933b",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1c9eac; unreferenced adjacent bytes omitted."
+      "address": "0x0c1c9efa",
+      "size": 188,
+      "kind": "code",
+      "sha256": "d75c9e5bfe2a5385c5240e8074c42fc3b7a935555865e4d3aabb5c898c755151",
+      "evidence": "Third pointer at 0xc25ec68; timers, position copy and matrix calls. Branch at 0xc1c9f0c and float store at 0xc1c9fac are instructions, not data. Final JMP at 0xc1c9fb2 and restore delay slot."
     },
     {
       "address": "0x0c1c9fb6",
-      "size": 4,
+      "size": 62,
       "kind": "data",
-      "sha256": "6632c6ec530e1c93e590019b80f645d451c1da8c65d2e841810eb3d7b43181be",
-      "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
-    },
-    {
-      "address": "0x0c1c9fbc",
-      "size": 4,
-      "kind": "data",
-      "sha256": "60f2e332c71bcda81951ea38d3c52d4a9b1a2056b334f99001f41c588afd0892",
-      "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+      "sha256": "14cdc2d6a69162b40da57c2575744cb098116d80158b033cd385d252fcffda01",
+      "evidence": "Word offsets, two-byte alignment at 0xc1c9fbe, table/copy and SDK-call pointers consumed by PC-relative loads in 0xc1c9efa."
     },
     {
       "address": "0x0c1c9ff4",
