@@ -53,3 +53,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1b4f20.draft.c`: owner-state attachment constructor/update translated,333/336 equal bytes; constructor and pools exact. Three owner-flag test register bytes remain at0x0c1b500e/0x0c1b5010. Requires `__slow_mvn=0x0c1fb838`; no verified credit.
 
 - `tu_0c1b5e2c.draft.c`: six frame-following effect callbacks,337/352 equal bytes; five functions and pools exact. Fifteen frame-byte register/load-order bytes remain in update0x0c1b5eca. Owner loading after state increment and direct facing-word read reproduce initializer/copy sequence. Requires `__slow_mvn=0x0c1fb838`; no verified credit.
+
+- `tu_0c1b40b8.draft.c`: complete frame-event child-spawning callback,348/356 equal bytes with exact pools. Eight constant-order and final-call register bytes remain. Initialization, signed event-mask handling, child setup, and cleanup transitions translated; requires `__slow_mvn=0x0c1fb838`. No verified credit.
