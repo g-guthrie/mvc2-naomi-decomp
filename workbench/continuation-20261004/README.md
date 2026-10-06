@@ -59,3 +59,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1c9210.draft.c`: three interpolation/creation/lifetime routines translated. Links352 bytes against356 native; signed index division and temporary-register scheduling unresolved. Native positions use paired three-float endpoints and a30-step interpolation. No verified credit.
 
 - `tu_0c1c9c0c.draft.c`: resource/position/angle constructor translated,292/332 equal bytes at correct size. Uses shared angle array for first component and scalar aliases for remaining components; table-pointer registers and literal order remain unresolved. No verified credit.
+
+- `tu_0c1b3874.draft.c`: three ground/air attachment callbacks translated. Links360 bytes against368 native; cached-owner and animation-selector local placement remain unresolved. Preserves initialization copy order, ground-relative offset, airborne transition, and cleanup. Requires `__slow_mvn=0x0c1fb838`; no verified credit.
