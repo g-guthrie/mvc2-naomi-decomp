@@ -71,3 +71,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1d5960.draft.c`: four resource/UV callbacks translated. Complete native span424 bytes (both pools), current linked428. The accompanying `.unit.json` preserves the full extent; bare description stops at the intermediate pool and is insufficient. UV pointer lifetimes and signed remainder lowering remain unresolved. No verified credit.
 
 - `tu_0c1dae48.draft.c`: four timing-record dispatcher/walker/sine-update routines translated. Links344 bytes against352 native. Preserves variable record stride, six-state rollover, signed counters, and16-bit angle conversion; dispatcher/local instruction layout unresolved. No verified credit.
+
+- `tu_0c1c2710.draft.c`: complete slot-transition, scaling, and visibility callback translated. Full descriptor covers388 native bytes and both pools; current linked386 bytes,327/336 instruction bytes equal. Vector-copy setup and final flag registers differ; final two padding bytes absent. Do not shorten the span for credit. No verified credit.
