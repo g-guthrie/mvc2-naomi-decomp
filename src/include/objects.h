@@ -367,6 +367,12 @@ struct Actor {
 };
 
 /* Global game flags record exposed through the pointer at 0x0c2d6f84. */
+/* Native 20-byte effect frame row at 0x0c25b134; nine rows per variant. */
+struct EffectFramePlacement20 {
+    signed char enabled; unsigned char pad1; unsigned short frame;
+    float scale_x, scale_y, offset_x, offset_y;
+};
+
 struct ActorFlags {
     unsigned char b0, b1; signed char b2, b3, b4, b5, b6; unsigned char b7;
     short s8, s10, s12, s14; unsigned char pad16[4]; int i20;
