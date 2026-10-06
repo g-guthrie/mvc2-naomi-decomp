@@ -65,3 +65,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1c7960.draft.c`: five rotating-selection construction/update/lifetime callbacks translated. Links352 bytes against356 native; compiler merges the two angle stores while native keeps separate stores. Resource selection, delay, and cleanup behavior preserved; no verified credit.
 
 - `tu_0c1c2348.draft.c`: four placement/scale/lifetime callbacks translated. Links352 bytes against356 native; table indexing and float temporary scheduling remain unresolved. Preserves signed timer shifts, scaled horizontal offset, and cleanup conditions. No verified credit.
+
+- `tu_0c1c3568.draft.c`: three paired setup/allocation routines translated. Links344 bytes against352 native; first setup body exact, second allocator guard/local layout unresolved. Preserves owner flag mask at0x414, resource indices, vector initialization, and angle constants. No verified credit.
