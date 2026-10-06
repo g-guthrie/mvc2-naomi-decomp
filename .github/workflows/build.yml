@@ -23,8 +23,10 @@ jobs:
       - name: Generate evidence-backed recovery plan
         run: python3 tools/recovery.py plan
       - uses: actions/upload-artifact@v6
+        if: always()
         with:
           name: hitachi-evidence
+          retention-days: 14
           path: |
             build/proof.json
             build/mapping.json
