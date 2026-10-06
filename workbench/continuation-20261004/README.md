@@ -20,3 +20,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1aca28.draft.c`: 16-effect spawning sequence, allocator, and dispatcher translated. Full span is 272/304 bytes equal with correct exports and all 38 pool bytes exact; sequence and dispatcher are exact. Allocator index promotion and scheduling remain unresolved. Direct edges closed; no verified C credit.
 
 - `tu_0c1a0e68.draft.c`: four translated motion/animation callbacks. Links 300 bytes against the native 304-byte family; the motion body has 124/130 equal bytes. Animation callback caches the spawn helper in R13, unlike retail, shifting subsequent exports. Uses the verified `func_0c19fb0a(LinkedActor *, char)` pointer-return signature. Not an exact section and receives no credit.
+
+- `tu_0c1a94b0.draft.c`: four allocation/dispatch callbacks translated; complete 356-byte span has 349 equal bytes, correct exports and exact 48-byte pools. Seven bytes differ around the final kind store. Native 0x0c1a94f0 is the preceding return delay slot; the second function begins at 0x0c1a94f2. Direct edges closed with actual exports. Requires `__slow_mvn=0x0c1fb838`; no verified credit.
