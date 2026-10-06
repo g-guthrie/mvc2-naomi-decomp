@@ -246,11 +246,6 @@ const unsigned int dat_0c1bd138[] = {
     0x0c25bdf8u,
 };
 
-#pragma section n19c2b0
-const unsigned int dat_0c1bd2b0[] = {
-    0x0c25be08u,
-};
-
 #pragma section n19c740
 const unsigned int dat_0c1bd740[] = {
     0x0c25be38u,
