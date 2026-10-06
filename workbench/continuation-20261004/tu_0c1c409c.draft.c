@@ -1,4 +1,5 @@
-/* Eight translated handlers; whole-section matching and boundary admission pending. */
+/* Unverified sliding display lifecycle, including all nine callback entries.
+ * The divide-by-two constant still differs from the retail instruction sequence. */
 #include "objects.h"
 extern struct LinkedActor *func_0c0374da(int,int,int);
 void func_0c1c40e8(struct LinkedActor *);
@@ -28,16 +29,12 @@ extern void *dat_0c25d6a4[];
 extern unsigned char dat_0c25d724[];
 extern void func_0c034a1c(char);
 void func_0c1c4178(struct LinkedActor *);
-#pragma inline(message_unit_scale)
-static float message_unit_scale(void) { return 1.0f; }
 void func_0c1c40fa(struct LinkedActor *a)
 {
     char sound;
-    float divisor;
     if(func_0c026a86(a)) return;
     a->b4++; a->sdc.b12c=1; a->s28=60;
-    divisor=message_unit_scale(); divisor+=divisor;
-    a->f52=-dat_0c25d6e4[a->b32]/divisor;
+    a->f52=-dat_0c25d6e4[a->b32]/2.0f;
     a->f56=-6.25f; a->f60=0.0f;
     *(void **)((unsigned char *)a+0xd4)=dat_0c25d6a4[a->b32];
     *(int *)((unsigned char *)a+0xd8)=0;
@@ -50,14 +47,16 @@ extern void func_0c1c4294(int);
 extern struct ActorFlags *dat_0c2d6f84;
 void func_0c1c4178(struct LinkedActor *a)
 { table_0c25d744[(unsigned char)a->b5](a); }
+void func_0c1c41aa(struct LinkedActor *);
 void func_0c1c418a(struct LinkedActor *a)
 {
-    float value;
     a->b5++; a->s28=12;
     ((struct Actor *)a)->f100=(-a->f60+-40.0f)/12.0f;
-    value=a->f60;
-    value+=((struct Actor *)a)->f100;
-    a->f60=value;
+    func_0c1c41aa(a);
+}
+void func_0c1c41aa(struct LinkedActor *a)
+{
+    a->f60+=((struct Actor *)a)->f100;
     if(--a->s28<=0) { a->b5++; a->s28=60; }
 }
 void func_0c1c4208(struct LinkedActor *a)

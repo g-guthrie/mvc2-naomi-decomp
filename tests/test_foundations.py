@@ -102,6 +102,38 @@ class BoundaryTests(unittest.TestCase):
         result = self.audit(blob, [{'address': 0x1000, 'size': len(blob), 'kind': 'code'}], [0x1000, 0x1008])
         self.assertIn('conditional_entry', {i['kind'] for i in result['issues']})
 
+    def floating_tail_fixture(self):
+        # Retail 0c1c4236's position update and countdown, then a distinct
+        # callee with two constant loads before its own saved-register frame.
+        words = [0xe164, 0x314c, 0xe03c, 0xf318, 0xf246, 0xf230, 0xf427,
+                 0x854e, 0x70ff, 0x814e, 0x600f, 0x4015, 0x8b01,
+                 0x000b, 0x0009, 0x9007, 0xe300, 0x2fe6, 0x6e43,
+                 0x4f22, 0x4f26, 0x6ef6, 0x000b, 0x0009, 0x012c]
+        return bytearray(b''.join(w.to_bytes(2, 'little') for w in words))
+
+    def test_floating_tail_and_scratch_constants_before_saved_frame(self):
+        blob = self.floating_tail_fixture()
+        result = self.audit(blob, [{'address': 0x1000, 'size': len(blob), 'kind': 'code'}],
+                            [0x1000, 0x101e], [(0x1000, 48, 'code'), (0x1030, 2, 'data')])
+        self.assertEqual(result['issues'], [])
+
+    def test_floating_tail_rejects_saved_register_stack_and_fpscr_changes(self):
+        for index, word in [(1, 0x3e4c), (1, 0x31fc), (4, 0xfc46), (5, 0xfc30), (6, 0xff27),
+                            (4, 0xf2f6), (5, 0x416a), (15, 0x9e07),
+                            (16, 0xee00), (16, 0xe400), (17, 0xe201)]:
+            with self.subTest(index=index, word=hex(word)):
+                blob = self.floating_tail_fixture()
+                blob[index * 2:index * 2 + 2] = word.to_bytes(2, 'little')
+                result = self.audit(blob, [{'address': 0x1000, 'size': len(blob), 'kind': 'code'}],
+                                    [0x1000, 0x101e], [(0x1000, 48, 'code'), (0x1030, 2, 'data')])
+                self.assertIn('conditional_entry', {i['kind'] for i in result['issues']})
+
+    def test_prefixed_callee_still_requires_its_literal_bytes(self):
+        blob = self.floating_tail_fixture()
+        result = self.audit(blob, [{'address': 0x1000, 'size': 48, 'kind': 'code'}],
+                            [0x1000, 0x101e], [(0x1000, 48, 'code'), (0x1030, 2, 'data')])
+        self.assertIn('outgoing_literal', {i['kind'] for i in result['issues']})
+
     def test_legitimate_direct_call_to_entry_is_allowed(self):
         blob = bytes.fromhex('00b009000b000900')
         result = self.audit(blob, [{'address': 0x1004, 'size': 4, 'kind': 'code'}], [0x1004])

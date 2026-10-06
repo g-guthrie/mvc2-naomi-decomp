@@ -342134,11 +342134,18 @@
       "evidence": "CFG walk from 0x0c1c40fa; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
-      "address": "0x0c1c418a",
-      "size": 72,
+      "address": "0xc1c418a",
+      "size": 32,
       "kind": "code",
-      "sha256": "4a1ec4edcbdd84b5490f76d40b362aaf2c4cfe0fb927a872bce400267bd23e47",
-      "evidence": "CFG walk from 0x0c1c418a; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "4142cab7025243d51ef0875d3182c7eaf4a4c6e8a9982ab98ed86f5483cde055",
+      "evidence": "Slide-in initializer; increments state and falls through to independently dispatched update at 0c1c41aa."
+    },
+    {
+      "address": "0xc1c41aa",
+      "size": 40,
+      "kind": "code",
+      "sha256": "6a891fe6f9c68466bbcb10dc6ca55d3bf0346fe5e5e8866805888dbe67bebda1",
+      "evidence": "Independent callback pointer at 0c25d748 targets 0c1c41aa; motion/countdown update also reached by initializer fallthrough. RTS and delay slot end at 0c1c41d2."
     },
     {
       "address": "0x0c1c41d2",

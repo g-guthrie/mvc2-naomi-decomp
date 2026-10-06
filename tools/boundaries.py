@@ -41,7 +41,7 @@ class BoundaryIndex:
         return cls(program[offset:offset + size], base, ranges)
 
     def frameless_conditional_tail(self, entry, source, target):
-        """Recognize only a small, ABI-preserving integer-only caller prefix.
+        """Recognize a small caller prefix that preserves callee-saved ABI state.
 
         A separate saved-register prologue distinguishes this from a label in
         a frameless continuation. Unknown instructions fail closed. Whole-unit
@@ -49,9 +49,18 @@ class BoundaryIndex:
         """
         if target not in self.code or target in self.delays:
             return False
-        first = struct.unpack_from('<H', self.image, target - self.base)[0]
-        if first != 0x4f22 and first not in range(0x2f86, 0x2fe7, 0x10):
-            return False
+        # Retail 0c1c4254 loads a field offset and zero into R0/R3 before
+        # saving R14. Permit at most two scratch-register constant loads;
+        # never hide an argument, stack, PR or callee-saved register change.
+        for prefix in range(3):
+            pc = target + prefix * 2
+            if pc not in self.code or pc in self.delays:
+                return False
+            word = struct.unpack_from('<H', self.image, pc - self.base)[0]
+            if word == 0x4f22 or word in range(0x2f86, 0x2fe7, 0x10):
+                break
+            if prefix == 2 or not (word >> 12 in (9, 13, 14) and ((word >> 8) & 15) < 4):
+                return False
         end = source + (4 if self.code[source]['delay'] else 2)
         for pc in range(entry, end, 2):
             if pc not in self.code:
@@ -63,11 +72,17 @@ class BoundaryIndex:
                 if any(t != target and not entry <= t <= source for t in info['targets']):
                     return False
                 continue
-            safe = (word == 0x0009
+            # Single-precision scratch arithmetic used by 0c1c4236. FPSCR
+            # changes, FR12-FR15 writes and stack-based stores remain excluded.
+            floating = (word >> 12 == 15 and (
+                (word & 15 == 0 and n < 12 and m < 12)
+                or (word & 15 in (6, 8) and n < 12 and m < 8)
+                or (word & 15 == 7 and n < 8 and m < 12)))
+            safe = (floating or word == 0x0009
                     or (word >> 12 in (7, 9, 14) and n < 8)
                     or (word & 0xff00 in (0x8000, 0x8100, 0x8400, 0x8500) and m < 8)
                     or (word >> 12 == 6 and n < 8 and m < 8 and word & 15 in (3, 12, 13, 14, 15))
-                    or (word >> 12 == 3 and n < 8 and m < 8 and word & 15 in (0, 2, 3, 6, 7))
+                    or (word >> 12 == 3 and n < 8 and m < 8 and word & 15 in (0, 2, 3, 6, 7, 12))
                     or (word >> 12 == 2 and n < 8 and m < 8 and word & 15 == 8)
                     or (word & 0xf0ff in (0x4011, 0x4015) and n < 8))
             if not safe:
