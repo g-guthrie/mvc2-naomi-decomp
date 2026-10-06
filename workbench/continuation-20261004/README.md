@@ -10,3 +10,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c04e6a8.draft.c`: five operand/state handlers; 290/472 bytes equal at the correct total size. Native state bytes at Actor offsets 0x440/0x441 and signed flags at 0x495 are recovered separately. The inline word reader preserves native unsigned narrowing and signed conversion; the family remains unverified.
 
 - `tu_0c1d9b70.draft.c`: four translated allocator/initialization/fade functions; 158/512 bytes equal at the correct total size. The initializer and fade boundaries remain displaced. Native random range and signed/unsigned remainder operations were reviewed; no matching credit is claimed.
+
+- `tu_0c1c409c.draft.c`: eight translated handlers; 485/504 bytes equal, all literal pools exact. Initializer and movement register/order differences remain. Native conditional branch 0c1c424e enters shared cleanup 0c1c4254, also called from allocator 0c1c40dc; this requires explicit boundary admission review.
