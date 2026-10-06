@@ -230,18 +230,6 @@ void (*const table_0c1cc954[])(void) = {
     func_0c1ee360,
 };
 
-#pragma section n1cd970
-void (*const ptr_0c1cd970)(void) = func_0c1fb7a0;
-
-#pragma section n1cd988
-void (*const ptr_0c1cd988)(void) = func_0c1d91a8;
-
-#pragma section n1cd994
-void (*const table_0c1cd994[])(void) = {
-    func_0c260a98,
-    func_0c232020,
-};
-
 #pragma section n1cdc00
 void (*const ptr_0c1cdc00)(void) = func_0c260aa4;
 
