@@ -81,3 +81,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1c6df8.draft.c`: resource constructor, dispatcher, and bounded rotation update translated.316/392 equal bytes at correct total size; rotation assignment/test lowering and literal placement unresolved. Preserves actor-slot selection, resource branches, table angles, and sound setup. No verified credit.
 
 - `tu_0c1c36c8.draft.c`: resource-digit selection and pulsing/interpolated scale update translated. Complete396-byte native span requires accompanying `.unit.json`; bare description stops at the mid-function pool. Current linked412 bytes; divisor formation, float temporaries, and resource-store lowering unresolved. No verified credit.
+
+- `tu_0c1b4d0c.draft.c`: three motion-table attachment construction/dispatch/initialization routines translated.266/416 equal bytes at correct total size. Preserves frame-control bytes, signed offset pairs, four motion coefficients, and facing reversal; index and scheduling differences remain. Requires `__slow_mvn=0x0c1fb838`; no verified credit.
