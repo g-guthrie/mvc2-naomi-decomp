@@ -340342,6 +340342,13 @@
       "evidence": "CFG walk from 0x0c1c1604; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0xc1c1652",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Empty resource callback: RTS at 0c1c1652 and NOP delay slot at 0c1c1654. Already exact in leaves_odd_13; complete tu_0c1c1604 now reproduces constructor, callback and pool byte-for-byte."
+    },
+    {
       "address": "0x0c1c1656",
       "size": 6,
       "kind": "data",
