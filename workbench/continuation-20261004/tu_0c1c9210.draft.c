@@ -1,0 +1,28 @@
+/* Unverified interpolation/creation/lifetime family:352 linked bytes against356 native; arithmetic/register scheduling unresolved. */
+#include "objects.h"
+extern struct Obj_tu5_03 *func_0c0374da(int,int,int);
+extern struct Vec3_tu5_03 dat_0c230398[][2];
+extern signed char dat_0c2d75b4[];
+extern int **dat_0c2d965c;
+extern struct ActorFlags *dat_0c2d6f84;
+extern void func_0c037688(struct Obj_tu5_03 *);
+void func_0c1c9318(struct Obj_tu5_03 *);
+void func_0c1c9210(struct Obj_tu5_03 *a){
+ struct Vec3_tu5_03 *start=dat_0c230398[a->b32],*end=start+1;
+ a->pos.x=start->x+(end->x-start->x)/30.0f*a->w28;
+ a->pos.y=start->y+(end->y-start->y)/30.0f*a->w28;
+ a->pos.z=start->z+(end->z-start->z)/30.0f*a->w28;
+}
+void func_0c1c927a(int index){
+ int side=index%3;struct Obj_tu5_03 *a;
+ if(side!=1 && dat_0c2d75b4[(side*2+index/3)*0x5a4]==side+24)return;
+ if((a=func_0c0374da(0,5,1))){
+ a->b12c=1;a->b32=index;a->p16=func_0c1c9318;a->l84=(*dat_0c2d965c)[index+1];
+ a->pos=dat_0c230398[index][0];a->lcc=0x801;a->w28=0;
+ }
+}
+void func_0c1c9318(struct Obj_tu5_03 *a){
+ struct ActorFlags *state=dat_0c2d6f84;
+ if(state->b3!=2 || state->s14==3){func_0c037688(a);return;}
+ if(a->w28!=30){a->w28++;func_0c1c9210(a);}
+}
