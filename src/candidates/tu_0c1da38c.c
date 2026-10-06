@@ -8,7 +8,7 @@ struct Keyframe_0c261d94 {float time;struct Vec3_tu5_03 position,angles;};
 extern struct Keyframe_0c261d94 dat_0c261d94[];
 extern struct ActorGlobalRoot *dat_0c2d964c;
 extern struct Obj_tu5_03 *func_0c0374da(int,int,int);
-extern void func_0c1d8ff8(int,int),func_0c1d9100(struct Vec3_tu5_03 *),func_0c1d914c(struct Vec3_tu5_03 *);
+extern int func_0c1d8ff8(int,int),func_0c1d9100(struct Vec3_tu5_03 *),func_0c1d914c(struct Vec3_tu5_03 *);
 extern int func_0c1d901e(void);
 extern float func_0c1eeef0(struct Vec3_tu5_03 *),func_0c1ec2c0(int);
 void func_0c1da550(struct Obj_tu5_03 *);

@@ -1,5 +1,6 @@
-/* The first function is 376/388 bytes; the other two and both pools match.
- * The remaining differences are literal-load scheduling before its loop. */
+/* Complete 612-byte wave-effect section:602 bytes match retail.
+ * Constructors and both pools match. Only the write/advance bindings in R9/R10
+ * and the one/scale bindings in FR12/FR14 differ; no whole-unit credit. */
 #include "objects.h"
 extern struct Obj_tu5_03 *func_0c0374da(int,int,int);
 extern struct ActorGlobalRoot *dat_0c2d964c;
@@ -10,7 +11,7 @@ extern int func_0c1d8ff8(void *,void *),func_0c1d901e(void),func_0c1d9100(struct
 void func_0c1da6b4(register struct Obj_tu5_03 *a)
 {
  register float y;
- register float degrees,scale;
+ register float one,degrees,scale;
  register int mask;
  int (*advance)(void);
  int (*read)(struct Vec3_tu5_03 *);
@@ -28,13 +29,13 @@ void func_0c1da6b4(register struct Obj_tu5_03 *a)
   }
   func_0c1d8ff8(*(void **)((char *)dat_0c2d964c->p0+((a->b32*2+8)*4)+4),(void *)a->l84);
   advance=func_0c1d901e;write=func_0c1d914c;read=func_0c1d9100;cosine=func_0c1ec2c0;
-  degrees=360.0f;mask=65535;scale=65536.0f;
+  one=1.0f;degrees=360.0f;mask=65535;scale=65536.0f;
   while(advance()==0){
    struct Vec3_tu5_03 point;
    read(&point);y=point.y;
    if(y<0.0f){
-    if(a->b32)point.z-=(cosine((int)(((int)point.y+a->w28)*scale/degrees+0.5f)&mask)+1.0f)*point.y*point.y*a->f92*3.0f;
-    else point.z-=(cosine((int)(((int)point.y+a->w28)*scale/degrees+0.5f)&mask)+1.0f)*point.y*point.y*a->f92;
+    if(a->b32)point.z-=(cosine((int)(((int)point.y+a->w28)*scale/degrees+0.5f)&mask)+one)*point.y*point.y*a->f92*3.0f;
+    else point.z-=(cosine((int)(((int)point.y+a->w28)*scale/degrees+0.5f)&mask)+one)*point.y*point.y*a->f92;
    }
    write(&point);
   }
