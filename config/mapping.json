@@ -348386,10 +348386,17 @@
     },
     {
       "address": "0x0c1cd7f4",
-      "size": 102,
+      "size": 8,
+      "kind": "data",
+      "sha256": "22d90874e90956e52125635f9fbee7f7c7d41e09577d503d901e79351da1420b",
+      "evidence": "Literal pool: MOV.L at0x0c1cd796 reads function pointer0x0c1d912a from0x0c1cd7f4; MOVA/FMOV at0x0c1cd794/798 reads float0x3ba3d70a from0x0c1cd7f8. Previous RTS/delay at0x0c1cd7dc/de; actual next entry0x0c1cd7fc is reached by BSR at0x0c1cd92c."
+    },
+    {
+      "address": "0x0c1cd7fc",
+      "size": 94,
       "kind": "code",
-      "sha256": "893d399e69d8194894c917b1a61ea00e397dcaa9be6cc6541a832fb96e0cdbac",
-      "evidence": "CFG walk from 0x0c1cd7f4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "b25750251029dc989a7b5143e9d83b9ca98f13ff69f96d23545fa390da7b5cb2",
+      "evidence": "Native interpolation entry reached by BSR at0x0c1cd92c; straight-line code ends at RTS/delay0x0c1cd856/858. Excludes preceding literal pool misidentified as an entry."
     },
     {
       "address": "0x0c1cd85a",
