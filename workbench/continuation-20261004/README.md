@@ -18,3 +18,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1a9814.draft.c`: three translated effect callbacks; full 276-byte span has 274 equal bytes, correct exports and exact pools. Remaining difference is the ground-height load register pair at 0x0c1a98e4/0x0c1a98e6. Direct edges are closed. Requires caller-specific `__slow_mvn=0x0c1fb838`; native float 0x3f4ccccd uses `0.800000012f`. Unverified, no C credit.
 
 - `tu_0c1aca28.draft.c`: 16-effect spawning sequence, allocator, and dispatcher translated. Full span is 272/304 bytes equal with correct exports and all 38 pool bytes exact; sequence and dispatcher are exact. Allocator index promotion and scheduling remain unresolved. Direct edges closed; no verified C credit.
+
+- `tu_0c1a0e68.draft.c`: four translated motion/animation callbacks. Links 300 bytes against the native 304-byte family; the motion body has 124/130 equal bytes. Animation callback caches the spawn helper in R13, unlike retail, shifting subsequent exports. Uses the verified `func_0c19fb0a(LinkedActor *, char)` pointer-return signature. Not an exact section and receives no credit.
