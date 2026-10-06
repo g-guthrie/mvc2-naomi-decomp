@@ -315,6 +315,39 @@
           "evidence": "Native entries are 05482a (allocated actor or null) and 0548a2 (zero). Dispatcher 054812 passes actor in R4 and forwards nullable actor in R0; pointer signatures preserve complete exact section."
         }
       ]
+    },
+    {
+      "source": "src/candidates/tu_0c1da38c.c",
+      "members": [
+        {
+          "type": "struct Keyframe_0c261d94",
+          "member": "time",
+          "offset": 0,
+          "size": 4,
+          "evidence": "0c1da3d8/0c1da3da load time at current row+28 and current row+0; their difference normalizes the frame timer."
+        },
+        {
+          "type": "struct Keyframe_0c261d94",
+          "member": "position",
+          "offset": 4,
+          "size": 12,
+          "evidence": "0c1da400..0c1da458 read position components at row+4,+8,+12."
+        },
+        {
+          "type": "struct Keyframe_0c261d94",
+          "member": "angles",
+          "offset": 16,
+          "size": 12,
+          "evidence": "0c1da474..0c1da4de read degree-angle components at row+16,+20,+24 before fixed-angle conversion."
+        }
+      ],
+      "sizes": [
+        {
+          "type": "struct Keyframe_0c261d94",
+          "size": 28,
+          "evidence": "Native 0c1da3ba/0c1da3c6 and0c1da3e6/0c1da3ec scale row indices by28 bytes."
+        }
+      ]
     }
   ]
 }
