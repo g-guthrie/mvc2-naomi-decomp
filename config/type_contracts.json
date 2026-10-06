@@ -347,6 +347,20 @@
           "size": 28,
           "evidence": "Native 0c1da3ba/0c1da3c6 and0c1da3e6/0c1da3ec scale row indices by28 bytes."
         }
+      ],
+      "prototypes": [
+        {
+          "declaration": "extern int func_0c1d8ff8(int,int);",
+          "evidence": "0c1d8ff8 consumes two address words in R4/R5; 0c1d9014 clears R4 and 0c1d901c returns that zero in R0."
+        },
+        {
+          "declaration": "extern int func_0c1d9100(struct Vec3_tu5_03 *);",
+          "evidence": "0c1d9100 copies twelve bytes to its R4 output pointer; 0c1d9112 explicitly returns zero in R0."
+        },
+        {
+          "declaration": "extern int func_0c1d914c(struct Vec3_tu5_03 *);",
+          "evidence": "0c1d914c copies twelve bytes from its R4 input pointer and marks the resource; 0c1d9166 explicitly returns zero in R0."
+        }
       ]
     }
   ]
