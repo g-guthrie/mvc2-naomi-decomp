@@ -34,3 +34,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1b6e04.draft.c`: translated parent initialization and sixteen-child allocation loop, including owner failure notification. Links 328 bytes against 320 native; 191 native-position bytes equal. Byte-store addressing and constant scheduling remain unresolved. Requires `__slow_mvn=0x0c1fb838`; no verified credit.
 
 - `tu_0c1bae18.draft.c`: six event/lifetime callbacks, 266/272 equal bytes; five functions and all pools exact. Six register bytes remain in event comparison. Native BT at 0x0c1bae70 tail-calls separate cleanup0x0c1baeea from a frameless function; boundary checker rejects this conditional entry. Keep cleanup entry (also reached by other callbacks); do not hide it to bypass admission. No verified credit.
+
+- `tu_0c1c260c.draft.c`: translated six-item setup loop and resource/position/scale allocator. Full span links260 bytes;89 native-position bytes equal. Setup loop exact; allocator owner lifetime and load scheduling unresolved. Uses shared vector and scale records; no verified credit.
