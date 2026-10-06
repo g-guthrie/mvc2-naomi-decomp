@@ -38,3 +38,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1c260c.draft.c`: translated six-item setup loop and resource/position/scale allocator. Full span links260 bytes;89 native-position bytes equal. Setup loop exact; allocator owner lifetime and load scheduling unresolved. Uses shared vector and scale records; no verified credit.
 
 - `tu_0c1c47b4.draft.c`: translated 32-object radial allocator and allocation-failure return. Correct276-byte size and all48 pool bytes match;93 total native-position bytes equal. Shared angle fields used; allocator-call caching and register scheduling remain unresolved. No verified credit.
+
+- `tu_0c1cb1f0.draft.c`: three translated resource/UV-scroll callbacks, 270/272 equal bytes with exact pools and exports. Only stack adjustment immediates differ: native updater reserves20 bytes; two observed UV floats reserve8. Native helper0x0c1d912a reads two scalar floats at offsets24/28. Extra12 bytes remain unexplained; enlarged-array trials disturb instructions and were rejected. Boundary admission also flags the conditional tail entry0x0c1cb252 to updater0x0c1cb25a. No verified credit.
