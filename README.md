@@ -75,4 +75,4 @@ them by hand. The treemap at `build/index.html` comes from the same build.
 
 Decompilation is active and incomplete. Only whole-section exact C enters the verified registry. Compiling drafts and matching ROM rebuilds do not establish complete decompilation: untranslated regions still use original bytes.
 
-The current continuation includes six newly verified C units. [Unverified continuation drafts](workbench/continuation-20261004) are preserved separately and receive no credit. The [October 4 recovery handoff](docs/FINAL_HANDOFF.md) and its release are historical checkpoints, not the current project status.
+The latest verified addition is the six-function paired actor attachment family at `0x0c1aede8`, adding 424 executable C bytes. The approach-and-brake callback at `0x0c1b1fb0` remains an unverified candidate (487/492 bytes equal) and earns no verified C credit. [Unverified continuation drafts](workbench/continuation-20261004) are preserved separately and receive no credit. The [October 4 recovery handoff](docs/FINAL_HANDOFF.md) and its release are historical checkpoints, not the current project status.
