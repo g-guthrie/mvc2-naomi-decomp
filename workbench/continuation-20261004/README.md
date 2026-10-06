@@ -26,3 +26,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1a390c.draft.c`: ten translated lifecycle callbacks; 641/652 bytes equal, correct exports and exact pools. Nine functions match; 11 FPR/load-order bytes remain in trajectory setup `0x0c1a3adc`. Uses existing Actor padding byte at 0x14f; direct edges closed after excluding the mid-function pool continuation from exports. Requires `__slow_mvn=0x0c1fb838`; no verified credit.
 
 - `tu_0c1a7ed8.draft.c`: fourteen translated effect callbacks; 723/728 equal bytes with correct exports and exact pools. Thirteen functions match; five table-index register bytes remain in positioned burst `0x0c1a7f6e`. Owner forwarding at `0x0c1a8078` follows native R5 preservation; signed visibility tests avoid extra promotions. No verified C credit.
+
+- `tu_0c1b61b8.draft.c`: complete owner-follow/visibility callback, 301/304 equal bytes with exact pools. Three facing-test register bytes remain at 0x0c1b6262/0x0c1b6264. Uses shared ActorFlags for the visibility bit; requires `__slow_mvn=0x0c1fb838`. No verified credit.
