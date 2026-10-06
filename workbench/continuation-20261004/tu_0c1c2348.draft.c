@@ -1,7 +1,8 @@
-/* Unverified placement/scale callbacks:352 linked bytes against356 native; index and float temporary scheduling unresolved. */
+/* Unverified placement/scale callbacks:356 linked bytes against356 native.
+ * Array indexing and integer register allocation still differ; no credit. */
 #include "objects.h"
 extern struct Vec3_tu5_03 dat_0c25c4ec[][3],dat_0c25c54c[];
-extern int **dat_0c2d9654;
+extern struct ActorGlobalRoot *dat_0c2d9654;
 extern unsigned char dat_0c2f8338[];
 extern void func_0c037688(struct Obj_tu5_03 *);
 void func_0c1c2348(struct Obj_tu5_03 *a){
@@ -10,13 +11,12 @@ void func_0c1c2348(struct Obj_tu5_03 *a){
  if(owner->w2a0){a->b12c=1;a->pos=dat_0c25c4ec[owner->b2][owner->b411];}
 }
 void func_0c1c2394(struct Obj_tu5_03 *a){
- struct Actor *owner;float scaled,offset;int position;
+ struct Actor *owner;struct Obj_tu5_03 *parent;float offset;
  a->b12c=1;owner=(struct Actor *)a->p24;
- position=owner->b411+owner->b2*2-1;
- a->pos=dat_0c25c54c[position];
- scaled=a->p20->f80*56.0f;offset=(a->b32&1)?scaled:-scaled;
+ a->pos=dat_0c25c54c[owner->b411+owner->b2*2-1];
+ parent=a->p20;offset=-(parent->f80*56.0f);if(a->b32&1)offset=-offset;
  a->pos.x=offset+a->f104;
- a->l84=(*dat_0c2d9654)[(a->w28>>3)+80];
+ a->l84=((int *)dat_0c2d9654->p0)[(a->w28>>3)+80];
  a->w28++;
  if(a->w28>40 || !owner->b411 || dat_0c2f8338[0]!=4){a->b12c=0;func_0c037688(a);}
 }
