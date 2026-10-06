@@ -141,6 +141,48 @@
           "member": "b441",
           "offset": "0x441",
           "evidence": "0c04e6a8 loads byte at literal0x440, increments offset and stores at0x441; decoder0c04e6ea writes current byte at0x440."
+        },
+        {
+          "type": "struct EffectFramePlacement20",
+          "member": "enabled",
+          "offset": 0,
+          "evidence": "0c1b63ae byte load from table 0c25b134.",
+          "size": 1
+        },
+        {
+          "type": "struct EffectFramePlacement20",
+          "member": "frame",
+          "offset": 2,
+          "evidence": "0c1b63b6 halfword load from table 0c25b134.",
+          "size": 2
+        },
+        {
+          "type": "struct EffectFramePlacement20",
+          "member": "scale_x",
+          "offset": 4,
+          "evidence": "0c1b63c4/0c1b63c6 float load from table 0c25b134.",
+          "size": 4
+        },
+        {
+          "type": "struct EffectFramePlacement20",
+          "member": "scale_y",
+          "offset": 8,
+          "evidence": "0c1b63cc/0c1b63ce float load from table 0c25b134.",
+          "size": 4
+        },
+        {
+          "type": "struct EffectFramePlacement20",
+          "member": "offset_x",
+          "offset": 12,
+          "evidence": "0c1b63d4/0c1b63d6 float load from table 0c25b134.",
+          "size": 4
+        },
+        {
+          "type": "struct EffectFramePlacement20",
+          "member": "offset_y",
+          "offset": 16,
+          "evidence": "0c1b63d8/0c1b63da float load from table 0c25b134.",
+          "size": 4
         }
       ],
       "sizes": [
@@ -153,6 +195,11 @@
           "type": "struct ActorInputRecord20",
           "size": 20,
           "evidence": "Exact C src/verified/tu_0c09328c.c, func_0c093406: indexed controller stride 20. Native 0c093432 SHLL2, 0c093434 ADD original index, 0c093438 SHLL2."
+        },
+        {
+          "type": "struct EffectFramePlacement20",
+          "size": 20,
+          "evidence": "0c1b639c..0c1b63aa multiplies frame index by20; variant stride180 at0c1b639a holds nine rows."
         }
       ]
     },
