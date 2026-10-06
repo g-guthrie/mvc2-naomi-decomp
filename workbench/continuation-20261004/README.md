@@ -12,3 +12,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1d9b70.draft.c`: four translated allocator/initialization/fade functions; 158/512 bytes equal at the correct total size. The initializer and fade boundaries remain displaced. Native random range and signed/unsigned remainder operations were reviewed; no matching credit is claimed.
 
 - `tu_0c1c409c.draft.c`: eight translated handlers; 485/504 bytes equal, all literal pools exact. Initializer and movement register/order differences remain. Native conditional branch 0c1c424e enters shared cleanup 0c1c4254, also called from allocator 0c1c40dc; this requires explicit boundary admission review.
+
+- `tu_0c1ad5bc.draft.c`: four newly translated owner-follow/timer callbacks; complete 348-byte span compiles to the correct size with 345 bytes equal. Three functions and all 32 pool bytes match. The remaining timer callback differs in three FPR bytes at 0x0c1ad694, 0x0c1ad698, and 0x0c1ad69c. Direct boundary review passes; no verified C credit.
