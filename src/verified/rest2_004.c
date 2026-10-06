@@ -1,15 +1,5 @@
 /* Hitachi const data: leftover mapped arrays, pointer runs, nonexecutable unknown. */
 
-#pragma section n19117c
-const unsigned int dat_0c1b217c[] = {
-    0x013002b0u,
-};
-
-#pragma section n191194
-const unsigned int dat_0c1b2194[] = {
-    0x0c02a0c4u, 0x0c0346dau,
-};
-
 #pragma section n1912a8
 const unsigned int dat_0c1b22a8[] = {
     0x00000130u,
