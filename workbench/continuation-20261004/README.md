@@ -14,3 +14,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1c409c.draft.c`: eight translated handlers; 485/504 bytes equal, all literal pools exact. Initializer and movement register/order differences remain. Native conditional branch 0c1c424e enters shared cleanup 0c1c4254, also called from allocator 0c1c40dc; this requires explicit boundary admission review.
 
 - `tu_0c1ad5bc.draft.c`: four newly translated owner-follow/timer callbacks; complete 348-byte span compiles to the correct size with 345 bytes equal. Three functions and all 32 pool bytes match. The remaining timer callback differs in three FPR bytes at 0x0c1ad694, 0x0c1ad698, and 0x0c1ad69c. Direct boundary review passes; no verified C credit.
+
+- `tu_0c1a9814.draft.c`: three translated effect callbacks; full 276-byte span has 274 equal bytes, correct exports and exact pools. Remaining difference is the ground-height load register pair at 0x0c1a98e4/0x0c1a98e6. Direct edges are closed. Requires caller-specific `__slow_mvn=0x0c1fb838`; native float 0x3f4ccccd uses `0.800000012f`. Unverified, no C credit.
