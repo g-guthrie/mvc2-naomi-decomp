@@ -4,7 +4,7 @@
  * Actor pad7cc[0] is the object-table index at 0x1a4. */
 #include "objects.h"
 extern struct ActorFlags *dat_0c2d6f84;
-extern int **dat_0c2d9654;
+extern struct ActorGlobalRoot *dat_0c2d9654;
 extern unsigned char dat_0c25c864[];
 extern signed char dat_0c2f836e[];
 extern struct Vec3_tu5_03 dat_0c25c80c[],dat_0c25c36c[];
@@ -49,20 +49,20 @@ void func_0c1c16c0(int slot){
  struct Obj_tu5_03 *a;struct Actor *actor;int resource,position;
  if((a=func_0c0374da(0,11,1))){
  a->b12c=1;a->p16=func_0c1c1eae;resource=61;if(slot&1)resource=70;
- a->l84=(*dat_0c2d9654)[resource];actor=(struct Actor *)(dat_0c2d7088+slot*0x5a4);
+ a->l84=((int *)dat_0c2d9654->p0)[resource];actor=(struct Actor *)(dat_0c2d7088+slot*0x5a4);
  position=dat_0c25c854[actor->b2*3+actor->b411];
  if(*(unsigned int *)&actor->pad13c[2]&0x07000000)position+=18;
  a->pos=dat_0c25c36c[position];a->lcc=0x10c21;a->pad0[2]=slot&1;a->b32=slot;
  a->b33=actor->b411;a->p24=(struct Obj_tu5_03 *)actor;
  *(struct EffectScale4 *)&a->f116=dat_0c25c6fc;a->w28=0;
- dat_0c2fb470[0]=0;dat_0c2fb470[1]=0;dat_0c2fb470[2]=0;dat_0c2fb470[3]=0;dat_0c2fb470[4]=0;dat_0c2fb470[5]=0;
+ {struct Obj_tu5_03 **p=dat_0c2fb470;*p++=0;*p++=0;*p++=0;*p++=0;*p++=0;*p=0;}
  func_0c1c17f0(a,slot);func_0c1c1a20(a,slot);func_0c1c1aac(a,slot);func_0c1c1c16(a,slot);
  }
 }
 void func_0c1c17f0(struct Obj_tu5_03 *parent,int slot){
  struct Obj_tu5_03 *a;struct Actor *actor;unsigned int *colour;int count;
  if((a=func_0c0374da(0,11,1))){
- a->b12c=1;a->p16=func_0c1c216e;a->l84=(*dat_0c2d9654)[dat_0c25c85a[slot]];
+ a->b12c=1;a->p16=func_0c1c216e;a->l84=((int *)dat_0c2d9654->p0)[dat_0c25c85a[slot]];
  *(struct Vec3_tu5_03 *)&a->f80=dat_0c25c540;a->lcc=0x10c10;a->p200=&parent->f136;
  a->pad0[2]=parent->pad0[2];a->b32=slot;actor=(struct Actor *)(dat_0c2d7088+slot*0x5a4);
  a->b33=actor->b411;a->w30=actor->w420;a->p24=(struct Obj_tu5_03 *)actor;a->p20=parent;
@@ -74,7 +74,7 @@ void func_0c1c18e8(int side,int variant){
  struct Obj_tu5_03 *a;struct Actor *actor;int resource,zero=0;
  if((a=func_0c0374da(0,11,1))){
  a->b12c=1;a->p16=func_0c1c21d8;resource=63;if(side)resource=72;
- a->l84=(*dat_0c2d9654)[resource];a->pos=dat_0c25c48c[side*2+variant];
+ a->l84=((int *)dat_0c2d9654->p0)[resource];a->pos=dat_0c25c48c[side*2+variant];
  *(struct Vec3_tu5_03 *)&a->f80=dat_0c25c540;a->lcc=0x10c11;
  a->b32=side;a->b33=variant;a->pad34=zero;a->p24=(struct Obj_tu5_03 *)(dat_0c2d7088+side*0x5a4);
  a->f120=a->f124=a->f128=1.0f;a->f104=0.0f;a->f108=21845.0f;a->f112=43690.0f;a->w28=zero;a->w30=zero;
@@ -88,7 +88,7 @@ void func_0c1c18e8(int side,int variant){
 void func_0c1c1a20(struct Obj_tu5_03 *parent,int slot){
  struct Obj_tu5_03 *a;struct Actor *actor;
  if((a=func_0c0374da(0,11,1))){
- a->b12c=1;a->p16=func_0c1c22fa;a->l84=(*dat_0c2d9654)[dat_0c25c4bc[slot]];
+ a->b12c=1;a->p16=func_0c1c22fa;a->l84=((int *)dat_0c2d9654->p0)[dat_0c25c4bc[slot]];
  a->pos=dat_0c25c4d4[slot&1];a->lcc=0x10c21;a->b32=slot;
  actor=(struct Actor *)(dat_0c2d7088+slot*0x5a4);a->b33=actor->b411;
  a->p24=(struct Obj_tu5_03 *)actor;a->p20=parent;a->p200=&parent->f136;
@@ -97,7 +97,7 @@ void func_0c1c1a20(struct Obj_tu5_03 *parent,int slot){
 void func_0c1c1aac(struct Obj_tu5_03 *parent,int slot){
  struct Obj_tu5_03 *a;struct Actor *actor;
  if((a=func_0c0374da(0,11,1))){
- a->b12c=0;a->p16=func_0c1c2348;a->l84=(*dat_0c2d9654)[79];
+ a->b12c=0;a->p16=func_0c1c2348;a->l84=((int *)dat_0c2d9654->p0)[79];
  a->pos=dat_0c25c4ec[slot&1][slot>>1];a->lcc=0x10811;a->f80=5.0f;a->f84=a->f88=1.0f;
  a->b32=slot;actor=(struct Actor *)(dat_0c2d7088+slot*0x5a4);a->b33=actor->b411;
  a->p24=(struct Obj_tu5_03 *)actor;a->p200=&parent->f136;
@@ -106,7 +106,7 @@ void func_0c1c1aac(struct Obj_tu5_03 *parent,int slot){
 void func_0c1c1b88(struct Obj_tu5_03 *parent,struct Actor *actor){
  struct Obj_tu5_03 *a;struct Vec3_tu5_03 *position;
  if((a=func_0c0374da(0,11,1))){
- a->b12c=1;a->p16=func_0c1c2394;a->l84=(*dat_0c2d9654)[80];
+ a->b12c=1;a->p16=func_0c1c2394;a->l84=((int *)dat_0c2d9654->p0)[80];
  position=&dat_0c25c54c[actor->b411+actor->b2*2-1];
  a->pos=*position;*(struct Vec3_tu5_03 *)&a->f104=*position;
  a->lcc=0x10801;a->b32=parent->b32;a->b33=actor->b411;
@@ -117,7 +117,7 @@ void func_0c1c1c16(struct Obj_tu5_03 *parent,int slot){
  struct Obj_tu5_03 *a;struct Actor *actor;int resource;
  if((a=func_0c0374da(0,11,1))){
  a->b12c=1;a->p16=func_0c1c2438;resource=106;if(slot&1)resource=107;
- a->l84=(*dat_0c2d9654)[resource];*(struct Vec3_tu5_03 *)&a->f80=dat_0c25c540;
+ a->l84=((int *)dat_0c2d9654->p0)[resource];*(struct Vec3_tu5_03 *)&a->f80=dat_0c25c540;
  a->lcc=0x10c11;a->pos.x=0.0f;a->pos.y=0.0f;a->pos.z=-0.125f;
  a->p200=&parent->f136;a->b32=slot;actor=(struct Actor *)(dat_0c2d7088+slot*0x5a4);
  a->b33=actor->b411;a->p24=(struct Obj_tu5_03 *)actor;a->p20=parent;
@@ -126,14 +126,14 @@ void func_0c1c1c16(struct Obj_tu5_03 *parent,int slot){
 void func_0c1c1cdc(struct Obj_tu5_03 *parent){
  struct Obj_tu5_03 *a;
  if((a=func_0c0374da((int)parent,11,2))){
- a->b12c=1;a->p16=func_0c1c2460;a->l84=(*dat_0c2d9654)[dat_0c25c860[parent->pad0[2]]];
+ a->b12c=1;a->p16=func_0c1c2460;a->l84=((int *)dat_0c2d9654->p0)[dat_0c25c860[parent->pad0[2]]];
  a->pos=dat_0c25c57c[parent->pad0[2]];a->lcc=0x10801;a->p24=parent;
  }
 }
 void func_0c1c1d3a(struct Actor *actor,short *counter,int colour){
  struct Obj_tu5_03 *a;
  if(*counter && (a=func_0c0374da(0,11,1))){
- a->b12c=1;a->p16=func_0c1c24ac;a->l84=(*dat_0c2d9654)[dat_0c25c862[actor->b2]];
+ a->b12c=1;a->p16=func_0c1c24ac;a->l84=((int *)dat_0c2d9654->p0)[dat_0c25c862[actor->b2]];
  a->pos=dat_0c25c594[actor->b2];*(struct Vec3_tu5_03 *)&a->f80=dat_0c25c540;
  a->pad0[2]=actor->b2;a->p24=(struct Obj_tu5_03 *)actor;a->lcc=0x10c11;
  a->i208=(int)counter;a->w28=*counter;*(struct EffectScale4 *)&a->f116=dat_0c25c71c[colour];
@@ -145,7 +145,7 @@ void func_0c1c1e30(struct Actor *actor){
  if(dat_0c2d6f84->i20==64)return;
  if((a=func_0c0374da(0,11,1))){
  a->b12c=1;a->p16=func_0c1c2550;
- a->l84=(*dat_0c2d9654)[dat_0c25c864[actor->b2]];
+ a->l84=((int *)dat_0c2d9654->p0)[dat_0c25c864[actor->b2]];
  a->w30=120;a->lcc=0x10801;a->p24=(struct Obj_tu5_03 *)actor;
  a->pos=dat_0c25c80c[actor->b411*2+actor->b2];a->b7=actor->b411;
  }
@@ -178,7 +178,7 @@ void func_0c1c1fb8(struct Obj_tu5_03 *a,struct Actor *actor){
 void func_0c1c205a(struct Obj_tu5_03 *a,struct Actor *actor){
  a->f120=dat_0c25c6fc.f120;a->f124=dat_0c25c6fc.f124;a->f128=dat_0c25c6fc.f128;
  if(actor->w2a0){a->f120=dat_0c25c70c.f120;a->f124=dat_0c25c70c.f124;a->f128=dat_0c25c70c.f128;}
- if(a->w28!=(short)actor->w2a0 && !actor->w2a0 && actor->b411)func_0c1c1e30(actor);
+ if(a->w28!=(short)actor->w2a0){if(!actor->w2a0){if(actor->b411)func_0c1c1e30(actor);}}
  a->w28=actor->w2a0;
 }
 void func_0c1c20ec(struct Obj_tu5_03 *a,struct Actor *actor){
@@ -192,8 +192,9 @@ void func_0c1c20ec(struct Obj_tu5_03 *a,struct Actor *actor){
  }else goto opaque;
  }
  }else if(!actor->pad1d7[5] && (short)actor->w420>0){a->b12c=1;goto opaque;}
- return;
+ goto done;
  opaque:a->f116=1.0f;
+ done:;
 }
 void func_0c1c216e(struct Obj_tu5_03 *a){
  struct Actor *actor;
