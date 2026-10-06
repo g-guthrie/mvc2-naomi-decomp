@@ -84,6 +84,24 @@ class BoundaryTests(unittest.TestCase):
         self.assertIn('conditional_entry', kinds)
         self.assertIn('entry_in_delay_slot', kinds)
 
+    def test_frameless_conditional_tail_to_saved_register_entry(self):
+        # MOV #1,R0; BT ->1008; MOV #0,R0; NOP; callee prologue.
+        blob = bytes.fromhex('01e0018900e00900e62f')
+        result = self.audit(blob, [{'address': 0x1000, 'size': len(blob), 'kind': 'code'}], [0x1000, 0x1008])
+        self.assertEqual(result['issues'], [])
+
+    def test_conditional_tail_rejects_modified_abi_state_and_unknown_code(self):
+        for prefix in ('e62f', '227f', '22e8', '224f', '0b43', '0000'):
+            with self.subTest(prefix=prefix):
+                blob = bytes.fromhex(prefix + '018900e00900e62f')
+                result = self.audit(blob, [{'address': 0x1000, 'size': len(blob), 'kind': 'code'}], [0x1000, 0x1008])
+                self.assertIn('conditional_entry', {i['kind'] for i in result['issues']})
+
+    def test_conditional_tail_checks_delay_slot_for_stack_changes(self):
+        blob = bytes.fromhex('01e0018dfc7f0900e62f')
+        result = self.audit(blob, [{'address': 0x1000, 'size': len(blob), 'kind': 'code'}], [0x1000, 0x1008])
+        self.assertIn('conditional_entry', {i['kind'] for i in result['issues']})
+
     def test_legitimate_direct_call_to_entry_is_allowed(self):
         blob = bytes.fromhex('00b009000b000900')
         result = self.audit(blob, [{'address': 0x1004, 'size': 4, 'kind': 'code'}], [0x1004])

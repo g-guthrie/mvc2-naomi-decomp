@@ -40,6 +40,40 @@ class BoundaryIndex:
                   for r in load(ROOT / 'config/mapping.json')['ranges']]
         return cls(program[offset:offset + size], base, ranges)
 
+    def frameless_conditional_tail(self, entry, source, target):
+        """Recognize only a small, ABI-preserving integer-only caller prefix.
+
+        A separate saved-register prologue distinguishes this from a label in
+        a frameless continuation. Unknown instructions fail closed. Whole-unit
+        compiler proof and independent export review remain admission gates.
+        """
+        if target not in self.code or target in self.delays:
+            return False
+        first = struct.unpack_from('<H', self.image, target - self.base)[0]
+        if first != 0x4f22 and first not in range(0x2f86, 0x2fe7, 0x10):
+            return False
+        end = source + (4 if self.code[source]['delay'] else 2)
+        for pc in range(entry, end, 2):
+            if pc not in self.code:
+                return False
+            word = struct.unpack_from('<H', self.image, pc - self.base)[0]
+            n, m = (word >> 8) & 15, (word >> 4) & 15
+            info = self.code[pc]
+            if info['kind'] in ('bt', 'bf', 'bts', 'bfs'):
+                if any(t != target and not entry <= t <= source for t in info['targets']):
+                    return False
+                continue
+            safe = (word == 0x0009
+                    or (word >> 12 in (7, 9, 14) and n < 8)
+                    or (word & 0xff00 in (0x8000, 0x8100, 0x8400, 0x8500) and m < 8)
+                    or (word >> 12 == 6 and n < 8 and m < 8 and word & 15 in (3, 12, 13, 14, 15))
+                    or (word >> 12 == 3 and n < 8 and m < 8 and word & 15 in (0, 2, 3, 6, 7))
+                    or (word >> 12 == 2 and n < 8 and m < 8 and word & 15 == 8)
+                    or (word & 0xf0ff in (0x4011, 0x4015) and n < 8))
+            if not safe:
+                return False
+        return True
+
     def audit(self, sections, entries=()):
         spans = sorted((number(s['address']), number(s['address']) + number(s['size']))
                        for s in sections if s['kind'] != 'bss')
@@ -80,7 +114,9 @@ class BoundaryIndex:
             elif (owner and kind == 'branch' and target in entries
                   and self.code[source]['kind'] in ('bt', 'bf', 'bts', 'bfs')
                   and ordered_entries[max(0, bisect.bisect_right(ordered_entries, source)-1)] != target):
-                reason = 'conditional_entry'
+                entry = ordered_entries[max(0, bisect.bisect_right(ordered_entries, source)-1)]
+                if not self.frameless_conditional_tail(entry, source, target):
+                    reason = 'conditional_entry'
             if reason:
                 row = {'kind': reason, 'source': hex(source), 'target': hex(target), 'width': width}
                 issues.append(row)

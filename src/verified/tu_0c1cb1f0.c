@@ -1,4 +1,4 @@
-/* Unverified UV-scroll family: 270/272 equal bytes. Native updater reserves20 stack bytes; observed scalar UV locals need8. */
+/* Resource setup, cyclic counters, and scalar UV scrolling. */
 #include "objects.h"
 extern struct LinkedActor *func_0c0374da(int,int,int);
 extern void ***dat_0c2d9670;
@@ -17,7 +17,9 @@ void func_0c1cb230(struct LinkedActor *a){
  func_0c1cb25a(a);
 }
 void func_0c1cb25a(struct LinkedActor *a){
- float u,v;
+ /* Native 0c1cb266/0c1cb2c2 reserves20 bytes; only u/v are accessed.
+  * Retain the unused12 bytes without inventing additional UV semantics. */
+ float u,v; unsigned char reserved[12];
  func_0c1d8ff8((*dat_0c2d9670)[8],a->p84);
  while(!func_0c1d901e()){
  func_0c1d912a(&u,&v);u-=a->s30*0.005f;v+=a->s30*0.005f;func_0c1d917e(&u,&v);
