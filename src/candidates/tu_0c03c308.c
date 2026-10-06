@@ -1,10 +1,7 @@
 /* Three functions and the literal pool match. func_0c03c360 remains
  * 188/190 bytes, differing only in the player-pointer load register. */
 #include "objects.h"
-struct ActorPlayerEntry12 {
-  struct Actor *actor;
-  unsigned char pad4[8];
-};
+
 extern void (*table_0c23ba7c[])(struct Actor *);
 extern void (*table_0c23ba84[])(struct Actor *);
 extern void func_0c045144(struct Actor *);
@@ -44,7 +41,7 @@ void func_0c03c360(struct Actor *a) {
     a->f108 = 0;
     func_0c02a0c4(a, 0, 0);
     func_0c043324(a);
-    if (((struct ActorPlayerEntry12 *)((unsigned char *)dat_0c2f83f8 +
+    if (((struct DirectionEntry12 *)((unsigned char *)dat_0c2f83f8 +
                                        24))[(unsigned char)a->b2]
             .actor->b5 >= 2)
       func_0c0453c4(a, 0);
