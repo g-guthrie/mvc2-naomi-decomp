@@ -1,7 +1,7 @@
-/* Unverified resource/angle constructor and shrink callback:412 linked bytes against408 native; full descriptor includes both pools. */
+/* Unverified resource/angle constructor and shrink callback:184/408 bytes equal, 412 linked bytes; shared resource root and nested angle-table pointer improve scheduling. */
 #include "objects.h"
 extern struct Obj_tu5_03 *func_0c0374da(int,int,int);
-extern int **dat_0c2d966c;
+extern struct ActorGlobalRoot *dat_0c2d966c;
 extern unsigned char dat_0c25ec74[];
 extern struct Vec3_tu5_03 dat_0c25ec78[],dat_0c25ec9c,dat_0c2306f4,dat_0c230700[];
 extern struct ActorFlags *dat_0c2d6f84;
@@ -10,9 +10,9 @@ void func_0c1ca0f8(struct Obj_tu5_03 *);
 void func_0c1c9ff4(int index){
  struct Obj_tu5_03 *a;struct Vec3_tu5_03 *angles;
  if((a=func_0c0374da(0,5,1))){
- a->b12c=1;a->b32=index;a->p16=func_0c1ca0f8;a->l84=(*dat_0c2d966c)[dat_0c25ec74[index]];
- a->pos=dat_0c25ec78[index];angles=&dat_0c25ec9c;
- a->angles.array[0]=(int)(angles->x*65536.0f/360.0f+0.5f)&65535;
+ a->b12c=1;a->b32=index;a->p16=func_0c1ca0f8;a->l84=((int *)dat_0c2d966c->p0)[dat_0c25ec74[index]];
+ a->pos=dat_0c25ec78[index];
+ a->angles.array[0]=(int)((angles=&dat_0c25ec9c)->x*65536.0f/360.0f+0.5f)&65535;
  a->angles.scalar.l44=(int)(angles->y*65536.0f/360.0f+0.5f)&65535;
  a->angles.scalar.l48=(int)(angles->z*65536.0f/360.0f+0.5f)&65535;
  *(struct Vec3_tu5_03 *)&a->f80=dat_0c2306f4;
