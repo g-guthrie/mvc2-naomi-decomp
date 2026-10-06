@@ -45,3 +45,5 @@ Both compile with the fixed bundled game options. Native runtime bindings, liter
 - `tu_0c1c690c.draft.c`: selection-position constructor and dispatcher translated; retained void version links312 bytes against316, constructor179/238 bytes equal. Selection byte cached as native; return convention needs caller evidence because suppressed path leaves incidental R0. Pointer-return experiment matches size but leaves unspecified early return, so remains outside retained source. No verified credit.
 
 - UV-scroll family `tu_0c1cb1f0` promoted to verified source after matching its native20-byte local frame and proving its frameless conditional tail entry. The unused12 bytes have no inferred semantics.
+
+- `tu_0c1b7200.draft.c`: three translated attachment callbacks, 347/352 equal bytes; initializer, dispatcher, and pools exact. Five call/flag-register bytes remain in update0x0c1b7200. Requires `__slow_mvn=0x0c1fb838`; no verified credit.
