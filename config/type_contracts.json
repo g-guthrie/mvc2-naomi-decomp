@@ -123,6 +123,12 @@
           "offset": 0,
           "size": 2,
           "evidence": "Exact C src/verified/tu_0c09328c.c, func_0c093406: halfword button read from dat_0c2d6f24 plus actor index times 20. Native: 0c093432/0c093434/0c093438 multiply index by 20; 0c09343c MOV.W then 0c09343e EXTU.W."
+        },
+        {
+          "type": "struct Actor",
+          "member": "b495",
+          "offset": "0x495",
+          "evidence": "Native signed byte loads at 0c04e7ee and 0c04e82e; literal 0c04e878 contains 0x0495. Sign test and bit 1/4 tests in 0c04e78e..0c04e874."
         }
       ],
       "sizes": [

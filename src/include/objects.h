@@ -348,7 +348,9 @@ struct Actor {
     unsigned char pad14b[0x446 - 0x42c];
     unsigned char b446, b447;
     signed char b448;
-    unsigned char pad449[0x45d - 0x449],b45d,pad45e[0x4b4 - 0x45e];
+    unsigned char pad449[0x45d - 0x449],b45d,pad45e[0x495 - 0x45e];
+    signed char b495; /* Operand gate flags: sign bit and bits 1/4. */
+    unsigned char pad496[0x4b4 - 0x496];
     union ActorParameter4 parameter4b4;
     unsigned char pad4b8[0x4c9 - 0x4b8];
     char b4c9;
