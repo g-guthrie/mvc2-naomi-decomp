@@ -39,18 +39,6 @@ struct Obj_0c15dbdc { unsigned char pad[20]; struct Actor *p20; };
 #pragma section n15dbdc
 void func_0c15dbdc(struct Actor *p) { struct Actor *q = ((struct Obj_0c15dbdc *)p)->p20; p->f52 = q->f52; p->f56 = q->f56; }
 
-struct Obj_0c1675ca { unsigned char pad[2]; unsigned char b2, b3; };
-#pragma section n1675ca
-void func_0c1675ca(int a, struct Obj_0c1675ca *p)
-{
-    if (p->b2 >= 12)
-        return;
-    if (--p->b3 > 0)
-        return;
-    p->b3 = 2;
-    p->b2++;
-}
-
 struct Obj_0c180f3e { unsigned char pad0[4]; unsigned char b4, b5; unsigned char pad1[18]; struct Obj_0c180f3e *p24; };
 #pragma section n180f3e
 int func_0c180f3e(struct Obj_0c180f3e *p) { p = p->p24; if (p->b5 == 3) return -1; return 0; }

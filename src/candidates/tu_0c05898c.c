@@ -1,3 +1,4 @@
+/* Candidate: 646/648. Remaining: r2/r3 scratch rotation at 0c058b76 (b1fd & two test in func_0c058a30). */
 #include "objects.h"
 extern void (*table_0c23f864[])(struct Actor *);
 extern void (*table_0c23f87c[])(struct Actor *);
@@ -56,11 +57,9 @@ void func_0c058a30(struct Actor *a) {
     position.y = 154.28571f;
     func_0c0429a4(a, &position, 1);
     goto done;
-  }
-  if (a->b141)
+  } else if (a->b141 != 0)
     a->b3f1 = a->b255 == 6 ? 2 : 0;
-  animation = (unsigned char *)&a->w150;
-  if (!animation[1]) {
+  if (!((unsigned char *)&a->w150)[1]) {
     func_0c043352(a);
     a->f52 += a->f92;
     a->f92 += a->f104;
@@ -92,7 +91,10 @@ done:
   return;
 }
 void func_0c058ba2(struct Actor *a) {
-  struct ActorSub2a4 *sub = &a->sub2a4;
+  struct ActorSub2a4 *sub;
+  sub = &a->sub2a4;
+  goto call;
+call:
   if (func_0c02a026(a) < 0) {
     a->b7++;
     sub->b2 = 0;
