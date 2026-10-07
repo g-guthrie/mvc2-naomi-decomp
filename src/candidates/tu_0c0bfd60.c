@@ -67,7 +67,7 @@ void func_0c0bfd7c(struct Actor *a)
 unsigned char func_0c0bfe50(struct Actor *a)
 {
  if(!func_0c047664(a,dat_0c245da0,a->x364))goto fail;
- if(a->b1f9==2 && !a->b1fc){if(a->b1d4){fail:return 0;}a->b1d4++;}
+ if(a->b1f9==2 && a->b1fc==0){if(a->b1d4){fail:return 0;}a->b1d4++;}
  a->b5=0;a->b7=0;a->b6=0;a->b1e9=0;
  func_0c045248(a,21);return 1;
 }
@@ -103,7 +103,7 @@ unsigned char func_0c0bffea(struct Actor *a)
 unsigned char func_0c0c0076(struct Actor *a)
 {
  struct ActorSubMoveBytes *sub=(struct ActorSubMoveBytes *)&a->sub2a4;unsigned char *cmd=dat_0c245dea;
- if(!sub->b8){
+ if(sub->b8==0){
   if(!func_0c046e7e(a,cmd,a->x384)||a->b1f9==2||sub->b5||sub->b6||sub->b7)goto fail;
   func_0c047aac(a,a->x384);
  }else{
@@ -130,7 +130,7 @@ unsigned char func_0c0c01ae(struct Actor *a)
  func_0c047aac(a,a->x39c);
  a->b5=0;a->b7=0;a->b6=0;a->b1e9=12;
  func_0c045248(a,21);
- if(!a->b525)sub->b26=1;else sub->b26=a->b1fe;
+ if(a->b525==0)sub->b26=1;else sub->b26=a->b1fe;
  return 1;
 }
 unsigned char func_0c0c0218(struct Actor *a)
@@ -140,7 +140,7 @@ unsigned char func_0c0c0218(struct Actor *a)
  func_0c047aac(a,a->x3a4);
  a->b5=0;a->b7=0;a->b6=0;a->b1e9=12;
  func_0c045248(a,21);
- if(!a->b525)sub->b26=2;else sub->b26=a->b1fe;
+ if(a->b525==0)sub->b26=2;else sub->b26=a->b1fe;
  return 1;
 }
 int func_0c0c02a6(struct Actor *a)
