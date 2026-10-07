@@ -1,8 +1,6 @@
-/* Candidate: five of seven functions and all six literal pools match.
- * P: 1561/1580 bytes; initializer scheduling differs at 0x0c173384..392,
- * and update XOR uses r2 instead of r1 at 0x0c173750..754.
+/* Exact effect unit: all seven functions and six literal pools (1580 bytes).
  * Local configuration initializers reproduce C at 0x0c22f7d4 (62 bytes).
- * Keep the array declarations and parent capture order: both affect SHC layout.
+ * Array declarations, parent capture, and update block structure affect SHC layout.
  */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
@@ -31,7 +29,12 @@ void func_0c1732d4(struct LinkedActor *a)
  unsigned char counts[8] = {6,1,3,6,6,5,5,12};
  struct LinkedActor *p;int timer;unsigned short selection;float speed,scale;
  a->b4++;a->sdc.b12c=1;((struct MeActor *)a)->blk_dc.b13c=32;((struct MeActor *)a)->blk_dc.b13d=40;((struct MeActor *)a)->blk_dc.b13e=64;((struct MeActor *)a)->blk_dc.b13f=64;
- p=a->p24;a->sdc=p->sdc;a->sdc.b12c=1;a->b2=p->b2;a->b1=p->b1;a->v80.x=p->v80.x;a->v80.y=p->v80.y;a->b1a3=p->b1a3;a->b1a4=p->b1a4;a->b48=p->b48;a->v80=p->v80;a->b36=8;A(a)->b7=3;
+ p=a->p24;a->sdc=p->sdc;a->sdc.b12c=1;a->b2=p->b2;a->b1=p->b1;a->v80.x=p->v80.x;a->v80.y=p->v80.y;a->b1a3=p->b1a3;a->b1a4=p->b1a4;a->b48=p->b48;a->v80=p->v80;
+ /* Preserve the parent-copy template before overriding the effect flag.
+  * SHC eliminates this first store, but it affects scratch-register scheduling.
+  * The same copy/override pattern appears in func_0c174060.
+  */
+ a->b36=p->b36;a->b36=8;A(a)->b7=3;
  timer=timers[a->b1a3];if(a->b32)timer=64;if(MODE(p)==2)timer*=4;a->s28=timer;A(a)->s30=100;A(a)->b35=0;
  selection=a->b32;if(selection)selection=4;selection+=MODE(p);a->b33=counts[selection];
  speed=speeds[a->b1a3];if(MODE(p)==1)speed*=1.5f;scale=0.75f;if(MODE(p)==3)speed/=scale;
@@ -46,8 +49,8 @@ void func_0c1734ea(struct LinkedActor *a)
  struct LinkedActor *p=a->p24;
  unsigned char attacks[16] = {51,51,51,51,52,66,67,68,52,66,67,68,52,66,67,68};
  float zero;
- if(a->b5)goto ending;
- goto lifetime;lifetime:if(!func_0c028642(a)){func_0c17383c(a);return;}
+ if(!a->b5) {
+ if(!func_0c028642(a)){func_0c17383c(a);return;}
  if(A(a)->b19f||a->f56<A(p)->f41c){float vx=3.3333333f,ax=-0.00651041651145f;if(A(a)->w130){vx=-3.3333333f;ax=0.00651041651145f;}A(a)->f92=vx;A(a)->f96=-6.428571224213f;A(a)->f104=ax;A(a)->f108=-0.2678571343422f;A(a)->b6=1;goto advance;}
  zero=0.0f;if(--a->s28==0){func_0c1737cc(a);goto stop;}
  if(A(a)->b1a0){if((signed char)(A(a)->b1a0-=2)>0)return;A(a)->b1a0=0;func_0c1737cc(a);if((unsigned char)--a->b33==0)goto stop;A(a)->b1a1=(attacks+a->b32*4)[MODE(p)];A(a)->w1ac=0;A(a)->b19e=0;A(a)->p1c4=0;dat_0c2f83f8->arr[a->b2]++;func_0c02a026(a);if(!a->b32)goto draw;return;}
@@ -59,7 +62,8 @@ void func_0c1734ea(struct LinkedActor *a)
  if(a->b32){unsigned short amount;A(a)->b34--;if(A(a)->w130)A(a)->b34+=2;A(a)->b34&=31;if(--A(a)->b7==0){A(a)->b7=3;amount=(unsigned short)(A(a)->s30+100);if(amount>1000)amount=1000;A(a)->s30=amount;}func_0c02894c(a,(unsigned short)A(a)->s30);}
  if(!A(p)->b525){float dy=zero;if(A(p)->w34a&0x2000)dy=3.75f;if(A(p)->w34a&0x1000)dy=-3.75f;a->f56+=dy;}
  a->f52+=A(a)->f92;A(a)->f92+=A(a)->f104;func_0c02a026(a);draw:func_0c037d0c(a);return;
- ending:if(A(a)->b6)a->sdc.b12c^=1;a->f52+=A(a)->f92;A(a)->f92+=A(a)->f104;a->f56+=A(a)->f96;A(a)->f96+=A(a)->f108;if(func_0c02a026(a)<0)a->b4++;
+ } else {if(A(a)->b6)a->sdc.b12c^=1;a->f52+=A(a)->f92;A(a)->f92+=A(a)->f104;a->f56+=A(a)->f96;A(a)->f96+=A(a)->f108;if(func_0c02a026(a)<0)a->b4++;
+ }
 }
 void func_0c1737cc(struct LinkedActor *a)
 {
