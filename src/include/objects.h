@@ -85,6 +85,8 @@ struct ActorSub2a4Extended {
 };
 
 /* Motion subrecord used by the phase and velocity handlers at 0x0c08a3c0. */
+/* Owner motion context read by the 0x0c19887c chain (anchor offsets at +12/+16, release flag at +32). */
+struct MotionContext19887c { unsigned char pad0[12]; float vx, vy; unsigned char pad20[12]; signed char flag32; };
 struct MotionContext8a3 {
     struct ActorSub2a4 base;
     unsigned char pad28[8];
@@ -657,7 +659,7 @@ struct ActorSubMoveBytes { char b0, b1, b2, b3; unsigned char pad4; char b5, b6,
 struct ActorSubTimers { int t0; int t4; int t8; int t12; int t16; int t20; unsigned char pad24[4]; int t28; short s32, s34; };
 
 /* Countdown words of the actor at 0x2d0-0x2f0, viewed from the actor base so each is addressed by its own offset (per-frame timer update at 0x0c07d448). */
-struct ActorCountdowns { unsigned char pad0[0x2cc]; int l2cc, l2d0, l2d4, l2d8, l2dc, l2e0, l2e4, l2e8, l2ec, l2f0; };
+struct ActorCountdowns { unsigned char pad0[0x2cc]; int l2cc, l2d0, l2d4, l2d8, l2dc, l2e0, l2e4, l2e8, l2ec, l2f0, l2f4, l2f8; };
 /* Byte controls used by callbacks receiving the actor state at 0x2a4. */
 /* Unsigned timer/toggle bytes of the state block passed to the 0x0c1231bc callback. */
 struct ActorSubCycleBytes { unsigned char b0, b1, b2, b3; };
