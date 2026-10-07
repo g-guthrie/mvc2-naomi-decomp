@@ -18,9 +18,6 @@ void func_0c0953be(void) {}
 #pragma section n0953c2
 void func_0c0953c2(void) {}
 
-#pragma section n09577e
-void func_0c09577e(void) {}
-
 #pragma section n0a33a6
 void func_0c0a33a6(void) {}
 
