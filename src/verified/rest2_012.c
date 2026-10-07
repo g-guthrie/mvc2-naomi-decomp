@@ -5,11 +5,6 @@ const unsigned int dat_0c2270dc[] = {
     0x00000000u,
 };
 
-#pragma section n206168
-const unsigned int dat_0c227168[] = {
-    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
-};
-
 #pragma section n206462
 const unsigned short dat_0c227462[] = {
     0x4441u, 0x4e49u,

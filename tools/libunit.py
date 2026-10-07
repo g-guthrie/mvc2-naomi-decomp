@@ -119,7 +119,9 @@ def parse_map(text):
                 section = m.group(1)
             pending = (section, int(m.group(2), 16), int(m.group(4), 16), attribute)
             continue
-        m = re.match(r'^\s{10,}(\S+)\s+(\S+)\s*$', line)
+        # The unit and module names share a line, except when they are long:
+        # the linker then prints the module name alone on the next line.
+        m = re.match(r'^\s{10,}(\S+)(?:\s+(\S+))?\s*$', line)
         if m and pending:
             modules.append((pending[0], m.group(1), pending[1], pending[2], pending[3]))
             pending = None
