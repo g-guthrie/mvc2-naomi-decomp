@@ -303578,11 +303578,18 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1992b6; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c1992d0",
-      "size": 256,
+      "address": "0xc1992d0",
+      "size": 110,
       "kind": "code",
-      "sha256": "5d9d41d772380b64fbbaec5b52038e3c2c15073becf75bb2d0e90499c2adaf54",
-      "evidence": "CFG walk from 0x0c1992d0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "3b063f69ca5ed0128b0cc8f06112ebcc7cea519c2a7f6e7ea6e21f9f42334cbb",
+      "evidence": "Render-state initializer; restores PR at 0c19933c and falls through to the independently dispatched update at 0c19933e."
+    },
+    {
+      "address": "0xc19933e",
+      "size": 146,
+      "kind": "code",
+      "sha256": "978bc59a66c477f623416f637493ba29259aa13c8441d906abc93d2329a48916",
+      "evidence": "Independent callback pointer 0c258464 targets 0c19933e. Own R14/R13/R12/PR prologue; continues into the existing reviewed 0c1993d0 code range."
     },
     {
       "address": "0x0c1993d0",
