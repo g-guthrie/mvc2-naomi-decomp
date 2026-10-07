@@ -653,7 +653,8 @@ struct SelectionFlags59e8 {
     unsigned char state[2], flags[2];
     unsigned char pad4[48 - 4];
     signed char choice[2];
-    unsigned char pad50[60 - 50];
+    unsigned char pad50, combined_mask;
+    unsigned char pad52[60 - 52];
     unsigned int masks[2][2];
 };
 
