@@ -3,9 +3,6 @@
 #pragma section n1a2958
 void func_0c1a2958(void) {}
 
-#pragma section n1b1e0c
-void func_0c1b1e0c(void) {}
-
 #pragma section n1b2358
 void func_0c1b2358(void) {}
 
