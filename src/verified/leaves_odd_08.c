@@ -15,9 +15,6 @@ void func_0c13e882(void) {}
 #pragma section n13f206
 void func_0c13f206(void) {}
 
-#pragma section n1464a6
-void func_0c1464a6(void) {}
-
 #pragma section n1501f6
 void func_0c1501f6(void) {}
 

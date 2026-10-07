@@ -179,7 +179,7 @@ struct Actor {
     unsigned short w132;
     unsigned char pad6b[0x13c - 0x134];
     unsigned char b13c;
-    unsigned char pad6bb;
+    unsigned char b13d;
     unsigned char b13e,b13f;
     unsigned char b140;
     char b141;
@@ -440,7 +440,8 @@ struct LinkedActorBlock {
     unsigned char b12c;
     unsigned char pad1[0x54 - 0x51];
     short w130;
-    unsigned char pad1b[0x65 - 0x56];
+    unsigned char pad1b[0x64 - 0x56];
+    char b140;
     char b141;
     unsigned char pad1c[0x78 - 0x66];
     struct AnimationFrame20 *p154;
@@ -700,6 +701,8 @@ struct ActorSub2a4Grab {
 };
 struct ActorSubCycleBytes { unsigned char b0, b1, b2, b3; };
 struct ActorSubControlBytes { unsigned char pad0[2]; char b2; unsigned char pad3; char b4; unsigned char pad5[7]; char b12; unsigned char b13; };
+/* Signed guard counters in the actor +0x2a4 record (0x0c061d88 callbacks). */
+struct ActorSubGuard18 { unsigned char pad0[12]; char b12; unsigned char pad13[5]; char b18, b19, b20; };
 
 /* Direction selection state with two 12-byte actor entries. */
 struct DirectionEntry12 { struct Actor *actor; unsigned char unknown[8]; };
@@ -797,5 +800,9 @@ struct OperandStream { unsigned char *base; unsigned short pos; unsigned char pa
 /* 16-byte launch row (tables 0x0c250d74, 0x0c250ddc): 16.16 velocities, start
  * offsets, animation and the 0x1a1 flag byte. */
 struct LaunchRow16 { int vx, vy; short dx, dy; char anim; unsigned char flag; unsigned char pad[2]; };
+
+/* Four-float motion row (initial x/y speeds and their per-frame steps) read
+ * by the 0x0c14bacc and 0x0c14c80c effect initialisers. */
+struct Motion4 { float f0, f4, f8, f12; };
 
 #endif

@@ -1,7 +1,6 @@
-/* Candidate: func_0c15a7b8 exact apart from pool displacements. func_0c15a85c
- * compares owner+0x14b with a->b34: retail loads owner byte first (r2, indexed)
- * then a->b34 (r3); ours loads a->b34 through an add, so code is 2 bytes longer
- * and the pool loses its trailing pad. */
+/* Candidate (378/380): pools and control flow match. func_0c15a85c loads
+ * owner+0x14b into r2 for the compare with a->b34 at 0c15a8a8/0c15a8ae; the
+ * char temp here lands in r5. Everything else is exact. */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 extern struct Tbl_ub3_01 *dat_0c2f83f8;
@@ -28,7 +27,7 @@ void func_0c15a85c(struct LinkedActor *a)
  if(!A(owner)->b14b)return;
  a->sdc.b12c=1;
  *(struct LinkedActorVec3 *)&a->f52=*(struct LinkedActorVec3 *)&owner->f52;
- if(a->b34!=A(owner)->b14b){
+ {char t=A(owner)->b14b;if(t!=(char)a->b34){
   a->b34=A(owner)->b14b;
   func_0c02a18c(a,23,4,a->b34-1);
   if(A(a)->b14b){
@@ -37,5 +36,5 @@ void func_0c15a85c(struct LinkedActor *a)
    dat_0c2f83f8->arr[a->b2]++;
   }
  }
- func_0c037d0c(a);
+ }func_0c037d0c(a);
 }

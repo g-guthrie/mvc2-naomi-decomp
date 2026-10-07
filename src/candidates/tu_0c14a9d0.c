@@ -1,15 +1,14 @@
 /* Candidate: whole unit 0x0c14a9d0..0x0c14b8d8 (func_0c14adac/ae90/b33a
  * reach func_0c14aabc and func_0c14b4f2 reaches func_0c14ab1c by bsr/bra, so
- * the earlier four-function registration was a fragment). 3799 of 3848 bytes
+ * the earlier four-function registration was a fragment). 3804 of 3848 bytes
  * equal; 38 of 41 functions match. Remaining:
  * - func_0c14adac/ae90: retail pushes r13 before loading the dat_0c24ff8c/ffac
  *   table pointer into r4; ours loads it first (two words swapped each).
  * - func_0c14b1e8: the 2.0f is built with the inlined one() helper (t += t), but
  *   SHC reuses the fr4 that holds the 1.0f of the f264 compare (fadd fr4,fr4),
  *   where retail has a separate fldi1 fr3; fadd fr3,fr3. Retail also gives the
- *   constant 1 to r4 and the zero to r5; ours swaps them (the register with more
- *   uses gets r4: adding a third use of 1 flips them), which moves the
- *   later pool and branch displacements. */
+ *   constant 1 to r4 and the zero to r5; ours swaps them. Writing the f264
+ *   clamp store as one() keeps the pools aligned (3804 vs 3785 bytes). */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 
@@ -375,7 +374,7 @@ void func_0c14b1e8(struct LinkedActor *a, struct LinkedActor *owner)
         A(a)->f84 = 1.120000124f;
     }
     if (A(a)->f264 > 1.0f)
-        A(a)->f264 = 1.0f;
+        A(a)->f264 = one();
     if (a->s28-- == 0) {
         float t = one();
         t += t;
@@ -405,8 +404,8 @@ void func_0c14b33a(struct LinkedActor *a)
     A(a)->f84 /= 2.1428571f;
     A(a)->f80 += a->f108;
     A(a)->f84 -= a->f104;
-    if (!(A(a)->f84 > 0.004664292f)) {
-        A(a)->f84 = 0.004664292f;
+    if (!(A(a)->f84 > 0.0046666665003f)) {
+        A(a)->f84 = 0.0046666665003f;
         if (a->s28 % 5 == 0) {
             func_0c14aabc(a, 9, a->b35);
             func_0c14aabc(a, 10, a->b35);

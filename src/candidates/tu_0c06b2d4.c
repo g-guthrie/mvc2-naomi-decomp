@@ -1,4 +1,4 @@
-/* The state setup at 0c06b332 remains non-exact.
+/* The state setup at 0c06b332 remains non-exact: the zero hoist into r13 now matches (`register void *zero`), but retail keeps the b1a3 ternary result in r3 (ours r4) and schedules the func_0c048bb0 address load into r3 before the counter increment.
  * All other functions and literal pools match. */
 #include "objects.h"
 struct ActorSubByte8 {
@@ -38,21 +38,21 @@ test:
 }
 void func_0c06b320(struct Actor *a) { table_0c2408b8[a->b6](a); }
 void func_0c06b332(register struct Actor *a) {
-  register int zero;
+  register void *zero;
   a->b6++;
   zero = 0;
   if (a->b255 == 3)
     a->b1a1 = 92;
   else
-    a->b1a1 = a->b1a3 ? 93 : 68;
-  a->w1ac = zero;
-  a->b19e = zero;
-  *(unsigned int *)&a->p1c4 = zero;
+    { int v = a->b1a3 ? 93 : 68; a->b1a1 = v; }
+  a->w1ac = (int)zero;
+  a->b19e = (int)zero;
+  *(unsigned int *)&a->p1c4 = (int)zero;
   dat_0c2f83f8->arr[a->b2]++;
   func_0c048bb0(a, 8);
   func_0c0442fa(a);
   a->f56 = a->f41c;
-  a->b1f9 = zero;
+  a->b1f9 = (int)zero;
   func_0c0432ca(a);
   func_0c02a0c4(a, 21, 17);
 }

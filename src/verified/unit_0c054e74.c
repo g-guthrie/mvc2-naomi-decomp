@@ -1,10 +1,6 @@
-/* Candidate: linked 304/308 bytes at retail address. func_0c054ef0 and
- * func_0c054f02 match exactly, as does the 44-byte literal pool.
- * func_0c054e74 and func_0c054eb2 each differ only in the case-2 constant:
- * retail keeps `mov #2` in r3 (tail-call target in r2); SHC picks r2 for the
- * constant. Case 2 falls through into the shared b1a3 store (no goto done).
- * The reviewed 308-byte extent and its shared pool are complete.
- */
+/* Exact 0x0c054e74..0x0c054fa8: two input-strength selectors, a state-table
+ * dispatcher and a launch setup sharing one literal pool. The case-2 path is
+ * spelled `goto two; two:` so the constant lands in r3 as in retail. */
 #include "objects.h"
 
 typedef void (*ActorHandler)(struct Actor *);
@@ -20,7 +16,8 @@ void func_0c054e74(struct Actor *a)
     switch (a->b4c9) {
     case 0: a->b1e9 = 1; goto common;
     case 1: a->b1e9 = 0; goto common;
-    case 2: a->b1e9 = 2;
+    case 2: goto two;
+    two: a->b1e9 = 2;
     common: a->b1a3 = 1;
     default: break;
     }
@@ -33,7 +30,8 @@ void func_0c054eb2(struct Actor *a)
     switch (a->b4c9) {
     case 0: a->b1e9 = 1; goto common;
     case 1: a->b1e9 = 0; goto common;
-    case 2: a->b1e9 = 2;
+    case 2: goto two;
+    two: a->b1e9 = 2;
     common: a->b1a3 = 1;
     default: break;
     }

@@ -49583,6 +49583,13 @@
       "evidence": "CFG walk from 0x0c065d98; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c065de8",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Reviewed: unreachable rts/nop epilogue block of 0x0c065d98 (compiler-emitted after its early return; function ends jmp+delay at 0x0c065de6); no branch reaches it."
+    },
+    {
       "address": "0x0c065dec",
       "size": 104,
       "kind": "code",
@@ -235888,6 +235895,13 @@
       "evidence": "CFG walk from 0x0c143272; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c14331c",
+      "size": 8,
+      "kind": "code",
+      "sha256": "7514f82138429fabe72bec56990e4986d28318c33fa92a562c01fde021346d52",
+      "evidence": "Reviewed: unreachable add/lds.l/rts epilogue SHC emits after the tail jmp of func_0c143272 (0x0c143272); delay slot included."
+    },
+    {
       "address": "0x0c143324",
       "size": 6,
       "kind": "data",
@@ -238156,6 +238170,13 @@
       "evidence": "CFG walk from 0x0c145d54; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c145dae",
+      "size": 4,
+      "kind": "code",
+      "sha256": "ef7d765240dfe58f1e728aef6ae72c63e4e43e868123d1f4841639673730e75f",
+      "evidence": "Reviewed: unreachable rts/epilogue SHC emits after the tail jmp of func_0c145d70 (0x0c145d70); delay slot included."
+    },
+    {
       "address": "0x0c145db2",
       "size": 18,
       "kind": "code",
@@ -238210,6 +238231,13 @@
       "kind": "code",
       "sha256": "c989f873be4c63b104a9cfc9af4be801180c56adda9d9e2efea046a33d738653",
       "evidence": "CFG walk from 0x0c145ea2; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c145ef8",
+      "size": 6,
+      "kind": "code",
+      "sha256": "2e6595aaaaa71054e0ec9c59412a996adc0c5dd608991e0523e7a88d9426ed64",
+      "evidence": "Reviewed: unreachable lds.l/rts epilogue SHC emits after the tail jmp of func_0c145ea2 (0x0c145ea2); delay slot included."
     },
     {
       "address": "0x0c145efe",
@@ -238504,6 +238532,13 @@
       "kind": "code",
       "sha256": "e8caa0e92f65cc06bea0756e4f83515226e754487eb74d0c4f506cfdc2d9aab5",
       "evidence": "CFG walk from 0x0c1464aa; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1464da",
+      "size": 4,
+      "kind": "code",
+      "sha256": "ef7d765240dfe58f1e728aef6ae72c63e4e43e868123d1f4841639673730e75f",
+      "evidence": "Reviewed: unreachable rts/epilogue SHC emits after the tail jmp of func_0c1464aa (0x0c1464aa); delay slot included."
     },
     {
       "address": "0x0c1464de",
@@ -252745,10 +252780,10 @@
     },
     {
       "address": "0x0c15859c",
-      "size": 166,
+      "size": 168,
       "kind": "code",
-      "sha256": "ac8fb5eb09d42099c15f6ef06c23c5c764c369abbe800953a45853b042aec8a6",
-      "evidence": "CFG walk from 0x0c1584b2; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "fd43bcd387942dc956b1657c76a0572bb54f4190688c5603ea26d0ba47541c72",
+      "evidence": "CFG walk from 0x0c1584b2; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split. Includes the dead rts at 0x0c158642 SHC emits after the jmp @r2 tail; its delay slot begins the next range."
     },
     {
       "address": "0x0c158644",
@@ -252829,10 +252864,10 @@
     },
     {
       "address": "0x0c1587dc",
-      "size": 66,
+      "size": 72,
       "kind": "code",
-      "sha256": "8e80506904002733c7465a356aeea6df1ae71a3311c666bed9127c33ce9e57ae",
-      "evidence": "CFG walk from 0x0c1587dc; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "c622da937ab308b24fa821dd3bef8b4ed34622aa82ea8ca0c2bf6c8b8928df37",
+      "evidence": "CFG walk from 0x0c1587dc; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split. Includes the unreachable lds.l/rts/mov.l epilogue at 0x0c15881e SHC emits after the tail jmp."
     },
     {
       "address": "0x0c158824",

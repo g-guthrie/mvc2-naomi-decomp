@@ -21,20 +21,6 @@ void func_0c02f644(struct Actor *p) { p->f60 += p->f100; p->f100 += p->f112; }
 
 struct Obj_0c0476d4 { unsigned char b0; unsigned char pad[7]; unsigned short w8; };
 struct Out_0c0476d4 { unsigned char b0, b1; };
-#pragma section n146b8a
-int func_0c146b8a(struct Actor *p, float lim)
-{
-    float y = p->f56;
-    float vy = p->f96;
-    int n = 0;
-    do {
-        y += vy;
-        vy += p->f108;
-        n++;
-    } while (vy > 0.0f || y > lim);
-    return n;
-}
-
 struct Obj_0c15dbdc { unsigned char pad[20]; struct Actor *p20; };
 #pragma section n15dbdc
 void func_0c15dbdc(struct Actor *p) { struct Actor *q = ((struct Obj_0c15dbdc *)p)->p20; p->f52 = q->f52; p->f56 = q->f56; }
