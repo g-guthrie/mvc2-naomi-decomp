@@ -1,4 +1,4 @@
-/* Candidate: wrapper, state dispatcher, owner-position guard and free wrapper are exact (86 code bytes). Constructor and visibility callback differ in 21 register-scheduling bytes; pools exact. */
+/* Candidate:286/296 complete bytes; all five helper callbacks and the48-byte pool are exact. Constructor differs in ten early register/store scheduling bytes. Resource selection reads parent byte0x21, not byte0. */
 #include "objects.h"
 extern struct Obj_tu5_03 *func_0c0374da(int,int,int);
 extern struct ActorGlobalRoot *dat_0c2d9658;
@@ -10,9 +10,9 @@ struct Obj_tu5_03 *func_0c1c772c(struct Actor *parent)
 {
  struct Obj_tu5_03 *q;float stopped;
  if((q=func_0c0374da(0,5,1))){
- q->b12c=1;q->p16=func_0c1c77bc;q->p200=&parent->f136;
- stopped=0.0f;q->p24=(struct Obj_tu5_03 *)parent;q->b33=parent->b33;
- q->l84=(int)((void **)dat_0c2d9658->p0)[121+dat_0c22ff29[parent->b0*2]];
+ q->b12c=1;q->p16=func_0c1c77bc;q->p24=(struct Obj_tu5_03 *)parent;q->p200=&parent->f136;
+ stopped=0.0f;q->b33=parent->b33;
+ q->l84=((int *)dat_0c2d9658->p0)[121+dat_0c22ff29[parent->b33*2]];
  q->pos.x=stopped;q->pos.y=stopped;q->pos.z=stopped;
  func_0c1c4e3c(q,(signed char)q->b33);q->lcc=0x805;
  }
@@ -25,6 +25,6 @@ void func_0c1c77f6(struct Obj_tu5_03 *q){func_0c037688(q);}
 void func_0c1c77fc(struct Obj_tu5_03 *q)
 {
  q->b12c=q->p24->b12c;
- if(!q->b4){if(!q->b12c)q->b4++;return;}
+ if(!q->b4){if(!q->b12c)q->b4++;}
  else func_0c037688(q);
 }
