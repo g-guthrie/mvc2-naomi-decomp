@@ -145,6 +145,15 @@ An `extern short *dat_0cXXXXXX;` is a pointer variable and costs a load; an
 `extern short dat_0cXXXXXX[];` is the array itself. Retail's `mov.l @dat,rN`
 before the index means the pointer; its absence means the array.
 
+### Guard grouping can change field-store addressing
+
+Nested `if (index == 5) { if (flags & mask) { ... } }` guards recover the
+native field-store registers in [tu_0c07d704.c](../src/verified/tu_0c07d704.c)
+and [tu_0c11ef44.c](../src/verified/tu_0c11ef44.c). Combining each pair with
+`&&` introduces an extra address calculation in its special-mode block.
+The nested versions match their complete 312-byte and 344-byte sections.
+Check this shape when a guarded constant store alone shifts the remaining unit.
+
 ### Preserve the alignment of copied records
 
 `LinkedActorBlock` includes the animation-frame pointer at actor offset `0x154`
