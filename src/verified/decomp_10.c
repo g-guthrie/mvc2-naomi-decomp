@@ -16,9 +16,6 @@ void func_0c067896(struct Actor *p) { p->f100 += p->f112; if (--p->s28 == 0) { p
 #pragma section n0b3152
 void func_0c0d4152(struct Actor *p) { p->f52 += p->f92; p->f92 += p->f104; p->f56 += p->f96; p->f96 += p->f108; }
 
-#pragma section n10d228
-void func_0c12e228(struct Actor *p) { p->f52 += p->f92; p->f92 += p->f104; p->f56 += p->f96; p->f96 += p->f108; }
-
 #pragma section n12f14e
 void func_0c15014e(struct Actor *p) { p->f52 += p->f92; p->f92 += p->f104; p->f56 += p->f96; p->f96 += p->f108; }
 
