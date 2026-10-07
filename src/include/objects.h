@@ -445,6 +445,8 @@ struct LinkedActorBlock {
     union LinkedActorW158 w158;
     unsigned char pad2[0xc0 - 0x7e];
 };
+/* Requested and current animation step bytes at linked actor offset 0x88. */
+struct LinkedActorStep88 { char request, current; };
 /* Six-byte follow offset row: signed x/y and two metadata bytes. */
 struct FollowOffset15e2 { short x,y; unsigned char metadata[2]; };
 /* Cached frame and signed screen offsets at actor offset 0xcc. */
