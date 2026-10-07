@@ -1,3 +1,7 @@
+/* Exact 0x0c1d4b54..0x0c1d4e18 constructor group: six functions, both pools.
+ * Keep angle word 1 as an array compound assignment: the scalar spelling
+ * changes SHC addition scheduling and the destination register.
+ */
 #include "objects.h"
 extern struct Obj_tu5_03 *func_0c0374da(int, int, int);
 extern struct ActorGlobalRoot *dat_0c2d9650;
@@ -31,7 +35,7 @@ void func_0c1d4b80(struct Vec3_tu5_03 *position, int mirror) {
     a->f124 = 0.0f;
     a->f128 = 0.0f;
     a->w130 = mirror;
-    a->angles.scalar.l44 = a->angles.scalar.l44 + (a->w130 ? 32768 : 0);
+    a->angles.array[1] += (a->w130 ? 32768 : 0);
   }
 }
 void func_0c1d4c12(struct Vec3_tu5_03 *position, int mirror) {
@@ -51,7 +55,7 @@ void func_0c1d4c12(struct Vec3_tu5_03 *position, int mirror) {
     a->f84 = 1.0f;
     a->f88 = 1.0f;
     a->w130 = mirror;
-    a->angles.scalar.l44 = a->angles.scalar.l44 + (a->w130 ? 32768 : 0);
+    a->angles.array[1] += (a->w130 ? 32768 : 0);
   }
 }
 void func_0c1d4cc0(struct Vec3_tu5_03 *position, int mirror) {
@@ -65,7 +69,7 @@ void func_0c1d4cc0(struct Vec3_tu5_03 *position, int mirror) {
     a->w30 = 0;
     a->f116 = 0.0f;
     a->w130 = mirror;
-    a->angles.scalar.l44 = a->angles.scalar.l44 + (a->w130 ? 32768 : 0);
+    a->angles.array[1] += (a->w130 ? 32768 : 0);
   }
 }
 void func_0c1d4d28(struct Vec3_tu5_03 *position, int mirror) {
@@ -79,7 +83,7 @@ void func_0c1d4d28(struct Vec3_tu5_03 *position, int mirror) {
     a->w30 = 0;
     a->f116 = 0.0f;
     a->w130 = mirror;
-    a->angles.scalar.l44 = a->angles.scalar.l44 + (a->w130 ? 32768 : 0);
+    a->angles.array[1] += (a->w130 ? 32768 : 0);
   }
 }
 void func_0c1d4d90(struct Vec3_tu5_03 *position, int mirror) {
@@ -93,6 +97,6 @@ void func_0c1d4d90(struct Vec3_tu5_03 *position, int mirror) {
     a->w30 = 0;
     a->f116 = 0.0f;
     a->w130 = mirror;
-    a->angles.scalar.l44 = a->angles.scalar.l44 + (a->w130 ? 32768 : 0);
+    a->angles.array[1] += (a->w130 ? 32768 : 0);
   }
 }

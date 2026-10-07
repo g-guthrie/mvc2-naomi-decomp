@@ -1,3 +1,6 @@
+/* Exact 0x0c1d4e18..0x0c1d501c update group: five functions, both pools.
+ * Angle-array compound addition retains the native accumulator register.
+ */
 #include "objects.h"
 extern void func_0c037688(struct Obj_tu5_03 *);
 extern struct ActorGlobalRoot *dat_0c2d9650;
@@ -17,7 +20,7 @@ void func_0c1d4e64(struct Obj_tu5_03 *a)
  a->l84=(int)((void **)dat_0c2d9650->p0)[170];
  a->f120=dat_0c2615ac[a->w28];a->f124=dat_0c2615ac[a->w28];a->f128=dat_0c2615ac[a->w28];
  a->f80+=0.1363636405f;a->f88+=0.1363636405f;a->f84-=0.0454545469f;
- a->angles.scalar.l44=(a->b33?2979:-2979)+a->angles.scalar.l44;
+ a->angles.array[1]+=(a->b33?2979:-2979);
  a->w30++;
 }
 void func_0c1d4ef6(struct Obj_tu5_03 *a)
