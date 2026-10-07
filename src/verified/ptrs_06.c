@@ -10,12 +10,6 @@ extern void func_0c2154f8(void);
 extern void func_0c216c40(void);
 extern void func_0c225040(void);
 
-#pragma section n2152e8
-void (*const ptr_0c2152e8)(void) = func_0c215260;
-
-#pragma section n2155ec
-void (*const ptr_0c2155ec)(void) = func_0c2154f8;
-
 #pragma section n21cd48
 void (*const ptr_0c21cd48)(void) = func_0c206570;
 

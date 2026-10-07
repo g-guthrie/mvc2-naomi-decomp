@@ -80,13 +80,3 @@ const unsigned int dat_0c2685c8[] = {
     0x00000000u,
 };
 
-#pragma section n269a48
-const unsigned short dat_0c269a48[] = {
-    0x0000u,
-};
-
-#pragma section n269a68
-const unsigned short dat_0c269a68[] = {
-    0x001au,
-};
-

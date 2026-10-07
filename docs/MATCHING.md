@@ -261,6 +261,11 @@ differences; read what it changed afterwards.
   `not; add #1; and #K; not; add #1`, 72 sites). `~v+1` reproduces the
   not/add negation, but the bundled SHC calls `__modls` for every `%`
   spelling and never keeps the operand in r0 for the explicit form.
+- SDK code aligned to 16 or 32 bytes with NOP fill (function starts, loop
+  heads, literal pools placed on the next boundary, shared pools after
+  several functions). The `library` option set aligns functions to 4 bytes
+  and never pads pools, so multi-function units there only match by
+  linking the prebuilt object (`tools/libunit.py`).
 - Scratch-register choice: a label immediately before a store or call
   (`goto L; L:`) changes which of r2/r3 the next temporary takes, and
   finished several units. It does not reach every pick (func_0c15f61a,
