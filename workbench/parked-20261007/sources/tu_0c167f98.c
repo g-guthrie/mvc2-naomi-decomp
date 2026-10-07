@@ -1,0 +1,25 @@
+#include "objects.h"
+#define A(a) ((struct Actor *)(a))
+#define V(p) (*(struct LinkedActorVec3 *)&(p)->f52)
+extern float table_0c251fcc[];
+extern struct Tbl_ub3_01 *dat_0c2f83f8;
+extern void func_0c02a0c4(struct LinkedActor *,int,int);
+void func_0c167f98(struct LinkedActor *a)
+{
+ float *speed;
+ int anim;
+ a->b5++;a->sdc=a->p24->sdc;a->sdc.b12c=1;
+ a->b2=a->p24->b2;a->b1=a->p24->b1;a->v80.x=a->p24->v80.x;a->v80.y=a->p24->v80.y;
+ a->b1a3=a->p24->b1a3;a->b1a4=a->p24->b1a4;a->b48=a->p24->b48;a->v80=a->p24->v80;
+ a->b36=a->p24->b36;
+ speed=&table_0c251fcc[a->p24->b1a3*4];
+ a->f92=*speed++;a->f104=*speed++;a->f96=*speed++;a->f108=*speed;
+ V(a)=V(a->p24);
+ if(a->sdc.w130){a->f52-=-136.66666f;a->f92=-a->f92;a->f104=-a->f104;}
+ else a->f52-=136.66666f;
+ a->f56+=154.28571f;
+ if(a->p24->b1a3==0){A(a)->b1a1=79;A(a)->w1ac=0;A(a)->b19e=0;A(a)->p1c4=0;dat_0c2f83f8->arr[a->b2]++;anim=6;}
+ else{A(a)->b1a1=81;A(a)->w1ac=0;A(a)->b19e=0;A(a)->p1c4=0;dat_0c2f83f8->arr[a->b2]++;anim=8;}
+ func_0c02a0c4(a,23,anim);
+ a->pad11[0]=68;a->pad11[1]=68;A(a)->b13c=A(a)->pad6bb=48;A(a)->b13f=A(a)->b13e=64;
+}

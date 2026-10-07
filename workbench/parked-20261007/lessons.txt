@@ -1,0 +1,24 @@
+- else-if after return-0 flips r2/r3 temp rotation (0c0fa634 fixed by 'if(..)return 0; else if(..)return 0;')
+- SHC never inlines signed /2^n except /2: retail 'cmp/pz; add 0xfff; shad -12' is explicit source 'if(x<0)x+=0xfff; x>>=12;'
+- OPEN: retail keeps 'zero' in a callee-saved reg hoisted before the first call even when no use spans a call; int zero=0 gets rematerialized; char zero hoists but adds widening copies. Literal 0 is hoisted (delay slot of first jsr) only when uses span a call.
+- Interpolation start/end in r1/r5 (0c1c9210 family): use a #pragma inline helper lerp(q,s,s+1) with s local in caller.
+- 'if(x>=2)return; f(...);' vs 'if(x<2)f(...);' flips the tail-jump register r2/r3.
+- Store through ((char *)a)[0x1a3] instead of a->b1a3 changes the temp register choice (0c05f21e); volatile store keeps identical case tails apart (0c0d9f44).
+- Case-2 constant lands in r3 (not r2) with 'case 2: goto two; two: ...' in a switch (0c12601c).
+- When case bodies get tail-merged, make one store volatile: ((volatile unsigned char *)a)[off]=v (0c09d7b8).
+- zero hoist into r13 across call: chained a->b6=a->b7=0 after call rematerializes zero (store order reversed: b6=b7=0 stores b7 then b6)
+- 'if (x != 0) f=-f;' vs 'if (x)' differ: '!= 0' let SHC fill the bt delay slot (bt.s); plain 'if (x)' kept retail bt + no fill (0c0912bc)
+- signed vs unsigned char destination decides whether chained zero is copied to a second reg (mov r0,r3) and stored via r0-index (0c0c2968: char b25)
+- ternary arg 'x?7:4' vs '!x?4:7' flips bt/bf branch; for tail-call reg r3 vs r2, use if/else with two calls
+- SHC emits an unreachable epilogue (lds pr/rts/pop) after a function whose last stmt is a tail call when an earlier if-block 'return;'s (0c16e228)
+- 'bra X; nop' to a full-prologue function = tail call to a STATIC function in same TU; a 'bra' over an rts to a tiny block = another static helper (0c0e38b0 -> static select/punch/kick). Name statics without func_ prefix to avoid export check.
+- pointer local spilled to stack whose address computed BEFORE first call's func-address load: declare 'T *volatile sub=...' (0c0c8f66)
+- ALWAYS check build.py rc before committing (pipe through tail hides failure); emptied leaf units must be git rm'd
+- OPEN: switch compare order follows case-BODY layout order in retail (unique-body case first: 2,0,1 or 1,0,2); SHC with any source order sorts 0,1,2. Not solved (0c0d2724, 0c0def40).
+- sub2a4 check right after a call where retail does 'mov.w 2a4,r4; add r14,r4; mov.b @r4': 'else {struct ActorSub2a4 *s=&a->sub2a4;if(s->b0)return 0;}' (0c0f4c70)
+SWITCH ORDER: retail orders compares by body (grouped by target, e.g. 0,2|1,3,4 and 2|0,1); SHC sorts by value. Nested 'switch(x){default:switch(x){case 0:case 1:goto c01;}break;case 2:...;c01:...}' gives right layout but reloads x (extra mov.w/mov.b/extu.b). Local var forces mov rN,r0;nop. Unsolved. ~129 unowned hits.
+LinkedActor: constant 1 CSE into r12 via literal constants (not a variable); if(!cond)tail();else{...} choice for regs
+LinkedActor: owner kept in r5 at table tail call => table_xxx[...](a,owner) two-arg; sub pointers (&A(x)->sub2a4) as locals; if((v=...)==7||v==4) puts first cmp on fresh r0
+Chained stores a->x=a->y=K (stores y first) keep constant in a separate reg (retail hoists mov #K); pointer-typed zero stores (A(a)->p1c4=0) avoid dead mov copies of int zero
+*(tbl+i) vs tbl[i]: pointer-add form uses add base,reg then @(disp,Rn); tbl[i] uses r0-indexed. Index var i (dead after) reuses reg for result.
+Dead tst with no branch = ternary with identical arms (x = c ? K : K) evaluated where the load is; e.g. a->b1a1=a->b1a3?78:78
