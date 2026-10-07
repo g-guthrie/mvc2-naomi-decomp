@@ -1,0 +1,34 @@
+0c08eb38 parked: switch(b1e8) attack setup keeps cue in r12 (callee-saved) in retail; ours targets r5. Sites: 0c071ad8 0c071f5a 0c086b2c 0c08f040 0c0fcf5e 0c102e04 0c129782 0c129c06
+0c0382a4 parked: src units/tu_0c0382a4.c (int one version) differs only in third pause-bit test: retail copies r12 to r1 before shad (one stays live).
+0c03e1dc parked: units/tu_0c03e1dc.c; ours caches 0x0c1d330c in r12 as well as 0x0c02a39a
+0c0fa384 size-exact, 4 bytes off in func_0c0fa9de (r1 vs r3 for --t12 at 0x2b0); can't register: fa9de continues past its pool at 0c0faa98 and is last in TU (describe() stops); would need merging verified tu_0c0fab64 -> parked at parked/tu_0c0fa384.c
+0c023a08 skipped: hand-written exception entry asm (ldc sr)
+0c1c9210 parked: 927a keeps side in r13 and 3 in r4 in retail; ours 4 bytes short; 9210 start/end regs r1/r5 vs r5/r6 (parked/tu_0c1c9210.c)
+0c1b421c skipped: func_0c1b42da continues past pool to 0c1b4388 and is last in TU (describe() boundary limitation, same as 0c0fa384)
+0c0ee064 parked: retail hoists zero into r13 before the first call (not reproducible: int zero gets rematerialized in r4; char zero hoists but needs r12 copy). Same issue as 0c1231bc candidate.
+0c1b62e8 parked: frame index (s30-1)*20 gets an extra extu.b and different add order; linked 364/368 vs 356 (parked/tu_0c1b62e8.c; AttachFrame_0c25b134 added to objects.h)
+0c026a9c skipped: font quad renderer, heavy register pressure (later)
+0c102e78 parked: switch compare order 0,2,1 / 0,1,2 with fallthrough to last case (no default bra) decides pool placement; other funcs near (parked/tu_0c102e78.c)
+0c0d2724 (4684B, TU 0c0d2724..0c0d3970, mapping fixed): all but 0c0d33c8/34b4/35e4 match; these switches compare in body order (2,0,1 / 1,0,2) - SHC sorts; +16 bytes. Source in parked/tu_0c0d2724.c
+0c05bbe8 parked: 3801/3856 size-exact; c59e case2 + c6cc reg alloc; candidate would steal 560 verified bytes (rest_007 etc)
+0c07b5c0 parked: switch compares 2,0,1 (body order) - SHC sorts; tried nested switch/goto forms
+0c154954 parked: 5499c retail holds zero in r14 (callee-saved) across __quick_mvn; ours r5 (char zero) or remat (int zero); 4 bytes short; also tst of s130 with no branch
+0c1b6e04 parked: loop spawner; constant CSE (2,0,0x2d00,17 in r8-r11) and sub on stack differ
+0c1b5e2c parked: 5eca step byte: retail raw char in r6 + extu copy in r14; ours differs (4-8 bytes long)
+0c1b40b8 parked: size-exact 344/356; r12/r5 constant order + exts temp reg + r2/r3 func reg
+0c13bebc parked: 291/312 size-exact; bf52 r6/r7 swap (source vs global base/zero), bebc store/add order
+0c132694 skipped: functions continue past pools across 0c1327fc and 0c132958; TU extends beyond 0c13297c
+0c16fc14 parked: 3-arg follow; constant CSE regs (1 in r7, 0 in r13, -1 in r4) and b1d0 extu differ
+0c1b3874 parked: 393a owner spilled to stack, b1d0 read as @(r0=owner,r1=0x1d0); volatile reproduces spill but breaks bra tail call
+0c1bba90 parked: 408/412 size-exact (TU now to 0c1bbc2c); rand-128 via pool 0x80 const in r3 (temp) - ours var c in r5
+0c1929b0 parked: 388/392 size-exact; (b33+255)&15 mov.w 0xff scheduled after reload in retail
+0c1b526c parked: 532c exact (for n<13 counted up becomes dt loop); 526c spawn loops: retail mode in r8, callback 0c1b5450 reloaded per iteration; ours hoists callback, spills mode
+0c167f98 parked: 399/404 size-exact; w130 tst reg r1 vs r0, stance 81 in r3 vs r2
+0c16cb24 skipped: mapping broken; unit spans 0c16cb24..0c16ce38+ with mid-function entry at 0c16cc9a
+0c124d18 parked: 320/328 size-exact (TU to 0c124e60); b1f7 flag var r5 vs retail temp r2
+0c115064 parked: zero CSE in r12 (callee-saved) in retail; ours r4; 11511c matches
+0c09671c skipped: TU starts mid-function; fragmented mapping
+0c0c20a8 parked: 1760/1772 size-exact; then-branch idx temp r1 (retail) vs r3 in 20cc/23f8; candidate would move 280 verified data bytes
+0c12fab0 1697/1708: fdec &l2c4 needs r0+=r1 (char* form only gets size; a->l2c4 is 4 short), ff04 p20c temp in r6. unsigned int n trick puts n in callee-saved; goto skip got mask CSE right. needs objects.h l2c4/w342/w360 (in working tree)
+0c13015c 595/600: 1301d2 2.0f via inline one() accumulation lands in fr5 (variable) vs retail fr3; schedule matches with two=0.0f;f104=two;two=one();two+=two
+0c129a44: punch/kick switch units; punch at 12 mismatches with 'a->b1a7=k=V' chain + unsigned int snd,k + *(unsigned int*)&p1c4 (regs right, k-const via temp r6 ordering wrong); kick not tuned. statement-order searches exhausted
