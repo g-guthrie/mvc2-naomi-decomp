@@ -1,15 +1,5 @@
 /* Hitachi const data: reviewed bytes no other unit owns. */
 
-#pragma section n162554
-const unsigned int dat_0c162554[] = {
-    0x0c2f83f8u,
-};
-
-#pragma section n162656
-const unsigned short dat_0c162656[] = {
-    0x01acu,
-};
-
 #pragma section n163200
 const unsigned int dat_0c163200[] = {
     0x0c251650u,

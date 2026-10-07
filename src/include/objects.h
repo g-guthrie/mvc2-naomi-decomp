@@ -241,7 +241,7 @@ struct Actor {
     unsigned char b1ed;
     unsigned char pad7fc[0x1ef - 0x1ee];
     unsigned char b1ef;
-    unsigned char pad1f0[1],b1f1;
+    unsigned char b1f0,b1f1;
     unsigned char b1f2;
     unsigned char b1f3;
     unsigned char b1f4;
@@ -346,16 +346,17 @@ struct Actor {
     unsigned short w424;
     unsigned char pad426[2];
     void *p428;
-    unsigned char pad14b[0x440 - 0x42c];
+    unsigned char pad14b[0x43d - 0x42c], b43d, pad43e[2];
     unsigned char b440, b441; /* Current and previous operand state. */
     unsigned char pad442[0x446 - 0x442];
     unsigned char b446, b447;
     signed char b448;
     unsigned char pad449[3]; int l44c; unsigned int l450;
-    unsigned char pad454[9],b45d,pad45e[0x495 - 0x45e];
+    unsigned char pad454[9],b45d,pad45e[1],b45f,pad460[0x495 - 0x460];
     signed char b495; /* Operand gate flags: sign bit and bits 1/4. */
     unsigned char pad496[0x4a7 - 0x496]; signed char b4a7;
-    unsigned char pad4a8[0x4b4 - 0x4a8];
+    unsigned char pad4a8[0x4aa - 0x4a8];
+    unsigned char b4aa, b4ab; unsigned short w4ac; short w4ae; unsigned char pad4b0[0x4b4 - 0x4b0];
     union ActorParameter4 parameter4b4;
     unsigned char pad4b8[0x4c9 - 0x4b8];
     char b4c9;
@@ -452,6 +453,16 @@ union LinkedActorWcc {
     short short_value;
     unsigned int dword_value;
     int arrcc[1];
+    struct LinkedActorWccBytes { unsigned char b0, b1, b2, b3; } bytes; /* 0x0c167d28 unit gauges */
+    float float_value; /* 0x0c15b210 start x */
+};
+/* Segment state at LinkedActor+0x88 used by the 0x0c16741c chain unit. */
+struct LinkedActorSegment88 {
+    char b0, b1;
+    unsigned char b2, b3, b4, b5, b6, b7;
+    float f8, fc;
+    unsigned char b10, pad11;
+    short w12;
 };
 struct LinkedActor {
     unsigned char pad0;
@@ -748,5 +759,12 @@ struct Obj_u06808c {
     unsigned char s3c4[8];
     unsigned char s3cc[8];
 };
+
+/* Byte-code operand stream read by 0x0c04e6b2 (big-endian halfwords). */
+struct OperandStream { unsigned char *base; unsigned short pos; unsigned char pad6, count; };
+
+/* 16-byte launch row (tables 0x0c250d74, 0x0c250ddc): 16.16 velocities, start
+ * offsets, animation and the 0x1a1 flag byte. */
+struct LaunchRow16 { int vx, vy; short dx, dy; char anim; unsigned char flag; unsigned char pad[2]; };
 
 #endif

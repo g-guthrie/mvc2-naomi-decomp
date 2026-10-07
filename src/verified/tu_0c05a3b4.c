@@ -12,7 +12,10 @@ extern void func_0c1d357a(struct LinkedActorVec3 *, int);
 extern void func_0c1d330c(struct Actor *, struct LinkedActorVec3 *, int, int);
 extern void func_0c0346da(struct Actor *, int);
 void func_0c05a3b4(struct Actor *a) {
-  struct ActorSub2a4 *sub = &a->sub2a4;
+  struct ActorSub2a4 *sub;
+  sub = &a->sub2a4;
+  goto call;
+call:
   if (func_0c02a026(a) < 0) {
     a->b7++;
     sub->b2 = 0;

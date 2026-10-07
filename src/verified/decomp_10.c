@@ -10,9 +10,6 @@ void func_0c02f1fc(unsigned char *p) { *(float*)(p+32) = *(float*)(p+12) / (floa
 #pragma section n00e222
 void func_0c02f222(unsigned char *p) { *(float*)(p+40) = *(float*)(p+16) / (float)*(int*)(p+4); *(float*)(p+36) = *(float*)(p+40) * (float)*(int*)(p+0); *(float*)(p+40) = -*(float*)(p+40); }
 
-#pragma section n046896
-void func_0c067896(struct Actor *p) { p->f100 += p->f112; if (--p->s28 == 0) { p->b6++; p->s28 = 4; } }
-
 #pragma section n0b3152
 void func_0c0d4152(struct Actor *p) { p->f52 += p->f92; p->f92 += p->f104; p->f56 += p->f96; p->f96 += p->f108; }
 
@@ -23,9 +20,6 @@ void func_0c12e228(struct Actor *p) { p->f52 += p->f92; p->f92 += p->f104; p->f5
 void func_0c15014e(struct Actor *p) { p->f52 += p->f92; p->f92 += p->f104; p->f56 += p->f96; p->f96 += p->f108; }
 
 struct RS_0c1675a0 { unsigned char pad[8]; float f8; float f12; };
-#pragma section n1465a0
-void func_0c1675a0(struct Actor *p, struct Actor *q, struct RS_0c1675a0 *r) { p->f52 = q->f52; p->f56 = q->f56; p->f52 += r->f8; p->f56 += r->f12; }
-
 #pragma section n15d204
 void func_0c17e204(struct Actor *p) { p->f52 += p->f92; p->f92 += p->f104; p->f56 += p->f96; p->f96 += p->f108; }
 

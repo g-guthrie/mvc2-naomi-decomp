@@ -1,6 +1,15 @@
+/* Candidate: 3055/3208 bytes equal; every function and pool is at its retail
+ * address. Remaining differences are scratch-register choices (r1/r2/r3, r6/r7,
+ * r13/r14) in 0x0c046f9a, 0x0c04710c, 0x0c0471aa, 0x0c047286, 0x0c047360,
+ * 0x0c0473da, 0x0c04746c, 0x0c0475ec, 0x0c0476f4, 0x0c04771a, 0x0c0477dc and
+ * 0x0c0479a6. The real translation unit starts at 0x0c045f1c (bsr from
+ * 0x0c045f4a to 0x0c0463b4 and from 0x0c046472/0x0c046c48 to 0x0c046e7e, bra
+ * 0x0c046ea2 -> 0x0c0477dc, bsr 0x0c046d8a -> 0x0c047cca) and ends at the pool
+ * before 0x0c047d4c, so the register rotation here is probably inherited from
+ * the missing leading functions. */
 #include "objects.h"
 struct CommandPattern { unsigned short length, flags; unsigned char pad4[4]; unsigned short inputs[1]; };
-struct CommandState { unsigned char phase; signed char timer; unsigned char index; unsigned char direction; signed char step; unsigned char pad5; unsigned short buttons; };
+struct CommandState { unsigned char phase; signed char timer; unsigned char index; unsigned char direction; unsigned char step; unsigned char pad5; unsigned short buttons; };
 extern void func_0c047a8c(struct Actor *,struct CommandState *);
 extern unsigned char func_0c0477dc(struct Actor *,struct CommandPattern *,struct CommandState *,int);
 extern unsigned char func_0c047796(struct Actor *,struct CommandPattern *,struct CommandState *,int);
@@ -18,7 +27,7 @@ done:
 }
 unsigned char func_0c046f0a(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
- if(--s->timer<=0){s->phase=0;goto done;}
+ if(--s->timer<=0)return s->phase=0;
  if((a->w34a&0x3c00)==((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0]){
   func_0c047a8c(a,s);
   if(++s->index==p->length){
@@ -27,21 +36,21 @@ unsigned char func_0c046f0a(struct Actor *a,struct CommandPattern *p,struct Comm
    return func_0c046f9a(a,p,s);
   }
  }
-done:
  return 0;
 }
 unsigned char func_0c046f9a(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
- unsigned short pressed;
- if(--s->timer<=0){s->phase=0;goto done;}
- pressed=(a->w34c^a->w34a)&((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0];
- if(pressed){
-  if((p->flags&0x8000)==0x8000){
-   if(pressed!=((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0]){++s->phase;return 0;}
-  }else if((p->flags&0x40)==0x40)return func_0c0477dc(a,p,s,pressed);
+ int pressed;
+ if(--s->timer<=0)return s->phase=0;
+ pressed=((short)a->w34c^(short)a->w34a)&(short)((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0];
+ if((unsigned short)pressed){
+  unsigned short *flags=&p->flags;
+  if((*flags&0x8000)==0x8000){
+   if((unsigned short)pressed!=((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0]){s->phase++;goto end;}
+  }else if((*flags&0x40)==0x40)return func_0c0477dc(a,p,s,pressed);
   return func_0c047796(a,p,s,pressed);
  }
-done:
+end:
  return 0;
 }
 
@@ -51,7 +60,7 @@ unsigned char func_0c04701c(struct Actor *a,struct CommandPattern *p,struct Comm
  unsigned short buttons;
  s->phase=0;
  if(func_0c047b0c(a,((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0],&buttons))
-  return func_0c047796(a,p,s,buttons);
+  return func_0c047796(a,p,s,(short)buttons);
 done:
  return 0;
 }
@@ -69,7 +78,7 @@ unsigned char func_0c047068(struct Actor *a,struct CommandPattern *p,struct Comm
 }
 unsigned char func_0c0470aa(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
- if(!(a->w34a&p->inputs[0])){s->phase=0;return 0;}
+ if(!(a->w34a&p->inputs[0]))return s->phase=0;
  s->timer=*(unsigned char *)p;
  s->index=a->b1d2;
  ++s->phase;
@@ -87,28 +96,36 @@ unsigned char func_0c04715a(struct Actor *,struct CommandPattern *,struct Comman
 unsigned char func_0c0471aa(struct Actor *,struct CommandPattern *,struct CommandState *);
 unsigned char func_0c04710c(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
- if(a->w34a&p->inputs[0])return 0;
- if(p->inputs[0]==0x1000 || p->inputs[0]==0x2000 ||
-    (signed char)s->index==(signed char)a->b1d2){
-  ++s->phase;s->timer=15;
-  return func_0c04715a(a,p,s);
+ unsigned short *in=&p->inputs[0];
+ if(!(a->w34a&*in)){
+  if(*in==0x1000 || *in==0x2000 || s->index==a->b1d2)goto ok;
+  s->phase=0;
  }
- s->phase=0;
  return 0;
+ok:
+ ++s->phase;s->timer=15;
+ return func_0c04715a(a,p,s);
 }
 unsigned char func_0c04715a(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
- if(--s->timer<=0){s->phase=0;return 0;}
- if(p->inputs[1]==0x800){
-  if((short)a->w34a!=(short)p->inputs[1])return 0;
- }else if(!(a->w34a&p->inputs[1]))return 0;
+ unsigned short *in;
+ if(--s->timer<=0)return s->phase=0;
+ in=&p->inputs[1];
+ if(*in==0x800){
+  if((short)a->w34a!=(short)*in)goto ret;
+ }else if(!(a->w34a&*in)){
+ret:
+  return 0;
+ }
  ++s->phase;s->timer=15;
  return func_0c0471aa(a,p,s);
 }
 unsigned char func_0c0471aa(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
- if(--s->timer<=0){s->phase=0;return 0;}
- if(a->w34a&p->inputs[2])return func_0c0477dc(a,p,s,(short)a->w34a&(short)p->inputs[2]);
+ unsigned short *in;
+ if(--s->timer<=0)return s->phase=0;
+ in=&p->inputs[2];
+ if(a->w34a&*in)return func_0c0477dc(a,p,s,(short)a->w34a&(short)*in);
  return 0;
 }
 
@@ -125,28 +142,34 @@ unsigned char func_0c0471ea(struct Actor *a,struct CommandPattern *p,struct Comm
 unsigned char func_0c0472e2(struct Actor *,struct CommandPattern *,struct CommandState *);
 unsigned char func_0c04723c(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
- if(!(a->w34e&p->inputs[0])){s->phase=0;return 0;}
- s->buttons=a->w34e&p->inputs[0];
+ unsigned short *in=&p->inputs[0];
+ if(!(a->w34e&*in))return s->phase=0;
+ s->buttons=a->w34e&*in;
  s->index=1;
  ++s->phase;
  s->timer=*((unsigned char *)p+2);
- if(s->index==p->length){s->phase=2;s->timer=14;return func_0c0472e2(a,p,s);}
+ if(p->length==s->index){s->phase=2;s->timer=14;return func_0c0472e2(a,p,s);}
  return 0;
 }
 unsigned char func_0c047286(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
- if(--s->timer<=0){s->phase=0;return 0;}
- if((a->w34e&p->inputs[0]) && (a->w34e&p->inputs[0])==s->buttons){
-  ++s->index;
-  s->timer=*((unsigned char *)p+2);
-  if(s->index==p->length){s->phase=2;s->timer=14;return func_0c0472e2(a,p,s);}
+ unsigned short *in;
+ if(--s->timer<=0)return s->phase=0;
+ in=&p->inputs[0];
+ if(a->w34e&*in){
+  if((a->w34e&*in)==s->buttons){
+   ++s->index;
+   s->timer=*((unsigned char *)p+2);
+   if(p->length==s->index){s->phase=2;s->timer=14;return func_0c0472e2(a,p,s);}
+  }
  }
  return 0;
 }
 unsigned char func_0c0472e2(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
- if(--s->timer<=0){s->phase=0;return 0;}
- return (a->w34e&p->inputs[0])==s->buttons;
+ if(--s->timer<=0)return s->phase=0;
+ if((a->w34e&p->inputs[0])==s->buttons)return 1;
+ return 0;
 }
 unsigned char func_0c04730c(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
@@ -162,9 +185,11 @@ unsigned char func_0c047360(struct Actor *a,struct CommandPattern *p,struct Comm
 {
  unsigned short direction=a->w34a&0x3c00;
  unsigned short index;
- if(!direction || (direction!=0x2000 && direction!=0x1000 && direction!=0x800 && direction!=0x400)){
-  s->phase=0;return 0;
+ if(direction){
+  if(direction==0x2000 || direction==0x1000 || direction==0x800 || direction==0x400)goto ok;
  }
+ s->phase=0;return 0;
+ok:
  index=direction;
  if(direction==0x2000)index=0;
  if(direction==0x800)index=1;
@@ -179,15 +204,15 @@ unsigned char func_0c047360(struct Actor *a,struct CommandPattern *p,struct Comm
 unsigned char func_0c0473da(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
  unsigned short direction;
- if(--s->timer<=0){s->phase=0;return 0;}
+ if(--s->timer<=0)return s->phase=0;
  direction=(a->w34a&0x3c00)>>10;
  if(direction){
   if(direction==dat_0c23bf3c[(s->direction+1)&3])s->step=1;
-  else if(direction==dat_0c23bf3c[(s->direction-1)&3])s->step=-1;
+  else if(direction==dat_0c23bf3c[(s->direction-1)&3])s->step=255;
   else return 0;
   ++s->phase;
   --s->index;
-  s->direction=(s->direction+s->step)&3;
+  s->direction=(s->direction+(signed char)s->step)&3;
   func_0c047a8c(a,s);
  }
  return 0;
@@ -196,15 +221,15 @@ unsigned char func_0c0473da(struct Actor *a,struct CommandPattern *p,struct Comm
 unsigned char func_0c04746c(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
  unsigned short direction;
- if(--s->timer<=0){s->phase=0;return 0;}
+ if(--s->timer<=0)return s->phase=0;
  direction=(a->w34a&0x3c00)>>10;
- if(direction && direction==dat_0c23bf3c[(s->direction+(unsigned char)s->step)&3]){
+ if(direction && direction==dat_0c23bf3c[(s->direction+s->step)&3]){
   if(!--s->index){
    *((unsigned char *)a+0x35c)=0;
    ++s->phase;s->timer=15;s->index=0;
    return func_0c046f9a(a,p,s);
   }
-  s->direction=(s->direction+s->step)&3;
+  s->direction=(s->direction+(signed char)s->step)&3;
   func_0c047a8c(a,s);
  }
  return 0;
@@ -229,7 +254,7 @@ unsigned char func_0c04753a(struct Actor *a,struct CommandPattern *p,struct Comm
 }
 unsigned char func_0c04756c(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
- if(--s->timer<=0){s->phase=0;return 0;}
+ if(--s->timer<=0)return s->phase=0;
  if((a->w34e&0x3f60)==((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0]){
   func_0c047a8c(a,s);
   if(++s->index==p->length){s->phase=2;s->timer=15;}
@@ -238,32 +263,33 @@ unsigned char func_0c04756c(struct Actor *a,struct CommandPattern *p,struct Comm
 }
 unsigned char func_0c0475ec(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
- unsigned short pressed;
- if(--s->timer<=0){s->phase=0;return 0;}
- pressed=a->w34e&((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0]&0x3f60;
- if(pressed){
-  if((p->flags&0x8000)==0x8000){
-   if(pressed!=((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0]){++s->phase;return 0;}
-  }else if((p->flags&0x40)==0x40)return func_0c0477dc(a,p,s,pressed);
+ int pressed;
+ if(--s->timer<=0)return s->phase=0;
+ pressed=(short)((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0]&(short)a->w34e&0x3f60;
+ if((unsigned short)pressed){
+  unsigned short *flags=&p->flags;
+  if((*flags&0x8000)==0x8000){
+   if((unsigned short)pressed!=((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0]){s->phase++;goto end;}
+  }else if((*flags&0x40)==0x40)return func_0c0477dc(a,p,s,pressed);
   return func_0c047796(a,p,s,pressed);
  }
+end:
  return 0;
 }
 
 extern unsigned char (*table_0c23bf54[])(struct Actor *,struct CommandPattern *,struct CommandState *,int);
 unsigned char func_0c047664(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
- short *input;
  if(a->b525){
   if(a->b45d && a->b448==*((unsigned char *)p+4))
-   *(unsigned short *)((unsigned char *)a+0x4ae)=~p->inputs[0];
-  input=(short *)((unsigned char *)a+0x4ae);
- }else input=(short *)((unsigned char *)a+0x34a);
- return table_0c23bf54[s->phase](a,p,s,*input);
+   a->w4ae=~p->inputs[0];
+  return table_0c23bf54[s->phase](a,p,s,a->w4ae);
+ }
+ return table_0c23bf54[s->phase](a,p,s,(short)a->w34a);
 }
 unsigned char func_0c0476d4(struct Actor *a,struct CommandPattern *p,struct CommandState *s,int input)
 {
- if(!(p->inputs[0]&(unsigned short)input)){s->phase=0;return 0;}
+ if(!(p->inputs[0]&(unsigned short)input))return s->phase=0;
  s->timer=*(signed char *)p;
  ++s->phase;
  return 0;
@@ -278,8 +304,8 @@ unsigned char func_0c0476f4(struct Actor *a,struct CommandPattern *p,struct Comm
 
 unsigned char func_0c04771a(struct Actor *a,struct CommandPattern *p,struct CommandState *s,int input)
 {
- unsigned short pressed=p->inputs[0]&input;
- if(!pressed){
+ unsigned short pressed;
+ if(!(pressed=p->inputs[0]&input)){
   if(func_0c0477dc(a,p,s,(short)pressed)){s->phase=0;return 1;}
   ++s->phase;s->timer=10;
  }
@@ -287,9 +313,10 @@ unsigned char func_0c04771a(struct Actor *a,struct CommandPattern *p,struct Comm
 }
 unsigned char func_0c04775c(struct Actor *a,struct CommandPattern *p,struct CommandState *s,int input)
 {
- if(!--s->timer){s->phase=0;return 0;}
- if(func_0c0477dc(a,p,s,input)){s->phase=0;return 1;}
- return 0;
+ if(!--s->timer)return s->phase=0;
+ if(!func_0c0477dc(a,p,s,input))return 0;
+ s->phase=0;
+ return 1;
 }
 unsigned char func_0c047796(struct Actor *a,struct CommandPattern *p,struct CommandState *s,int input)
 {

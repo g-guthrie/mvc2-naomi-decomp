@@ -45,7 +45,9 @@ void func_0c058f36(struct Actor *a) {
   if (func_0c02a026(a) < 0) {
     a->b7++;
     func_0c02a0c4(a, 15, 4);
-  } else if (a->b141) {
+    return;
+  }
+  if (a->b141) {
     a->b141 = 0;
     divisor = 4;
     child = a->p1c8;

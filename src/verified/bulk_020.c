@@ -96,43 +96,6 @@ void (*const table_0c0634f8[])(void) = {
     func_0c2401a8,
 };
 
-#pragma section n063668
-void (*const table_0c063668[])(void) = {
-    func_0c2401c0,
-    func_0c2401d0,
-    func_0c02a39a,
-    func_0c0442fa,
-    func_0c0432ca,
-};
-
-#pragma section n0637cc
-void (*const table_0c0637cc[])(void) = {
-    func_0c02a0c4,
-    func_0c02a026,
-    func_0c042018,
-    func_0c0421b8,
-    func_0c044e52,
-    func_0c044f1c,
-};
-
-#pragma section n063942
-const unsigned short dat_0c063942[] = {
-    0x01acu,
-};
-
-#pragma section n063948
-const unsigned int dat_0c063948[] = {
-    0x0c2f83f8u,
-};
-
-#pragma section n063a54
-void (*const table_0c063a54[])(void) = {
-    func_0c02a026,
-    func_0c0439c4,
-    func_0c037d54,
-    func_0c2401ec,
-};
-
 #pragma section n063cb0
 void (*const table_0c063cb0[])(void) = {
     func_0c240204,
