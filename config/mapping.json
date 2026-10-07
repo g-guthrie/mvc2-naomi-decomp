@@ -293841,25 +293841,11 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c18e076; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c18e0d8",
-      "size": 204,
+      "address": "0xc18e0d8",
+      "size": 300,
       "kind": "code",
-      "sha256": "42022eb7cae56b0b674c8bdff5889a5c05e628cc1cc28843685d16f24bd7bbcf",
-      "evidence": "CFG walk from 0x0c18e0d8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
-    },
-    {
-      "address": "0x0c18e1a4",
-      "size": 88,
-      "kind": "code",
-      "sha256": "c4bd086dafb3f132a5ece7b3c0dbd8b9c05e2272aa6c28b1f7ae3f6cd20fea45",
-      "evidence": "CFG walk from 0x0c18e1a4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
-    },
-    {
-      "address": "0x0c18e1fc",
-      "size": 8,
-      "kind": "code",
-      "sha256": "c5b1d59cf2c5de2dab98611ea46d238b77403997bc7bb5afd0fe27524ad87935",
-      "evidence": "CFG walk from 0x0c18e0d8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "d84ec02597aa6fae3fae02ba6b4896b4b8984cadedee20d9855f825e463f817d",
+      "evidence": "Reviewed complete attachment positioning function at18e0d8.18e1a4 continues table-index arithmetic without a new frame;18e1fc is the shared PR/R13/R14 epilogue reached by the three entry guards. The next callback starts18e204; PC-relative pool starts18e216."
     },
     {
       "address": "0x0c18e204",
@@ -344570,6 +344556,41 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1c743c; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c1c7494",
+      "size": 88,
+      "kind": "code",
+      "sha256": "8a8e07e4f1d9341bee1ab21e616cd19f43c2ef64bb1b81aec12b21dce3b7abc2",
+      "evidence": "Reviewed scale initializer: switch over b5, three setup calls,0.1 scale increment and clamp, PR/R14 epilogue. Callback table25e8c4 selects this entry."
+    },
+    {
+      "address": "0x0c1c74ec",
+      "size": 124,
+      "kind": "code",
+      "sha256": "ca8ccdad395ee3cf92cef24d70536c70fb084fe1d11902b4afbf482dc18ba9b9",
+      "evidence": "Reviewed parent-colour selector and scale interpolation switch; branches remain in this frameless routine and return at7564."
+    },
+    {
+      "address": "0x0c1c7568",
+      "size": 6,
+      "kind": "code",
+      "sha256": "ddded82f72cd523c973641ef6906faa3a3684b81ab8b8c61b62b70940ed742ba",
+      "evidence": "Reviewed deletion tail call through literal7598 with NOP delay slot."
+    },
+    {
+      "address": "0x0c1c756e",
+      "size": 20,
+      "kind": "code",
+      "sha256": "060b77138b4857238539f30863ae0f9118cad7ff021a63cf28c182bb5ea4d82e",
+      "evidence": "Reviewed parent-state dispatcher, one balanced stack slot, byte index and indirect tail through table759c."
+    },
+    {
+      "address": "0x0c1c7582",
+      "size": 10,
+      "kind": "data",
+      "sha256": "eecd33dbaa23e6bbea4561ab5cdb278c7ce31993fea361f804aed655ae61aaa8",
+      "evidence": "Halfword4c9 read at7512 and helper pointers1c7ac4/1c7dcc read at74b2/74bc; literal continuation before known758c."
+    },
+    {
       "address": "0x0c1c758c",
       "size": 4,
       "kind": "data",
@@ -344578,10 +344599,17 @@
     },
     {
       "address": "0x0c1c7590",
-      "size": 92,
+      "size": 16,
+      "kind": "data",
+      "sha256": "c503ff288ee85baf04732b92918b6c95bdc1f3f975d73d47d1cbce65f439c2bd",
+      "evidence": "Native preceding handlers read0.1 at7590 (74c8/74f4),0.01 at7594 (755c), deletion target7598 (7568), and dispatch table759c (7570). These are literals, not a function entry."
+    },
+    {
+      "address": "0x0c1c75a0",
+      "size": 76,
       "kind": "code",
-      "sha256": "244f5dc3dd613dd700e3fae76e660d11f6b4dc9a058bfc562afdcee79eae1817",
-      "evidence": "CFG walk from 0x0c1c7590; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "089a8baabd997d20c70c59281dbd7b7e31af19b02a754986f78a7d7475ece241",
+      "evidence": "Reviewed scale-state initializer at75a0, with R14/PR prologue, switch cases, shared epilogue75e6 and delay slot75ea; literals at76a4/76a8."
     },
     {
       "address": "0x0c1c75ec",
