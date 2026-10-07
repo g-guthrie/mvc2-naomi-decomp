@@ -1,14 +1,5 @@
 #include "objects.h"
 
-#pragma section n076208
-void func_0c076208(struct Actor *p)
-{
-    p->f52 += p->f92;
-    p->f92 += p->f104;
-    p->f56 += p->f96;
-    p->f96 += p->f108;
-}
-
 #pragma section n150c30
 void func_0c150c30(struct Actor *p)
 {

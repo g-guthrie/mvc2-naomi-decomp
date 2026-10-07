@@ -72,7 +72,8 @@ def describe(path, ranges, imports):
     while cursor in by_start:
         size, kind = by_start[cursor]
         if kind == 'code':
-            if cursor > last and interior and interior[-1]['address'] + interior[-1]['size'] == cursor:
+            if (cursor > last and interior and interior[-1]['address'] + interior[-1]['size'] == cursor
+                    and cursor not in branch_targets(holder[0], cursor, ranges)):
                 break
         else:
             interior.append({'address': cursor, 'size': size, 'kind': 'data'})
@@ -82,6 +83,41 @@ def describe(path, ranges, imports):
     interior = coalesce(interior)
     unit['sections'].append({'section': 'P', 'kind': 'code', 'address': start, 'size': cursor - start, 'interior': interior})
     return unit
+
+
+_IMAGE = None
+
+
+def main_image():
+    """The retail main image and its base address, read once."""
+    global _IMAGE
+    if _IMAGE is None:
+        target = load(ROOT / 'config/target.json')
+        program = verify_rom(target)
+        offset, base, size = (number(target['main'][k]) for k in ('rom_offset', 'address', 'size'))
+        _IMAGE = (base, program[offset:offset + size])
+    return _IMAGE
+
+
+def branch_targets(lo, hi, ranges):
+    """Targets of BT/BF/BT.S/BF.S/BRA in reviewed code within [lo, hi).
+
+    A function may continue after its own literal pool; the code there is part
+    of the unit when a branch inside the unit reaches it."""
+    base, image = main_image()
+    targets = set()
+    for address, size, kind in ranges:
+        if kind != 'code' or address + size <= lo or address >= hi:
+            continue
+        for pc in range(max(address, lo), min(address + size, hi), 2):
+            word = struct.unpack_from('<H', image, pc - base)[0]
+            if word & 0xf900 == 0x8900:
+                disp = word & 0xff
+                targets.add(pc + 4 + (disp - 256 if disp & 0x80 else disp) * 2)
+            elif word & 0xf000 == 0xa000:
+                disp = word & 0xfff
+                targets.add(pc + 4 + (disp - 4096 if disp & 0x800 else disp) * 2)
+    return targets
 
 
 def coalesce(ranges):
