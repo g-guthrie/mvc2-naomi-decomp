@@ -376,6 +376,36 @@
           "evidence": "0c1d914c copies twelve bytes from its R4 input pointer and marks the resource; 0c1d9166 explicitly returns zero in R0."
         }
       ]
+    },
+    {
+      "source": "src/candidates/tu_0c0757fc.c",
+      "prototypes": [
+        {
+          "address": "0x0c03edcc",
+          "declaration": "extern void func_0c03edcc(struct Actor *, struct Actor *);",
+          "evidence": "Native 0c03edce captures incoming R5 in R14, then 0c03edda reads target byte1; R4 is separately captured at0c03edd2."
+        },
+        {
+          "address": "0x0c03f004",
+          "declaration": "extern void func_0c03f004(struct Actor *, struct Actor *);",
+          "evidence": "Native 0c03f008 captures incoming R5 in R14, then 0c03f014 reads target byte1; the 075930 wrapper must forward both actors."
+        }
+      ]
+    },
+    {
+      "source": "src/candidates/ub5_02.c",
+      "prototypes": [
+        {
+          "address": "0x0c03edcc",
+          "declaration": "extern void func_0c03edcc(struct Actor *, struct Actor *);",
+          "evidence": "Native 0c03edce captures incoming R5 in R14, then 0c03edda reads target byte1; R4 is separately captured at0c03edd2."
+        },
+        {
+          "address": "0x0c03f004",
+          "declaration": "extern void func_0c03f004(struct Actor *, struct Actor *);",
+          "evidence": "Native 0c03f008 captures incoming R5 in R14, then 0c03f014 reads target byte1; the 075930 wrapper must forward both actors."
+        }
+      ]
     }
   ]
 }
