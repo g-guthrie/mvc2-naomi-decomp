@@ -1,20 +1,6 @@
-/* Translation unit around 0x0c1b5c78: three functions, func_0c1b5c78,
- * func_0c1b5d26 and func_0c1b5e04, with a trailing literal pool. The
- * assignment gave size 432 (span ending at 0x0c1b5e28), but func_0c1b5e04's
- * tail call reads a 4-byte pool entry at 0x0c1b5e28 itself, one word past
- * that end; extended to size 436 so the unit's derived section covers it.
- *
- * func_0c1b5c78 matches exactly (174/174) and its pool matches (14/14).
- * func_0c1b5d26 differs: retail pushes r14, r13, pr then `add #-4,r15` and
- * homes its `b` argument straight to that one stack slot, keeping the
- * case-0 constant 0 live in r13 across the func_0c02a026 call. Every
- * spelling tried here (plain literal 0, `unsigned char c = 0;`, `int c`
- * assigned inside the case) instead either folds the 0 away or spills it
- * to its own stack slot (`add #-8,r15`), never allocating r13, so `b`
- * itself never gets homed to a single slot either. Because func_0c1b5d26's
- * compiled size differs from retail, func_0c1b5e04 downstream also lands
- * at the wrong address. Left as a candidate; only func_0c1b5c78 and its
- * pool are credited. */
+/* 0x0c1b5c78 size 436: func_0c1b5c78, func_0c1b5d26 (pool in the
+ * switch dispatch) and func_0c1b5e04. The last function's jmp pool word
+ * sits at 0x0c1b5e28. */
 
 struct Vec3_ub6_01 { float x, y, z; };
 
@@ -55,7 +41,7 @@ struct Obj_ub6_01 {
 extern void func_0c1d53e4(struct Obj_ub6_01 *);
 extern void func_0c02a0c4(struct Obj_ub6_01 *, int, int);
 extern void func_0c02a026(struct Obj_ub6_01 *);
-extern void func_0c028642(struct Obj_ub6_01 *);
+extern int func_0c028642(struct Obj_ub6_01 *);
 extern void func_0c037688(struct Obj_ub6_01 *);
 
 void func_0c1b5c78(struct Obj_ub6_01 *a, struct Obj_ub6_01 *b)
@@ -91,38 +77,39 @@ void func_0c1b5c78(struct Obj_ub6_01 *a, struct Obj_ub6_01 *b)
 
 void func_0c1b5d26(struct Obj_ub6_01 *a, struct Obj_ub6_01 *b)
 {
-    unsigned char c = 0;
+    unsigned char z = 0;
 
     switch (a->b5) {
     case 0:
         func_0c02a026(a);
-        if (!a->xdc.b141)
+        if (a->xdc.b141 == 0)
             return;
-        a->b5++;
-        a->xdc.b141 = c;
-        /* fall through */
+        a->b5 = a->b5 + 1;
+        a->xdc.b141 = z;
     case 1:
-        if (!b->xdc.b141)
-        a->b5++;
+        if (b->xdc.b141 == 0)
             return;
-        /* fall through */
+        a->b5 = a->b5 + 1;
     case 2:
         func_0c02a026(a);
-        if (!a->xdc.b141)
+        if (a->xdc.b141 == 0)
             return;
-        a->pos.x = a->pos.x + a->f92;
+        a->pos.x += a->f92;
         a->f92 += a->f104;
         a->pos.y += a->f96;
         a->f96 += a->f108;
-        func_0c028642(a);
+        if (func_0c028642(a) == 0) {
+            a->b4 = 2;
+            a->b5 = z;
+            a->xdc.b12c = z;
+        }
     }
 }
 
 void func_0c1b5e04(struct Obj_ub6_01 *a)
 {
-    if (a->b5 == 0) {
+    if (a->b5 == 0)
         a->b5++;
-        return;
-    }
-    func_0c037688(a);
+    else
+        func_0c037688(a);
 }

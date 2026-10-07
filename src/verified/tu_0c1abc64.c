@@ -1,26 +1,5 @@
 #include "objects.h"
 
-struct Item_0c1abc64 {
-    unsigned char b0, b1, b2, b3;
-    int n;
-};
-
-struct Sub_0c1abc64 {
-    struct Item_0c1abc64 *p;
-    unsigned char b4;
-    unsigned char b5;
-};
-
-struct Host_0c1abc64 {
-    unsigned char pad[0xcc];
-    struct Sub_0c1abc64 sub;
-};
-
-struct Src_0c1abc64 {
-    unsigned char pad[37];
-    unsigned char b37;
-};
-
 extern void func_0c02a684(struct Src_0c1abc64 *, int, int, int);
 
 void func_0c1abc64(struct Host_0c1abc64 *a, struct Src_0c1abc64 *b, struct Item_0c1abc64 *c)

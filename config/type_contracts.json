@@ -294,6 +294,41 @@
           "offset": "0x4a7",
           "size": 1,
           "evidence": "Native05124c compares the signed byte at4a7 with1;051294 clears the same byte after the subrecord gate."
+        },
+        {
+          "type": "struct MotionGlobal_0c2d9260",
+          "member": "f16",
+          "offset": "0x10",
+          "size": 4,
+          "evidence": "Whole-exact u_0c025a9c camera bounds update reads vertical origin at global+16."
+        },
+        {
+          "type": "struct MotionGlobal_0c2d9260",
+          "member": "fa8",
+          "offset": "0xa8",
+          "size": 4,
+          "evidence": "Whole-exact u_0c025a9c writes camera vertical center at global+0xa8."
+        },
+        {
+          "type": "struct Host_0c1abc64",
+          "member": "sub",
+          "offset": "0xcc",
+          "size": 8,
+          "evidence": "Whole-exact tu_0c1abc64 and tu_0c1aebb8 timed record readers."
+        },
+        {
+          "type": "struct Item_0c1abc64",
+          "member": "n",
+          "offset": "0x4",
+          "size": 4,
+          "evidence": "Whole-exact timed readers advance by signed four-byte item stride."
+        },
+        {
+          "type": "struct Obj_u06808c",
+          "member": "s3bc",
+          "offset": "0x3bc",
+          "size": 8,
+          "evidence": "Whole-exact u06808c passes consecutive input records at 3bc/3c4/3cc."
         }
       ],
       "sizes": [

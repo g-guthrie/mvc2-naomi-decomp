@@ -1,10 +1,4 @@
-/* Four handlers sharing the pool at 0x0c0ca240. func_0c0ca172 and
- * func_0c0ca1ba are exact. The other two differ only in register numbering:
- * func_0c0ca114 reloads the spilled &o->s2a4 into r3 where retail uses r2
- * (0x0c0ca134) and calls func_0c047aac through r2 where retail uses r3;
- * func_0c0ca202 calls func_0c037d54 through r3 where retail uses r2, and
- * loads 0xc4 into r3 (retail r2) after which retail hoists the
- * func_0c044450 load above the mov.b (0x0c0ca22e..0x0c0ca232). */
+/* Four handlers sharing the pool at 0x0c0ca240. */
 struct Sub_tu2_10 { unsigned char pad[2]; char b2; };
 
 struct Obj_tu2_10 {
@@ -41,7 +35,9 @@ int func_0c0ca114(struct Obj_tu2_10 *o)
 {
     struct Sub_tu2_10 *s = &o->s2a4;
 
-    if (func_0c046e7e(o, &dat_0c247d90, o->s364) == 0 || s->b2)
+    if (!func_0c046e7e(o, &dat_0c247d90, o->s364))
+        return 0;
+    else if (s->b2)
         return 0;
     func_0c047aac(o, o->s364);
     o->b5 = 0;
@@ -82,7 +78,7 @@ int func_0c0ca202(struct Obj_tu2_10 *o)
 
     if (func_0c046e7e(o, &dat_0c247e52, o->s3c4) == 0)
         return 0;
-    if ((v = func_0c037d54(o)) == 0)
+    else if ((v = func_0c037d54(o)) == 0)
         return 0;
     o->b1f7 = 0xc4;
     func_0c044450(o, v);

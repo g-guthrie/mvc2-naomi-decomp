@@ -45,7 +45,7 @@ void func_0c174136(struct LinkedActor *a,struct LinkedActor *owner)
  if(a->b5)goto ending;
  if(--a->s28<=0){a->b5++;if(!a->b33)func_0c029e70(a,27,(func_0c02849a()&3)+10);goto check_hit;}
  if(!A(a)->b141)func_0c02a026(a);func_0c037d0c(a);
- check_hit:if(!A(a)->b6 && A(a)->b19e && A(a)->p1b0->b233==9 && func_0c1b8c4c(owner,1)){A(a)->b6++;func_0c0346da(a,10);}return;
+ check_hit:if(!A(a)->b6 && A(a)->b19e && ((unsigned char *)A(a)->p1b0)[0x233]==9 && func_0c1b8c4c(owner,1)){A(a)->b6++;func_0c0346da(a,10);}return;
  ending:goto mode;mode:if(a->b33){if(func_0c02a026(a)<0)goto cleanup;return;}
  if(func_0c029fc4(a)<0 || func_0c029fc4(a)<0)goto cleanup;return;
  cleanup:func_0c17423c(a,owner);
