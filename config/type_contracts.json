@@ -217,6 +217,55 @@
           "offset": 13,
           "size": 1,
           "evidence": "Native 0c12dc66 tests byte13 and 0c12dc7c clears it before animation advancement."
+        },
+        {
+          "type": "struct Actor",
+          "member": "b527",
+          "offset": "0x527",
+          "size": 1,
+          "evidence": "Native033770..033774 copies player byte527 into ranking row byte8."
+        },
+        {
+          "type": "struct Actor",
+          "member": "score534",
+          "offset": "0x534",
+          "size": 4,
+          "evidence": "Native0337c2..0337ca copies the word at534 to the primary unsigned ranking key."
+        },
+        {
+          "type": "struct Actor",
+          "member": "score538",
+          "offset": "0x538",
+          "size": 4,
+          "evidence": "Native0337be..0337c4 copies the word at538 to the secondary unsigned ranking key."
+        },
+        {
+          "type": "struct Actor",
+          "member": "rank53d",
+          "offset": "0x53d",
+          "size": 1,
+          "evidence": "Native0336d6..0336e4 reads an unsigned ranking index;03387a..03387c stores the final index."
+        },
+        {
+          "type": "struct PlayerSlotScore",
+          "member": "ticks",
+          "offset": "0x558",
+          "size": 4,
+          "evidence": "Native033776..0337ac uses unsigned division/modulo on the frame clock at558."
+        },
+        {
+          "type": "struct RankingRecord24",
+          "member": "secondary",
+          "offset": "0x10",
+          "size": 4,
+          "evidence": "Native033834/033836 compares unsigned words at row+16 after equal primary keys."
+        },
+        {
+          "type": "struct RankingRecord24",
+          "member": "primary",
+          "offset": "0x14",
+          "size": 4,
+          "evidence": "Native033824/033826 compares unsigned primary words at row+20."
         }
       ],
       "sizes": [
@@ -239,6 +288,16 @@
           "type": "struct LinkedActorBlock",
           "size": "0xc0",
           "evidence": "Native actor animation-block assignments copy0xc0 bytes; the recovered pointer replaces padding without changing the block extent."
+        },
+        {
+          "type": "struct PlayerSlotScore",
+          "size": "0x5a4",
+          "evidence": "Native0336f6..03370e and0337c8..0337d4 use a5a4-byte player-slot stride."
+        },
+        {
+          "type": "struct RankingRecord24",
+          "size": 24,
+          "evidence": "Native033808..033822 uses24-byte row strides;03384a..033864 copies24 bytes three times for the swap."
         }
       ]
     },

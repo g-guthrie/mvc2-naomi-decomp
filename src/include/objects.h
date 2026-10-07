@@ -361,9 +361,23 @@ struct Actor {
     unsigned char pad15b[0x524 - 0x4de];
     char b524;
     unsigned char b525;
-    unsigned char pad526[0x52c-0x526]; char b52c;
-    unsigned char pad52d[0x53f-0x52d]; char b53f;
+    unsigned char pad526[1], b527, pad528[4]; char b52c;
+    unsigned char pad52d[7]; unsigned int score534, score538; unsigned char pad53c, rank53d, pad53e; char b53f;
     unsigned char pad540[3]; char b543;
+};
+
+/* Player-slot ranking view: native slot stride 0x5a4, frame clock at0x558. */
+struct PlayerSlotScore {
+    struct Actor actor;
+    unsigned char pad544[0x558-sizeof(struct Actor)];
+    unsigned int ticks;
+    unsigned char pad55c[0x5a4-0x55c];
+};
+/* Ranking rows: byte metadata followed by the two unsigned comparison keys. */
+struct RankingRecord24 {
+    unsigned char rank, characters[3], colours[3], mode, setting;
+    unsigned char minutes, seconds, hundredths, name[4];
+    unsigned int secondary, primary;
 };
 
 /* Global game flags record exposed through the pointer at 0x0c2d6f84. */
