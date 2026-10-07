@@ -662,11 +662,19 @@ struct ActorSubTimers { int t0; int t4; int t8; int t12; int t16; int t20; unsig
 struct ActorCountdowns { unsigned char pad0[0x2cc]; int l2cc, l2d0, l2d4, l2d8, l2dc, l2e0, l2e4, l2e8, l2ec, l2f0, l2f4, l2f8; };
 /* Byte controls used by callbacks receiving the actor state at 0x2a4. */
 /* Unsigned timer/toggle bytes of the state block passed to the 0x0c1231bc callback. */
+/* Byte view of an actor's 0x2a4 block used by the 0x0c07abf6 idle-animation tick. */
+struct ActorSub2a4Idle {
+    char b0;
+    unsigned char b1, b2, b3;
+    char b4;
+    unsigned char b5;
+};
 /* Byte view of an actor's 0x2a4 block used by the 0x0c0c281e throw/grab handlers. */
 struct ActorSub2a4Grab {
     unsigned char pad0[4];
     unsigned char b4;
-    unsigned char pad5[5];
+    unsigned char pad5[4];
+    unsigned char b9;
     unsigned char b10, b11;
     unsigned char pad12[8];
     void *p20;
