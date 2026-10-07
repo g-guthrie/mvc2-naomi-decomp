@@ -84905,6 +84905,13 @@
       "evidence": "CFG walk from 0x0c0913c8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c0913ea",
+      "size": 30,
+      "kind": "code",
+      "sha256": "3f84ba8b6092ea5308c45592aac898863a26fc7f4d83f6b135c1845adf7bbc5d",
+      "evidence": "Reviewed: dispatch function through table 0x0c242c14 after the 0x0c0913c8 epilogue."
+    },
+    {
       "address": "0x0c091408",
       "size": 6,
       "kind": "data",
@@ -84917,6 +84924,13 @@
       "kind": "data",
       "sha256": "a5d1bfc41f7c667e3904d7c6a92f9f157c455971bef761ee6c869cc8ab25194d",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c091338; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c091410",
+      "size": 4,
+      "kind": "data",
+      "sha256": "e2bf477ba00e259407622a554b5cc4087b98040cd636b755850adc32144d0f72",
+      "evidence": "Reviewed with unit source: literal pool / pointer table read by adjacent code."
     },
     {
       "address": "0x0c091414",
@@ -84938,6 +84952,13 @@
       "kind": "data",
       "sha256": "a831f3191f3147255eb0ecf425e9259769aa07966b8fec9d86665e93d5560b49",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0913c8; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c091438",
+      "size": 4,
+      "kind": "data",
+      "sha256": "6b018f37e1708ca8751a3e62638164ed9e3d78d4c43e392335fa45c8a22ad869",
+      "evidence": "Reviewed with unit source: literal pool / pointer table read by adjacent code."
     },
     {
       "address": "0x0c09143c",
@@ -115628,6 +115649,13 @@
       "evidence": "CFG walk from 0x0c0b6808; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c0b684e",
+      "size": 4,
+      "kind": "code",
+      "sha256": "dace64cad776caad3db6eb281ed450fbeebf9edfeb5016560b4508f815ab9f05",
+      "evidence": "Reviewed: rts/mov #0,r0 leaf, target of pointer ptr_0c24500c."
+    },
+    {
       "address": "0x0c0b6852",
       "size": 4,
       "kind": "data",
@@ -129279,10 +129307,24 @@
     },
     {
       "address": "0x0c0c6522",
-      "size": 54,
+      "size": 34,
       "kind": "code",
-      "sha256": "c9ff996d0c6400e5a1e79b137324cf9e7118293f17a00ac7553bef4ce56dd4a1",
-      "evidence": "CFG walk from 0x0c0c6522; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "fc0aae0f9947ec391d1bb6f0301b50aedc6cd63faaa5535dffd1e9da31f24679",
+      "evidence": "Reviewed: advances b6, picks b32 from 0x0c247814, falls through into 0x0c0c6544."
+    },
+    {
+      "address": "0x0c0c6544",
+      "size": 20,
+      "kind": "code",
+      "sha256": "bd517dfbd778e82c0dd2b497fafec50c45d790e524a62026ec97ec0deef8a627",
+      "evidence": "Reviewed: dispatch through 0x0c24781c on byte 0x20; pointer at 0x0c247810."
+    },
+    {
+      "address": "0x0c0c6558",
+      "size": 18,
+      "kind": "code",
+      "sha256": "71122ca4718ac962e888c926cbe6afe1e47d661f2f98b7296f301fc29ce300cc",
+      "evidence": "Reviewed: dispatch through 0x0c247828 on b7; pointer at 0x0c24781c."
     },
     {
       "address": "0x0c0c656a",
@@ -135900,46 +135942,39 @@
       "evidence": "CFG walk from 0x0c0ce2ac; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c0ce2e2",
+      "size": 60,
+      "kind": "code",
+      "sha256": "cf652c5bcd0a11c1735a049cf7a7462a767ce2b1abddf917ba055a78337d83b7",
+      "evidence": "Reviewed: b4c9 switch command setter, tail jump to 0x0c045248."
+    },
+    {
+      "address": "0x0c0ce31e",
+      "size": 60,
+      "kind": "code",
+      "sha256": "8b8d8f55d8b6d814e471c5d802df5759b1e6961cad69fd9eeb8f059b2ac3d4c2",
+      "evidence": "Reviewed: b4c9 switch command setter, tail jump to 0x0c045248."
+    },
+    {
       "address": "0x0c0ce35a",
       "size": 46,
       "kind": "code",
       "sha256": "2468e0f6bb4415d05fda95a5631b81eafb00fde7b9f4bb3f8765e07a08aa04b1",
-      "evidence": "CFG walk from 0x0c0ce35a; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Reviewed: b4c9 switch setter; case 2 and shared tail continue after the literal pool at 0x0c0ce3a0."
     },
     {
       "address": "0x0c0ce388",
-      "size": 6,
+      "size": 24,
       "kind": "data",
-      "sha256": "efe01441016b1c5ca5b7c061f5079d7c538848addb95d1f5ddf9e7c19d740944",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0ce2ac; unreferenced adjacent bytes omitted."
+      "sha256": "e817fd21bd001307d4cfa964459162b0a43cfeb997c555a007411e417532c802",
+      "evidence": "Reviewed with unit source: literal pool / pointer table read by adjacent code."
     },
     {
-      "address": "0x0c0ce38e",
-      "size": 4,
-      "kind": "data",
-      "sha256": "8f13b1ecd2234b1caa512061d070e3cf889bd10a5d4c7d10a07911c9253bb264",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0ce35a; unreferenced adjacent bytes omitted."
-    },
-    {
-      "address": "0x0c0ce392",
-      "size": 2,
-      "kind": "data",
-      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
-      "evidence": "Alignment pad between the mov.w and mov.l literals of one pool; the mov.l loads on both sides address the same pool."
-    },
-    {
-      "address": "0x0c0ce394",
-      "size": 8,
-      "kind": "data",
-      "sha256": "cd3b6303677befcbe519221fe7db05f15ede1638fcdbc8012d2e81d29de1f8b7",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0ce2ac; unreferenced adjacent bytes omitted."
-    },
-    {
-      "address": "0x0c0ce39c",
-      "size": 20,
+      "address": "0x0c0ce3a0",
+      "size": 16,
       "kind": "code",
-      "sha256": "6f8a191a7e1f29e5eed264202924cd9a486aa1765f572c6972de7db6b7ed80a1",
-      "evidence": "CFG walk from 0x0c0ce39c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "c8539aaac8acc227036a039dd74cf0d6a4a9bf54cc8c350a9a35cd7f3024a272",
+      "evidence": "Reviewed: continuation of 0x0c0ce35a after its literal pool (branch targets from 0x0c0ce376/0x0c0ce37e)."
     },
     {
       "address": "0x0c0ce3b0",
@@ -164768,6 +164803,13 @@
       "evidence": "CFG walk from 0x0c0f123e; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c0f1278",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Reviewed: empty function (rts/nop) between command handlers and literal pool."
+    },
+    {
       "address": "0x0c0f127c",
       "size": 2,
       "kind": "data",
@@ -191011,11 +191053,11 @@
       "evidence": "CFG walk from 0x0c10ee4a; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
-      "address": "0x0c10ee90",
-      "size": 16,
+      "address": "0x0c10ee76",
+      "size": 58,
       "kind": "code",
-      "sha256": "af48e9d2110567382f8849a18149f6e190a0b34d3bae04e4843c7ce0fc41c827",
-      "evidence": "CFG walk from 0x0c10ee90; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "e2500074548cdc7e1f5409459743b820d4c4ce1116748aa2bf1de747ae602bf1",
+      "evidence": "Reviewed: function entry referenced by pointer at 0x0c24bb70; tail jumps via table 0x0c24bd9c."
     },
     {
       "address": "0x0c10eeb0",
@@ -191030,6 +191072,13 @@
       "kind": "data",
       "sha256": "bbeb55371bfdbcccfb61d2314ef1649a1e31265d111f13e6fe7f82f67b203cdb",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c10ee4a; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c10eeb8",
+      "size": 4,
+      "kind": "data",
+      "sha256": "ddd7fd9fe3f1ec83760096dd0e55c75c9eeb74eeb119544a5d7364b492b67848",
+      "evidence": "Reviewed with unit source: literal pool / pointer table read by adjacent code."
     },
     {
       "address": "0x0c10eebc",
@@ -191058,6 +191107,13 @@
       "kind": "data",
       "sha256": "6c4c33f997ffb5267d32310a2e8df628d8a4ffd3426d267936c8494c4640c7e0",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c10ee90; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c10eee4",
+      "size": 4,
+      "kind": "data",
+      "sha256": "c7c4e8624bc88ba6b664da32932d71f8f822aaca5d285258e37a08ceac4d74ff",
+      "evidence": "Reviewed with unit source: literal pool / pointer table read by adjacent code."
     },
     {
       "address": "0x0c10eee8",
