@@ -1,11 +1,3 @@
-/* func_0c065b8c and func_0c065be6 are close (88/90, 108/110; the remaining
- * diffs are pool addresses shifted by func_0c065c54/func_0c065cb0, which are
- * not exact). func_0c065c54's branch sense around `(a->w130 ^= 1)` and the
- * mova target order could not be matched by trying the negated and
- * positive-first spellings; func_0c065cb0's tail call to func_0c025762
- * schedules the b1ed store differently than either statement order tried
- * here produces. */
-
 struct S_ud2_11 {
     unsigned char pad0[6];
     unsigned char b6;
@@ -31,7 +23,7 @@ extern signed char func_0c02a026(struct S_ud2_11 *);
 extern void func_0c0437b8(struct S_ud2_11 *);
 extern void func_0c02a0c4(struct S_ud2_11 *, int, int);
 extern float dat_0c2d9260[];
-extern void func_0c025762(struct S_ud2_11 *);
+extern void func_0c025762(void);
 
 void func_0c065b8c(struct S_ud2_11 *a)
 {
@@ -69,9 +61,9 @@ void func_0c065c54(struct S_ud2_11 *a)
         a->b6 = a->b6 + 1;
         a->w1c = 3;
         if ((a->w130 ^= 1))
-            a->f34 = *(float *)((char *)dat_0c2d9260 + 0x88) - 133.3333f;
+            a->f34 = *(float *)((char *)dat_0c2d9260 + 0x88) - 133.33333f;
         else
-            a->f34 = *(float *)((char *)dat_0c2d9260 + 0x8c) + 133.3333f;
+            a->f34 = *(float *)((char *)dat_0c2d9260 + 0x8c) + 133.33333f;
         func_0c02a0c4(a, 20, 5);
     }
 }
@@ -85,6 +77,6 @@ void func_0c065cb0(struct S_ud2_11 *a)
         a->b6 = a->b6 + 1;
         a->w1c = 20;
         a->b1ed = 0;
-        func_0c025762(a);
+        func_0c025762();
     }
 }

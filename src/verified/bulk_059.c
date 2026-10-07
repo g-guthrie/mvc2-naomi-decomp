@@ -80,11 +80,6 @@ void (*const table_0c1059a4[])(void) = {
     func_0c0463fc,
 };
 
-#pragma section n105ab4
-const unsigned short dat_0c105ab4[] = {
-    0x036cu, 0x01f9u, 0x01fcu, 0x01d4u, 0x01e9u, 0x0374u, 0x037cu,
-};
-
 #pragma section n105bc6
 const unsigned short dat_0c105bc6[] = {
     0x02a4u, 0x0140u, 0x01f9u, 0x01fcu, 0x01d4u, 0x034au, 0x0800u, 0x01a3u,

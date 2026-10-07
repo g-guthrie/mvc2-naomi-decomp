@@ -1,8 +1,8 @@
+/* Assembled by tools/clone.py from verified twins. */
 #include "objects.h"
-
 extern void func_0c02a684(struct Src_0c1abc64 *, int, int, int);
 
-void func_0c1abc64(struct Host_0c1abc64 *a, struct Src_0c1abc64 *b, struct Item_0c1abc64 *c)
+void func_0c1aebb8(struct Host_0c1abc64 *a, struct Src_0c1abc64 *b, struct Item_0c1abc64 *c)
 {
     struct Sub_0c1abc64 *s = &a->sub;
 
@@ -21,7 +21,7 @@ void func_0c1abc64(struct Host_0c1abc64 *a, struct Src_0c1abc64 *b, struct Item_
     s->p = c;
 }
 
-int func_0c1abcd4(struct Host_0c1abc64 *a, struct Src_0c1abc64 *b)
+int func_0c1aec28(struct Host_0c1abc64 *a, struct Src_0c1abc64 *b)
 {
     struct Sub_0c1abc64 *s = &a->sub;
     int r = 1;
@@ -29,7 +29,7 @@ int func_0c1abcd4(struct Host_0c1abc64 *a, struct Src_0c1abc64 *b)
     if (--s->b4 == 0) {
         if (s->b5 != 0)
             r = 0;
-        func_0c1abc64(a, b, s->p);
+        func_0c1aebb8(a, b, s->p);
     }
     return r;
 }

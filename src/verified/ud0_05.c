@@ -1,10 +1,6 @@
-/* Candidate unit 0x0c05b474–0x0c05b720. The latest source spelling treats
- * b141 as an unsigned byte and matches 605/684 linked bytes; this is an
- * improvement over the previous 420-byte trial, but it is still not exact.
- * func_0c05b508, func_0c05b532, func_0c05b6aa, and func_0c05b6d4 are exact.
- * Remaining mismatches include two near-duplicate state handlers, one
- * delay-slot choice, and shifted bytes in the first shared pool. Keep the
- * entire unit a candidate until both pool extents and every instruction match. */
+/* Unit 0x0c05b37c-0x0c05b720: 9 functions. Predecessors 0c05b37c/0c05b3c8
+ * share the pool at 0x0c05b452. `else if (a->b141)` after the
+ * func_0c042780 test selects r3 for the truth test. */
 struct Obj_ud0_05;
 
 struct Vec2_ud0_05 { float x, y, z; };
@@ -15,7 +11,7 @@ struct Obj_ud0_05 {
     unsigned char pad1[28 - 8];
     short s28;
     unsigned char pad2[0x141 - 30];
-    unsigned char b141;
+    char b141;
     unsigned char b142;
     unsigned char pad3[0x1a1 - 0x143];
     unsigned char b1a1;
@@ -24,7 +20,7 @@ struct Obj_ud0_05 {
     unsigned char pad5[0x1c8 - 0x1b8];
     struct Obj_ud0_05 *p1c8;
     unsigned char pad6[0x1f6 - 0x1cc];
-    unsigned char b1f6;
+    char b1f6;
 };
 
 typedef void (*handler_ud0_05)(struct Obj_ud0_05 *);
@@ -46,6 +42,51 @@ extern void func_0c0427be(struct Obj_ud0_05 *, int);
 
 void func_0c05b616(struct Obj_ud0_05 *a);
 
+void func_0c05b37c(struct Obj_ud0_05 *a)
+{
+    struct Obj_ud0_05 *p;
+
+    if (func_0c02a026(a) < 0) {
+        func_0c0437b8(a);
+        return;
+    }
+    if (a->b141) {
+        a->b141 = 0, func_0c025900(a, 0, 0);
+        p = a->p1c8;
+        p->p1b4 = a;
+        p->b1f6 = 2;
+        p->b1a1 = 32;
+        a->b1a1 = 32;
+    }
+}
+
+void func_0c05b3c8(struct Obj_ud0_05 *a)
+{
+    struct Obj_ud0_05 *p;
+    struct Vec2_ud0_05 v;
+
+    if (func_0c02a026(a) < 0) {
+        func_0c0437b8(a);
+        return;
+    }
+    if (a->b141 == 2) {
+        a->b141 = 0;
+        v.x = -106.666664124f;
+        v.y = 205.71428f;
+        func_0c1ceafe(a, &v);
+        func_0c0346da(a, 12);
+        return;
+    }
+    if (a->b141 == 1) {
+        a->b141 = 0, func_0c025900(a, 0, 0);
+        p = a->p1c8;
+        p->p1b4 = a;
+        p->b1f6 = 1;
+        p->b1a1 = 35;
+        a->b1a1 = 35;
+    }
+}
+
 void func_0c05b474(struct Obj_ud0_05 *a)
 {
     struct Obj_ud0_05 *p;
@@ -58,7 +99,7 @@ void func_0c05b474(struct Obj_ud0_05 *a)
         a->b142 = 5;
     if (func_0c042780(a->p1c8))
         goto timeout;
-    if (a->b141) {
+    else if (a->b141) {
         a->b141 = 0;
         p = a->p1c8;
         p->p1b4 = a;
@@ -108,8 +149,7 @@ void func_0c05b544(struct Obj_ud0_05 *a)
         return;
     }
     if (a->b141 == 1) {
-        a->b141 = 0;
-        func_0c025900(a, 0, 0);
+        a->b141 = 0, func_0c025900(a, 0, 0);
         p = a->p1c8;
         p->p1b4 = a;
         p->b1f6 = 1;
@@ -130,7 +170,7 @@ void func_0c05b616(struct Obj_ud0_05 *a)
         a->b142 = 5;
     if (func_0c042780(a->p1c8))
         goto timeout;
-    if (a->b141) {
+    else if (a->b141) {
         a->b141 = 0;
         p = a->p1c8;
         p->p1b4 = a;

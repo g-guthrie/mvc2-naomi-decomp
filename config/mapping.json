@@ -50619,6 +50619,13 @@
       "evidence": "CFG walk from 0x0c06776a; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c067792",
+      "size": 4,
+      "kind": "code",
+      "sha256": "dace64cad776caad3db6eb281ed450fbeebf9edfeb5016560b4508f815ab9f05",
+      "evidence": "Reviewed return-zero leaf 067792, setup 067796 and dispatcher 067820. Branches remain within setup; final JMP delay slot ends at 06783a. Complete linked C section recompiled byte-exact."
+    },
+    {
       "address": "0x0c067796",
       "size": 138,
       "kind": "code",
@@ -245630,6 +245637,13 @@
       "kind": "code",
       "sha256": "ab5a5049a1f03c5acfca4657096c11fa597d69865f971d58dd00b8e35f3a49eb",
       "evidence": "CFG walk from 0x0c150624; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c15063e",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Reviewed 0c150624 dispatcher: JMP at 0c15063a with restore delay slot at 0c15063c; two-byte zero alignment before table literal loaded by 0c150632."
     },
     {
       "address": "0x0c150640",

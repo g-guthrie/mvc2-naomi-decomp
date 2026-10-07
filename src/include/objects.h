@@ -587,9 +587,11 @@ struct MotionGlobal_0c2d9260 {
     unsigned char pad[5];
     unsigned char b5, b6;
     unsigned char pad7[12 - 7];
-    float f12;
-    unsigned char pad16[0x88 - 16];
-    float f88, f8c;
+    float f12, f16;
+    unsigned char pad20[0x88 - 20];
+    float f88, f8c, f90, f94, f98, f9c;
+    unsigned char pada0[8];
+    float fa8;
 };
 
 struct SolHorizontalTarget { unsigned char pad[16]; float x, y; };
@@ -687,6 +689,53 @@ struct SdkByteConsumer {
     int output_count;
     unsigned char *output;
     const unsigned char *input;
+};
+
+/* Timed animation records used by the 0x1abc64 and 0x1aebb8 readers. */
+struct Item_0c1abc64 {
+    unsigned char b0, b1, b2, b3;
+    int n;
+};
+
+struct Sub_0c1abc64 {
+    struct Item_0c1abc64 *p;
+    unsigned char b4;
+    unsigned char b5;
+};
+
+struct Host_0c1abc64 {
+    unsigned char pad[0xcc];
+    struct Sub_0c1abc64 sub;
+};
+
+struct Src_0c1abc64 {
+    unsigned char pad[37];
+    unsigned char b37;
+};
+
+/* Input-command actor view at 0x0c06808c, including three adjacent records. */
+struct Sub_u06808c {
+    unsigned char pad[3];
+    unsigned char b3;
+};
+
+struct Obj_u06808c {
+    unsigned char pad0[5];
+    unsigned char b5;
+    unsigned char b6;
+    unsigned char b7;
+    unsigned char pad1[0x1d4 - 8];
+    char b1d4;
+    unsigned char pad2[0x1e9 - 0x1d5];
+    unsigned char b1e9;
+    unsigned char pad3[0x1fc - 0x1ea];
+    char b1fc;
+    unsigned char pad4[0x2a4 - 0x1fd];
+    struct Sub_u06808c sub2a4;
+    unsigned char pad5[0x3bc - 0x2a8];
+    unsigned char s3bc[8];
+    unsigned char s3c4[8];
+    unsigned char s3cc[8];
 };
 
 #endif
