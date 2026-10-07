@@ -95027,18 +95027,39 @@
       "evidence": "CFG walk from 0x0c09d7fa; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c09d840",
+      "size": 36,
+      "kind": "code",
+      "sha256": "7caea7a2a0bc8893422c605bd825b819beec34ff61c9daf7f9b6d3c41088040d",
+      "evidence": "Reviewed by hand: clears the 128-byte state block at 0x2a4 with 0x0c1fba00 while preserving its byte 2; R14/PR frame, rts at 0x0c09d860 with delay slot."
+    },
+    {
       "address": "0x0c09d864",
       "size": 4,
       "kind": "data",
       "sha256": "2024dfeefefed8eb5fc5ca7ed8440712f8d28e4499ba5978eef9db06976b5573",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c09d7fa; unreferenced adjacent bytes omitted."
+      "evidence": "Literal pool cells (0x01e9, 0x01a3) read by func_0c09d7fa."
+    },
+    {
+      "address": "0x0c09d868",
+      "size": 4,
+      "kind": "data",
+      "sha256": "d6c566704ed93eb58ab7b90f16683b4835d6b214152f25bb4e6baea8244e717e",
+      "evidence": "Literal pool cells (0x02a4, 0x0080) read by the function at 0x0c09d840."
     },
     {
       "address": "0x0c09d86c",
       "size": 4,
       "kind": "data",
       "sha256": "809b2c5bb087475db012bd2681338226a9f4fb584625b489dc4d097676b6abc0",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c09d7fa; unreferenced adjacent bytes omitted."
+      "evidence": "Literal 0x0c045248 read by func_0c09d7fa."
+    },
+    {
+      "address": "0x0c09d870",
+      "size": 4,
+      "kind": "data",
+      "sha256": "7282f66b6863a7846cde3dd2d3f1ee698f478ef9972c01fe180c2be1746cfcd0",
+      "evidence": "Literal 0x0c1fba00 read by the function at 0x0c09d840."
     },
     {
       "address": "0x0c09d874",
@@ -336371,6 +336392,13 @@
       "kind": "code",
       "sha256": "22ca97abd18ab2536dd346183280bf11b803621600ff32aba61b4917232c4c31",
       "evidence": "CFG walk from 0x0c1bccac; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1bccb8",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Reviewed by hand: empty function (rts; nop) between the dispatcher at 0x0c1bcca6 and the literal pool at 0x0c1bccbc; no branch or load crosses it."
     },
     {
       "address": "0x0c1bccbc",
