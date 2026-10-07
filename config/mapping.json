@@ -152098,11 +152098,18 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0e224c; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c0e22f2",
-      "size": 98,
+      "address": "0x0c0e22f0",
+      "size": 8,
+      "kind": "data",
+      "sha256": "6435f6a6e24abfa8f1d5950bf2267d07b85180e6e3216b1bc9d9c4a86e78386d",
+      "evidence": "Two preceding-handler call literals:226a reads22f0=0c0442fa and229c reads22f4=0c0432ca.22f2 is the upper halfword of the first pointer, not a function entry."
+    },
+    {
+      "address": "0x0c0e22f8",
+      "size": 92,
       "kind": "code",
-      "sha256": "49cdded56686584e5599ea21995479a488cf5160038de527e41a30b8da7d2a07",
-      "evidence": "CFG walk from 0x0c0e22f2; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "94ed4515c7b44187f8b959c54e54b11249a07d99849a7fb7eb149b4d7917aff2",
+      "evidence": "Reviewed timer/strength/facing animation handler: R14/R13/PR prologue at22f8 and shared epilogue234c..2352; pool begins2412."
     },
     {
       "address": "0x0c0e2354",
