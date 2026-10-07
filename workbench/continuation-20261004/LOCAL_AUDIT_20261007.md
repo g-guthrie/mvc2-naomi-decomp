@@ -45,7 +45,7 @@ improvements. Both recovery journals were retained.
   artifacts reverified; 1,906 verified configuration units.
 - Main image: 2,424,832 bytes exact; program ROM: 4,194,304 bytes exact.
 - Verified executable C: **397,398 / 1,949,866 = 20.381%**.
-- Matched reviewed code: **31.181%**, including SDK and candidate contributions.
+- Matched reviewed code: **31.180%**, including SDK and candidate contributions.
 - Combined image coverage: **40.916%**, including data, SDK and candidate fragments.
 
 The denominator changed as literal data was classified; that is not translated
@@ -53,7 +53,7 @@ code. These percentages describe different measures, not competing totals.
 
 ## Preserved research
 
-The publication release carries `local-source-delta-20261007.tar.gz`: 2,066
+The [publication release](https://github.com/g-guthrie/mvc2-naomi-decomp/releases/tag/checkpoint-2026-10-07-20381) carries `local-source-delta-20261007.tar.gz`: 2,066
 additional file versions, deduplicated to 1,826 objects. The existing October 4
 archive was downloaded and its published SHA-256 verified before comparison.
 The audit examined 100,326 source/configuration/research entries outside the
