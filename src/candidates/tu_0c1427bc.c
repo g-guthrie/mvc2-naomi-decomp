@@ -1,5 +1,6 @@
-/* Candidate: func_0c1427bc tests b14b through r0 (mov.b @(r0,r14),r0; tst r0,r0) and reloads the offset, where retail keeps r0 and uses r1; the
- * following global load and store registers shift with it. Everything else (control flow, pool) matches. */
+/* Candidate (226/244): the label before the b14b test keeps the pool and control flow exact. Remaining: func_0c1427bc
+ * tests and reloads b14b through r3 and loads the dat_0c2f83f8 base late, where retail uses r1 and loads the base into r3
+ * before the b1a1 store. */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 extern struct Dat_13bb5c dat_0c2f8338;
@@ -19,7 +20,7 @@ void func_0c1427bc(struct LinkedActor *a, struct Actor *b)
     if (A(a)->b19f != 0) goto fail;
     if (func_0c02a026(a) < 0) goto fail;
     *(struct LinkedActorVec3 *)&a->f52 = *(struct LinkedActorVec3 *)&p->f52;
-    if (A(a)->b14b) {
+    goto set; set: if (A(a)->b14b) {
         A(a)->b1a1 = A(a)->b14b;
         A(a)->w1ac = 0;
         A(a)->b19e = 0;

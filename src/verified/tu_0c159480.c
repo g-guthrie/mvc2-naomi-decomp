@@ -1,7 +1,5 @@
-/* Candidate: projectile/grab unit 0x0c159480-0x0c159ae0. All functions exact except
- * func_0c159a26, whose float temporaries are one register lower (fr2/fr1/fr0 for
- * fr3/fr2/fr1). The bare-file extent stops at the pool 0x0c159a8c; the registered
- * section also covers the tail of func_0c159a26 after that pool. */
+/* Projectile/grab unit 0x0c159480-0x0c159ae0. The bare-file extent stops at the pool 0x0c159a8c;
+ * the registered section also covers the tail of func_0c159a26 after that pool. */
 #include "objects.h"
 #define AP(a,o) (*(struct Actor **)((char *)(a)+(o)))
 #define AI(a,o) (*(int *)((char *)(a)+(o)))
@@ -215,20 +213,20 @@ void func_0c159a26(struct Actor *a,struct Actor *b)
 {
     int n=0;
     if (a->f92 < 0.0f) {
-        if (a->f52 < dat_0c2d9260.f88+80.0f) goto flipx;
-    } else if (a->f52 > dat_0c2d9260.f8c+-80.0f) {
+        goto s1; s1: if (a->f52 < dat_0c2d9260.f88+80.0f) goto flipx;
+    } else { goto s2; s2: if (a->f52 > dat_0c2d9260.f8c+-80.0f) {
 flipx:
         a->f92=-a->f92;
         n++;
         a->b32=1;
-    }
+    }}
     if (a->f96 >= 0.0f) {
-        if (a->f56 > dat_0c2d9260.f90+-102.85714f) goto flipy;
-    } else if (b->f41c+102.85714f > a->f56) {
+        goto s3; s3: if (a->f56 > dat_0c2d9260.f90+-102.85714f) goto flipy;
+    } else { goto s4; s4: if (b->f41c+102.85714f > a->f56) {
 flipy:
         a->f96=-a->f96;
         n++;
         a->b33=1;
-    }
+    }}
     if (n) ;
 }

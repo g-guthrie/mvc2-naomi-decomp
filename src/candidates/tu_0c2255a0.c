@@ -1,6 +1,4 @@
-/* Candidate: r2/r3 allocation for the element address and the loaded f4
-   value is swapped relative to retail (9 words differ); trailing 28-byte
-   alignment pad is excluded from the extent. */
+/* SDK table entry store; matched with a label before the stores (r2/r3 choice). Trailing 28-byte alignment pad excluded. */
 struct Tbl_0c3b22e0 {
     int f0;
     int f4;
@@ -10,6 +8,8 @@ extern struct Tbl_0c3b22e0 dat_0c3b22e0;
 
 int func_0c2255a0(int i)
 {
+    goto s;
+s:
     dat_0c3b22e0.e[i].a = dat_0c3b22e0.f4;
     dat_0c3b22e0.e[i].b = 0;
     return 0;

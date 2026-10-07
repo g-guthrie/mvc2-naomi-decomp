@@ -1,6 +1,3 @@
-/* Candidate: 737/752. Only the tail of func_0c167ad4 differs: retail loads
- * the func_0c02a0c4 target (r3) and the constant 3 (r6) earlier, around the
- * dat_0c2f83f8 counter increment; the instructions are the same. */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 extern struct LinkedActor *func_0c0374da(int,int,int);
@@ -39,7 +36,7 @@ void func_0c167ad4(struct LinkedActor *a)
  if(!a->b1a3){a->s28=4;A(a)->b1a1=48;}else{a->s28=16;A(a)->b1a1=49;}
  A(a)->w1ac=zero;A(a)->b19e=zero;*(void **)&A(a)->p1c4=(void *)zero;dat_0c2f83f8->arr[a->b2]++;
  a->pad11[0]=66;a->pad11[1]=66;
- func_0c02a0c4(a,23,3);
+ goto tail;tail:func_0c02a0c4(a,23,3);
 }
 void func_0c167c22(struct LinkedActor *a)
 {

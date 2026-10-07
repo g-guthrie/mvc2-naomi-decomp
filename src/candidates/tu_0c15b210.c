@@ -1,7 +1,6 @@
-/* Candidate (1004/1024): pools, extent and control flow match. Differences: at
+/* Candidate (1007/1024): pools, extent and control flow match. Differences: at
  * 0c15b2ae retail stores the 0x13c long before setting up the 0x34 vector copy
- * (ours hoists mov r14,r1 first); 0c15b31c loads dat_0c2d6f84 into r2 (ours r3);
- * 0c15b50a tests b19e in r3 (ours r2). */
+ * (ours hoists mov r14,r1 first); 0c15b31c loads dat_0c2d6f84 into r2 (ours r3). */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 #define SRC(a) ((struct LinkedActor *)A(a)->p8)
@@ -68,7 +67,7 @@ void func_0c15b3cc(struct LinkedActor *a)
   if(owner->v80.x*scale>a->v80.x)a->v80.x+=A(a)->f100;
   if(owner->v80.y*scale>a->v80.y)a->v80.y+=A(a)->f112;
   if(--a->s30>0){
-   if(!A(a)->b19e)goto tail;
+   goto s3; s3: if(!A(a)->b19e)goto tail;
    if(--a->s28>0)goto next;
   }
   a->b7=2;func_0c02a0c4(a,23,12);return;
