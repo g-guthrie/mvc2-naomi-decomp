@@ -1,4 +1,4 @@
-/* Candidate: Three functions and all pools match; displacement routine uses different local vector and pointer allocation, including a 24-byte local frame versus retail 40 bytes. */
+/* Candidate: all pools and three functions match; func_0c06cc4c differs only in the order of three instructions (retail hoists the &v[0] temp into r4 and computes r1=r4+12 before r13=r4; ours assigns r13 first). 423/428 bytes. */
 #include "objects.h"
 extern void func_0c025900(struct Actor *,int,int),func_0c1d4610(struct Actor *,struct LinkedActorVec3 *),func_0c048ce6(struct Actor *),func_0c0344a0(struct Actor *,int),func_0c02a0c4(struct Actor *,int,int),func_0c03efea(struct Actor *);
 extern void (*table_0c240994[])(struct Actor *),(*table_0c2409a4[])(struct Actor *);
@@ -18,18 +18,19 @@ void func_0c06cc3a(struct Actor *a)
 {
  table_0c2409a4[a->b6](a);
 }
-void func_0c06cc4c(struct Actor *a)
+void func_0c06cc4c(register struct Actor *a)
 {
- struct LinkedActorVec3 previous,delta;
+ struct LinkedActorVec3 v[3];
  struct Actor *child;float stopped;
+ struct LinkedActorVec3 *d=&v[0];
  a->b6++;stopped=0.0f;a->f104=stopped;a->f108=stopped;
  child=a->p1c8;
  a->f92=stopped;a->f96=stopped;a->f104=stopped;a->f108=stopped;
  child->f92=stopped;child->f96=stopped;child->f104=stopped;child->f108=stopped;
- previous=*(struct LinkedActorVec3 *)&a->f52;delta=*(struct LinkedActorVec3 *)&a->f52;
+ *d=v[1]=*(struct LinkedActorVec3 *)&a->f52;
  func_0c03efea(a);
- delta.x=a->f52-delta.x;delta.y=a->f56-delta.y;
- *(struct LinkedActorVec3 *)&a->f52=previous;
- a->f92=delta.x/16.0f;a->f96=delta.y/16.0f;a->f104=stopped;
+ d->x=a->f52-d->x;d->y=a->f56-d->y;
+ *(struct LinkedActorVec3 *)&a->f52=v[1];
+ a->f92=d->x/16.0f;a->f96=d->y/16.0f;a->f104=stopped;
  a->f96+=8.5714283f;a->f108=-0.5357143f;a->s28=16;
 }

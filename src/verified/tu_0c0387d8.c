@@ -29,6 +29,6 @@ int func_0c0388aa(struct DirectionState *a){a->direction=1;return 1;}
 int func_0c0388b4(struct DirectionState *a){a->direction=-1;return 1;}
 void func_0c0388be(struct Actor *a)
 {
- func_0c1fba00(a->pad354,0,16);
+ func_0c1fba00(&a->b354,0,16);
  a->pad7ffc[0]=0;a->b326=4;a->b201=0;
 }

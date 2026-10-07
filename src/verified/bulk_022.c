@@ -54,17 +54,6 @@ extern void func_0c240d48(void);
 extern void func_0c240d5c(void);
 extern void func_0c240d70(void);
 
-#pragma section n06a50c
-void (*const table_0c06a50c[])(void) = {
-    func_0c02a026,
-    func_0c0438de,
-    func_0c240818,
-    func_0c048bb0,
-    func_0c0442fa,
-    func_0c0432ca,
-    func_0c025900,
-};
-
 #pragma section n06a68c
 void (*const table_0c06a68c[])(void) = {
     func_0c02a026,
@@ -112,29 +101,5 @@ void (*const table_0c06afd0[])(void) = {
 #pragma section n06b2a8
 const unsigned short dat_0c06b2a8[] = {
     0x01d6u,
-};
-
-#pragma section n06c0c4
-const unsigned int dat_0c06c0c4[] = {
-    0x01d201f5u, 0x0c02a026u,
-};
-
-#pragma section n06c0dc
-void (*const table_0c06c0dc[])(void) = {
-    func_0c048bb0,
-    func_0c0442fa,
-    func_0c0432ca,
-    func_0c02a0c4,
-};
-
-#pragma section n06c0ec
-const unsigned int dat_0c06c0ec[] = {
-    0x0c0451f2u, 0x0c139b6cu, 0xc0d55555u,
-};
-
-#pragma section n06c23c
-const unsigned int dat_0c06c23c[] = {
-    0x40d55555u, 0x41ab6db6u, 0x0c0344a0u, 0x0c0346dau,
-    0x0c02a0c4u,
 };
 

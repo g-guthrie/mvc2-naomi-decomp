@@ -1,7 +1,8 @@
-/* Candidate: linked 300/308 bytes at retail address. func_0c054ef0 and
+/* Candidate: linked 304/308 bytes at retail address. func_0c054ef0 and
  * func_0c054f02 match exactly, as does the 44-byte literal pool.
- * func_0c054e74 and func_0c054eb2 each differ only at case 2 and their
- * tail call: SHC chooses r2/r3 opposite to retail for those two temporaries.
+ * func_0c054e74 and func_0c054eb2 each differ only in the case-2 constant:
+ * retail keeps `mov #2` in r3 (tail-call target in r2); SHC picks r2 for the
+ * constant. Case 2 falls through into the shared b1a3 store (no goto done).
  * The reviewed 308-byte extent and its shared pool are complete.
  */
 #include "objects.h"
@@ -19,12 +20,10 @@ void func_0c054e74(struct Actor *a)
     switch (a->b4c9) {
     case 0: a->b1e9 = 1; goto common;
     case 1: a->b1e9 = 0; goto common;
-    case 2: a->b1e9 = 2; goto common;
-    default: goto done;
+    case 2: a->b1e9 = 2;
+    common: a->b1a3 = 1;
+    default: break;
     }
-common:
-    a->b1a3 = 1;
-done:
     func_0c045248(a, 21);
 }
 
@@ -34,12 +33,10 @@ void func_0c054eb2(struct Actor *a)
     switch (a->b4c9) {
     case 0: a->b1e9 = 1; goto common;
     case 1: a->b1e9 = 0; goto common;
-    case 2: a->b1e9 = 2; goto common;
-    default: goto done;
+    case 2: a->b1e9 = 2;
+    common: a->b1a3 = 1;
+    default: break;
     }
-common:
-    a->b1a3 = 1;
-done:
     func_0c045248(a, 21);
 }
 

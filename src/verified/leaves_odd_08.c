@@ -15,9 +15,6 @@ void func_0c13e882(void) {}
 #pragma section n13f206
 void func_0c13f206(void) {}
 
-#pragma section n1433d2
-int func_0c1433d2(int x) { return x; }
-
 #pragma section n1464a6
 void func_0c1464a6(void) {}
 

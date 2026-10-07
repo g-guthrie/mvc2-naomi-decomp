@@ -3,18 +3,6 @@
 #pragma section n13a966
 void func_0c13a966(unsigned char *p) { p[4]++; }
 
-#pragma section n143ae6
-void func_0c143ae6(unsigned char *p) { p[4]++; }
-
-#pragma section n143dda
-void func_0c143dda(unsigned char *p) { p[4]++; }
-
-#pragma section n144236
-void func_0c144236(unsigned char *p) { p[4]++; }
-
-#pragma section n144c5c
-void func_0c144c5c(unsigned char *p) { p[4]++; }
-
 #pragma section n14ef72
 void func_0c14ef72(unsigned char *p) { p[4]++; }
 
