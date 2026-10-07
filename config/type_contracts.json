@@ -203,6 +203,20 @@
           "offset": "0x78",
           "size": 4,
           "evidence": "Same animation pointer as Actor.p154: 0x154 minus block base0xdc equals0x78. A real pointer field gives the block the alignment used by native word copies."
+        },
+        {
+          "type": "struct ActorSubControlBytes",
+          "member": "b12",
+          "offset": 12,
+          "size": 1,
+          "evidence": "Native 0c12dc88/0c12dca8 read signed byte12 for negative/positive phase checks; 0c12dcd6 writes -1."
+        },
+        {
+          "type": "struct ActorSubControlBytes",
+          "member": "b13",
+          "offset": 13,
+          "size": 1,
+          "evidence": "Native 0c12dc66 tests byte13 and 0c12dc7c clears it before animation advancement."
         }
       ],
       "sizes": [
