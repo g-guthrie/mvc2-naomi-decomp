@@ -273,6 +273,27 @@
           "offset": "0x33",
           "size": 1,
           "evidence": "Native1c8210..1c8218 and1c8230..1c8238 read/OR/store one byte at2fb158+0x33;1c8270..1c8276 repeats the same update. Initializer1c81b6 addresses the same byte directly at2fb18b."
+        },
+        {
+          "type": "struct Actor",
+          "member": "l44c",
+          "offset": "0x44c",
+          "size": 4,
+          "evidence": "Native051114 stores the evaluated operand as a long at44c;0512b4..0512bc decrements/tests/stores this countdown as a long."
+        },
+        {
+          "type": "struct Actor",
+          "member": "l450",
+          "offset": "0x450",
+          "size": 4,
+          "evidence": "Native051198 stores a long directional-control word at450;05119a reads its low halfword.0512de..051306 clear/set bit1000 with long loads/stores."
+        },
+        {
+          "type": "struct Actor",
+          "member": "b4a7",
+          "offset": "0x4a7",
+          "size": 1,
+          "evidence": "Native05124c compares the signed byte at4a7 with1;051294 clears the same byte after the subrecord gate."
         }
       ],
       "sizes": [
