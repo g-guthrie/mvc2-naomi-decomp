@@ -145050,10 +145050,10 @@
     },
     {
       "address": "0x0c0d9980",
-      "size": 4,
-      "kind": "code",
-      "sha256": "4e4ed8451849ead49f7d0a5d64cb0113db93185e49a656350d25923e0ffbf322",
-      "evidence": "CFG walk from 0x0c0d9980; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "size": 20,
+      "kind": "data",
+      "sha256": "4f7ed4ac6a0bbdea179f94e4c573fa2c6918c419222d14bbec1c0ead4ffebc12",
+      "evidence": "Literal pool of the function at 0x0c0d9840: mov.l loads from 0x0c0d9846/9850/9866/9888/98a6 read these five words (0x0c02a39a, two floats, 0x0c2f83f8); previously misclassified as code."
     },
     {
       "address": "0x0c0d9994",
@@ -145861,6 +145861,20 @@
       "evidence": "CFG walk from 0x0c0da73e; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c0da82a",
+      "size": 58,
+      "kind": "code",
+      "sha256": "94e2528429fb74c8c8123e444d784f12d793b8e613f9e936acc640c031773414",
+      "evidence": "Reviewed by hand: leaf testing 0x2b3/0xcc/5/0x1d0/0x1e9 and clearing 0x2b3; delay slots and pool 0x0c0da864-0x0c0da86b checked; ends rts at 0x0c0da860."
+    },
+    {
+      "address": "0x0c0da864",
+      "size": 4,
+      "kind": "data",
+      "sha256": "cfdd9a6899244da652938424088fbd93edd55eb57fc10e7142be82f914bd61e6",
+      "evidence": "Reviewed with unit source: literal pool / pointer table read by adjacent code."
+    },
+    {
       "address": "0x0c0da868",
       "size": 4,
       "kind": "data",
@@ -145931,18 +145945,32 @@
       "evidence": "CFG walk from 0x0c0da8f2; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c0daa14",
+      "size": 192,
+      "kind": "code",
+      "sha256": "c9cba7b5eb7b40575e51f19ef42b3e951807dc3743d50d826b68df51809c891e",
+      "evidence": "Reviewed by hand: entry from tail branch at 0x0c0dab10, two-way table select, delay slots and pool 0x0c0daad4-0x0c0daaf3 checked; ends rts at 0x0c0daad0."
+    },
+    {
       "address": "0x0c0daad4",
-      "size": 6,
+      "size": 8,
       "kind": "data",
-      "sha256": "6c38c850743472d4f32e077075d4a58daf534da3e5705e8f38ef9bd42f3eb353",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0da8f2; unreferenced adjacent bytes omitted."
+      "sha256": "1041d9bf405fb3ea2a84940bd177b8b79e9358885ef4414da1a6d1c0e8c9384c",
+      "evidence": "Reviewed with unit source: literal pool / pointer table read by adjacent code."
     },
     {
       "address": "0x0c0daadc",
-      "size": 12,
+      "size": 24,
       "kind": "data",
-      "sha256": "ef04a15bf732fdcb8e165f6947ebe86fbb9a7fb74b839e92eab2c740ae8f523d",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0da8f2; unreferenced adjacent bytes omitted."
+      "sha256": "0a183fc9a9a874e7cc89ffdb22d5e217642a341de1657230a03a9b9d1503e571",
+      "evidence": "Reviewed with unit source: literal pool / pointer table read by adjacent code."
+    },
+    {
+      "address": "0x0c0daaf4",
+      "size": 36,
+      "kind": "code",
+      "sha256": "6209cfc8ce2a691b9f0d7b0a725714f8b97fba637b5e240944b6bbb32a8088a5",
+      "evidence": "Reviewed by hand: flag test on 0x1fe/0x1d6 then tail branch to 0x0c0daa14 or rts; pool words at 0x0c0dabda/0x0c0dabdc."
     },
     {
       "address": "0x0c0dab18",
@@ -145957,6 +145985,20 @@
       "kind": "code",
       "sha256": "9caf9706a0d8b236ff4bf44e217666599c9041f154589ee37fa8efd071234852",
       "evidence": "CFG walk from 0x0c0dab2c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c0dabda",
+      "size": 2,
+      "kind": "data",
+      "sha256": "4b24f4cca7e61459da3fb7bee3042b6637f12778c636cb043e3456feeb46ee26",
+      "evidence": "Reviewed with unit source: literal pool / pointer table read by adjacent code."
+    },
+    {
+      "address": "0x0c0dabdc",
+      "size": 2,
+      "kind": "data",
+      "sha256": "4999f9e683fa977be9e05e52b9064799de9981401fa759ab8b875655c3431dd9",
+      "evidence": "Reviewed with unit source: literal pool / pointer table read by adjacent code."
     },
     {
       "address": "0x0c0dabde",
