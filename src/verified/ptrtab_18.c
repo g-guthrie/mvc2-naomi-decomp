@@ -307,51 +307,6 @@ void (*const ptr_0c0f9cb0)(void) = func_0c02a0c4;
 #pragma section n0fa2f0
 void (*const ptr_0c0fa2f0)(void) = func_0c045248;
 
-#pragma section n0fa56c
-void (*const table_0c0fa56c[])(void) = {
-    func_0c24a968,
-    func_0c046e7e,
-    func_0c047aac,
-    func_0c045248,
-    func_0c24a920,
-    func_0c24a944,
-};
-
-#pragma section n0fa624
-void (*const table_0c0fa624[])(void) = {
-    func_0c047aac,
-    func_0c045248,
-    func_0c24a930,
-    func_0c046e7e,
-};
-
-#pragma section n0fa850
-void (*const table_0c0fa850[])(void) = {
-    func_0c24a9f8,
-    func_0c045248,
-    func_0c24a958,
-    func_0c046e7e,
-    func_0c047aac,
-    func_0c046dd0,
-    func_0c046d54,
-};
-
-#pragma section n0fa968
-void (*const table_0c0fa968[])(void) = {
-    func_0c045248,
-    func_0c24a978,
-    func_0c046e7e,
-    func_0c047aac,
-    func_0c24a968,
-};
-
-#pragma section n0faa80
-void (*const table_0c0faa80[])(void) = {
-    func_0c24a944,
-    func_0c046e7e,
-    func_0c047aac,
-};
-
 #pragma section n0fae98
 void (*const table_0c0fae98[])(void) = {
     func_0c044e52,
@@ -371,32 +326,5 @@ void (*const ptr_0c0fbc5c)(void) = func_0c0288a8;
 void (*const table_0c0fc804[])(void) = {
     func_0c04b02a,
     func_0c1b43d8,
-};
-
-#pragma section n0fcb04
-void (*const table_0c0fcb04[])(void) = {
-    func_0c24ac04,
-    func_0c046e7e,
-};
-
-#pragma section n0fcc38
-void (*const table_0c0fcc38[])(void) = {
-    func_0c047aac,
-    func_0c045248,
-    func_0c24ac14,
-    func_0c046e7e,
-    func_0c24ac28,
-    func_0c24ac50,
-};
-
-#pragma section n0fcd68
-void (*const table_0c0fcd68[])(void) = {
-    func_0c24ac3c,
-    func_0c046e7e,
-    func_0c047aac,
-    func_0c045248,
-    func_0c24ac60,
-    func_0c046dd0,
-    func_0c046d54,
 };
 

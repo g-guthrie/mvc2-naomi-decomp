@@ -136103,6 +136103,13 @@
       "evidence": "CFG walk from 0x0c0ce594; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c0ce656",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) between the epilogue ending at 0x0c0ce654 and the literal pool at 0x0c0ce658."
+    },
+    {
       "address": "0x0c0ce658",
       "size": 24,
       "kind": "data",
@@ -136381,6 +136388,13 @@
       "kind": "code",
       "sha256": "2eb8da21c2102ea69fadf8c701304a36223de0933347cfe8a5c04a8d6ce878c7",
       "evidence": "CFG walk from 0x0c0ceaf4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c0ceb2c",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Reviewed by hand: empty function (rts; nop) after the epilogue ending at 0x0c0ceb2a, before the literal pool at 0x0c0ceb30."
     },
     {
       "address": "0x0c0ceb30",
@@ -174638,6 +174652,13 @@
       "evidence": "CFG walk from 0x0c0fce3a; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c0fce70",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Reviewed by hand: empty function (rts; nop) after the epilogue ending at 0x0c0fce6e; no branch or load crosses it."
+    },
+    {
       "address": "0x0c0fce74",
       "size": 20,
       "kind": "code",
@@ -211066,25 +211087,46 @@
       "evidence": "CFG walk from 0x0c12605e; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c12609c",
+      "size": 36,
+      "kind": "code",
+      "sha256": "2a02d03c6d4eb78fc7ffae974477268975415a08d38613ba8bec94f0d81b6e83",
+      "evidence": "Reviewed by hand: clears the 128-byte state block at 0x2a4 with 0x0c1fba00 while preserving its byte 8; R14/PR frame, rts at 0x0c1260bc with delay slot."
+    },
+    {
       "address": "0x0c1260c0",
       "size": 6,
       "kind": "data",
       "sha256": "d038355b455942abe0bc94591507b55fc307e16b5201c44f528e0211d9cc2ade",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c12601c; unreferenced adjacent bytes omitted."
+      "evidence": "Literal pool cells (0x04c9, 0x01e9, 0x01a3) read by func_0c12601c and func_0c12605e."
     },
     {
-      "address": "0x0c1260c8",
+      "address": "0x0c1260c6",
       "size": 4,
       "kind": "data",
-      "sha256": "50c8ba3a6170f0a2fb6736ece8a603576ef6309a35e810911599bc6211b554a9",
-      "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+      "sha256": "d6c566704ed93eb58ab7b90f16683b4835d6b214152f25bb4e6baea8244e717e",
+      "evidence": "Literal pool cells (0x02a4, 0x0080) read by the function at 0x0c12609c."
+    },
+    {
+      "address": "0x0c1260ca",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) before the long literals of the pool."
     },
     {
       "address": "0x0c1260cc",
       "size": 4,
       "kind": "data",
       "sha256": "809b2c5bb087475db012bd2681338226a9f4fb584625b489dc4d097676b6abc0",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c12601c; unreferenced adjacent bytes omitted."
+      "evidence": "Literal 0x0c045248 read by func_0c12601c and func_0c12605e."
+    },
+    {
+      "address": "0x0c1260d0",
+      "size": 4,
+      "kind": "data",
+      "sha256": "7282f66b6863a7846cde3dd2d3f1ee698f478ef9972c01fe180c2be1746cfcd0",
+      "evidence": "Literal 0x0c1fba00 read by the function at 0x0c12609c."
     },
     {
       "address": "0x0c1260d4",
