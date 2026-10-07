@@ -1,7 +1,6 @@
-/* Candidate (1010/1032): pools, extent and control flow match. Differences are
- * register choice only: the +0x12e halfword temp (r3 retail, r2 ours, as in
- * tu_0c15ccc8), the hoisted constants 0/3 in func_0c15d23c (retail r12=0, r13=3;
- * ours swapped) and the row-index/i204 temps (r1 retail, r2 ours). */
+/* Candidate (1013/1032): pools, extent and control flow match. Remaining differences in
+ * func_0c15d23c are register choice only: hoisted constants 0/3 (retail r12=0, r13=3; ours
+ * swapped) and the row-index/i204 temps (r1 retail, r2 ours). */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 extern struct LinkedActor *func_0c0374da(int,int,int);
@@ -35,7 +34,7 @@ void func_0c15d04a(struct LinkedActor *a)
  a->b1a3=owner->b1a3;a->b1a4=owner->b1a4;a->b48=owner->b48;a->v80=owner->v80;
  a->b36=owner->b36;a->b36=8;a->sdc.b12c=1;
  A(a)->b13c=16;((unsigned char *)a)[0x13d]=16;A(a)->b13e=16;A(a)->b13f=16;
- if(owner->b1==29){((unsigned char *)a)[0x12d]=1;((short *)((char *)a+0x12e))[0]+=-2;}
+ if(owner->b1==29){((struct LinkedActorPrefix12c *)&a->sdc.b12c)->b12d=1;((struct LinkedActorPrefix12c *)&a->sdc.b12c)->w12e+=-2;}
  row=&table_0c250ddc[a->b32];
  *(struct LinkedActorVec3 *)&a->f52=*(struct LinkedActorVec3 *)&owner->f52;
  scale=1.66666663f;unit=65536.0f;

@@ -1,11 +1,15 @@
 /* Candidate: whole unit 0x0c14a9d0..0x0c14b8d8 (func_0c14adac/ae90/b33a
  * reach func_0c14aabc and func_0c14b4f2 reaches func_0c14ab1c by bsr/bra, so
- * the earlier four-function registration was a fragment). 37 of 41 functions
- * match. Remaining: func_0c14ac3c allocates fr1 instead of fr2 for the f84
- * division; func_0c14adac/ae90 schedule the table load before saving r13;
- * func_0c14b1e8 loads 2.0f from the pool where retail builds it with
- * fldi1/fadd ahead of the b5 increment, and rotates r1/r2/r3 differently in
- * the b19e test; the 4-byte shift moves later branch/pool displacements. */
+ * the earlier four-function registration was a fragment). 3799 of 3848 bytes
+ * equal; 38 of 41 functions match. Remaining:
+ * - func_0c14adac/ae90: retail pushes r13 before loading the dat_0c24ff8c/ffac
+ *   table pointer into r4; ours loads it first (two words swapped each).
+ * - func_0c14b1e8: the 2.0f is built with the inlined one() helper (t += t), but
+ *   SHC reuses the fr4 that holds the 1.0f of the f264 compare (fadd fr4,fr4),
+ *   where retail has a separate fldi1 fr3; fadd fr3,fr3. Retail also gives the
+ *   constant 1 to r4 and the zero to r5; ours swaps them (the register with more
+ *   uses gets r4: adding a third use of 1 flips them), which moves the
+ *   later pool and branch displacements. */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 
@@ -160,8 +164,8 @@ void func_0c14ac3c(struct LinkedActor *a)
     a->f108 = 0.2800000012f;
     A(a)->f80 = 1.0f;
     A(a)->f84 = 1.0f;
-    A(a)->f80 /= 100.0f;
-    A(a)->f84 /= 100.0f;
+    A(a)->f80 = A(a)->f80 / 100.0f;
+    A(a)->f84 = A(a)->f84 / 100.0f;
     func_0c02a0c4(a, 23, 0);
 }
 
@@ -347,6 +351,9 @@ void func_0c14b1b8(struct LinkedActor *a)
     }
 }
 
+#pragma inline(one)
+static float one(void) { return 1.0f; }
+
 void func_0c14b1e8(struct LinkedActor *a, struct LinkedActor *owner)
 {
     short *timer = (short *)&A(owner)->sub2a4;
@@ -370,10 +377,12 @@ void func_0c14b1e8(struct LinkedActor *a, struct LinkedActor *owner)
     if (A(a)->f264 > 1.0f)
         A(a)->f264 = 1.0f;
     if (a->s28-- == 0) {
+        float t = one();
+        t += t;
         a->b5++;
         a->s28 = 35;
         A(a)->i72 = 0;
-        a->f108 = 2.0f;
+        a->f108 = t;
         a->f104 = 0.01f;
         return;
     }

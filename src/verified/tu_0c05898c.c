@@ -1,4 +1,4 @@
-/* Candidate: 646/648. Remaining: r2/r3 scratch rotation at 0c058b76 (b1fd & two test in func_0c058a30). */
+/* Verified: exact. */
 #include "objects.h"
 extern void (*table_0c23f864[])(struct Actor *);
 extern void (*table_0c23f87c[])(struct Actor *);
@@ -79,8 +79,10 @@ void func_0c058a30(struct Actor *a) {
     if (a->b1d2) {
       if ((char)a->b1fd & 1)
         goto timeout;
+      goto check;
     } else if ((char)a->b1fd & two)
       goto timeout;
+    check:
     if (--a->s28 == 0) {
     timeout:
       a->b6 = 3;

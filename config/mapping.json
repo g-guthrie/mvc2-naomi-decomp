@@ -24755,10 +24755,10 @@
     },
     {
       "address": "0x0c046e7e",
-      "size": 62,
+      "size": 66,
       "kind": "code",
-      "sha256": "47cb338578cafef292cadbd51e20abbc5e7e26edb1eae22236cf8e19ba175112",
-      "evidence": "CFG walk from 0x0c046e7e; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "4f835a19f5e96dd10793986fa808ff47b71742a49465a338a63891a8dda2701d",
+      "evidence": "CFG walk from 0x0c046e7e; delay slots included; trailing rts after jmp-with-delay-slot epilogue reviewed; PC-relative pools split."
     },
     {
       "address": "0x0c046ec0",
@@ -25979,6 +25979,13 @@
       "evidence": "CFG walk from 0x0c0491a4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c0492dc",
+      "size": 84,
+      "kind": "code",
+      "sha256": "a31e108bd1c547847b54a51b414a812d3829b911c7c5fc5ad0585dc99c91ddaf",
+      "evidence": "CFG walk from 0x0c0492dc: prologue, jsr 0x0c044384 with delay slot, three forward conditional branches to 0x0c0492fc/0x0c04930a-0x0c04932a/0x0c04931e checked, fmac tail, epilogue rts with delay slot; pool words at 0x0c049330 (halfwords 0x01b8, 0x0214) and 0x0c049334/0x0c049338 already mapped."
+    },
+    {
       "address": "0x0c049330",
       "size": 12,
       "kind": "data",
@@ -26474,6 +26481,13 @@
       "kind": "code",
       "sha256": "07302c58807acd5f9c9beda85c38357274a72852574c64ac000aae30ab9ee173",
       "evidence": "CFG walk from 0x0c049f46; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c049f78",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "rts and delay slot (nop) that the compiler emits after the tail jmp @r2 with mov.l @r15+,r14 delay slot closing the function at 0x0c049f46; reviewed with its delay slot."
     },
     {
       "address": "0x0c049f7c",
@@ -29843,6 +29857,13 @@
       "evidence": "CFG walk from 0x0c04ea68; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c04eb3a",
+      "size": 8,
+      "kind": "code",
+      "sha256": "7514f82138429fabe72bec56990e4986d28318c33fa92a562c01fde021346d52",
+      "evidence": "Shared epilogue (add #4,r15; lds.l pr; rts; delay slot) after the unconditional bra at 0x0c04eb36; reviewed with its delay slot, no incoming branch."
+    },
+    {
       "address": "0x0c04eb42",
       "size": 134,
       "kind": "code",
@@ -30114,6 +30135,13 @@
       "kind": "code",
       "sha256": "369bc2fc55c538c7a05ba4a661bbde4d1eac4341ab6d924ff050c009db250ca3",
       "evidence": "CFG walk from 0x0c04f1ea; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c04f4a6",
+      "size": 8,
+      "kind": "code",
+      "sha256": "7514f82138429fabe72bec56990e4986d28318c33fa92a562c01fde021346d52",
+      "evidence": "Shared epilogue (add #4,r15; lds.l pr; rts; delay slot) after the unconditional bra at 0x0c04f4a2; reviewed with its delay slot, no incoming branch."
     },
     {
       "address": "0x0c04f4ae",
@@ -30865,6 +30893,13 @@
       "evidence": "CFG walk from 0x0c0501e6; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c050244",
+      "size": 8,
+      "kind": "code",
+      "sha256": "57efd5c0cdfe67719b9b8f1d220bbbc87fbf3082c0344bf1749a3806693807f3",
+      "evidence": "Shared epilogue (add #8,r15; lds.l pr; rts; delay slot) after the unconditional bra at 0x0c050240; reviewed with its delay slot, no incoming branch."
+    },
+    {
       "address": "0x0c05024c",
       "size": 136,
       "kind": "code",
@@ -31521,6 +31556,13 @@
       "kind": "code",
       "sha256": "ed862626593827df864e3b1dd44ae1dec1a4c0f2cc81fd9cbb6d053242ec2e5a",
       "evidence": "CFG walk from 0x0c050f8e; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c051058",
+      "size": 4,
+      "kind": "code",
+      "sha256": "ef7d765240dfe58f1e728aef6ae72c63e4e43e868123d1f4841639673730e75f",
+      "evidence": "Trailing rts with its delay slot after the jmp @r0 at 0x0c051054; reviewed, no incoming branch."
     },
     {
       "address": "0x0c05105c",
@@ -33887,6 +33929,13 @@
       "kind": "code",
       "sha256": "859c503bbf51add5ff2048c7c637763de03ab5b9478c7824f29f72d8e2fcb986",
       "evidence": "CFG walk from 0x0c054158; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c0541b4",
+      "size": 6,
+      "kind": "code",
+      "sha256": "2e6595aaaaa71054e0ec9c59412a996adc0c5dd608991e0523e7a88d9426ed64",
+      "evidence": "Epilogue (lds.l pr; rts; mov.l @r15+,r14) closing the function at 0x0c054158; reviewed with its delay slot, bytes follow that function's last branch."
     },
     {
       "address": "0x0c0541ba",
@@ -48344,6 +48393,13 @@
       "evidence": "CFG walk from 0x0c064470; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c0644aa",
+      "size": 38,
+      "kind": "code",
+      "sha256": "8208cee7f853ea0b4cf6a9bd028b859ee5cb057779d552100fd20890bf42f6ac",
+      "evidence": "CFG walk from 0x0c0644aa; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
       "address": "0x0c0644d0",
       "size": 2,
       "kind": "data",
@@ -48358,6 +48414,13 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c064436; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c0644d6",
+      "size": 2,
+      "kind": "data",
+      "sha256": "7a17514b5434c151826cc12a292b79c95d3c7f6e46a1f16cff38e62964b0097e",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0644aa; unreferenced adjacent bytes omitted."
+    },
+    {
       "address": "0x0c0644d8",
       "size": 4,
       "kind": "data",
@@ -48370,6 +48433,13 @@
       "kind": "data",
       "sha256": "809b2c5bb087475db012bd2681338226a9f4fb584625b489dc4d097676b6abc0",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0643e8; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c0644e0",
+      "size": 4,
+      "kind": "data",
+      "sha256": "7282f66b6863a7846cde3dd2d3f1ee698f478ef9972c01fe180c2be1746cfcd0",
+      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0644aa; unreferenced adjacent bytes omitted."
     },
     {
       "address": "0x0c0644e4",
@@ -52467,6 +52537,13 @@
       "evidence": "CFG walk from 0x0c069844; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c069858",
+      "size": 22,
+      "kind": "code",
+      "sha256": "cd5c1de56c8d5b2097da21eae9283a58002c2b76902c50b991b6829e2172e2ea",
+      "evidence": "Reviewed: table_0c24074c[a->s28] dispatcher (mov.w @(28,r3),r0; jmp @r3 with add #4,r15 delay slot) and tail jump to 0x0c02a026 (mov.l pool,r3; jmp @r3; nop); literals at 0x0c069894 and 0x0c069898."
+    },
+    {
       "address": "0x0c06986e",
       "size": 2,
       "kind": "data",
@@ -52495,11 +52572,18 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c069844; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c069896",
-      "size": 6,
+      "address": "0x0c069894",
+      "size": 8,
+      "kind": "data",
+      "sha256": "32c45e40f98942d58b60eb2a3824faf795745a08251fb6159cd807e630ed1aac",
+      "evidence": "Pool longs 0x0c24074c and 0x0c02a026 consumed by the 0x0c069858 dispatcher and tail jump; bytes 0x0c069896 previously decoded as code in error (data halves of the long at 0x0c069894)."
+    },
+    {
+      "address": "0x0c06989c",
+      "size": 18,
       "kind": "code",
-      "sha256": "097fe0912958b43ef76fc9a44fdf5ec7bef28ed9ba88df801502bfa3882c9b49",
-      "evidence": "CFG walk from 0x0c069896; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "0e1d036c35817db1bdbbbd06982a16f871a405ad935303e402a985453015b221",
+      "evidence": "Reviewed: table_0c24075c[a->b7](a) dispatcher (mov.b @(7,r3),r0; jmp @r3 with add #4,r15 delay slot); literal at 0x0c0699ec."
     },
     {
       "address": "0x0c0698ae",
@@ -52579,6 +52663,13 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0699ca; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c0699ea",
+      "size": 6,
+      "kind": "data",
+      "sha256": "356968f24eb5f1cc34c8c21f0da9771785054dd4340be8677263e7ece7a49d96",
+      "evidence": "Alignment pad word and pool long 0x0c24075c consumed by the 0x0c06989c dispatcher (literal at 0x0c0699ec)."
+    },
+    {
       "address": "0x0c0699f0",
       "size": 4,
       "kind": "data",
@@ -52614,6 +52705,13 @@
       "evidence": "CFG walk from 0x0c069a10; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c069a24",
+      "size": 22,
+      "kind": "code",
+      "sha256": "79520ce75e840991a55f45ef45e5f2f01ea0e125a60cec7dbc4f98a906946ad7",
+      "evidence": "Reviewed dispatcher: table_0c2407c8[a->b6](a, &a->sub2a4); mov.w literal 0x02a4 added to r5, jmp @r3 with mov.l @r15+,r14 delay slot."
+    },
+    {
       "address": "0x0c069a3a",
       "size": 230,
       "kind": "code",
@@ -52626,6 +52724,13 @@
       "kind": "data",
       "sha256": "0ae8e20e8cb2ab612a320158def8b102a5c98998f924309714ffabed53179e18",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c069a10; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c069b22",
+      "size": 2,
+      "kind": "data",
+      "sha256": "7a17514b5434c151826cc12a292b79c95d3c7f6e46a1f16cff38e62964b0097e",
+      "evidence": "Pool word 0x02a4 (offset of the ActorSub2a4 member) consumed by the 0x0c069a24 dispatcher."
     },
     {
       "address": "0x0c069b24",
@@ -52649,11 +52754,25 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c069a10; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c069b38",
+      "size": 4,
+      "kind": "data",
+      "sha256": "261ea460cef182ae1c5fd5d341cc30eeaa4a4a216f03750a2b4dd75279c722ef",
+      "evidence": "Pool long 0x0c2407c8 (handler table) consumed by the 0x0c069a24 dispatcher."
+    },
+    {
       "address": "0x0c069b3c",
       "size": 36,
       "kind": "data",
       "sha256": "b6ba5b880821f995dd363bac9a790e3f9161da4a9e2ca4cc505c9fc554b08815",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c069a3a; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c069b60",
+      "size": 162,
+      "kind": "code",
+      "sha256": "4be9040473cfe87d3c28d7d8fbb71364441334957b9ac9d27d9f966567031006",
+      "evidence": "Reviewed function at 0x0c069b60: calls 0x0c02a026, applies the four-axis motion integration, calls 0x0c06c9ba, decrements the word at 28 and tail-jumps to 0x0c02a0c4; epilogue and delay slot included."
     },
     {
       "address": "0x0c069c02",
@@ -52663,11 +52782,25 @@
       "evidence": "CFG walk from 0x0c069c02; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c069c6c",
+      "size": 18,
+      "kind": "code",
+      "sha256": "12d49d432642aed2553dce3c6b60ed96c9108a3dea70278d36800c987967e6a9",
+      "evidence": "Reviewed dispatcher: table_0c2407d4[a->b6](a) via mov.b @(6,r3),r0; jmp @r3; add #4,r15 delay slot."
+    },
+    {
       "address": "0x0c069c7e",
       "size": 2,
       "kind": "data",
       "sha256": "bbeb55371bfdbcccfb61d2314ef1649a1e31265d111f13e6fe7f82f67b203cdb",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c069c02; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c069c80",
+      "size": 4,
+      "kind": "data",
+      "sha256": "22bbf324163eabbbd27c46ed13366f5d0c29ce6384819e6202c9f6ab0520850b",
+      "evidence": "Pool word 0x01d2 plus alignment pad before the long at 0x0c069c84."
     },
     {
       "address": "0x0c069c84",
@@ -52677,11 +52810,11 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c069c02; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c069c94",
-      "size": 12,
-      "kind": "code",
-      "sha256": "bd92bcdef5f730cff1d0d7372fcfb25c6b0bd9266f34a3f5ec5397dbc2eb0bd8",
-      "evidence": "CFG walk from 0x0c069c94; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "address": "0x0c069c8c",
+      "size": 20,
+      "kind": "data",
+      "sha256": "1ff188ebfb4f2b69b861f3ae552b1c8d3466ea14579db19f47bca9aa4d2790e5",
+      "evidence": "Pool of the 0x0c069a10-0x0c069c80 unit: floats 10.0, -10.0, -0.2083333, 0.2083333 and pointer longs 0x0c02a0c4; previously 0x0c069c94 was decoded as code in error (bsr into 0x0c069944)."
     },
     {
       "address": "0x0c069ca0",
@@ -52689,6 +52822,13 @@
       "kind": "data",
       "sha256": "a831f3191f3147255eb0ecf425e9259769aa07966b8fec9d86665e93d5560b49",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c069c02; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c069ca4",
+      "size": 4,
+      "kind": "data",
+      "sha256": "270493e14dd5f90491bfd13a54e3e54ad54c8754e8b4f527e3ccb72198016699",
+      "evidence": "Pool long 0x0c2407d4 (handler table) consumed by the 0x0c069c6c dispatcher."
     },
     {
       "address": "0x0c069ca8",
@@ -53041,6 +53181,13 @@
       "evidence": "CFG walk from 0x0c06a3c0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c06a43a",
+      "size": 22,
+      "kind": "code",
+      "sha256": "d81fde41e41adaf3bed66ccdfe4e774b518fc55534b9c4863aa4af2b43e2bc91",
+      "evidence": "Reviewed dispatcher: table_0c240818[a->b6](a, &a->sub2a4); mov.w literal 0x02a4 added to r5, jmp @r3 with mov.l @r15+,r14 delay slot."
+    },
+    {
       "address": "0x0c06a450",
       "size": 176,
       "kind": "code",
@@ -53053,6 +53200,13 @@
       "kind": "data",
       "sha256": "a5d1bfc41f7c667e3904d7c6a92f9f157c455971bef761ee6c869cc8ab25194d",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c06a3c0; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c06a502",
+      "size": 2,
+      "kind": "data",
+      "sha256": "7a17514b5434c151826cc12a292b79c95d3c7f6e46a1f16cff38e62964b0097e",
+      "evidence": "Pool word 0x02a4 (offset of the ActorSub2a4 member) consumed by the 0x0c06a43a dispatcher."
     },
     {
       "address": "0x0c06a504",
@@ -53074,6 +53228,13 @@
       "kind": "data",
       "sha256": "51ad05f7c1dd047037c5ce7dc1fa6d95cd1e9bbb8d1a10618ca984b2c33e6fbd",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c06a3c0; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c06a514",
+      "size": 4,
+      "kind": "data",
+      "sha256": "d79872629e497cf5e3a37baa53b49335da3443ec5e19af8400e38c17459bb9cb",
+      "evidence": "Pool long 0x0c240818 (handler table) consumed by the 0x0c06a43a dispatcher."
     },
     {
       "address": "0x0c06a518",
@@ -54355,6 +54516,13 @@
       "kind": "code",
       "sha256": "d241ac0d3b50bbbaaf1b4dee6d8cec61064e02f2d181b8e5701ce0c48dd9067e",
       "evidence": "CFG walk from 0x0c06c12c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c06c1a0",
+      "size": 6,
+      "kind": "code",
+      "sha256": "2e6595aaaaa71054e0ec9c59412a996adc0c5dd608991e0523e7a88d9426ed64",
+      "evidence": "Reviewed epilogue block lds.l @r15+,pr; rts; mov.l @r15+,r14 following the tail jump at 0x0c06c19c."
     },
     {
       "address": "0x0c06c1a6",
@@ -235209,6 +235377,13 @@
       "evidence": "CFG walk from 0x0c142d82; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c142dd8",
+      "size": 6,
+      "kind": "code",
+      "sha256": "7250d6c7fc5480b64bedafdcb2400ef7a3f54a6f50a065c5b2f363612b88e537",
+      "evidence": "Reviewed gap: unreachable compiler epilogue (add #4,r15; rts; mov.l @r15+,r14) emitted after the tail jmp of the 0x0c142d82 handler; no incoming branch; delay slot included."
+    },
+    {
       "address": "0x0c142dde",
       "size": 152,
       "kind": "code",
@@ -235270,6 +235445,13 @@
       "kind": "code",
       "sha256": "7507336eeb358d9e9864753f4b6e7d9f53dd7d52de990fc1546afda724febe8d",
       "evidence": "CFG walk from 0x0c142ec0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c142ee2",
+      "size": 6,
+      "kind": "code",
+      "sha256": "2e6595aaaaa71054e0ec9c59412a996adc0c5dd608991e0523e7a88d9426ed64",
+      "evidence": "Reviewed gap: unreachable compiler epilogue (lds.l pr; rts; mov.l @r15+,r14) emitted after the tail jmp of the 0x0c142e9c handler; no incoming branch; delay slot included."
     },
     {
       "address": "0x0c142ee8",
@@ -235706,6 +235888,13 @@
       "evidence": "CFG walk from 0x0c143544; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c143598",
+      "size": 8,
+      "kind": "code",
+      "sha256": "7514f82138429fabe72bec56990e4986d28318c33fa92a562c01fde021346d52",
+      "evidence": "Reviewed gap: unreachable compiler epilogue (add #4,r15; lds.l pr; rts; mov.l @r15+,r14) emitted after the tail jmp of the 0x0c143552 handler; no incoming branch; delay slot included."
+    },
+    {
       "address": "0x0c1435a0",
       "size": 10,
       "kind": "data",
@@ -235970,6 +236159,13 @@
       "kind": "code",
       "sha256": "48ad019a57cc52d189d7acc556b833b0976d72861a90ddf9b6510938cbcbcdf3",
       "evidence": "CFG walk from 0x0c143948; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1439bc",
+      "size": 4,
+      "kind": "code",
+      "sha256": "ef7d765240dfe58f1e728aef6ae72c63e4e43e868123d1f4841639673730e75f",
+      "evidence": "Reviewed gap: unreachable compiler epilogue (rts; mov.l @r15+,r14) emitted after the tail jmp of the 0x0c143982 handler; no incoming branch; delay slot included."
     },
     {
       "address": "0x0c1439c0",
@@ -236341,6 +236537,13 @@
       "kind": "code",
       "sha256": "706fb05933bb42cf56589ebf6b207a2e5e3140ddf4c74a3d8596751d31934eca",
       "evidence": "CFG walk from 0x0c143fc8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c143fe6",
+      "size": 4,
+      "kind": "code",
+      "sha256": "ef7d765240dfe58f1e728aef6ae72c63e4e43e868123d1f4841639673730e75f",
+      "evidence": "Reviewed gap: unreachable compiler epilogue (rts; mov.l @r15+,r14) emitted after the tail jmp of the 0x0c143f9c handler; no incoming branch; delay slot included."
     },
     {
       "address": "0x0c143fea",
@@ -257588,6 +257791,13 @@
       "evidence": "CFG walk from 0x0c15e77c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c15e7ce",
+      "size": 4,
+      "kind": "code",
+      "sha256": "ef7d765240dfe58f1e728aef6ae72c63e4e43e868123d1f4841639673730e75f",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
+    },
+    {
       "address": "0x0c15e7d2",
       "size": 2,
       "kind": "data",
@@ -257651,11 +257861,25 @@
       "evidence": "CFG walk from 0x0c15e868; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c15e8c4",
+      "size": 6,
+      "kind": "code",
+      "sha256": "2e6595aaaaa71054e0ec9c59412a996adc0c5dd608991e0523e7a88d9426ed64",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
+    },
+    {
       "address": "0x0c15e8ca",
       "size": 78,
       "kind": "code",
       "sha256": "bcd7f089bad3fa4a3f61e7eb98019433dc85cd9962de177e57b50e809c9978d1",
       "evidence": "CFG walk from 0x0c15e8ca; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c15e918",
+      "size": 6,
+      "kind": "code",
+      "sha256": "2e6595aaaaa71054e0ec9c59412a996adc0c5dd608991e0523e7a88d9426ed64",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
     },
     {
       "address": "0x0c15e91e",
@@ -257761,6 +257985,13 @@
       "kind": "code",
       "sha256": "9fceb5ca2c94b94c459763160100e692f80d00ad78e3db908689db8d1d36cbf8",
       "evidence": "CFG walk from 0x0c15ea84; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c15eb1a",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad after the last code of the unit and before its literal pool."
     },
     {
       "address": "0x0c15eb1c",
@@ -258085,6 +258316,13 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c15f078; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c15f204",
+      "size": 74,
+      "kind": "code",
+      "sha256": "858dda663f90663845f49627227c35526e71b0a07cce97f96daf5d9c2d64ae16",
+      "evidence": "Function reviewed by CFG walk: float add pair then call 0x0c02850e and conditional state advance; tail-jumps to 0x0c037d0c via JMP with delay slot; PC-relative loads land in the pool at 0x0c15f2d8-0x0c15f2ee."
+    },
+    {
       "address": "0x0c15f24e",
       "size": 18,
       "kind": "code",
@@ -258097,6 +258335,13 @@
       "kind": "code",
       "sha256": "560a6af68a08385f6b6a070c0463577607a3c87c6a9b3ff50681df5c98f9a026",
       "evidence": "CFG walk from 0x0c15f260; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c15f2d8",
+      "size": 2,
+      "kind": "data",
+      "sha256": "f85ad8f0233b99ba122d3b79773c1a1936b3d3b988b9d1b475fd890b4032f3c4",
+      "evidence": "Literal word 0x012c loaded by MOV.W at 0x0c15f23a; part of the pool 0x0c15f2d8-0x0c15f2fc."
     },
     {
       "address": "0x0c15f2da",
@@ -258118,6 +258363,13 @@
       "kind": "code",
       "sha256": "f2425c531186e6c9c38fb7d2fd1e45cc5779fc27b30ea9a3039c70308f561735",
       "evidence": "CFG walk from 0x0c15f2e0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c15f2e8",
+      "size": 4,
+      "kind": "data",
+      "sha256": "953edc173afbab59673471b4eb7dbd4898f8b0b47698b18c899f73c2cb0368cf",
+      "evidence": "Literal 0x0c037d0c loaded by MOV.L at 0x0c15f246; part of the pool 0x0c15f2d8-0x0c15f2fc."
     },
     {
       "address": "0x0c15f2ec",
@@ -258251,6 +258503,13 @@
       "kind": "code",
       "sha256": "d68ca3947619f5c1ddb6c23eade3e14ccdf8decd2124fdd522522d248855083e",
       "evidence": "CFG walk from 0x0c15f4ec; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c15f666",
+      "size": 6,
+      "kind": "code",
+      "sha256": "2e6595aaaaa71054e0ec9c59412a996adc0c5dd608991e0523e7a88d9426ed64",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
     },
     {
       "address": "0x0c15f66c",
@@ -258477,6 +258736,13 @@
       "evidence": "CFG walk from 0x0c15fa80; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c15fab2",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
+    },
+    {
       "address": "0x0c15fab6",
       "size": 58,
       "kind": "code",
@@ -258540,6 +258806,13 @@
       "evidence": "CFG walk from 0x0c15fba0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c15fbc0",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
+    },
+    {
       "address": "0x0c15fbc4",
       "size": 18,
       "kind": "code",
@@ -258561,6 +258834,13 @@
       "evidence": "CFG walk from 0x0c15fbf8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c15fc12",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
+    },
+    {
       "address": "0x0c15fc16",
       "size": 18,
       "kind": "code",
@@ -258575,11 +258855,25 @@
       "evidence": "CFG walk from 0x0c15fc28; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c15fc64",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
+    },
+    {
       "address": "0x0c15fc68",
       "size": 42,
       "kind": "code",
       "sha256": "c7fd1fa37f9c590739176866b582a2f474835086726c85850274ebfe7f966045",
       "evidence": "CFG walk from 0x0c15fc68; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c15fc92",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
     },
     {
       "address": "0x0c15fc96",
@@ -259079,6 +259373,13 @@
       "evidence": "CFG walk from 0x0c160238; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c160354",
+      "size": 4,
+      "kind": "code",
+      "sha256": "ef7d765240dfe58f1e728aef6ae72c63e4e43e868123d1f4841639673730e75f",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
+    },
+    {
       "address": "0x0c160358",
       "size": 18,
       "kind": "code",
@@ -259140,6 +259441,13 @@
       "kind": "code",
       "sha256": "d0c9aa99addd8e055ac0fd308ecfe307b6f8267e2e401a027adf385ccbf62324",
       "evidence": "CFG walk from 0x0c16036a; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c160438",
+      "size": 4,
+      "kind": "code",
+      "sha256": "abf74d06447348d8153708d2363dc0403ec8377c042f4320cf18069edd652e36",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
     },
     {
       "address": "0x0c16043c",
@@ -259322,6 +259630,13 @@
       "kind": "code",
       "sha256": "dc9e332ef31a8d01cafb173f5dd78c68f1992b29ca2819ee4f63a17b425eb150",
       "evidence": "Rooted CFG for the callback at 0x0c160792 (listed in verified dispatch table dat_0c2514a4) has no unresolved edges; the run includes the indirect jump and its delay slot at 0x0c1607d4\u20130x0c1607d8."
+    },
+    {
+      "address": "0x0c1607d8",
+      "size": 4,
+      "kind": "code",
+      "sha256": "ef7d765240dfe58f1e728aef6ae72c63e4e43e868123d1f4841639673730e75f",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
     },
     {
       "address": "0x0c1607dc",
@@ -259786,6 +260101,13 @@
       "evidence": "CFG walk from 0x0c160e8c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c161000",
+      "size": 4,
+      "kind": "code",
+      "sha256": "ef7d765240dfe58f1e728aef6ae72c63e4e43e868123d1f4841639673730e75f",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
+    },
+    {
       "address": "0x0c161004",
       "size": 18,
       "kind": "code",
@@ -259966,6 +260288,13 @@
       "kind": "code",
       "sha256": "2f89f3f268d6b255db921ec737f8712dcf274d9ab915a7427e3b94fb594ee327",
       "evidence": "CFG walk from 0x0c161250; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1612ce",
+      "size": 6,
+      "kind": "code",
+      "sha256": "2e6595aaaaa71054e0ec9c59412a996adc0c5dd608991e0523e7a88d9426ed64",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
     },
     {
       "address": "0x0c1612d4",
@@ -260680,6 +261009,13 @@
       "kind": "code",
       "sha256": "b04f29a04a53dac7050b735a5c453b8719f156f793353352183efe591399f244",
       "evidence": "CFG walk from 0x0c161e60; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c161e7a",
+      "size": 6,
+      "kind": "code",
+      "sha256": "b8e0c15e69749aca8e79f459746b9e67cb9fd455964d8c76896b04ba838959b0",
+      "evidence": "Function tail: epilogue RTS and its delay slot, reached by fallthrough from the previous reviewed block; no branch targets it."
     },
     {
       "address": "0x0c161e80",
@@ -262332,6 +262668,13 @@
       "kind": "code",
       "sha256": "4dd1ebab0877231186a6b642f0350a7d84bf31b709252523a545a5401861e42d",
       "evidence": "CFG walk from 0x0c163cba; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c163d92",
+      "size": 6,
+      "kind": "code",
+      "sha256": "2e6595aaaaa71054e0ec9c59412a996adc0c5dd608991e0523e7a88d9426ed64",
+      "evidence": "Reviewed: unreachable function epilogue (lds.l @r15+,pr; rts; mov.l @r15+,r14) after the JMP tail calls of 0x0c163cba..0x0c163d98; no branch targets it, delay slot included."
     },
     {
       "address": "0x0c163d98",

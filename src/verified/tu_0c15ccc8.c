@@ -1,6 +1,3 @@
-/* Candidate: 3 bytes differ at 0c15cd90-0c15cd94 (retail uses r3, ours r2 for the
- * halfword at +0x12e). Compiled section is 744 bytes: SHC emits the unreachable
- * 0c15ced8 epilogue after the 0c15cf7c pool (retail 0c15cfa8, mapped as code). */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 extern struct LinkedActor *func_0c0374da(int,int,int);
@@ -26,7 +23,7 @@ void func_0c15cd08(struct LinkedActor *a)
  a->b1a3=owner->b1a3;a->b1a4=owner->b1a4;a->b48=owner->b48;a->v80=owner->v80;
  a->b36=owner->b36;a->b36=8;
  A(a)->b13c=16;((unsigned char *)a)[0x13d]=16;A(a)->b13e=16;A(a)->b13f=16;
- if(owner->b1==29){((unsigned char *)a)[0x12d]=1;((short *)((char *)a+0x12e))[0]+=-2;}
+ if(owner->b1==29){((struct LinkedActorPrefix12c *)&a->sdc.b12c)->b12d=1;((struct LinkedActorPrefix12c *)&a->sdc.b12c)->w12e+=-2;}
  row=&table_0c250d74[a->b32];
  *(struct LinkedActorVec3 *)&a->f52=*(struct LinkedActorVec3 *)&owner->f52;
  scale=1.66666663f;unit=65536.0f;

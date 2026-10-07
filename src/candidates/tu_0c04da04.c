@@ -1,4 +1,4 @@
-/* Candidate: 0x0c04db58 reloads the first table row from its stack slot where retail forwards it; 0x0c04dba2 swaps the k/selection registers (r10/r11); 0x0c04dc48 orders the 0x174/0x4a0 loads differently; 0x0c04dd88 keeps the constant 1 in r12 instead of r4. Other functions and all pools exact. */
+/* Candidate: 0x0c04dc48 loads the call-target literal early (r2, in the load-use gap) where retail loads it into r3 just before the jsr; 0x0c04dd88 swaps the r2/r3 temporaries of the l4b0 read-modify-write (load r2/shift r3 against retail load r3/shift r2). Other functions and all pools exact. */
 /* CPU script selection: per-actor script slots at 0x460 and the operand
  * state block between 0x43c and 0x4b8. */
 #include "objects.h"
@@ -129,11 +129,8 @@ int func_0c04daae(struct Actor *a, int n, int k)
 
 int func_0c04db58(struct Actor *a, int n)
 {
-    int p0, p1;
-    int v;
-    p0 = (int)dat_0c23f174[n];
-    p1 = (int)dat_0c23f174[n + 1];
-    v = *(signed char *)(p0 + dat_0c2f847a) + ((signed char *)p1)[func_0c02849a() & 31];
+    signed char *p0, *p1; int v;
+    p0 = dat_0c23f174[n]; p1 = dat_0c23f174[n + 1]; v = *(signed char *)((int)p0 + dat_0c2f847a) + p1[func_0c02849a() & 31];
     if (v < 0)
         v = 0;
     return v;
@@ -146,17 +143,21 @@ void func_0c04dba2(struct Actor *a, int n, int k)
     int base = (int)q;
     unsigned char *sel;
     int idx;
+    int *scripts;
     struct AiScriptCursor8 *c;
     if (k == 2) {
         q += (n - 2) * 3;
-        sel = (unsigned char *)(q[1] + base);
+        sel = (unsigned char *)q[1];
+        sel += base;
     } else {
         int *rows = (int *)(q[1] + base);
-        sel = (unsigned char *)(rows[CPU(a)->b45c] + base);
+        sel = (unsigned char *)rows[CPU(a)->b45c];
+        sel += base;
     }
     idx = sel[func_0c02849a() & 31];
+    scripts = (int *)(q[2] + base);
     c = (struct AiScriptCursor8 *)((char *)a + 0x460) + k;
-    c->script = (unsigned char *)(((int *)(q[2] + base))[idx] + base);
+    c->script = (unsigned char *)(scripts[idx] + base);
     c->step = 0;
     c->index = idx;
     c->wait = 0;
@@ -174,7 +175,8 @@ void func_0c04dc48(struct Actor *a)
     struct AiEntry28 *entry = (struct AiEntry28 *)AI_PTR(o, 0x174);
     entry += CPU(a)->b4a0;
     base = (int)AI_PTR(a, 0x194);
-    row = (int *)(base + entry->row * 12);
+    row = (int *)base;
+    row += entry->row * 3;
     scripts = (int *)(row[2] + base);
     sel = (unsigned char *)(row[1] + base);
     idx = sel[func_0c02849a() & 31];
@@ -217,11 +219,19 @@ void func_0c04dcc2(struct Actor *a)
 
 int func_0c04dd88(struct Actor *a, int n, int v)
 {
-    if (CPU(a)->b43c == n || (CPU(a)->l4b0 & (1 << n)))
+    if (CPU(a)->b43c == n)
         return 1;
-    CPU(a)->l4b0 = CPU(a)->l4b0 | (1 << n);
-    if (CPU(a)->b43c < 2 && !func_0c04daae(a, n, 2))
+    {
+        int one = 1;
+        if (CPU(a)->l4b0 & (one << n))
+            return 1;
+        CPU(a)->l4b0 = CPU(a)->l4b0 | (one << n);
+        if (CPU(a)->b43c > one)
+            goto set;
+    }
+    if (!func_0c04daae(a, n, 2))
         return 1;
+set:
     CPU(a)->b43c = n;
     CPU(a)->b43d = 0;
     CPU(a)->b43e = 0;

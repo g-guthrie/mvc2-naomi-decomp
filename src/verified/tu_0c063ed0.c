@@ -8,6 +8,8 @@ extern void func_0c02a0c4(struct Actor *, int, int);
 extern void (*table_0c24021c[])(struct Actor *);
 void func_0c063ed0(struct Actor *a) {
   struct ActorSub2a4 *sub = &a->sub2a4;
+  goto call;
+call:
   func_0c02a026(a);
   if (!a->b141) {
     a->f52 += a->f92;

@@ -1,9 +1,5 @@
-/* Candidate, 1675/1684 bytes. Seven of nine functions match. Remaining:
- * func_0c14cd84 schedules the func_0c02a026 literal load before the
- * owner+0x2a4 spill (retail loads it after, into r3); func_0c14cee4 reloads
- * the spilled owner into r1 instead of r2 for the final w420 test.
- * The unit's last function continues after the pool at 0x0c14d09c, so the
- * unit extends through the pool at 0x0c14d164 (to 0x0c14d188).
+/* Whole unit 0x0c14caf4..0x0c14d188. The unit's last function continues after
+ * the pool at 0x0c14d09c, so the unit extends through the pool at 0x0c14d164.
  * func_0c14cee4 has a 16-byte frame in retail; the unused 12-byte local
  * reproduces it. */
 #include "objects.h"
@@ -125,6 +121,8 @@ void func_0c14cd84(struct LinkedActor *a, struct LinkedActor *owner)
 {
     char *state = &A(owner)->sub2a4.b0;
 
+    goto call;
+call:
     func_0c02a026(a);
     A(a)->f80 -= 0.050000001f;
     if (!(A(a)->f80 > 0.0f))
@@ -178,7 +176,9 @@ void func_0c14cee4(struct LinkedActor *a, struct LinkedActor *owner)
     if (A(a->p24)->b19f || a->s28-- == 0)
         goto stop;
     p = A(a)->p1b0;
-    if (p->b411 || p->w420 == 0 || !A(owner)->w420) {
+    if (p->b411 || p->w420 == 0)
+        goto stop;
+    if (!A(owner)->w420) {
 stop:
         a->b5 = 1;
         a->s28 = 30;

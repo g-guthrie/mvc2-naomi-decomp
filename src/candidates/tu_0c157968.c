@@ -1,6 +1,8 @@
-/* Candidate: constructor null-return branch differs by one byte;
- * func_0c157bb8 differs by three temporary-register bytes.
- * Nine other functions and all four pools are exact. */
+/* Candidate: only func_0c157bb8 differs, by three temporary-register bytes: the
+ * default arm of the b1a1 switch (b35 + 70) takes r1 where retail takes r3.
+ * The constructor falls off the end after its allocation-failure test so the
+ * allocator null result stays in r0 (as in tu_0c15632c); that makes it exact.
+ * All other functions and all four pools are exact. */
 #include "objects.h"
 extern struct LinkedActor *func_0c0374da(int,int,int);
 extern void (*table_0c25073c[])(struct LinkedActor *,struct LinkedActor *);
@@ -31,7 +33,6 @@ struct LinkedActor *func_0c157968(struct LinkedActor *owner,unsigned char mode)
         func_0c157b30(a,owner);
         return a;
     }
-    return a;
 }
 void func_0c1579b6(struct LinkedActor *a)
 {

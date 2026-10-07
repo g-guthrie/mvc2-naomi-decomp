@@ -1,6 +1,3 @@
-/* Candidate: 1515/1564. Only func_0c16762e differs: retail keeps the segment in
- * r5 and the optional b1 offset in r14 (initialised to 0 in a delay slot);
- * this spelling copies the segment to r14 and uses r2 for the offset. */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 #define SEG(a) ((struct LinkedActorSegment88 *)&(a)->pad9b[0])
@@ -67,7 +64,7 @@ void func_0c16762e(struct LinkedActor *a,struct LinkedActorSegment88 *s,struct L
 {
  if(s->b0!=ref->b0){
   s->b0=ref->b0;
-  func_0c02a0c4(a,25,s->b0*3+(s->b6?s->b1:0));
+  {int t=s->b0*3,off=0;if(s->b6)off=s->b1;off+=t;func_0c02a0c4(a,25,off);}
  }
 }
 void func_0c16766c(struct LinkedActor *a,struct LinkedActor *owner,struct LinkedActorSegment88 *s)

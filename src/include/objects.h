@@ -315,7 +315,8 @@ struct Actor {
     unsigned short w34e;
     unsigned short w350;
     unsigned short w352;
-    unsigned char pad354[0x364 - 0x354];
+    unsigned char b354, b355, b356, b357, b358, b359; unsigned short w35a;
+    unsigned char pad35c[0x364 - 0x35c];
     unsigned char x364[8];
     unsigned char x36c[8];
     unsigned char x374[8];
@@ -346,15 +347,15 @@ struct Actor {
     unsigned short w424;
     unsigned char pad426[2];
     void *p428;
-    unsigned char pad14b[0x43d - 0x42c], b43d, pad43e[2];
+    unsigned char pad14b[0x43d - 0x42c], b43d, b43e, b43f;
     unsigned char b440, b441; /* Current and previous operand state. */
-    unsigned char pad442[0x446 - 0x442];
+    short w442; unsigned short w444;
     unsigned char b446, b447;
     signed char b448;
     unsigned char pad449[3]; int l44c; unsigned int l450;
     unsigned char pad454[9],b45d,pad45e[1],b45f,pad460[0x495 - 0x460];
     signed char b495; /* Operand gate flags: sign bit and bits 1/4. */
-    unsigned char pad496[0x4a7 - 0x496]; signed char b4a7;
+    unsigned char pad496[2]; int (*f498)(struct Actor *, void *); unsigned char pad49c[0x4a7 - 0x49c]; signed char b4a7;
     unsigned char pad4a8[0x4aa - 0x4a8];
     unsigned char b4aa, b4ab; unsigned short w4ac; short w4ae; unsigned char pad4b0[0x4b4 - 0x4b0];
     union ActorParameter4 parameter4b4;
@@ -456,6 +457,8 @@ union LinkedActorWcc {
     struct LinkedActorWccBytes { unsigned char b0, b1, b2, b3; } bytes; /* 0x0c167d28 unit gauges */
     float float_value; /* 0x0c15b210 start x */
 };
+/* Five signed state bytes at the parent LinkedActor+0xcc used by the 0x0c163a64 chain unit (b2 phase, b3 timer, b4 flag). */
+struct LinkedActorGauge_0c163a64 { char b0, b1, b2, b3, b4; };
 /* Segment state at LinkedActor+0x88 used by the 0x0c16741c chain unit. */
 struct LinkedActorSegment88 {
     char b0, b1;
