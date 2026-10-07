@@ -1,12 +1,13 @@
-/* Candidate: r2/r3 are swapped for the aligned size and the zero stored to
-   *first (retail keeps aligned in r2), which also reorders the spill and
-   literal load; the rest matches. Trailing alignment pad excluded. */
+/* SDK aligned double-size allocation; matched with a label before the size
+   computation (r2/r3 choice). Trailing alignment pad excluded. */
 extern int func_0c227140(int kind, unsigned int size, unsigned int *out);
 extern unsigned int func_0c227180(unsigned int addr);
 
 int func_0c222180(unsigned int size, unsigned int *first, unsigned int *second)
 {
     unsigned int aligned; int result; unsigned int base;
+    goto a;
+a:
     aligned = ((size & 31) == 0) ? size : (size + 32) & ~31;
     *first = 0;
     result = func_0c227140(2, aligned << 1, first);

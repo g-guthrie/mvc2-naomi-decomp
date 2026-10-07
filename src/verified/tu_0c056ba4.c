@@ -1,4 +1,4 @@
-/* Candidate: 2268/2284. One retail unit 0x0c056ba4-0x0c057490 (bsr into func_0c056bb8 from 0x0c056f60/0x0c057216/0x0c05734e ties it together). Remaining: in func_0c056da8 and func_0c057068 the a->w340 reloads use r2 where retail uses r1 (scratch rotation). */
+/* One retail unit 0x0c056ba4-0x0c057490 (bsr into func_0c056bb8 from 0x0c056f60/0x0c057216/0x0c05734e ties it together). */
 #include "objects.h"
 struct Glob_0c2f83f8 { unsigned char pad[0x7c]; short w7c[1]; };
 extern struct Glob_0c2f83f8 *dat_0c2f83f8;
@@ -115,15 +115,15 @@ void func_0c056da8(struct Actor *a) {
         goto neg;
       return;
     }
-    if (a->w340 & 0x800)
+    goto t1; t1: if (a->w340 & 0x800)
       return;
     goto neg;
   }
   if (a->b525) {
     if (*(unsigned short *)sub & 0x400)
       return;
-  } else if (a->w340 & 0x400)
-    return;
+  } else { goto t2; t2: if (a->w340 & 0x400)
+    return; }
 neg:
   a->f92 = -a->f92;
 }
@@ -203,15 +203,15 @@ void func_0c057068(struct Actor *a) {
         goto neg;
       return;
     }
-    if (a->w340 & 0x800)
+    goto t1; t1: if (a->w340 & 0x800)
       return;
     goto neg;
   }
   if (a->b525) {
     if (*(unsigned short *)sub & 0x400)
       return;
-  } else if (a->w340 & 0x400)
-    return;
+  } else { goto t2; t2: if (a->w340 & 0x400)
+    return; }
 neg:
   a->f92 = -a->f92;
 }

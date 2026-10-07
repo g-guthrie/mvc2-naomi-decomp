@@ -263769,6 +263769,13 @@
       "evidence": "CFG walk from 0x0c164f34; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c164f46",
+      "size": 124,
+      "kind": "code",
+      "sha256": "ccf08aff99955f01dece3ba57480e7b52ce2b9b2d7a1abf33ed3d4ff89b58776",
+      "evidence": "Reviewed: function at 0x0c164f46 (jump-table target of 0x0c164f34 dispatch), prologue to bra 0x0c164ff2 delay slot at 0x0c164fc0; delay slots included; pool begins 0x0c164fc2."
+    },
+    {
       "address": "0x0c164fc2",
       "size": 6,
       "kind": "data",
@@ -263797,11 +263804,32 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c164f34; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c164fdc",
+      "size": 4,
+      "kind": "data",
+      "sha256": "6925bc03df92cf8ecc906b85547caf2dd99b775efc9025de5e46966e1dcf1dc9",
+      "evidence": "Reviewed: mov.l literal 0x0c2fb38c loaded by 0x0c164f6e (PC-relative pool of 0x0c164f46)."
+    },
+    {
       "address": "0x0c164fe0",
-      "size": 166,
+      "size": 4,
+      "kind": "data",
+      "sha256": "dd6963e0cdc54b60f79e7c9599e8cad9d81f50a87955200e887eba2b0bc90dff",
+      "evidence": "Reviewed: mov.l literal 0x0c251770 loaded by 0x0c164fb6; code resumes at bt.s target 0x0c164fe4."
+    },
+    {
+      "address": "0x0c164fe4",
+      "size": 162,
       "kind": "code",
-      "sha256": "818ca6f14f0be4f9b0ad1507dfd3e023296080e5df8e35d993ba244ecaf5522b",
-      "evidence": "CFG walk from 0x0c164fe0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "c5df6409eb861452ad9d404f95988e084f1df68da67e1044805d91cda9ad9905",
+      "evidence": "Reviewed: continuation of 0x0c164f46 from bt.s target 0x0c164fe4 to jmp delay slot 0x0c165084; delay slots included."
+    },
+    {
+      "address": "0x0c165086",
+      "size": 10,
+      "kind": "code",
+      "sha256": "4bc5aba907cbaf5bef0e6a219c09d8ee94778e67ecc54b2d3a8da31243ad4e78",
+      "evidence": "Reviewed: epilogue of 0x0c164f46 reached by bra at 0x0c164f78; ends with rts and delay slot at 0x0c16508e."
     },
     {
       "address": "0x0c165090",
@@ -264320,6 +264348,13 @@
       "kind": "code",
       "sha256": "7d4c232bc99523dc4e0205cfc2804336772546682528ba4cf7121cadc1b27615",
       "evidence": "CFG walk from 0x0c165a1c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c165a46",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Reviewed: zero alignment pad after rts/nop at 0x0c165a44, before the 4-byte aligned pool at 0x0c165a48."
     },
     {
       "address": "0x0c165a48",

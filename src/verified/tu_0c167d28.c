@@ -1,7 +1,3 @@
-/* Candidate: 609/624. func_0c167e3c: retail allocates the constant 63 to r2
- * (ours r3) in the b19e block, so retail can hoist the dat_0c2f83f8 address
- * load (r3) above the b1a1 store; 8 words differ there. All other functions,
- * the tail calls and both pools match. */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 extern char func_0c02a026(struct LinkedActor *);
@@ -35,7 +31,7 @@ void func_0c167e3c(struct LinkedActor *a)
   A(a)->b1a0=4;
   mark->b3--;
   if(mark->b3<=0)goto done;
-  A(a)->b1a1=63;A(a)->w1ac=zero;A(a)->b19e=zero;*(void **)&A(a)->p1c4=(void *)zero;dat_0c2f83f8->arr[a->b2]++;
+  goto s;s:A(a)->b1a1=63;A(a)->w1ac=zero;A(a)->b19e=zero;*(void **)&A(a)->p1c4=(void *)zero;dat_0c2f83f8->arr[a->b2]++;
  }
  if(A(a)->b19f){
   A(a)->b19f=zero;

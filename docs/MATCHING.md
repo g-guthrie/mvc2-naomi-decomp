@@ -244,6 +244,27 @@ differences; read what it changed afterwards.
   different instruction sequences, so none is a match for the retail sites.
 - Three shared constants held in r7, r4 and r13 across one function
   (`func_0c16fc14`); SHC keeps at most two in registers.
+- Switch compares in source order (0,255,1; 0,2,4 then 1,3; 0,2,1). The
+  bundled SHC sorts case compares by value for every selector type, label
+  order, `default` position, grouping and the C++ front end. Nested
+  switches give the right order but copy the selector out of r0
+  (`mov r4,r0; nop` per level). Blocks tu_0c04f8b0, tu_0c04e6a8,
+  tu_0c072474, tu_0c072cb8, tu_0c072ddc, tu_0c07a7ec, tu_0c1ca510 and
+  func_0c072302.
+- `fldi1 fr3; fadd fr3,fr3` (66 retail sites use fr0-fr3). The bundled SHC
+  only doubles in place for a named variable (`t += t`), and named
+  variables never land in fr0-fr3; expression forms copy first or fold to
+  a pooled 2.0f. Retail looks like the compiler expanding a literal
+  `/ 2.0f` itself. The fr4/fr5/fr13/fr15 sites remain reachable with the
+  inline-helper recipe.
+- Signed remainder by a power of two inline (`cmp/pz; bf; and #K,r0` /
+  `not; add #1; and #K; not; add #1`, 72 sites). `~v+1` reproduces the
+  not/add negation, but the bundled SHC calls `__modls` for every `%`
+  spelling and never keeps the operand in r0 for the explicit form.
+- Scratch-register choice: a label immediately before a store or call
+  (`goto L; L:`) changes which of r2/r3 the next temporary takes, and
+  finished several units. It does not reach every pick (func_0c15f61a,
+  func_0c162fb0).
 
 ## Cross-project compiler evidence
 

@@ -1,6 +1,5 @@
-/* Candidate (1017/1032): pools, extent and control flow match. Remaining differences in
- * func_0c15d23c are register choice only: hoisted constants 0/3 (retail r12=0, r13=3; ours
- * swapped) and the first row-index temp (r1 retail, r2 ours). */
+/* Candidate (1023/1032): pools, extent and control flow match. The only difference left in
+ * func_0c15d23c is the hoisted constants 0/3 (retail r12=0, r13=3; ours swapped). */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 extern struct LinkedActor *func_0c0374da(int,int,int);
@@ -64,7 +63,7 @@ void func_0c15d23c(struct LinkedActor *a)
  rows=table_0c250ddc;
  if(A(a)->b19e){
   if(--A(a)->i204==0)goto advance;
-  n=rows[a->b32].flag;
+  goto set; set: n=rows[a->b32].flag;
   if(a->s28++&3)n++;
   goto flag;
  }
