@@ -53,13 +53,3 @@ const unsigned int dat_0c12dc2c[] = {
     0x0c03edccu, 0x0c04b02au, 0x42a00000u, 0x42092492u, 0x0c1cea66u, 0x0c0346dau,
 };
 
-#pragma section n10d2e8
-const unsigned int dat_0c12e2e8[] = {
-    0x02a40142u, 0x01b40141u,
-};
-
-#pragma section n10d308
-const unsigned int dat_0c12e308[] = {
-    0xc2a00000u, 0x41892492u, 0x0c1cea66u, 0x0c025762u,
-};
-
