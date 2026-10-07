@@ -453,6 +453,8 @@ union LinkedActorWcc {
     unsigned int dword_value;
     int arrcc[1];
 };
+/* Attachment frame (sprite flag, animation id, scale and offset) indexed by owner pose in the 0x0c25b134 table. */
+struct AttachFrame_0c25b134 { char b0; unsigned char pad1; unsigned short w2; float f4, f8, f12, f16; };
 struct LinkedActor {
     unsigned char pad0;
     unsigned char b1, b2;
