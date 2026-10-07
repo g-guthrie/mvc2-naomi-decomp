@@ -1,4 +1,4 @@
-/* Candidate: every function and pool matches except func_0c069a3a, where retail materializes the shared zero in r13 before the first call (mov #0,r13 after the b6 load) and ours sinks it to its first use; that also rotates the scratch registers of two later byte tests. 635/664 bytes. */
+/* Candidate: every function and pool matches except func_0c069a3a. The shared zero is now hoisted into r13 like retail (`register void *zero` cast at each use, `a` as a register parameter); what remains is scratch-register numbering: retail keeps the b1a3 ternary result in r2 (ours r4) and reloads sub / tests b1d2 in r3 (ours r2). */
 #include "objects.h"
 struct Glob_0c2f83f8 { unsigned char pad[0x7c]; short w7c[1]; };
 extern struct Glob_0c2f83f8 *dat_0c2f83f8;
@@ -14,12 +14,14 @@ extern void (*table_0c2407c8[])(struct Actor *, struct ActorSub2a4 *);
 extern void (*table_0c2407d4[])(struct Actor *);
 void func_0c069a10(struct Actor *a) { table_0c24076c[a->b1e9](a); }
 void func_0c069a24(struct Actor *a) { table_0c2407c8[a->b6](a, &a->sub2a4); }
-void func_0c069a3a(struct Actor *a, struct ActorSub2a4 *sub) {
+void func_0c069a3a(register struct Actor *a, struct ActorSub2a4 *sub) {
+  register void *zero;
   a->b6++;
+  zero = 0;
   func_0c048bb0(a, 10);
   func_0c0442fa(a);
   a->f56 = a->f41c;
-  a->b1f9 = 0;
+  a->b1f9 = (int)zero;
   a->f96 = 0.0f;
   a->f108 = 0.0f;
   if (a->b255 == 3)
@@ -27,12 +29,12 @@ void func_0c069a3a(struct Actor *a, struct ActorSub2a4 *sub) {
   else if (a->b1e9)
     a->b1a1 = 52;
   else
-    a->b1a1 = a->b1a3 ? 50 : 48;
-  a->w1ac = 0;
-  a->b19e = 0;
-  a->p1c4 = 0;
+    { int v = a->b1a3 ? 50 : 48; a->b1a1 = v; }
+  a->w1ac = (int)zero;
+  a->b19e = (int)zero;
+  *(unsigned int *)&a->p1c4 = (int)zero;
   dat_0c2f83f8->w7c[a->b2]++;
-  sub->b6 = 0;
+  sub->b6 = (int)zero;
   a->f92 = a->b1d2 ? 16.666666031f : -16.666666031f;
   a->f104 = a->b1d2 ? -0.3125f : 0.3125f;
   a->s28 = a->b1a3 ? 12 : 1;

@@ -1,6 +1,7 @@
-/* Candidate: 605/624. func_0c167e3c: retail hoists the dat_0c2f83f8 load (r3)
- * above the b1a1 store in the b19e block, so 63 lands in r2 and the later
- * call targets swap r2/r3. All other functions and both pools match. */
+/* Candidate: 609/624. func_0c167e3c: retail allocates the constant 63 to r2
+ * (ours r3) in the b19e block, so retail can hoist the dat_0c2f83f8 address
+ * load (r3) above the b1a1 store; 8 words differ there. All other functions,
+ * the tail calls and both pools match. */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 extern char func_0c02a026(struct LinkedActor *);
@@ -42,7 +43,8 @@ void func_0c167e3c(struct LinkedActor *a)
   if(mark->b2<=0)goto done;
  }
  a->s28--;
- if(a->s28>0){func_0c02a026(a);func_0c037d0c(a);return;}
+ if(a->s28<=0)goto done;
+ func_0c02a026(a);func_0c037d0c(a);return;
 done:
  a->b5++;func_0c02a0c4(a,23,4);
 }
