@@ -1,4 +1,7 @@
-/* Complete 0x0c173f00..0x0c17426c effect group. Six functions exact; update differs only in hit-target addressing and one animation callee register. */
+/* Exact 0x0c173f00..0x0c17426c effect group: seven functions and all pools.
+ * End the hit-target scope before the callback. Keep the first animation test
+ * as else-if and the second as a sibling if: both affect SHC register allocation.
+ */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 extern struct LinkedActor *func_0c0374da(int,int,int);
@@ -45,9 +48,9 @@ void func_0c174136(struct LinkedActor *a,struct LinkedActor *owner)
  if(a->b5)goto ending;
  if(--a->s28<=0){a->b5++;if(!a->b33)func_0c029e70(a,27,(func_0c02849a()&3)+10);goto check_hit;}
  if(!A(a)->b141)func_0c02a026(a);func_0c037d0c(a);
- check_hit:if(!A(a)->b6 && A(a)->b19e && ((unsigned char *)A(a)->p1b0)[0x233]==9 && func_0c1b8c4c(owner,1)){A(a)->b6++;func_0c0346da(a,10);}return;
+ check_hit:if(A(a)->b6 || !A(a)->b19e)return;{struct Actor *hit=A(a)->p1b0;if(((unsigned char *)hit)[0x233]!=9)return;}if(func_0c1b8c4c(owner,1)){A(a)->b6++;func_0c0346da(a,10);}return;
  ending:goto mode;mode:if(a->b33){if(func_0c02a026(a)<0)goto cleanup;return;}
- if(func_0c029fc4(a)<0 || func_0c029fc4(a)<0)goto cleanup;return;
+ else if(func_0c029fc4(a)<0)goto cleanup;if(func_0c029fc4(a)<0)goto cleanup;return;
  cleanup:func_0c17423c(a,owner);
 }
 void func_0c174238(struct LinkedActor *a,struct LinkedActor *owner){}
