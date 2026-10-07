@@ -5,58 +5,6 @@ extern void func_0c029fc4(void);
 extern void func_0c258498(void);
 extern void func_0c25849c(void);
 
-#pragma section n198b92
-const unsigned short dat_0c198b92[] = {
-    0x00dcu, 0x00c0u, 0x012cu, 0x01a3u,
-};
-
-#pragma section n198ba4
-const unsigned int dat_0c198ba4[] = {
-    0x0c2d6f84u,
-};
-
-#pragma section n198c82
-const unsigned short dat_0c198c82[] = {
-    0x02a4u, 0x0130u,
-};
-
-#pragma section n198c88
-const unsigned int dat_0c198c88[] = {
-    0x0c258120u, 0x3fd55555u, 0x40092492u,
-};
-
-#pragma section n198d94
-const unsigned int dat_0c198d94[] = {
-    0x013002a4u, 0xc0892492u, 0x0c258120u, 0x3fd55555u,
-    0x40092492u, 0x80000000u,
-};
-
-#pragma section n198e56
-const unsigned short dat_0c198e56[] = {
-    0x02a4u, 0x01d2u,
-};
-
-#pragma section n198e5c
-const unsigned int dat_0c198e5c[] = {
-    0x0c02887eu, 0xc0892492u, 0x0c258120u, 0x40092492u,
-    0x3fd55555u,
-};
-
-#pragma section n198fd0
-const unsigned short dat_0c198fd0[] = {
-    0x0130u,
-};
-
-#pragma section n198fd4
-const unsigned int dat_0c198fd4[] = {
-    0x43800000u,
-};
-
-#pragma section n1990b6
-const unsigned short dat_0c1990b6[] = {
-    0x01b0u, 0x0000u, 0x4380u, 0x0000u, 0x4140u,
-};
-
 #pragma section n199582
 const unsigned short dat_0c199582[] = {
     0x0f00u,

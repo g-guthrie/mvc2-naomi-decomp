@@ -71,28 +71,6 @@ void (*const table_0c198004[])(void) = {
     func_0c03edcc,
 };
 
-#pragma section n19895c
-void (*const table_0c19895c[])(void) = {
-    func_0c0374da,
-    func_0c1988fa,
-};
-
-#pragma section n198a88
-void (*const ptr_0c198a88)(void) = func_0c037688;
-
-#pragma section n198b9c
-void (*const table_0c198b9c[])(void) = {
-    func_0c1fb838,
-    func_0c1fb7a0,
-};
-
-#pragma section n198ba8
-void (*const table_0c198ba8[])(void) = {
-    func_0c258240,
-    func_0c02a18c,
-    func_0c02a0c4,
-};
-
 #pragma section n199590
 void (*const table_0c199590[])(void) = {
     func_0c0374da,

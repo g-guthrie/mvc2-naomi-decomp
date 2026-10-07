@@ -6,9 +6,6 @@ int func_0c0c99d4(void) { return 0; }
 #pragma section n0cdbb8
 int func_0c0cdbb8(void) { return 0; }
 
-#pragma section n0ceb2c
-void func_0c0ceb2c(void) {}
-
 #pragma section n0d2610
 void func_0c0d2610(void) {}
 

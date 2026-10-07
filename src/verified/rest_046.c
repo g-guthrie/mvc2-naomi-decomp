@@ -1,55 +1,5 @@
 /* Hitachi const data remaining after earlier bulk units. */
 
-#pragma section n0be022
-const unsigned short dat_0c0df022[] = {
-    0x01e9u,
-};
-
-#pragma section n0be144
-const unsigned int dat_0c0df144[] = {
-    0x0c045f1cu, 0x0c0463fcu,
-};
-
-#pragma section n0be6ea
-const unsigned short dat_0c0df6ea[] = {
-    0x01ffu,
-};
-
-#pragma section n0be6fc
-const unsigned int dat_0c0df6fc[] = {
-    0x0c2490d8u, 0x0c044cbcu,
-};
-
-#pragma section n0becea
-const unsigned short dat_0c0dfcea[] = {
-    0x01ffu, 0x01feu, 0x01f9u, 0x01e8u,
-};
-
-#pragma section n0bed00
-const unsigned int dat_0c0dfd00[] = {
-    0x0c2490e8u, 0x0c043352u, 0x0c044df4u,
-};
-
-#pragma section n0bedda
-const unsigned short dat_0c0dfdda[] = {
-    0x01e8u, 0x014bu,
-};
-
-#pragma section n0bede0
-const unsigned int dat_0c0dfde0[] = {
-    0x0c02a026u, 0x0c0437b8u, 0x0c2f83f8u,
-};
-
-#pragma section n0beec0
-const unsigned short dat_0c0dfec0[] = {
-    0x01e8u,
-};
-
-#pragma section n0beec8
-const unsigned int dat_0c0dfec8[] = {
-    0x0c0437b8u, 0x0c0421f4u,
-};
-
 #pragma section n0bf7a6
 const unsigned short dat_0c0e07a6[] = {
     0x0141u,
