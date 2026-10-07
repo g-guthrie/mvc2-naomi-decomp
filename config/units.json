@@ -26794,12 +26794,6 @@
         "size": 44
       },
       {
-        "section": "Cn02842c",
-        "kind": "data",
-        "address": "0x0c02842c",
-        "size": 96
-      },
-      {
         "section": "Cn028564",
         "kind": "data",
         "address": "0x0c028564",
@@ -27048,7 +27042,6 @@
       "_dat_0c02810c": "0x0c02810c",
       "_dat_0c028272": "0x0c028272",
       "_dat_0c028368": "0x0c028368",
-      "_dat_0c02842c": "0x0c02842c",
       "_dat_0c028564": "0x0c028564",
       "_dat_0c0286de": "0x0c0286de",
       "_dat_0c028856": "0x0c028856",
@@ -33424,18 +33417,6 @@
         "size": 20
       },
       {
-        "section": "Cn0625c6",
-        "kind": "data",
-        "address": "0x0c0625c6",
-        "size": 12
-      },
-      {
-        "section": "Cn0625dc",
-        "kind": "data",
-        "address": "0x0c0625dc",
-        "size": 32
-      },
-      {
         "section": "Cn0627dc",
         "kind": "data",
         "address": "0x0c0627dc",
@@ -33540,8 +33521,6 @@
       "_table_0c061e9c": "0x0c061e9c",
       "_dat_0c062020": "0x0c062020",
       "_table_0c0621a0": "0x0c0621a0",
-      "_dat_0c0625c6": "0x0c0625c6",
-      "_dat_0c0625dc": "0x0c0625dc",
       "_dat_0c0627dc": "0x0c0627dc",
       "_dat_0c0627e4": "0x0c0627e4",
       "_table_0c062914": "0x0c062914",
@@ -96794,12 +96773,6 @@
         "size": 16
       },
       {
-        "section": "Cn033b00",
-        "kind": "data",
-        "address": "0x0c054b00",
-        "size": 40
-      },
-      {
         "section": "Cn034130",
         "kind": "data",
         "address": "0x0c055130",
@@ -97936,18 +97909,6 @@
         "kind": "data",
         "address": "0x0c0621b4",
         "size": 24
-      },
-      {
-        "section": "Cn0415c4",
-        "kind": "data",
-        "address": "0x0c0625c4",
-        "size": 2
-      },
-      {
-        "section": "Cn0415d4",
-        "kind": "data",
-        "address": "0x0c0625d4",
-        "size": 8
       },
       {
         "section": "Cn0417fc",
@@ -230531,6 +230492,119 @@
       "_func_0c1ebd40": "0x0c1ebd40",
       "_func_0c1ec2c0": "0x0c1ec2c0",
       "__quick_odd_mvn": "0x0c1fb7a0"
+    }
+  },
+  {
+    "id": "tu_0c028394",
+    "source": "src/verified/tu_0c028394.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c028394",
+        "size": 248,
+        "interior": [
+          {
+            "address": "0x0c02842c",
+            "size": 96,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c028394": "0x0c028394"
+    },
+    "imports": {
+      "_dat_0c2d6f84": "0x0c2d6f84",
+      "_dat_0c2d6f88": "0x0c2d6f88",
+      "_dat_0c2d6f24": "0x0c2d6f24",
+      "_dat_0c28401c": "0x0c28401c",
+      "_dat_0c284018": "0x0c284018",
+      "_func_0c0215f6": "0x0c0215f6",
+      "_func_0c028154": "0x0c028154",
+      "_func_0c0221d8": "0x0c0221d8",
+      "_func_0c022354": "0x0c022354",
+      "_func_0c02a894": "0x0c02a894",
+      "_func_0c1e9b20": "0x0c1e9b20",
+      "_func_0c1eae80": "0x0c1eae80",
+      "_func_0c02156c": "0x0c02156c",
+      "_func_0c02c3e2": "0x0c02c3e2",
+      "_func_0c022526": "0x0c022526",
+      "_func_0c021c9c": "0x0c021c9c",
+      "_func_0c0223d4": "0x0c0223d4",
+      "_func_0c034288": "0x0c034288",
+      "_func_0c02ab2c": "0x0c02ab2c",
+      "_func_0c1e68dc": "0x0c1e68dc",
+      "_func_0c02c39a": "0x0c02c39a",
+      "_func_0c02c4a2": "0x0c02c4a2",
+      "_func_0c0271de": "0x0c0271de",
+      "_func_0c023060": "0x0c023060"
+    }
+  },
+  {
+    "id": "tu_0c0549e0",
+    "source": "src/candidates/tu_0c0549e0.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c0549e0",
+        "size": 328,
+        "interior": [
+          {
+            "address": "0x0c054b00",
+            "size": 40,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c0549e0": "0x0c0549e0",
+      "_func_0c054a52": "0x0c054a52",
+      "_func_0c054ae2": "0x0c054ae2"
+    },
+    "imports": {
+      "_func_0c025900": "0x0c025900",
+      "_func_0c02a0c4": "0x0c02a0c4",
+      "_func_0c048ce6": "0x0c048ce6",
+      "_func_0c1d4610": "0x0c1d4610",
+      "_table_0c23f440": "0x0c23f440"
+    }
+  },
+  {
+    "id": "tu_0c062474",
+    "source": "src/candidates/tu_0c062474.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c062474",
+        "size": 392,
+        "interior": [
+          {
+            "address": "0x0c0625c4",
+            "size": 56,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c062474": "0x0c062474"
+    },
+    "imports": {
+      "_func_0c02a026": "0x0c02a026",
+      "_func_0c02a0c4": "0x0c02a0c4",
+      "_func_0c0344a0": "0x0c0344a0",
+      "_func_0c0447bc": "0x0c0447bc",
+      "_func_0c025900": "0x0c025900",
+      "_func_0c134db0": "0x0c134db0",
+      "_func_0c044548": "0x0c044548"
     }
   }
 ]

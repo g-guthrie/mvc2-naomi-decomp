@@ -647,7 +647,7 @@ struct Dat_13bb5c {
 
 /* Command-input bytes of the actor state at 0x2a4 read by the per-character
  * special-move checkers (0x0c0bfd60 unit). */
-struct ActorSubMoveBytes { char b0, b1, b2, b3; unsigned char pad4; char b5, b6, b7, b8, b9; unsigned char pad10[3]; char b13, b14, b15; unsigned char pad16[6]; char b22; unsigned char pad23[3]; char b26; unsigned char pad27[2]; unsigned char b29; short s30; };
+struct ActorSubMoveBytes { char b0, b1, b2, b3; unsigned char pad4; char b5, b6, b7, b8, b9; unsigned char pad10[3]; char b13, b14, b15; unsigned char pad16[6]; char b22; unsigned char pad23[3]; char b26; unsigned char pad27; char b28; unsigned char b29; short s30; };
 
 /* Countdown words of the actor state at 0x2a4 decremented by the per-character
  * move units (offsets 8, 20 and 28 from 0x2a4). */
