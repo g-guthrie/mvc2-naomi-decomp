@@ -286877,10 +286877,10 @@
     },
     {
       "address": "0x0c1844e0",
-      "size": 232,
+      "size": 236,
       "kind": "code",
-      "sha256": "481fbdd86e36a0f36523f5d04a42850600f292f1b433277a9c129e37ce502c07",
-      "evidence": "CFG walk from 0x0c1844e0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "f6fb23f64874da7d1755dee4f28c9fbdb3d3866f2428196ea82dfd622fc77f34",
+      "evidence": "Reviewed: owner-copy init falling into follow callback; table jump followed by unreachable rts epilogue"
     },
     {
       "address": "0x0c1845cc",
@@ -293744,10 +293744,10 @@
     },
     {
       "address": "0x0c18d6a0",
-      "size": 132,
+      "size": 136,
       "kind": "code",
-      "sha256": "765d097c4d94091ae6cc03fc983df9e8aa745c5c33feda96757ddc8b2ea8b176",
-      "evidence": "CFG walk from 0x0c18d6a0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "85854f6307dd7bbbfd415aeb5e1a1f5c7452eccf4b6f4dadd9ff5cdb3fc126ae",
+      "evidence": "Reviewed: table jump through 0x0c25712c followed by unreachable rts epilogue"
     },
     {
       "address": "0x0c18d728",
@@ -326242,6 +326242,13 @@
       "kind": "code",
       "sha256": "67b6f231738079b6ebbb4edee5d3d17203bfab466222f306a5bffa69d658da21",
       "evidence": "CFG walk from 0x0c1b1de8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1b1e0c",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Reviewed: empty function, pointer at 0x0c25ae2c"
     },
     {
       "address": "0x0c1b1e10",
