@@ -464,6 +464,8 @@ struct LinkedActorSegment88 {
     unsigned char b10, pad11;
     short w12;
 };
+/* Attachment frame (sprite flag, animation id, scale and offset) indexed by owner pose in the 0x0c25b134 table. */
+struct AttachFrame_0c25b134 { char b0; unsigned char pad1; unsigned short w2; float f4, f8, f12, f16; };
 struct LinkedActor {
     unsigned char pad0;
     unsigned char b1, b2;
@@ -668,6 +670,8 @@ struct ActorSubTimers { int t0; int t4; int t8; int t12; int t16; int t20; unsig
 /* Countdown words of the actor at 0x2d0-0x2f0, viewed from the actor base so each is addressed by its own offset (per-frame timer update at 0x0c07d448). */
 struct ActorCountdowns { unsigned char pad0[0x2cc]; int l2cc, l2d0, l2d4, l2d8, l2dc, l2e0, l2e4, l2e8, l2ec, l2f0; };
 /* Byte controls used by callbacks receiving the actor state at 0x2a4. */
+/* Unsigned timer/toggle bytes of the state block passed to the 0x0c1231bc callback. */
+struct ActorSubCycleBytes { unsigned char b0, b1, b2, b3; };
 struct ActorSubControlBytes { unsigned char pad0[2]; char b2; unsigned char pad3; char b4; unsigned char pad5[7]; char b12; unsigned char b13; };
 
 /* Direction selection state with two 12-byte actor entries. */
