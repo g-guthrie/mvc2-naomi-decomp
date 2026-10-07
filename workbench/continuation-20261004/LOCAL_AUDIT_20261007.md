@@ -8,7 +8,9 @@ the bundled compiler before integration.
 21 complete sections were accepted, adding **5,578 executable C bytes** over
 the active checkout's 391,482-byte starting point. Together with the 16 local
 commits awaiting publication, this adds **8,734 executable C bytes** over
-published checkpoint `1e9d1e20` (388,326 bytes).
+published checkpoint `1e9d1e20` (388,326 bytes). A further concurrent remote
+match (`86bef212`, `ud1_02`) contributes 338 bytes, bringing the complete
+published checkpoint gain to **9,072 bytes**.
 
 Accepted sections: `tu2_10`, `ub3_03`, `ub6_01`, `ud0_05`, `ud2_11`,
 `u_0c025a9c`, `u06808c`, `tu_0c0676fc`, `tu_0c067f4c`, `tu_0c06f92c`,
@@ -31,20 +33,20 @@ literal pools, unreviewed extents and failed current-header compilation kept
 other historical claims out of verified credit. The `tu_0c173f00` byte-view
 improvement remains a candidate (872/876 bytes).
 
-Commit `25e131b2`, published separately during the audit, was merged without
-losing its initializer and stack-layout improvements. Both recovery journals
-were retained.
+Commits `25e131b2` and `86bef212`, published separately during the audit, were
+merged without losing the initializer, stack-layout and actor-follow callback
+improvements. Both recovery journals were retained.
 
 ## Validation and accounting
 
 - 148 tests and all type contracts passed.
 - The header checkpoint rebuilt all 2,031 units with the bundled Hitachi toolchain.
 - The merged checkpoint passed again: two changed units rebuilt, 2,029 cached
-  artifacts reverified; 1,905 verified configuration units.
+  artifacts reverified; 1,906 verified configuration units.
 - Main image: 2,424,832 bytes exact; program ROM: 4,194,304 bytes exact.
-- Verified executable C: **397,060 / 1,949,866 = 20.363%**.
-- Matched reviewed code: **31.161%**, including SDK and candidate contributions.
-- Combined image coverage: **40.900%**, including data, SDK and candidate fragments.
+- Verified executable C: **397,398 / 1,949,866 = 20.381%**.
+- Matched reviewed code: **31.181%**, including SDK and candidate contributions.
+- Combined image coverage: **40.916%**, including data, SDK and candidate fragments.
 
 The denominator changed as literal data was classified; that is not translated
 code. These percentages describe different measures, not competing totals.

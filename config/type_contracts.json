@@ -533,6 +533,16 @@
           "evidence": "Native 0c03f008 captures incoming R5 in R14, then 0c03f014 reads target byte1; the 075930 wrapper must forward both actors."
         }
       ]
+    },
+    {
+      "source": "src/verified/ud1_02.c",
+      "prototypes": [
+        {
+          "address": "0x0c0374da",
+          "declaration": "extern struct LinkedActor *func_0c0374da(int, int, int);",
+          "evidence": "Constructor 0c1aa31a sets R6=0; 0c1aa320 sets R5=3; delay slot 0c1aa324 copies R6 to R4 before the allocator. Preserve all three arguments."
+        }
+      ]
     }
   ]
 }
