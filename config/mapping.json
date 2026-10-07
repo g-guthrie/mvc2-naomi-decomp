@@ -319245,17 +319245,17 @@
     },
     {
       "address": "0x0c1aa354",
-      "size": 144,
+      "size": 142,
       "kind": "code",
-      "sha256": "d7ff09e2893549f5e660d88da43deaee1ec60a8e970e2f4c94accfd4d6ec3b3c",
-      "evidence": "CFG walk from 0x0c1aa354; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "697f454661727588a61f19d612d58d81f0ef5daa31790af25f188221f09502be",
+      "evidence": "Reviewed initializer epilogue at 0x0c1aa3dc..0x0c1aa3e0 falls through to callback 0x0c1aa3e2; the callback table cell 0x0c2599d4 points to its saved-R14 prologue, not 0x0c1aa3e4."
     },
     {
-      "address": "0x0c1aa3e4",
-      "size": 66,
+      "address": "0x0c1aa3e2",
+      "size": 68,
       "kind": "code",
-      "sha256": "d5bb11450f5ba88aa9b066184443f7837cd7e1deca2e38fc532cf5d4ee9a1d9a",
-      "evidence": "CFG walk from 0x0c1aa3e4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "382fe6343eefd78a4230fa590f0751b62f584c62572fcdd1e455fd408be761df",
+      "evidence": "Callback 0x0c2599d4 targets 0x0c1aa3e2: saved-R14 prologue, parent state >2 cleanup, otherwise follow/interpolate; delay slots and both return paths reviewed. Full C unit matches retail."
     },
     {
       "address": "0x0c1aa426",

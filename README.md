@@ -24,11 +24,11 @@ asset checks, and parallel-work rules.
 | Track | Progress | Bytes |
 | --- | --- | ---: |
 | Map | `█████████████████████████████░░░` **91.891%** | 2,228,214 / 2,424,832 |
-| Matched reviewed code | `█████████░░░░░░░░░░░░░░░░░░░░░░░` **31.161%** | 546,326 / 1,753,248 |
-| Data | `██████████████████████████████░░` **93.782%** | 445,431 / 474,966 |
-| [Decomp](config/units.json) | `█████████████░░░░░░░░░░░░░░░░░░░` **40.900%** | 991,757 / 2,424,832 |
-| Verified C executable code (lower bound) | `██████░░░░░░░░░░░░░░░░░░░░░░░░░░` **20.363%** | 397,060 / 1,949,866 |
-| Verified C code + data | `██████████░░░░░░░░░░░░░░░░░░░░░░` **33.495%** | 812,190 / 2,424,832 |
+| Matched reviewed code | `█████████░░░░░░░░░░░░░░░░░░░░░░░` **31.180%** | 546,664 / 1,753,248 |
+| Data | `██████████████████████████████░░` **93.792%** | 445,481 / 474,966 |
+| [Decomp](config/units.json) | `█████████████░░░░░░░░░░░░░░░░░░░` **40.916%** | 992,145 / 2,424,832 |
+| Verified C executable code (lower bound) | `██████░░░░░░░░░░░░░░░░░░░░░░░░░░` **20.381%** | 397,398 / 1,949,866 |
+| Verified C code + data | `██████████░░░░░░░░░░░░░░░░░░░░░░` **33.511%** | 812,578 / 2,424,832 |
 | Prebuilt SDK modules | `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` **5.840%** | 141,609 / 2,424,832 |
 | Candidate fragments | `░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` **1.565%** | 37,958 / 2,424,832 |
 <!-- progress:end -->
@@ -75,7 +75,7 @@ them by hand. The treemap at `build/index.html` comes from the same build.
 
 Decompilation is active and incomplete. Only whole-section exact C enters the verified registry. Compiling drafts and matching ROM rebuilds do not establish complete decompilation: untranslated regions still use original bytes.
 
-The [October 7 local audit](workbench/continuation-20261004/LOCAL_AUDIT_20261007.md) recovered 21 complete sections from Grok and older agent checkouts, adding 5,578 verified executable C bytes. Together with the unpublished continuation work, the checkpoint adds 8,734 bytes over the previous release. The generated table above is authoritative; literal-pool classification can change its denominator without adding translated code.
+The [October 7 local audit](workbench/continuation-20261004/LOCAL_AUDIT_20261007.md) recovered 21 complete sections from Grok and older agent checkouts, adding 5,578 verified executable C bytes. Together with the unpublished continuation work, the checkpoint adds 9,072 bytes over the previous release. The generated table above is authoritative; literal-pool classification can change its denominator without adding translated code.
 
 Recent recovery also corrects paired-actor completion signatures, consolidates shared actor layouts, and recovers player score/ranking structures. Unfinished translations remain separate and uncredited. The linked GitHub build provides validation for the published source; checkpoint releases record their own byte counts and test results.
 
