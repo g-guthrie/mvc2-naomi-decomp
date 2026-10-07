@@ -83,6 +83,12 @@ releases any section of another unit that the new unit owns, pool or leaf,
 from that unit's registry entry and source. Several copies of the tool can run
 at once; only `tools/build.py` needs the tree to itself.
 
+For a registered source, `tools/diagnose.py` uses its recorded whole-unit
+extent and option set. This matters when the final function continues after an
+interior pool: rediscovering from its name alone can stop at that pool and
+report a false outgoing branch. Unregistered files still require boundary
+review; their extent is inferred from the source and mapping.
+
 ## Registers
 
 - **Named locals get r5, r6, r7 and callee-saved registers; anonymous

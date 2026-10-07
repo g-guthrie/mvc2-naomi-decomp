@@ -63,13 +63,15 @@ def diagnose(unit, proof, elf, main, base):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('source')
-    parser.add_argument('--options', choices=['game', 'library'], default='game')
+    parser.add_argument('--options', choices=['game', 'library'], help='Override the registered option set; unregistered sources default to game')
     args = parser.parse_args()
     from diff_unit import evaluate
     from boundaries import BoundaryIndex
     from type_contracts import check_all
     from behavioral_evidence import status as behavioral_status
-    proof, unit = evaluate(args.source, options=args.options)
+    registered = next((unit for unit in load(ROOT / 'config/units.json')
+                       if unit.get('source') == args.source), None)
+    proof, unit = evaluate(args.source, options=args.options, descriptor=registered)
     print(json.dumps({'exact': proof['exact'], 'diagnosis': proof.get('diagnosis'),
                       'boundaries': BoundaryIndex.current().unit(unit),
                       'type_contracts': check_all(args.source),
