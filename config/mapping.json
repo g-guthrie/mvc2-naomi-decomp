@@ -366592,53 +366592,39 @@
       "evidence": "CFG walk from 0x0c1e6d6c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
-      "address": "0x0c1e6dee",
-      "size": 6,
-      "kind": "data",
-      "sha256": "9ad06d1a67fb20c155ad9f168cdaf52bcee99a6b035e88674263114308cf20e6",
-      "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+      "address": "0xc1e6d9c",
+      "size": 74,
+      "kind": "code",
+      "sha256": "9c35e760780cac9219b7e476f4b515168ba42b8e31a2c386898b00480c7e626b",
+      "evidence": "Device eligibility scan prologue, enable/sentinel guard and loop setup; branches skip the following literal pool."
     },
     {
-      "address": "0x0c1e6e28",
+      "address": "0xc1e6de6",
       "size": 14,
-      "kind": "code",
-      "sha256": "96921d4d96fc954181f401c010ab14ab2d33a36186ac73c23f76fa431e396f78",
-      "evidence": "CFG walk from 0x0c1e6e28; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
-    },
-    {
-      "address": "0x0c1e6e36",
-      "size": 64,
-      "kind": "code",
-      "sha256": "0e81222e02a139422e34343fd7279d61a07da12b590128a91f754434301030b7",
-      "evidence": "CFG walk from 0x0c1e6e36; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
-    },
-    {
-      "address": "0x0c1e6e76",
-      "size": 102,
-      "kind": "code",
-      "sha256": "3328f1d4e07798bf0084608f45ac0e569bf90016e877fefcf92b6254c1a0b4b4",
-      "evidence": "CFG walk from 0x0c1e6eac; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
-    },
-    {
-      "address": "0x0c1e6edc",
-      "size": 4,
       "kind": "data",
-      "sha256": "961ae28829f0b1cfbd073eff070ac5ea8994618c0e84fab4764367464a14b854",
-      "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+      "sha256": "d13bbac5bca9308286b39b28c4fa9c369aec8c26b31028759afcb29c4d253cb1",
+      "evidence": "MOV.W/MOV.L consumers in 1e6d9c: eight-slot end offset, global state pointer, slot-array pointer and sentinel ID."
     },
     {
-      "address": "0x0c1e6ee0",
-      "size": 8,
-      "kind": "data",
-      "sha256": "92d6d5fb672386eb8b95a6303d57f3d1a232bbbd2572d65894ee6f5055c2316f",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c1e6e36; unreferenced adjacent bytes omitted."
+      "address": "0xc1e6df4",
+      "size": 66,
+      "kind": "code",
+      "sha256": "4a8e80043b75c20b3c8f8aa4698744f973208bcd5f37cadf8a6366f57233eea4",
+      "evidence": "Continuation of 1e6d9c after its pool: per-slot signed threshold50, mask accumulation and shared epilogue. 1e6e28 is the MOV-to-R0 hazard NOP, not a function entry."
     },
     {
-      "address": "0x0c1e6ee8",
-      "size": 4,
+      "address": "0xc1e6e36",
+      "size": 166,
+      "kind": "code",
+      "sha256": "1ace3894b44a5049aca44f467229e88b32cb5c6504f8790abb15a898df48b33e",
+      "evidence": "Independent framed eligibility scan; type18/1 and signed state/count tests select thresholds6,5,11. 1e6e76 is the loop body, not a function entry."
+    },
+    {
+      "address": "0xc1e6edc",
+      "size": 16,
       "kind": "data",
-      "sha256": "b7d1b3a1104cc86b1cea310793cf777002db0517281d135a02de079b0ea87c23",
-      "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+      "sha256": "573163e768df415b3d08d789af8a67788d1c465dce6a6149873549cb73df91bb",
+      "evidence": "MOV.W/MOV.L consumers in 1e6e36: slot-array end offset and alignment, slot-array/global-state pointers and sentinel ID."
     },
     {
       "address": "0x0c1e6f2c",
