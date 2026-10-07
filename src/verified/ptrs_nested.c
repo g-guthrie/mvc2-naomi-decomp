@@ -36,12 +36,6 @@ void (*const *const ptr_0c05bc9c)(void) = &ptr_0c23fb78;
 #pragma section n0d27ec
 void (*const *const ptr_0c0d27ec)(void) = &ptr_0c2484a4;
 
-#pragma section n0e2fe0
-void (*const *const ptr_0c0e2fe0)(void) = &ptr_0c24941c;
-
-#pragma section n0f0ec0
-void (*const *const ptr_0c0f0ec0)(void) = &ptr_0c24a0d4;
-
 #pragma section n0f6858
 void (*const *const ptr_0c0f6858)(void) = &ptr_0c24a554;
 
@@ -82,8 +76,6 @@ void (*const *const ptr_0c1d7e58)(void) = &func_0c025fc2;
 void (*const *const ptr_0c1f072c)(void) = &table_0c266dc4;
 
 
-#pragma section n0fcae8
-void (*const *const ptr_0c0fcae8)(void) = &ptr_0c24ac70;
 
 #pragma section n1c8048
 void (*const *const ptr_0c1c8048)(void) = &table_0c25ea48;
