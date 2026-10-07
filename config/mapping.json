@@ -14198,6 +14198,13 @@
       "evidence": "CFG walk from 0x0c038344; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c03837a",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Zero pad before the long-aligned pool at 0x0c03837c."
+    },
+    {
       "address": "0x0c03837c",
       "size": 24,
       "kind": "data",
@@ -51296,6 +51303,13 @@
       "kind": "code",
       "sha256": "db7c02ae5a3ceae0b21d684042e6bd2fc0e50bf680887dfb69383462b0642e24",
       "evidence": "CFG walk from 0x0c068354; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c0683a0",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Reviewed by hand: empty handler (rts; nop) between 0x0c068354 and the dispatcher at 0x0c0683a4."
     },
     {
       "address": "0x0c0683a4",
@@ -142977,6 +142991,13 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0d6afa; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c0d6bd0",
+      "size": 18,
+      "kind": "code",
+      "sha256": "7700ffc78bf000212caa6dda41893a6b409578ca88bc99eba6b2a21abca55e44",
+      "evidence": "Reviewed by hand: dispatcher through the handler table 0x0c2487f8 (literal at 0x0c0d6cd8) indexed by byte 6; tail JMP."
+    },
+    {
       "address": "0x0c0d6be2",
       "size": 152,
       "kind": "code",
@@ -143003,6 +143024,13 @@
       "kind": "data",
       "sha256": "a5d1bfc41f7c667e3904d7c6a92f9f157c455971bef761ee6c869cc8ab25194d",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0d6c7a; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c0d6cd8",
+      "size": 4,
+      "kind": "data",
+      "sha256": "7995dc70614bf953d599ea0d09746d4c541ec38c5ec77980312196a0e8b777a0",
+      "evidence": "Literal word in the pool shared by 0x0c0d6be2-0x0c0d6d2e."
     },
     {
       "address": "0x0c0d6cdc",
@@ -143311,6 +143339,13 @@
       "kind": "code",
       "sha256": "20114666b0d33230aa9e6ca316b6dddf04d371447ed09947cda37af223e8e7c0",
       "evidence": "CFG walk from 0x0c0d719c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c0d71d2",
+      "size": 4,
+      "kind": "code",
+      "sha256": "551572a9f87a0af199dced20f1d78fc9ddb31537c3a7ce5b747bfedb295ab1e9",
+      "evidence": "Reviewed by hand: empty handler (rts; nop) between 0x0c0d719c and the dispatcher at 0x0c0d71d6."
     },
     {
       "address": "0x0c0d71d6",
@@ -145084,6 +145119,13 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0d9812; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c0d9840",
+      "size": 132,
+      "kind": "code",
+      "sha256": "0524ab37f108c7e23e85e54e862ace29cbfc9247820dbb05919fdedac11a3421",
+      "evidence": "Reviewed by hand: launch setup (0x0c02a39a, velocities from the pool at 0x0c0d9984-0x0c0d998f, attack 65, tail JMP to 0x0c02a0c4); delay slots checked."
+    },
+    {
       "address": "0x0c0d98c4",
       "size": 110,
       "kind": "code",
@@ -145110,6 +145152,13 @@
       "kind": "data",
       "sha256": "c361c5a99889399dae30a680ee9aabc9b317c3be5099db8f59af66a432801b41",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0d995e; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c0d9978",
+      "size": 4,
+      "kind": "data",
+      "sha256": "f9e48f138c1251a203302b5aaada27388c600a241704cbe67017dcc275b7caa9",
+      "evidence": "Literals 0x01d2 and 0x01a1 loaded at 0x0c0d986e and 0x0c0d9894."
     },
     {
       "address": "0x0c0d997c",
@@ -201154,6 +201203,13 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c11aa4c; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c11ab88",
+      "size": 98,
+      "kind": "code",
+      "sha256": "9e278f6835ebe4daff66480a7ca4e1ff90ca006542eb9956230d2081189f8eef",
+      "evidence": "Reviewed by hand: 0x140 flag handler calling 0x0c17af64 and two 0x0c0344a0 cues; delay slots checked; pool at 0x0c11acd8/0x0c11acda/0x0c11ace0-0x0c11ace8."
+    },
+    {
       "address": "0x0c11abea",
       "size": 124,
       "kind": "code",
@@ -201173,6 +201229,13 @@
       "kind": "data",
       "sha256": "d2dbb1d582f0029c27ccaa9b62186a1d8e3af5daba05f629e4b13b3741f3795b",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c11ac66; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c11acda",
+      "size": 2,
+      "kind": "data",
+      "sha256": "364e77d6e7c9788cd406de3ae79c762e02d8f2703fb14ddef010ea442f8e6940",
+      "evidence": "Literal 0x01a3 loaded by mov.w at 0x0c11aba2."
     },
     {
       "address": "0x0c11acdc",
@@ -201197,10 +201260,10 @@
     },
     {
       "address": "0x0c11ace4",
-      "size": 4,
-      "kind": "code",
-      "sha256": "2460ac0dede207868d5b951c381523d787477f9ab4d33cb7216e52d5a71c3f8f",
-      "evidence": "CFG walk from 0x0c11ace4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "size": 8,
+      "kind": "data",
+      "sha256": "cee489f7c47d723a405b74f85b495b7b2f682f7c25f7a5461a381bf5320e5ce0",
+      "evidence": "Literal words 0x0c17af64 and 0x0c0344a0 loaded at 0x0c11abb0, 0x0c11abca and 0x0c11abdc; 0x0c11ace4 was misclassified as code."
     },
     {
       "address": "0x0c11acec",
@@ -364924,6 +364987,13 @@
       "kind": "code",
       "sha256": "cf841a8506d6eaa678342c50e5fa06960172b430af7d48ae45cd3f5bb16bd134",
       "evidence": "CFG walk from 0x0c1e3afc; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1e3ca2",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Zero pad before the long-aligned pool at 0x0c1e3ca4."
     },
     {
       "address": "0x0c1e3ca4",
