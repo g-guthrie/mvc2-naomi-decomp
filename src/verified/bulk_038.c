@@ -120,21 +120,6 @@ const unsigned int dat_0c0afeac[] = {
     0x01f901c8u,
 };
 
-#pragma section n0affce
-const unsigned short dat_0c0affce[] = {
-    0x0428u,
-};
-
-#pragma section n0affd4
-void (*const table_0c0affd4[])(void) = {
-    func_0c0465cc,
-    func_0c046b6c,
-    func_0c0469f4,
-    func_0c046d3c,
-    func_0c045f1c,
-    func_0c0463fc,
-};
-
 #pragma section n0b0438
 const unsigned short dat_0c0b0438[] = {
     0x0394u, 0x040cu, 0x01f9u, 0x0258u, 0x038cu,

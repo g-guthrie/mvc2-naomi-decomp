@@ -10,9 +10,6 @@ extern void (*const ptr_0c258e34)(void);
 extern void (*const ptr_0c258f08)(void);
 extern void (*const ptr_0c25c00c)(void);
 
-#pragma section n0affd0
-void (*const *const ptr_0c0affd0)(void) = &ptr_0c2449e4;
-
 #pragma section n13ec00
 void (*const *const ptr_0c13ec00)(void) = &ptr_0c24f558;
 

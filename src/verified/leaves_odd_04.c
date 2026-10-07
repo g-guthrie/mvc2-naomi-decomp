@@ -12,15 +12,3 @@ void func_0c0b8076(void) {}
 #pragma section n0b807a
 void func_0c0b807a(void) {}
 
-#pragma section n0b9856
-int func_0c0b9856(void) { return 0; }
-
-#pragma section n0b985a
-void func_0c0b985a(void) {}
-
-#pragma section n0b985e
-void func_0c0b985e(void) {}
-
-#pragma section n0b9862
-void func_0c0b9862(void) {}
-
