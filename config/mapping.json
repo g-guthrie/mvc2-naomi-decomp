@@ -406709,11 +406709,46 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
-      "address": "0x0c22f7da",
+      "address": "0x0c22f7d4",
       "size": 4,
       "kind": "data",
-      "sha256": "1d8cb01203510bfb7b4cb3ca3a77836a3e817b8cc5d1baf58cfdad43a4cc678c",
-      "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+      "sha256": "fed9668c83020ed31e07e37b9871e85829cef62e46d4692f070b6895d36cc8b1",
+      "evidence": "Initializer type bytes: native copies in 0x0c1732d4 / 0x0c1734ea use these addresses and lengths; typed local initializers reproduce all 62 C-section bytes at 0x0c22f7d4 exactly with bundled SHC."
+    },
+    {
+      "address": "0x0c22f7d8",
+      "size": 16,
+      "kind": "data",
+      "sha256": "5f6f7c63199ebe5b4fe6b2c841dcdc1630c7ce6ec89452517f6b3d03c57f5118",
+      "evidence": "Initializer initial attack bytes: native copies in 0x0c1732d4 / 0x0c1734ea use these addresses and lengths; typed local initializers reproduce all 62 C-section bytes at 0x0c22f7d4 exactly with bundled SHC."
+    },
+    {
+      "address": "0x0c22f7e8",
+      "size": 12,
+      "kind": "data",
+      "sha256": "a88c1b82e485a662dc2fefb5fcde4fa9b9ca2b10fcfa342e8cc30225ed4e1c52",
+      "evidence": "Initializer three float speeds: native copies in 0x0c1732d4 / 0x0c1734ea use these addresses and lengths; typed local initializers reproduce all 62 C-section bytes at 0x0c22f7d4 exactly with bundled SHC."
+    },
+    {
+      "address": "0x0c22f7f4",
+      "size": 6,
+      "kind": "data",
+      "sha256": "0922f8b17250b748efd089ef54c8fbec9c69d5456b49abeaf7b548329891e454",
+      "evidence": "Initializer three signed short timers: native copies in 0x0c1732d4 / 0x0c1734ea use these addresses and lengths; typed local initializers reproduce all 62 C-section bytes at 0x0c22f7d4 exactly with bundled SHC."
+    },
+    {
+      "address": "0x0c22f7fa",
+      "size": 8,
+      "kind": "data",
+      "sha256": "dffbcd62314ca9828da7722a7ab64ebfc39973d6fbf1dd5e71bb636d853f88f0",
+      "evidence": "Initializer count bytes: native copies in 0x0c1732d4 / 0x0c1734ea use these addresses and lengths; typed local initializers reproduce all 62 C-section bytes at 0x0c22f7d4 exactly with bundled SHC."
+    },
+    {
+      "address": "0x0c22f802",
+      "size": 16,
+      "kind": "data",
+      "sha256": "bafaad27b5d7a169df97c58340f59721310986ca8fdcd52db69a86e2ef6133d1",
+      "evidence": "Initializer update attack bytes: native copies in 0x0c1732d4 / 0x0c1734ea use these addresses and lengths; typed local initializers reproduce all 62 C-section bytes at 0x0c22f7d4 exactly with bundled SHC."
     },
     {
       "address": "0x0c22f81a",

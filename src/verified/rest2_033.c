@@ -111,11 +111,6 @@ const unsigned short dat_0c22f75c[] = {
     0x0000u, 0x0000u, 0x0000u,
 };
 
-#pragma section n20e7da
-const unsigned short dat_0c22f7da[] = {
-    0x3231u, 0x4234u,
-};
-
 #pragma section n20e81a
 const unsigned short dat_0c22f81a[] = {
     0x4389u, 0x0000u, 0x0000u,

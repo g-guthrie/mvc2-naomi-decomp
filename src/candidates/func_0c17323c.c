@@ -1,18 +1,15 @@
-/* Complete 0x0c17323c..0x0c173868 translation. Constructor, dispatcher, effect helper, advance and cleanup match; initializer and update differ in scheduling and temporary registers. */
+/* Candidate: five of seven functions and all six literal pools match.
+ * P: 1561/1580 bytes; initializer scheduling differs at 0x0c173384..392,
+ * and update XOR uses r2 instead of r1 at 0x0c173750..754.
+ * Local configuration initializers reproduce C at 0x0c22f7d4 (62 bytes).
+ * Keep the array declarations and parent capture order: both affect SHC layout.
+ */
 #include "objects.h"
-struct Bytes4 {unsigned char data[4];};
-struct Shorts3 {short data[3];};
-struct Floats3 {float data[3];};
-struct Bytes16 {unsigned char data[16];};
-struct Bytes8 {unsigned char data[8];};
 #define A(a) ((struct Actor *)(a))
 #define MODE(p) (*(int *)&A(p)->pad10b[0x2c0-0x2a4-sizeof(struct ActorSub2a4)])
 extern struct LinkedActor *func_0c0374da(int,int,int);
 extern void (*dat_0c252a60[])(struct LinkedActor *);
-extern unsigned char dat_0c22f7d4[4],dat_0c22f7fa[8];
-extern unsigned char dat_0c22f7d8[16],dat_0c22f802[16];
-extern float dat_0c22f7e8[3],dat_0c252a70[][2];
-extern short dat_0c22f7f4[3];
+extern float dat_0c252a70[][2];
 extern struct Tbl_ub3_01 *dat_0c2f83f8;
 extern void func_0c02a0c4(struct LinkedActor *,int,int),func_0c037d0c(struct LinkedActor *),func_0c037688(struct LinkedActor *),func_0c02894c(struct LinkedActor *,unsigned short),func_0c1cea66(struct LinkedActor *,float *,int);
 extern int func_0c028642(struct LinkedActor *);
@@ -27,30 +24,28 @@ struct LinkedActor *func_0c17323c(struct LinkedActor *p,unsigned char mode)
 void func_0c173298(struct LinkedActor *a){*(int *)&A(a->p24)->pad10c[0x2f0-0x2cc]=2;dat_0c252a60[a->b4](a);}
 void func_0c1732d4(struct LinkedActor *a)
 {
- struct {unsigned char counts[8];short timers[3];short pad;float speeds[3];unsigned char attacks[16],types[4];} local;
- unsigned char *types=local.types;
+ unsigned char types[4] = {0,6,16,26};
+ unsigned char attacks[16] = {62,48,49,50,52,66,67,68,52,66,67,68,52,66,67,68};
+ float speeds[3] = {-10.83333302f,-13.33333302f,-15.83333302f};
+ short timers[3] = {56,48,40};
+ unsigned char counts[8] = {6,1,3,6,6,5,5,12};
  struct LinkedActor *p;int timer;unsigned short selection;float speed,scale;
- *(struct Bytes4 *)types=*(struct Bytes4 *)dat_0c22f7d4;
- *(struct Bytes16 *)local.attacks=*(struct Bytes16 *)dat_0c22f7d8;
- /* The arrays are local copies of the retail configuration tables. */
- *(struct Floats3 *)local.speeds=*(struct Floats3 *)dat_0c22f7e8;
- *(struct Shorts3 *)local.timers=*(struct Shorts3 *)dat_0c22f7f4;
- *(struct Bytes8 *)local.counts=*(struct Bytes8 *)dat_0c22f7fa;
  a->b4++;a->sdc.b12c=1;((struct MeActor *)a)->blk_dc.b13c=32;((struct MeActor *)a)->blk_dc.b13d=40;((struct MeActor *)a)->blk_dc.b13e=64;((struct MeActor *)a)->blk_dc.b13f=64;
  p=a->p24;a->sdc=p->sdc;a->sdc.b12c=1;a->b2=p->b2;a->b1=p->b1;a->v80.x=p->v80.x;a->v80.y=p->v80.y;a->b1a3=p->b1a3;a->b1a4=p->b1a4;a->b48=p->b48;a->v80=p->v80;a->b36=8;A(a)->b7=3;
- timer=local.timers[a->b1a3];if(a->b32)timer=64;if(MODE(p)==2)timer*=4;a->s28=timer;A(a)->s30=100;A(a)->b35=0;
- selection=a->b32;if(selection)selection=4;selection+=MODE(p);a->b33=local.counts[selection];
- speed=local.speeds[a->b1a3];if(MODE(p)==1)speed*=1.5f;scale=0.75f;if(MODE(p)==3)speed/=scale;
+ timer=timers[a->b1a3];if(a->b32)timer=64;if(MODE(p)==2)timer*=4;a->s28=timer;A(a)->s30=100;A(a)->b35=0;
+ selection=a->b32;if(selection)selection=4;selection+=MODE(p);a->b33=counts[selection];
+ speed=speeds[a->b1a3];if(MODE(p)==1)speed*=1.5f;scale=0.75f;if(MODE(p)==3)speed/=scale;
  if(a->b32){speed=-10.0f;if(MODE(p)==1)speed=-20.0f;if(MODE(p)==3)speed/=scale;}
  if(A(a)->w130)speed=-speed;A(a)->f92=speed;A(a)->f104=0.0f;
  if(!a->b32){a->v80.y=scale;a->v80.x=scale;}
- a->pad11[0]=68;a->pad11[1]=68;A(a)->b34=types[a->b32];A(a)->b1a1=local.attacks[a->b32*4+MODE(p)];
+ a->pad11[0]=68;a->pad11[1]=68;A(a)->b34=types[a->b32];A(a)->b1a1=(attacks+a->b32*4)[MODE(p)];
  A(a)->w1ac=0;A(a)->b19e=0;A(a)->p1c4=0;dat_0c2f83f8->arr[a->b2]++;func_0c02a0c4(a,21,2);
 }
 void func_0c1734ea(struct LinkedActor *a)
 {
- unsigned char attacks[16];struct LinkedActor *p=a->p24;float zero;
- *(struct Bytes16 *)attacks=*(struct Bytes16 *)dat_0c22f802;
+ struct LinkedActor *p=a->p24;
+ unsigned char attacks[16] = {51,51,51,51,52,66,67,68,52,66,67,68,52,66,67,68};
+ float zero;
  if(a->b5)goto ending;
  goto lifetime;lifetime:if(!func_0c028642(a)){func_0c17383c(a);return;}
  if(A(a)->b19f||a->f56<A(p)->f41c){float vx=3.3333333f,ax=-0.00651041651145f;if(A(a)->w130){vx=-3.3333333f;ax=0.00651041651145f;}A(a)->f92=vx;A(a)->f96=-6.428571224213f;A(a)->f104=ax;A(a)->f108=-0.2678571343422f;A(a)->b6=1;goto advance;}
