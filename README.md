@@ -24,11 +24,11 @@ asset checks, and parallel-work rules.
 | Track | Progress | Bytes |
 | --- | --- | ---: |
 | Map | `█████████████████████████████░░░` **91.879%** | 2,227,912 / 2,424,832 |
-| Matched reviewed code | `█████████░░░░░░░░░░░░░░░░░░░░░░░` **30.678%** | 537,792 / 1,753,032 |
-| Data | `█████████████████████████████░░░` **93.735%** | 445,131 / 474,880 |
-| [Decomp](config/units.json) | `████████████░░░░░░░░░░░░░░░░░░░░` **40.536%** | 982,923 / 2,424,832 |
-| Verified C executable code (lower bound) | `██████░░░░░░░░░░░░░░░░░░░░░░░░░░` **19.915%** | 388,326 / 1,949,952 |
-| Verified C code + data | `██████████░░░░░░░░░░░░░░░░░░░░░░` **33.122%** | 803,152 / 2,424,832 |
+| Matched reviewed code | `█████████░░░░░░░░░░░░░░░░░░░░░░░` **30.695%** | 538,096 / 1,753,032 |
+| Data | `█████████████████████████████░░░` **93.736%** | 445,133 / 474,880 |
+| [Decomp](config/units.json) | `████████████░░░░░░░░░░░░░░░░░░░░` **40.548%** | 983,229 / 2,424,832 |
+| Verified C executable code (lower bound) | `██████░░░░░░░░░░░░░░░░░░░░░░░░░░` **19.930%** | 388,630 / 1,949,952 |
+| Verified C code + data | `██████████░░░░░░░░░░░░░░░░░░░░░░` **33.135%** | 803,458 / 2,424,832 |
 | Prebuilt SDK modules | `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` **5.840%** | 141,609 / 2,424,832 |
 | Candidate fragments | `░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` **1.574%** | 38,162 / 2,424,832 |
 <!-- progress:end -->
@@ -75,8 +75,8 @@ them by hand. The treemap at `build/index.html` comes from the same build.
 
 Decompilation is active and incomplete. Only whole-section exact C enters the verified registry. Compiling drafts and matching ROM rebuilds do not establish complete decompilation: untranslated regions still use original bytes.
 
-The latest October 6 source update adds **484 verified executable C bytes** across three whole-section matches since the 19.890% checkpoint: resource construction, opposing-team display visibility, and directional child placement/animation lifecycle. The generated table above is the authoritative current progress; verified executable C is **19.915%** (388,326 / 1,949,952 potential code bytes). The denominator decreased by eight bytes after literal-pool review; that is not additional translated code.
+Recent exact matches cover resource construction, opposing-team display visibility, directional child placement/animation lifecycle, and owner-driven attachments. The generated table above is the authoritative current progress. Literal-pool classification can reduce the potential-code denominator; it is not additional translated code.
 
-This update also corrects paired-actor completion signatures, consolidates shared actor layouts, and recovers player score/ranking structures. Unfinished translations remain separate and uncredited. Local validation passes **148 tests**, checks **2,006 registered units**, and reproduces both ROM images byte for byte.
+Recent recovery also corrects paired-actor completion signatures, consolidates shared actor layouts, and recovers player score/ranking structures. Unfinished translations remain separate and uncredited. The linked GitHub build provides validation for the published source; checkpoint releases record their own byte counts and test results.
 
 [Unverified continuation drafts](workbench/continuation-20261004) are preserved separately and receive no verified credit. The combined image coverage above includes data, SDK objects, and candidate fragments; it is not the percentage translated into verified executable C. The [October 4 recovery handoff](docs/FINAL_HANDOFF.md) and archived releases are historical checkpoints. Development is active and runs in this single-agent checkout.
