@@ -6498,6 +6498,13 @@
       "evidence": "CFG walk from 0x0c02c9d8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c02cc26",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) inside the literal pool after the preceding code; the next pool cell is mapped data."
+    },
+    {
       "address": "0x0c02cc28",
       "size": 16,
       "kind": "data",
@@ -20804,6 +20811,13 @@
       "kind": "code",
       "sha256": "ca3e16231ac687786c67e825df36e04ab799de7908d232f986b32b7ce60caab1",
       "evidence": "CFG walk from 0x0c0410a8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c04173a",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) inside the literal pool after the preceding code; the next pool cell is mapped data."
     },
     {
       "address": "0x0c04173c",
@@ -63798,6 +63812,13 @@
       "kind": "code",
       "sha256": "b938d385c29c3604fad03f48b7b6fc1fb7c27e2cf863e1e9f4e6fee4839d5b63",
       "evidence": "CFG walk from 0x0c077d60; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c077e12",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) inside the literal pool after the preceding code; the next pool cell is mapped data."
     },
     {
       "address": "0x0c077e14",
@@ -161919,6 +161940,13 @@
       "evidence": "CFG walk from 0x0c0edba8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c0edbae",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) inside the literal pool after the preceding code; the next pool cell is mapped data."
+    },
+    {
       "address": "0x0c0edbb0",
       "size": 12,
       "kind": "data",
@@ -172874,39 +172902,32 @@
       "evidence": "CFG walk from 0x0c0fa97c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c0fa9de",
+      "size": 132,
+      "kind": "code",
+      "sha256": "f7a4f28a3c4a0026d9e74c4eabb58343f05387bc0d4678624bd97d138d4bb735",
+      "evidence": "Reviewed by hand: per-frame timer update (0x2a4 state, 0x2ac/0x2b0/0x2b4 countdowns, random blink via 0x0c02849a/0x0c1b4548); continues after the pool at 0x0c0faa98; delay slots checked."
+    },
+    {
       "address": "0x0c0faa62",
-      "size": 12,
+      "size": 54,
       "kind": "data",
-      "sha256": "efec688c591850f24516d0e727ef71c82834ef232df5eaeb197748c29adc0217",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0fa97c; unreferenced adjacent bytes omitted."
+      "sha256": "0083c0432a49a8da0db87b2cafa64c0fb5fd13676d335ef401f84ed1f354c161",
+      "evidence": "Reviewed with unit source: literal pool / pointer table read by adjacent code."
     },
     {
-      "address": "0x0c0faa78",
-      "size": 4,
-      "kind": "data",
-      "sha256": "4a0b48f1f8674c997276ed69a5a1e24aa0b0be2f39f31d6bd6405763c53491d3",
-      "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+      "address": "0x0c0faa98",
+      "size": 178,
+      "kind": "code",
+      "sha256": "3d259ab6f249e8ce95f0476b91171ade70a822c7a3cd225a7d24767a4ff41bdd",
+      "evidence": "Reviewed by hand: continuation of 0x0c0fa9de (0x2d0-0x2ec countdowns, 0x0c02a684 effects, __modls); ends rts at 0x0c0fab46."
     },
     {
-      "address": "0x0c0faa80",
-      "size": 12,
+      "address": "0x0c0fab4a",
+      "size": 26,
       "kind": "data",
-      "sha256": "f79326f49a19e6e2e0d94a62d4074bb6913b7d34cebd8501b8906a8521e59658",
-      "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0fa97c; unreferenced adjacent bytes omitted."
-    },
-    {
-      "address": "0x0c0faa94",
-      "size": 4,
-      "kind": "data",
-      "sha256": "4836cc128d344c089c5cb0df78bbb2a042dd9679c9c35f49c6d55f098adae399",
-      "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
-    },
-    {
-      "address": "0x0c0fab52",
-      "size": 6,
-      "kind": "data",
-      "sha256": "c2cbd0048b7551231a881426988444b843086040e176471f85b3a066827fa8ca",
-      "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+      "sha256": "41122c555ee1e03a3dd6f04cc4c8ebbb1baa6e1adb83ca49bc627cce4b233bc6",
+      "evidence": "Reviewed with unit source: literal pool / pointer table read by adjacent code."
     },
     {
       "address": "0x0c0fab64",
@@ -208721,6 +208742,13 @@
       "evidence": "CFG walk from 0x0c123338; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c12334a",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) inside the literal pool after the preceding code; the next pool cell is mapped data."
+    },
+    {
       "address": "0x0c12334c",
       "size": 8,
       "kind": "data",
@@ -224980,6 +225008,13 @@
       "kind": "code",
       "sha256": "23816c5823a81a666b924803f7ef0695a5ad24dd6eb1bd1a01f22bd0c6392214",
       "evidence": "CFG walk from 0x0c13717a; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c13721e",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) inside the literal pool after the preceding code; the next pool cell is mapped data."
     },
     {
       "address": "0x0c137220",
@@ -253015,6 +253050,13 @@
       "kind": "code",
       "sha256": "62ab608cde0a4916467544e0ed09f4014a4c84ab5d310eab30654efaefbd36a7",
       "evidence": "CFG walk from 0x0c1593e2; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c159416",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) inside the literal pool after the preceding code; the next pool cell is mapped data."
     },
     {
       "address": "0x0c159418",
@@ -309549,6 +309591,13 @@
       "evidence": "CFG walk from 0x0c19f710; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c19fad6",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) inside the literal pool after the preceding code; the next pool cell is mapped data."
+    },
+    {
       "address": "0x0c19fad8",
       "size": 4,
       "kind": "data",
@@ -328071,6 +328120,13 @@
       "evidence": "CFG walk from 0x0c1b42da; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c1b43c6",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) inside the literal pool after the preceding code; the next pool cell is mapped data."
+    },
+    {
       "address": "0x0c1b43c8",
       "size": 16,
       "kind": "data",
@@ -329630,6 +329686,13 @@
       "kind": "code",
       "sha256": "060a0d70ae66d6a9f3d75bf94c84459db52230ed9580414ea887394b4a3b7f68",
       "evidence": "CFG walk from 0x0c1b5a74; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1b5a86",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) inside the literal pool after the preceding code; the next pool cell is mapped data."
     },
     {
       "address": "0x0c1b5a88",
@@ -347776,6 +347839,13 @@
       "evidence": "CFG walk from 0x0c1cb692; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c1cb9b2",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) inside the literal pool after the preceding code; the next pool cell is mapped data."
+    },
+    {
       "address": "0x0c1cb9b4",
       "size": 8,
       "kind": "data",
@@ -348432,6 +348502,13 @@
       "kind": "code",
       "sha256": "2719e517081298968a02f16358b6f1fa2cf1dc9f52927d48284243cfc07b8b11",
       "evidence": "CFG walk from 0x0c1cd180; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1cd266",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) inside the literal pool after the preceding code; the next pool cell is mapped data."
     },
     {
       "address": "0x0c1cd268",
@@ -349433,6 +349510,13 @@
       "kind": "code",
       "sha256": "fe0be7d0215561efd34eb20ff5260daf4a0154b67dfb9714596eb882b7de5d56",
       "evidence": "CFG walk from 0x0c1ce916; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1ce9da",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) inside the literal pool after the preceding code; the next pool cell is mapped data."
     },
     {
       "address": "0x0c1ce9dc",
@@ -360955,6 +361039,13 @@
       "kind": "code",
       "sha256": "849eb817fb283422d1980be1291807d48cb231d07f95b44145d35762b76ab503",
       "evidence": "CFG walk from 0x0c1ddba0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+    },
+    {
+      "address": "0x0c1ddd42",
+      "size": 2,
+      "kind": "data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "evidence": "Alignment pad (0000) inside the literal pool after the preceding code; the next pool cell is mapped data."
     },
     {
       "address": "0x0c1ddd44",

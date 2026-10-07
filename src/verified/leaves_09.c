@@ -3,12 +3,6 @@
 #pragma section n125178
 void func_0c125178(void) {}
 
-#pragma section n12ddcc
-void func_0c12ddcc(void) {}
-
-#pragma section n12e154
-void func_0c12e154(void) {}
-
 #pragma section n14fe00
 void func_0c14fe00(void) {}
 

@@ -60,22 +60,6 @@ extern void func_0c24e500(void);
 extern void func_0c24e510(void);
 extern void func_0c24e520(void);
 
-#pragma section n12dd18
-void (*const table_0c12dd18[])(void) = {
-    func_0c044f1c,
-    func_0c0427f2,
-    func_0c042780,
-    func_0c02a0c4,
-    func_0c24de70,
-};
-
-#pragma section n12e178
-void (*const table_0c12e178[])(void) = {
-    func_0c042780,
-    func_0c02a0c4,
-    func_0c24de98,
-};
-
 #pragma section n12ef30
 void (*const ptr_0c12ef30)(void) = func_0c13150c;
 
