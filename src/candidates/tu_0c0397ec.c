@@ -25,7 +25,7 @@ void func_0c039888(struct Actor *a)
  if(dat_0c2f8338>2){
  int zero=0;unsigned int flags;
  a->b4=1;a->b5=a->b6=a->b7=zero;a->b19d=-128;
- flags=*(unsigned int *)&a->pad13c[0x414-0x412];
+ flags=a->l414;
  if(!((flags&0x06000000)|zero)){a->b1d2=a->b2?zero:1;a->w130=a->b1d2;}
  a->b1d0=0;func_0c0453c4(a,0);
  }

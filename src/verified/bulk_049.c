@@ -231,11 +231,6 @@ const unsigned int dat_0c0deab0[] = {
     0x0c1ce916u,
 };
 
-#pragma section n0debf0
-const unsigned short dat_0c0debf0[] = {
-    0x041cu, 0x01f7u, 0x01f9u,
-};
-
 #pragma section n0decdc
 const unsigned short dat_0c0decdc[] = {
     0x01c8u,

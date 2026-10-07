@@ -237,7 +237,7 @@ struct Actor {
     unsigned short w1e6;
     unsigned char b1e8;
     unsigned char b1e9, b1ea;
-    unsigned char b1eb,pad7fb[1];
+    unsigned char b1eb, b1ec;
     unsigned char b1ed;
     unsigned char pad7fc[0x1ef - 0x1ee];
     unsigned char b1ef;
@@ -338,7 +338,8 @@ struct Actor {
     char *p40c;
     unsigned char pad13b[1];
     unsigned char b411;
-    unsigned char pad13c[0x41c - 0x412];
+    unsigned char pad13c[2];
+    unsigned int l414, l418;
     float f41c;
     unsigned short w420;
     unsigned char pad422[2];
@@ -651,10 +652,10 @@ struct ActorSubMoveBytes { char b0, b1, b2, b3; unsigned char pad4; char b5, b6,
 
 /* Countdown words of the actor state at 0x2a4 decremented by the per-character
  * move units (offsets 8, 20 and 28 from 0x2a4). */
-struct ActorSubTimers { unsigned char pad0[8]; int t8; unsigned char pad12[8]; int t20; unsigned char pad24[4]; int t28; };
+struct ActorSubTimers { int t0; int t4; int t8; int t12; int t16; int t20; unsigned char pad24[4]; int t28; short s32, s34; };
 
 /* Countdown words of the actor at 0x2d0-0x2f0, viewed from the actor base so each is addressed by its own offset (per-frame timer update at 0x0c07d448). */
-struct ActorCountdowns { unsigned char pad0[0x2d0]; int l2d0, l2d4, l2d8, l2dc, l2e0, l2e4, l2e8, l2ec, l2f0; };
+struct ActorCountdowns { unsigned char pad0[0x2cc]; int l2cc, l2d0, l2d4, l2d8, l2dc, l2e0, l2e4, l2e8, l2ec, l2f0; };
 /* Byte controls used by callbacks receiving the actor state at 0x2a4. */
 struct ActorSubControlBytes { unsigned char pad0[2]; char b2; unsigned char pad3; char b4; unsigned char pad5[7]; char b12; unsigned char b13; };
 

@@ -190,16 +190,6 @@ const unsigned int dat_0c0fdcf8[] = {
     0x0c0344a0u, 0x0c24ad2cu, 0x0c24ad54u, 0x0c2f83f8u,
 };
 
-#pragma section n0dce34
-const unsigned short dat_0c0fde34[] = {
-    0x01f5u, 0x0141u, 0x01a3u, 0x01d2u, 0x019eu,
-};
-
-#pragma section n0dce40
-const unsigned int dat_0c0fde40[] = {
-    0x0c24abecu, 0x0c1b4f20u, 0x0c1b5070u, 0x0c02a026u, 0x3e555555u, 0xc1055555u, 0xc0a00000u, 0x0c02a0c4u,
-};
-
 #pragma section n0dd788
 const unsigned short dat_0c0fe788[] = {
     0x03f8u, 0x0328u, 0x0141u, 0x01d2u, 0x01a1u, 0x019eu, 0x01b0u, 0x041cu,
