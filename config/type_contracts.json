@@ -266,6 +266,13 @@
           "offset": "0x14",
           "size": 4,
           "evidence": "Native033824/033826 compares unsigned primary words at row+20."
+        },
+        {
+          "type": "struct SelectionFlags59e8",
+          "member": "combined_mask",
+          "offset": "0x33",
+          "size": 1,
+          "evidence": "Native1c8210..1c8218 and1c8230..1c8238 read/OR/store one byte at2fb158+0x33;1c8270..1c8276 repeats the same update. Initializer1c81b6 addresses the same byte directly at2fb18b."
         }
       ],
       "sizes": [
@@ -298,6 +305,11 @@
           "type": "struct RankingRecord24",
           "size": 24,
           "evidence": "Native033808..033822 uses24-byte row strides;03384a..033864 copies24 bytes three times for the swap."
+        },
+        {
+          "type": "struct SelectionFlags59e8",
+          "size": 76,
+          "evidence": "Preserve the existing prefix and two2-word mask rows at offset60; recovered byte0x33 replaces padding without changing established allocation or offsets."
         }
       ]
     },

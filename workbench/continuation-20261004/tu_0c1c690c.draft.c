@@ -16,10 +16,10 @@ void func_0c1c690c(struct Actor *owner,char fixed)
  a->sdc.b12c=1;a->p24=(struct LinkedActor *)owner;a->b32=owner->b524;a->b33=owner->s30;
  if(owner->b524){((struct Obj_tu5_03 *)a)->angles.scalar.l44=0x8000;a->p84=(*dat_0c2d9658)[178];}
  else{((struct Obj_tu5_03 *)a)->angles.scalar.l44=0;a->p84=(*dat_0c2d9658)[177];}
- mode=dat_0c2fb158.pad50[1];
+ mode=dat_0c2fb158.combined_mask;
  if(mode==3)*(struct LinkedActorVec3 *)&a->f52=dat_0c25e298[owner->b524][0];
  else *(struct LinkedActorVec3 *)&a->f52=dat_0c25e298[owner->b524][mode];
- ((int *)a)[0xcc/4]=0x801;((int *)a)[0xd8/4]=dat_0c2fb158.pad50[1];
+ ((int *)a)[0xcc/4]=0x801;((int *)a)[0xd8/4]=dat_0c2fb158.combined_mask;
  if(fixed)a->p16=func_0c02fe52;else a->p16=func_0c1c69fa;
  }
 }

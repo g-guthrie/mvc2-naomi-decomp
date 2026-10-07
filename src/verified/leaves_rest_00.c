@@ -41,10 +41,6 @@ void func_0c1c52c8(void) {}
 void func_0c1c6c86(void) {}
 
 
-#pragma section n1a7278
-void func_0c1c8278(void) {}
-
-
 #pragma section n1a7702
 void func_0c1c8702(void) {}
 
