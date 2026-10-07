@@ -209,8 +209,3 @@ const unsigned int dat_0c196ec8[] = {
     0x00c000dcu, 0x01a3012cu, 0x01300158u,
 };
 
-#pragma section n175fec
-const unsigned int dat_0c196fec[] = {
-    0x00c000dcu, 0x01a3012cu,
-};
-
