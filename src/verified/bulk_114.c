@@ -200,11 +200,6 @@ const unsigned short dat_0c1b1cc2[] = {
     0x0c03u, 0xa026u, 0x0c02u,
 };
 
-#pragma section n1b1e2c
-const unsigned int dat_0c1b1e2c[] = {
-    0xc2a00000u, 0xc14db6dbu, 0x0c02a0c4u, 0x0c1d53e4u,
-};
-
 #pragma section n1b22ac
 void (*const table_0c1b22ac[])(void) = {
     func_0c1fb838,
