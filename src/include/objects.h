@@ -645,6 +645,10 @@ struct Dat_13bb5c {
     unsigned short w3c;
 };
 
+/* Command-input bytes of the actor state at 0x2a4 read by the per-character
+ * special-move checkers (0x0c0bfd60 unit). */
+struct ActorSubMoveBytes { unsigned char pad0[3]; char b3; unsigned char pad4; char b5, b6, b7, b8; unsigned char pad9[4]; char b13; unsigned char pad14[12]; char b26; unsigned char pad27[3]; short s30; };
+
 /* Byte controls used by callbacks receiving the actor state at 0x2a4. */
 struct ActorSubControlBytes { unsigned char pad0[2]; char b2; unsigned char pad3; char b4; unsigned char pad5[7]; char b12; unsigned char b13; };
 
