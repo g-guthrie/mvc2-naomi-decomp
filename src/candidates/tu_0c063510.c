@@ -1,7 +1,9 @@
-/* Candidate: fourteen functions, full linked extent; eleven match exactly. Residuals: func_0c0636be
-   builds 2.0f (fldi1; fadd) in fr4 instead of fr3 and swaps two pointer temporaries; func_0c063768
-   loads dat_0c2f83f8 into r3 instead of r2; func_0c0639a6 places its shared `return 0` block before
-   the final b1f7=0 store instead of after it (and tests b1a3 in r1 rather than r3), which shifts
+/* Candidate (1270/1364): fourteen functions, full linked extent. The 2.0f
+   divisor in func_0c0636be is now a plain literal (fldi1; fadd in fr3, exact).
+   Residuals: func_0c0636be swaps two pointer temporaries (r1/r2 vs r3/r1);
+   func_0c063768 rotates r1/r2/r3 around the dat_0c2f83f8 counter; func_0c06397a
+   tests b1a3 in r2 not r3; func_0c0639a6 places its shared `return 0` block
+   before the final b1f7=0 store instead of after it, which shifts
    func_0c063a2c by 4 bytes and leaves the pool order one slot off. */
 #include "objects.h"
 typedef void (*ActorHandler)(struct Actor *);
@@ -24,8 +26,6 @@ extern void func_0c044f1c(struct Actor *);
 extern void func_0c043324(struct Actor *);
 extern int func_0c037d54(struct Actor *);
 
-#pragma inline(one)
-static float one(void) { return 1.0f; }
 
 struct Sub2a4View_0c063510 { unsigned char pad[12]; unsigned char b12, b13, b14; char b15; };
 #define B12(s) ((s)->b12)
@@ -106,11 +106,8 @@ void func_0c0636be(struct Actor *a)
     a->b1fc = 0;
     a->b158 = 4;
     a->b1a1 = 23;
-    two = 0.0f;
-    a->f104 = two;
-    two = one();
-    two += two;
-    a->f96 /= two;
+    a->f104 = 0.0f;
+    a->f96 /= 2.0f;
     a->f108 = -0.401785702f;
     func_0c0346da(a, 22);
     if (a->b1fc == 0)

@@ -1,4 +1,4 @@
-/* Candidate: func_0c074058 2.0f (fldi1;fadd) is scheduled earlier than retail; rest exact. */
+/* Two actor slide-state handlers sharing one literal pool. */
 #include "objects.h"
 extern char func_0c02a026(struct Actor *);
 extern void func_0c02a0c4(struct Actor *, int, int);
@@ -6,8 +6,6 @@ extern void func_0c043352(struct Actor *);
 extern void func_0c0344a0(struct Actor *, int);
 extern struct ActorFlags *dat_0c2d6f84;
 extern int table_0c241040[];
-#pragma inline(one)
-static float one(void){return 1.0f;}
 
 void func_0c073ff4(struct Actor *a)
 {
@@ -23,7 +21,6 @@ void func_0c073ff4(struct Actor *a)
 
 void func_0c074058(struct Actor *a)
 {
-    float y;
     if (a->b1a3) { if (dat_0c2d6f84->flags & 1) func_0c043352(a); }
     a->b1f2 = 3;
     a->b1f5 = 2;
@@ -34,8 +31,7 @@ void func_0c074058(struct Actor *a)
         a->b7++;
         a->b1f5 = 0;
         a->f104 = -a->f92 / 8.0f;
-        y = one(); y += y;
-        a->f92 /= y;
+        a->f92 /= 2.0f;
         func_0c02a0c4(a, 21, 40);
         func_0c0344a0(a, 32);
     }

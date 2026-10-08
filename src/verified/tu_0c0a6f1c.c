@@ -1,4 +1,4 @@
-/* Candidate: all functions exact except func_0c0a70aa (29/60): retail hoists mov #2,r6 into the case-0 bt.s delay slot. */
+/* Actor state handlers and the mode-selection reset sharing one literal pool. */
 #include "objects.h"
 extern void func_0c1cea66(struct Actor *,struct LinkedActorVec3 *,int);
 extern void func_0c0346da(struct Actor *,int);
@@ -84,7 +84,7 @@ clear:
 void func_0c0a70aa(struct Actor *a)
 {
     int zero=0;
-    int two=2;
+    unsigned char two=2;
     a->b5=zero;
     a->b7=zero;
     a->b6=zero;

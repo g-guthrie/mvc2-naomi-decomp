@@ -1,4 +1,4 @@
-/* Candidate: func_0c0dfcc4/func_0c0dfd28/func_0c0dfd60 switch compares in 2,0,1 order with the body after the literal pool in retail (SHC sorts to 0,1,2 here); func_0c0dfe3a passes a dummy second argument, giving size parity only. */
+/* CPU special-move checks, normal attack selectors and attack-state handlers sharing literal pools. */
 #include "objects.h"
 extern unsigned char dat_0c248f90[],dat_0c248fa0[],dat_0c248fb0[],dat_0c248fc0[],dat_0c248fd0[],dat_0c248fe0[],dat_0c248ff0[];
 extern unsigned char dat_0c249000[],dat_0c249010[],dat_0c249020[],dat_0c249046[],dat_0c249056[];
@@ -25,7 +25,7 @@ void func_0c0df68c(struct Actor *a),func_0c0df75e(struct Actor *a),func_0c0df80c
 void func_0c0df9d8(struct Actor *a),punch_0c0df9ea(struct Actor *a),kick_0c0dfb00(struct Actor *a);
 void func_0c0dfc42(struct Actor *a),func_0c0dfcc4(struct Actor *a),func_0c0dfd28(struct Actor *a),func_0c0dfd60(struct Actor *a),func_0c0dfdec(struct Actor *a);
 void func_0c0dfe3a(struct Actor *a);
-void func_0c0dfe7c(struct Actor *a,struct ActorSub2a4 *state),func_0c0dfe9e(struct Actor *a,struct ActorSub2a4 *state);
+void func_0c0dfe7c(struct Actor *a),func_0c0dfe9e(struct Actor *a);
 void func_0c0def40(struct Actor *a)
 {
  if(func_0c0465cc(a))return;
@@ -290,9 +290,9 @@ void func_0c0dfd28(struct Actor *a)
 void func_0c0dfd60(struct Actor *a)
 {
  switch(a->b1e8){
- case 2:if(func_0c02a026(a)<0)func_0c0437b8(a);break;
+ case 2:if(func_0c02a026(a)<0)goto fail;break;
  case 0:case 1:
-  if(func_0c02a026(a)<0){func_0c0437b8(a);break;}
+  if(func_0c02a026(a)<0){fail:func_0c0437b8(a);break;}
   if(a->b14b){int zero=0;a->b1a1=a->b14b;a->w1ac=zero;a->b19e=zero;*(unsigned int *)&a->p1c4=zero;dat_0c2f83f8->arr[a->b2]++;a->b14b=zero;}
   break;
  }
@@ -305,8 +305,8 @@ void func_0c0dfe24(struct Actor *a){func_0c0421f4(a);func_0c0420f8(a);func_0c0df
 void func_0c0dfe3a(struct Actor *a)
 {
  func_0c042018(a);func_0c0421b8(a);
- if((unsigned char)a->b1fe==1)func_0c0dfe9e(a,0);else func_0c0dfe7c(a,0);
+ if((unsigned char)a->b1fe==1)func_0c0dfe9e(a);else func_0c0dfe7c(a);
  if(func_0c044e52(a))func_0c044f1c(a);
 }
-void func_0c0dfe7c(struct Actor *a,struct ActorSub2a4 *state){if(func_0c02a026(a)<0)func_0c0438de(a);}
-void func_0c0dfe9e(struct Actor *a,struct ActorSub2a4 *state){if(func_0c02a026(a)<0)func_0c0438de(a);}
+void func_0c0dfe7c(struct Actor *a){if(func_0c02a026(a)<0)func_0c0438de(a);}
+void func_0c0dfe9e(struct Actor *a){if(func_0c02a026(a)<0)func_0c0438de(a);}

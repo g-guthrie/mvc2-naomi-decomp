@@ -189,7 +189,9 @@ struct Actor {
     unsigned char pad6[0x130 - 0x12d];
     unsigned short w130;
     unsigned short w132;
-    unsigned char pad6b[0x13c - 0x134];
+    short s134;
+    short s136;
+    unsigned char pad6b[0x13c - 0x138];
     unsigned char b13c;
     unsigned char b13d;
     unsigned char b13e,b13f;

@@ -1,4 +1,4 @@
-/* Candidate: the 2.0f divisor in the landing branch is built in fr4 here where retail builds it in fr3 (fldi1; fadd); everything else matches. */
+/* Actor landing/jump state handler and its literal pool. */
 #include "objects.h"
 extern char func_0c02a026(struct Actor *);
 extern void func_0c02a0c4(struct Actor *, int, int);
@@ -7,8 +7,6 @@ extern int func_0c0447bc(struct Actor *);
 extern void func_0c025900(struct Actor *, int, int);
 extern void func_0c134db0(struct Actor *, int);
 extern void func_0c044548(struct Actor *, struct Actor *);
-#pragma inline(one_0c062474)
-static float one_0c062474(void){return 1.0f;}
 
 void func_0c062474(struct Actor *a)
 {
@@ -49,16 +47,13 @@ void func_0c062474(struct Actor *a)
         }
         func_0c02a0c4(a, 22, 11);
     } else if (--a->s28 == 0) {
-        float two;
         sub->b28 = none;
         func_0c0344a0(a, 43);
         a->b6 = 3;
         a->b7 = none;
         a->f96 = zero;
-        two = one_0c062474();
-        two += two;
         a->f108 = zero;
-        a->f92 /= two;
+        a->f92 /= 2.0f;
         func_0c02a0c4(a, 22, 10);
     }
 }

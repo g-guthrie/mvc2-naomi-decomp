@@ -1,12 +1,10 @@
-/* Candidate: func_0c054a52 builds the 2.0f divisor in fr5 where retail uses fr3 (fldi1; fadd). The other two functions are exact. */
+/* Three actor state handlers sharing one literal pool. */
 #include "objects.h"
 extern void func_0c025900(struct Actor*,int,int);
 extern void func_0c02a0c4(struct Actor*,int,int);
 extern void func_0c048ce6(struct Actor*);
 extern void func_0c1d4610(struct Actor*,void*);
 extern void (*table_0c23f440[])(struct Actor *);
-#pragma inline(one_0c054a52)
-static float one_0c054a52(void){return 1.0f;}
 void func_0c0549e0(struct Actor *a);
 void func_0c054a52(struct Actor *a);
 void func_0c054ae2(struct Actor *a);
@@ -32,7 +30,6 @@ void func_0c0549e0(struct Actor *a)
 void func_0c054a52(struct Actor *a)
 {
     struct Vec3_tu5_03 pos;
-    float two;
     a->b1d2 ^= 1;
     a->w130 = a->b1d2;
     if (!(a->b34 & 2)) {
@@ -45,10 +42,8 @@ void func_0c054a52(struct Actor *a)
     func_0c1d4610(a, &pos);
     a->b1a0 = 10;
     a->f92 = 0;
-    two = one_0c054a52();
-    two += two;
     a->f104 = 0;
-    a->f96 /= two;
+    a->f96 /= 2.0f;
     a->f108 = -0.80357140303f;
     func_0c048ce6(a);
     func_0c02a0c4(a, 15, 2);
