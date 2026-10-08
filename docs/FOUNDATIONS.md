@@ -24,7 +24,10 @@ and applicable type contracts. Diagnostic normalization never accepts a match.
 
 Boundary admission checks reviewed incoming/outgoing branches in both directions,
 full literal widths, mapping gaps, split delay slots, and conditional branches
-into exported entries. Cloning and registration reject blocked boundaries.
+into exported entries. Cloning and registration reject blocked boundaries,
+with one exception: an exact unit may register with a conditional branch onto
+another entry it exports, because then the compiler emitted that branch from
+separately defined C functions (tu_0c1829d4, tu_0c1bae18, tu_0c0ccd44).
 The work queue separates these blockers from near matches and supplies next
 steps. Permutations check boundaries/contracts, skip duplicate variants, and
 limit structurally misplaced candidates to twelve probes.
