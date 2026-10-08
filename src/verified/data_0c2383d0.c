@@ -90,17 +90,6 @@ const unsigned int dat_0c238468[] = {
     0xa05f6908u,
 };
 
-#pragma section n23879e
-const unsigned short dat_0c23879e[] = {
-    0x0c23u,
-};
-
-#pragma section n2387a4
-const char dat_0c2387a4[28] = "\012sySq Ver 1.50 Build:May 31 ";
-
-#pragma section n2387c4
-const char dat_0c2387c4[8] = " 16:26:0";
-
 #pragma section n2387ec
 const char *const dat_0c2387ec[] = {
     dat_0c2387f4,
