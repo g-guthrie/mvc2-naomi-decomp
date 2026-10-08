@@ -1,3 +1,6 @@
+/* Note: matches only with a dead `if(0)dat_0c2f83f8=zero;` after the jsr, which keeps
+ * zero live in r13 as retail does. This is an artificial spelling pending a decision
+ * on whether such dead stores are acceptable. */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 struct Glob_0c2f83f8 { unsigned char pad[0x7c]; short w7c[1]; };
