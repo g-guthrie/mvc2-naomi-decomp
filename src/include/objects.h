@@ -691,7 +691,9 @@ struct Obj_tu5_03 {
     float *p200;
     int lcc;
     int i208;
-    unsigned char pad8[0xe4 - 0xd4];
+    unsigned char pad8[0xd8 - 0xd4];
+    int ld8;
+    unsigned char pad8b[0xe4 - 0xdc];
     int lE4, lE8, lEC;
     int lf0;
     unsigned char pad9[0x12c - 0xf4];

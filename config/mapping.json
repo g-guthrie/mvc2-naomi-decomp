@@ -288241,6 +288241,13 @@
       "evidence": "CFG walk from 0x0c184ee8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c18504c",
+      "size": 4,
+      "kind": "code",
+      "sha256": "ef7d765240dfe58f1e728aef6ae72c63e4e43e868123d1f4841639673730e75f",
+      "evidence": "Lead review: rts; mov.l @r15+,r14 - unreachable epilogue SHC emits after the table tail jump jmp @r3 at 0x0c185048 in func_0c185018; tu_0c184e20 compiles it byte-exact."
+    },
+    {
       "address": "0x0c185050",
       "size": 4,
       "kind": "data",
