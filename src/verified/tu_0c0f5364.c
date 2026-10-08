@@ -20,16 +20,16 @@ extern void (*dat_0c24a470[])(struct Actor *);
 extern char dat_0c24a3c0[], dat_0c24a3c4[], dat_0c24a3c8[], dat_0c24a3cc[], dat_0c24a3d0[], dat_0c24a3d4[];
 extern char dat_0c24a3d8[], dat_0c24a3dc[], dat_0c24a3e0[], dat_0c24a3e4[], dat_0c24a3e8[], dat_0c24a3ec[];
 
-static void pick(struct Actor *a);
+void func_0c0f538c(struct Actor *a);
 static void punch(struct Actor *a);
 static void kick(struct Actor *a);
 
 void func_0c0f5364(struct Actor *a)
 {
     if ((a->b1fe == 0 && (a->b1d6 & 15) != 0) || (a->b1fe != 0 && (a->b1d6 & 0xf0) != 0))
-        pick(a);
+        func_0c0f538c(a);
 }
-static void pick(struct Actor *a)
+void func_0c0f538c(struct Actor *a)
 {
     if ((unsigned char)a->b1fe == 1)
         kick(a);
@@ -124,7 +124,7 @@ void func_0c0f55d4(struct Actor *a)
 {
     dat_0c24a470[a->b1ff](a);
 }
-static void step(struct Actor *a);
+void func_0c0f55f6(struct Actor *a);
 static void s56a0(struct Actor *a);
 static void s570c(struct Actor *a);
 static void s572e(struct Actor *a);
@@ -132,9 +132,9 @@ static void s5750(struct Actor *a);
 void func_0c0f55e8(struct Actor *a)
 {
     func_0c043352(a);
-    step(a);
+    func_0c0f55f6(a);
 }
-static void step(struct Actor *a)
+void func_0c0f55f6(struct Actor *a)
 {
     a->f52 += a->f92;
     a->f92 += a->f104;
@@ -187,16 +187,16 @@ static void s5750(struct Actor *a)
     if (func_0c02a026(a) < 0)
         func_0c0437b8(a);
 }
-static void s5788(struct Actor *a);
+void func_0c0f5788(struct Actor *a);
 static void s57f0(struct Actor *a);
 static void s5812(struct Actor *a);
 void func_0c0f5772(struct Actor *a)
 {
     func_0c0421f4(a);
     func_0c0420f8(a);
-    s5788(a);
+    func_0c0f5788(a);
 }
-static void s5788(struct Actor *a)
+void func_0c0f5788(struct Actor *a)
 {
     func_0c042018(a);
     func_0c0421b8(a);

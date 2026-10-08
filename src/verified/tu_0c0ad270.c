@@ -16,7 +16,8 @@ unsigned char func_0c0ad4dc(struct Actor *a),func_0c0ad522(struct Actor *a),func
 unsigned char func_0c0ad61a(struct Actor *a);
 int func_0c0ad654(struct Actor *a);
 static void ground_0c0ad74e(struct Actor *a),air_0c0ad7f8(struct Actor *a),kground_0c0ad8ca(struct Actor *a),kair_0c0ad9a4(struct Actor *a);
-static void select_0c0ada7a(struct Actor *a),punch_0c0adab4(struct Actor *a),kick_0c0adbe0(struct Actor *a);
+void func_0c0ada7a(struct Actor *a);
+static void punch_0c0adab4(struct Actor *a),kick_0c0adbe0(struct Actor *a);
 void func_0c0ad270(struct Actor *a)
 {
     register unsigned int i;
@@ -172,9 +173,9 @@ static void kair_0c0ad9a4(struct Actor *a)
 }
 void func_0c0ada52(struct Actor *a)
 {
- if((a->b1fe==0&&(a->b1d6&15))||(a->b1fe!=0&&(a->b1d6&0xf0)))select_0c0ada7a(a);
+ if((a->b1fe==0&&(a->b1d6&15))||(a->b1fe!=0&&(a->b1d6&0xf0)))func_0c0ada7a(a);
 }
-static void select_0c0ada7a(struct Actor *a)
+void func_0c0ada7a(struct Actor *a)
 {
  if((unsigned char)a->b1fe==1)kick_0c0adbe0(a);
  else punch_0c0adab4(a);

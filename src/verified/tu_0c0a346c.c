@@ -1,5 +1,5 @@
 /* Move-counter state handlers 0x0c0a346c-0x0c0a3a14. func_0c0a375e tail-branches to a
- * static selector (retail bra 0x0c0a3786) and reads through a volatile pointer. */
+ * selector func_0c0a3786 (retail bra 0x0c0a3786) and reads through a volatile pointer. */
 #include "objects.h"
 struct MoveCounters_0c0a346c { unsigned char pad[124]; short counts[2]; };
 extern struct MoveCounters_0c0a346c *dat_0c2f83f8;
@@ -149,13 +149,13 @@ void func_0c0a3690(register struct Actor *a)
     dat_0c2f83f8->counts[a->b2]++;
     func_0c02a0c4(a,10,a->b158);
 }
-static void sel_0c0a3786(struct Actor *a);
+void func_0c0a3786(struct Actor *a);
 void func_0c0a375e(volatile struct Actor *a)
 {
     if (!a->b1fe && (a->b1d6 & 15) || a->b1fe && (a->b1d6 & 0xf0))
-        sel_0c0a3786((struct Actor *)a);
+        func_0c0a3786((struct Actor *)a);
 }
-static void sel_0c0a3786(struct Actor *a)
+void func_0c0a3786(struct Actor *a)
 {
     if ((unsigned char)a->b1fe == 1) func_0c0a38ae(a);
     else func_0c0a3798(a);

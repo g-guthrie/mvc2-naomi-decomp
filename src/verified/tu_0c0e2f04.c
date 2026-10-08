@@ -257,14 +257,14 @@ void func_0c0e36f4(struct Actor *a)
 
 void func_0c0e37dc(struct Actor *a){int zero=0;switch(a->b1e8){case 0:a->b158=zero;a->b1a1=9;func_0c0346da(a,20);a->p3f4=dat_0c24933c;a->b1a7=zero;break;case 1:a->b158=1;a->b1a1=10;func_0c0346da(a,21);a->p3f4=dat_0c249340;a->b1a7=1;break;case 2:a->b158=2;a->b1a1=11;func_0c0346da(a,22);a->p3f4=dat_0c249344;a->b1a7=2;break;}a->w1ac=zero;a->b19e=zero;*(unsigned int*)&a->p1c4=zero;dat_0c2f83f8->arr[a->b2]++;func_0c02a0c4(a,10,a->b158);}
 
-static void select_0c0e38d8(struct Actor *a);
+void func_0c0e38d8(struct Actor *a);
 static void punch_0c0e38ea(struct Actor *a);
 static void kick_0c0e3a36(struct Actor *a);
 void func_0c0e38b0(struct Actor *a)
 {
- if((a->b1fe==0&&(a->b1d6&15))||(a->b1fe!=0&&(a->b1d6&0xf0)))select_0c0e38d8(a);
+ if((a->b1fe==0&&(a->b1d6&15))||(a->b1fe!=0&&(a->b1d6&0xf0)))func_0c0e38d8(a);
 }
-static void select_0c0e38d8(struct Actor *a)
+void func_0c0e38d8(struct Actor *a)
 {
  if((unsigned char)a->b1fe==1)kick_0c0e3a36(a);
  else punch_0c0e38ea(a);
