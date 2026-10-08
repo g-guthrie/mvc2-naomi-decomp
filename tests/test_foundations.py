@@ -134,6 +134,17 @@ class BoundaryTests(unittest.TestCase):
                             [0x1000, 0x101e], [(0x1000, 48, 'code'), (0x1030, 2, 'data')])
         self.assertIn('outgoing_literal', {i['kind'] for i in result['issues']})
 
+    def test_conditional_entry_admitted_only_for_exact_units(self):
+        from diff_unit import admission_issues
+        blob = bytes.fromhex('e62f018900e00900e62f')  # Saved frame, BT ->1008, next entry.
+        issues = self.audit(blob, [{'address': 0x1000, 'size': len(blob), 'kind': 'code'}],
+                            [0x1000, 0x1008])['issues']
+        self.assertIn('conditional_entry', {i['kind'] for i in issues})
+        self.assertEqual(admission_issues(issues, True), [])
+        self.assertEqual(admission_issues(issues, False), issues)
+        gap = [{'kind': 'unreviewed_gap', 'address': '0x1000', 'end': '0x1004'}]
+        self.assertEqual(admission_issues(gap, True), gap)
+
     def test_legitimate_direct_call_to_entry_is_allowed(self):
         blob = bytes.fromhex('00b009000b000900')
         result = self.audit(blob, [{'address': 0x1004, 'size': 4, 'kind': 'code'}], [0x1004])

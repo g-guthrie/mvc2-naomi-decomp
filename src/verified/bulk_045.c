@@ -244,8 +244,3 @@ void (*const table_0c0cb278[])(void) = {
     func_0c044f1c,
 };
 
-#pragma section n0cce90
-const unsigned short dat_0c0cce90[] = {
-    0x014bu,
-};
-

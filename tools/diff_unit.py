@@ -192,14 +192,26 @@ def release_pools(unit, units):
     return [u for u in units if u['sections']]
 
 
+def admission_issues(issues, exact):
+    """Boundary issues that block registration.
+
+    A conditional branch onto another exported entry of the same unit
+    (conditional_entry) is admitted only for an exact unit: every byte,
+    including that branch, then came from the compiler with both functions
+    defined separately in the source, not from a label standing in for an
+    entry.
+    """
+    return [i for i in issues if not (exact and i['kind'] == 'conditional_entry')]
+
+
 def register(unit, exact):
     # Existing byte equality remains mandatory for verified units. Boundary
     # admission also prevents a newly registered fragment from posing as C.
     if any(s['kind'] == 'code' for s in unit['sections']):
         from boundaries import BoundaryIndex
-        boundary = BoundaryIndex.current().unit(unit)
-        if boundary['issues']:
-            raise ValueError('Candidate boundary review failed: ' + json.dumps(boundary['issues']))
+        issues = admission_issues(BoundaryIndex.current().unit(unit)['issues'], exact)
+        if issues:
+            raise ValueError('Candidate boundary review failed: ' + json.dumps(issues))
     unit = hexed(unit)
     unit['mode'] = 'verified' if exact else 'candidate'
     if unit['source'].startswith('src/verified/') and not exact:

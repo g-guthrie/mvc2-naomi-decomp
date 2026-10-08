@@ -74,47 +74,6 @@ extern void func_0c2443b0(void);
 extern void func_0c24466c(void);
 extern void func_0c24467c(void);
 
-#pragma section n09f5e4
-void (*const table_0c09f5e4[])(void) = {
-    func_0c02a026,
-    func_0c0438de,
-};
-
-#pragma section n09f708
-void (*const ptr_0c09f708)(void) = func_0c02a026;
-
-#pragma section n09f710
-void (*const ptr_0c09f710)(void) = func_0c2438b4;
-
-#pragma section n09f880
-void (*const table_0c09f880[])(void) = {
-    func_0c02a0c4,
-    func_0c043324,
-    func_0c02a026,
-    func_0c0437b8,
-};
-
-#pragma section n09f9d4
-void (*const table_0c09f9d4[])(void) = {
-    func_0c02a026,
-    func_0c0437b8,
-};
-
-#pragma section n09fbd4
-void (*const table_0c09fbd4[])(void) = {
-    func_0c14a9fe,
-    func_0c02a026,
-    func_0c0437b8,
-};
-
-#pragma section n09fd40
-void (*const table_0c09fd40[])(void) = {
-    func_0c043324,
-    func_0c02a026,
-    func_0c14a9fe,
-    func_0c0437b8,
-};
-
 #pragma section n0a02bc
 void (*const table_0c0a02bc[])(void) = {
     func_0c02849a,
