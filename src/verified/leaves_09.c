@@ -1,8 +1,5 @@
 /* Hitachi SHC 5.0R31 -optimize=1 four-byte leaves. */
 
-#pragma section n125178
-void func_0c125178(void) {}
-
 #pragma section n14fe00
 void func_0c14fe00(void) {}
 
