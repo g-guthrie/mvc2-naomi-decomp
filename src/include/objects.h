@@ -96,6 +96,10 @@ struct MotionContext8a3 {
 
 /* Signed spawn timer (+20) and phase counter (+40) in the actor +0x2a4 record. */
 struct ActorSub2a4Timers { unsigned char pad0[20]; signed char timer20; unsigned char pad21[19]; signed char phase40; };
+/* Selected mode word (+20) in the actor +0x2a4 record (0x0c07e25e/0x0c07e298). */
+struct ActorSub2a4Mode20 { unsigned char pad0[20]; int mode; };
+/* Stage bytes (+9 saved 0x141, +11 counter, +12 step) and word +34 of the actor +0x2a4 record (0x0c078108-0x0c078488). */
+struct ActorSub2a4Stage { unsigned char pad0[9]; unsigned char b9; unsigned char pad10; unsigned char b11, b12; unsigned char pad13[21]; unsigned short w34; };
 
 /* Linked actor (+4) and its counter (+8) in the actor +0x2a4 record. */
 struct ActorSub2a4Link { unsigned char pad0[4]; struct Actor *target; short s8; };
@@ -143,6 +147,7 @@ struct HitboxSelection_15dc08 { short index0,pad2,index4; unsigned char pad6[10]
 
 /* The moving object most leaf functions update: a state byte at 4, a timer at
  * 28, position at 52, velocity at 92 and acceleration at 104. */
+struct LinkedActorVec3 { float x, y, z; };
 struct Actor {
     unsigned char b0,b1;
     unsigned char b2;
@@ -307,10 +312,19 @@ struct Actor {
     char b259;
     unsigned char pad25a[0x25c - 0x25a];
     short s25c;
-    unsigned char pad10b0b[0x278 - 0x25e];
+    short s25e;
+    short s260;
+    unsigned char pad262[2];
+    unsigned short w264, w266;
+    short s268, s26a, s26c, s26e, s270;
+    unsigned char b272;
+    unsigned char b273, b274; signed char b275; unsigned char b276, b277;
     short s278;
     unsigned char b27a, b27b;
-    unsigned char pad10b2[0x298 - 0x27c];
+    short s27c;
+    unsigned char pad27e[0x284 - 0x27e];
+    struct LinkedActorVec3 v284;
+    unsigned char pad290[0x298 - 0x290];
     float f664;
     unsigned char pad10a[3],b29f;
     unsigned short w2a0;unsigned char pad2a2[2];
@@ -324,7 +338,9 @@ struct Actor {
     unsigned char b326;
     unsigned char b327;
     unsigned char b328;
-    unsigned char pad11a[0x340 - 0x329];
+    unsigned char pad11a[0x32e - 0x329];
+    short s32e;
+    unsigned char pad330[0x340 - 0x330];
     unsigned short w340;
     unsigned short w342, w344, w346;
     unsigned short w348;
@@ -382,7 +398,8 @@ struct Actor {
     union ActorParameter4 parameter4b4;
     unsigned char pad4b8[0x4c9 - 0x4b8];
     char b4c9;
-    unsigned char pad15[0x4dc - 0x4ca];
+    unsigned char pad15[0x4d4 - 0x4ca];
+    unsigned char score4d4[8];
     unsigned short w4dc;
     unsigned char pad15b[0x4e0 - 0x4de];
     unsigned short w4e0;
@@ -451,7 +468,6 @@ struct Tbl_ub3_01 { unsigned char pad[124]; short arr[100]; };
 
 /* Linked actor variant with pointers at 0x14 and 0x18. The 0xc0-byte block at
  * 0xdc is copied by SHC's runtime helper in the 0x0c19dxxx callbacks. */
-struct LinkedActorVec3 { float x, y, z; };
 union LinkedActorW158 { short short_value; unsigned char bytes[2]; };
 /* Actual four-byte control prefix at linked actor offset 0x12c.
  * Keep the legacy raw block view for existing verified consumers. */
@@ -892,7 +908,14 @@ struct ActorFlags64 { unsigned int hi, lo; };
 /* Match-state view of 0x0c2f8338: state byte, then each side's three team
  * Actor pointers at +24 (12 bytes per side), read by the 0x0c042728 unit. */
 struct Team8338 { struct Actor *m[3]; };
-struct G8338 { unsigned char b0; char pad[23]; struct Team8338 t[2]; };
+struct G8338 {
+    unsigned char b0, b1, b2; char pad[21]; struct Team8338 t[2];
+    char pad30[0x3e - 0x30]; signed char b3e; char pad3f; signed char b40;
+    char pad41[0x4e - 0x41]; short w4e[2]; short w52[2];
+    char pad56[0x6c - 0x56]; unsigned int l6c[2];
+    char pad74[0x78 - 0x74]; short w78[2];
+    char pad7c[0x9a - 0x7c]; unsigned char b9a[5];
+};
 
 /* Actor position (Actor f52/f56/f60) as one vector, for struct copies. */
 struct ActorPos52 { char pad[52]; struct LinkedActorVec3 pos; };
