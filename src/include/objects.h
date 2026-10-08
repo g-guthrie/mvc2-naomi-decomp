@@ -405,11 +405,11 @@ struct Actor {
     unsigned short w4dc;
     unsigned char pad15b[0x4e0 - 0x4de];
     unsigned short w4e0;
-    unsigned char pad4e2[0x524 - 0x4e2];
+    unsigned char pad4e2[0x504 - 0x4e2]; unsigned int l504[2]; unsigned char pad50c[0x510 - 0x50c]; char b510; unsigned char pad511[0x524 - 0x511];
     char b524;
     unsigned char b525;
     unsigned char pad526[1], b527, pad528[4]; char b52c;
-    unsigned char pad52d[2], b52f, pad530[4]; unsigned int score534, score538; unsigned char pad53c, rank53d, pad53e; char b53f;
+    unsigned char b52d, pad52e[1], b52f, pad530[4]; unsigned int score534, score538; unsigned char pad53c, rank53d, pad53e; char b53f;
     unsigned char pad540[3]; char b543;
 };
 
@@ -444,6 +444,7 @@ struct ActorFlags {
     signed char b81; unsigned char pad130[2]; signed char b84;
     signed char b85; unsigned char pad134[0x88-0x86]; unsigned char b88; unsigned char pad137[0x8d-0x89], b8d; signed char b8e;
     signed char b8f; int i90; void *p94; unsigned char b98,pad99, b9a; unsigned char pad9b[0xa5-0x9b]; signed char b_a5;
+    unsigned char pada6[0xab-0xa6]; unsigned char b_ab;
 };
 struct Glob_me00 { unsigned char pad[0x14]; int l14; };
 
@@ -666,7 +667,12 @@ struct MotionGlobal_0c2d9260 {
     unsigned char b5, b6;
     unsigned char pad7[12 - 7];
     float f12, f16, f20;
-    unsigned char pad24[0x88 - 24];
+    struct Vec3_tu5_03 v18;
+    unsigned char pad24[0x54 - 0x24];
+    struct Vec3_tu5_03 v54[2];
+    unsigned char pad6c[0x80 - 0x6c];
+    float f80;
+    unsigned char pad84[0x88 - 0x84];
     float f88, f8c, f90, f94, f98, f9c;
     unsigned char pada0[8];
     float fa8;
