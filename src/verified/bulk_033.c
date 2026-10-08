@@ -99,17 +99,6 @@ const unsigned short dat_0c099dfa[] = {
     0x01feu,
 };
 
-#pragma section n09aabc
-void (*const table_0c09aabc[])(void) = {
-    func_0c048bb0,
-    func_0c0442fa,
-    func_0c0432ca,
-    func_0c02a39a,
-    func_0c02a0c4,
-    func_0c1476d0,
-    func_0c243518,
-};
-
 #pragma section n09ac14
 void (*const table_0c09ac14[])(void) = {
     func_0c048bb0,
@@ -157,16 +146,6 @@ void (*const table_0c09b2d8[])(void) = {
     func_0c043324,
     func_0c02a026,
     func_0c0438de,
-};
-
-#pragma section n09b438
-void (*const table_0c09b438[])(void) = {
-    func_0c048bb0,
-    func_0c0442fa,
-    func_0c148d54,
-    func_0c0432ca,
-    func_0c02a0c4,
-    func_0c02a026,
 };
 
 #pragma section n09b57a

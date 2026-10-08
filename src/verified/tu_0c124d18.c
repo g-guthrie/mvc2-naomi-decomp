@@ -1,4 +1,4 @@
-/* Dash/throw state handlers (0x0c124d18-0x0c124e60). */
+/* Assembled by tools/clone.py from verified twins. */
 #include "objects.h"
 extern void func_0c0437b8(struct Actor *),func_0c042018(struct Actor *),func_0c0421b8(struct Actor *),func_0c044f1c(struct Actor *),func_0c0346da(struct Actor *,int),func_0c1d2a56(struct LinkedActorVec3 *,int);
 extern unsigned char func_0c044e52(struct Actor *),func_0c044846(struct Actor *);
@@ -30,7 +30,7 @@ void func_0c124d7e(struct Actor *a,struct ActorSub2a4 *sub);
 void func_0c124d18(struct Actor *a,struct ActorSub2a4 *sub)
 {
  a->b6++;func_0c0442fa(a);func_0c02a39a(a,0);func_0c0432ca(a);
- {int zero=0;a->b1a1=1;a->w1ac=zero;a->b19e=zero;*(unsigned int*)&a->p1c4=zero;}dat_0c2f83f8->arr[a->b2]++;
+ a->b1a1=1;a->w1ac=0;a->b19e=0;*(unsigned int *)&a->p1c4=0;dat_0c2f83f8->arr[a->b2]++;
  func_0c02a0c4(a,7,1);func_0c0346da(a,21);func_0c124d7e(a,sub);
 }
 void func_0c124d7e(struct Actor *a,struct ActorSub2a4 *sub)

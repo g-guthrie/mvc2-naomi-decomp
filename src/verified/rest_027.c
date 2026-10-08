@@ -237,18 +237,3 @@ const unsigned int dat_0c0a02b8[] = {
     0x0c243914u,
 };
 
-#pragma section n0802ca
-const unsigned short dat_0c0a12ca[] = {
-    0x0255u, 0x00ffu, 0x03f0u,
-};
-
-#pragma section n0802d4
-const unsigned int dat_0c0a12d4[] = {
-    0x014102a4u,
-};
-
-#pragma section n0802e8
-const unsigned int dat_0c0a12e8[] = {
-    0x0c09e43au, 0x432b6db6u,
-};
-
