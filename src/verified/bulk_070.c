@@ -109,26 +109,6 @@ const unsigned int dat_0c12dc1c[] = {
     0x41d55555u, 0x42892492u, 0x0c1d4610u, 0x0c025900u,
 };
 
-#pragma section n12edcc
-void (*const table_0c12edcc[])(void) = {
-    func_0c02a0c4,
-    func_0c043352,
-    func_0c044df4,
-    func_0c02a026,
-    func_0c13150c,
-    func_0c18b864,
-};
-
-#pragma section n12f070
-void (*const table_0c12f070[])(void) = {
-    func_0c0346da,
-    func_0c043324,
-    func_0c03916c,
-    func_0c025762,
-    func_0c13150c,
-    func_0c24e0a0,
-};
-
 #pragma section n12fb5a
 const unsigned short dat_0c12fb5a[] = {
     0x014bu, 0x0141u,
