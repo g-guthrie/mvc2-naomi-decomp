@@ -3,7 +3,7 @@
 extern void func_0c02a026(void);
 extern void func_0c1fb7a0(void);
 extern void func_0c1fb838(void);
-extern void func_0c24fea8(void);
+extern void (*const dat_0c24fea8[])(void);
 
 #pragma section n147908
 const unsigned int dat_0c147908[] = {
@@ -212,7 +212,7 @@ const unsigned short dat_0c1493a2[] = {
 #pragma section n1493a4
 void (*const table_0c1493a4[])(void) = {
     func_0c02a026,
-    func_0c24fea8,
+    (void (*)(void))dat_0c24fea8,
     func_0c1fb838,
     func_0c1fb7a0,
 };

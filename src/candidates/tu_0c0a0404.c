@@ -234,15 +234,13 @@ void func_0c0a0a98(struct Actor *a) {
   a->b6++;
   if (a->b255 == 3)
     a->b1a1 = 84;
-  else
-    a->b1a1 = a->b1a3 + 48;
+  else {
+    goto L; L: a->b1a1 = a->b1a3 + 48; }
   a->w1ac = 0;
   a->b19e = 0;
   a->p1c4 = 0;
-  {
-    short *counter = &dat_0c2f83f8->arr[a->b2];
-    (*counter)++;
-  }
+  dat_0c2f83f8->arr[a->b2]++;
+  goto M; M:
   func_0c048bb0(a, 5);
   func_0c0442fa(a);
   a->b1f9 = 0;

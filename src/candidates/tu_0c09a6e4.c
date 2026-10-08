@@ -1,5 +1,3 @@
-/* Six of seven functions and both literal pools match.
- * func_0c09a7be remains 119/136 bytes. */
 #include "objects.h"
 extern char func_0c02a026(struct Actor *);
 extern void func_0c048bb0(struct Actor *, int);
@@ -53,12 +51,13 @@ void func_0c09a7be(struct Actor *a) {
   a->b6++;
   if (a->b255 == 3)
     a->b1a1 = 79;
-  else
-    a->b1a1 = 49;
+  else {
+    goto L; L: a->b1a1 = 49; }
   a->w1ac = 0;
   a->b19e = 0;
   *(unsigned int *)&a->p1c4 = 0;
   dat_0c2f83f8->arr[a->b2]++;
+  goto M; M:
   func_0c048bb0(a, 5);
   func_0c0442fa(a);
   a->f56 = a->f41c;

@@ -397,7 +397,10 @@ def trim_crossing(unit, units, main, base):
 
 def register(new_units, main, base):
     path = ROOT / 'config/units.json'
-    with open(path, 'r+') as handle:
+    # Same stable lock as diff_unit.register: the registry file itself is replaced.
+    (ROOT / 'build').mkdir(exist_ok=True)
+    with open(ROOT / 'build/units.lock', 'w') as guard, open(path, 'r+') as handle:
+        fcntl.flock(guard, fcntl.LOCK_EX)
         fcntl.flock(handle, fcntl.LOCK_EX)
         units = json.load(handle)
         ids = {u['id'] for u in units}

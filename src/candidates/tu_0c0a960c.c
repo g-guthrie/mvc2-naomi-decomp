@@ -1,5 +1,3 @@
-/* Two callbacks still use different function-target registers.
- * Both dispatchers, the initializer, and both pools match retail. */
 #include "objects.h"
 extern void func_0c042018(struct Actor *);
 extern void (*table_0c2444f8[])(struct Actor *, struct ActorSub2a4 *);
@@ -63,6 +61,7 @@ void func_0c0a9706(struct Actor *a, struct ActorSub2a4 *unused)
             /* Retail adds to this stack slot without initializing it. */
             position.y += 94.2857132f;
         } else {
+            goto L1; L1:
             func_0c02a0c4(a, 22, 1);
             position.x = zero;
             position.y += 51.42857f;
@@ -80,11 +79,11 @@ void func_0c0a97c2(struct Actor *a, struct ActorSub2a4 *unused)
         a->b327 = 0;
         a->b328 = 0;
         if (a->b1f9 == 0) func_0c0437b8(a);
-        else func_0c0438de(a);
-    } else if (a->b141) {
+        else { goto L2; L2: func_0c0438de(a); }
+    } else { goto L3; L3: if (a->b141) {
         a->b141 = 0;
         func_0c150268(a, 0);
-    }
+    }}
 }
 void func_0c0a9834(struct Actor *a)
 {

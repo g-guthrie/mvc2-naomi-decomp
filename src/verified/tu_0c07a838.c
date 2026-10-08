@@ -1,4 +1,4 @@
-/* Candidate: func_0c07abf6 keeps the 0xff addend in r14 instead of r3 (5 instrs); func_0c07ae34 loads zero/9 in swapped order (2 instrs). */
+/* Verified: whole 2944-byte unit at 0x0c07a838. */
 #include "objects.h"
 extern void (*dat_0c2416a8[])(struct Actor *);
 extern void (*dat_0c2416b8[])(struct Actor *);
@@ -10,7 +10,7 @@ extern unsigned char dat_0c2415b8[],dat_0c2415bc[],dat_0c2415c0[],dat_0c2415c4[]
 extern unsigned char dat_0c2415d0[],dat_0c2415d4[],dat_0c2415d8[],dat_0c2415dc[],dat_0c2415e0[],dat_0c2415e4[];
 extern int func_0c02849a(void);
 extern void func_0c02a684(struct Actor *,int,int,int);
-extern void func_0c192404(struct Actor *,int);
+extern void func_0c192404(struct Actor *,unsigned char);
 extern void func_0c13e168(struct Actor *,struct ActorSub2a4 *);
 extern void func_0c13c814(struct Actor *,int);
 extern unsigned char dat_0c2415e8[];
@@ -191,7 +191,7 @@ void func_0c07abf6(struct Actor *a)
   func_0c02a684(a,0,a->b37*7+sub->b5+24,1);
  }
  if(!a->b159&&((unsigned char)a->b158==2||(unsigned char)a->b158==3)&&a->b141){
-  {register int m=0xff;func_0c192404(a,((char *)a)[m+66]+m);}
+  func_0c192404(a,a->b141-1);
   a->b141=zero;
  }
 }
@@ -222,20 +222,20 @@ void func_0c07ad5c(struct Actor *a)
  func_0c07acb8(a);
 }
 
-void func_0c07ae34(struct Actor *a)
+void func_0c07ae34(register struct Actor *a)
 {
- int zero=0;
+ register void *zero;zero=0;
  switch(a->b1e8){
- case 0:a->b159=9;a->b158=zero;a->b1a1=6;func_0c0346da(a,20);a->p3f4=dat_0c2415a0;a->b1a7=zero;func_0c07acb8(a);break;
+ case 0:a->b159=9;a->b158=(int)zero;a->b1a1=6;func_0c0346da(a,20);a->p3f4=dat_0c2415a0;a->b1a7=(int)zero;func_0c07acb8(a);break;
  case 1:a->b159=9;a->b158=1;a->b1a1=7;func_0c0346da(a,21);a->p3f4=dat_0c2415a4;a->b1a7=1;func_0c07acb8(a);break;
  case 2:a->b159=9;a->b158=2;a->b1a1=8;a->p3f4=dat_0c2415a8;func_0c0346da(a,22);a->b1a7=2;func_0c13c814(a,3);func_0c13c814(a,4);break;
  }
- a->w1ac=zero;a->b19e=zero;*(unsigned int*)&a->p1c4=zero;dat_0c2f83f8->arr[a->b2]++;func_0c02a0c4(a,9,a->b158);
+ a->w1ac=(int)zero;a->b19e=(int)zero;*(unsigned int*)&a->p1c4=(int)zero;dat_0c2f83f8->arr[a->b2]++;func_0c02a0c4(a,9,a->b158);
 }
 
 void func_0c07af08(struct Actor *a){int zero=0;switch(a->b1e8){case 0:a->b158=zero;a->b1a1=3;func_0c0346da(a,20);a->p3f4=dat_0c2415ac;a->b1a7=zero;break;case 1:a->b158=1;a->b1a1=4;func_0c0346da(a,21);a->p3f4=dat_0c2415b0;a->b1a7=1;break;case 2:a->b158=2;a->b1a1=5;func_0c0346da(a,22);a->p3f4=dat_0c2415b4;a->b1a7=2;break;}a->w1ac=zero;a->b19e=zero;*(unsigned int*)&a->p1c4=zero;dat_0c2f83f8->arr[a->b2]++;func_0c02a0c4(a,8,a->b158);}
 
-void func_0c07afe0(struct Actor *a){int zero=0;switch(a->b1e8){case 0:a->b158=zero;a->b1a1=9;func_0c0346da(a,20);a->p3f4=dat_0c2415ac;a->b1a7=zero;break;case 1:a->b158=1;a->b1a1=10;func_0c0346da(a,21);a->p3f4=dat_0c2415b0;a->b1a7=1;break;case 2:a->b158=2;a->b1a1=11;func_0c0346da(a,22);a->p3f4=dat_0c2415b4;a->b1a7=2;break;}a->w1ac=zero;a->b19e=zero;*(unsigned int*)&a->p1c4=zero;dat_0c2f83f8->arr[a->b2]++;func_0c02a0c4(a,9,a->b158);}
+void func_0c07afe0(struct Actor *a){int zero=0;switch(a->b1e8){case 0:a->b158=zero;a->b1a1=9;func_0c0346da(a,20);a->p3f4=dat_0c2415ac;a->b1a7=zero;break;case 1:a->b158=1;a->b1a1=10;func_0c0346da(a,21);a->p3f4=dat_0c2415b0;a->b1a7=1;break;case 2:a->b158=2;a->b1a1=11;func_0c0346da(a,22);a->p3f4=dat_0c2415b4;a->b1a7=2;break;}a->w1ac=zero;a->b19e=zero;*(unsigned int*)&a->p1c4=zero;dat_0c2f83f8->arr[a->b2]++;func_0c02a0c4(a,10,a->b158);}
 
 void func_0c07b08c(struct Actor *a)
 {

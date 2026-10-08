@@ -1,4 +1,4 @@
-/* Candidate: func_0c0d9fe4 and func_0c0da82a load one flag into r2 where retail uses r3; func_0c0da490/func_0c0da4fe call through r3 where retail rotates to r2; func_0c0da5e0 swaps r12/r13 between the table pointer and the cached checker address and keeps the move id in r4 rather than r2. Every other function is exact. */
+/* Candidate: only func_0c0da5e0 differs: retail holds the move id stored to b258 in scratch r2 (shared store reached by goto), the compiler gives the named local k r4, which shifts later r2/r3 rotation. Every other function is exact. */
 #include "objects.h"
 extern unsigned char dat_0c248b10[];
 extern unsigned char dat_0c248b20[];
@@ -68,7 +68,7 @@ copy_next:
 unsigned char func_0c0d9fe4(struct Actor *a)
 {
     if (a->b1f9 != 2) return 1;
-    if (a->b1fc) return 1;
+    goto t; t: if (a->b1fc) return 1;
     if (a->b1d4) return 0;
     a->b1d4=a->b1d4+1;
     return 1;
@@ -167,7 +167,7 @@ unsigned char func_0c0da490(struct Actor *a)
  unsigned short input;
  if(!func_0c046e7e(a,dat_0c248c10,a->x394))goto fail;
  if(func_0c047b0c(a,0x300,&input))goto ok;
- if(!func_0c047b0c(a,96,&input)){fail:return 0;}
+ goto c2; c2: if(!func_0c047b0c(a,96,&input)){fail:return 0;}
 ok:
  func_0c047aac(a,a->x394);
  a->b1e9=16;a->b5=0;
@@ -181,7 +181,7 @@ unsigned char func_0c0da4fe(struct Actor *a)
  unsigned short input;
  if(!func_0c046e7e(a,dat_0c248c20,a->x39c))goto fail;
  if(func_0c047b0c(a,0x300,&input))goto ok;
- if(!func_0c047b0c(a,96,&input)){fail:return 0;}
+ goto c2; c2: if(!func_0c047b0c(a,96,&input)){fail:return 0;}
 ok:
  func_0c047aac(a,a->x39c);
  a->b1e9=17;a->b5=0;
@@ -200,13 +200,16 @@ unsigned char func_0c0da598(struct Actor *a)
 
 unsigned char func_0c0da5e0(struct Actor *a)
 {
+ unsigned char (*chk)();
  unsigned char *p;
+ unsigned char *q;
  char k;
  if(!a->i204)p=dat_0c248b70;else p=dat_0c248bf0;
- if(func_0c046e7e(a,p,a->x364) && *a->p40c){k=6;set:a->b258=k;return 1;}
- if(!a->i204)p=dat_0c248b80;else p=dat_0c248c00;
- if(func_0c046e7e(a,p,a->x36c) && *a->p40c){k=*(short *)(p+4);goto set;}
- if(func_0c046e7e(a,dat_0c248b90,a->x374) && *a->p40c){a->b258=14;return 1;}
+ chk=func_0c046e7e;
+ if(chk(a,p,a->x364) && *a->p40c){k=6;set:a->b258=k;return 1;}
+ if(!a->i204)q=dat_0c248b80;else q=dat_0c248c00;
+ if(chk(a,q,a->x36c) && *a->p40c){k=*(short *)(q+4);goto set;}
+ if(chk(a,dat_0c248b90,a->x374) && *a->p40c){a->b258=14;return 1;}
  if(a->i204 && func_0c0474f8(a,dat_0c248c30,a->x3a4) && *a->p40c>=3){a->b258=18;return 1;}
  return 0;
 }
@@ -247,7 +250,7 @@ void func_0c0da82a(struct Actor *a)
  if(!((struct ActorSubMoveBytes *)&a->sub2a4)->b15)return;
  if(a->i204)return;
  if(!a->b5 && a->b1d0==21){
-  if(!a->b1e9)return;
+  goto t; t: if(!a->b1e9)return;
   if(a->b1e9==13)return;
  }
  ((struct ActorSubMoveBytes *)&a->sub2a4)->b15=0;

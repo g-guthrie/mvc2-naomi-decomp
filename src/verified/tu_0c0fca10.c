@@ -1,4 +1,3 @@
-/* Candidate: func_0c0fcc50 loads the 0x40c gate byte through r2/r3 swapped (5 bytes); the other fifteen functions match. */
 #include "objects.h"
 extern unsigned int dat_0c24ac70[];
 extern void (*dat_0c24ace0[])(struct Actor *);
@@ -81,7 +80,7 @@ unsigned char func_0c0fcc50(struct Actor *a)
 {
  struct ActorSub2a4 *sub=&a->sub2a4;
  if(!func_0c046e7e(a,dat_0c24ac3c,a->x37c))return 0;
- else if(!*a->p40c)return 0;
+ if(!*a->p40c)return 0;
  if(sub->b0)return 0;
  func_0c047aac(a,a->x37c);
  a->b5=0;a->b6=0;a->b7=0;a->b1e9=4;

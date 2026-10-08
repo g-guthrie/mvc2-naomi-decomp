@@ -35,6 +35,7 @@ void func_0c0a18dc(register struct Actor *a) {
   struct LinkedActorVec3 position;
   short *sub;
   sub = (short *)&a->sub2a4;
+  goto L; L:
   func_0c09e43a(a);
   a->f52 += a->f92;
   a->f92 += a->f104;
@@ -45,12 +46,9 @@ void func_0c0a18dc(register struct Actor *a) {
     position.x = 13.33333302f;
     position.y = 120.0f;
     {
-      int mode;
-      if (!*sub)
-        mode = 3;
-      else
-        mode = 0;
-      func_0c0429a4(a, &position, mode);
+      if (!*sub) {
+        goto C; C: func_0c0429a4(a, &position, 3);
+      } else func_0c0429a4(a, &position, 0);
     }
     a->f92 = a->b1d2 ? 20.0f : -20.0f;
     a->f104 = a->b1d2 ? -0.625f : 0.625f;
@@ -88,11 +86,10 @@ void func_0c0a1a3a(struct Actor *a) {
     func_0c0346da(a, 6);
     func_0c04af58(child, -1);
   }
-  if (a->b143 >= 0)
-    func_0c02a026(a);
-  else {
+  if (a->b143 < 0) {
     a->b6++;
     a->s28 = 100;
     func_0c026980();
-  }
+  } else {
+    goto G; G: func_0c02a026(a); }
 }

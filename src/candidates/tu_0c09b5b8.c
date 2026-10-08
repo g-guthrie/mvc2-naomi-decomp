@@ -47,7 +47,7 @@ void func_0c09b63c(struct Actor *a) {
     *(unsigned int *)&a->p1c4 = zero;
     dat_0c2f83f8->arr[a->b2]++;
     func_0c02a0c4(a, 22, 1);
-  } else if (a->b19e && !--a->b34) {
+  } else { goto L; L: if (a->b19e && !--a->b34) {
     a->b34 = 1;
     if (!--a->s30)
       a->s28 = 1;
@@ -58,7 +58,7 @@ void func_0c09b63c(struct Actor *a) {
       *(unsigned int *)&a->p1c4 = zero;
       dat_0c2f83f8->arr[a->b2]++;
     }
-  }
+  }}
 }
 void func_0c09b792(struct Actor *a) {
   a->f52 += a->f92;

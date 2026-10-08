@@ -1,7 +1,5 @@
-/* Candidate: complete 620-byte extent remains INEXACT (616/620).
- * Recovered repeated-case switch pattern is exact in func_0c0d6afa/b1e.
- * The final two tail calls still select r3 instead of retail r2.
- * See docs/MATCHING.md; offsets and return type are checked by config/type_contracts.json. No registration or new decompilation credit. */
+/* Verified: repeated-case switch handlers; `goto call; call:` before the tail call selects retail r2.
+ * Offsets and return type are checked by config/type_contracts.json. */
 
 struct S_ud2_12 {
     unsigned char pad0[2];
@@ -138,7 +136,7 @@ void func_0c0d6b42(struct S_ud2_12 *a)
     case 2: a->b1e9 = 3;
     }
     a->b1a3 = 1;
-finished:;
+finished: goto call; call:;
     func_0c045248(a, 21);
 }
 
@@ -154,6 +152,6 @@ void func_0c0d6b82(struct S_ud2_12 *a)
     case 2: a->b1e9 = 2;
     }
     a->b1a3 = 1;
-finished:;
+finished: goto call; call:;
     func_0c045248(a, 21);
 }

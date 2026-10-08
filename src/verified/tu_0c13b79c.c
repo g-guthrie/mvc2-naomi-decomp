@@ -1,5 +1,5 @@
-/* Candidate: setup flag test at 0c13b8b8 uses r0 instead of retail r2.
- * Four routines and both literal pools match; the setup is 289/292 bytes. */
+/* Linked actor pair spawner and setup; matches retail exactly. The b33 test
+ * reads the byte through a char view, which selects retail r2. */
 #include "objects.h"
 extern short dat_0c2f6830;
 struct EffectMask_13b79c { unsigned char pad[59]; unsigned char index; unsigned short bits; };
@@ -25,7 +25,7 @@ void func_0c13b808(struct LinkedActor *record)
  a->b2=owner->b2;a->b1=owner->b1;a->v80.x=owner->v80.x;a->v80.y=owner->v80.y;a->b1a3=owner->b1a3;a->b1a4=owner->b1a4;a->b48=owner->b48;a->v80=owner->v80;a->b36=owner->b36;
  a->pad11[0]=64;a->pad11[1]=64;a->b36=a->b33?12:11;
  *(struct LinkedActorVec3 *)&a->f52=*(struct LinkedActorVec3 *)&owner->f52;
- if(a->b33)goto select_action;
+ if(((char *)a)[33])goto select_action;
  {effect=a->b1a3*2+a->b32+59;if(((char *)owner)[32]>0)effect=97;if(((struct Actor *)owner)->b1e9==5)effect=a->b32+65;
  ((struct Actor *)a)->b1a1=effect;((struct Actor *)a)->w1ac=0;((struct Actor *)a)->b19e=0;*(void **)&((struct Actor *)a)->p1c4=(void *)0;dat_0c2f83f8->arr[a->b2]++;
  if(((struct Actor *)owner)->b1e9==5)((struct Actor *)a)->w1ac=64;func_0c037d0c(a);}
