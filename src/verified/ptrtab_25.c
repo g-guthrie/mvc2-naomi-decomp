@@ -60,15 +60,6 @@ extern void func_0c24e500(void);
 extern void func_0c24e510(void);
 extern void func_0c24e520(void);
 
-#pragma section n12fb60
-void (*const ptr_0c12fb60)(void) = func_0c02a026;
-
-#pragma section n12fdc0
-void (*const ptr_0c12fdc0)(void) = func_0c02a026;
-
-#pragma section n12fdc8
-void (*const ptr_0c12fdc8)(void) = func_0c02a0c4;
-
 #pragma section n130a40
 void (*const ptr_0c130a40)(void) = func_0c02a0c4;
 
