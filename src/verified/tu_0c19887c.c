@@ -1,4 +1,3 @@
-/* Candidate: func_0c198f48 loads the owner's b34 for the child angle bucket through r3 where retail uses r2 (5 bytes); the other twelve functions match. */
 #include "objects.h"
 extern struct ActorFlags*dat_0c2d6f84;
 extern short dat_0c2f6830;

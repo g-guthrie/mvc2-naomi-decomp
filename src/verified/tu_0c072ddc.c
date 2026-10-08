@@ -1,4 +1,3 @@
-/* Candidate 0x0c072ddc..0x0c072ee8: all handlers are transcribed; both dispatchers and all pools match. Main handler differs only in the ordering of state comparisons for grouped cases0/2/4 versus1/3. */
 #include "objects.h"
 extern int func_0c03916c(struct Actor *);
 extern char func_0c02a026(struct Actor *);

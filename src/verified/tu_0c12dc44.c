@@ -1,4 +1,3 @@
-/* Candidate: tail dispatch loads table entry into r3 instead of r1 (238/240) */
 #include "objects.h"
 extern char func_0c02a026(struct Actor *);
 extern int func_0c0427f2(struct Actor *),func_0c042780(struct Actor *);

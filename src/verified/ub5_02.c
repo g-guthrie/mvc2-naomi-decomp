@@ -1,4 +1,3 @@
-/* Complete380-byte section: only the callback target register remains different. */
 #include "objects.h"
 extern void func_0c0426c2(struct Actor *, int);
 extern void func_0c0427be(struct Actor *, int);

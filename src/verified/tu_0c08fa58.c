@@ -1,4 +1,3 @@
-/* Candidate: Selector 08fab2 compares 1 before 2 instead of retail 2 before 1; five functions and all pools are exact. */
 #include "objects.h"
 extern void func_0c02a0c4(struct Actor *,int,int),func_0c0437b8(struct Actor *);
 extern char func_0c02a026(struct Actor *);

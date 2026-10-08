@@ -1,4 +1,3 @@
-/* Candidate: retail tests case 1 before case 0; SHC sorts the switch compares 0,1,2 (4 bytes). */
 #include "objects.h"
 extern void func_0c045248(struct Actor *,int);
 void func_0c07a7ec(struct Actor *a)
