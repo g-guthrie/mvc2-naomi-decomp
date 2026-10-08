@@ -4,8 +4,9 @@ For a new local or cloud checkout, start with [Cloud agent setup](CLOUD_AGENTS.m
 
 ## What is bundled
 
-- `toolchain/hitachi-shc-5.1r08/`: the Hitachi SH C/C++ compiler package. Its
-  manifest records every file's size and SHA-256.
+- `toolchain/hitachi-shc-5.1r08/`: the Hitachi SH C/C++ compiler package:
+  compiler passes from SHC 5.1 Release 8, assembler, linker and utilities
+  from 5.0 Release 31. Its manifest records every file's size and SHA-256.
 - `toolchain/wibo/`: the wibo 1.2.0 Windows runtime for Linux x86_64 and macOS.
 - `toolchain/naomi-sdk/lib/`: Sega's prebuilt NAOMI SDK libraries, in Hitachi
   library format, with a manifest recording every file's size and SHA-256. The
@@ -27,8 +28,27 @@ compiler releases Sega shipped, `pcv5r10` through `pcv5r32` and `pcv51r01`
 and `pcv51r08`, and in `hitachi990119.zip` the file
 `doc/english/misc/read_1st.txt`, Sega's tool manual, whose section 1 lists
 the options every application must be built with. Those are the `game` set.
-Releases 31, 32 and 5.1 produce identical bytes for every unit tried; release
-28 does not. The `library` set drops `-extra=a=400` because Sega's libraries
+Releases 31, 32 and 5.1 agree on most units; release 28 does not.
+
+## Which compiler built retail
+
+5.1 Release 8 (`pcv51r08`, 1999-07-15). Sega's Japanese Dreamcast SDK 1.55J
+(July 1999) ships byte-identical binaries, and its SH tools release notes list
+the 5.1 updates Sega distributed: r01 (1998-12), r03, r04, r06 and r08. Against
+retail:
+
+- 5.0R31, 5.0R32 and 5.1R01 sort switch compares by case value and pool a
+  literal 2.0f; retail tests cases in source order and builds 2.0f with
+  `fldi1; fadd`, and computes signed `% 2^n` inline. 5.1R08 does all three.
+  On the 29 candidates whose code differs between 5.1R01 and 5.1R08, R08 is
+  closer to retail on 26.
+- 5.1 Release 13, from Sega Library Ver.2.00J (2000-09; its InstallShield 3
+  archive decompresses with PKWARE DCL), changes FMAC operand registers in
+  five units R08 matches exactly and improves no candidate. It is later than
+  retail. SHC 6.0AD ships on the same disc.
+
+Every verified source was recompiled with each candidate compiler; only the
+units named in `docs/MATCHING.md` needed source changes for R08. The `library` set drops `-extra=a=400` because Sega's libraries
 above 0x0c1e9000 were built without it. The compiler runtime routines the
 generated code calls are listed with their retail addresses in
 `config/runtime.json`, each proven by a verified unit.
