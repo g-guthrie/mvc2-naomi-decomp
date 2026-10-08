@@ -1,8 +1,7 @@
-/* Candidate 0x0c156664..0x0c156760: range test and dispatcher exact. The 16-actor chain
- * constructor func_0c1566a0 is exact except the two scratch registers holding the
- * handler address and the owner pointer (r2/r3 swapped, four bytes); the stack-spilled
- * owner pointer takes r3 first in ours. Allocator-failure exit leaves the allocator
- * null result in r0 by falling off the end, as in tu_0c15632c. */
+/* Range test, dispatcher and the 16-actor chain constructor 0x0c156664..0x0c156760.
+ * A label before the owner-pointer statement gives retail's r2/r3 choice. The
+ * allocator-failure exit leaves the allocator null result in r0 by falling off
+ * the end, as in tu_0c15632c. */
 #include "objects.h"
 extern struct MotionGlobal_0c2d9260 dat_0c2d9260;
 extern struct LinkedActor *func_0c0374da(struct LinkedActor *,int,int);
@@ -21,6 +20,7 @@ struct LinkedActor *func_0c1566a0(struct LinkedActor *owner)
     struct LinkedActor *prev;
     int n=0;
     short *w;
+    goto chain; chain:
     do {
         if (n==0) {
             if ((c=func_0c0374da(0,1,0))==0) goto fail;
