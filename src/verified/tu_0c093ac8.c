@@ -1,4 +1,3 @@
-/* Candidate: Update loop loads its callback after zero instead of before it; three functions and all pools are exact. */
 #include "objects.h"
 extern void (*table_0c242e6c[])(struct Actor *),(*table_0c242e74[])(struct Actor *);
 extern struct Tbl_ub3_01 *dat_0c2f83f8;
@@ -25,7 +24,7 @@ void func_0c093b6e(struct Actor *a,struct ActorSub2a4 *state)
 {
  if(func_0c02a026(a)<0){func_0c0437b8(a);return;}
  func_0c0953be(a);
- if(a->b141){int index,limit=10;a->b141=0;for(index=0;index<limit;index++)func_0c143b10(a,0,index);}
+ if(a->b141){int index;a->b141=0;for(index=0;index<10;index++)func_0c143b10(a,0,index);}
 }
 void func_0c093bc6(struct Actor *a)
 {

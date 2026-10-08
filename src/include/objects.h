@@ -94,6 +94,9 @@ struct MotionContext8a3 {
     unsigned char pad56[2], flag58;
 };
 
+/* Signed spawn timer (+20) and phase counter (+40) in the actor +0x2a4 record. */
+struct ActorSub2a4Timers { unsigned char pad0[20]; signed char timer20; unsigned char pad21[19]; signed char phase40; };
+
 union ActorParameter4 { int integer; float real; };
 
 struct AnimationFrame8 {

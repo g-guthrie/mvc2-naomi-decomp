@@ -7,14 +7,13 @@ extern struct Obj_tu5_03 *func_0c0374da(int,int,int);
 extern struct Vec3_tu5_03 dat_0c264728[];
 void func_0c1e5730(struct Obj_tu5_03 *a)
 {
-    int index;
+    int base;
     if (dat_0c2d9610 >= 1) func_0c037688(a);
     switch (a->b4) {
     case 0:
         a->b12c = 1;
-        index=a->b32*4+a->w28/2;
-        index+=78;
-        a->l84 = (*(union ActorGlobalEntry (*)[86])dat_0c2d964c->p0)[index].value;
+        base=78;
+        a->l84=(*(int (*)[36])dat_0c2d964c->p0)[a->b32*4+a->w28/2+base];
         if (++a->w28 >= 8) {
             a->w28 = 0;
             a->w30 = func_0c1ec190() % 30 + 30;

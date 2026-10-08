@@ -1,4 +1,3 @@
-/* Candidate: func_0c12e5ca loads the 0x40c pointer and its byte into swapped scratch registers, and func_0c12e728 swaps r4/r5 between the move id and the zero; every other function is exact. */
 #include "objects.h"
 extern unsigned char dat_0c24df4c[];
 extern unsigned char dat_0c24df5c[];
@@ -102,7 +101,7 @@ int func_0c12e57c(struct Actor *a)
 int func_0c12e5ca(struct Actor *a)
 {
  if(!func_0c046e7e(a,dat_0c24df4c,a->x37c))return 0;
- else if(!*a->p40c)return 0;
+ if(!*a->p40c)return 0;
  if(*(int *)&a->sub2a4>0)return 0;
  a->b12c=1;
  a->b5=0;a->b7=0;a->b6=0;a->b1e9=3;
@@ -135,7 +134,7 @@ int func_0c12e6e2(struct Actor*a){if(!func_0c046e7e(a,dat_0c24dfac,a->x39c))retu
 
 int func_0c12e728(struct Actor *a)
 {
- char k;
+ register char k;
  if(!func_0c046dd0(a,4))return 0;
  k=4;
  if(a->l2c8>0){k=10;a->l2c8=0;}

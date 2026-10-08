@@ -1,4 +1,4 @@
-/* Candidate: owner b1a0 test loads into r0 instead of r2 (333/336) */
+/* Owner-linked effect child: spawn and follow-owner callback. The owner flag at 0x1a0 is read through a char pointer; the member spelling loads it into r0. */
 #include "objects.h"
 #define A(x) ((struct Actor *)(x))
 extern struct LinkedActor *func_0c0374da(int,int,int);
@@ -24,7 +24,7 @@ void func_0c1b4f5c(struct LinkedActor *a)
  case 1:
   if(owner->b1d0==a->b34&&A(owner)->b1e9==a->b35){
    *(struct LinkedActorVec3 *)&a->f52=*(struct LinkedActorVec3 *)&owner->f52;
-   if(A(owner)->b1a0!=0)break;
+   if(*((char *)owner+0x1a0))break;
    if(func_0c02a026(a)>=0)break;
   }
   a->b4++;a->sdc.b12c=0;

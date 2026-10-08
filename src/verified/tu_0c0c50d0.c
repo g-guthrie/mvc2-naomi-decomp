@@ -1,7 +1,5 @@
 /* Special-move checker and stance-state unit for a second character
- * (0x0c0c50d0-0x0c0c5e18), the template of tu_0c0bfd60. Section, pools and
- * 26/29 functions match; 0x0c0c5228, 0x0c0c53e4 and 0x0c0c5b46 differ only
- * by r1/r2/r3 choice. */
+ * (0x0c0c50d0-0x0c0c5e18), the template of tu_0c0bfd60. */
 #include "objects.h"
 extern unsigned char func_0c0465cc(struct Actor *),func_0c046b6c(struct Actor *),func_0c0469f4(struct Actor *),func_0c046d3c(struct Actor *);
 extern void func_0c045f1c(struct Actor *),func_0c0463fc(struct Actor *);
@@ -69,7 +67,7 @@ unsigned char func_0c0c5228(struct Actor *a)
  if(!func_0c046e7e(a,dat_0c246dfc,a->x36c))goto fail;
  sub=(struct ActorSubMoveBytes *)&a->sub2a4;
  if(a->b1f9!=2){if(!sub->b29)goto ok;goto fail;}
- if(sub->b29>2)goto fail;if(a->b1fc==0){if(a->b1d4){fail:return 0;}a->b1d4++;}
+ goto c;c:if(sub->b29>2)return 0;if(a->b1fc==0){if(a->b1d4){fail:return 0;}a->b1d4++;}
 ok:
  func_0c047aac(a,a->x36c);
  a->b5=0;a->b7=0;a->b6=0;a->b1e9=2;
@@ -100,13 +98,12 @@ unsigned char func_0c0c53e4(struct Actor *a)
 {
  struct ActorSubMoveBytes *sub=(struct ActorSubMoveBytes *)&a->sub2a4;unsigned char *cmd=dat_0c246e3c;
  if(sub->b8==0){
-  if(!func_0c046e7e(a,cmd,a->x384)||a->b1f9==2||sub->b5||sub->b6||sub->b7)goto fail;
-  func_0c047aac(a,a->x384);
+  if(func_0c046e7e(a,cmd,a->x384)){if(a->b1f9!=2){if(!sub->b5){if(!sub->b6){if(!sub->b7){func_0c047aac(a,a->x384);goto set;}}}}}return 0;
  }else{
   if(!func_0c046e7e(a,cmd,a->x384))goto fail;
   if(a->b1f9==2){if(a->b1d4&!a->b1fc){fail:return 0;}a->b1d4++;}
  }
- a->b5=0;a->b7=0;a->b6=0;a->b1e9=6;
+ set:a->b5=0;a->b7=0;a->b6=0;a->b1e9=6;
  func_0c045248(a,21);return 1;
 }
 unsigned char func_0c0c5488(struct Actor *a)
@@ -193,7 +190,7 @@ void func_0c0c5a7a(struct Actor *a){int zero=0;switch(a->b1e8){case 0:a->b158=ze
 void func_0c0c5b46(struct Actor *a)
 {
  if(!a->b1fe){if(a->b1d6&15)goto call;}
- if(a->b1fe){if(!(a->b1d6&0xf0))return;call:func_0c0c5b6e(a);}
+ goto s;s:if(a->b1fe){if(!(a->b1d6&0xf0))return;call:func_0c0c5b6e(a);}
 }
 void func_0c0c5b6e(struct Actor *a){if((unsigned char)a->b1fe==1)func_0c0c5c96(a);else func_0c0c5b80(a);}
 void func_0c0c5b80(struct Actor *a){int zero=0;switch(a->b1e8){case 0:a->b158=zero;a->b1a1=12;func_0c0346da(a,20);if(!a->b1fc)a->p3f4=dat_0c246dbc;else a->p3f4=dat_0c246dd4;a->b1a7=zero;break;case 1:a->b158=1;a->b1a1=13;func_0c0346da(a,21);if(!a->b1fc)a->p3f4=dat_0c246dc0;else a->p3f4=dat_0c246dd8;a->b1a7=1;break;case 2:a->b158=2;a->b1a1=14;func_0c0346da(a,22);if(!a->b1fc)a->p3f4=dat_0c246dc4;else a->p3f4=dat_0c246ddc;a->b1a7=2;break;}a->w1ac=zero;a->b19e=zero;*(unsigned int*)&a->p1c4=zero;dat_0c2f83f8->arr[a->b2]++;func_0c02a0c4(a,11,a->b158);

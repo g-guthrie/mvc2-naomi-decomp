@@ -1,7 +1,3 @@
-/* Candidate: size exact, 198/212 bytes and the pool match. Differs: the
- * call-address registers of the two func_0c04e6b2 calls and the truth-test
- * scratch register are one step off in rotation (retail r2,r3,r2 where this
- * gives r3,r2,r3) in both functions. */
 #include "objects.h"
 
 extern int func_0c04e78e(struct Actor *, int);
@@ -16,7 +12,7 @@ int func_0c050bac(struct Actor *a, void *b)
         return 0;
     if (!func_0c04e82a(a, b))
         return 0;
-    func_0c04e6b2(a, b, 0);
+    goto L1; L1: func_0c04e6b2(a, b, 0);
     func_0c04e6b2(a, b, 1);
     if (a->parameter4b4.integer)
         m = 0x100;
@@ -37,7 +33,7 @@ int func_0c050c10(struct Actor *a, void *b)
         return 0;
     if (!func_0c04e82a(a, b))
         return 0;
-    func_0c04e6b2(a, b, 0);
+    goto L2; L2: func_0c04e6b2(a, b, 0);
     func_0c04e6b2(a, b, 1);
     if (a->parameter4b4.integer)
         m = 0x20;

@@ -1,5 +1,5 @@
-/* Candidate: cleanup and both literal pools match; four state-selection
- * callbacks retain scratch-register differences. */
+/* Cleanup handler and four state-selection callbacks; labels before the tail call
+ * reproduce retail scratch-register choice. */
 #include "objects.h"
 extern char func_0c02a026(struct Actor *);
 extern void func_0c0437b8(struct Actor *);
@@ -20,7 +20,7 @@ void func_0c0b30ba(struct Actor *a)
  case 2:a->b1e9=4;break;
  default:break;
  }
- func_0c045248(a,29);
+ goto f; f: func_0c045248(a,29);
 }
 void func_0c0b30ea(struct Actor *a)
 {
@@ -31,7 +31,7 @@ void func_0c0b30ea(struct Actor *a)
  case 2:a->b1e9=4;break;
  default:break;
  }
- func_0c045248(a,29);
+ goto f; f: func_0c045248(a,29);
 }
 void func_0c0b311a(struct Actor *a)
 {
@@ -39,12 +39,12 @@ void func_0c0b311a(struct Actor *a)
  switch(a->b4c9) {
  case 0: a->b1e9=0;goto selected;
  case 1: a->b1e9=1;goto selected;
- case 2: a->b1e9=2;
+ case 2: goto c2; c2: a->b1e9=2;
 selected:
   a->b1a3=1;break;
  default:break;
  }
- func_0c045248(a,21);
+ goto f; f: func_0c045248(a,21);
 }
 
 void func_0c0b316c(struct Actor *a)
@@ -53,10 +53,10 @@ void func_0c0b316c(struct Actor *a)
  switch(a->b4c9) {
  case 0: a->b1e9=0;goto selected;
  case 1: a->b1e9=1;goto selected;
- case 2: a->b1e9=2;
+ case 2: goto c2; c2: a->b1e9=2;
 selected:
   a->b1a3=1;break;
  default:break;
  }
- func_0c045248(a,21);
+ goto f; f: func_0c045248(a,21);
 }
