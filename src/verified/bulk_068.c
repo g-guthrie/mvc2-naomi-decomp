@@ -185,8 +185,3 @@ const unsigned int dat_0c125ee4[] = {
     0x41892492u, 0x42092492u, 0x44092492u,
 };
 
-#pragma section n125ffc
-const unsigned int dat_0c125ffc[] = {
-    0x02a401c8u,
-};
-
