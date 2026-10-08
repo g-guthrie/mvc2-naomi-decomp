@@ -171,25 +171,6 @@ const unsigned int dat_0c192144[] = {
     0x0c037688u,
 };
 
-#pragma section n19269c
-const unsigned short dat_0c19269c[] = {
-    0x012cu, 0x01a3u, 0x02a4u,
-};
-
-#pragma section n1926a4
-void (*const table_0c1926a4[])(void) = {
-    func_0c0374da,
-    func_0c1925e0,
-    func_0c257af4,
-    func_0c1fb838,
-};
-
-#pragma section n19276c
-const unsigned int dat_0c19276c[] = {
-    0x014b012cu, 0x01590130u, 0x0c257860u, 0x3fd55555u,
-    0x40092492u, 0x0c037688u,
-};
-
 #pragma section n192c58
 const unsigned short dat_0c192c58[] = {
     0x01c8u,
