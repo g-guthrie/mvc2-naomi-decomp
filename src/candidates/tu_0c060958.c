@@ -1,4 +1,4 @@
-/* Candidate: the rounded >>12 of the 0x3000 strength bits keeps the shift count in r3 and the row pointer in r2 (retail r2/r1); 32 bytes differ. */
+/* Candidate (231/248): indexing dat_0c23ff58 directly fixes the pool order; the whole body still runs one register off retail (0xfff/-12/table in r3, row words in r2 where retail uses r2/r1). Labels and else-wrap tried. */
 #include "objects.h"
 extern char func_0c02a026(struct Actor *);
 extern void func_0c0344a0(struct Actor *,int);
@@ -17,12 +17,13 @@ void func_0c060958(struct Actor *a)
  a->s28=32;
  input=a->w34a;
  if(a->b525)input=sub->s10;
- strength=input&0x3000;if(strength<0)strength+=0xfff;strength>>=12;
- speed=dat_0c23ff58[(unsigned short)strength];
- a->f92=speed[0]*1.66666663f/65536.0f;
- a->f104=speed[1]*1.66666663f/65536.0f;
- a->f96=speed[2]*2.1428571f/65536.0f;
- a->f108=speed[3]*2.1428571f/65536.0f;
+ strength=input&0x3000;
+ if(strength<0){goto q;q:strength+=0xfff;}
+ strength>>=12;
+ a->f92=dat_0c23ff58[(unsigned short)strength][0]*1.66666663f/65536.0f;
+ a->f104=dat_0c23ff58[(unsigned short)strength][1]*1.66666663f/65536.0f;
+ a->f96=dat_0c23ff58[(unsigned short)strength][2]*2.1428571f/65536.0f;
+ a->f108=dat_0c23ff58[(unsigned short)strength][3]*2.1428571f/65536.0f;
  if(a->w130){a->f92=-a->f92;a->f104=-a->f104;}
  func_0c02a0c4(a,2,strength+5);
 }

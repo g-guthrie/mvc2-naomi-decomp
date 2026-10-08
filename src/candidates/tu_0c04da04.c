@@ -1,4 +1,4 @@
-/* Candidate: 0x0c04dc48 loads the call-target literal early (r2, in the load-use gap) where retail loads it into r3 just before the jsr; 0x0c04dd88 swaps the r2/r3 temporaries of the l4b0 read-modify-write (load r2/shift r3 against retail load r3/shift r2). Other functions and all pools exact. */
+/* Candidate (1034/1036): only 0x0c04dc48 differs; retail computes entry->row*3 with r1 as the copy temp (mov r3,r1; shll r3; add r1,r3), ours uses r2. Labels on every statement and *3 spellings tried. All other functions and pools exact. */
 /* CPU script selection: per-actor script slots at 0x460 and the operand
  * state block between 0x43c and 0x4b8. */
 #include "objects.h"
@@ -174,11 +174,12 @@ void func_0c04dc48(struct Actor *a)
     struct Actor *o = *(struct Actor **)((char *)a + 0x4b8);
     struct AiEntry28 *entry = (struct AiEntry28 *)AI_PTR(o, 0x174);
     entry += CPU(a)->b4a0;
+    goto LB0_176; LB0_176:
     base = (int)AI_PTR(a, 0x194);
     row = (int *)base;
     row += entry->row * 3;
     scripts = (int *)(row[2] + base);
-    sel = (unsigned char *)(row[1] + base);
+    goto c; c: sel = (unsigned char *)(row[1] + base);
     idx = sel[func_0c02849a() & 31];
     CPU(a)->cursor[2].script = (unsigned char *)(scripts[idx] + base);
     CPU(a)->cursor[2].step = 0;
@@ -225,7 +226,7 @@ int func_0c04dd88(struct Actor *a, int n, int v)
         int one = 1;
         if (CPU(a)->l4b0 & (one << n))
             return 1;
-        CPU(a)->l4b0 = CPU(a)->l4b0 | (one << n);
+        goto o; o: CPU(a)->l4b0 |= one << n;
         if (CPU(a)->b43c > one)
             goto set;
     }

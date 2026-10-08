@@ -1,5 +1,4 @@
-/* All functions and pools match except func_0c08755c's temporary register
- * and func_0c0875ce's ordering of the frame-offset addition. */
+/* Candidate (1280/1284): func_0c08755c keeps the 0x0c2f8338 pointer in r6 (retail r3), and func_0c0875ce schedules add #8 between the two shll2 of b37<<4 (retail after both). Everything else exact. */
 #include "objects.h"
 typedef void (*ActorCallback)(struct Actor *);
 extern ActorCallback table_0c242418[], table_0c242424[], table_0c242430[],
@@ -87,7 +86,7 @@ void func_0c0875ce(struct Actor *a) {
       a->s30 = 3;
       func_0c02a39a(a, 1);
     } else
-      func_0c02a684(a, 1, (a->b37 << 4) + (a->s28 + 8), 1);
+      func_0c02a684(a, 1, (a->b37 << 4) + (int)(a->s28 + 8U), 1);
     a->s28 = (a->s28 + 1) % 3;
     a->b12c = dat_0c2d6f84->flags & 1;
   } else {

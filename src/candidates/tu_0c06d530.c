@@ -1,4 +1,4 @@
-/* Candidate: func_0c06d5b0 loads the 0x0c2f8338 address and byte into r2/r3 where retail uses r3/r2; the other two functions are exact. */
+/* Candidate (199/204): func_0c06d5b0 holds the selected byte in r2 and the 0x0c1fba00 call address in r3 where retail uses r3/r2; the other two functions are exact. */
 #include "objects.h"
 extern struct Dat_13bb5c dat_0c2f8338;
 extern void func_0c045248(struct Actor*,int);
@@ -27,7 +27,7 @@ void func_0c06d5b0(struct Actor *a)
 {
  struct ActorSubMoveBytes *sub=(struct ActorSubMoveBytes *)&a->sub2a4;
  char keep;
- keep=dat_0c2f8338.pad[0]>=5?sub->b1:0;
+ goto k; k: keep=dat_0c2f8338.pad[0]>=5?sub->b1:0;
  func_0c1fba00(sub,0,128);
  sub->b1=keep;
 }
