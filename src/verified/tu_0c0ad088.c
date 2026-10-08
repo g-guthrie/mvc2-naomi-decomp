@@ -1,7 +1,6 @@
-/* Candidate for the corrected 368-byte span at 0x0c0ad088. Its linked
- * extent matches and 364/368 bytes are equal. The three later functions and
- * 56-byte pool are exact; only two register choices in func_0c0ad088 differ.
- * The eight preceding bytes are literal pointers, not part of this unit. */
+/* 368-byte span at 0x0c0ad088: variant selector, dispatcher, setup and
+ * motion handlers with their pool; matches retail exactly. The selector uses
+ * the shared zero/goto-common/volatile case-2 spelling of tu_0c09d758. */
 #include "objects.h"
 
 typedef void (*ActorHandler)(struct Actor *);
@@ -22,18 +21,9 @@ extern void func_0c045248(struct Actor *, int);
 
 void func_0c0ad088(struct Actor *a)
 {
-    a->b5 = 0;
-    a->b7 = 0;
-    a->b6 = 0;
-    switch (a->b4c9) {
-    case 0: a->b1e9 = 1; break;
-    case 1: a->b1e9 = 0; break;
-    case 2: a->b1e9 = 2; break;
-    default: goto finish;
-    }
-    a->b1a3 = 0;
-finish:
-    func_0c045248(a, 21);
+ int zero=0;a->b5=zero;a->b7=zero;a->b6=zero;
+ switch(a->b4c9){case 0:a->b1e9=1;goto common;case 1:a->b1e9=zero;goto common;case 2:goto two;two:((volatile unsigned char *)a)[0x1e9]=2;common:a->b1a3=zero;break;}
+ func_0c045248(a,21);
 }
 
 void func_0c0ad0c6(struct Actor *a)
