@@ -1,8 +1,5 @@
-/* Candidate source that compiles byte-exact to retail (1448/1448) when diffed by unit id.
- * Not promoted: --register fails boundary review because config/mapping.json has no
- * reviewed code range covering 0x0c0a346c-0x0c0a3a14 (unreviewed_gap). Key fixes:
- * func_0c0a375e tail-branches to a static selector (retail bra 0x0c0a3786) and reads
- * through a volatile pointer; func_0c0a39ce takes a non-register parameter. */
+/* Move-counter state handlers 0x0c0a346c-0x0c0a3a14. func_0c0a375e tail-branches to a
+ * static selector (retail bra 0x0c0a3786) and reads through a volatile pointer. */
 #include "objects.h"
 struct MoveCounters_0c0a346c { unsigned char pad[124]; short counts[2]; };
 extern struct MoveCounters_0c0a346c *dat_0c2f83f8;
