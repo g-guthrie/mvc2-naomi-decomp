@@ -13,10 +13,10 @@ void func_0c08e940(struct Actor *a) {
     return;
   }
   /*retain low event bit*/
-  if ((a->b141 = a->b141 & 1)) {
+  if (a->b141 &= 1) {
     a->b141 = 0;
     child = a->p1c8;
-    child->b1f6 = 1;
+    goto L; L: child->b1f6 = 1;
     child->b1f9 = 2;
     child->b1a1 = a->b1a3 + 34;
     a->b1a1 = a->b1a3 + 34;
@@ -112,5 +112,5 @@ void func_0c08eae6(struct Actor *a) {
   }
   a->b1a3 = zero;
 ready:
-  func_0c045248(a, 21);
+  goto R; R: func_0c045248(a, 21);
 }
