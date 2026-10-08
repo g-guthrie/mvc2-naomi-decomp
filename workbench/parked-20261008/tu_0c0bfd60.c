@@ -1,3 +1,6 @@
+/* Parked 2026-10-08: removed from the registry because verified tu_0c0c0e08 owns
+ * 0x0c0c0e08-0x0c0c0f70 and retail bsr calls (0x0c0c0da8, 0x0c0c0db0) cross into it,
+ * so this candidate cannot be trimmed. Kept for its 4318/4624 matching work. */
 /* Special-move checker and stance-state unit for one character (0x0c0bfd60-
  * 0x0c0c0f70). The section links at its native size and most functions match.
  * Open: retail tests the switch cases of 0x0c0c0b1e/0ba4 in the order 2,1,0
