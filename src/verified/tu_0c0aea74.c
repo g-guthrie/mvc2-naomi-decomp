@@ -25,7 +25,7 @@ void func_0c0aeab0(struct Actor *a)
   break;
  case 3:
   a->b1f5=three;a->b3f8=two;a->b328=five;
-  if(func_0c02a026(a)<0){a->b6++;a->b7=zero;a->s28=60;a->s30=40;a->f104=34;a->f108=fzero;*(struct LinkedActorVec3 *)&a->f80=*(struct LinkedActorVec3 *)&a->pad10b2[8];func_0c02a0c4(a,22,1);}
+  if(func_0c02a026(a)<0){a->b6++;a->b7=zero;a->s28=60;a->s30=40;a->f104=34;a->f108=fzero;*(struct LinkedActorVec3 *)&a->f80=a->v284;func_0c02a0c4(a,22,1);}
   break;
  }
 }

@@ -127,7 +127,7 @@ int func_0c0ad654(struct Actor *a)
 }
 void func_0c0ad694(struct Actor *a)
 {
- if(a->b1d1==29&&a->b1e9==3)*(struct LinkedActorVec3 *)&a->f80=*(struct LinkedActorVec3 *)&a->pad10b2[8];
+ if(a->b1d1==29&&a->b1e9==3)*(struct LinkedActorVec3 *)&a->f80=a->v284;
 }
 void func_0c0ad6be(struct Actor *a){table_0c2447e4[a->b1ff](a);}
 void func_0c0ad6d2(struct Actor *a){func_0c044cbc(a);if((unsigned char)a->b1fe==1){if(a->b1f9==1)kair_0c0ad9a4(a);else kground_0c0ad8ca(a);}else if(a->b1f9==1)air_0c0ad7f8(a);else ground_0c0ad74e(a);}

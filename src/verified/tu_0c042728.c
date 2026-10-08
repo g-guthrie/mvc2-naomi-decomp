@@ -64,13 +64,13 @@ int func_0c042780(struct Actor *a)
 void func_0c0427be(struct Actor *a, short s)
 {
     if ((a->s25c = dat_0c23bde4[func_0c02849a() & 31] + s) <= 0) a->s25c = 1;
-    *(short *)a->pad10b0b = a->s25c;
+    a->s25e = a->s25c;
 }
 
 int func_0c0427f2(struct Actor *a)
 {
     if ((a->s25c = a->s25c - func_0c04283c(a)) > 0) return 0;
-    a->s25c = *(short *)a->pad10b0b;
+    a->s25c = a->s25e;
     return 1;
 }
 
