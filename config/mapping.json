@@ -109888,11 +109888,18 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0af1f2; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c0af336",
-      "size": 40,
+      "address": "0x0c0af330",
+      "size": 12,
+      "kind": "data",
+      "sha256": "67936938f9a30f8772327653b3c9cdeb3e6b59acce28154cfbdc2620f6709ad0",
+      "evidence": "Lead review: pool words 0x0c03edcc, 0x0c04b02a, 0x0c025762 (the last loaded by mov.l at 0x0c0af302); supersedes the old code entry at 0x0c0af336."
+    },
+    {
+      "address": "0x0c0af33c",
+      "size": 34,
       "kind": "code",
-      "sha256": "9fb103007d745536627a5fc57a2fbfdfe5990129ee554ebaf22fb1171bb34443",
-      "evidence": "CFG walk from 0x0c0af336; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "f9a016a3c4c075f7c37c7ceb7111ee7fc879fabb62f0c0bccb2d5339aa1a65b4",
+      "evidence": "Lead review: function 0x0c0af33c (referenced from 0x0c2448d8), sts.l pr prologue; continues to the reviewed code at 0x0c0af35e."
     },
     {
       "address": "0x0c0af35e",
@@ -190402,6 +190409,13 @@
       "evidence": "CFG walk from 0x0c10d9f8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c10d9fe",
+      "size": 100,
+      "kind": "code",
+      "sha256": "8c6cf9b2b8551ef04c4afc0b0b49d148f04d37107abebbd951b9ff818bbbc5d8",
+      "evidence": "Lead review: two functions listed in the pointer table at 0x0c24bc6c/0x0c24bc70: 0x0c10d9fe (prologue, epilogue at 0x0c10da36 falls through as a tail into 0x0c10da3a) and 0x0c10da3a (ends rts/nop at 0x0c10da5e)."
+    },
+    {
       "address": "0x0c10da62",
       "size": 2,
       "kind": "data",
@@ -190423,6 +190437,13 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c10d9a4; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c10da6e",
+      "size": 2,
+      "kind": "data",
+      "sha256": "bc2ae8ad7768c724b4e37aae2a817d2c556639143bad8ccbd13cb326ada4b616",
+      "evidence": "Lead review: mov.w literal 0x019d loaded at 0x0c10da14."
+    },
+    {
       "address": "0x0c10da70",
       "size": 24,
       "kind": "data",
@@ -190437,11 +190458,18 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c10d9a4; unreferenced adjacent bytes omitted."
     },
     {
-      "address": "0x0c10da96",
-      "size": 144,
+      "address": "0x0c10da94",
+      "size": 12,
+      "kind": "data",
+      "sha256": "d0f618d515efde76a5aea144e028b8c91d0730ab6593a720d9f2e3972435b46f",
+      "evidence": "Lead review: pool words 0x0c24bc96, 0x0c025762, 0x0c0437b8 loaded by mov.l at 0x0c10da22, 0x0c10da4a, 0x0c10da54; supersedes the old code entry at 0x0c10da96, which decoded these words."
+    },
+    {
+      "address": "0x0c10daa0",
+      "size": 134,
       "kind": "code",
-      "sha256": "d982896a7956c1aabf58c92ff3fc465955c52f10ec5c2e8975758bb596509804",
-      "evidence": "CFG walk from 0x0c10da96; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "c6e083ebc53a1a4b772f85242f2ba4bd74d8071522bfd8e7a85e384cdee11d91",
+      "evidence": "Lead review: function 0x0c10daa0, listed in the pointer table at 0x0c24bc74; ends jmp @r3 with delay slot at 0x0c10db24."
     },
     {
       "address": "0x0c10db26",
