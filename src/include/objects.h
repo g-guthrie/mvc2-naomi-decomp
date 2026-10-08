@@ -345,9 +345,12 @@ struct Actor {
     unsigned char x3a4[8],x3ac[8],x3b4[8],x3bc[8],x3c4[8];
     unsigned char x3cc[0x3e4 - 0x3cc];
     unsigned short w3e4;
-    unsigned char pad3e6[0x3ea - 0x3e6];
+    unsigned short w3e6;
+    unsigned char pad3e8[0x3ea - 0x3e8];
     unsigned short w3ea;
-    unsigned char pad3ec[0x3f0 - 0x3ec];
+    unsigned char pad3ec[0x3ee - 0x3ec];
+    unsigned char b3ee;
+    unsigned char pad3ef[0x3f0 - 0x3ef];
     unsigned char b3f0, b3f1;
     unsigned char pad12[2];
     void *p3f4;
