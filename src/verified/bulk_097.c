@@ -278,17 +278,6 @@ const unsigned int dat_0c17ed14[] = {
     0x012c00dcu, 0x013d01a3u, 0x0c037688u,
 };
 
-#pragma section n17fa08
-void (*const table_0c17fa08[])(void) = {
-    func_0c180e44,
-    func_0c02a026,
-    func_0c037d0c,
-    func_0c25408c,
-    func_0c181094,
-    func_0c180cf8,
-    func_0c180cbc,
-};
-
 #pragma section n17fb54
 void (*const table_0c17fb54[])(void) = {
     func_0c180ae6,
