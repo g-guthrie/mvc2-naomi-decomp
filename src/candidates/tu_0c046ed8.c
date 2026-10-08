@@ -1,12 +1,14 @@
-/* Candidate: 3055/3208 bytes equal; every function and pool is at its retail
- * address. Remaining differences are scratch-register choices (r1/r2/r3, r6/r7,
- * r13/r14) in 0x0c046f9a, 0x0c04710c, 0x0c0471aa, 0x0c047286, 0x0c047360,
- * 0x0c0473da, 0x0c04746c, 0x0c0475ec, 0x0c0476f4, 0x0c04771a, 0x0c0477dc and
- * 0x0c0479a6. The real translation unit starts at 0x0c045f1c (bsr from
- * 0x0c045f4a to 0x0c0463b4 and from 0x0c046472/0x0c046c48 to 0x0c046e7e, bra
- * 0x0c046ea2 -> 0x0c0477dc, bsr 0x0c046d8a -> 0x0c047cca) and ends at the pool
- * before 0x0c047d4c, so the register rotation here is probably inherited from
- * the missing leading functions. */
+/* Candidate: 3147/3208 bytes equal; every function and pool is at its retail
+ * address. Remaining scratch-register differences: 0x0c046f9a (w34c/w34a load
+ * order, 2 bytes), 0x0c04710c (retail stores the phase zero through r0),
+ * 0x0c0471aa (r3/r7 load pair), 0x0c0473da and 0x0c04746c (the direction local
+ * takes r6 where retail uses r7/r5), 0x0c0475ec (w34e loaded before the
+ * pattern word) and 0x0c0479a6 (signed timer in r5, retail r2). Register
+ * rotation is per function: adding a function before one does not change it.
+ * Recipes used: dead return after a goto (0x0c0476f4), label before ++
+ * (0x0c046f9a, 0x0c04771a), a volatile local for the stack-reloaded argument
+ * (0x0c04771a), else-wrap after an early return (0x0c0477dc). The real
+ * translation unit starts at 0x0c045f1c and ends at the pool before 0x0c047d4c. */
 #include "objects.h"
 struct CommandPattern { unsigned short length, flags; unsigned char pad4[4]; unsigned short inputs[1]; };
 struct CommandState { unsigned char phase; signed char timer; unsigned char index; unsigned char direction; unsigned char step; unsigned char pad5; unsigned short buttons; };
@@ -46,7 +48,7 @@ unsigned char func_0c046f9a(struct Actor *a,struct CommandPattern *p,struct Comm
  if((unsigned short)pressed){
   unsigned short *flags=&p->flags;
   if((*flags&0x8000)==0x8000){
-   if((unsigned short)pressed!=((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0]){s->phase++;goto end;}
+   if((unsigned short)pressed!=((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0]){goto inc; inc: s->phase++;goto end;}
   }else if((*flags&0x40)==0x40)return func_0c0477dc(a,p,s,pressed);
   return func_0c047796(a,p,s,pressed);
  }
@@ -98,6 +100,7 @@ unsigned char func_0c04710c(struct Actor *a,struct CommandPattern *p,struct Comm
 {
  unsigned short *in=&p->inputs[0];
  if(!(a->w34a&*in)){
+  goto check; return 0; check:
   if(*in==0x1000 || *in==0x2000 || s->index==a->b1d2)goto ok;
   s->phase=0;
  }
@@ -125,7 +128,7 @@ unsigned char func_0c0471aa(struct Actor *a,struct CommandPattern *p,struct Comm
  unsigned short *in;
  if(--s->timer<=0)return s->phase=0;
  in=&p->inputs[2];
- if(a->w34a&*in)return func_0c0477dc(a,p,s,(short)a->w34a&(short)*in);
+ if(a->w34a&*in)return func_0c0477dc(a,p,s,(short)*in&(short)a->w34a);
  return 0;
 }
 
@@ -157,6 +160,7 @@ unsigned char func_0c047286(struct Actor *a,struct CommandPattern *p,struct Comm
  if(--s->timer<=0)return s->phase=0;
  in=&p->inputs[0];
  if(a->w34e&*in){
+  goto LB0_160; return 0; LB0_160:
   if((a->w34e&*in)==s->buttons){
    ++s->index;
    s->timer=*((unsigned char *)p+2);
@@ -186,8 +190,10 @@ unsigned char func_0c047360(struct Actor *a,struct CommandPattern *p,struct Comm
  unsigned short direction=a->w34a&0x3c00;
  unsigned short index;
  if(direction){
+  goto LB1_190; LB1_190:
   if(direction==0x2000 || direction==0x1000 || direction==0x800 || direction==0x400)goto ok;
  }
+ goto LB0_192; LB0_192:
  s->phase=0;return 0;
 ok:
  index=direction;
@@ -203,7 +209,7 @@ ok:
 }
 unsigned char func_0c0473da(struct Actor *a,struct CommandPattern *p,struct CommandState *s)
 {
- unsigned short direction;
+ register unsigned short direction;
  if(--s->timer<=0)return s->phase=0;
  direction=(a->w34a&0x3c00)>>10;
  if(direction){
@@ -223,8 +229,10 @@ unsigned char func_0c04746c(struct Actor *a,struct CommandPattern *p,struct Comm
  unsigned short direction;
  if(--s->timer<=0)return s->phase=0;
  direction=(a->w34a&0x3c00)>>10;
+ goto LB1_229; LB1_229:
  if(direction && direction==dat_0c23bf3c[(s->direction+s->step)&3]){
   if(!--s->index){
+   goto LB0_231; LB0_231:
    *((unsigned char *)a+0x35c)=0;
    ++s->phase;s->timer=15;s->index=0;
    return func_0c046f9a(a,p,s);
@@ -268,8 +276,9 @@ unsigned char func_0c0475ec(struct Actor *a,struct CommandPattern *p,struct Comm
  pressed=(short)((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0]&(short)a->w34e&0x3f60;
  if((unsigned short)pressed){
   unsigned short *flags=&p->flags;
+  goto LB0_276; LB0_276:
   if((*flags&0x8000)==0x8000){
-   if((unsigned short)pressed!=((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0]){s->phase++;goto end;}
+   if((unsigned short)pressed!=((struct CommandPattern *)((unsigned char *)p+s->index*2))->inputs[0]){goto inc; inc: s->phase++;goto end;}
   }else if((*flags&0x40)==0x40)return func_0c0477dc(a,p,s,pressed);
   return func_0c047796(a,p,s,pressed);
  }
@@ -296,17 +305,22 @@ unsigned char func_0c0476d4(struct Actor *a,struct CommandPattern *p,struct Comm
 }
 unsigned char func_0c0476f4(struct Actor *a,struct CommandPattern *p,struct CommandState *s,int input)
 {
- if(--s->timer>0){
-  if(!(p->inputs[0]&(unsigned short)input))s->phase=0;
- }else ++s->phase;
+ if(--s->timer<=0)goto inc;
+ if(!(p->inputs[0]&(unsigned short)input))s->phase=0;
+ goto e;
+ return 0;
+inc:
+ ++s->phase;
+e:
  return 0;
 }
 
 unsigned char func_0c04771a(struct Actor *a,struct CommandPattern *p,struct CommandState *s,int input)
 {
- unsigned short pressed;
+ volatile unsigned short pressed;
  if(!(pressed=p->inputs[0]&input)){
   if(func_0c0477dc(a,p,s,(short)pressed)){s->phase=0;return 1;}
+  goto inc; inc:
   ++s->phase;s->timer=10;
  }
  return 0;
@@ -339,14 +353,19 @@ unsigned char func_0c0477dc(struct Actor *a,struct CommandPattern *p,struct Comm
  unsigned short flags=p->flags;
  if(!(flags&0x4000)){
   if((flags&0x20) && (a->b14a&0xe0))return 0;
+  else{
   if(flags&0x800){if(!func_0c047940(a))return 0;}
   else if(flags&0x100){if(!func_0c0479a6(a))return 0;}
   else if(!func_0c047886(a))return 0;
+  }
  }
+ goto t; t:
  if((flags&0x2000) && a->b1f9!=2)return 0;
+ else{
  if((flags&0x1000) && a->b1f9==2)return 0;
  s->phase=0;s->buttons=buttons;
  return 1;
+ }
 }
 
 extern float dat_0c2d9300;
