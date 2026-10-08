@@ -367985,6 +367985,13 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c1e6d10",
+      "size": 74,
+      "kind": "code",
+      "sha256": "d1b9ce2d2e17c57dab36684e51be7bc6f94be2d39fd695772ff9ef298d585df2",
+      "evidence": "Lead review: function prologue at 0x0c1e6d10 (pushes r14-r11, frame -4) after the previous pool; straight-line code with bt/bf/bra into the reviewed range at 0x0c1e6d5a and on to 0x0c1e6d90; no delay slot crosses 0x0c1e6d5a."
+    },
+    {
       "address": "0x0c1e6d5a",
       "size": 66,
       "kind": "code",
