@@ -777,6 +777,8 @@ struct ActorSub2a4Grab {
     short s30;
 };
 struct ActorSubCycleBytes { unsigned char b0, b1, b2, b3; };
+/* Per-actor counter bytes passed to the 0x0c123358 handlers. */
+struct ActorSubCounter10 { unsigned char pad0[8]; char b8; unsigned char b9, b10; };
 struct ActorSubControlBytes { unsigned char pad0[2]; char b2; unsigned char pad3; char b4; unsigned char pad5[7]; char b12; unsigned char b13; };
 /* Signed guard counters in the actor +0x2a4 record (0x0c061d88 callbacks). */
 struct ActorSubGuard18 { unsigned char pad0[12]; char b12; unsigned char pad13[5]; char b18, b19, b20; };
