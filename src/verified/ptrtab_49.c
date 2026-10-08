@@ -111,9 +111,6 @@ extern void func_0c269ab4(void);
 extern void func_0c269ac0(void);
 extern void func_0c269ae0(void);
 
-#pragma section n20b6f0
-void (*const ptr_0c20b6f0)(void) = func_0c21b6f2;
-
 #pragma section n211720
 void (*const ptr_0c211720)(void) = func_0c21ce60;
 

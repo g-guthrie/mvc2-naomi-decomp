@@ -1,31 +1,6 @@
 /* Hitachi const data: literal pools of SDK code in 0x0c1e9000-0x0c229000
    (PC-relative literals and their alignment pads, reviewed in config/mapping.json). */
 
-#pragma section n1ed9ae
-const unsigned short dat_0c1ed9ae[] = {
-    0x0000u,
-};
-
-#pragma section n1edf44
-const unsigned int dat_0c1edf44[] = {
-    0x0c1eec20u,
-};
-
-#pragma section n1ee306
-const unsigned short dat_0c1ee306[] = {
-    0x0000u,
-};
-
-#pragma section n1ee324
-const unsigned int dat_0c1ee324[] = {
-    0x0c1eeb40u,
-};
-
-#pragma section n1ee9e2
-const unsigned short dat_0c1ee9e2[] = {
-    0x0000u,
-};
-
 #pragma section n1ef258
 const unsigned int dat_0c1ef258[] = {
     0x0c33f7e0u, 0x0c1ed4e0u,

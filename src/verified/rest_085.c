@@ -53,16 +53,6 @@ const unsigned int dat_0c1ebe30[] = {
     0x3fc90fdbu,
 };
 
-#pragma section n1ccf3c
-const unsigned int dat_0c1edf3c[] = {
-    0x0c1ed4e0u, 0x0c1edc40u,
-};
-
-#pragma section n1cd6c0
-const unsigned int dat_0c1ee6c0[] = {
-    0x0c1edfa0u,
-};
-
 #pragma section n1d74c0
 const unsigned int dat_0c1f84c0[] = {
     0x0c3453d0u, 0x0c1f61d0u,

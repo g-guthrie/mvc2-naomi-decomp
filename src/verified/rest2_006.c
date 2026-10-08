@@ -110,22 +110,6 @@ const unsigned int dat_0c1ecd94[] = {
     0x00000000u, 0x00000000u, 0x00000000u,
 };
 
-#pragma section n1cd314
-const unsigned int dat_0c1ee314[] = {
-    0x0c1ee080u, 0x0c1ee3b0u,
-};
-
-#pragma section n1cd6b8
-const unsigned int dat_0c1ee6b8[] = {
-    0x0c1ebd40u, 0x0c1ec2c0u,
-};
-
-#pragma section n1cd9e4
-const unsigned int dat_0c1ee9e4[] = {
-    0x0c1ebd90u, 0x0c1ec3c0u, 0x0c1ee5b0u, 0x0c1ee700u, 0x0c1ee760u, 0x0c1ee7c0u, 0x0c1ee820u, 0x0c1ee880u,
-    0x0c1eec60u, 0x0c1eeef0u, 0x0c1eec20u, 0x0c1ee600u,
-};
-
 #pragma section n1cdbac
 const unsigned int dat_0c1eebac[] = {
     0x00000000u,

@@ -16,7 +16,10 @@ class LeavesIdTests(unittest.TestCase):
         main = verify_rom(target)[number(target['main']['rom_offset']):]
         base = number(target['main']['address'])
         units = {u['id']: u for u in load(ROOT / 'config/units.json')}
-        for uid in ('leaves_id_28', 'leaves_id_29'):
+        # Library modules may absorb leaves (leaves_id_29 is now part of sySq_).
+        present = [uid for uid in ('leaves_id_28', 'leaves_id_29') if uid in units]
+        self.assertTrue(present)
+        for uid in present:
             work = ROOT / 'build' / f'work-{uid}'
             if work.exists():
                 shutil.rmtree(work)
