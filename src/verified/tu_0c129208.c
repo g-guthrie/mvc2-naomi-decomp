@@ -1,4 +1,3 @@
-/* Candidate: func_0c129330 differs in scratch register choice (r2/r3) and in where the constant 1 is loaded into r13; every other function is exact. */
 #include "objects.h"
 extern int dat_0c24dae0;
 extern unsigned char dat_0c24daf0[];
@@ -87,7 +86,7 @@ unsigned char func_0c129330(struct Actor *a)
     struct ActorSub2a4 *sub=&a->sub2a4;
     if(sub->b0) return 0;
     if(!func_0c047b60(a,0x140,&v,1)) return 0;
-    if(!func_0c047886(a)) return 0;
+    goto c;c:if(!func_0c047886(a)) return 0;
     if(a->b525){ v=a->w1fa; if(a->b1d2){if(v&0xc00) v^=0xc00;} }
     else v=a->w340;
     v=(v&0x3c00)>>10;
@@ -95,8 +94,7 @@ unsigned char func_0c129330(struct Actor *a)
     if(a->b1f9==2) v+=16;
     t=dat_0c24dbb0[v];
     if(!t) return 0;
-    one=1;
-    if(a->b1f9!=2 && (v&(one<<a->b1d2))) return 0;
+    one=1; if(a->b1f9==2) goto ok; goto s;s:if(v&(1<<a->b1d2)) return 0; ok:
     a->b34=t+255;
     a->b5=0;a->b6=0;a->b7=0;
     a->b1a3=one;a->b1e9=one;

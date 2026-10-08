@@ -152,11 +152,6 @@ const unsigned int dat_0c1821f8[] = {
     0x0c02849au, 0x3fd55555u, 0x41c00000u, 0x0c02a0c4u,
 };
 
-#pragma section n18237c
-const unsigned int dat_0c18237c[] = {
-    0x041c012cu,
-};
-
 #pragma section n182384
 const unsigned int dat_0c182384[] = {
     0x0c02849au, 0x3fd55555u, 0x41400000u, 0x0c02a0c4u,

@@ -1,6 +1,4 @@
-/* Special-move checker unit for one character (0x0c11ea20-0x0c11ef44).
- * 15/16 functions match; in 0x0c11eea8 retail keeps the command in r5 and
- * the zero in r4 (this spelling swaps them) and rotates r2/r3 once. */
+/* Special-move checker unit for one character (0x0c11ea20-0x0c11ef44). */
 #include "objects.h"
 extern unsigned char dat_0c24d1d4[];
 extern unsigned char dat_0c24d1e4[];
@@ -153,11 +151,11 @@ int func_0c11ee72(struct Actor *a)
 void func_0c11eea8(struct Actor *a)
 {
  if((unsigned char)a->b159==17){
-  int v=(signed char)a->b140;
-  if(v){a->b140=0;if(v==1)v=0;else v=1;func_0c02a684(a,v,0,1);}
+  int v;
+  if(v=(signed char)a->b140){a->b140=0;if(v==1)v=0;else v=1;func_0c02a684(a,v,0,1);}
   else func_0c02a626(a,0,0,2);
  }
  if(((struct ActorSubTimers *)&a->sub2a4)->t8)((struct ActorSubTimers *)&a->sub2a4)->t8--;
- if(((struct ActorSubTimers *)&a->sub2a4)->t20)((struct ActorSubTimers *)&a->sub2a4)->t20--;
+ if(((struct ActorSubTimers *)&a->sub2a4)->t20)((struct ActorSubTimers *)&a->sub2a4)->t20=((struct ActorSubTimers *)&a->sub2a4)->t20-1;
  if(((struct ActorSubTimers *)&a->sub2a4)->t28)((struct ActorSubTimers *)&a->sub2a4)->t28--;
 }

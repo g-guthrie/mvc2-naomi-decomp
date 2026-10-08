@@ -44,7 +44,7 @@ void func_0c088854(struct Actor *a, struct ActorSub2a4 *sub) {
     return;
   a->b1d0 = 3;
   if (func_0c046e7e(a, dat_0c24231a, a->x3cc)) {
-    sub->b6--;
+    goto L; L: sub->b6--;
     a->w130 ^= 1;
     a->b1d2 ^= 1;
     func_0c047aac(a, a->x3cc);

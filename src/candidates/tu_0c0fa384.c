@@ -1,4 +1,4 @@
-/* Candidate: func_0c0fa9de keeps the 0x2b0 and 0x2d0 countdowns in r3/r2 where retail uses r1/r3, schedules the 0x2d0 store into the branch delay slot, and adds the __modls term before the +16 (15 bytes); everything else matches. */
+/* Candidate: func_0c0fa9de decrements the 0x2b0 countdown in r3 where retail uses r1 (4 bytes); everything else matches. */
 #include "objects.h"
 extern unsigned char dat_0c24a920[];
 extern unsigned char dat_0c24a930[];
@@ -217,7 +217,7 @@ void func_0c0fa9de(struct Actor *a)
   }
  }
  if(((struct ActorCountdowns *)a)->l2e4){((struct ActorCountdowns *)a)->l2e4--;return;}
- if(--((struct ActorCountdowns *)a)->l2d0<0){
+ goto d;d:if((((struct ActorCountdowns *)a)->l2d0=((struct ActorCountdowns *)a)->l2d0-1)<0){
   ((struct ActorCountdowns *)a)->l2d0=1;
   ((struct ActorCountdowns *)a)->l2d4++;((struct ActorCountdowns *)a)->l2d4=((struct ActorCountdowns *)a)->l2d4&3;
   func_0c02a684(a,1,((struct ActorCountdowns *)a)->l2d4+6,1);
@@ -228,7 +228,7 @@ void func_0c0fa9de(struct Actor *a)
  if(((struct ActorCountdowns *)a)->l2ec>0){
   if(*(short *)&a->b158!=*(short *)&((struct ActorCountdowns *)a)->l2f0){((struct ActorCountdowns *)a)->l2ec=0;func_0c02a39a(a,1);return;}
   t=--((struct ActorCountdowns *)a)->l2ec%6>>1;
-  func_0c02a684(a,0,a->b37*3+16+t,1);
+  func_0c02a684(a,0,(int)(a->b37*3+16U)+t,1);
  }
 }
 

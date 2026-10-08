@@ -1,7 +1,4 @@
-/* Special-move checker unit for one character (0x0c10f5d0-0x0c10fb44).
- * 10/12 functions match. 0x0c10f6c8 and 0x0c10f758 count sub-record bytes;
- * retail keeps the sub pointer in r13 and the zero in r12, this spelling
- * swaps them (and r2/r3 in the loop body). */
+/* Special-move checker unit for one character (0x0c10f5d0-0x0c10fb44). */
 #include "objects.h"
 extern unsigned char func_0c0465cc(struct Actor *),func_0c046b6c(struct Actor *),func_0c0469f4(struct Actor *),func_0c046d3c(struct Actor *);
 extern void func_0c045f1c(struct Actor *),func_0c0463fc(struct Actor *);
@@ -45,15 +42,15 @@ void func_0c10f5ec(struct Actor *a)
  if(func_0c10fae8(a))return;
  func_0c045f1c(a);func_0c0463fc(a);
 }
-unsigned char func_0c10f6c8(struct Actor *a)
+unsigned char func_0c10f6c8(register struct Actor *a)
 {
- struct ActorSubMoveBytes *sub=(struct ActorSubMoveBytes *)&a->sub2a4;
+ register struct ActorSubMoveBytes *sub=(struct ActorSubMoveBytes *)&a->sub2a4;
  int n;unsigned char *p;
  if(!func_0c046e7e(a,dat_0c24be18,a->x36c))goto fail;
  n=0;
  p=(unsigned char *)sub;
  goto test;
-loop:if(*p)n++;p++;
+loop:goto l;l:if(*p)n++;p++;
 test:if(p<(unsigned char *)sub+6)goto loop;
  if(n==6)goto fail;
  if(a->b1f9==2 && !a->b1fc){if(a->b1d4){fail:return 0;}a->b1d4++;}
@@ -61,15 +58,15 @@ test:if(p<(unsigned char *)sub+6)goto loop;
  a->b5=0;a->b7=0;a->b6=0;a->b1e9=0;
  func_0c045248(a,21);return 1;
 }
-unsigned char func_0c10f758(struct Actor *a)
+unsigned char func_0c10f758(register struct Actor *a)
 {
- struct ActorSubMoveBytes *sub=(struct ActorSubMoveBytes *)&a->sub2a4;
+ register struct ActorSubMoveBytes *sub=(struct ActorSubMoveBytes *)&a->sub2a4;
  int n;unsigned char *p;
  if(!func_0c046e7e(a,dat_0c24be2c,a->x374))goto fail;
  n=0;
  p=(unsigned char *)sub;
  goto test;
-loop:if(!*p)n++;p++;
+loop:goto l;l:if(!*p)n++;p++;
 test:if(p<(unsigned char *)sub+6)goto loop;
  if(n==6)goto fail;
  if(a->b1f9==2 && !a->b1fc){if(a->b1d4){fail:return 0;}a->b1d4++;}

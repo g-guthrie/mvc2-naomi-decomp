@@ -1,7 +1,3 @@
-/* Candidate: size exact, 286/292 bytes and the pool match. Differs: the
- * scratch register of the "a->parameter4b4.integer" truth test before the
- * third func_0c04e6b2 call is r3 here and r2 in retail (both functions).
- * Spelling variants tried: ternary, ==0, ||, &&, local result. */
 #include "objects.h"
 
 extern int func_0c04e78e(struct Actor *, int);
@@ -18,6 +14,7 @@ int func_0c050d80(struct Actor *a, void *b)
         return 0;
     func_0c04e6b2(a, b, 0);
     func_0c04e6b2(a, b, 1);
+    goto t0; t0:
     if (a->parameter4b4.integer)
         control_bits = 0x100;
     else
@@ -40,6 +37,7 @@ int func_0c050e06(struct Actor *a, void *b)
         return 0;
     func_0c04e6b2(a, b, 0);
     func_0c04e6b2(a, b, 1);
+    goto t1; t1:
     if (a->parameter4b4.integer)
         control_bits = 0x20;
     else

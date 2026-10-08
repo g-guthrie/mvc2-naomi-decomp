@@ -1,4 +1,4 @@
-/* Candidate: func_0c0d1220 selects the +-253.33 throw offset through a float compare instead of retail's branch-selected register copy, and orders the f92/f96 arithmetic differently; func_0c0d13d4 matches. */
+/* Throw finisher 0x0c0d1220 (side-select offset, launch velocities) and its dispatcher 0x0c0d13d4. */
 #include "objects.h"
 extern struct MotionGlobal_0c2d9260 dat_0c2d9260;
 extern void (*table_0c248318[])(struct Actor *,struct Actor *);
@@ -29,13 +29,19 @@ void func_0c0d1220(struct Actor *a,struct Actor *target)
   func_0c03edcc(a,target);
   target->f52=x;
   target->f56=target->f41c;
-  {float right=253.33333f,left=-253.33333f;offset=right;
-  if(a->w130){if(a->f52>dat_0c2d9260.f9c+-160.0f)offset=left;}
-  else if(dat_0c2d9260.f98+160.0f>a->f52)offset=right;else offset=left;
-  if(offset==left)a->w130=a->b1d2=1;else a->w130=a->b1d2=zero;}
-  a->f92=(target->f52+offset-a->f52)/48.0f;
+  {float edge,edge2;offset=253.33333f;
+  if(a->w130){edge=dat_0c2d9260.f9c+-160.0f;if(a->f52>edge){offset=-253.33333f;goto L;}goto R;}
+  edge2=dat_0c2d9260.f98+160.0f;
+  offset=-253.33333f;
+  if(!(edge2>a->f52))goto L;
+  offset=253.33333f;
+  R:a->w130=a->b1d2=zero;goto D;
+  L:a->w130=a->b1d2=1;D:;
+  }
+  {float d,g;offset=target->f52+offset;g=a->f41c;d=48.0f;
+  a->f92=(offset-a->f52)/d;
   a->f104=0;
-  a->f96=(a->f56-a->f41c)/48.0f+19.2857132f;
+  a->f96=(a->f56-g)/d+19.2857132f;}
   a->f108=-0.80357140303f;
   a->s28=24;
  }

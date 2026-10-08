@@ -1,5 +1,4 @@
-/* Nine callbacks and both pools match exactly. The long initializer still
- * differs in the register used for its strength arithmetic and byte store. */
+/* Ten callbacks of one move set (0x0c0f9750-0x0c0f9a30). */
 #include "objects.h"
 extern char func_0c02a026(struct Actor *);
 extern void func_0c0437b8(struct Actor *),func_0c0442fa(struct Actor *),func_0c0432ca(struct Actor *),func_0c02a39a(struct Actor *,int),func_0c02a0c4(struct Actor *,int,int),func_0c1b3e6c(struct Actor *,int);
@@ -29,11 +28,11 @@ void func_0c0f9806(struct Actor *a)
 void func_0c0f982e(struct Actor *a){table_0c24a804[a->b6](a);}
 void func_0c0f9840(struct Actor *a)
 {
- int zero=0;float stopped=0.0f;int strength;
+ int zero=0;float stopped=0.0f;
  ((unsigned char *)a)[0x2a9]=zero;a->b6++;a->f56=a->f41c;a->b1f9=zero;
  a->f92=stopped;a->f96=stopped;a->f104=stopped;a->f108=stopped;
  func_0c0442fa(a);func_0c02a39a(a,zero);func_0c0432ca(a);
- if(a->b255==3)a->b1a1=63;else {strength=(unsigned char)a->b1a3*2+48;a->b1a1=strength;}
+ if(a->b255==3)a->b1a1=63;else {goto s;s:a->b1a1=((unsigned char)a->b1a3<<1)+48;}
  a->w1ac=zero;a->b19e=zero;*(unsigned int *)&a->p1c4=zero;dat_0c2f83f8->arr[a->b2]++;
  goto call;
 call:func_0c02a0c4(a,21,(unsigned char)a->b1a3*2+5);

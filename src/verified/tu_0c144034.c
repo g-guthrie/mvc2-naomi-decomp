@@ -1,6 +1,4 @@
-/* Candidate: only func_0c144034 differs, in the single statement a->f56 += row[1]*2.1428571f. Retail computes &a->f56 early (mov r14,r2; add r0,r2) and spills it
- * with mov.l r2,@-r15, and reads a->b33 through a pointer (mov #33,r3; add r14,r3; mov.b @r3,r3); the source spelling that produces that pointer/spill
- * form is not found. Every other function and all pools match apart from the shift this causes. */
+/* func_0c144034..func_0c14423e: owner-copy actor init (b1a1 select via label; pad11 store label fixes scheduling). */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 extern void func_0c0288a8(struct LinkedActor *,int);
@@ -29,9 +27,9 @@ void func_0c144034(struct LinkedActor *a,struct LinkedActor *owner)
  a->f56+=(dat_0c24f9b6+2*(unsigned char)a->b33)[1]*2.1428571f;
  a->b34=dat_0c24f9b4[(unsigned char)a->b33];
  if(a->sdc.w130){a->b34=32-a->b34;a->b34&=31;}
- if(!a->b33)A(a)->b1a1=owner->b1a3+50;else A(a)->b1a1=owner->b1a3+52;
+ if(!a->b33)A(a)->b1a1=owner->b1a3+50;else {goto s;s:A(a)->b1a1=owner->b1a3+52;}
  A(a)->w1ac=0;A(a)->b19e=0;A(a)->p1c4=0;dat_0c2f83f8->arr[a->b2]++;
- a->pad11[0]=66;a->pad11[1]=66;
+ goto t;t:a->pad11[0]=66;a->pad11[1]=66;
  func_0c02a0c4(a,23,23);
  func_0c1441ae(a,owner);
 }
