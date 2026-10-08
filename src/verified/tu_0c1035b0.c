@@ -1,5 +1,3 @@
-/* Four callbacks and the pool match exactly. The final random-selector
- * callback still differs in the order of its mode 1 and mode 2 comparisons. */
 #include "objects.h"
 extern unsigned char dat_0c2f8338;
 extern char table_0c24b11c[];

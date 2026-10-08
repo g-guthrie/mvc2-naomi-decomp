@@ -1,4 +1,3 @@
-/* Candidate 0x0c072cb8..0x0c072ddc: motion transition, animation completion and dispatcher match (192 executable bytes), with all pools exact. Final state selector differs only in the order of comparisons for states1 and2. */
 #include "objects.h"
 extern char func_0c02a026(struct Actor *);
 extern unsigned char func_0c044e52(struct Actor *);

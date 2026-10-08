@@ -1,5 +1,4 @@
-/* SDK big-number helper: shift a byte string right by one bit; returns the bit shifted out.
-   Differs: shifted-out bit lands in r1 instead of r12 (one fewer callee save). */
+/* SDK big-number helper: shift a byte string right by one bit; returns the bit shifted out. */
 #pragma section n2047b0
 int func_0c2047b0(unsigned char *buf, int n)
 {

@@ -1,4 +1,3 @@
-/* Candidate: final table-call target register (r1 vs r3) differs; size exact. */
 #include "objects.h"
 extern void func_0c03edcc(struct Actor*,struct Actor*);
 extern void func_0c03f004(struct Actor*,struct Actor*);

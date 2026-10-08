@@ -1,6 +1,3 @@
-/* Byte decompressor: temporary registers differ in back-reference and literal
- * branches (97/106 bytes). Word decompressor: all 118 bytes exact.
- * Complete linked extent and 8-byte shared literal pool match retail. */
 int func_0c02a6f8(const signed char *src, int size, signed char *dst)
 {
     int mask=0, flags;

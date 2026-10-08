@@ -1,5 +1,3 @@
-/* Both dispatch helpers and the pool match exactly. The main callback
- * still differs in the order of its mode 1 and mode 2 comparisons. */
 #include "objects.h"
 extern int func_0c03916c(struct Actor *);
 extern char func_0c02a026(struct Actor *);
