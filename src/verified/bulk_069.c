@@ -76,57 +76,6 @@ extern void func_0c24dd78(void);
 extern void func_0c24dd90(void);
 extern void func_0c24dd9c(void);
 
-#pragma section n1267aa
-const unsigned short dat_0c1267aa[] = {
-    0x01feu,
-};
-
-#pragma section n1267ae
-const unsigned short dat_0c1267ae[] = {
-    0x01d6u,
-};
-
-#pragma section n1267b4
-void (*const table_0c1267b4[])(void) = {
-    func_0c02a0c4,
-    func_0c0346da,
-    func_0c24d7e0,
-    func_0c24d810,
-};
-
-#pragma section n1269e8
-void (*const table_0c1269e8[])(void) = {
-    func_0c044ede,
-    func_0c02a18c,
-    func_0c043324,
-    func_0c0437b8,
-    func_0c043352,
-    func_0c044df4,
-    func_0c02a026,
-};
-
-#pragma section n126b2c
-void (*const table_0c126b2c[])(void) = {
-    func_0c0421f4,
-    func_0c0420f8,
-    func_0c042018,
-    func_0c0421b8,
-    func_0c02a026,
-    func_0c0438de,
-    func_0c044e52,
-    func_0c044f1c,
-    func_0c043352,
-    func_0c044cbc,
-};
-
-#pragma section n126b58
-void (*const table_0c126b58[])(void) = {
-    func_0c048bb0,
-    func_0c02a0c4,
-    func_0c0346da,
-    func_0c044df4,
-};
-
 #pragma section n127150
 void (*const table_0c127150[])(void) = {
     func_0c02849a,
@@ -308,23 +257,6 @@ void (*const table_0c12a41c[])(void) = {
     func_0c0438de,
     func_0c044e52,
     func_0c044f1c,
-};
-
-#pragma section n12ab34
-void (*const table_0c12ab34[])(void) = {
-    func_0c02a026,
-    func_0c044e52,
-    func_0c02a0c4,
-    func_0c24dcf4,
-};
-
-#pragma section n12ac18
-void (*const table_0c12ac18[])(void) = {
-    func_0c02a026,
-    func_0c191980,
-    func_0c02a0c4,
-    func_0c24dcfc,
-    func_0c24dd30,
 };
 
 #pragma section n12ad8c
