@@ -260,8 +260,3 @@ const unsigned int dat_0c190570[] = {
     0x0c029fc4u, 0x0c037688u,
 };
 
-#pragma section n190824
-const unsigned short dat_0c190824[] = {
-    0x0501u,
-};
-

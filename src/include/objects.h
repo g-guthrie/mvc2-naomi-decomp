@@ -461,7 +461,8 @@ struct LinkedActorBlock {
     unsigned char b12c;
     unsigned char pad1[0x54 - 0x51];
     short w130;
-    unsigned char pad1b[0x64 - 0x56];
+    unsigned char pad1b[0x60 - 0x56];
+    unsigned char b13c, b13d, b13e, b13f; /* 0x0c1908dc launch colours */
     char b140;
     char b141;
     char b142;
@@ -787,7 +788,8 @@ struct DirectionState { unsigned char unknown0[3],b3,unknown4[20]; struct Direct
  * the icon callbacks use signed selections at 48 and the two mask pairs at 60. */
 struct SelectionFlags59e8 {
     unsigned char state[2], flags[2];
-    unsigned char pad4[48 - 4];
+    signed char cursor_x[2], cursor_y[2];
+    unsigned char pad8[48 - 8];
     signed char choice[2];
     unsigned char pad50, combined_mask;
     unsigned char pad52[60 - 52];
