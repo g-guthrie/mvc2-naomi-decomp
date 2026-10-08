@@ -1,4 +1,4 @@
-/* Candidate: func_0c0cd364 fr14/fr15 assignment of the two float locals is swapped (304/308). */
+/* Throw step 0x0c0cd364 (parameter copied to p so x/y take fr14/fr15), countdown 0x0c0cd3be and dispatchers. */
 #include "objects.h"
 extern void (*table_0c248058[])(struct Actor *);
 /* func_0c0cd364: no twin (90 bytes) */
@@ -15,18 +15,19 @@ void func_0c0cd458(struct Actor *a);
 
 void func_0c0cd364(struct Actor *a)
 {
+    struct Actor *p = a;
     register float y;
     register float x;
-    a->b3f8 = 2;
-    a->b328 = 5;
-    func_0c02a026(a);
-    if (a->b141) {
-        a->b141 = 0;
-        a->b6++;
+    p->b3f8 = 2;
+    p->b328 = 5;
+    func_0c02a026(p);
+    if (p->b141) {
+        p->b141 = 0;
+        p->b6++;
         x = 195.0f;
         y = 113.57143f;
-        func_0c1aede8(a);
-        func_0c1618dc(a, 0, x, y);
+        func_0c1aede8(p);
+        func_0c1618dc(p, 0, x, y);
     }
 }
 
