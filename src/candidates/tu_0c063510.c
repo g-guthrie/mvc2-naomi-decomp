@@ -1,7 +1,8 @@
-/* Candidate: fourteen functions; eleven match exactly. Residuals: func_0c0636be builds 2.0f
-   (fldi1; fadd) in fr4 instead of fr3 and swaps two pointer temporaries; func_0c063768 loads
-   dat_0c2f83f8 into r3 instead of r2; func_0c0639a6 tail-merges two b1f7 stores that retail keeps
-   separate (4 bytes short), which shifts func_0c063a2c and the last pool. */
+/* Candidate: fourteen functions, full linked extent; eleven match exactly. Residuals: func_0c0636be
+   builds 2.0f (fldi1; fadd) in fr4 instead of fr3 and swaps two pointer temporaries; func_0c063768
+   loads dat_0c2f83f8 into r3 instead of r2; func_0c0639a6 places its shared `return 0` block before
+   the final b1f7=0 store instead of after it (and tests b1a3 in r1 rather than r3), which shifts
+   func_0c063a2c by 4 bytes and leaves the pool order one slot off. */
 #include "objects.h"
 typedef void (*ActorHandler)(struct Actor *);
 extern struct Tbl_ub3_01 *dat_0c2f83f8;
@@ -210,7 +211,7 @@ int func_0c0639a6(struct Actor *a)
             return 0;
         if (!(r = func_0c037d54(a)))
             return 0;
-        a->b1f7 = 3;
+        goto s3; s3: a->b1f7 = 3;
     } else if (a->b1f9 == 2) {
         if (!(r = func_0c037d54(a)))
             return 0;

@@ -1,3 +1,8 @@
+/* Candidate source that compiles byte-exact to retail (1448/1448) when diffed by unit id.
+ * Not promoted: --register fails boundary review because config/mapping.json has no
+ * reviewed code range covering 0x0c0a346c-0x0c0a3a14 (unreviewed_gap). Key fixes:
+ * func_0c0a375e tail-branches to a static selector (retail bra 0x0c0a3786) and reads
+ * through a volatile pointer; func_0c0a39ce takes a non-register parameter. */
 #include "objects.h"
 struct MoveCounters_0c0a346c { unsigned char pad[124]; short counts[2]; };
 extern struct MoveCounters_0c0a346c *dat_0c2f83f8;
@@ -147,14 +152,15 @@ void func_0c0a3690(register struct Actor *a)
     dat_0c2f83f8->counts[a->b2]++;
     func_0c02a0c4(a,10,a->b158);
 }
-void func_0c0a375e(register struct Actor *a)
+static void sel_0c0a3786(struct Actor *a);
+void func_0c0a375e(volatile struct Actor *a)
 {
-    volatile struct Actor *v=a;
-    if (!v->b1fe && (v->b1d6 & 15)) goto call;
-    if (v->b1fe && (v->b1d6 & 0xf0)) goto call;
-    return;
-call:
-    if ((unsigned char)v->b1fe == 1) func_0c0a38ae(a);
+    if (!a->b1fe && (a->b1d6 & 15) || a->b1fe && (a->b1d6 & 0xf0))
+        sel_0c0a3786((struct Actor *)a);
+}
+static void sel_0c0a3786(struct Actor *a)
+{
+    if ((unsigned char)a->b1fe == 1) func_0c0a38ae(a);
     else func_0c0a3798(a);
 }
 void func_0c0a3798(register struct Actor *a)
@@ -227,7 +233,7 @@ void func_0c0a38ae(register struct Actor *a)
     func_0c02a0c4(a,12,a->b158);
     if (a->b1d6 & 240) a->b1d6=a->b1d6-16;
 }
-void func_0c0a39ce(register struct Actor *a)
+void func_0c0a39ce(struct Actor *a)
 {
     dat_0c2440a8[a->b1ff](a);
 }

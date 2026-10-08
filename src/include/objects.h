@@ -286,7 +286,8 @@ struct Actor {
     unsigned char b22f,pad230,b231;
     char b232;
     unsigned char b233;
-    unsigned char pad9c[1],b235;
+    char b234;
+    unsigned char b235;
     unsigned char b236;
     unsigned char b237;
     char b238,b239;
@@ -294,14 +295,16 @@ struct Actor {
     unsigned char b23c;
     unsigned char pad23d[0x248 - 0x23d];
     unsigned char b248;
-    unsigned char pad248[0x24c - 0x249];
+    char b249;
+    unsigned char pad24a[0x24c - 0x24a];
     struct ActorVec2 position24c;
     unsigned char b254;
     unsigned char b255;
     unsigned char b256;
     unsigned char b257;
     unsigned char b258;
-    unsigned char pad10b0[0x25c - 0x259];
+    char b259;
+    unsigned char pad25a[0x25c - 0x25a];
     short s25c;
     unsigned char pad10b0b[0x278 - 0x25e];
     short s278;
@@ -635,7 +638,8 @@ struct ByteCursor { int cnt0; int cnt4; int cnt8; unsigned char *cur; };
 /* Actor used by the 0x0c1d0a8c-0x0c1d109c callback sequence. */
 struct Vec3_tu5_03 { float x, y, z; };
 struct MotionGlobal_0c2d9260 {
-    unsigned char pad[5];
+    unsigned char pad[3];
+    unsigned char b3, b4;
     unsigned char b5, b6;
     unsigned char pad7[12 - 7];
     float f12, f16, f20;
@@ -651,6 +655,8 @@ struct SolHorizontalTarget { unsigned char pad[16]; float x, y; };
  * established accesses while the stream constructors use the full array. */
 /* Keyframe of the effect tracks interpolated by 0x0c1ce8c4. */
 struct EffectKnot { int frame; float value; };
+/* Live-effect counter byte at 0x0c2f8398. */
+struct EffectCounter { char count; };
 
 struct ObjAngleScalars { int first, l44, l48; };
 union ObjAngleWords { int array[3]; struct ObjAngleScalars scalar; };

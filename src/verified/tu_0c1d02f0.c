@@ -3,7 +3,6 @@ extern struct Obj_tu5_03 *func_0c0374da(int,int,int);
 extern void func_0c037688(struct Obj_tu5_03 *);
 extern struct ActorGlobalRoot *dat_0c2d9650;
 extern struct Vec3_tu5_03 dat_0c260e08;
-struct EffectCounter {char count;};
 extern struct EffectCounter dat_0c2f8398;
 struct ScaleView {unsigned char pad[80];struct Vec3_tu5_03 scale;};
 void func_0c1d0322(struct Obj_tu5_03 *);
