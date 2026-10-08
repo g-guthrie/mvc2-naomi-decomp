@@ -20,8 +20,8 @@ def fingerprint(unit, cases, root=ROOT):
              root / 'tools/build.py', root / 'tools/core.py', root / 'tools/diff_unit.py', root / 'tools/behavioral_evidence.py',
              root / 'workbench/simulator-pilot/pilot.py', root / 'workbench/simulator-pilot/run.php']
     paths += sorted((root / 'src/include').glob('*.h'))
-    paths += sorted(p for p in (root / 'toolchain/hitachi-shc-5.0r31').iterdir() if p.is_file())
-    paths += [root / 'toolchain/hitachi-shc-5.0r31.json', root / 'toolchain/wibo.json']
+    paths += sorted(p for p in (root / 'toolchain/hitachi-shc-5.1r08').iterdir() if p.is_file())
+    paths += [root / 'toolchain/hitachi-shc-5.1r08.json', root / 'toolchain/wibo.json']
     paths += [root / item['path'] for item in load(root / 'toolchain/wibo.json')['assets'].values()]
     files = {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
     target = load(root / 'config/target.json')

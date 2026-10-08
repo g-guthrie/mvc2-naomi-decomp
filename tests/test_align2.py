@@ -15,7 +15,7 @@ class Align2Tests(unittest.TestCase):
         work = ROOT / 'build' / 'work-align2'
         if work.exists():
             shutil.rmtree(work)
-        shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work)
+        shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.1r08', work)
         unit = {
             'id': 'align2_noop',
             'source': 'tests/fixtures/align2_noop.c',

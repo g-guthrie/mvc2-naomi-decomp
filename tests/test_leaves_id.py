@@ -23,7 +23,7 @@ class LeavesIdTests(unittest.TestCase):
             work = ROOT / 'build' / f'work-{uid}'
             if work.exists():
                 shutil.rmtree(work)
-            shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work)
+            shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.1r08', work)
             unit = units[uid]
             self.assertEqual(unit['mode'], 'verified')
             elf, link = compile_unit(unit, work, flags)

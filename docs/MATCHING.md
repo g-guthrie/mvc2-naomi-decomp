@@ -1,6 +1,8 @@
 # Making a function match
 
-The compiler is right. SHC 5.0R31 with the `game` option set reproduces retail
+The compiler is right. SHC 5.1 Release 8 (`toolchain/hitachi-shc-5.1r08/`, the
+compiler passes from Sega's NaomiSDK `pcv51r08.zip`; assembler and linker are
+still 5.0R31) with the `game` option set reproduces retail
 instruction for instruction, register for register, when the source has the
 same shape as the original and the unit has the same extent. Every difference
 seen so far came from source shape, unit extent or an option, never from the
@@ -136,7 +138,7 @@ review; their extent is inferred from the source and mapping.
 | `mov.l @r5+,r3` on consecutive ints | a walked pointer: `int *p = tbl[i]; x = *p++;` |
 | `lds r1,fpul; fsts fpul,fr3` for a float constant | the field is a struct member; a `float[]` element gives `mova; fmov @r0` |
 | `mova C; fmov; ...; mova -C; fmov` with no `bra` | `x = C; if (cond) x = -C;` |
-| `fldi1 frN; fadd frN,frN` for 2.0 | an inlined helper returning `1.0f`, followed by doubling its result in place, produces the pair with unchanged flags; one 20-byte retail block matches. This is an experimental source recipe, not proof of original helper provenance or a complete-unit match. See `workbench/compiler-patterns-20261004/`. |
+| `fldi1 frN; fadd frN,frN` for 2.0 | a plain `2.0f` literal (5.1R08); `tools/compiler_patterns.py` checks one 20-byte retail block |
 | `r1 = dst; r2 = src; r0 = size; jsr` | struct assignment `a->s = b->s` with a member of that size; the routine name follows the struct's alignment. Never call the routine by hand |
 | `r1 = dividend; r0 = divisor; jsr __modls` | `%` |
 | `sts.l macl` around a multiply | any code; that is `-macsave=1`, and the game set has `-macsave=0` |
@@ -232,31 +234,19 @@ differences; read what it changed afterwards.
   36/36 bytes in a linked comparison; their encompassing 620-byte unit still
   has four unmatched tail-call register bytes and is not fully verified.
 
-- 2.0f materialised as `fldi1; fadd` was historically counted at 106 retail sites.
-  The pair is now reproducible through inline-result accumulation, with one
-  surrounding ten-instruction retail block matching exactly. Application to
-  complete source units and original source provenance remain open. Earlier probes with
-  the bundled SHC and the full `game` options gave a pool load for each of
-  `return 2.0f`, `return 1.0f + 1.0f`, and a local initialized to `1.0f`
-  then added to itself. `return x + 1.0f` emits `fldi1; fadd`, but adds a
-  dynamic argument rather than materializing 2.0f. A volatile local emits
-  `fldi1` followed by stack stores and reloads before `fadd`. These are
-  different instruction sequences, so none is a match for the retail sites.
+- 2.0f materialised as `fldi1; fadd` (106 retail sites) needed an inline
+  helper under 5.0R31; 5.1R08 emits it for a plain `2.0f` literal (see below).
+
 - Three shared constants held in r7, r4 and r13 across one function
   (`func_0c16fc14`); SHC keeps at most two in registers.
-- Switch compares in source order (0,255,1; 0,2,4 then 1,3; 0,2,1). The
-  bundled SHC sorts case compares by value for every selector type, label
-  order, `default` position, grouping and the C++ front end. Nested
-  switches give the right order but copy the selector out of r0
-  (`mov r4,r0; nop` per level). Blocks tu_0c04f8b0, tu_0c04e6a8,
-  tu_0c072474, tu_0c072cb8, tu_0c072ddc, tu_0c07a7ec, tu_0c1ca510 and
-  func_0c072302.
-- `fldi1 fr3; fadd fr3,fr3` (66 retail sites use fr0-fr3). The bundled SHC
-  only doubles in place for a named variable (`t += t`), and named
-  variables never land in fr0-fr3; expression forms copy first or fold to
-  a pooled 2.0f. Retail looks like the compiler expanding a literal
-  `/ 2.0f` itself. The fr4/fr5/fr13/fr15 sites remain reachable with the
-  inline-helper recipe.
+- Resolved by 5.1R08: switch compares follow case-label source order (5.0R31
+  and 5.1R01 sorted them), and a literal `/ 2.0f` compiles to
+  `fldi1 frN; fadd frN,frN` in fr0-fr3. Consequences for spelling:
+  write labels in the order retail compares them. When retail compares
+  0,1,2 but lays out the case-1 body first, use `case 0: goto L;` or
+  `case 0: goto L; default: break; case 1: case 2: ...` with `L:` on the
+  later body (tu_0c104e14, tu_0c1199e0). A float parameter used directly,
+  not copied into a local, keeps 5.0R31's stack slot (tu_0c190578).
 - Signed remainder by a power of two inline (`cmp/pz; bf; and #K,r0` /
   `not; add #1; and #K; not; add #1`, 72 sites). `~v+1` reproduces the
   not/add negation, but the bundled SHC calls `__modls` for every `%`

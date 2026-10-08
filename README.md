@@ -59,7 +59,7 @@ them by hand. The treemap at `build/index.html` comes from the same build.
 | `tools/` | The build, the verifier, the diff tool, the draft and search tools |
 | `build/` | Generated: work files, proof, progress views and Ghidra drafts; never committed |
 | `build/work_queue.json` | Candidates ranked from the latest build's linker and byte comparisons |
-| `toolchain/` | Hitachi SHC 5.0R31, the wibo runtime that executes it, and Sega's prebuilt SDK libraries |
+| `toolchain/` | Hitachi SHC 5.1 Release 8 (assembler and linker from 5.0R31), the wibo runtime that executes it, and Sega's prebuilt SDK libraries |
 | `tests/` | Checks on the verifier and the mapping, not on individual units |
 
 ## Documents

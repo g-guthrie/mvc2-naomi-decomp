@@ -23,7 +23,7 @@ complete; it does not count as decompiled source.
 | Path | Purpose | Integrity record |
 | --- | --- | --- |
 | `orig/mvsc2.zip` | All 18 reference ROM members for NAOMI Export/Korea Rev A | `config/target.json` |
-| `toolchain/hitachi-shc-5.0r31/` | Original compiler, assembler, linker and utilities | `toolchain/hitachi-shc-5.0r31.json` |
+| `toolchain/hitachi-shc-5.1r08/` | Original compiler, assembler, linker and utilities | `toolchain/hitachi-shc-5.1r08.json` |
 | `toolchain/naomi-sdk/lib/` | 16 prebuilt SDK libraries used by library-unit matching | `toolchain/naomi-sdk.json` |
 | `toolchain/wibo/` | Linux x86_64 and macOS runtimes for the bundled tools | `toolchain/wibo.json` |
 | `src/`, `config/` | Reconstructed C, shared layouts, ownership, reviewed mapping and target configuration | Git history and the build verifier |

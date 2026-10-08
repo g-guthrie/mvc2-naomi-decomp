@@ -109,15 +109,19 @@ void func_0c11a3a0(struct Actor *a)
 {
  register struct Sub2a4_1199e0 *s=(struct Sub2a4_1199e0 *)((char *)a+0x2a4);
  switch(a->b1e8){
+ case 0:goto check;
+ case 1:goto check;
  case 2:s->b16=8;
- case 0:case 1:if(func_0c02a026(a)<0)func_0c0437b8(a);
+ check:if(func_0c02a026(a)<0)func_0c0437b8(a);
  }
 }
 void func_0c11a3de(struct Actor *a)
 {
  switch(a->b1e8){
+ case 0:goto check;
+ default:break;
  case 1:case 2:if(a->b141){int zero=0;a->b1a1=a->b141;a->w1ac=zero;a->b19e=zero;*(unsigned int*)&a->p1c4=zero;dat_0c2f83f8->arr[a->b2]++;a->b141=zero;}
- case 0:if(func_0c02a026(a)<0)func_0c0437b8(a);
+ check:if(func_0c02a026(a)<0)func_0c0437b8(a);
  }
 }
 void func_0c11a462(struct Actor *a){func_0c0421f4(a);func_0c0420f8(a);func_0c11a478(a);}

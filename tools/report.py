@@ -182,7 +182,7 @@ def svg(items, proof, active=False):
     out += ['</defs><rect width="1200" height="800" fill="#171c24"/>',
             '<g font-family="system-ui,sans-serif" fill="#e9f1f5">',
             '<text x="24" y="36" font-size="23" font-weight="650">MARVEL vs. CAPCOM 2 · NAOMI</text>',
-            f'<text x="24" y="62" font-size="13" fill="#a8b4c1">Hitachi SHC 5.0R31 · {"Active source units (zoom)" if active else "Main executable image"} · area = reference bytes</text>']
+            f'<text x="24" y="62" font-size="13" fill="#a8b4c1">Hitachi SHC 5.1R08 · {"Active source units (zoom)" if active else "Main executable image"} · area = reference bytes</text>']
     for i, kind in enumerate(['code','data']):
         x = 24+i*588
         value = m[kind]

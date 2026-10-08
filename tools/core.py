@@ -27,8 +27,8 @@ def sha(data):
 
 
 def verify_tools(root=ROOT):
-    manifest = load(root / "toolchain/hitachi-shc-5.0r31.json")
-    folder = root / "toolchain/hitachi-shc-5.0r31"
+    manifest = load(root / "toolchain/hitachi-shc-5.1r08.json")
+    folder = root / "toolchain/hitachi-shc-5.1r08"
     expected = {item["name"] for item in manifest["files"]}
     if len(expected) != len(manifest["files"]) or expected != {p.name for p in folder.iterdir() if p.is_file()}:
         raise ValueError("Hitachi package is incomplete or contains unexpected files")

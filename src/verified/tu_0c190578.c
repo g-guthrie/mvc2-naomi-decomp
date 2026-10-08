@@ -8,11 +8,10 @@ void func_0c1905d8(struct LinkedActor *),func_0c19068e(struct LinkedActor *),fun
 struct LinkedActor *func_0c190578(struct Actor *parent,float dx,float dy)
 {
  struct LinkedActor *a;
- float x=dx,y=dy;
  if((a=func_0c0374da(0,3,0))!=0){
   a->p16=func_0c1905d8;a->p24=(struct LinkedActor *)parent;a->b32=0;a->w38=0x0500;
-  a->f52=parent->f52+(parent->b1d2?-x:x);
-  a->f56=parent->f56+y;
+  a->f52=parent->f52+(parent->b1d2?-dx:dx);
+  a->f56=parent->f56+dy;
  }
  return a;
 }

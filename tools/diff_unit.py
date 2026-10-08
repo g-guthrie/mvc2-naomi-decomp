@@ -246,7 +246,7 @@ def evaluate(path, imports=None, options=None, descriptor=None):
     work = ROOT / 'build' / f'work-diff-{os.getpid()}'
     if work.exists():
         shutil.rmtree(work)
-    shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work)
+    shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.1r08', work)
     try:
         elf, link = compile_unit(unit, work, flags)
         before = len(unit['imports'])
@@ -294,7 +294,7 @@ def main():
     work = ROOT / 'build' / f'work-diff-{os.getpid()}'
     if work.exists():
         shutil.rmtree(work)
-    shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work)
+    shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.1r08', work)
     try:
         elf, link = compile_unit(unit, work, flags)
         before = len(unit['imports'])

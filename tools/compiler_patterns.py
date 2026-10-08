@@ -94,14 +94,14 @@ def main():
     float_source = SOURCE.with_name('float_context.c')
     float_unit = {
         'id': 'float_context', 'source': str(float_source.relative_to(ROOT)),
-        'sections': [{'section': 'P', 'kind': 'code', 'address': 0x1000, 'size': 80}],
+        'sections': [{'section': 'P', 'kind': 'code', 'address': 0x1000, 'size': 76}],
         'imports': {'_use': 0x0c025900}, 'options': 'game',
     }
     with tempfile.TemporaryDirectory(prefix='pattern-float-', dir=ROOT / 'build') as directory:
         work = Path(directory)
-        shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work, dirs_exist_ok=True)
+        shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.1r08', work, dirs_exist_ok=True)
         elf, link = compile_unit(float_unit, work, [])
-        compiled = core.memory_bytes(core.elf_segments(elf), 0x1000, 80)
+        compiled = core.memory_bytes(core.elf_segments(elf), 0x1000, 76)
         assembly = (work / 'float_context.src').read_text()
     target = core.load(ROOT / 'config/target.json')
     rom = core.verify_rom(target)
@@ -109,8 +109,9 @@ def main():
     retail_block = rom[start:start + 20]
     # Both functions have five prologue/call instructions before the block.
     assert compiled[10:30] == retail_block
-    assert compiled[46:66] != retail_block
-    assert assembly.count('FLDI1') == 1 and assembly.count("H'40000000") == 1
+    # 5.1r08 spells a plain 2.0f literal as FLDI1/FADD too (5.0r31 pooled it).
+    assert compiled[46:66] == retail_block
+    assert assembly.count('FLDI1') == 2 and assembly.count("H'40000000") == 0
     print(json.dumps({
         'source_sha256': hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
         'input_sha256': core.input_fingerprint(),
@@ -121,7 +122,7 @@ def main():
             'source_sha256': hashlib.sha256(float_source.read_bytes()).hexdigest(),
             'retail_start': '0x0c10f1e8', 'retail_end_exclusive': '0x0c10f1fc',
             'matching_bytes': 20, 'bytes_hex': retail_block.hex(),
-            'literal_control_differs': True,
+            'literal_spelling_matches': True,
             'scope': 'Ten-instruction block only; no complete retail function match or registration.',
         },
         'credit': 0,

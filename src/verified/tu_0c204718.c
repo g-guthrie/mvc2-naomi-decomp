@@ -1,5 +1,4 @@
-/* SDK big-number normalise: skip leading zero bytes and bits, shift, copy.
-   Matched with a label before the mask init (r2/r3 choice). */
+/* SDK big-number normalise: skip leading zero bytes and bits, shift, copy. */
 extern void func_0c203d54(int a, unsigned char *buf);
 extern void func_0c1fba00(unsigned char *d, int v, int n);
 extern void func_0c203d08(unsigned char *p, int a, int b);
@@ -21,8 +20,6 @@ void func_0c204718(int a, short *e, unsigned char *dst)
         i++;
         *e -= 8;
     }
-    goto l;
-l:
     m = 0x80;
     while ((m & *p) == 0) {
         m >>= 1;
