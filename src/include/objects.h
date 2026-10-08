@@ -281,7 +281,8 @@ struct Actor {
     float f218,f21c;
     unsigned char pad220[0x229 - 0x220];
     signed char b229;
-    unsigned char pad22a[0x22e - 0x22a];
+    char b22a;
+    unsigned char pad22b[0x22e - 0x22b];
     char b22e;
     unsigned char b22f,pad230,b231;
     char b232;
