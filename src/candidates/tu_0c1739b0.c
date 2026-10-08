@@ -1,4 +1,4 @@
-/* Complete 0x0c1739b0..0x0c173d38 group. Six functions exact; initializer differs only in four animation-index instructions. */
+/* Complete 0x0c1739b0..0x0c173d38 group. Six functions exact; initializer (903/904) differs in one instruction: retail passes placement[3]+(b34&2)*4 untruncated (mov r0,r6); the plain sum evaluates b34 first, so the (unsigned char) cast on placement[3] (extu.b) is kept to hold retail order. */
 #define A(a) ((struct Actor *)(a))
 #define SLOT(a,n) (*(int *)&A(a)->pad5ba[(n)-0xd0])
 #include "objects.h"
@@ -47,7 +47,7 @@ void func_0c173aec(register struct LinkedActor *a)
  a->f52=p->f52+direction*xscale;a->f56=p->f56+291.42856f;a->pad11[0]=66;a->pad11[1]=66;
  zero=dat_0c252b80[func_0c02849a()&15];A(a)->b1a1=zero;zero=0;A(a)->w1ac=zero;A(a)->b19e=zero;A(a)->p1c4=zero;dat_0c2f83f8->arr[a->b2]++;
  properties=(unsigned char *)a+0xcc;placement=dat_0c252b30[*(int *)(properties+12)];x=*(int *)(properties+4);y=*(int *)(properties+8);x+=placement[0];y+=placement[1];if(placement[2])A(a)->w130^=1;
- func_0c02a0c4(a,21,(unsigned char)(placement[3]+(A(a)->b34&2)*4));
+ func_0c02a0c4(a,21,(unsigned char)placement[3]+(A(a)->b34&2)*4);
  if(A(a)->b34&1)x=-x;if(A(a)->b34&2){y=-y;A(a)->w130^=1;}
  a->f52+=(short)x*xscale;a->f56+=(short)y*2.1428571f;func_0c173cb2(a);
 }
