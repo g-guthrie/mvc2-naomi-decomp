@@ -1,6 +1,5 @@
-/* Candidate (378/380): pools and control flow match. func_0c15a85c loads
- * owner+0x14b into r2 for the compare with a->b34 at 0c15a8a8/0c15a8ae; the
- * char temp here lands in r5. Everything else is exact. */
+/* Owner-follow initialization and update handlers. The owner byte at 0x14b is read
+ * through a char view for the compare with a->b34, which keeps it in r2 as retail. */
 #include "objects.h"
 #define A(a) ((struct Actor *)(a))
 extern struct Tbl_ub3_01 *dat_0c2f83f8;
@@ -27,7 +26,7 @@ void func_0c15a85c(struct LinkedActor *a)
  if(!A(owner)->b14b)return;
  a->sdc.b12c=1;
  *(struct LinkedActorVec3 *)&a->f52=*(struct LinkedActorVec3 *)&owner->f52;
- {char t=A(owner)->b14b;if(t!=(char)a->b34){
+ {if(((char *)owner)[0x14b]!=(char)a->b34){
   a->b34=A(owner)->b14b;
   func_0c02a18c(a,23,4,a->b34-1);
   if(A(a)->b14b){

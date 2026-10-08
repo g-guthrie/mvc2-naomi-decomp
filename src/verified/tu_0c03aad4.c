@@ -1,5 +1,3 @@
-/* 642/644: func_0c03ab7a tail call to func_0c02a026 loads its address into
- * r2; retail uses r3. Everything else, both pools included, matches. */
 #include "objects.h"
 typedef void (*ActorMethod)(struct Actor *);
 extern unsigned char dat_0c2f8338;
@@ -46,15 +44,13 @@ void func_0c03ab7a(struct Actor *a)
 {
     a->b1e0 = -76;
     a->b1df = 0xff;
-    if (dat_0c2f8338 < 5) { if ((short)a->w420 > 0) { goto e; e:
-        if (--a->s1e4 < 0 || !a->b1e3) goto reset;
-    }
-    func_0c02a026(a);
-    return; }
-reset:
-    goto z; z: a->b1e3 = 0;
-    a->b1ef = 8;
-    func_0c0453c4(a, 0);
+if (dat_0c2f8338 < 5) {
+ if ((short)a->w420 <= 0) goto ok;
+ if (--a->s1e4 >= 0 && a->b1e3) { ok: func_0c02a026(a); return; }
+ }
+ a->b1e3 = 0;
+ a->b1ef = 8;
+ func_0c0453c4(a, 0);
 }
 void func_0c03ac06(struct Actor *a)
 {
