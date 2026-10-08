@@ -36,7 +36,7 @@
   (22) INLine[=<node-count>]            Executes automatic inline expansion
        NOINLine                         Doesn't execute automatic inline
                                                                       expansion
-  (23) MEssage|NOMEssage                Output information message
+  (23) MEssage|NOMEssage                Outputs information message
   (24) ALign16|NOALign16                Generates 16 byte aligned code
   (25) NEstinline=<number>              Specifies nesting level of the inlining
   (26) DOuble=Float                     Treates "double" as single precision
@@ -52,3 +52,6 @@
   (34) DENormalize=[ON|OFF]             Treates denormalized number
   (35) Round=[Nearest|Zero]             Selects round to nearest even/zero
   (36) LAng=[C|CPp]                     Selects compiler C/C++ (only shc)
+  (37) CAse=[Ifthen|Table]              Selects switch statement's code
+                                                                [if-then|table]
+  (38) Goptimize                        Generates global optimizing data

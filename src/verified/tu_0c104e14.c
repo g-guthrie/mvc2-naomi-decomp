@@ -14,7 +14,7 @@ void func_0c104e82(struct Actor *a)
 {
  int zero=0,one=1;
  a->b5=zero;a->b6=zero;a->b7=zero;
- switch(a->b4c9){case 1:a->b1e9=one;a->b1a3=2;break;case 0:case 2:a->b1e9=zero;a->b1a3=one;break;}
+ switch(a->b4c9){case 0:goto low;case 1:a->b1e9=one;a->b1a3=2;break;case 2:low:a->b1e9=zero;a->b1a3=one;break;}
  func_0c045248(a,21);
 }
 void func_0c104ebe(struct Actor *a)

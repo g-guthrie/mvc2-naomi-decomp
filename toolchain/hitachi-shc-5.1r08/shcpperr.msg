@@ -166,6 +166,8 @@
  (E) Illegal 'static' virtual function "@"
 6251
  (E) Cannot create abstract class object "@"
+6252
+ (E) Class object has ambigous virtual functions
 6254
  (E) Implicit pure virtual function "@" call
 6256

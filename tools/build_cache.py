@@ -30,7 +30,7 @@ def unit_key(root, unit, shared):
 
 def prepare_work(root, work, unit=None):
     work.mkdir(parents=True, exist_ok=True)
-    files = list((root / 'toolchain/hitachi-shc-5.0r31').iterdir())
+    files = list((root / 'toolchain/hitachi-shc-5.1r08').iterdir())
     if unit and 'library' in unit:
         files.append(root / unit['library'])
     for source in files:

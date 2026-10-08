@@ -18,8 +18,8 @@ class BehavioralEvidenceTests(unittest.TestCase):
         self.cases = [{'name': 'boundary', 'entry': '_func_test', 'arguments': [1]}]
         files = ['src/test.c', 'src/include/types.h', 'tools/build.py', 'tools/core.py',
                  'tools/behavioral_evidence.py', 'tools/diff_unit.py', 'workbench/simulator-pilot/pilot.py',
-                 'workbench/simulator-pilot/run.php', 'toolchain/hitachi-shc-5.0r31/shc.exe',
-                 'toolchain/hitachi-shc-5.0r31.json', 'toolchain/runner', 'config/compiler.json']
+                 'workbench/simulator-pilot/run.php', 'toolchain/hitachi-shc-5.1r08/shc.exe',
+                 'toolchain/hitachi-shc-5.1r08.json', 'toolchain/runner', 'config/compiler.json']
         for name in files:
             p = self.root / name
             p.parent.mkdir(parents=True, exist_ok=True)
@@ -44,7 +44,7 @@ class BehavioralEvidenceTests(unittest.TestCase):
         self.assertEqual(result['tested_functions'], ['_func_test'])
         self.assertIn('untested paths remain unknown', result['action'])
     def test_stale_inputs(self):
-        for name in ['src/test.c', 'src/include/types.h', 'config/compiler.json', 'toolchain/hitachi-shc-5.0r31/shc.exe', 'workbench/simulator-pilot/run.php']:
+        for name in ['src/test.c', 'src/include/types.h', 'config/compiler.json', 'toolchain/hitachi-shc-5.1r08/shc.exe', 'workbench/simulator-pilot/run.php']:
             with self.subTest(name=name):
                 path = self.root / name
                 original = path.read_bytes()

@@ -42,7 +42,7 @@ def main():
         sys.exit(__doc__)
     table = {bits: candidates(bits) for bits in dict.fromkeys(targets)}
     work = ROOT / 'build' / f'work-float-{os.getpid()}'
-    shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work)
+    shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.1r08', work)
     try:
         # One array per target, so a target the compiler will not take whole
         # cannot hide the answer for the others.

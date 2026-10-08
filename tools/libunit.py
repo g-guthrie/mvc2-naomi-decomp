@@ -452,7 +452,7 @@ def main():
     (ROOT / 'build').mkdir(exist_ok=True)
     workspace = tempfile.TemporaryDirectory(prefix='libwork-', dir=ROOT / 'build')
     work = Path(workspace.name)
-    shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.0r31', work, dirs_exist_ok=True)
+    shutil.copytree(ROOT / 'toolchain/hitachi-shc-5.1r08', work, dirs_exist_ok=True)
     shutil.copyfile(ROOT / library, work / library.name)
     modules = library_modules(work, library.name)
     if args.module:

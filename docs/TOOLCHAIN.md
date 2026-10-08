@@ -4,7 +4,7 @@ For a new local or cloud checkout, start with [Cloud agent setup](CLOUD_AGENTS.m
 
 ## What is bundled
 
-- `toolchain/hitachi-shc-5.0r31/`: the Hitachi SH C/C++ compiler package. Its
+- `toolchain/hitachi-shc-5.1r08/`: the Hitachi SH C/C++ compiler package. Its
   manifest records every file's size and SHA-256.
 - `toolchain/wibo/`: the wibo 1.2.0 Windows runtime for Linux x86_64 and macOS.
 - `toolchain/naomi-sdk/lib/`: Sega's prebuilt NAOMI SDK libraries, in Hitachi

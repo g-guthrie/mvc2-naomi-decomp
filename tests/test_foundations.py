@@ -34,7 +34,7 @@ class CacheTests(unittest.TestCase):
     def test_content_and_placement_invalidate_and_corruption_recompiles(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            (root / 'toolchain/hitachi-shc-5.0r31').mkdir(parents=True)
+            (root / 'toolchain/hitachi-shc-5.1r08').mkdir(parents=True)
             (root / 'unit.c').write_text('void f(void) {}')
             unit = {'id': 'u', 'source': 'unit.c', 'sections': [{'address': 4096}]}
             calls = []

@@ -60,6 +60,8 @@
  (W) First operand of "@" is not lvalue
 1023
  (W) Can not convert japanese code "@" to output type
+1024
+ (W) Out of float
 1200
  (W) Division by floating point zero
 1201
@@ -68,6 +70,10 @@
  (W) Command parameter specified twice
 1400
  (W) Function "@" in #pragma inline is not expanded
+1401
+ (W) "case=table" option ignored by switch
+1500
+ (W) EC++ does not support "@"
 2000
  (E) Illegal preprocessor keyword
 2001
@@ -316,8 +322,6 @@
  (E) Illegal character code "@"
 2405
  (E) Null character constant
-2406
- (E) Out of float
 2407
  (E) Incomplete logical line
 2408
@@ -409,11 +413,11 @@
 2824
  (E) Illegal #pragma global_register type
 2825
- (E) Illegal #pragma aligndata8 declaration
+ (E) Illegal #pragma aligndata declaration
 2826
- (E) Illegal #pragma aligndata8 variable type
+ (E) Illegal #pragma aligndata variable type
 2827
- (E) Global variable "@" in #pragma aligndata8 already declared
+ (E) Global variable "@" in #pragma aligndata already declared
 3000
  (F) Statement nest too deep
 3001
