@@ -1,3 +1,4 @@
+/* CPU attack-state movement updaters, b1e8 dispatchers and hit handlers sharing literal pools. */
 #include "objects.h"
 struct MoveCounters_0c0a3a14 { unsigned char pad[124]; short counts[2]; };
 extern struct MoveCounters_0c0a3a14 *dat_0c2f83f8;
@@ -64,22 +65,16 @@ void func_0c0a3a9a(struct Actor *a)
 }
 void func_0c0a3b28(struct Actor *a)
 {
-    if(a->b1e8 == 2) goto update;
     switch(a->b1e8) {
-    case 0:
-    case 1:
-update:
+    case 2: case 0: case 1:
         if(func_0c02a026(a)<0) func_0c0437b8(a);
         break;
     }
 }
 void func_0c0a3b60(struct Actor *a)
 {
-    if(a->b1e8 == 0) goto update;
     switch(a->b1e8) {
-    case 1:
-    case 2:
-update:
+    case 0: case 1: case 2:
         if(func_0c02a026(a)<0) func_0c0437b8(a);
         break;
     }
@@ -87,7 +82,7 @@ update:
 void func_0c0a3b98(struct Actor *a)
 {
     switch (a->b1e8) {
-    case 1: func_0c0a3d18(a); break;
+    case 1: func_0c0a3d18(a); return;
     case 0:
     case 2:
         if (func_0c02a026(a)<0) func_0c0437b8(a);
@@ -96,22 +91,16 @@ void func_0c0a3b98(struct Actor *a)
 }
 void func_0c0a3bd8(struct Actor *a)
 {
-    if(a->b1e8 == 0) goto update;
     switch(a->b1e8) {
-    case 1:
-    case 2:
-update:
+    case 0: case 1: case 2:
         if(func_0c02a026(a)<0) func_0c0437b8(a);
         break;
     }
 }
 void func_0c0a3c1c(struct Actor *a)
 {
-    if(a->b1e8 == 2) goto update;
     switch(a->b1e8) {
-    case 0:
-    case 1:
-update:
+    case 2: case 0: case 1:
         if(func_0c02a026(a)<0) func_0c0437b8(a);
         break;
     }

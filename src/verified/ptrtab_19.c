@@ -77,9 +77,6 @@ extern void func_0c24b44c(void);
 extern void func_0c24b4dc(void);
 extern void func_0c24b4f0(void);
 
-#pragma section n0fe8e0
-void (*const ptr_0c0fe8e0)(void) = func_0c02a0c4;
-
 #pragma section n0ffb94
 void (*const table_0c0ffb94[])(void) = {
     func_0c24ae24,

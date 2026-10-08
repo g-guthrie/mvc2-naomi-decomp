@@ -1,4 +1,4 @@
-/* Candidate: func_0c0a6d98 allocates the 0.0f/2.0f/f96 temporaries one float register higher (fr5/fr4/fr3 vs retail fr4/fr3/fr2); 10 bytes differ, the other three functions match. */
+/* Four actor state handlers sharing one literal pool. */
 #include "objects.h"
 typedef void (*ActorHandler)(struct Actor *);
 extern void (*table_0c2442bc[])(struct Actor *);
@@ -11,20 +11,16 @@ extern void func_0c0346da(struct Actor *,int);
 extern void func_0c025900(struct Actor *,char,char);
 extern char func_0c02a026(struct Actor *);
 extern void func_0c0437b8(struct Actor *);
-#pragma inline(one)
-static float one(void){return 1.0f;}
 void func_0c0a6d98(struct Actor *a)
 {
  struct LinkedActorVec3 position;
- float two;
  if(a->w1fa&0x400){a->b1d2=a->b1d2^1;a->w130=a->w130^1;}
  position.x=-83.33333f;position.y=158.57143f;
  func_0c1d4610(a,&position);
  a->b1a0=10;
  a->f92=0;
- two=one();two+=two;
  a->f104=0;
- a->f96/=two;
+ a->f96/=2.0f;
  a->f108=-0.80357140303f;
  func_0c048ce6(a);
  func_0c02a0c4(a,15,1);

@@ -1,6 +1,4 @@
-/* Candidate: func_0c159bc8 forms 2.0f from cached 1.0f instead
- * of retail fldi1/fadd at 0c159c8a-0c159c8c (two bytes differ).
- * All five remaining routines and both literal pools are exact. */
+/* Linked actor spawner and handlers sharing two literal pools around 0x0c159ae0. */
 #include "objects.h"
 extern struct LinkedActor *func_0c0374da(int,int,int);
 extern struct Tbl_ub3_01 *dat_0c2f83f8;
@@ -35,16 +33,14 @@ void func_0c159b20(struct LinkedActor *record)
 void func_0c159bc8(struct LinkedActor *a)
 {
  struct LinkedActor *owner=a->p24;
- float one;
  if(owner->b4>=2){a->b4++;a->sdc.b12c=0;return;}
  a->f52=owner->f52+(!((struct Actor *)owner)->w130 ? -96.666664124f : 96.666664124f);
  a->f56=owner->f56+180.0f;
- one=1.0f;
- if(!((struct Actor *)owner)->b141){a->b4++;a->v80.x=one;func_0c02a0c4(a,23,1);return;}
+ if(!((struct Actor *)owner)->b141){a->b4++;a->v80.x=1.0f;func_0c02a0c4(a,23,1);return;}
  func_0c02a026(a);
  if(((struct Actor *)a)->b141){
-  if(a->b32){a->v80.x=one;a->v80.x=a->v80.x+one;}
-  else a->v80.x=one;
+  if(a->b32)a->v80.x=2.0f;
+  else a->v80.x=1.0f;
  }
  if(a->b32&&((struct Actor *)a)->b140){
   ((struct Actor *)a)->b140=0;
