@@ -97,6 +97,9 @@ struct MotionContext8a3 {
 /* Signed spawn timer (+20) and phase counter (+40) in the actor +0x2a4 record. */
 struct ActorSub2a4Timers { unsigned char pad0[20]; signed char timer20; unsigned char pad21[19]; signed char phase40; };
 
+/* Linked actor (+4) and its counter (+8) in the actor +0x2a4 record. */
+struct ActorSub2a4Link { unsigned char pad0[4]; struct Actor *target; short s8; };
+
 union ActorParameter4 { int integer; float real; };
 
 struct AnimationFrame8 {
@@ -195,7 +198,8 @@ struct Actor {
     unsigned char b14a;
     unsigned char b14b;
     unsigned char b14c;
-    unsigned char pad6d[0x150 - 0x14d];
+    unsigned char pad6d[0x14f - 0x14d];
+    char b14f;
     unsigned short w150;
     unsigned char pad6e[2];
     struct AnimationFrame20 *p154;
@@ -857,5 +861,9 @@ struct LaunchRow16 { int vx, vy; short dx, dy; char anim; unsigned char flag; un
 /* Four-float motion row (initial x/y speeds and their per-frame steps) read
  * by the 0x0c14bacc and 0x0c14c80c effect initialisers. */
 struct Motion4 { float f0, f4, f8, f12; };
+
+/* Actor l414/l418 read as one 64-bit state-flag word (high, low halves);
+ * tested with a mask pair by the throw handlers at 0x0c0d6094/0x0c0d6136. */
+struct ActorFlags64 { unsigned int hi, lo; };
 
 #endif
