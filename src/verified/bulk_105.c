@@ -91,24 +91,6 @@ void (*const table_0c197148[])(void) = {
     func_0c037688,
 };
 
-#pragma section n19729c
-const unsigned int dat_0c19729c[] = {
-    0x01590e00u,
-};
-
-#pragma section n1972b8
-const unsigned int dat_0c1972b8[] = {
-    0x0c2580b0u,
-};
-
-#pragma section n19740c
-void (*const table_0c19740c[])(void) = {
-    func_0c1fb7a0,
-    func_0c02a026,
-    func_0c037688,
-    func_0c2580c4,
-};
-
 #pragma section n1977ec
 const unsigned int dat_0c1977ec[] = {
     0x012c02a4u, 0x0c1fb7a0u, 0x0c037688u,
