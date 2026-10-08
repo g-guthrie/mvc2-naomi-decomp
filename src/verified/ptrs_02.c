@@ -5,9 +5,6 @@ extern void func_0c181116(void);
 extern void func_0c18f280(void);
 extern void func_0c1d32d0(void);
 
-#pragma section n17f354
-void (*const ptr_0c17f354)(void) = func_0c18102c;
-
 #pragma section n17fe0c
 void (*const ptr_0c17fe0c)(void) = func_0c18102c;
 
