@@ -37,8 +37,17 @@ def compile_unit(unit, work, flags):
 
     def run(exe, args):
         command = runner() + [str(work / exe)] + args
-        result = subprocess.run(command, cwd=work, env=env, stdout=subprocess.PIPE,
-                                stderr=subprocess.STDOUT, timeout=120)
+        # The Win32 runner occasionally hangs under load on an input that
+        # compiles in a second; a hung run is retried, never accepted.
+        for attempt in range(3):
+            try:
+                result = subprocess.run(command, cwd=work, env=env, stdout=subprocess.PIPE,
+                                        stderr=subprocess.STDOUT, timeout=120)
+                break
+            except subprocess.TimeoutExpired:
+                if attempt == 2:
+                    raise
+                log.append(' '.join([exe] + args) + f'\ntimed out; retry {attempt + 1}')
         output = result.stdout.decode('utf-8', errors='replace')
         log.append(' '.join([exe] + args) + '\n' + output)
         (work / (stem + '.log')).write_text('\n'.join(log))

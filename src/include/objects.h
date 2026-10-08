@@ -409,7 +409,7 @@ struct Actor {
     char b524;
     unsigned char b525;
     unsigned char pad526[1], b527, pad528[4]; char b52c;
-    unsigned char b52d, pad52e[1], b52f, pad530[4]; unsigned int score534, score538; unsigned char pad53c, rank53d, pad53e; char b53f;
+    unsigned char b52d, pad52e[1], b52f, pad530[4]; unsigned int score534, score538; unsigned char pad53c, rank53d, pad53e; unsigned char b53f;
     unsigned char pad540[3]; char b543;
 };
 
