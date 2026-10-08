@@ -48,9 +48,6 @@ void (*const *const ptr_0c10fea4)(void) = &ptr_0c24bf4c;
 #pragma section n1b104c
 void (*const *const ptr_0c1b104c)(void) = &table_0c25abb0;
 
-#pragma section n1c747c
-void (*const *const ptr_0c1c747c)(void) = &func_0c025fc2;
-
 #pragma section n1c8140
 void (*const *const ptr_0c1c8140)(void) = &table_0c25ea60;
 
