@@ -917,6 +917,11 @@ struct G8338 {
     char pad7c[0x9a - 0x7c]; unsigned char b9a[5];
 };
 
+/* 28-byte attack/hit frame record at Actor p1bc (p1c8->p174 + (b1a1&127)*28),
+ * passed as the third argument of 0x0c04bc2c: flag bytes at 0/1/2, the
+ * 0x10 flag byte at 18 and the hit-count byte at 24. */
+struct HitFrame28 { unsigned char b0, b1, b2, pad3[15], b18, pad19[5], b24, pad25[3]; };
+
 /* Actor position (Actor f52/f56/f60) as one vector, for struct copies. */
 struct ActorPos52 { char pad[52]; struct LinkedActorVec3 pos; };
 
