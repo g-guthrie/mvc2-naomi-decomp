@@ -327610,10 +327610,17 @@
     },
     {
       "address": "0x0c1b2a3c",
-      "size": 56,
+      "size": 4,
+      "kind": "data",
+      "sha256": "bb8f21711d67bc906a047fcb31fda31099e2ddcfccea4e1b02ace239ead5fe6f",
+      "evidence": "Lead review: literal 0x0c037688 loaded by mov.l at 0x0c1b2a14 (tail jmp target); supersedes the old code entry that started on this pool word."
+    },
+    {
+      "address": "0x0c1b2a40",
+      "size": 52,
       "kind": "code",
-      "sha256": "493b3bf23ae0d3f977423921531415bc93464c057afdaa958791682bd51fcf44",
-      "evidence": "CFG walk from 0x0c1b2a3c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "a52273d2f81b5b6b6b7ec79cde9c07d941e264b373e2f92f445591c7e8922b8d",
+      "evidence": "Lead review: function 0x0c1b2a40 (sts.l pr prologue), listed three times in the 0x0c0e4200 pointer tables; continues to the reviewed code at 0x0c1b2a74."
     },
     {
       "address": "0x0c1b2a74",
