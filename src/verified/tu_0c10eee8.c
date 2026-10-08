@@ -1,4 +1,3 @@
-/* Candidate: func_0c10efe4 swaps r2/r3 for the 0x3c00 mask and the w1fa value (17 bytes); the other seven functions match. */
 #include "objects.h"
 extern void (*table_0c24bdac[])(struct Actor *);
 extern char func_0c02a026(struct Actor *);
@@ -40,9 +39,9 @@ struct Actor *func_0c10efe4(struct Actor *a)
  if(!a->b1a3)return 0;
  if(a->b1f9==2&&(unsigned char)a->b1fe==1)return 0;
  if((t=func_0c037d54(a))!=0){
-  a->b34=(a->w1fa&0x3c00)>>10;
+  goto s; s: a->b34=(a->w1fa&0x3c00)>>10;
   if(a->b1f9==2)a->b1f7=3;
-  else a->b1f7=a->b1fe?1:2;
+  else a->b1f7=!a->b1fe?2:1;
  }
  return t;
 }

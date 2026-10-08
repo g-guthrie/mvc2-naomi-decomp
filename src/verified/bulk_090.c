@@ -122,11 +122,6 @@ const unsigned int dat_0c1671e0[] = {
     0x012c0141u, 0x0c02a026u, 0x0c2f833eu, 0x0c02a0c4u,
 };
 
-#pragma section n168108
-const unsigned int dat_0c168108[] = {
-    0x019c01a1u,
-};
-
 #pragma section n168258
 void (*const table_0c168258[])(void) = {
     func_0c25202c,

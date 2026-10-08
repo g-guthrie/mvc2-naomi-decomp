@@ -1,5 +1,3 @@
-/* Nine callbacks and both pools match exactly. The final actor initializer
- * still differs in zero initialization and scheduling around its calls. */
 #include "objects.h"
 struct ActorFlagBytes150 { char low,high; };
 extern char func_0c02a026(struct Actor *);
@@ -37,13 +35,13 @@ void func_0c0ede96(struct Actor *a){table_0c249e8c[a->b6](a);}
 void func_0c0edea8(struct Actor *a){table_0c249e94[a->b7](a,&a->sub2a4);}
 void func_0c0edebe(struct Actor *a,struct ActorSub2a4 *sub)
 {
- int zero;float stopped;
+ void *zero;float stopped;
  a->b7++;zero=0;func_0c048bb0(a,10);func_0c0442fa(a);
- stopped=0.0f;a->f56=a->f41c;a->b1f9=zero;
+ stopped=0.0f;a->f56=a->f41c;a->b1f9=(int)zero;
  a->f92=stopped;a->f96=stopped;a->f104=stopped;a->f108=stopped;
  if(a->b255!=3)a->b1a1=a->b1a3?52:48;else {goto stance;
 stance:a->b1a1=66;}
- a->w1ac=zero;a->b19e=zero;*(unsigned int *)&a->p1c4=zero;
+ a->w1ac=(int)zero;a->b19e=(int)zero;*(unsigned int *)&a->p1c4=(unsigned int)zero;
  dat_0c2f83f8->arr[a->b2]++;goto reset;
-reset:func_0c0432ca(a);sub->b2=zero;func_0c02a0c4(a,21,1);
+reset:func_0c0432ca(a);sub->b2=(int)zero;func_0c02a0c4(a,21,1);
 }

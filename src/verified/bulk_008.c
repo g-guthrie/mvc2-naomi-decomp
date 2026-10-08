@@ -247,8 +247,3 @@ const unsigned short dat_0c03bbfa[] = {
     0x0c04u,
 };
 
-#pragma section n03c12a
-const unsigned short dat_0c03c12a[] = {
-    0x00ffu, 0x03f0u, 0x01fdu, 0x012cu, 0x01e1u, 0x0411u, 0x041cu, 0x01f9u,
-    0x0428u, 0x01edu,
-};

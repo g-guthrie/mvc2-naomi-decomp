@@ -1,25 +1,24 @@
-/* Candidate: func_0c0c8e54 loads the 0x0c02a026 address before spilling the 0x2a4 pointer (r2 vs r3, 10 bytes); everything else matches. Twin of tu_0c0c3c18. */
 #include "objects.h"
 extern struct Tbl_ub3_01 *dat_0c2f83f8;
 extern char func_0c02a026(struct Actor *);
 extern void func_0c0437b8(struct Actor *),func_0c0442fa(struct Actor *),func_0c02a39a(struct Actor *,int),func_0c048bb0(struct Actor *,int);
 extern void func_0c02a0c4(struct Actor *,int,int),func_0c0432ca(struct Actor *),func_0c15dd00(struct Actor *),func_0c15e32c(struct Actor *);
-extern void (*table_0c247abc[])(struct Actor *);
-extern void (*table_0c247ac8[])(struct Actor *);
-extern void (*table_0c247ad4[])(struct Actor *);
-extern void (*table_0c247ae0[])(struct Actor *);
-void func_0c0c8bd8(struct Actor *a);
-void func_0c0c8d3e(struct Actor *a);
-void func_0c0c8d8e(struct Actor *a);
-void func_0c0c8e54(struct Actor *a);
-void func_0c0c8ea6(struct Actor *a);
+extern void (*table_0c246b58[])(struct Actor *);
+extern void (*table_0c246b64[])(struct Actor *);
+extern void (*table_0c246b70[])(struct Actor *);
+extern void (*table_0c246b7c[])(struct Actor *);
+void func_0c0c3c9c(struct Actor *a);
+void func_0c0c3e02(struct Actor *a);
+void func_0c0c3e52(struct Actor *a);
+void func_0c0c3f18(struct Actor *a);
+void func_0c0c3f6a(struct Actor *a);
 
-void func_0c0c8b54(struct Actor *a)
+void func_0c0c3c18(struct Actor *a)
 {
  int zero;
  a->b7++;
  func_0c0442fa(a);
- func_0c02a39a(a,1);
+ func_0c02a39a(a,0);
  a->f92=0;a->f96=0;a->f104=0;a->f108=0;
  zero=0;
  a->f56=a->f41c;
@@ -29,34 +28,34 @@ void func_0c0c8b54(struct Actor *a)
  dat_0c2f83f8->arr[a->b2]++;
  func_0c02a0c4(a,21,10);
  func_0c0432ca(a);
- func_0c0c8bd8(a);
+ func_0c0c3c9c(a);
 }
 
-void func_0c0c8bd8(struct Actor *a)
+void func_0c0c3c9c(struct Actor *a)
 {
  func_0c02a026(a);
  if(a->b141){a->b7++;a->b141=0;func_0c15dd00(a);}
 }
 
-void func_0c0c8c06(struct Actor *a){if(func_0c02a026(a)<0)func_0c0437b8(a);}
+void func_0c0c3cca(struct Actor *a){if(func_0c02a026(a)<0)func_0c0437b8(a);}
 
-void func_0c0c8c28(struct Actor *a){table_0c247abc[a->b6](a);}
+void func_0c0c3cec(struct Actor *a){table_0c246b58[a->b6](a);}
 
-void func_0c0c8c3a(struct Actor *a){table_0c247ac8[a->b7](a);}
+void func_0c0c3cfe(struct Actor *a){table_0c246b64[a->b7](a);}
 
-void func_0c0c8c4c(struct Actor *a)
+void func_0c0c3d10(struct Actor *a)
 {
  int zero;
  struct ActorSubMoveBytes *m=(struct ActorSubMoveBytes *)&a->sub2a4;
  if(m->b8){
   m->b7=-1;
-  if(a->b1f9==2){a->b6=2;func_0c0c8ea6(a);}
-  else{a->b6=1;func_0c0c8d8e(a);}
+  if(a->b1f9==2){a->b6=2;func_0c0c3f6a(a);}
+  else{a->b6=1;func_0c0c3e52(a);}
   return;
  }
  a->b7++;
  func_0c0442fa(a);
- func_0c02a39a(a,1);
+ func_0c02a39a(a,0);
  a->f92=0;a->f96=0;a->f104=0;a->f108=0;
  zero=0;
  a->f56=a->f41c;
@@ -66,25 +65,25 @@ void func_0c0c8c4c(struct Actor *a)
  dat_0c2f83f8->arr[a->b2]++;
  func_0c02a0c4(a,21,11);
  func_0c0432ca(a);
- func_0c0c8d3e(a);
+ func_0c0c3e02(a);
 }
 
-void func_0c0c8d3e(struct Actor *a)
+void func_0c0c3e02(struct Actor *a)
 {
  func_0c02a026(a);
  if(a->b141){a->b7++;a->b141=0;func_0c15e32c(a);}
 }
 
-void func_0c0c8d6c(struct Actor *a){if(func_0c02a026(a)<0)func_0c0437b8(a);}
+void func_0c0c3e30(struct Actor *a){if(func_0c02a026(a)<0)func_0c0437b8(a);}
 
-void func_0c0c8d8e(struct Actor *a){table_0c247ad4[a->b7](a);}
+void func_0c0c3e52(struct Actor *a){table_0c246b70[a->b7](a);}
 
-void func_0c0c8dd0(struct Actor *a)
+void func_0c0c3e94(struct Actor *a)
 {
  int zero;
  a->b7++;
  func_0c0442fa(a);
- func_0c02a39a(a,1);
+ func_0c02a39a(a,0);
  a->f92=0;a->f96=0;a->f104=0;a->f108=0;
  zero=0;
  a->f56=a->f41c;
@@ -94,16 +93,17 @@ void func_0c0c8dd0(struct Actor *a)
  dat_0c2f83f8->arr[a->b2]++;
  func_0c02a0c4(a,21,13);
  func_0c0432ca(a);
- func_0c0c8e54(a);
+ func_0c0c3f18(a);
 }
 
-void func_0c0c8e54(struct Actor *a)
+void func_0c0c3f18(struct Actor *a)
 {
  struct ActorSubMoveBytes *m=(struct ActorSubMoveBytes *)&a->sub2a4;
+ goto call; call:
  func_0c02a026(a);
  if(a->b141){a->b7++;m->b9=1;}
 }
 
-void func_0c0c8e84(struct Actor *a){if(func_0c02a026(a)<0)func_0c0437b8(a);}
+void func_0c0c3f48(struct Actor *a){if(func_0c02a026(a)<0)func_0c0437b8(a);}
 
-void func_0c0c8ea6(struct Actor *a){table_0c247ae0[a->b7](a);}
+void func_0c0c3f6a(struct Actor *a){table_0c246b7c[a->b7](a);}

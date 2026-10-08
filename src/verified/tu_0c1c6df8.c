@@ -1,4 +1,4 @@
-/* Candidate: func_0c1c6f02 else-branch sum/compare registers r1/r2 swapped (6 bytes). */
+/* Fixed-angle orbit markers: spawn, dispatch, and the 0x200-step sweep. */
 #include "objects.h"
 extern struct Obj_tu5_03 *func_0c0374da(int,int,int);
 extern struct ActorGlobalRoot *dat_0c2d9658;
@@ -28,6 +28,6 @@ void func_0c1c6f02(struct Obj_tu5_03 *q)
   q->angles.scalar.l48-=0x200;
   if(q->angles.scalar.l48<=0)goto next;
  }else{
-  q->angles.scalar.l48+=0x200;if(q->angles.scalar.l48>=0x10000){next:q->b4++;q->angles.scalar.l48=0;}
+  q->angles.array[2]+=0x200;if(q->angles.scalar.l48>=0x10000){next:q->b4++;q->angles.scalar.l48=0;}
  }
 }

@@ -15731,6 +15731,13 @@
       "evidence": "CFG walk from 0x0c03ac06; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
     },
     {
+      "address": "0x0c03ac52",
+      "size": 172,
+      "kind": "code",
+      "sha256": "6653fc898a0c07a3c3f259468bd07033407d773cae2eef52edaaa6fa41b33c91",
+      "evidence": "CFG walk from 0x0c03ac52 (entry after func_0c03ac06 tail); delay slots included; ends at rts 0x0c03acfc; pools at 0x0c03ad06-0x0c03ad57 split."
+    },
+    {
       "address": "0x0c03acfe",
       "size": 2,
       "kind": "data",
@@ -15743,6 +15750,13 @@
       "kind": "data",
       "sha256": "130bd709c71b9b6aecf483823ee2fda418a8c8ee12812d23e8f82b436083bc7d",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c03ac06; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c03ad06",
+      "size": 2,
+      "kind": "data",
+      "sha256": "65d0cdc55364cc2d9439ebcfb0393fda7d86f9bb7b680d9cd8b3d0859a79a88d",
+      "evidence": "PC-relative consumer in CFG of 0x0c03ac52 (mov.w at 0x0c03ac68 and 0x0c03ac8a)."
     },
     {
       "address": "0x0c03ad08",
@@ -15766,6 +15780,13 @@
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c03ac06; unreferenced adjacent bytes omitted."
     },
     {
+      "address": "0x0c03ad24",
+      "size": 12,
+      "kind": "data",
+      "sha256": "8a9b9197bfcf9094afa36739bdb95f051bb025c831fedc0a2bc80c4bda8fe8b6",
+      "evidence": "PC-relative consumer in CFG of 0x0c03ac52 (mov.l at 0x0c03ac56, 0x0c03ac5c, 0x0c03ac6e)."
+    },
+    {
       "address": "0x0c03ad30",
       "size": 4,
       "kind": "data",
@@ -15773,11 +15794,18 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
-      "address": "0x0c03ad44",
-      "size": 252,
+      "address": "0x0c03ad34",
+      "size": 36,
+      "kind": "data",
+      "sha256": "4863ac96842dd0c9f7ed14fe7dde68edc5277b9a7695944c146f951cdbcbf35c",
+      "evidence": "PC-relative consumers in CFG of 0x0c03ac52 (0x0c03ac7e-0x0c03acf0); literal pool, not code."
+    },
+    {
+      "address": "0x0c03ad58",
+      "size": 232,
       "kind": "code",
-      "sha256": "10729990078d48eca45d7e1ba2cda6f13f4a856243b9589f24f661d96f05f855",
-      "evidence": "CFG walk from 0x0c03ad44; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "sha256": "4e335be809b9379b2a305290daa61587a5369bd238b9d6c60191eae91c907a18",
+      "evidence": "CFG walk from 0x0c03ad58 (prologue after 0x0c03ac52 pool); delay slots included; pool at 0x0c03ae40 split."
     },
     {
       "address": "0x0c03ae40",
@@ -438868,10 +438896,10 @@
     },
     {
       "address": "0x0c233098",
-      "size": 12,
-      "kind": "code",
-      "sha256": "02c5a3b0f15c2199a58873ab03a023c7f5459083cd523788b3ff09f293b567a1",
-      "evidence": "CFG walk from 0x0c233098; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "size": 24,
+      "kind": "data",
+      "sha256": "ee91bac52611f5d08acc450cd202d5bffbe14ad35eb5a727a7b852da55412e37",
+      "evidence": "Float table (-857.16,-697.18,-4949.0,...) loaded via literal pool at 0x0c1dde78. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c2330b0",
@@ -439078,10 +439106,10 @@
     },
     {
       "address": "0x0c2331e4",
-      "size": 4,
-      "kind": "code",
-      "sha256": "9e0c7ef5d07eea1d73834e2e4de1bc9400f37f091fa05778d2d216e29feb1b30",
-      "evidence": "CFG walk from 0x0c2331e4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "size": 14,
+      "kind": "data",
+      "sha256": "91dd55bd44e997da45dbd7ac39fb6a881b8eceab1f9b50b75ebf153cd18bcaad",
+      "evidence": "Float constants loaded from literal pools at 0x0c1df270/0x0c1df118/0x0c1df288. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c2331f2",
@@ -439413,11 +439441,11 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
-      "address": "0x0c233354",
-      "size": 8,
-      "kind": "code",
-      "sha256": "6558759242c7e6ab9536d363f67376fca8de1ff3fac370c9aa08dbcade196465",
-      "evidence": "CFG walk from 0x0c233354; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "address": "0x0c233344",
+      "size": 36,
+      "kind": "data",
+      "sha256": "11547d4ad946081b56f4293b56b74cfa5491b5a01bc7bf5b0b3fd7a8d6400c1b",
+      "evidence": "Float table (-903,-194,343.5,-870,...) referenced from pool 0x0c1e625c; followed by \"MVLVS.C2_SYS\" text referenced from SDK pools. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c233368",
@@ -439523,6 +439551,13 @@
       "kind": "data",
       "sha256": "a0454a24dd4bc418448ca19320519ea3fe544fa1a910868b62ca210614f119f8",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c233454",
+      "size": 4,
+      "kind": "data",
+      "sha256": "d4ba22d3ef777b88298977c36fa7ec0f226682f6ba728d914dd02a45d1b691a4",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c233458",
@@ -440673,11 +440708,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c233a04",
+      "size": 36,
+      "kind": "data",
+      "sha256": "396072219b9244d4b9e560ced036ebbdd914586595e4aad825508bad4c0db5b6",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
+    },
+    {
       "address": "0x0c233a28",
       "size": 4,
       "kind": "data",
       "sha256": "ce8457d59078a699acb70416f88155a96a906b7b7aad43708402e3a3bcc8a4b4",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c233a2c",
+      "size": 8,
+      "kind": "data",
+      "sha256": "0effee6888cf5c47664ec0b3d43f1dd31030721d43e2aaa521a8320778ce0d21",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c233a34",
@@ -440736,11 +440785,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c233a78",
+      "size": 12,
+      "kind": "data",
+      "sha256": "73157fd055b575c3488d4ac77e7ec60ef3f578f85fdf5b486617d10ce0eca9c7",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
+    },
+    {
       "address": "0x0c233a84",
       "size": 8,
       "kind": "data",
       "sha256": "ec8e09ff007edae7d9ed5b41b07494ebe32693127d991949566dfac661ae7648",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c233a8c",
+      "size": 22,
+      "kind": "data",
+      "sha256": "2a9e07cb3d74e48a51b10640ff8d937cd4c6185f197b8fee000fd8abc45b5a88",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c233aa2",
@@ -440750,11 +440813,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c233aaa",
+      "size": 2,
+      "kind": "data",
+      "sha256": "6c54b558756aa9f6402748c0b8f1f3d7b83aa502e00c50c3d8ff587ab86f89d0",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
+    },
+    {
       "address": "0x0c233aac",
       "size": 8,
       "kind": "data",
       "sha256": "abaec015a41791b7deb2a2684ee155511dfec912ec06d6f93a1b0096d4be1772",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c233ab4",
+      "size": 10,
+      "kind": "data",
+      "sha256": "e058e8b678ab5707dff0811e04d48e1941bd0fa274568b09fac3c7f0cd15b09d",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c233abe",
@@ -440764,11 +440841,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c233ac2",
+      "size": 70,
+      "kind": "data",
+      "sha256": "f7a710909bfa0cf3fb240d9ff9a40f29947eeb947f44e5eaddd71e20e4ec8150",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
+    },
+    {
       "address": "0x0c233b08",
       "size": 4,
       "kind": "data",
       "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c233b0c",
+      "size": 20,
+      "kind": "data",
+      "sha256": "9f1e3948b84dcf77a4ac8c0fdc4dec4ea04a420050aa677757f0e27b6976a9a8",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c233b20",
@@ -440778,11 +440869,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c233b24",
+      "size": 10,
+      "kind": "data",
+      "sha256": "a5cc1363e69960d41ee8e2f9dbb23cf4dba4de0ecc58a1f9ef144ee2853c0b6a",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
+    },
+    {
       "address": "0x0c233b2e",
       "size": 14,
       "kind": "data",
       "sha256": "e7ecebbc590bc88b3761fa6cd03d749f87463dabb67021a5c6768c25ec68b3f2",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c233b3c",
+      "size": 6,
+      "kind": "data",
+      "sha256": "33d0bc8e35740b59b978ca31f4664152874196ccfba3309fdba113f57dfec9c4",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c233b42",
@@ -440792,11 +440897,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c233b4c",
+      "size": 2,
+      "kind": "data",
+      "sha256": "f566cc6fccc657365c0197accf3a7d6f80f85209ff666ff774f4dcbc524aa842",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
+    },
+    {
       "address": "0x0c233b4e",
       "size": 30,
       "kind": "data",
       "sha256": "0679246d6c4216de0daa08e5523fb2674db2b6599c3b72ff946b488a15290b62",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c233b6c",
+      "size": 6,
+      "kind": "data",
+      "sha256": "4f65a4fe95f8142fc8577139f68204c04c5808c3fbffbac1ed047b97ae25e7d0",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c233b72",
@@ -440806,11 +440925,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c233b7c",
+      "size": 6,
+      "kind": "data",
+      "sha256": "92ec282ea866062bb94c594e5b1850ce36df161fb13f0b86e4e0a9f3291b0544",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
+    },
+    {
       "address": "0x0c233b82",
       "size": 42,
       "kind": "data",
       "sha256": "094c4931fdb2f2af417c9e0322a9716006e8211fe9017f671ac6e3251300acca",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c233bac",
+      "size": 2,
+      "kind": "data",
+      "sha256": "a2c4aed1cf757cd9a509734a267ffc7b1166b55f4c8f9c3e3550c56e743328fc",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c233bae",
@@ -440820,11 +440953,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c233bb4",
+      "size": 30,
+      "kind": "data",
+      "sha256": "83833da0e1654cd7cf4f711ee0accc7cf47c78d0b7e6fdef85ae1b011e00c99f",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
+    },
+    {
       "address": "0x0c233bd2",
       "size": 6,
       "kind": "data",
       "sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c233bd8",
+      "size": 2,
+      "kind": "data",
+      "sha256": "6c54b558756aa9f6402748c0b8f1f3d7b83aa502e00c50c3d8ff587ab86f89d0",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c233bda",
@@ -440834,11 +440981,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c233be0",
+      "size": 2,
+      "kind": "data",
+      "sha256": "89389ee14c6495d62c5c4d1ab627f415099e5101e21cc66af492011f88adf1c4",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
+    },
+    {
       "address": "0x0c233be2",
       "size": 6,
       "kind": "data",
       "sha256": "bd667b51c9334491fa0febbac57a1536a550e5d92b1adfbc59db8a53adda573f",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c233be8",
+      "size": 10,
+      "kind": "data",
+      "sha256": "f6e70c8bed4a1c80e54b5380d1f9aafe281c86359c5096792f788939804fdbd9",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c233bf2",
@@ -440848,11 +441009,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c233c00",
+      "size": 32,
+      "kind": "data",
+      "sha256": "facd98c4efa7b1735bd64f505049c059efc92b7da886963ca0fe709c9f013546",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
+    },
+    {
       "address": "0x0c233c20",
       "size": 4,
       "kind": "data",
       "sha256": "ce8457d59078a699acb70416f88155a96a906b7b7aad43708402e3a3bcc8a4b4",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c233c24",
+      "size": 8,
+      "kind": "data",
+      "sha256": "d8316719649820310fa4e55348768342446a978c0b8f82390210a1c99d15dcaa",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c233c2c",
@@ -440862,11 +441037,25 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c233c30",
+      "size": 72,
+      "kind": "data",
+      "sha256": "2d7c8614922388af41ca85a4008d57751ca96d934fc4419f2acad1985edb47ee",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
+    },
+    {
       "address": "0x0c233c78",
       "size": 4,
       "kind": "data",
       "sha256": "ce8457d59078a699acb70416f88155a96a906b7b7aad43708402e3a3bcc8a4b4",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c233c7c",
+      "size": 10,
+      "kind": "data",
+      "sha256": "b39e35c591c5ae5e6d6cc31037217bd8aded2d8fda3d35c29c69cd46ba3440f8",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c233c86",
@@ -448177,11 +448366,11 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
-      "address": "0x0c238004",
-      "size": 12,
-      "kind": "code",
-      "sha256": "677f4dac99ebc1eafe7abbb7dd51deeeca863d1b86d650b7651c5bba365d5e60",
-      "evidence": "CFG walk from 0x0c237ef0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "address": "0x0c237fd0",
+      "size": 80,
+      "kind": "data",
+      "sha256": "96ac5c9fbaf9c9b9276ddcfc2f111d8cea307ffd48e2ac9668188780d0450d99",
+      "evidence": "Opaque 80-byte key/table blob referenced from pools 0x0c204484/0x0c204474 (high-entropy, no recovered type). Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c238020",
@@ -449193,10 +449382,10 @@
     },
     {
       "address": "0x0c2384a8",
-      "size": 6,
-      "kind": "code",
-      "sha256": "d7db139f0dabcb2f69dc01eb683fde6d7ad30274c53b3712913114934c8aea74",
-      "evidence": "CFG walk from 0x0c2384a8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "size": 50,
+      "kind": "data",
+      "sha256": "04e795649c8d0218988aa1f32486dbfd2dd1b3211cf84bb8fb0f8c2b2c06d7db",
+      "evidence": "Pointer to SDK version string \"\\nsysTmr Ver 1.04am Build:Nov 09 1999...\" and the string itself. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c2384da",
@@ -449372,6 +449561,13 @@
       "kind": "data",
       "sha256": "1ec00db864f2f4b159e7a356bb6672114bf3bc9c9be74d6a79a88b2207829be1",
       "evidence": "Unowned bytes in the post-code data region (SDK module data / game tables), not reached as code; typed as char text dat_0c2387f4 in src/verified/data_0c2383d0.c."
+    },
+    {
+      "address": "0x0c238825",
+      "size": 3,
+      "kind": "data",
+      "sha256": "862c3c6ab19df451294675f1cc468f3f8428bb8141de0f66d6c50a1cdfda736a",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c238828",
@@ -450590,6 +450786,13 @@
       "kind": "data",
       "sha256": "1c135989f9b778c589da9ce7f9cecfd6fa9d7480b36f717303e098d4a92c78bf",
       "evidence": "Unowned bytes in the post-code data region (SDK module data / game tables), not reached as code; typed as unsigned char table dat_0c239532 in src/verified/data_0c2391de.c."
+    },
+    {
+      "address": "0x0c239539",
+      "size": 3,
+      "kind": "data",
+      "sha256": "b438bb7231c7e8346f1557c7066f4076989165eed0aa056cfdaaf65c7495b0c8",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c233098.c."
     },
     {
       "address": "0x0c23953c",
@@ -452112,31 +452315,17 @@
     },
     {
       "address": "0x0c23a2d8",
-      "size": 6,
-      "kind": "code",
-      "sha256": "0abcce1a4e9c73c96a4c342144c4b6cdf154741a42916c4d72e71ea5a666b07d",
-      "evidence": "CFG walk from 0x0c23a2d8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
-    },
-    {
-      "address": "0x0c23a2e0",
-      "size": 6,
-      "kind": "code",
-      "sha256": "d63439bd9ffcde98e420f2708f2717ed1f37db33ab4f8f177667f032f0459ae7",
-      "evidence": "CFG walk from 0x0c23a2e0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
-    },
-    {
-      "address": "0x0c23a2ec",
-      "size": 6,
-      "kind": "code",
-      "sha256": "8c3abdff5d7c763773bfaba423bcf402a686ac666f517d945795e539064b6770",
-      "evidence": "CFG walk from 0x0c23a2ec; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "size": 28,
+      "kind": "data",
+      "sha256": "722b8dad0639987efbec845cf4353d694f9a4ecc5190de79ff4fd84c141ef700",
+      "evidence": "Data pointer table into 0x0c2393xx-0x0c23a2xx tables, referenced by pools 0x0c0240e8/0x0c024030. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c23a300",
-      "size": 6,
-      "kind": "code",
-      "sha256": "e463fa0062efa2082253565e7412c273437b63612e1d7d0cb6b73a6314212237",
-      "evidence": "CFG walk from 0x0c23a300; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "size": 8,
+      "kind": "data",
+      "sha256": "a4ee51950c1e5f3fb765a58ff44a5214cf0efb49691090cace0acf9fdbcffd53",
+      "evidence": "Data pointer table entries, referenced by pools 0x0c024034/0x0c0240f0. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c23a358",
@@ -452461,11 +452650,11 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
-      "address": "0x0c23a534",
-      "size": 16,
-      "kind": "code",
-      "sha256": "6f0af4bccf066ffad4fb07b44c0793fd2abcf1b3bb0d8f38faddfdec8a29e068",
-      "evidence": "CFG walk from 0x0c23a534; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "address": "0x0c23a516",
+      "size": 54,
+      "kind": "data",
+      "sha256": "effc18168acb85ae3dcd17e53b7d20b47df055e02e16d2e4cf60b6e7c4537b8e",
+      "evidence": "Byte colour/offset table (0xff-padded bytes), unaligned halfword data. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c23a54c",
@@ -453443,9 +453632,9 @@
     {
       "address": "0x0c23a9a4",
       "size": 4,
-      "kind": "code",
+      "kind": "data",
       "sha256": "0cca40f8d9b799cf50f84fd565a931fa0b77e22ab9f20413ffd2b0f2b760ee33",
-      "evidence": "CFG walk from 0x0c23a9a4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Function pointer to 0x0c02ac9c, referenced by pool 0x0c02ac88. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c23a9bc",
@@ -455242,16 +455431,16 @@
     {
       "address": "0x0c23c0a4",
       "size": 8,
-      "kind": "code",
+      "kind": "data",
       "sha256": "0a6f5b4939a8df4048db94cc8579f7a5fc9b294f3d3f292fa1940ac3c0cddf79",
-      "evidence": "CFG walk from 0x0c23bf3c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split. Split around verified data units."
+      "evidence": "Function pointer table entries to 0x0c049f94/0x0c04a006 (code starts). Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c23c0b8",
       "size": 4,
-      "kind": "code",
+      "kind": "data",
       "sha256": "703867d7b219fc748255057073981e5055e0f2294bbba2228e681e8163dcd46d",
-      "evidence": "CFG walk from 0x0c23bf3c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Function pointer to 0x0c04a0c0. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c23c0bc",
@@ -455948,10 +456137,10 @@
     },
     {
       "address": "0x0c23c588",
-      "size": 6,
-      "kind": "code",
-      "sha256": "81017394d899450171c9afe9a960d9d0ff20c6c422f0f177135eaafc40cd2dd6",
-      "evidence": "CFG walk from 0x0c23c588; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "size": 8,
+      "kind": "data",
+      "sha256": "3d7bc34ec0956354579b4e07155b4103b0b3185b15c64eccbfb405917da19f56",
+      "evidence": "Data pointers into data_0c23c1f2 table, referenced by pool 0x0c048eac. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c23c59c",
@@ -480476,17 +480665,10 @@
     },
     {
       "address": "0x0c247ef0",
-      "size": 4,
-      "kind": "code",
-      "sha256": "eeff80f13ad9bf27680c55a30eec02c2cf74ef92b06eb4738e8100a8a605beb1",
-      "evidence": "CFG walk from 0x0c247ef0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
-    },
-    {
-      "address": "0x0c247ef8",
-      "size": 4,
-      "kind": "code",
-      "sha256": "eb5d831b10a16788445362d8235eb08d7d981e981b81136bca901a82f6d110f7",
-      "evidence": "CFG walk from 0x0c247ef8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "size": 12,
+      "kind": "data",
+      "sha256": "48cd1482d51163e914dde2da22ef99240b411d2ce6eb0d30dc7305c696b06eb4",
+      "evidence": "Function pointer table (0x0c0cab98,0x0c0ca79e,0x0c0caeae), referenced by pool 0x0c0caf68. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c247f08",
@@ -481222,6 +481404,13 @@
       "kind": "data",
       "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c2484fc",
+      "size": 4,
+      "kind": "data",
+      "sha256": "74997ffd5e96a7f2353ab1cb4923e222b90384629aa7bb376241982e5a0b00f5",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c248500",
@@ -482218,11 +482407,11 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
-      "address": "0x0c248c98",
-      "size": 4,
-      "kind": "code",
-      "sha256": "8ae3f5ee55aecbfb5f86d70da0cfe87d3cd4022c4c7ae4ae8935449f7072d55f",
-      "evidence": "CFG walk from 0x0c248c98; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "address": "0x0c248c84",
+      "size": 24,
+      "kind": "data",
+      "sha256": "28be6e2031b2b419c19649c94fcc845cc3366c79707579c187168ce918da4bb0",
+      "evidence": "Float constants (8.333,12.857,-2.5,-4.1667) + short pair + function pointer 0x0c0da82a; pools 0x0c0dd2e8/0x0c0dd2e4/0x0c0da0d0. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c248ce8",
@@ -482240,17 +482429,10 @@
     },
     {
       "address": "0x0c248d08",
-      "size": 4,
-      "kind": "code",
-      "sha256": "63598bd37485b03ee34b114fe39402696112b60c32666720f5897d0086a2d85a",
-      "evidence": "CFG walk from 0x0c248d08; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
-    },
-    {
-      "address": "0x0c248d10",
-      "size": 4,
-      "kind": "code",
-      "sha256": "8ab7aa97eded55464e49fed5f3d8be727b0ceb0887340b57e8a218292275399d",
-      "evidence": "CFG walk from 0x0c248d10; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "size": 16,
+      "kind": "data",
+      "sha256": "516235162cad491cd3eb51fb20b306a21141855d9f8c709c4f757449f1f5eb51",
+      "evidence": "Function pointer table into 0x0c0da8f2..0x0c0daaf4, referenced by pool 0x0c0dabe4. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c248d18",
@@ -483548,6 +483730,13 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c2499e0",
+      "size": 4,
+      "kind": "data",
+      "sha256": "1f487052036aa8ec5b831eca023e20edf8c95150aabad8765afa5e55fbd59b38",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
+    },
+    {
       "address": "0x0c2499e4",
       "size": 12,
       "kind": "data",
@@ -483556,24 +483745,10 @@
     },
     {
       "address": "0x0c2499f0",
-      "size": 4,
-      "kind": "code",
-      "sha256": "3bd5b46b824ac18e98e0f7c7768981984d1ffda4fa5b1cf07cfa8467ebfe4d1b",
-      "evidence": "CFG walk from 0x0c2499f0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
-    },
-    {
-      "address": "0x0c2499fc",
-      "size": 4,
-      "kind": "code",
-      "sha256": "3bd5b46b824ac18e98e0f7c7768981984d1ffda4fa5b1cf07cfa8467ebfe4d1b",
-      "evidence": "CFG walk from 0x0c2499fc; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
-    },
-    {
-      "address": "0x0c249a06",
-      "size": 6,
-      "kind": "code",
-      "sha256": "e34e153fb8861de2a81f4085f389a1618153280b9be2fc0489619ec4796cc795",
-      "evidence": "CFG walk from 0x0c249a06; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "size": 80,
+      "kind": "data",
+      "sha256": "395509311ddb870509693862a21a6b030a0cdffb947d8d9e8471b6e6f97e1ba0",
+      "evidence": "Float table (186.667 x18, 171.43, 205.71) referenced by pools 0x0c0e8d6c..0x0c0e9428. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c249a6c",
@@ -483623,6 +483798,13 @@
       "kind": "data",
       "sha256": "819630f778ae4226a306acb08dfdf4b9c3bb9ad1dd6a8222e7bcc1463594077e",
       "evidence": "PC-relative consumer or indexed pointer table in CFG of 0x0c0ea866; unreferenced adjacent bytes omitted."
+    },
+    {
+      "address": "0x0c249b88",
+      "size": 8,
+      "kind": "data",
+      "sha256": "0cc6e19d38560cc4c95bddc1617d7f0b6c52ab555512504625228f784441dbff",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c249b90",
@@ -485223,16 +485405,16 @@
     {
       "address": "0x0c24a8f0",
       "size": 4,
-      "kind": "code",
+      "kind": "data",
       "sha256": "44872ab29b9f3f79d6878dbe3234138af251d84c1b7640d7bb8ec37fd40280ae",
-      "evidence": "CFG walk from 0x0c24a8f0; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24a8fc",
       "size": 4,
-      "kind": "code",
+      "kind": "data",
       "sha256": "c8e7c55979d0228540c6317b83bc43f11b00d96dcdea3279c706ca0d68b7084c",
-      "evidence": "CFG walk from 0x0c24a8fc; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24a920",
@@ -485363,16 +485545,16 @@
     {
       "address": "0x0c24a988",
       "size": 4,
-      "kind": "code",
+      "kind": "data",
       "sha256": "ff281719f13b66c23de00f0a2e21878bbc3aeb6158b5c309b68e7b17569d8d94",
-      "evidence": "CFG walk from 0x0c24a988; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24a9c4",
       "size": 4,
-      "kind": "code",
+      "kind": "data",
       "sha256": "4a5f48aa9f5bfae9ef51abc9c05af78933c72eebfe69e478b245ab961c35c5bb",
-      "evidence": "CFG walk from 0x0c24a9c4; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24a9d8",
@@ -485380,6 +485562,13 @@
       "kind": "data",
       "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
+    },
+    {
+      "address": "0x0c24a9e8",
+      "size": 4,
+      "kind": "data",
+      "sha256": "3a8b0719d05598034a4a0efece5541b319c40d5a4d1544a799297ce6d5daf4c0",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24a9ec",
@@ -485445,6 +485634,13 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
+      "address": "0x0c24aa2c",
+      "size": 8,
+      "kind": "data",
+      "sha256": "a8b1e92a4575ed166d12be1d1e05c2f3ab9722fbee7aed7db9b10fbd7ac090ec",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
+    },
+    {
       "address": "0x0c24aa34",
       "size": 6,
       "kind": "data",
@@ -485466,18 +485662,18 @@
       "evidence": "No aligned halfword in this range encodes an SH-4 instruction, so no instruction stream executes through it; the image holds only code and data."
     },
     {
-      "address": "0x0c24aa44",
-      "size": 4,
-      "kind": "code",
-      "sha256": "edbb5ab25fdf8c928af3ad17c0d319c599c503b1c232b6e6441dae9b1293f872",
-      "evidence": "CFG walk from 0x0c24aa44; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "address": "0x0c24aa42",
+      "size": 6,
+      "kind": "data",
+      "sha256": "8d1baa084b0467b78f243d4744639e0a728f9d6a39eb218eca0e43482bc937bf",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24aa54",
       "size": 4,
-      "kind": "code",
+      "kind": "data",
       "sha256": "535b8f020e1a5a533c770e052369a01ce63e0d10b0b08726e17204bd07945681",
-      "evidence": "CFG walk from 0x0c24aa54; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24aa64",
@@ -485513,6 +485709,13 @@
       "kind": "data",
       "sha256": "67da20e206fc5b284d629964bef0940ca6b0e5cb86b71d5830323d8e23375b95",
       "evidence": "Verified C data unit occupies these bytes; split from CFG code."
+    },
+    {
+      "address": "0x0c24ab0c",
+      "size": 4,
+      "kind": "data",
+      "sha256": "1b63b4ed7867dd14978bac264e2096b7276a8cc5f32f2a819a96c396be7422fd",
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24ab10",
@@ -486104,10 +486307,10 @@
     },
     {
       "address": "0x0c24af20",
-      "size": 10,
-      "kind": "code",
-      "sha256": "aa7281b939eed93b29a060f89f43caae0471a7dfcb29a58861a9ec2f9256fb64",
-      "evidence": "CFG walk from 0x0c24af20; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "size": 64,
+      "kind": "data",
+      "sha256": "2d210697c78f8f7af2e340364af7e4dd81729ae3c5512fc8d2568422a995e086",
+      "evidence": "Short table (0x23/0x24/0x22 then 5/7/4) referenced by pools 0x0c102084/0x0c102088. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24af6a",
@@ -490942,9 +491145,9 @@
     {
       "address": "0x0c24da30",
       "size": 16,
-      "kind": "code",
+      "kind": "data",
       "sha256": "56ec00456aa0101e6e309901339d3c76775a8d57270c3e0aa3aebe21f9439ac8",
-      "evidence": "CFG walk from 0x0c24da30; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Float constants (0.41667, 2.1429, -0.1339, -23.333). Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24da40",
@@ -491971,9 +492174,9 @@
     {
       "address": "0x0c24e43c",
       "size": 4,
-      "kind": "code",
+      "kind": "data",
       "sha256": "a9050aa38727d32c8ce69b83ef73ba815366f7f91f51a0c8076535de754e4e94",
-      "evidence": "CFG walk from 0x0c24e43c; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Short pair (11,8) referenced by pool 0x0c134ca8. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24e440",
@@ -493098,9 +493301,9 @@
     {
       "address": "0x0c24f12a",
       "size": 8,
-      "kind": "code",
+      "kind": "data",
       "sha256": "ee15ccb4086de144466286bab8040e457701a525f4b7a30ade9f14cc4972344d",
-      "evidence": "CFG walk from 0x0c24f12a; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Float constants (10.714, -0.2679) partially; halfword-aligned tail of a float table. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24f132",
@@ -493987,9 +494190,9 @@
     {
       "address": "0x0c24fdc8",
       "size": 4,
-      "kind": "code",
+      "kind": "data",
       "sha256": "73d6ab580d412d6d5e05d2f4b332cd7e440d3bec2c111595dd4a7db20867601d",
-      "evidence": "CFG walk from 0x0c24fdc8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24fdcc",
@@ -494043,9 +494246,9 @@
     {
       "address": "0x0c24fe00",
       "size": 4,
-      "kind": "code",
+      "kind": "data",
       "sha256": "b4d02164253004e820c031be1050a26fd66a8dd7ce6b0d167ff702a96b73c422",
-      "evidence": "CFG walk from 0x0c24fe00; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24fe04",
@@ -494057,9 +494260,9 @@
     {
       "address": "0x0c24fe08",
       "size": 4,
-      "kind": "code",
+      "kind": "data",
       "sha256": "abdc64eea28332ef97b0fe55213e922501ce3465d2a78e291322e695e86ccecb",
-      "evidence": "CFG walk from 0x0c24fe08; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Post-code data region bytes, not reached as code; typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24fe0c",
@@ -494155,16 +494358,16 @@
     {
       "address": "0x0c24fea6",
       "size": 70,
-      "kind": "code",
+      "kind": "data",
       "sha256": "eb695c3c91d1b66e5d5755296ba7e7ea39a7088abfa5c96cfb597c460f2f128c",
-      "evidence": "CFG walk from 0x0c24fea6; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Pointer table of code addresses 0x0c14928e..0x0c14a9ac (dispatch table), referenced by table_0c1493a4[1] and pools 0x0c14952c..0x0c149a0c. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24fef8",
       "size": 12,
-      "kind": "code",
+      "kind": "data",
       "sha256": "fc816a8f1890ae52db229a018817bada429274dd9911e4ef2313d8501120bc3a",
-      "evidence": "CFG walk from 0x0c24fef8; delay slots included; direct BSR/JSR/JMP targets recorded; PC-relative pools split."
+      "evidence": "Code pointer table entries 0x0c149ac8/0x0c149b50/0x0c14a9ac, referenced by pool 0x0c149b84. Earlier code mapping was a CFG walk seeded from a pointer-table/data word; bytes do not form a reachable routine. Typed in src/verified/data_0c23a2d8.c."
     },
     {
       "address": "0x0c24ff04",

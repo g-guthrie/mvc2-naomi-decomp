@@ -1,6 +1,5 @@
 /* Special-move checker unit for one character (0x0c1260d4-0x0c126578).
- * 10/12 functions match; 0x0c1261bc and 0x0c126332 differ only by the r2/r3
- * choice for the sub-record byte 7 test. */
+ */
 #include "objects.h"
 extern unsigned char dat_0c24d828[];
 extern unsigned char dat_0c24d838[];
@@ -70,7 +69,9 @@ void func_0c1260f0(struct Actor *a)
 
 unsigned char func_0c1261bc(struct Actor *a)
 {
- if(!func_0c046e7e(a,dat_0c24d828,a->x364)||!*a->p40c||((struct ActorSubMoveBytes *)&a->sub2a4)->b7)return 0;
+ if(!func_0c046e7e(a,dat_0c24d828,a->x364))return 0;
+ if(!*a->p40c)return 0;
+ if(((struct ActorSubMoveBytes *)&a->sub2a4)->b7)return 0;
  func_0c047aac(a,a->x364);
  a->b5=0;a->b7=0;a->b6=0;a->b1e9=0;
  func_0c045248(a,29);return 1;
@@ -92,7 +93,9 @@ unsigned char func_0c1262ec(struct Actor*a){if(!func_0c046e7e(a,dat_0c24d858,a->
 
 unsigned char func_0c126332(struct Actor *a)
 {
- if(!func_0c046e7e(a,dat_0c24d868,a->x384)||!*a->p40c||((struct ActorSubMoveBytes *)&a->sub2a4)->b7)return 0;
+ if(!func_0c046e7e(a,dat_0c24d868,a->x384))return 0;
+ if(!*a->p40c)return 0;
+ if(((struct ActorSubMoveBytes *)&a->sub2a4)->b7)return 0;
  func_0c047aac(a,a->x384);
  a->b5=0;a->b7=0;a->b6=0;a->b1e9=6;
  func_0c045248(a,29);return 1;

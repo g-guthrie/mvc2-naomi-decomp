@@ -1,4 +1,4 @@
-/* Candidate: func_0c0a1372 schedules the callee address loads differently; func_0c0a1308 exact; size exact. */
+/* Candidate: func_0c0a1372 still loads the func_0c0429a4 call target early (338/356); func_0c0a1308 exact; size exact. */
 #include "objects.h"
 extern char func_0c02a026(struct Actor *);
 extern struct Tbl_ub3_01 *dat_0c2f83f8;
@@ -35,12 +35,13 @@ void func_0c0a1372(struct Actor *a)
 {
     struct ActorSub2a4 *s = &a->sub2a4;
     struct LinkedActorVec3 position;
+    goto L; L:
     func_0c09e43a(a);
     if (a->b141 == 1) {
         a->b141 = 0;
         position.x = -40.0f;
         position.y = 137.142853f;
-        func_0c0429a4(a, &position, *(short *)s == 0);
+        { int f = *(short *)s == 0; goto M; M: func_0c0429a4(a, &position, f); }
     }
     if (a->b141 == 2) {
         a->b6++;

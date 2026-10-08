@@ -15,6 +15,7 @@ loop:
 char func_0c0a2db8(struct Actor *a)
 {
     if (a->b1f9 != 2) return 1;
+    goto L; L:
     if (a->b1fc) return 1;
     if (a->b1d4) return 0;
     a->b1d4=a->b1d4+1;

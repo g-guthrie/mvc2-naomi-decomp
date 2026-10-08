@@ -1,4 +1,3 @@
-/* Candidate 0x0c08a66c..0x0c08a91c: nine complete handlers and all pools match. Jump initialization at0x0c08a7a4 differs in four bytes selecting the zero-value register (r5 instead of retail r4). */
 #include "objects.h"
 extern char func_0c02a026(struct Actor *);
 extern void (*table_0c242554[])(struct Actor *,struct MotionContext8a3 *);
@@ -52,7 +51,7 @@ void func_0c08a7a4(register struct Actor *a,struct MotionContext8a3 *m)
  if(a->b1d2)a->f92=-a->f92;
  a->f96=0.26785714f;a->f104=0.0f;a->f108=-0.80357141f;
  func_0c02a39a(a,0);
- {int zero=0;a->b1a1=44;a->w1ac=zero;a->b19e=zero;a->p1c4=zero;}
+ a->b1a1=44;a->w1ac=0;a->b19e=0;*(unsigned int *)&a->p1c4=0;
  dat_0c2f83f8->arr[a->b2]++;
  func_0c02a0c4(a,21,28);
 }

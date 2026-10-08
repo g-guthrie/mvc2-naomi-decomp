@@ -1,5 +1,3 @@
-/* The last initializer differs only in function-target registers.
- * The other five complete functions and all three pools match retail. */
 #include "objects.h"
 extern void func_0c042018(struct Actor *);
 extern void (*table_0c2444cc[])(struct Actor *, struct ActorSub2a4 *);
@@ -98,6 +96,7 @@ void func_0c0a8f16(struct Actor *a, struct ActorSub2a4 *unused)
         dat_0c2f83f8->arr[a->b2]++;
         animation = 2;
     }
+    goto L; L:
     func_0c02a0c4(a, 21, animation);
     func_0c02a39a(a, 0);
 }

@@ -107,7 +107,7 @@ const char *const dat_0c2387ec[] = {
 };
 
 #pragma section n2387f4
-const char dat_0c2387f4[49] = "\012syChain Ver 1.50am Build:Nov 09 1999 18:17:06\012\000,";
+const char dat_0c2387f4[48] = "\012syChain Ver 1.50am Build:Nov 09 1999 18:17:06\012\000";
 
 #pragma section n23882c
 const char dat_0c23882c[48] = "\012syInt Ver 1.50am Build:Nov 09 1999 18:17:11\012\000\000\000";

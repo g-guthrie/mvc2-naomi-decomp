@@ -1,4 +1,4 @@
-/* Candidate:286/296 complete bytes; all five helper callbacks and the48-byte pool are exact. Constructor differs in ten early register/store scheduling bytes. Resource selection reads parent byte0x21, not byte0. */
+/* Parent-tracking indicator: constructor, retarget, dispatch and fade callbacks. Resource selection reads parent byte 0x21. */
 #include "objects.h"
 extern struct Obj_tu5_03 *func_0c0374da(int,int,int);
 extern struct ActorGlobalRoot *dat_0c2d9658;
@@ -10,7 +10,7 @@ struct Obj_tu5_03 *func_0c1c772c(struct Actor *parent)
 {
  struct Obj_tu5_03 *q;float stopped;
  if((q=func_0c0374da(0,5,1))){
- q->b12c=1;q->p16=func_0c1c77bc;q->p24=(struct Obj_tu5_03 *)parent;q->p200=&parent->f136;
+ goto s;s:q->b12c=1;q->p16=func_0c1c77bc;q->p24=(struct Obj_tu5_03 *)parent;q->p200=&parent->f136;
  stopped=0.0f;q->b33=parent->b33;
  q->l84=((int *)dat_0c2d9658->p0)[121+dat_0c22ff29[parent->b33*2]];
  q->pos.x=stopped;q->pos.y=stopped;q->pos.z=stopped;

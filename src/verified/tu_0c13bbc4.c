@@ -1,6 +1,4 @@
-/* Candidate: setup orientation uses r4 and moves the zero load later;
- * child allocation schedules p20 in the loop branch delay slot.
- * Six routines and both pools are exact; 743/760 total bytes match. */
+/* Linked actor pair spawner and child chain; matches retail exactly. */
 #include "objects.h"
 struct EffectMask_13bbc4 {unsigned char pad[59];unsigned char index;unsigned short bits;};
 extern struct EffectMask_13bbc4 dat_0c2f8338;
@@ -27,7 +25,7 @@ void func_0c13bc48(struct LinkedActor *a,struct LinkedActor *owner)
  int flipped,zero;
  a->b4++;a->sdc=owner->sdc;a->sdc.b12c=1;
  a->b2=owner->b2;a->b1=owner->b1;a->v80.x=owner->v80.x;a->v80.y=owner->v80.y;a->b1a3=owner->b1a3;a->b1a4=owner->b1a4;a->b48=owner->b48;a->v80=owner->v80;a->b36=owner->b36;
- a->s28=4;a->pad11[0]=66;a->pad11[1]=66;a->b36=a->b33?12:11;{int flip=!a->b33;zero=0;((struct Actor *)a)->w130=flip;}
+ a->s28=4;a->pad11[0]=66;a->pad11[1]=66;a->b36=a->b33?12:11;zero=0;((struct Actor *)a)->w130=a->b33?0:1;
  a->f52=owner->f52;a->f56=owner->f56+85.71428f;
  ((struct Actor *)a)->b1a1=68;((struct Actor *)a)->w1ac=zero;((struct Actor *)a)->b19e=zero;*(void **)&((struct Actor *)a)->p1c4=(void *)zero;dat_0c2f83f8->arr[a->b2]++;
  func_0c13be16(a,owner);func_0c02a0c4(a,23,a->b32+14);
@@ -48,6 +46,6 @@ void func_0c13bdfc(struct LinkedActor *a,struct LinkedActor *owner){func_0c02a39
 void func_0c13be16(struct LinkedActor *source,struct LinkedActor *owner)
 {
  int i;struct LinkedActor *a;int mode=1;
- for(i=0;i<4;i++){if(!(a=func_0c0374da((int)source,1,2)))break;a->w38=0x702;a->b32=mode;a->b33=source->b33;a->s28=i;a->p16=func_0c13bc20;a->p24=owner;a->p20=source;}
+ for(i=0;i<4;i++){if(a=func_0c0374da((int)source,1,2)){a->w38=0x702;a->b32=mode;a->b33=source->b33;a->s28=i;a->p16=func_0c13bc20;a->p24=owner;a->p20=source;}else break;}
 }
 void func_0c13be78(struct LinkedActor *a){table_0c24efd0[a->b4](a,a->p24);}

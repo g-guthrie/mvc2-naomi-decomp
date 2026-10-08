@@ -230,14 +230,6 @@ const unsigned int dat_0c097950[] = {
     0x01f902a4u, 0x01ac01a1u, 0x0c047bbeu, 0x0c2f83f8u,
 };
 
-#pragma section n097d88
-void (*const table_0c097d88[])(void) = {
-    func_0c02a0c4,
-    func_0c0432ca,
-    func_0c02a026,
-    func_0c025900,
-};
-
 #pragma section n097ef8
 void (*const table_0c097ef8[])(void) = {
     func_0c02a026,

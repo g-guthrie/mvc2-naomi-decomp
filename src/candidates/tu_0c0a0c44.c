@@ -1,6 +1,4 @@
-/* Motion update160bytes and dispatcher18bytes match exactly, with all42
- * pool bytes. Initializer97/128bytes: register and load scheduling differ.
- * The direction flag negates both values; strength indexes unsigned float pairs. */
+/* The direction flag negates both values; strength indexes unsigned float pairs. */
 #include "objects.h"
 
 typedef void (*ActorHandler_0c0a0c44)(struct Actor *);
@@ -21,6 +19,7 @@ void func_0c0a0c44(struct Actor *a)
     if (a->b255 == 3) {
         a->b1a1 = 85;
     } else {
+        goto L; L:
         a->b1a1 = a->b1a3 + 50;
     }
     a->w1ac = 0;
@@ -28,16 +27,11 @@ void func_0c0a0c44(struct Actor *a)
     a->p1c4 = 0;
     ++dat_0c2f83f8->arr[a->b2];
 
+    goto M; M:
     motion = dat_0c2437b4;
     motion += (unsigned char)a->b1a3 * 2;
-    if (a->b1d2 != 0)
-        a->f92 = -motion[0];
-    else
-        a->f92 = motion[0];
-    if (a->b1d2)
-        a->f104 = -motion[1];
-    else
-        a->f104 = motion[1];
+    a->f92 = a->b1d2 ? -motion[0] : motion[0];
+    a->f104 = a->b1d2 ? -motion[1] : motion[1];
     func_0c0432ca(a);
 }
 

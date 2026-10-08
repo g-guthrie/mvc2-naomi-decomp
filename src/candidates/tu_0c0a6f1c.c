@@ -1,3 +1,4 @@
+/* Candidate: all functions exact except func_0c0a70aa (29/60): retail hoists mov #2,r6 into the case-0 bt.s delay slot. */
 #include "objects.h"
 extern void func_0c1cea66(struct Actor *,struct LinkedActorVec3 *,int);
 extern void func_0c0346da(struct Actor *,int);
@@ -72,7 +73,7 @@ void func_0c0a7064(struct Actor *a)
     a->b6=zero;
     switch(a->b4c9) {
     case 0: a->b1e9=2; goto clear;
-    case 1: a->b1e9=seven;
+    case 1: goto one; one: a->b1e9=7;
 clear:
         a->b1a3=zero;
         break;
@@ -88,9 +89,9 @@ void func_0c0a70aa(struct Actor *a)
     a->b7=zero;
     a->b6=zero;
     switch(a->b4c9) {
-    case 0:
-    case 2: a->b1e9=two; a->b1a3=zero; break;
+    case 0: goto two;
     case 1: a->b1e9=zero; a->b1a3=1; break;
+    case 2: two: a->b1e9=two; a->b1a3=zero; break;
     }
     func_0c045248(a,21);
 }

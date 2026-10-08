@@ -205,7 +205,12 @@ def register(unit, exact):
     if unit['source'].startswith('src/verified/') and not exact:
         raise ValueError('A file under src/verified/ must match exactly; put it under src/candidates/')
     path = ROOT / 'config/units.json'
-    with open(path, 'r+') as handle:
+    # Lock a file that is never replaced: os.replace below swaps the registry's
+    # inode, so a lock held on the registry itself would not exclude a writer
+    # that opened it before the swap.
+    (ROOT / 'build').mkdir(exist_ok=True)
+    with open(ROOT / 'build/units.lock', 'w') as guard, open(path, 'r+') as handle:
+        fcntl.flock(guard, fcntl.LOCK_EX)
         fcntl.flock(handle, fcntl.LOCK_EX)
         units = release_pools(unit, json.load(handle))
         slots = [i for i, u in enumerate(units) if u['id'] == unit['id'] or u.get('source') == unit['source']]

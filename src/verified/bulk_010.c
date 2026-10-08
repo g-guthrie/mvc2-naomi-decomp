@@ -210,16 +210,6 @@ const unsigned int dat_0c040b7c[] = {
     0x0c2d9260u, 0xc38e8000u, 0x438e8000u,
 };
 
-#pragma section n040c8e
-const unsigned short dat_0c040c8e[] = {
-    0x05a4u, 0x04bcu, 0x01a4u, 0x0411u, 0x052fu, 0x009cu, 0x0525u, 0x009du,
-};
-
-#pragma section n040ca0
-const unsigned int dat_0c040ca0[] = {
-    0x0c2d7088u, 0x0c1fba00u, 0x0c2f8338u,
-};
-
 #pragma section n040d6c
 const unsigned short dat_0c040d6c[] = {
     0x012cu, 0x01a4u, 0x0428u, 0x020cu, 0x05a4u,
