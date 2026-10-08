@@ -46,6 +46,10 @@ retail:
   archive decompresses with PKWARE DCL), changes FMAC operand registers in
   five units R08 matches exactly and improves no candidate. It is later than
   retail. SHC 6.0AD ships on the same disc.
+- 5.1 Release 11, from Katana SDK R10.1 (InstallShield 5 cabinets,
+  `UtlDevHitachi/`), compiles every verified game and library source and
+  every single-section candidate to the same code as R08. Retail cannot
+  tell R08 and R11 apart; R08 is bundled. Katana SDK R9 ships R08.
 
 Every verified source was recompiled with each candidate compiler; only the
 units named in `docs/MATCHING.md` needed source changes for R08. The `library` set drops `-extra=a=400` because Sega's libraries
