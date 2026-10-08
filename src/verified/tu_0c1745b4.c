@@ -59,17 +59,17 @@ void func_0c1746b0(struct LinkedActor *a)
  if(a->b34!=(unsigned char)mode) {
     a->b34=mode;
     func_0c02a18c(a,23,0,a->b34);
-    a->pad11[5]=a->sdc.pad1c[9];
+    a->pad11[5]=a->sdc.pad1c[7];
     *(short *)((char *)a+0x1ac)=0;
     a->pad11[2]=0;
     *(unsigned int *)((char *)a+0x1c4)=0;
     dat_0c2f83f8->arr[a->b2]++;
  }
  *(struct LinkedActorVec3 *)&a->f52=*(struct LinkedActorVec3 *)&owner->f52;
- d=table_0c252c50[(unsigned char)owner->sdc.pad1c[9]][a->b32].x*1.66666663f;
+ d=table_0c252c50[(unsigned char)owner->sdc.pad1c[7]][a->b32].x*1.66666663f;
  if(owner->sdc.w130) d=-d;
  a->f52 += d;
- a->f56 += table_0c252c50[(unsigned char)owner->sdc.pad1c[9]][a->b32].y*2.1428571f;
+ a->f56 += table_0c252c50[(unsigned char)owner->sdc.pad1c[7]][a->b32].y*2.1428571f;
  a->sdc.b12c=1;
  func_0c037d0c(a);
 }

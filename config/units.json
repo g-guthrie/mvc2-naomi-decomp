@@ -10774,24 +10774,6 @@
         "size": 8
       },
       {
-        "section": "Cn0dced4",
-        "kind": "data",
-        "address": "0x0c0dced4",
-        "size": 4
-      },
-      {
-        "section": "Cn0dcfdc",
-        "kind": "data",
-        "address": "0x0c0dcfdc",
-        "size": 12
-      },
-      {
-        "section": "Cn0dcfec",
-        "kind": "data",
-        "address": "0x0c0dcfec",
-        "size": 4
-      },
-      {
         "section": "Cn0ddc78",
         "kind": "data",
         "address": "0x0c0ddc78",
@@ -10893,9 +10875,6 @@
       "_table_0c0dba4c": "0x0c0dba4c",
       "_ptr_0c0dba5c": "0x0c0dba5c",
       "_table_0c0dc6ac": "0x0c0dc6ac",
-      "_ptr_0c0dced4": "0x0c0dced4",
-      "_table_0c0dcfdc": "0x0c0dcfdc",
-      "_ptr_0c0dcfec": "0x0c0dcfec",
       "_table_0c0ddc78": "0x0c0ddc78",
       "_table_0c0de9b0": "0x0c0de9b0",
       "_ptr_0c0ded08": "0x0c0ded08",
@@ -38822,24 +38801,6 @@
         "size": 28
       },
       {
-        "section": "Cn0dcea8",
-        "kind": "data",
-        "address": "0x0c0dcea8",
-        "size": 4
-      },
-      {
-        "section": "Cn0dcfd0",
-        "kind": "data",
-        "address": "0x0c0dcfd0",
-        "size": 2
-      },
-      {
-        "section": "Cn0dd0cc",
-        "kind": "data",
-        "address": "0x0c0dd0cc",
-        "size": 20
-      },
-      {
         "section": "Cn0ddae8",
         "kind": "data",
         "address": "0x0c0ddae8",
@@ -38907,9 +38868,6 @@
       "_dat_0c0dcb90": "0x0c0dcb90",
       "_table_0c0dcd08": "0x0c0dcd08",
       "_table_0c0dcd24": "0x0c0dcd24",
-      "_dat_0c0dcea8": "0x0c0dcea8",
-      "_dat_0c0dcfd0": "0x0c0dcfd0",
-      "_table_0c0dd0cc": "0x0c0dd0cc",
       "_dat_0c0ddae8": "0x0c0ddae8",
       "_dat_0c0ddaf8": "0x0c0ddaf8",
       "_dat_0c0ddc5e": "0x0c0ddc5e",
@@ -95983,42 +95941,6 @@
         "kind": "data",
         "address": "0x0c0dcd20",
         "size": 4
-      },
-      {
-        "section": "Cn0bbea0",
-        "kind": "data",
-        "address": "0x0c0dcea0",
-        "size": 8
-      },
-      {
-        "section": "Cn0bbeac",
-        "kind": "data",
-        "address": "0x0c0dceac",
-        "size": 40
-      },
-      {
-        "section": "Cn0bbfd2",
-        "kind": "data",
-        "address": "0x0c0dcfd2",
-        "size": 8
-      },
-      {
-        "section": "Cn0bbfe8",
-        "kind": "data",
-        "address": "0x0c0dcfe8",
-        "size": 4
-      },
-      {
-        "section": "Cn0bbff0",
-        "kind": "data",
-        "address": "0x0c0dcff0",
-        "size": 12
-      },
-      {
-        "section": "Cn0bc0bc",
-        "kind": "data",
-        "address": "0x0c0dd0bc",
-        "size": 16
       },
       {
         "section": "Cn0bc6ee",
@@ -217800,8 +217722,8 @@
   },
   {
     "id": "tu_0c0517f8",
-    "source": "src/candidates/tu_0c0517f8.c",
-    "mode": "candidate",
+    "source": "src/verified/tu_0c0517f8.c",
+    "mode": "verified",
     "sections": [
       {
         "section": "P",
@@ -257589,8 +257511,8 @@
     }
   },
   {
-    "id": "0c165b30",
-    "source": "src/verified/0c165b30.c",
+    "id": "tu_0c165b30",
+    "source": "src/verified/tu_0c165b30.c",
     "mode": "verified",
     "sections": [
       {
@@ -257755,6 +257677,63 @@
       "_func_0c037688": "0x0c037688",
       "_func_0c1d108c": "0x0c1d108c",
       "__quick_odd_mvn": "0x0c1fb7a0"
+    }
+  },
+  {
+    "id": "tu_0c0dcd40",
+    "source": "src/verified/tu_0c0dcd40.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c0dcd40",
+        "size": 928,
+        "interior": [
+          {
+            "address": "0x0c0dcea0",
+            "size": 56,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c0dcfd0",
+            "size": 44,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c0dd0bc",
+            "size": 36,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c0dcd40": "0x0c0dcd40",
+      "_func_0c0dcd52": "0x0c0dcd52",
+      "_func_0c0dce2e": "0x0c0dce2e",
+      "_func_0c0dcf12": "0x0c0dcf12",
+      "_func_0c0dcf80": "0x0c0dcf80",
+      "_func_0c0dcf92": "0x0c0dcf92",
+      "_func_0c0dd08e": "0x0c0dd08e"
+    },
+    "imports": {
+      "_func_0c02a026": "0x0c02a026",
+      "_func_0c048bb0": "0x0c048bb0",
+      "_func_0c0442fa": "0x0c0442fa",
+      "_func_0c02a39a": "0x0c02a39a",
+      "_func_0c02a0c4": "0x0c02a0c4",
+      "_func_0c166704": "0x0c166704",
+      "_func_0c0344a0": "0x0c0344a0",
+      "_func_0c0438de": "0x0c0438de",
+      "_func_0c0451f2": "0x0c0451f2",
+      "_func_0c0432ca": "0x0c0432ca",
+      "_dat_0c2f83f8": "0x0c2f83f8",
+      "_table_0c248e58": "0x0c248e58",
+      "_table_0c248e68": "0x0c248e68",
+      "_dat_0c248c6c": "0x0c248c6c",
+      "_dat_0c248e64": "0x0c248e64",
+      "_dat_0c248c74": "0x0c248c74"
     }
   }
 ]
