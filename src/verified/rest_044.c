@@ -1,15 +1,5 @@
 /* Hitachi const data remaining after earlier bulk units. */
 
-#pragma section n0b8aa8
-const unsigned short dat_0c0d9aa8[] = {
-    0x01fau, 0x0c00u, 0x01feu, 0x01a3u, 0x01f7u,
-};
-
-#pragma section n0b8ab4
-const unsigned int dat_0c0d9ab4[] = {
-    0x0c037d54u, 0x43092492u, 0x0c048ce6u, 0x0c248ab0u,
-};
-
 #pragma section n0b9964
 const unsigned short dat_0c0da964[] = {
     0x01fau, 0x0800u, 0x01feu, 0x01e8u, 0x01f9u, 0x03f4u, 0x01a7u,
