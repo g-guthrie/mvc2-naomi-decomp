@@ -261,6 +261,12 @@ differences; read what it changed afterwards.
   `not; add #1; and #K; not; add #1`, 72 sites). `~v+1` reproduces the
   not/add negation, but the bundled SHC calls `__modls` for every `%`
   spelling and never keeps the operand in r0 for the explicit form.
+  `if (r >= 0) r &= 3; else { r = ~r + 1; r &= 3; r = ~r + 1; }` gives the
+  exact branch layout; only the r0 immediate form is missing. Signed
+  division by 2^n (n >= 2) is reachable: `if (n < 0) n += 7; n >>= 3;`
+  produces the inline idiom (tu_0c1bb1d0), and plain `x / 2` already
+  compiles to retail's `cmp/gt; addc; shar`. The remaining misses there are
+  ordinary register choice, not the divide.
 - SDK code aligned to 16 or 32 bytes with NOP fill (function starts, loop
   heads, literal pools placed on the next boundary, shared pools after
   several functions). The `library` option set aligns functions to 4 bytes
