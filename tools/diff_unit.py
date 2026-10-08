@@ -165,6 +165,9 @@ def release_pools(unit, units):
     lie inside them, pools and pool-free leaves alike, are removed from the
     registry and from their source."""
     spans = [(number(part['address']), number(part['address']) + number(part['size'])) for part in unit['sections']]
+    # Every source edit is computed before any is written, so a section that
+    # cannot be released leaves all sources and the registry untouched.
+    writes = []
     for other in units:
         if other['id'] == unit['id'] or (unit.get('source') and other.get('source') == unit['source']):
             continue
@@ -187,8 +190,10 @@ def release_pools(unit, units):
             if symbol:
                 del other['exports'][symbol]
             print(f"RELEASED {other['id']} {part['section']} to {unit['id']}")
-        source.write_text(text)
+        writes.append((source, text))
         other['sections'] = keep
+    for source, text in writes:
+        source.write_text(text)
     return [u for u in units if u['sections']]
 
 
