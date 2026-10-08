@@ -889,4 +889,16 @@ struct Motion4 { float f0, f4, f8, f12; };
  * tested with a mask pair by the throw handlers at 0x0c0d6094/0x0c0d6136. */
 struct ActorFlags64 { unsigned int hi, lo; };
 
+/* Match-state view of 0x0c2f8338: state byte, then each side's three team
+ * Actor pointers at +24 (12 bytes per side), read by the 0x0c042728 unit. */
+struct Team8338 { struct Actor *m[3]; };
+struct G8338 { unsigned char b0; char pad[23]; struct Team8338 t[2]; };
+
+/* Actor position (Actor f52/f56/f60) as one vector, for struct copies. */
+struct ActorPos52 { char pad[52]; struct LinkedActorVec3 pos; };
+
+/* Record behind the pointer at 0x0c2f83f8: per-side counters at 116 and the
+ * packed side/state byte at 118 (0x0c042728 unit). */
+struct Glob_042728 { unsigned char pad[116]; signed char b116[2]; unsigned char b118; };
+
 #endif
