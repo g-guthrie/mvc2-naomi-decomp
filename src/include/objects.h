@@ -636,8 +636,8 @@ struct MotionGlobal_0c2d9260 {
     unsigned char pad[5];
     unsigned char b5, b6;
     unsigned char pad7[12 - 7];
-    float f12, f16;
-    unsigned char pad20[0x88 - 20];
+    float f12, f16, f20;
+    unsigned char pad24[0x88 - 24];
     float f88, f8c, f90, f94, f98, f9c;
     unsigned char pada0[8];
     float fa8;
