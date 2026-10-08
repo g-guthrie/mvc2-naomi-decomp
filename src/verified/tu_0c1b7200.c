@@ -1,4 +1,5 @@
-/* Candidate: b141 test loads into r0 instead of r2 (349/352) */
+/* 0x0c1b7200 group: owner follower, dispatcher and update; matches retail
+ * exactly. The b141 test is read as a raw byte, which keeps it in r2. */
 #include "objects.h"
 #define A(x) ((struct Actor *)(x))
 extern void (*table_0c25b530[])(struct LinkedActor *);
@@ -12,7 +13,7 @@ void func_0c1b7200(struct LinkedActor *a,struct LinkedActor *owner)
  if(owner->b5||owner->b1d0!=29){a->b4=2;a->sdc.b12c=0;return;}
  if(func_0c02a026(a)<0){a->b4=2;a->sdc.b12c=0;return;}
  *(struct LinkedActorVec3 *)&a->f52=*(struct LinkedActorVec3 *)&owner->f52;
- if(a->sdc.b141){
+ if(((char *)a)[0x141]){
   float f=-13.33333302f;
   if(a->sdc.w130)f=13.33333302f;
   a->f52+=f;
