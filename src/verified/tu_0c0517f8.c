@@ -1,6 +1,4 @@
-/* Candidate: 336/348. func_0c0517f8, func_0c051918 and the pool are exact.
- * func_0c051886 differs only at 0x0c0518f4-0x0c0518fe: retail reads w4dc
- * before loading the 0x80 constant for b4ab |= 0x80; SHC hoists the constant. */
+/* func_0c051886: the label before the w4dc read-modify-write starts a new block there, so the 0x80 for b4ab is loaded after the w4dc read as in retail. */
 #include "objects.h"
 extern void func_0c04e6b2(struct Actor *, struct OperandStream *, int);
 extern int func_0c04e788(struct Actor *, int);
@@ -41,6 +39,8 @@ int func_0c051886(struct Actor *a, struct OperandStream *s)
     if (!(a->w4ae & (unsigned short)mask)) {
         a->w4ae |= mask;
         if (func_0c04e788(a, 2)) {
+            goto f;
+        f:
             a->w4dc |= mask;
             a->b4ab |= 0x80;
             a->b4aa = *(unsigned char *)&a->parameter4b4;
