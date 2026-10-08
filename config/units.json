@@ -2245,12 +2245,6 @@
         "size": 4
       },
       {
-        "section": "Cn032b54",
-        "kind": "data",
-        "address": "0x0c032b54",
-        "size": 4
-      },
-      {
         "section": "Cn032c98",
         "kind": "data",
         "address": "0x0c032c98",
@@ -2267,7 +2261,6 @@
       "_ptr_0c023a48": "0x0c023a48",
       "_ptr_0c0272fc": "0x0c0272fc",
       "_ptr_0c030d58": "0x0c030d58",
-      "_ptr_0c032b54": "0x0c032b54",
       "_ptr_0c032c98": "0x0c032c98",
       "_ptr_0c0332ec": "0x0c0332ec"
     },
@@ -22547,12 +22540,6 @@
         "size": 36
       },
       {
-        "section": "Cn027078",
-        "kind": "data",
-        "address": "0x0c027078",
-        "size": 64
-      },
-      {
         "section": "Cn0272e8",
         "kind": "data",
         "address": "0x0c0272e8",
@@ -22633,7 +22620,6 @@
       "_dat_0c026a44": "0x0c026a44",
       "_dat_0c026a98": "0x0c026a98",
       "_dat_0c026d84": "0x0c026d84",
-      "_dat_0c027078": "0x0c027078",
       "_dat_0c0272e8": "0x0c0272e8",
       "_dat_0c027308": "0x0c027308",
       "_dat_0c027410": "0x0c027410",
@@ -24101,24 +24087,6 @@
         "size": 32
       },
       {
-        "section": "Cn0329e8",
-        "kind": "data",
-        "address": "0x0c0329e8",
-        "size": 88
-      },
-      {
-        "section": "Cn032b1c",
-        "kind": "data",
-        "address": "0x0c032b1c",
-        "size": 10
-      },
-      {
-        "section": "Cn032b28",
-        "kind": "data",
-        "address": "0x0c032b28",
-        "size": 44
-      },
-      {
         "section": "Cn032c74",
         "kind": "data",
         "address": "0x0c032c74",
@@ -24272,9 +24240,6 @@
       "_dat_0c03266c": "0x0c03266c",
       "_dat_0c032764": "0x0c032764",
       "_dat_0c032774": "0x0c032774",
-      "_dat_0c0329e8": "0x0c0329e8",
-      "_dat_0c032b1c": "0x0c032b1c",
-      "_dat_0c032b28": "0x0c032b28",
       "_dat_0c032c74": "0x0c032c74",
       "_dat_0c032ca8": "0x0c032ca8",
       "_dat_0c032d46": "0x0c032d46",
@@ -298547,6 +298512,89 @@
       "_dat_0c2d9664": "0x0c2d9664",
       "_func_0c0374da": "0x0c0374da",
       "_func_0c1c98ac": "0x0c1c98ac",
+      "__quick_odd_mvn": "0x0c1fb7a0"
+    }
+  },
+  {
+    "id": "tu_0c026e50",
+    "source": "src/verified/tu_0c026e50.c",
+    "mode": "verified",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c026e50",
+        "size": 616,
+        "interior": [
+          {
+            "address": "0x0c027078",
+            "size": 64,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c026e50": "0x0c026e50"
+    },
+    "imports": {
+      "_dat_0c23a40c": "0x0c23a40c",
+      "_func_0c1f1f10": "0x0c1f1f10",
+      "__divls": "0x0c1fb400",
+      "__modls": "0x0c1fb5ac"
+    }
+  },
+  {
+    "id": "tu_0c0328a4",
+    "source": "src/candidates/tu_0c0328a4.c",
+    "mode": "candidate",
+    "sections": [
+      {
+        "section": "P",
+        "kind": "code",
+        "address": "0x0c0328a4",
+        "size": 692,
+        "interior": [
+          {
+            "address": "0x0c0329e8",
+            "size": 88,
+            "kind": "data"
+          },
+          {
+            "address": "0x0c032b1c",
+            "size": 60,
+            "kind": "data"
+          }
+        ]
+      }
+    ],
+    "exports": {
+      "_func_0c0328a4": "0x0c0328a4",
+      "_func_0c032a7e": "0x0c032a7e"
+    },
+    "imports": {
+      "_dat_0c2d6f84": "0x0c2d6f84",
+      "_dat_0c2d7088": "0x0c2d7088",
+      "_dat_0c2d9260": "0x0c2d9260",
+      "_dat_0c2d93d0": "0x0c2d93d0",
+      "_dat_0c2d6f24": "0x0c2d6f24",
+      "_func_0c037354": "0x0c037354",
+      "_func_0c0275a4": "0x0c0275a4",
+      "_func_0c0268b8": "0x0c0268b8",
+      "_func_0c02aa78": "0x0c02aa78",
+      "_func_0c02aaac": "0x0c02aaac",
+      "_func_0c027ff0": "0x0c027ff0",
+      "_func_0c0343ac": "0x0c0343ac",
+      "_func_0c034a1c": "0x0c034a1c",
+      "_func_0c0233dc": "0x0c0233dc",
+      "_func_0c023a50": "0x0c023a50",
+      "_func_0c1c910c": "0x0c1c910c",
+      "_func_0c1c927a": "0x0c1c927a",
+      "_func_0c1c93f6": "0x0c1c93f6",
+      "_func_0c02a7ea": "0x0c02a7ea",
+      "_func_0c0267c4": "0x0c0267c4",
+      "_func_0c0267ce": "0x0c0267ce",
+      "_func_0c0275dc": "0x0c0275dc",
       "__quick_odd_mvn": "0x0c1fb7a0"
     }
   }
