@@ -166,7 +166,8 @@ struct Actor {
     unsigned char pad76[4];
     float f80, f84;
     float f88, f92, f96, f100, f104, f108, f112, f116;
-    unsigned char pad5[0x88 - 120];
+    float f120, f124, f128;
+    unsigned char pad5[0x88 - 132];
     float f136,f140;
     unsigned char pad5b[0xcc - 0x90];
     int i204;
@@ -267,7 +268,7 @@ struct Actor {
     unsigned char pad205[1],b207;
     float f208;
     struct Actor *p20c;
-    unsigned char pad9b[0x211 - 0x210];
+    unsigned char b210;
     unsigned char b211;
     unsigned char pad212[0x218 - 0x212];
     float f218,f21c;
@@ -445,7 +446,9 @@ struct LinkedActorBlock {
     unsigned char pad1b[0x64 - 0x56];
     char b140;
     char b141;
-    unsigned char pad1c[0x78 - 0x66];
+    char b142;
+    char b143;
+    unsigned char pad1c[0x78 - 0x68];
     struct AnimationFrame20 *p154;
     union LinkedActorW158 w158;
     unsigned char pad2[0xc0 - 0x7e];
@@ -501,7 +504,9 @@ struct LinkedActor {
     char b49;
     unsigned char pad6[52 - 50];
     float f52, f56, f60;
-    unsigned char pad7[80 - 64];
+    unsigned char pad7[72 - 64];
+    int l72;
+    unsigned char pad7b[80 - 76];
     struct LinkedActorVec3 v80;
     float f92;
     float f96;
@@ -573,21 +578,30 @@ struct MeActor {
     float f5c, f60;
     unsigned char pad8[0x68 - 0x64];
     float f68, f6c;
-    unsigned char pad9[0xdc - 0x70];
+    unsigned char pad9[0xcc - 0x70];
+    int lcc, ld0;
+    unsigned char pad9b[0xdc - 0xd4];
     struct MeActorBlock blk_dc;
     unsigned char pad13[0x1a3 - 0x19c];
     unsigned char b1a3, b1a4;
     unsigned char pad14[0x1d0 - 0x1a5];
     unsigned char b1d0;
-    unsigned char pad15[0x1e9 - 0x1d1];
+    unsigned char pad15a;
+    unsigned char b1d2;
+    unsigned char pad15[0x1e9 - 0x1d3];
     unsigned char b1e9;
-    unsigned char pad16[0x2a4 - 0x1ea];
+    unsigned char pad16[0x255 - 0x1ea];
+    unsigned char b255;
+    unsigned char pad16c[0x26c - 0x256];
+    short w26c;
+    unsigned char pad16d[0x2a4 - 0x26e];
     struct MeActor *p2a4;
     unsigned char b2a8;
     unsigned char pad16b[0x411 - 0x2a9];
     unsigned char b411;
     unsigned char pad17[0x41c - 0x412];
     float f41c;
+    short w420;
 };
 
 /* Type-5 timed actor allocated by the callback at 0x0c1e10e2. */
@@ -661,6 +675,36 @@ struct Obj_tu5_03 {
     unsigned char b12c;
     unsigned char pad10[0x130 - 0x12d];
     short w130;
+};
+
+/* Effect children spawned by 0x0c1cf21e and dispatched through 0x0c260c80.
+ * Offset 92 is a velocity triple for some kinds and an angle step for others. */
+union Effect1cfStep { struct Vec3_tu5_03 v; int spin; };
+struct Effect1cf {
+    unsigned char pad0[3];
+    unsigned char b3, b4;
+    unsigned char b5, b6;
+    unsigned char pad7;
+    struct Effect1cf *p8;
+    unsigned char pad12[4];
+    void (*p16)(struct Effect1cf *);
+    unsigned char pad20[4];
+    struct Actor *p24;
+    short s28, s30;
+    unsigned char b32, b33;
+    unsigned char pad34[52 - 34];
+    struct Vec3_tu5_03 pos;
+    int ang[3];
+    unsigned char pad76[4];
+    struct Vec3_tu5_03 v80;
+    union Effect1cfStep u92;
+    struct Vec3_tu5_03 v104;
+    struct EffectScale4 sc;
+    int l84;
+    unsigned char pad88[0xcc - 0x88];
+    unsigned int lcc;
+    unsigned char padd0[0x12c - 0xd0];
+    char b12c;
 };
 
 struct ActorSubLaunchState36 { unsigned char pad[22], b22,b23,b24,b25,b26,b27,b28,b29,b30,b31; struct Actor *target32; };

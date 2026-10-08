@@ -1,4 +1,4 @@
-/* Candidate: every function and pool matches except func_0c069a3a. The shared zero is now hoisted into r13 like retail (`register void *zero` cast at each use, `a` as a register parameter); what remains is scratch-register numbering: retail keeps the b1a3 ternary result in r2 (ours r4) and reloads sub / tests b1d2 in r3 (ours r2). */
+/* The shared zero lives in r13 (`register void *zero` cast at each use, `a` as a register parameter). The b1a3 ternary and the following sub store each sit behind a label, which makes the compiler number the condition before the result as retail does. */
 #include "objects.h"
 struct Glob_0c2f83f8 { unsigned char pad[0x7c]; short w7c[1]; };
 extern struct Glob_0c2f83f8 *dat_0c2f83f8;
@@ -29,12 +29,12 @@ void func_0c069a3a(register struct Actor *a, struct ActorSub2a4 *sub) {
   else if (a->b1e9)
     a->b1a1 = 52;
   else
-    { int v = a->b1a3 ? 50 : 48; a->b1a1 = v; }
+    { goto set; set: a->b1a1 = a->b1a3 ? 50 : 48; }
   a->w1ac = (int)zero;
   a->b19e = (int)zero;
   *(unsigned int *)&a->p1c4 = (int)zero;
   dat_0c2f83f8->w7c[a->b2]++;
-  sub->b6 = (int)zero;
+  goto s2; s2: sub->b6 = (int)zero;
   a->f92 = a->b1d2 ? 16.666666031f : -16.666666031f;
   a->f104 = a->b1d2 ? -0.3125f : 0.3125f;
   a->s28 = a->b1a3 ? 12 : 1;

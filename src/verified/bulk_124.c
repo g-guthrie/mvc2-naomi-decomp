@@ -256,25 +256,3 @@ const unsigned int dat_0c1cf130[] = {
     0x0c037688u, 0x0c1d975eu, 0x3c888889u,
 };
 
-#pragma section n1cf2d0
-const unsigned short dat_0c1cf2d0[] = {
-    0x00ccu, 0x0168u, 0x0084u,
-};
-
-#pragma section n1cf2e0
-const unsigned int dat_0c1cf2e0[] = {
-    0x0c260c80u, 0x0c260c90u, 0x0c2d964cu, 0x0c260c68u,
-    0x0c1fb7a0u,
-};
-
-#pragma section n1cf3da
-const unsigned short dat_0c1cf3da[] = {
-    0x040du, 0x00ccu, 0x0160u, 0x0084u, 0x0164u, 0x0168u, 0x00d2u, 0x964cu,
-    0x0c2du,
-};
-
-#pragma section n1cf3fc
-const unsigned int dat_0c1cf3fc[] = {
-    0x0c1fb794u,
-};
-

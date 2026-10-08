@@ -16,43 +16,6 @@ extern void func_0c25202c(void);
 extern void func_0c252034(void);
 extern void func_0c252058(void);
 
-#pragma section n1661f2
-const unsigned short dat_0c1661f2[] = {
-    0x01a3u, 0x019fu, 0x041cu, 0x1e50u, 0x0c25u, 0x1e54u, 0x0c25u, 0xa0c4u,
-    0x0c02u, 0x8642u, 0x0c02u, 0xa026u, 0x0c02u,
-};
-
-#pragma section n166368
-const unsigned short dat_0c166368[] = {
-    0x019fu,
-};
-
-#pragma section n166384
-const unsigned int dat_0c166384[] = {
-    0x41a00000u, 0xc1a00000u, 0x4191b6dbu, 0x0c02a0c4u,
-    0x0c028642u,
-};
-
-#pragma section n1664b6
-const unsigned short dat_0c1664b6[] = {
-    0x041cu,
-};
-
-#pragma section n1665e6
-const unsigned short dat_0c1665e6[] = {
-    0x0130u, 0x013eu,
-};
-
-#pragma section n1665fc
-const unsigned int dat_0c1665fc[] = {
-    0x40d55555u, 0xc0d55555u, 0x0c251e80u, 0x0c02a0c4u,
-};
-
-#pragma section n1666ea
-const unsigned short dat_0c1666ea[] = {
-    0x012cu,
-};
-
 #pragma section n166862
 const unsigned short dat_0c166862[] = {
     0x0158u, 0x00ccu, 0x2200u, 0x00dcu, 0x00c0u, 0x012cu, 0x01a3u,

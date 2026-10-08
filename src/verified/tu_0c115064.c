@@ -10,7 +10,7 @@ void func_0c115064(register struct Actor *a,register struct ActorSub2a4 *sub)
  a->b6++;func_0c0442fa(a);func_0c02a39a(a,0);
  if(a->b1f9!=2){a->f56=a->f41c;func_0c0432ca(a);}
  zero=0;sub->b7=(int)zero;((unsigned char *)sub)[8]=1;((unsigned char *)sub)[9]=(int)zero;
- a->b1a1=51;a->w1ac=(int)zero;a->b19e=(int)zero;*(void **)&a->p1c4=zero;dat_0c2f83f8->arr[a->b2]++;
+ a->b1a1=51;a->w1ac=(int)zero;a->b19e=(int)zero;*(unsigned int *)&a->p1c4=(int)zero;dat_0c2f83f8->arr[a->b2]++;
  stopped=0.0f;a->f92=stopped;a->f96=stopped;a->f104=stopped;a->f108=stopped;
  a->f96=25.714285f;
  func_0c02a0c4(a,22,(int)zero);a->s28=50;func_0c11511c(a,sub);
