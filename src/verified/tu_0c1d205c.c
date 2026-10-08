@@ -1,6 +1,5 @@
 /* Interpolate a short effect, copy its placement, and clamp a later bounce. */
 #include "objects.h"
-struct EffectKnot {int frame;float value;};
 extern struct EffectKnot dat_0c261004[],dat_0c261014[],dat_0c26102c[],dat_0c26103c[];
 extern struct ActorGlobalRoot *dat_0c2d9650;
 extern struct Obj_tu5_03 *func_0c0374da(int,int,int);

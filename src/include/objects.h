@@ -290,7 +290,9 @@ struct Actor {
     unsigned char b236;
     unsigned char b237;
     char b238,b239;
-    unsigned char b23a,pad9bb[0x248 - 0x23b];
+    unsigned char b23a,pad9bb[0x23c - 0x23b];
+    unsigned char b23c;
+    unsigned char pad23d[0x248 - 0x23d];
     unsigned char b248;
     unsigned char pad248[0x24c - 0x249];
     struct ActorVec2 position24c;
@@ -647,6 +649,9 @@ struct SolHorizontalTarget { unsigned char pad[16]; float x, y; };
 
 /* Three angle words at offsets 64, 68 and 72; scalar aliases retain the
  * established accesses while the stream constructors use the full array. */
+/* Keyframe of the effect tracks interpolated by 0x0c1ce8c4. */
+struct EffectKnot { int frame; float value; };
+
 struct ObjAngleScalars { int first, l44, l48; };
 union ObjAngleWords { int array[3]; struct ObjAngleScalars scalar; };
 
