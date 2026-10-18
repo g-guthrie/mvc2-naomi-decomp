@@ -1,5 +1,7 @@
 # Toolchain, verification and credit
 
+> **Not distributed.** `orig/mvsc2.zip`, `toolchain/hitachi-shc-5.1r08/` and `toolchain/naomi-sdk/lib/` are not in this repository; supply them yourself at these paths. See [BUILD_INPUTS.md](BUILD_INPUTS.md).
+
 For a new local or cloud checkout, start with [Cloud agent setup](CLOUD_AGENTS.md).
 
 ## What is bundled

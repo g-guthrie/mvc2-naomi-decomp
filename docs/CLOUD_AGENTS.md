@@ -1,5 +1,7 @@
 # Cloud agent setup
 
+> **Not distributed.** `orig/mvsc2.zip`, `toolchain/hitachi-shc-5.1r08/` and `toolchain/naomi-sdk/lib/` are not in this repository; supply them yourself at these paths. See [BUILD_INPUTS.md](BUILD_INPUTS.md).
+
 Use a Linux x86_64 environment with Git and Python 3.10 or newer. GitHub Actions
 uses Ubuntu 24.04 and Python 3.12. The build uses Python's standard library;
 there is no pip environment, npm install, replacement SH compiler, or account

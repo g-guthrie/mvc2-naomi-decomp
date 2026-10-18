@@ -1,5 +1,7 @@
 # Making a function match
 
+> **Not distributed.** `orig/mvsc2.zip`, `toolchain/hitachi-shc-5.1r08/` and `toolchain/naomi-sdk/lib/` are not in this repository; supply them yourself at these paths. See [BUILD_INPUTS.md](BUILD_INPUTS.md).
+
 The compiler is right. SHC 5.1 Release 8 (`toolchain/hitachi-shc-5.1r08/`, the
 compiler passes from Sega's NaomiSDK `pcv51r08.zip`; assembler and linker are
 still 5.0R31) with the `game` option set reproduces retail
